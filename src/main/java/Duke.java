@@ -1,7 +1,15 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+
+class Global {
+    static String patternLine = "____________________________________________________________";
+}
 
 public class Duke {
     public static void main(String[] args) {
+
+        ArrayList<String> task = new ArrayList<>();
+
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -12,12 +20,18 @@ public class Duke {
         GreetNote("welcome");
 
         Scanner in = new Scanner(System.in);
-        String line = in.nextLine();
+        String input= in.nextLine();
 
-        while (!line.equals("bye")) {
-            replyLine(line);
+        while (!input.equals("bye")) {
+
+            if(input.equals("list")) {
+                PrintList(task);
+            } else {
+                ReplyLine(input);
+                task.add(input);
+            }
             in = new Scanner(System.in);
-            line = in.nextLine();
+            input = in.nextLine();
         }
 
         GreetNote("bye");
@@ -25,14 +39,14 @@ public class Duke {
 
     private static void GreetNote(String hi_bye) {
 
-        String welcome = "____________________________________________________________\n"
-                        + "     Hello! I'm Duke\n"
+        String welcome = Global.patternLine
+                        + "\n     Hello! I'm Duke\n"
                         + "     What can I do for you?\n"
-                        + "____________________________________________________________\n";
+                        + Global.patternLine + "\n";
 
-        String farewell = "____________________________________________________________\n"
-                        + "   Bye. Hope to see you again soon!\n"
-                        + "____________________________________________________________";
+        String farewell = Global.patternLine
+                        + "\n   Bye. Hope to see you again soon!\n"
+                        + Global.patternLine;
 
         if(hi_bye.equals("welcome")) {
             System.out.println(welcome);
@@ -40,10 +54,20 @@ public class Duke {
             System.out.println(farewell);
         }
     }
-    private static void replyLine(String reply) {
-        String display = "____________________________________________________________\n"
-                + "You have entered:" + reply
-                + "\n____________________________________________________________";
+    private static void ReplyLine(String input) {
+        String display = Global.patternLine + "\nYou have added : " + input + "\n"+ Global.patternLine;
         System.out.println(display);
+    }
+    private static void PrintList(ArrayList<String> task) {
+        if(task.size() == 0) {
+            String noItem = Global.patternLine + "\nYour List is Empty\n" + Global.patternLine;
+            System.out.println(noItem);
+            return;
+        }
+        System.out.println(Global.patternLine);
+        for(int i=1; i<=task.size(); i++) {
+            System.out.println(i + ". " + task.get(i-1));
+        }
+        System.out.println(Global.patternLine);
     }
 }
