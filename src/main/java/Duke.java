@@ -5,10 +5,17 @@ class Global {
     static String patternLine = "____________________________________________________________";
 }
 
+enum Action {
+    DONE,
+    LIST,
+    ADD,
+}
+
 public class Duke {
+
     public static void main(String[] args) {
 
-        ArrayList<String> task = new ArrayList<>();
+        ArrayList<Task> task = new ArrayList<>();
 
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -23,15 +30,9 @@ public class Duke {
         String input= in.nextLine();
 
         while (!input.equals("bye")) {
-
-            if(input.equals("list")) {
-                PrintList(task);
-            } else {
-                ReplyLine(input);
-                task.add(input);
-            }
-            in = new Scanner(System.in);
-            input = in.nextLine();
+           ProcessInput(input, task);
+           in = new Scanner(System.in);
+           input = in.nextLine();
         }
 
         GreetNote("bye");
@@ -54,11 +55,58 @@ public class Duke {
             System.out.println(farewell);
         }
     }
+    private static void ProcessInput(String input, ArrayList<Task> task) {
+
+        String command = input.toLowerCase();
+        Action action;
+
+        if(command.startsWith("list")) {
+            action = Action.LIST;
+        } else if (command.length()> 4 && command.substring(0, 4).equals("done")) {
+            action = Action.DONE;
+        } else {
+            action = Action.ADD;
+        }
+
+        switch(action) {
+
+            case LIST :
+                PrintList(task);
+                break;
+
+            case DONE :
+                int index;
+
+                //If user input done1 instead of done 1
+                if(command.contains(" ")) {
+                    index = Integer.parseInt(command.substring(5));
+                } else {
+                    index = Integer.parseInt(command.substring(4));
+                }
+
+                //If user input Done item out of bound
+                if (index > task.size() || index ==0) {
+                    System.out.println(Global.patternLine + "\nFriend, You do not have so much task in the list\n" + Global.patternLine);
+                    return;
+                }
+
+                task.get(index-1).markAsDone();
+                System.out.println(Global.patternLine + "\nNice! I've marked this task as done:");
+                task.get(index-1).printTask();
+                System.out.println(Global.patternLine);
+                break;
+
+            default:
+                ReplyLine(input);
+                task.add(new Task(input));
+
+        }
+    }
     private static void ReplyLine(String input) {
         String display = Global.patternLine + "\nYou have added : " + input + "\n"+ Global.patternLine;
         System.out.println(display);
     }
-    private static void PrintList(ArrayList<String> task) {
+    private static void PrintList(ArrayList<Task> task) {
         if(task.size() == 0) {
             String noItem = Global.patternLine + "\nYour List is Empty\n" + Global.patternLine;
             System.out.println(noItem);
@@ -66,7 +114,8 @@ public class Duke {
         }
         System.out.println(Global.patternLine);
         for(int i=1; i<=task.size(); i++) {
-            System.out.println(i + ". " + task.get(i-1));
+            System.out.print(i + ". ");
+            task.get(i-1).printTask();
         }
         System.out.println(Global.patternLine);
     }
