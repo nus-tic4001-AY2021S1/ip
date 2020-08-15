@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Duke {
     public static void main(String[] args) {
         String logo = " ____        _        \n"
@@ -8,17 +10,28 @@ public class Duke {
         System.out.println("Hello from\n" + logo);
 
         GreetNote("welcome");
+
+        Scanner in = new Scanner(System.in);
+        String line = in.nextLine();
+
+        while (!line.equals("bye")) {
+            replyLine(line);
+            in = new Scanner(System.in);
+            line = in.nextLine();
+        }
+
         GreetNote("bye");
     }
 
     private static void GreetNote(String hi_bye) {
 
         String welcome = "____________________________________________________________\n"
-                        + "Hello! I'm Duke\n"
-                        + "What can I do for you?\n"
+                        + "     Hello! I'm Duke\n"
+                        + "     What can I do for you?\n"
                         + "____________________________________________________________\n";
 
-        String farewell = "Bye. Hope to see you again soon!\n"
+        String farewell = "____________________________________________________________\n"
+                        + "   Bye. Hope to see you again soon!\n"
                         + "____________________________________________________________";
 
         if(hi_bye.equals("welcome")) {
@@ -26,5 +39,11 @@ public class Duke {
         } else {
             System.out.println(farewell);
         }
+    }
+    private static void replyLine(String reply) {
+        String display = "____________________________________________________________\n"
+                + "You have entered:" + reply
+                + "\n____________________________________________________________";
+        System.out.println(display);
     }
 }
