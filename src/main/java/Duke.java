@@ -1,18 +1,25 @@
 import java.lang.reflect.Array;
 import java.util.*;
 
+/**
+ * A Personal Assistant Chatbot that helps a person to keep track of various things.
+ *
+ * @author Wang Zhenquan
+ * @version Level 3
+ * @since 20/08/2020
+ */
+
 class Duke {
     private UI ui = new UI();
     private Parser parser = new Parser();
-    private Database database;
     private Scanner in = new Scanner(System.in);
     private boolean repeat = true;
 
     private void run() {
-        database = new Database();
+        TaskList tasks = new TaskList();
         ui.greet();
         while (repeat) {
-            repeat = parser.parseInput(in.nextLine(), ui, database);
+            repeat = parser.parseInput(in.nextLine(), ui, tasks);
         }
     }
 

@@ -9,16 +9,20 @@ public class Parser {
     /**
      * @param line     The entire user input.
      * @param ui       The UI created in the Duke class.
-     * @param database The Database created in the Duke class.
+     * @param tasks    The TaskList created in the Duke class.
      */
-    boolean parseInput(String line, UI ui, Database database) {
+    boolean parseInput(String line, UI ui, TaskList tasks) {
 
         String command = getCommandWord(line);
         switch (command) {
             case "list" -> {
-                for (int i = 0; i < database.tasks.size(); i++) {
-                    System.out.println((i + 1) + ". " + database.tasks.get(i));
+                for (int i = 0; i < tasks.size(); i++) {
+                    System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
                 }
+                return true;
+            }
+            case "done" -> {
+                tasks.changeDone(line, ui, tasks);
                 return true;
             }
             // also exit when user input is empty
@@ -27,7 +31,7 @@ public class Parser {
                 return false;
             }
             default -> {
-                database.add(line);
+                tasks.add(new Task(line));
                 System.out.println(line);
                 return true;
             }
