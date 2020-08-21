@@ -5,9 +5,17 @@ public class Parser {
                 store.toExit();
                 ui.byeToUser();
                 break;
+            case "list":
+                ui.printLine();
+                for(int i=0;i<store.getSize();i++){
+                    ui.indentPrint((i+1)+". "+store.getTask(i));
+                }
+                ui.printLine();
+                break;
             default:
                 ui.printLine();
-                ui.indentPrint(input);
+                store.addToTemp(input);
+                ui.indentPrint("added: "+input);
                 ui.printLine();
         }
     }
