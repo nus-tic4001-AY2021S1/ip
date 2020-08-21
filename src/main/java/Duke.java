@@ -12,10 +12,14 @@ public class Duke {
         boolean isExit = false;
         while (!isExit) {
             String fullCommand = readUserCommand();
+            String commandWord = getCommandWord(fullCommand);
             System.out.println(LINE);
 
             try {
-                switch(fullCommand) {
+                switch(commandWord) {
+                case "done":
+                    markTaskAsDone(fullCommand);
+                    break;
                 case "bye":
                     isExit = true;
                     break;
@@ -24,10 +28,9 @@ public class Duke {
                     break;
                 default:
                     addTask(fullCommand);
-                    System.out.println("Duke: Task \"" + fullCommand + "\" has been added.");
-                    System.out.println(LINE);
                 }
             } catch (Exception e) {
+                System.out.print("Duke: ");
                 printError(e.getMessage());
             }
         }
@@ -67,12 +70,7 @@ public class Duke {
 
     private static void addTask(String taskDescription) throws Exception{
         tasks.add(createTask(taskDescription));
-    }
-    private static void listTasks() {
-        System.out.println("Duke: Here are the tasks in your list!");
-        for (int i = 0; i < tasks.size(); i++) {
-            System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
-        }
+        System.out.println("Duke: Task \"" + taskDescription + "\" has been added.");
         System.out.println(LINE);
     }
 
@@ -81,5 +79,48 @@ public class Duke {
             throw new Exception("Task description is empty!");
         }
         return new Task(taskDescription);
+    }
+
+    private static void listTasks() {
+        System.out.println("Duke: Here are the tasks in your list:");
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + ". [" + tasks.get(i).getStatusIcon()
+                    + "] " + tasks.get(i).getDescription());
+        }
+        System.out.println(LINE);
+    }
+
+    private static String getCommandWord(String fullCommand) {
+        return fullCommand.split(" ")[0];
+    }
+
+    private static void markTaskAsDone(String fullCommand) throws Exception {
+        int taskIndex = getTaskIndex(fullCommand);
+        setTaskAsDone(taskIndex);
+        System.out.println("Duke: I have marked this task as done:");
+        System.out.println((taskIndex) + ". [" + tasks.get(taskIndex - 1).getStatusIcon()
+                + "] " + tasks.get(taskIndex - 1).getDescription());
+    }
+
+    private static void setTaskAsDone(int taskIndex) throws Exception {
+        try {
+            tasks.get(taskIndex - 1).setDone(true);
+        } catch (IndexOutOfBoundsException e) {
+            throw new Exception("Invalid task index!");
+        }
+    }
+
+    private static int getTaskIndex(String fullCommand) throws Exception {
+        int taskIndex;
+        String indexString = fullCommand.replace("done", "").trim();
+        if (indexString.equals("")) {
+            throw new Exception("Missing task index!");
+        }
+        try {
+            taskIndex = Integer.parseInt(indexString);
+        } catch(NumberFormatException e) {
+            throw new Exception("Invalid task index!");
+        }
+        return taskIndex;
     }
 }

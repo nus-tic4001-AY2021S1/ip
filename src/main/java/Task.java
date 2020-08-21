@@ -10,4 +10,12 @@ public class Task {
     public String getDescription() {
         return description;
     }
+
+    public String getStatusIcon() {
+        return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
+    }
+
+    public void setDone(boolean isDone) {
+        this.isDone = true;
+    }
 }
