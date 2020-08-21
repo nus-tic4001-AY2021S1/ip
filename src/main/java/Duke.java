@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Duke {
     private static final String LINE = "____________________________________________________________";
 
-    private static ArrayList<String> tasks = new ArrayList<String>();
+    private static ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
         printWelcome();
@@ -14,17 +14,21 @@ public class Duke {
             String fullCommand = readUserCommand();
             System.out.println(LINE);
 
-            switch(fullCommand) {
-            case "bye":
-                isExit = true;
-                break;
-            case "list":
-                listTasks();
-                break;
-            default:
-                addTask(fullCommand);
-                System.out.println("Duke: Your input is \"" + fullCommand + "\".");
-                System.out.println(LINE);
+            try {
+                switch(fullCommand) {
+                case "bye":
+                    isExit = true;
+                    break;
+                case "list":
+                    listTasks();
+                    break;
+                default:
+                    addTask(fullCommand);
+                    System.out.println("Duke: Task \"" + fullCommand + "\" has been added.");
+                    System.out.println(LINE);
+                }
+            } catch (Exception e) {
+                printError(e.getMessage());
             }
         }
 
@@ -56,13 +60,26 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static void addTask(String taskName) {
-        tasks.add(taskName);
+    private static void printError(String errorMessage) {
+        System.out.println(errorMessage);
+        System.out.println(LINE);
+    }
+
+    private static void addTask(String taskDescription) throws Exception{
+        tasks.add(createTask(taskDescription));
     }
     private static void listTasks() {
+        System.out.println("Duke: Here are the tasks in your list!");
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println((i + 1) + ". " + tasks.get(i));
+            System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
         }
         System.out.println(LINE);
+    }
+
+    private static Task createTask(String taskDescription) throws Exception {
+        if (taskDescription.isEmpty()){
+            throw new Exception("Task description is empty!");
+        }
+        return new Task(taskDescription);
     }
 }
