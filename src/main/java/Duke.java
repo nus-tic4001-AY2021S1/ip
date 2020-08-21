@@ -49,6 +49,16 @@ public class Duke {
 
             }
             System.out.println(output.toString());
+        }else if(command.toLowerCase().startsWith("done ")){
+            String[] spitList = command.split("done ");
+            for (TaskDTO task:taskList){
+                if (Integer.parseInt(spitList[1]) == task.getTaskId()){
+                    task.setDoneInd(1);
+                    System.out.println(" Nice! I've marked this task as done: \n" +
+                            "[✓]"+task.getTaskName());
+                }
+            }
+
         }else if (command.equalsIgnoreCase("bye")){
             System.out.println("Bye. Hope to see you again soon!");
         }else {
