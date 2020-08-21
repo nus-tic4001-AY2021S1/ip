@@ -7,7 +7,11 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
         Ui ui = new Ui();
+        Storage store = new Storage();
+        Parser parser = new Parser();
         ui.greetUser();
-        ui.byeToUser();
+        while(!store.getIsExit()){
+            parser.getCommand(ui.readCommand(),store,ui);
+        }
     }
 }

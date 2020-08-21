@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Ui {
     public void printLine(){
         System.out.println("____________________________________________________________");
@@ -12,7 +14,12 @@ public class Ui {
         printLine();
     }
     public void byeToUser(){
+        printLine();
         indentPrint("Bye. Hope to see you again soon!");
         printLine();
+    }
+    public String readCommand(){
+        Scanner in = new Scanner(System.in);
+        return in.nextLine();
     }
 }
