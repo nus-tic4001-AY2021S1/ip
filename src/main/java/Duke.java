@@ -20,8 +20,23 @@ public class Duke {
                 "What can I do for you?");
         Scanner scanner = new Scanner(System.in);
 
+        processCommand(scanner);
 
+    }
 
+    public static void processCommand (Scanner scanner){
+        String command = scanner.nextLine();
+        System.out.println("____________________________________________________________");
+        if (command.equalsIgnoreCase("bye")){
+
+            System.out.println("Bye. Hope to see you again soon!");
+
+        }else {
+
+            System.out.println(command);
+        }
+        System.out.println("____________________________________________________________\n");
+        processCommand(scanner);
     }
 
 
