@@ -8,5 +8,13 @@ public class Duke {
         System.out.println("Hello from\n" + logo);
         Greet greeting = new Greet();
         greeting.greetInfo();
+
+        Input e = new Input();
+        String ue = "";
+        while (!ue.equals("bye")) {
+            ue = e.echoInput();
+            System.out.println("---------------\n" + ue +"\n---------------\n");
+        }
+        greeting.exitInfo();
     }
 }
