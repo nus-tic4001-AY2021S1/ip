@@ -1,7 +1,11 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
-    public static final String LINE = "____________________________________________________________";
+    private static final String LINE = "____________________________________________________________";
+
+    private static ArrayList<String> tasks = new ArrayList<String>();
+
     public static void main(String[] args) {
         printWelcome();
 
@@ -9,21 +13,25 @@ public class Duke {
         while (!isExit) {
             String fullCommand = readUserCommand();
             System.out.println(LINE);
-            System.out.println("Duke: Your input is \"" + fullCommand + "\".");
-            System.out.println(LINE);
+
             switch(fullCommand) {
             case "bye":
                 isExit = true;
                 break;
+            case "list":
+                listTasks();
+                break;
             default:
-                //Do nothing
+                addTask(fullCommand);
+                System.out.println("Duke: Your input is \"" + fullCommand + "\".");
+                System.out.println(LINE);
             }
         }
-        
+
         printGoodbye();
     }
 
-    public static void printWelcome() {
+    private static void printWelcome() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -37,14 +45,24 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    public static String readUserCommand() {
+    private static String readUserCommand() {
         Scanner in = new Scanner(System.in);
         System.out.print("You: ");
         return in.nextLine().trim();
     }
 
-    public static void printGoodbye() {
+    private static void printGoodbye() {
         System.out.println("Duke: Bye. Hope to see you again soon!");
+        System.out.println(LINE);
+    }
+
+    private static void addTask(String taskName) {
+        tasks.add(taskName);
+    }
+    private static void listTasks() {
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + ". " + tasks.get(i));
+        }
         System.out.println(LINE);
     }
 }
