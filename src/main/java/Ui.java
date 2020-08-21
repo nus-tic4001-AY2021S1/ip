@@ -13,6 +13,9 @@ public class Ui {
         indentPrint("What can I do for you?");
         printLine();
     }
+    public String taskToString(Task toPrint){
+        return "["+toPrint.getStatusIcon()+"]"+" "+toPrint.getDescription();
+    }
     public void byeToUser(){
         printLine();
         indentPrint("Bye. Hope to see you again soon!");
