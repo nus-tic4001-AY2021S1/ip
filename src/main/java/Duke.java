@@ -12,19 +12,33 @@ public class Duke {
         System.out.println("________________________________________________________");
 
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> ss = new ArrayList<>();
+        ArrayList<Task> tasks = new ArrayList<>();
 
         while(true){
             String input = scanner.nextLine();
-            if(input.equalsIgnoreCase("bye")){
-                break;
-            }else if(input.equalsIgnoreCase("list")){
-                for(String s: ss){
-                    System.out.println(s);
+
+            try {
+                if (input.equalsIgnoreCase("bye")) {
+                    break;
+                } else if (input.equalsIgnoreCase("list")) {
+                    System.out.println("Here are the tasks in your list:");
+                    int i = 1;
+                    for (Task s : tasks) {
+                        System.out.println(i + "." + s.getSymbol() + " " + s.getTaskDescription());
+                        i++;
+                    }
+                } else if (input.substring(0, 4).equalsIgnoreCase("done")) {
+                    int index = Integer.parseInt(input.split(" ")[1]);
+                    tasks.get(index - 1).setDone(true);
+                    System.out.println("Nice! I've marked this task as done: ");
+                    System.out.println(tasks.get(index - 1).getSymbol() + " " + tasks.get(index - 1).getTaskDescription());
+                } else {
+                    tasks.add(new Task(input));
+                    System.out.println("added: " + input);
                 }
-            }else{
-                ss.add(ss.size()+1+". "+input);
-                System.out.println("added: "+ input);
+            }catch(Exception e){
+                System.out.println("Internal error occurs,please re-enter the command.");
+                continue;
             }
             System.out.println("________________________________________________________");
         }
