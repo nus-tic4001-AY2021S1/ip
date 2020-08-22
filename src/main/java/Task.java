@@ -1,7 +1,8 @@
 public class Task {
     protected String description;
     protected boolean isDone;
-    public Task (String description) {
+
+    public Task(String description) {
         this.description = description;
         isDone = false;
     }
@@ -16,13 +17,10 @@ public class Task {
     }
 
 
-    public void setDone(boolean done) {
-        isDone = done;
+    public void setDone() {
+        isDone = true;
     }
 
-    public boolean markAsDone() {
-        return isDone;
-    }
 
     @Override
     public String toString() {

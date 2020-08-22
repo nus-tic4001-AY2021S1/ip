@@ -5,6 +5,7 @@ public class Ui {
         Scanner in = new Scanner(System.in);
         return in.nextLine().trim();
     }
+
     public static void printLine() {
         System.out.println("_________________________________________");
 
@@ -17,14 +18,16 @@ public class Ui {
         printLine();
     }
 
-    public void echosCommands(String s) {
-        System.out.println(s);
-    }
 
     public void sayBye() {
         printLine();
         System.out.println("Bye. Hope to see you again soon!");
         printLine();
+    }
+
+
+    public static void showMessage(String message) {
+        System.out.println(message);
     }
 
 
