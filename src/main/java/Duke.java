@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
@@ -18,13 +19,19 @@ public class Duke {
         System.out.println("________________________________________________________");
 
         Scanner scanner = new Scanner(System.in);
+        ArrayList<String> ss = new ArrayList<>();
 
         while(true){
-            String input = scanner.next();
+            String input = scanner.nextLine();
             if(input.equalsIgnoreCase("bye")){
                 break;
+            }else if(input.equalsIgnoreCase("list")){
+                for(String s: ss){
+                    System.out.println(s);
+                }
             }else{
-                System.out.println(input);
+                ss.add(ss.size()+1+". "+input);
+                System.out.println("added: "+ input);
             }
             System.out.println("________________________________________________________");
         }
