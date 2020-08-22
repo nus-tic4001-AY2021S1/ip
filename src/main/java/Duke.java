@@ -1,10 +1,14 @@
 public class Duke {
     public static void main(String[] args) {
-        System.out.println("_____________________________");
-        System.out.println("Hello! I'm Duke");
-        System.out.println("What can I do for you?");
-        System.out.println("_____________________________");
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println("_____________________________");
+
+        Ui ui = new Ui();
+        Storage store = new Storage();
+        Parser parser = new Parser();
+        Ui.sayWelcome();
+        while (!store.getIsExit()) {
+            parser.getCommand(Ui.readUserCommand(), ui, store);
+        }
+
+
     }
 }
