@@ -4,9 +4,11 @@ public class Duke {
         Ui ui = new Ui();
         Storage store = new Storage();
         Parser parser = new Parser();
+        TodoList todoList = new TodoList();
+
         Ui.sayWelcome();
         while (!store.getIsExit()) {
-            parser.getCommand(Ui.readUserCommand(), ui, store);
+            parser.getCommand(Ui.readUserCommand(), ui, store, todoList);
         }
 
 

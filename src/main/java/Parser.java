@@ -1,19 +1,37 @@
 public class Parser {
 
-    public void getCommand(String input, Ui ui, Storage store) {
+    public void getCommand(String input, Ui ui, Storage store, TodoList todoList) {
+        try {
 
-        if ("bye".equals(input)) {
-            ui.sayBye();
-            store.toExit();
-        } else {
-            Ui.printLine();
-            ui.echosCommands(input);
-            Ui.printLine();
+            switch (input) {
+                case "bye":
+                    ui.sayBye();
+                    store.toExit();
+                    break;
+                case "list":
+                    todoList.listAllTasks();
+                    break;
+                default:
+                    Ui.printLine();
+//                ui.echosCommands(input);
+                    todoList.readTaskFromUser(input);
+                    Ui.printLine();
+
+            }
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
         }
+
     }
 
 
 }
+
+
+
+
 
 
 
