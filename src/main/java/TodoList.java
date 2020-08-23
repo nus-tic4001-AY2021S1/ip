@@ -3,25 +3,43 @@ import java.util.ArrayList;
 public class TodoList {
     private ArrayList<Task> taskList;
 
-
-    /**
-     * creating an TodoList object
-     */
     public TodoList() {
         taskList = new ArrayList<>();
     }
 
     public void listAllTasks() {
+        Ui.showMessage("Here are the tasks in your list:");
         for (int i = 0; i < taskList.size(); i++) {
-
-            Ui.showMessage((i + 1) + "." + "[" + taskList.get(i).getStatusIcon() + "] " + taskList.get(i).getDescription());
+//            Ui.showMessage((i + 1) + "." + "[" + taskList.get(i).getStatusIcon() + "] " + taskList.get(i).getDescription());
+            Ui.showMessage((i + 1) + "." +taskList.get(i).toString());
         }
     }
 
-    public void readTaskFromUser(String input) {
-        this.taskList.add(new Task(input));
 
-        Ui.showMessage("added: " + input);
+    public void addToDoType(String toAddTaskDetails){
+        taskList.add(new Todo(toAddTaskDetails));
+    }
+
+
+    public void addDeadlineType(String toAddTaskDetails){
+        String task_description = (toAddTaskDetails.split("/by")[0]).trim();
+        String task_deadline=(toAddTaskDetails.split("/by")[1]).trim();
+        taskList.add(new Deadline(task_description,task_deadline));
+    }
+
+    public void addEventType(String toAddTaskDetails){
+        String task_description = (toAddTaskDetails.split("/at")[0]).trim();
+        String task_eventDate=(toAddTaskDetails.split("/at")[1]).trim();
+        taskList.add(new Event(task_description,task_eventDate));
+    }
+
+
+
+    public void readTaskFromUser(String input) {
+        Ui.showMessage("Got it. I've added this task:");
+        int currentNewAddedTaskIndex=(taskList.size()-1);
+        Ui.showMessage("  "+taskList.get(currentNewAddedTaskIndex).toString());
+        Ui.showMessage("Now you have "+taskList.size()+" tasks in the list.");
     }
 
 

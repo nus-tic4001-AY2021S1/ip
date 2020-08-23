@@ -1,7 +1,7 @@
-public class Storage {
+public class ProgramExit {
     private boolean isExit;
 
-    Storage() {
+    ProgramExit() {
         isExit = false;
 
     }
