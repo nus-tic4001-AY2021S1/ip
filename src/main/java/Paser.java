@@ -1,22 +1,18 @@
 import java.util.*;
 
 public class Paser {
-    private String[] ls;
+    private Task[] tasks;
     private int arrSize;
     private int actualSize;
-    public Paser(String[] ls,int arrSize){
-        this.ls = ls;
+
+    public Paser(Task[] tasks,int arrSize){
+        this.tasks = tasks;
         this.arrSize=arrSize;
+
     }
-    public void storeInArray(String str,int index) {
-        ls[index]=str;
+    public void storeInArray(Task t,int index) {
+        tasks[index]=t;
         this.actualSize=index+1;
     }
-    public void printArray(){
-        System.out.println("-----------");
-        for (int i = 0;i<actualSize;i++){
-            System.out.println((i+1)+"."+ ls[i]);
-        }
-        System.out.println("-----------");
-    }
+
 }
