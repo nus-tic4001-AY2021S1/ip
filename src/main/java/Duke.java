@@ -1,3 +1,8 @@
+import Tasks.Deadlines;
+import Tasks.Events;
+import Tasks.Task;
+import Tasks.ToDos;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,25 +21,54 @@ public class Duke {
 
         while(true){
             String input = scanner.nextLine();
+            String[] cmd = input.split("\\s+");
+
+            if(cmd[0].equalsIgnoreCase("bye")){
+                break;
+            }
 
             try {
-                if (input.equalsIgnoreCase("bye")) {
-                    break;
-                } else if (input.equalsIgnoreCase("list")) {
-                    System.out.println("Here are the tasks in your list:");
-                    int i = 1;
-                    for (Task s : tasks) {
-                        System.out.println(i + "." + s.getSymbol() + " " + s.getTaskDescription());
-                        i++;
-                    }
-                } else if (input.substring(0, 4).equalsIgnoreCase("done")) {
-                    int index = Integer.parseInt(input.split(" ")[1]);
-                    tasks.get(index - 1).setDone(true);
-                    System.out.println("Nice! I've marked this task as done: ");
-                    System.out.println(tasks.get(index - 1).getSymbol() + " " + tasks.get(index - 1).getTaskDescription());
-                } else {
-                    tasks.add(new Task(input));
-                    System.out.println("added: " + input);
+                switch(cmd[0]){
+                    case "list":
+                        System.out.println("Here are the tasks in your list:");
+                        int i = 1;
+                        for (Task s : tasks) {
+                            System.out.println(i + "." + s.toString());
+                            i++;
+                        }
+                        break;
+                    case "done":
+                        int index = Integer.parseInt(input.split(" ")[1]);
+                        tasks.get(index - 1).setDone(true);
+                        System.out.println("Nice! I've marked this task as done: ");
+                        //System.out.println(tasks.get(index - 1).getSymbol() + " " + tasks.get(index - 1).getTaskDescription());
+                        System.out.println(tasks.get(index - 1).toString());
+                        break;
+                    case "todo":
+                        ToDos t = new ToDos(input.substring(5,input.length()));
+                        tasks.add(t);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println(t.toString());
+                        System.out.println("Now you have "+ tasks.size()+" tasks in the list.");
+                        break;
+                    case "deadline":
+                        String[] deadlineContent = input.split(" /by ");
+                        Deadlines d =new Deadlines(deadlineContent[0].substring(9,deadlineContent[0].length()),deadlineContent[1]);
+                        tasks.add(d);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println(d.toString());
+                        System.out.println("Now you have "+ tasks.size()+" tasks in the list.");
+                        break;
+                    case "event":
+                        String[]  eventContent = input.split(" /at ");
+                        Events e =new Events(eventContent[0].substring(6,eventContent[0].length()),eventContent[1]);
+                        tasks.add(e);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println(e.toString());
+                        System.out.println("Now you have "+ tasks.size()+" tasks in the list.");
+                        break;
+                    default:
+                        System.out.println("Command is unknown,please re-try.");
                 }
             }catch(Exception e){
                 System.out.println("Internal error occurs,please re-enter the command.");
