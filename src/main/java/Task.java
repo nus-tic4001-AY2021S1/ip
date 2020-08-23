@@ -15,7 +15,13 @@ public class Task {
         this.isDone = true;
     }
 
+    public String toString() {
+        //return this.toString() ;
+        return ("[" + this.getStatusIcon() + "] " +  this.description );
+    }
+
     public void printTask() {
-        System.out.println("[" + this.getStatusIcon() + "] " +  this.description ) ;
+        //System.out.println("[" + this.getStatusIcon() + "] " +  this.description ) ;
+        System.out.println(this.toString());
     }
 }
