@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Duke {
+    private static ArrayList <Task> tasks = new ArrayList<>(100);
     public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -16,21 +17,26 @@ public class Duke {
 
         //String input
         String input = in.nextLine();
-        ArrayList<String> tasks = new ArrayList<>();
 
-        while (!input.equals("bye")) {
-            if (!input.equals("list")) {
-                tasks.add(input);
-                System.out.println("    added: " + input);
-            } else{
+        while (!input.isEmpty()) {
+            if (input.equals("bye")){
+                break;
+            }else if (input.equals("list")) {
+                System.out.println("    ____________________________________________________________\n"
+                        + "     Here are the tasks in your list:");
                 for (int i = 0; i < tasks.size(); i++) {
-                    System.out.println("    " + (i + 1)+ ". "+ tasks.get(i));
+                    System.out.println("    " + (i + 1) + ". " + tasks.get(i));
                 }
-                if(tasks.size() == 0){
-                    System.out.println("   Your list is empty");
-                }
+
+            } else if (input.contains("done")) {
+                String listActionIndex = (input.split(" "))[1];
+                int arrayIndex = Integer.parseInt(listActionIndex) - 1;
+                markAsDone(arrayIndex);
+            }else{
+                tasks.add(new Task(input));
+                System.out.println("    added: " + input);
+
             }
-            in = new Scanner(System.in);
             input = in.nextLine();
 
         }
@@ -43,6 +49,15 @@ public class Duke {
         System.out.println("   Bye. Hope to see you again soon!");
     }
 
+    public static void markAsDone(int arrayIndex){
+        Task task = tasks.get(arrayIndex);
+        task.setDone();
+        System.out.println("    ____________________________________________________________\n"
+                + "     Nice! I've marked this task as done:\n"
+                + task + "\n"
+                + "    ____________________________________________________________\n");
     }
 
+
+}
 
