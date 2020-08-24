@@ -1,6 +1,6 @@
 public class Task {
-    protected String description;
-    protected boolean isDone;
+    private String description;
+    private boolean isDone;
 
     public Task(String description) {
         this.description = description;
@@ -12,7 +12,8 @@ public class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
+        //return tick or X symbol based on isDone value
+        return (isDone ? "\u2713" : "\u2718");
     }
 
     public void setDone(boolean isDone) {

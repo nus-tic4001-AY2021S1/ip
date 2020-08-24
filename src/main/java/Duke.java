@@ -55,7 +55,6 @@ public class Duke {
                 + "| | | | | | | |/ / _ \\" + System.lineSeparator()
                 + "| |_| | |_| |   <  __/" + System.lineSeparator()
                 + "|____/ \\__,_|_|\\_\\___|" + System.lineSeparator();
-
         System.out.println(LINE);
         System.out.println(logo);
         System.out.println("Duke: Hello! I'm Duke, your personal chatbot.");
