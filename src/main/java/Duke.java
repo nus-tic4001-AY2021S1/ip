@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Duke {
     private static final String LINE = "____________________________________________________________";
+    private static final String INDENT = "      ";
 
     private static ArrayList<Task> tasks = new ArrayList<>();
 
@@ -11,23 +12,33 @@ public class Duke {
 
         boolean isExit = false;
         while (!isExit) {
-            String fullCommand = readUserCommand();
-            String commandWord = getCommandWord(fullCommand);
+            String userInput = readUserInput();
+            String command = getCommand(userInput);
+            String commandParameter = getCommandParameter(userInput);
             System.out.println(LINE);
 
             try {
-                switch(commandWord) {
-                case "done":
-                    markTaskAsDone(fullCommand);
-                    break;
+                switch(command) {
                 case "bye":
                     isExit = true;
+                    break;
+                case "todo":
+                    addTodo(commandParameter);
+                    break;
+                case "deadline":
+                    addDeadline(commandParameter);
+                    break;
+                case "event":
+                    addEvent(commandParameter);
+                    break;
+                case "done":
+                    markTaskAsDone(commandParameter);
                     break;
                 case "list":
                     listTasks();
                     break;
                 default:
-                    addTask(fullCommand);
+                    printError("Duke: Unknown command! Please try again.");
                 }
             } catch (Exception e) {
                 System.out.print("Duke: ");
@@ -39,11 +50,11 @@ public class Duke {
     }
 
     private static void printWelcome() {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
+        String logo = " ____        _        " + System.lineSeparator()
+                + "|  _ \\ _   _| | _____ " + System.lineSeparator()
+                + "| | | | | | | |/ / _ \\" + System.lineSeparator()
+                + "| |_| | |_| |   <  __/" + System.lineSeparator()
+                + "|____/ \\__,_|_|\\_\\___|" + System.lineSeparator();
 
         System.out.println(LINE);
         System.out.println(logo);
@@ -52,9 +63,9 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static String readUserCommand() {
+    private static String readUserInput() {
         Scanner in = new Scanner(System.in);
-        System.out.print("You: ");
+        System.out.print("You:  ");
         return in.nextLine().trim();
     }
 
@@ -68,38 +79,77 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static void addTask(String taskDescription) throws Exception{
-        tasks.add(createTask(taskDescription));
-        System.out.println("Duke: Task \"" + taskDescription + "\" has been added.");
+    private static void addTodo(String commandParameter) throws Exception{
+        if (commandParameter.isEmpty()){
+            throw new Exception("Task description is empty!");
+        }
+        tasks.add(new Task(commandParameter));
+        System.out.println("Duke: Got it! I have added this task:");
+        System.out.println(INDENT + tasks.get(tasks.size() - 1).toString());
+        System.out.println(INDENT + "Now you have " + tasks.size() + " tasks in the list.");
         System.out.println(LINE);
     }
 
-    private static Task createTask(String taskDescription) throws Exception {
-        if (taskDescription.isEmpty()){
-            throw new Exception("Task description is empty!");
+    private static void addDeadline(String commandParameter) throws Exception{
+        String description;
+        String by;
+        try {
+            description = commandParameter.split("/by")[0].trim();
+            by = commandParameter.split("/by")[1].trim();
+        } catch(ArrayIndexOutOfBoundsException e) {
+            throw new Exception("Missing by for deadline task!");
         }
-        return new Task(taskDescription);
+        tasks.add(new Deadline(description, by));
+        System.out.println("Duke: Got it! I have added this task:");
+        System.out.println(INDENT + tasks.get(tasks.size() - 1).toString());
+        System.out.println(INDENT + "Now you have " + tasks.size() + " tasks in the list.");
+        System.out.println(LINE);
+    }
+
+    private static void addEvent(String commandParameter) throws Exception{
+        String description;
+        String at;
+        try {
+            description = commandParameter.split("/at")[0].trim();
+            at = commandParameter.split("/at")[1].trim();
+        } catch(ArrayIndexOutOfBoundsException e) {
+            throw new Exception("Missing at for event task!");
+        }
+        tasks.add(new Event(description, at));
+        System.out.println("Duke: Got it! I have added this task:");
+        System.out.println(INDENT + tasks.get(tasks.size() - 1).toString());
+        System.out.println(INDENT + "Now you have " + tasks.size() + " tasks in the list.");
+        System.out.println(LINE);
     }
 
     private static void listTasks() {
         System.out.println("Duke: Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println((i + 1) + ". [" + tasks.get(i).getStatusIcon()
-                    + "] " + tasks.get(i).getDescription());
+            System.out.println(INDENT + (i + 1) + ". " + tasks.get(i).toString());
         }
         System.out.println(LINE);
     }
 
-    private static String getCommandWord(String fullCommand) {
-        return fullCommand.split(" ")[0];
+    private static String getCommand(String userInput) {
+        return userInput.split(" ")[0];
     }
 
-    private static void markTaskAsDone(String fullCommand) throws Exception {
-        int taskIndex = getTaskIndex(fullCommand);
+    private static String getCommandParameter(String userInput) {
+        String commandParameter = userInput.replace("todo", "")
+                .replace("deadline", "")
+                .replace("event", "")
+                .replace("done", "")
+                .replace("list", "")
+                .trim();
+        return commandParameter;
+    }
+
+    private static void markTaskAsDone(String commandParameter) throws Exception {
+        int taskIndex = getTaskIndex(commandParameter);
         setTaskAsDone(taskIndex);
         System.out.println("Duke: I have marked this task as done:");
-        System.out.println((taskIndex) + ". [" + tasks.get(taskIndex - 1).getStatusIcon()
-                + "] " + tasks.get(taskIndex - 1).getDescription());
+        System.out.println(INDENT + tasks.get(taskIndex - 1).toString());
+        System.out.println(LINE);
     }
 
     private static void setTaskAsDone(int taskIndex) throws Exception {
@@ -110,14 +160,13 @@ public class Duke {
         }
     }
 
-    private static int getTaskIndex(String fullCommand) throws Exception {
+    private static int getTaskIndex(String commandParameter) throws Exception {
         int taskIndex;
-        String indexString = fullCommand.replace("done", "").trim();
-        if (indexString.equals("")) {
+        if (commandParameter.isEmpty()) {
             throw new Exception("Missing task index!");
         }
         try {
-            taskIndex = Integer.parseInt(indexString);
+            taskIndex = Integer.parseInt(commandParameter);
         } catch(NumberFormatException e) {
             throw new Exception("Invalid task index!");
         }
