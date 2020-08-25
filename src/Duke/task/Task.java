@@ -1,13 +1,17 @@
-package Task;
+package Duke.task;
 
-public  class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
+
+    public Task() {
+    }
 
     public Task(String description) {
         this.description = description;
         this.isDone = false;
     }
+
 
     public String getDescription() {
         return description;
@@ -22,6 +26,10 @@ public  class Task {
     }
 
     public void setDone(boolean done) {
-        isDone = done;
+        this.isDone = done;
+    }
+
+    public String toString() {
+        return String.format("description: %s\n", this.getDescription());
     }
 }
