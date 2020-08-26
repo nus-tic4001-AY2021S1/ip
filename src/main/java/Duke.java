@@ -38,33 +38,58 @@ public class Duke {
                         }
                         break;
                     case "done":
-                        int index = Integer.parseInt(input.split(" ")[1]);
-                        tasks.get(index - 1).setDone(true);
-                        System.out.println("Nice! I've marked this task as done: ");
-                        System.out.println(tasks.get(index - 1).toString());
+                        try {
+                            int index = Integer.parseInt(input.split(" ")[1]);
+                            tasks.get(index - 1).setDone(true);
+                            System.out.println("Nice! I've marked this task as done: ");
+                            System.out.println(tasks.get(index - 1).toString());
+                        }catch(IndexOutOfBoundsException e){
+                            throw new DukeException("☹ OOPS!!! The task does not exist.");
+                        }catch (NumberFormatException e) {
+                            throw new DukeException("☹ OOPS!!! Please specify the task need to be done.");
+                        }
                         break;
                     case "todo":
-                        ToDos t = new ToDos(input.substring(5, input.length()));
-                        tasks.add(t);
-                        printTask(t, tasks);
+                        try {
+                            ToDos t = new ToDos(input.substring(5, input.length()));
+                            tasks.add(t);
+                            printTask(t, tasks);
+                        }catch(StringIndexOutOfBoundsException e){
+                            throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
+                        }
                         break;
                     case "deadline":
-                        String[] deadlineContent = input.split(" /by ");
-                        Deadlines d = new Deadlines(deadlineContent[0].substring(9, deadlineContent[0].length()), deadlineContent[1]);
-                        tasks.add(d);
-                        printTask(d, tasks);
+                        try {
+                            String[] deadlineContent = input.split(" /by ");
+                            Deadlines d = new Deadlines(deadlineContent[0].substring(9, deadlineContent[0].length()), deadlineContent[1]);
+                            tasks.add(d);
+                            printTask(d, tasks);
+                        }catch(StringIndexOutOfBoundsException e){
+                            throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.");
+                        }catch(ArrayIndexOutOfBoundsException e){
+                            throw new DukeException("☹ OOPS!!! The keyword /by is missing.");
+                        }
                         break;
                     case "event":
-                        String[] eventContent = input.split(" /at ");
-                        Events e = new Events(eventContent[0].substring(6, eventContent[0].length()), eventContent[1]);
-                        tasks.add(e);
-                        printTask(e, tasks);
+                        try {
+                            String[] eventContent = input.split(" /at ");
+                            Events e = new Events(eventContent[0].substring(6, eventContent[0].length()), eventContent[1]);
+                            tasks.add(e);
+                            printTask(e, tasks);
+                        }catch(StringIndexOutOfBoundsException e){
+                            throw new DukeException("☹ OOPS!!! The description of a event cannot be empty.");
+                        }catch(ArrayIndexOutOfBoundsException e){
+                            throw new DukeException("☹ OOPS!!! The keyword /at is missing.");
+                        }
                         break;
                     default:
-                        System.out.println("Command is unknown,please re-try.");
+                        throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
-            } catch (Exception e) {
-                System.out.println("Internal error occurs,please re-enter the command.");
+            }catch (DukeException e) {
+                System.out.println(e.getMessage());
+                continue;
+            }catch (Exception e) {
+                System.out.println("☹ OOPS!!! Unknown internal error occurs.");
                 continue;
             }
             System.out.println("________________________________________________________");
