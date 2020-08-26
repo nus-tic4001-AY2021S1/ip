@@ -1,18 +1,22 @@
-import static javafx.application.Platform.exit;
 
 public class Parser {
 
-    public static String filterTaskDetails(String line) {
+    public static String filterTaskDetails(String line) throws DukeException {
         String task_detail = "";
         int len = line.split(" ").length; //// to check who many words
         String[] line_arr = line.split(" ", 2);
         if (len > 1) {
             task_detail = line_arr[1];  // filter out the first words
         } else {
-            throw new NullPointerException("TASK is Empty/Null: Returning to Main Menu");
+            throw new  DukeException("OOPS!!! The description of a todo cannot be empty.\"");
         }
         return task_detail;
     }
+
+
+
+
+
 
     public String getSecondWord(String input) {
         String commandSecondWord = input.split(" ")[1];
@@ -21,7 +25,7 @@ public class Parser {
 
     public void getCommand(String input, Ui ui, ProgramExit programExit, TodoList todoList) {
 
-        String commandFirstWord = input.split(" ")[0];//extract the first word of the user input
+        String commandFirstWord = input.split(" ")[0].toLowerCase();//extract the first word of the user input, and lowercase it.
 
 
         try {
@@ -63,7 +67,7 @@ public class Parser {
                     break;
                 default:
                     Ui.printLine();
-                    Ui.showMessage("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+                    Ui.showMessage("OOPS!!! I'm sorry, but I don't know what that means :-(");
                     Ui.printLine();
 
             }

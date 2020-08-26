@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+import Tasks.Deadline;
+import Tasks.Event;
+import Tasks.Task;
+import Tasks.Todo;
 
 public class TodoList {
     private ArrayList<Task> taskList;
@@ -10,7 +14,6 @@ public class TodoList {
     public void listAllTasks() {
         Ui.showMessage("Here are the tasks in your list:");
         for (int i = 0; i < taskList.size(); i++) {
-//            Ui.showMessage((i + 1) + "." + "[" + taskList.get(i).getStatusIcon() + "] " + taskList.get(i).getDescription());
             Ui.showMessage((i + 1) + "." +taskList.get(i).toString());
         }
     }
@@ -22,14 +25,15 @@ public class TodoList {
 
 
     public void addDeadlineType(String toAddTaskDetails){
-        String task_description = (toAddTaskDetails.split("/by")[0]).trim();
-        String task_deadline=(toAddTaskDetails.split("/by")[1]).trim();
+        String task_description = (toAddTaskDetails.split("(?i)/by")[0]).trim();// splits case insensitive
+        String task_deadline=(toAddTaskDetails.split("(?i)/by")[1]).trim();// splits case insensitive
         taskList.add(new Deadline(task_description,task_deadline));
     }
 
+
     public void addEventType(String toAddTaskDetails){
-        String task_description = (toAddTaskDetails.split("/at")[0]).trim();
-        String task_eventDate=(toAddTaskDetails.split("/at")[1]).trim();
+        String task_description = (toAddTaskDetails.split("(?i)/at")[0]).trim();// splits case insensitive
+        String task_eventDate=(toAddTaskDetails.split("(?i)/at")[1]).trim();// splits case insensitive
         taskList.add(new Event(task_description,task_eventDate));
     }
 
@@ -42,6 +46,11 @@ public class TodoList {
         Ui.showMessage("Now you have "+taskList.size()+" tasks in the list.");
     }
 
+
+    /**
+     * A method to mark a task as completed
+     * update value of the task field:setDone complete
+     */
 
     public void markSelectedTaskDone(String selectedTask) {
 
