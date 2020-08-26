@@ -10,25 +10,9 @@ public abstract class Task {
         this.taskDescription = taskDescription;
     }
 
-    public String getType(){
-        return type;
-    }
-
     @Override
-    public String toString(){
-        return type+symbol+" "+taskDescription;
-    }
-
-    public String getTaskDescription() {
-        return taskDescription;
-    }
-
-    public void setTaskDescription(String taskDescription) {
-        this.taskDescription = taskDescription;
-    }
-
-    public boolean isDone() {
-        return done;
+    public String toString() {
+        return type + symbol + " " + taskDescription;
     }
 
     public void setDone(boolean done) {
@@ -36,14 +20,10 @@ public abstract class Task {
         setSymbol();
     }
 
-    public String getSymbol() {
-        return symbol;
-    }
-
     private void setSymbol() {
-        if(done){
+        if (done) {
             this.symbol = "[✓]";
-        }else{
+        } else {
             this.symbol = "[✗]";
         }
     }
