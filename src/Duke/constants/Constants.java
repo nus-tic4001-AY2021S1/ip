@@ -14,14 +14,22 @@ public class Constants {
 
     public static final String farewell = "\nBye. Hope to see you again soon!\n";
 
+    public static final String displayTaskList = "\nHere are the tasks in your list:\n";
+
+    public static final String numberOfTasks = "Now you have %s tasks in the list.";
+
+    public static final String acknowledgement = "Got it. I've added this task:";
+
+    public static final String acknowledgementAsDone = "Nice! I've marked this task as done:";
+
     public static final String TODO = "todo";
     public static final String DEADLINE = "deadline";
     public static final String SAVE = "save";
     public static final String PRINT = "print";
     public static final String DONE = "done";
-    public static final String UNDONE = "undone";
-    public static final String REMOVE = "remove";
-    public static final String BACKUP = "backup";
+//    public static final String UNDONE = "undone";
+//    public static final String REMOVE = "remove";
+//    public static final String BACKUP = "backup";
 
     public static final String TODO_HELP_STATEMENT = "Type \"todo\" \"description of task\" to create a new Todo Task." +
             " E.g. todo Return textbook";

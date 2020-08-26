@@ -21,7 +21,7 @@ public abstract class Task {
         this.description = description;
     }
 
-    public boolean isDone() {
+    public boolean completionStatus() {
         return isDone;
     }
 
@@ -30,6 +30,6 @@ public abstract class Task {
     }
 
     public String toString() {
-        return String.format("description: %s\n", this.getDescription());
+        return String.format("%s", this.getDescription());
     }
 }

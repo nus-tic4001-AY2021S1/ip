@@ -2,6 +2,7 @@ package Duke.parser;
 
 import Duke.exception.DukeException;
 import Duke.task.Deadline;
+import Duke.task.Event;
 import Duke.task.Todo;
 
 /**
@@ -43,6 +44,31 @@ public class Parser {
             throw new DukeException("Empty deadline for DEADLINE");
         }
 //        return new Deadline(description, deadline);
-        return new Deadline(description);
+        return new Deadline(description, deadline);
     }
+
+    public static Event createEvent(String fullCommand) throws DukeException {
+        int idxOfBy = fullCommand.indexOf("/at");
+        if (idxOfBy < 0) {
+            throw new DukeException("Event does not contain /at");
+        }
+
+        String description = fullCommand.substring(0, idxOfBy).substring("event".length()).trim();
+        assert (fullCommand.contains(description)) : "Something went wrong during the substring for event description";
+        if (description.isEmpty() || description.equals("")) {
+            throw new DukeException("Empty description for EVENT");
+        }
+        String schedule = fullCommand.substring(idxOfBy, fullCommand.length()).substring("/at".length()).trim();
+        if (schedule.isEmpty() || schedule.equals("")) {
+            throw new DukeException("Empty schedule for EVENT");
+        }
+        return new Event(description, schedule);
+    }
+
+    public static int parseTaskNum(String fullCommand) {
+        int index = fullCommand.contains("undone") ?
+                Integer.parseInt(fullCommand.substring("undone".length()).trim()) : Integer.parseInt(fullCommand.substring("done".length()).trim());
+        return index;
+    }
+
 }

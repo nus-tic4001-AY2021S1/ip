@@ -43,7 +43,6 @@ public class Duke {
                         if (tasks.getNumberOfTasks() > 0) {
 
                         } else {
-                            ui.showToUser("No tasks found in the list!");
                         }
                         ui.printGoodBye();
                         break;
@@ -52,22 +51,30 @@ public class Duke {
                         break;
                     case "todo":
                         tasks.addTask(Parser.createTodo(fullCommand));
-                        ui.showToUser(tasks.getTaskCount());
+//                        ui.showToUser(tasks.getTaskCount());
+                        ui.printTaskAddAck(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), TaskList.getNumberOfTasks());
                         break;
                     case "deadline":
                         tasks.addTask(Parser.createDeadLine(fullCommand));
-                        ui.showToUser(tasks.getTaskCount());
+//                        ui.showToUser(tasks.getTaskCount());
+                        ui.printTaskAddAck(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), TaskList.getNumberOfTasks());
+                        break;
+                    case "event":
+                        tasks.addTask(Parser.createEvent(fullCommand));
+//                        ui.showToUser(tasks.getTaskCount());
+                        ui.printTaskAddAck(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), TaskList.getNumberOfTasks());
                         break;
                     case "print":
-                        tasks.printTasks();
+//                        tasks.printTasks();
+                        ui.printTasks(tasks.getTasks());
                         break;
                     case "done":
-                        tasks.markAsDone(fullCommand);
-                        ui.showToUser(tasks.getTaskCount());
+                        tasks.markAsDone(Parser.parseTaskNum(fullCommand));
+                        ui.printTaskMarkedAsDone(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1));
                         break;
-                    case "undone":
-                        tasks.markAsNotDone(fullCommand);
-                        ui.showToUser(tasks.getTaskCount());
+//                    case "undone":
+//                        tasks.markAsNotDone(Parser.parseTaskNum(fullCommand));
+
                     case "save":
 //                        storage.save(tasks.getTasks());
                         break;
