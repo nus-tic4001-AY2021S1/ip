@@ -64,10 +64,10 @@ public class TaskDTO {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(taskId+". [");
-        sb.append(taskType.getTypeShortForm());
-        sb.append("][");
+        StringBuilder outputString = new StringBuilder();
+        outputString.append(taskId+". [");
+        outputString.append(taskType.getTypeShortForm());
+        outputString.append("][");
         int ascii = 0;
         if (doneInd==0){
             ascii = 0x2717;
@@ -77,12 +77,12 @@ public class TaskDTO {
         }
         String sign = Character.toString((char)ascii);
 
-        sb.append(sign +"]");
-        sb.append(taskName);
+        outputString.append(sign +"]");
+        outputString.append(taskName);
         if (taskType != TaskTypeEnum.TODO){
-            sb.append(deadlineDateString);
+            outputString.append(deadlineDateString);
         }
-        sb.append("\n");
-        return sb.toString();
+        outputString.append("\n");
+        return outputString.toString();
     }
 }
