@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Ui {
+    protected Scanner in = new Scanner(System.in);
     public void printLine(){
         System.out.println("____________________________________________________________");
     }
@@ -19,7 +20,6 @@ public class Ui {
         printLine();
     }
     public String readCommand(){
-        Scanner in = new Scanner(System.in);
         return in.nextLine();
     }
 }
