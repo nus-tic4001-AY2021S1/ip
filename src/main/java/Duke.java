@@ -18,6 +18,7 @@ public class Duke {
         System.out.println("____________________________________________________________");
         System.out.println("Hello! I'm Duke\n" +
                 "What can I do for you?");
+
         Scanner scanner = new Scanner(System.in);
 
         processCommand(scanner);
@@ -26,6 +27,7 @@ public class Duke {
 
     public static void processCommand (Scanner scanner){
         String command = scanner.nextLine();
+        TaskDTO newTask = new TaskDTO();
         System.out.println("____________________________________________________________");
         if (command.equalsIgnoreCase("list")){
             StringBuilder output = new StringBuilder("");
@@ -33,19 +35,7 @@ public class Duke {
             output.append(" Here are the tasks in your list:\n");
             for (TaskDTO task : taskList){
 
-                output.append(task.getTaskId()+". [");
-                int ascii = 0;
-                if (task.getDoneInd()==0){
-                    ascii = 0x2717;
-                }else {
-                    ascii = 0x2713;
-
-                }
-                String sign = Character.toString((char)ascii);
-
-                output.append(sign +"]");
-                output.append(task.getTaskName());
-                output.append("\n");
+                output.append(task.toString());
 
             }
             System.out.println(output.toString());
@@ -53,25 +43,46 @@ public class Duke {
             String[] spitList = command.split("done ");
             for (TaskDTO task:taskList){
                 if (Integer.parseInt(spitList[1]) == task.getTaskId()){
-                    task.setDoneInd(1);
-                    System.out.println(" Nice! I've marked this task as done: \n" +
-                            "[✓]"+task.getTaskName());
+                    task.processDoneTask();
                 }
             }
 
         }else if (command.equalsIgnoreCase("bye")){
             System.out.println("Bye. Hope to see you again soon!");
         }else {
-            TaskDTO task = new TaskDTO();
-            task.setDoneInd(0);
-            task.setRecordDate(new Date());
-            task.setTaskName(command);
-            task.setTaskId(++taskId);
-            taskList.add(task);
-            System.out.println("Added : "+command);
+            TaskDTO task = convertCommandToTask(command);
+            if (task!=null){
+                taskList.add(task);
+                System.out.println(" Got it. I've added this task: \n"+ task.toString() +"\n"
+                        +" Now you have "+taskList.size()+" tasks in the list");
+
+
+            }
+
+
         }
         System.out.println("____________________________________________________________\n");
         processCommand(scanner);
+    }
+
+    public static TaskDTO convertCommandToTask(String command){
+        String operation = command.substring(0, command.indexOf(' '));
+        String details = command.substring(command.indexOf(' ') + 1);
+        TaskDTO taskDTO = new TaskDTO();
+        String symbol = "";
+        String temp ="";
+        if ("todo".equalsIgnoreCase(operation)){
+            taskDTO = new TaskDTO(details,new Date(),TaskTypeEnum.TODO,0,++taskId,null);
+        }else if ("deadline".equalsIgnoreCase(operation)){
+            temp = details.substring(details.indexOf("/") + 1);
+            symbol = temp.substring(0, temp.indexOf(" "));
+            taskDTO = new TaskDTO(details.substring(0,details.indexOf("/")),new Date(),TaskTypeEnum.DEADLINE,0,++taskId,"("+symbol+": "+temp.substring(temp.indexOf(" ") +1)+")");
+        }else if ("event".equalsIgnoreCase(operation)){
+            temp = details.substring(details.indexOf("/") + 1);
+            symbol = temp.substring(0, temp.indexOf(" "));
+            taskDTO = new TaskDTO(details.substring(0,details.indexOf("/")),new Date(),TaskTypeEnum.EVENT,0,++taskId,"("+symbol+": "+temp.substring(temp.indexOf(" ") +1)+")");
+        }
+        return taskDTO;
     }
 
 
