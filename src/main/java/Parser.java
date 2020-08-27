@@ -1,20 +1,28 @@
-
 public class Parser {
-
+    /**
+     * A method to parser a String.
+     * Assume that the Task Details start from the second words. This method can filter out the first words.
+     *
+     * @param line A String that holds the user input.
+     * @throws DukeException If Task Detail is Empty/Null: Returning to Main MenuShow the message to user and notify the user.
+     */
     public static String filterTaskDetails(String line) throws DukeException {
         String task_detail = "";
-        int len = line.split(" ").length; //// to check who many words
+        int len = line.split(" ").length; // to check who many words
         String[] line_arr = line.split(" ", 2);
         if (len > 1) {
             task_detail = line_arr[1];  // filter out the first words
         } else {
-            throw new  DukeException("OOPS!!! The description of a todo cannot be empty.\"");
+            throw new DukeException("OOPS!!! The description of a todo cannot be empty.");
         }
         return task_detail;
     }
 
-
-
+    /**
+     * A method to parser a String and get the second word from the string.
+     *
+     * @param input A String that holds the user input.
+     */
 
 
 
@@ -22,6 +30,17 @@ public class Parser {
         String commandSecondWord = input.split(" ")[1];
         return commandSecondWord;
     }
+
+
+    /**
+     * A method to parser a String and process necessary steps and tasks based on the user inputs.
+     * Assume that the Task Details start from the second words. This method can filter out the first words.
+     *
+     * @param input       A String that holds the user input.
+     * @param ui          A Ui that show message to user.
+     * @param programExit A ProgramExit  to check if it is needed to exit the program.
+     * @param todoList    A TodoList contains the ArrayList of Task objects
+     */
 
     public void getCommand(String input, Ui ui, ProgramExit programExit, TodoList todoList) {
 
