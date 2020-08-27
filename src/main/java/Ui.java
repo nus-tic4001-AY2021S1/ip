@@ -20,7 +20,7 @@ public class Ui {
     public String getInput(Scanner in) {
         return in.nextLine().trim();
     }
-    public void printMsg(Task [] tasks,int size){
+    public void printList(Task [] tasks,int size){
         System.out.println("-----------");
         for (int i = 0;i<size;i++){
             System.out.println((i+1)+"."+ "["+tasks[i].getStatusIcon()+"] "+
@@ -28,8 +28,9 @@ public class Ui {
         }
         System.out.println("-----------");
     }
-    public void printMsg(String str){
-        System.out.println("-----------\nadded: " + str + "\n-----------");
+    public void printTask(String str,int count){
+        System.out.println("--------------\nGot it. I've added this task: " + "\n"+str);
+        System.out.println("Now you have "+count+" in the list.\n-------------------");
     }
     public void printMsg(Task t){
         System.out.println( "-----------------\n"+"Nice! I've marked this task as done:\n"+"["+t.getStatusIcon()+"] "+
