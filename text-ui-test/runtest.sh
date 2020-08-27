@@ -13,7 +13,8 @@ then
 fi
 
 # compile the code into the bin folder, terminates if error occurred
-if ! javac -cp ../src -Xlint:none -d ../bin ../src/main/java/Duke.java
+if ! javac -cp /Users/laiping/Documents/TIC4001/ip/src/main/java -Xlint:none -d /Users/laiping/Documents/TIC4001/ip/bin /Users/laiping/Documents/TIC4001/ip/src/main/java/Duke.java
+
 then
     echo "********** BUILD FAILURE **********"
     exit 1
@@ -23,11 +24,11 @@ fi
 java -classpath ../bin Duke < input.txt > ACTUAL.TXT
 
 # convert to UNIX format
-cp EXPECTED.TXT EXPECTED-UNIX.TXT
-dos2unix ACTUAL.TXT EXPECTED-UNIX.TXT
+cp ./EXPECTED.TXT ./EXPECTED-UNIX.TXT
+dos2unix ./ACTUAL.TXT ./EXPECTED-UNIX.TXT
 
 # compare the output to the expected output
-diff ACTUAL.TXT EXPECTED-UNIX.TXT
+diff ACTUAL.TXT EXPECTED.TXT
 if [ $? -eq 0 ]
 then
     echo "Test result: PASSED"

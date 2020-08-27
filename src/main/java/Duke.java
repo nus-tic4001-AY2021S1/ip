@@ -32,15 +32,23 @@ public class Duke {
         GreetNote("welcome");
 
         Scanner in = new Scanner(System.in);
-        String input= in.nextLine();
+        //String input= in.nextLine();
 
-        while (!(input.toLowerCase()).equals("bye")) {
-           ProcessInput(input, task);
-           in = new Scanner(System.in);
-           input = in.nextLine();
+        //while (!(input.toLowerCase()).equals("bye")) {
+        while(in.hasNextLine()){
+            String input = in.nextLine();
+            if(!(input.toLowerCase()).equals("bye")) {
+                ProcessInput(input, task);
+            } else {
+                GreetNote("bye");
+                return;
+            }
+
+            //in = new Scanner(System.in);
+           //input = in.nextLine();
         }
 
-        GreetNote("bye");
+
     }
 
     private static void GreetNote(String hi_bye) {
