@@ -5,3 +5,31 @@ Hello from
 | |_| | |_| |   <  __/
 |____/ \__,_|_|\_\___|
 
+Hello! I'm Duke
+What can I do for you?
+
+Got it, I've added the following task:
+  [T][✘] borrow book
+Now you have 1 tasks in the list.
+___________________________________________________________________
+
+Got it. I've added this task:
+  [D][✘] deadline return book (by: Sunday)
+Now you have 2 tasks in the list.
+___________________________________________________________________
+
+Got it. I've added this task:
+  [E][✘] event project meeting (at: Mon 2-4pm)
+Now you have 3 tasks in the list.
+___________________________________________________________________
+
+     Nice! I've marked this task as done:
+[D][✓] deadline return book (by: Sunday)
+___________________________________________________________________
+
+    ___________________________________________________________________
+     Here are the tasks in your list:
+    1.[T][✘] borrow book
+    2.[D][✓] deadline return book (by: Sunday)
+    3.[E][✘] event project meeting (at: Mon 2-4pm)
+   Bye. Hope to see you again soon!

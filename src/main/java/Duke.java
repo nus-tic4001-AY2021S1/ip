@@ -37,7 +37,8 @@ public class Duke {
                  Task todo = new ToDo(input.substring(5));
                  tasks.add(todo);
                  System.out.println("Got it, I've added the following task:\n" + "  " + todo + "\n"
-                            + "Now you have " + tasks.size() + " tasks in the list.");
+                            + "Now you have " + tasks.size() + " tasks in the list.\n"
+                 +"___________________________________________________________________\n");
 
                 } else if(input.startsWith("deadline")){
                 String[] splitDetail = input.split("/by" );
@@ -49,26 +50,22 @@ public class Duke {
                         + "  "
                         + detail
                         + "\n"
-                        + "Now you have " + tasks.size() +" tasks in the list.");
+                        + "Now you have " + tasks.size() +" tasks in the list.\n"+"___________________________________________________________________\n");
 
             } else if(input.startsWith("event")){
                 String[] splitEvent = input.split("/at" );
                 String event = splitEvent[0];
                 String time = splitEvent[1];
-                Task detail = new Event(event, time);
-                tasks.add(detail);
+                Task details = new Event(event, time);
+                tasks.add(details);
                 System.out.println("Got it. I've added this task:\n"
                         + "  "
-                        + detail
+                        + details
                         + "\n"
-                        + "Now you have " + tasks.size() +" tasks in the list.");
+                        + "Now you have " + tasks.size() +" tasks in the list.\n"
+                        +"___________________________________________________________________\n");
 
             }
-                else {
-                    tasks.add(new Task(input));
-                    System.out.println("    added: " + input);
-
-                }
 
             input = in.nextLine();
 
@@ -87,10 +84,9 @@ public class Duke {
     public static void markAsDone(int arrayIndex) {
         Task task = tasks.get(arrayIndex);
         task.setDone();
-        System.out.println("    ____________________________________________________________\n"
-                + "     Nice! I've marked this task as done:\n"
+        System.out.println("     Nice! I've marked this task as done:\n"
                 + task + "\n"
-                + "    ____________________________________________________________\n");
+                + "___________________________________________________________________\n");
     }
 
 }
