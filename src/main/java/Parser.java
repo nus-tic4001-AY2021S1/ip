@@ -45,32 +45,32 @@ public class Parser {
         ui.greetUser();
         boolean isExit = false;
         while (!isExit) {
-                String fullCommand = ui.readCommand();
-                String commandWord = Parser.getCommand(fullCommand);//convert command word to lowercase
-                switch (commandWord) {
-                    case "bye":
-                        ui.farewellUser();
-                    case "":
-                        isExit = true;
-                        break;
-                    case "todo":
-                        tasks.addTodo(fullCommand);
-                        break;
-                    case "deadline":
-                        tasks.addDeadline(fullCommand);
-                        break;
-                    case "done":
-                        tasks.markAsDone(fullCommand);
-                        break;
-                    case "list":
-                        tasks.showTasks(fullCommand);
-                        break;
-                    case "event":
-                        tasks.addEvent(fullCommand);
-                        break;
-                    default:
-                        ui.printError();
-                }
+            String fullCommand = ui.readCommand();
+            String commandWord = Parser.getCommand(fullCommand);//convert command word to lowercase
+            switch (commandWord) {
+                case "bye":
+                    ui.farewellUser();
+                case "":
+                    isExit = true;
+                    break;
+                case "todo":
+                    tasks.addTodo(fullCommand);
+                    break;
+                case "deadline":
+                    tasks.addDeadline(fullCommand);
+                    break;
+                case "done":
+                    tasks.markAsDone(fullCommand);
+                    break;
+                case "list":
+                    tasks.showTasks(fullCommand);
+                    break;
+                case "event":
+                    tasks.addEvent(fullCommand);
+                    break;
+                default:
+                    ui.printError();
+            }
         }
     }
 }
