@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
@@ -9,18 +10,26 @@ public class Duke {
                 + "\\__/ \\____/ \\__/ \\____/\n";
         System.out.println("Hello from\n" + logo);
         System.out.println("____________________________________________________________\n"
-                + "Hi! I'm Jojo\n"
+                + "Hi! I'm Jojo, your personal assistant:)\n"
                 + "What can I do for you?\n"
                 + "____________________________________________________________");
 
         Scanner scanner = new Scanner(System.in);
+        ArrayList<String> lines = new ArrayList<>();
 
         while(true) {
-            String input = scanner.next();
+            String input = scanner.nextLine();
             if (input.equalsIgnoreCase("bye")) {
                 break;
+            } else if (input.equalsIgnoreCase("list")) {
+                for (String line : lines) {
+                    System.out.println("  " + line);
+                }
+                System.out.println("____________________________________________________________");
             } else {
-                System.out.println(input);
+                lines.add(lines.size() + 1 + ". " + input);
+                System.out.println("  added: " + input
+                        + "\n____________________________________________________________");
             }
         }
 
