@@ -125,12 +125,13 @@ public class Ui {
     }
 
     public static void helpMessage() {
-        String helpMessage = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n",
+        String helpMessage = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n",
                 TODO, TODO_HELP_STATEMENT,
                 DEADLINE, DEADLINE_HELP_STATEMENT,
                 PRINT, PRINT_HELP_STATEMENT,
-                DONE, DONE_HELP_STATEMENT);
-        
+                DONE, DONE_HELP_STATEMENT,
+                EXIT, EXIT_HELP_STATEMENT);
+
         System.out.println(helpMessage);
     }
 }

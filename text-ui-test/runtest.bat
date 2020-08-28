@@ -4,10 +4,11 @@ REM create bin directory if it doesn't exist
 if not exist ..\bin mkdir ..\bin
 
 REM delete output from previous run
-del ACTUAL.TXT
+if not exist ..\text-ui-test\ACTUAL.TXT echo. >NUL 2>ACTUAL.TXT else del ACTUAL.TXT
+echo. >NUL 2>..\text-ui-testACTUAL.TXT
 
 REM compile the code into the bin folder
-javac  -cp ..\src -Xlint:none -d ..\bin ..\src\main\java\Duke.main.Duke.java
+javac  -cp ..\src\Duke\* -Xlint:none -d ..\bin ..\src\Duke\main\Duke.java
 IF ERRORLEVEL 1 (
     echo ********** BUILD FAILURE **********
     exit /b 1

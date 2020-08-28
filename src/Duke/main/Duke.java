@@ -1,19 +1,9 @@
 package Duke.main;
 
-import Duke.exception.DukeException;
-import Duke.task.Deadline;
-import Duke.task.Event;
-import Duke.task.Task;
-import Duke.task.Todo;
+
 import Duke.tasklist.TaskList;
 import Duke.ui.Ui;
 import Duke.parser.Parser;
-
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class Duke {
 
@@ -89,7 +79,7 @@ public class Duke {
                         ui.printError("Unknown command! please try again. Please type \"help\" to view a list of commands.");
                         break;
                 }
-            } catch (DukeException e) {
+            } catch (Exception e) {
                 ui.printError(e.getMessage());
             }
         }
