@@ -20,6 +20,7 @@ public class TaskList {
     public void addTodo(String fullCommand) throws TaskManagerException {
         Todo t = Parser.createTodo(fullCommand);
         tasks.add(t);
+        ui.printLine();
         ui.printWord("Got it. I've added this task: ");
         ui.printWord("  "+tasks.get(tasks.size()-1).toString());
         ui.printWord( "Now you have "+tasks.size()+" tasks in the list.");
