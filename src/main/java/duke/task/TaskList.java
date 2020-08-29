@@ -1,20 +1,25 @@
+package duke.task;
+
+import duke.exception.DukeException;
+import duke.ui.UI;
+
 import java.util.ArrayList;
 
 /**
  * Responsible for managing all the tasks in the list. This class will use an ArrayList inside it.
  */
-class TaskList {
+public class TaskList {
     private ArrayList<Task> tasks;
 
     TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
 
-    TaskList() {
+    public TaskList() {
         tasks = new ArrayList<>();
     }
 
-    int size() {
+    public int size() {
         return tasks.size();
     }
 
@@ -22,11 +27,11 @@ class TaskList {
         tasks.add(task);
     }
 
-    Task get(int index) {
+    public Task get(int index) {
         return tasks.get(index);
     }
 
-    void changeDone(String line, UI ui, TaskList tasks) {
+    public void changeDone(String line, UI ui, TaskList tasks) {
         line = line.substring("done".length()).trim();
         try {
             if (!line.isEmpty()) {
@@ -55,7 +60,7 @@ class TaskList {
         }
     }
 
-    void createTodo(String line, UI ui, TaskList tasks) {
+    public void createTodo(String line, UI ui, TaskList tasks) {
         try {
             if (line.substring("todo".length()).trim().isEmpty()) {
                 throw new DukeException
@@ -70,7 +75,7 @@ class TaskList {
         }
     }
 
-    void createDeadline(String line, UI ui, TaskList tasks) {
+    public void createDeadline(String line, UI ui, TaskList tasks) {
         try {
             if (line.substring("deadline".length()).trim().isEmpty() || !line.contains("/by")) {
                 throw new DukeException
@@ -97,7 +102,7 @@ class TaskList {
         }
     }
 
-    void createEvent(String line, UI ui, TaskList tasks) {
+    public void createEvent(String line, UI ui, TaskList tasks) {
         try {
             if (line.substring("event".length()).trim().isEmpty() || !line.contains("/at")) {
                 throw new DukeException

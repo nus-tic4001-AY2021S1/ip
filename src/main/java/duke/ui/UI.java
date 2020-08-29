@@ -1,6 +1,10 @@
-class UI {
+package duke.ui;
 
-    void greet() {
+import duke.task.TaskList;
+
+public class UI {
+
+    public void greet() {
         String greeting = "____________________________________________________________\n"
                 + "Hello! I'm Duke\n"
                 + "What can I do for you?\n"
@@ -8,13 +12,13 @@ class UI {
         System.out.println(greeting);
     }
 
-    void farewell() {
+    public void farewell() {
         String farewell = "Bye. Hope to see you again soon!\n"
                 + "____________________________________________________________\n";
         System.out.println(farewell);
     }
 
-    void markedAsDone(int index, TaskList tasks) {
+    public void markedAsDone(int index, TaskList tasks) {
         String done = "____________________________________________________________\n"
                 + "\033[33mTask [" + index + "] "
                 + tasks.get(index - 1).getDescription() + " has been set as completed.\033[0m"
@@ -29,15 +33,15 @@ class UI {
         System.out.println(total);
     }
 
-    void printError(String s) {
+    public void printError(String s) {
         System.out.println(colorRed(s));
     }
 
-    String colorRed(String input) {
+    public String colorRed(String input) {
         return "\033[31m" + input + "\033[0m";
     }
 
-    void invalidCommand() {
+    public void invalidCommand() {
         printError("Please enter a valid command.");
     }
 

@@ -1,10 +1,16 @@
+package duke;
+
+import duke.ui.UI;
+import duke.parser.Parser;
+import duke.task.TaskList;
+
 import java.util.Scanner;
 
 /**
  * A Personal Assistant Chatbot that helps a person to keep track of various things.
  *
  * @author Wang Zhenquan
- * @version Level 3
+ * @version Level 5
  * @since 20/08/2020
  */
 

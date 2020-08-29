@@ -1,4 +1,6 @@
-class Event extends Todo{
+package duke.task;
+
+class Event extends Todo {
     private String[] split;
 
     Event(String input) {

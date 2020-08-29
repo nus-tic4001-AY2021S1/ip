@@ -1,4 +1,9 @@
-class Parser {
+package duke.parser;
+
+import duke.task.TaskList;
+import duke.ui.UI;
+
+public class Parser {
     /**
      * @param line The entire user input.
      */
@@ -7,11 +12,11 @@ class Parser {
     }
 
     /**
-     * @param line     The entire user input.
-     * @param ui       The UI created in the Duke class.
-     * @param tasks    The TaskList created in the Duke class.
+     * @param line  The entire user input.
+     * @param ui    The UI created in the Duke class.
+     * @param tasks The TaskList created in the Duke class.
      */
-    boolean parseInput(String line, UI ui, TaskList tasks) {
+    public boolean parseInput(String line, UI ui, TaskList tasks) {
 
         String command = getCommandWord(line);
         switch (command) {

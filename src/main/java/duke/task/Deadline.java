@@ -1,4 +1,6 @@
-class Deadline extends Todo{
+package duke.task;
+
+class Deadline extends Todo {
     private String[] split;
 
     Deadline(String input) {

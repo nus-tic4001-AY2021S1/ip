@@ -1,3 +1,4 @@
+package duke.exception;
 /**
  * Inherits the Exception class. <p>
  * Overrides the constructor that takes a String parameter with custom error information
@@ -7,7 +8,7 @@
  * Catch that exception somewhere else and print the message inside the exception object.
  */
 public class DukeException extends Exception {
-    DukeException(String input) {
+    public DukeException(String input) {
         super(input);
     }
 }
