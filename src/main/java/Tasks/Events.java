@@ -5,7 +5,7 @@ public class Events extends Task {
 
     public Events(String taskDescription, String eventTime) {
         super(taskDescription);
-        super.type = "[E]";
+        super.taskType = "[E]";
         this.eventTime = eventTime;
     }
 

@@ -5,7 +5,7 @@ public class Deadlines extends Task {
 
     public Deadlines(String taskDescription, String deadline) {
         super(taskDescription);
-        super.type = "[D]";
+        super.taskType = "[D]";
         this.deadline = deadline;
     }
 

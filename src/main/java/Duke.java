@@ -20,8 +20,8 @@ public class Duke {
         ArrayList<Task> tasks = new ArrayList<>();
 
         while (true) {
-            String input = scanner.nextLine();
-            String[] cmd = input.split("\\s+");
+            String userInput = scanner.nextLine();
+            String[] cmd = userInput.split("\\s+");
 
             if (cmd[0].equalsIgnoreCase("bye")) {
                 break;
@@ -39,7 +39,7 @@ public class Duke {
                         break;
                     case "done":
                         try {
-                            int index = Integer.parseInt(input.split(" ")[1]);
+                            int index = Integer.parseInt(userInput.split(" ")[1]);
                             tasks.get(index - 1).setDone(true);
                             System.out.println("Nice! I've marked this task as done: ");
                             System.out.println(tasks.get(index - 1).toString());
@@ -51,7 +51,7 @@ public class Duke {
                         break;
                     case "todo":
                         try {
-                            ToDos t = new ToDos(input.substring(5, input.length()));
+                            ToDos t = new ToDos(userInput.substring(5, userInput.length()));
                             tasks.add(t);
                             printTask(t, tasks);
                         }catch(StringIndexOutOfBoundsException e){
@@ -60,7 +60,7 @@ public class Duke {
                         break;
                     case "deadline":
                         try {
-                            String[] deadlineContent = input.split(" /by ");
+                            String[] deadlineContent = userInput.split(" /by ");
                             Deadlines d = new Deadlines(deadlineContent[0].substring(9, deadlineContent[0].length()), deadlineContent[1]);
                             tasks.add(d);
                             printTask(d, tasks);
@@ -72,7 +72,7 @@ public class Duke {
                         break;
                     case "event":
                         try {
-                            String[] eventContent = input.split(" /at ");
+                            String[] eventContent = userInput.split(" /at ");
                             Events e = new Events(eventContent[0].substring(6, eventContent[0].length()), eventContent[1]);
                             tasks.add(e);
                             printTask(e, tasks);
@@ -94,6 +94,7 @@ public class Duke {
             }
             System.out.println("________________________________________________________");
         }
+
         System.out.println(bye);
         System.out.println("________________________________________________________");
 

@@ -1,10 +1,10 @@
 package Tasks;
 
 public abstract class Task {
-    protected String type;
-    protected boolean done = false;
+    protected String taskType;
+    protected boolean isDone = false;
     protected String taskDescription;
-    protected String symbol = "[✗]";
+    protected String taskSymbol = "[✗]";
 
     public Task(String taskDescription) {
         this.taskDescription = taskDescription;
@@ -12,19 +12,19 @@ public abstract class Task {
 
     @Override
     public String toString() {
-        return type + symbol + " " + taskDescription;
+        return taskType + taskSymbol + " " + taskDescription;
     }
 
     public void setDone(boolean done) {
-        this.done = done;
+        this.isDone = done;
         setSymbol();
     }
 
     private void setSymbol() {
-        if (done) {
-            this.symbol = "[✓]";
+        if (isDone) {
+            this.taskSymbol = "[✓]";
         } else {
-            this.symbol = "[✗]";
+            this.taskSymbol = "[✗]";
         }
     }
 }
