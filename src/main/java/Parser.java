@@ -7,13 +7,15 @@ public class Parser {
      * @throws DukeException If Task Detail is Empty/Null: Returning to Main MenuShow the message to user and notify the user.
      */
     public static String filterTaskDetails(String line) throws DukeException {
-        String task_detail = "";
+        String task_detail;
         int len = line.split(" ").length; // to check who many words
         String[] line_arr = line.split(" ", 2);
+        String commandFirstWord = line.split(" ")[0].toLowerCase();
+
         if (len > 1) {
             task_detail = line_arr[1];  // filter out the first words
         } else {
-            throw new DukeException("OOPS!!! The description of a todo cannot be empty.");
+            throw new DukeException("\u2639 OOPS!!! The description of a " + commandFirstWord + " cannot be empty.");
         }
         return task_detail;
     }
@@ -23,7 +25,6 @@ public class Parser {
      *
      * @param input A String that holds the user input.
      */
-
 
 
     public String getSecondWord(String input) {
@@ -86,7 +87,7 @@ public class Parser {
                     break;
                 default:
                     Ui.printLine();
-                    Ui.showMessage("OOPS!!! I'm sorry, but I don't know what that means :-(");
+                    Ui.showMessage("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
                     Ui.printLine();
 
             }
