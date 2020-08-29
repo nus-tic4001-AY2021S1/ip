@@ -22,21 +22,48 @@ public class Duke {
                 //System.out.println(taskList);
                 for (int i = 0; i < taskList.size();i++)
                 {
-                    System.out.println(i+1 + ". "+ "[" +taskList.get(i).getStatusIcon() +"] "  +taskList.get(i).getDescription());
+                    System.out.println(i+1 + taskList.get(i).toString());
                 }
             }
             else if(arrayOfStr[0].equals("done")){
                 //System.out.println("Done detected");
                 int index=Integer.parseInt(arrayOfStr[1])-1;
                 taskList.get(index).markAsDone();
-                System.out.println("Nice! I've marked this task as done: "+ "[" +taskList.get(index).getStatusIcon() +"] "  +taskList.get(index).getDescription());
+                System.out.println("Nice! I've marked this task as done: "+ "[" +taskList.get(index).getStatusIcon() +"] "  +taskList.get(index).toString());
+            }
+            else if(arrayOfStr[0].equals("deadline")){
+                //System.out.println("Done detected\n");
+                //System.out.println("Body of text:" + arrayOfStr[1]);
+                String[]arrayOfDoneDetails=arrayOfStr[1].split("by ",2);
+                //arrayOfDoneDetails[0] contains description, arrayOfDoneDetails[1] contains the date.
+                //System.out.println("by: " + arrayOfDoneStr[1]);
+                Task t=new Deadline(arrayOfDoneDetails[0],arrayOfDoneDetails[1] );
+                taskList.add((t));
+                System.out.println("Got it. I've added this task: \n" + t.toString());
+                System.out.println("Now you have " + taskList.size()+ " tasks in the list");
+            }
+            else if(arrayOfStr[0].equals("event")){
+                //System.out.println("Done detected\n");
+                //System.out.println("Body of text:" + arrayOfStr[1]);
+                String[]arrayOfDoneDetails=arrayOfStr[1].split("at ",2);
+                //arrayOfDoneDetails[0] contains description, arrayOfDoneDetails[1] contains the date.
+                //System.out.println("by: " + arrayOfDoneStr[1]);
+                Task t=new Event(arrayOfDoneDetails[0],arrayOfDoneDetails[1] );
+                taskList.add((t));
+                System.out.println("Got it. I've added this task: \n" + t.toString());
+                System.out.println("Now you have " + taskList.size()+ " tasks in the list");
+            }
+            else if(arrayOfStr[0].equals("todo")){
 
-
+                Task t=new Todo(arrayOfStr[1]);
+                taskList.add((t));
+                System.out.println("Got it. I've added this task: \n" + t.toString());
+                System.out.println("Now you have " + taskList.size()+ " tasks in the list");
             }
             else {
                 Task t=new Task(textInput);
                 taskList.add((t));
-                System.out.println("added: " + t.getDescription());
+                System.out.println("added: " + t.toString());
             }
             textInput = reader.readLine();
         }
