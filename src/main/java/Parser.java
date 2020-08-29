@@ -1,4 +1,4 @@
-public class Parser {
+class Parser {
     /**
      * @param line The entire user input.
      */
@@ -25,16 +25,28 @@ public class Parser {
                 tasks.changeDone(line, ui, tasks);
                 return true;
             }
+            case "todo" -> {
+                tasks.createTodo(line, ui, tasks);
+                return true;
+            }
+            case "deadline" -> {
+                tasks.createDeadline(line, ui, tasks);
+                return true;
+            }
+            case "event" -> {
+                tasks.createEvent(line, ui, tasks);
+                return true;
+            }
             // also exit when user input is empty
             case "bye", "" -> {
                 ui.farewell();
                 return false;
             }
             default -> {
-                tasks.add(new Task(line));
-                System.out.println(line);
+                ui.invalidCommand();
                 return true;
             }
         }
     }
+
 }

@@ -1,5 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * A Personal Assistant Chatbot that helps a person to keep track of various things.
