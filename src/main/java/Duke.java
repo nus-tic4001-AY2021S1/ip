@@ -1,7 +1,8 @@
-import Tasks.Deadlines;
-import Tasks.Events;
-import Tasks.Task;
-import Tasks.ToDos;
+import Duke.Exceptions.DukeException;
+import Duke.Tasks.Deadlines;
+import Duke.Tasks.Events;
+import Duke.Tasks.Task;
+import Duke.Tasks.ToDos;
 
 import java.util.ArrayList;
 import java.util.Scanner;

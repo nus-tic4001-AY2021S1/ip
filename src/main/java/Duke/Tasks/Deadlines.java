@@ -1,4 +1,4 @@
-package Tasks;
+package Duke.Tasks;
 
 public class Deadlines extends Task {
     private String deadline;
