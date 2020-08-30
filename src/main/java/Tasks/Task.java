@@ -1,6 +1,7 @@
 package Tasks;
 
-public abstract class Task {  //abstract class Task declares some methods that it implements here, and some that are implemented by the subclasses.
+//A-AbstractClasses:abstract class Task declares some methods that it implements here, and some that are implemented by the subclasses.
+public abstract class Task {
     // A String that holds the description of a task
     protected String description;
     // A boolean value, if true: the task is completed, otherwise false.
