@@ -1,5 +1,5 @@
 package Tasks;
-
+//A-Packages: Organize into Packages named Tasks
 //A-AbstractClasses:abstract class Task declares some methods that it implements here, and some that are implemented by the subclasses.
 public abstract class Task {
     // A String that holds the description of a task
