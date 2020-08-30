@@ -11,12 +11,11 @@ enum Action {
     AddTodo,
     AddDeadlines,
     AddEvents,
-    Invalid,
 }
 
 public class Duke {
 
-    public static void main(String[] args) throws DukeException {
+    public static void main(String[] args) {
 
         ArrayList<Task> tasks = new ArrayList<>();
 
@@ -60,10 +59,10 @@ public class Duke {
             System.out.println(farewell);
         }
     }
-    private static void processInput(String input, ArrayList<Task> tasks) throws DukeException {
+    private static void processInput(String input, ArrayList<Task> tasks) {
 
         String command = input.toLowerCase();
-        Action action;// = Action.Invalid;
+        Action action;
         int count = tasks.size();
 
         try {
@@ -104,7 +103,7 @@ public class Duke {
             System.out.println(m + Global.PATTERNLINE);
         }
     }
-    private static void replyLine(ArrayList<Task> tasks, String input, int count) {
+    private static void replyLine(ArrayList<Task> tasks, int count) {
         System.out.print(Global.PATTERNLINE + "\nGot it. I've added this task: \n\t" );
         tasks.get(count).printTask();
         count += 1;
@@ -150,7 +149,7 @@ public class Duke {
                     "Please re-input or enter bye to terminate the program\n");
         }
         tasks.add(new ToDos(input.substring(5)));
-        replyLine(tasks, input, count);
+        replyLine(tasks, count);
     }
     private static void addDeadlines(ArrayList<Task> tasks, String input, int count) throws DukeException{
         if(!input.contains(" ")) {
@@ -168,7 +167,7 @@ public class Duke {
         String schedule = input.substring(index + 4);
         String taskName = input.substring(input.indexOf(" ")+1, index);
         tasks.add(new Deadlines(taskName, schedule));
-        replyLine(tasks, input, count);
+        replyLine(tasks, count);
     }
     private static void addEvents(ArrayList<Task> tasks, String input, int count) throws DukeException{
         if(!input.contains(" ")) {
@@ -183,13 +182,12 @@ public class Duke {
         String schedule, taskName;
 
         if(index == -1) {
-           // System.out.println("You have not input your Schedule or Wrong format. \nPlease include -> /at when");
             throw new DukeException("You have not input your Schedule or Wrong format. \nPlease include -> /at when\n");
         }
         schedule = input.substring(index + 4);
         taskName = input.substring(input.indexOf(" ")+1, index);
         tasks.add(new Events(taskName, schedule));
-        replyLine(tasks, input, count);
+        replyLine(tasks, count);
     }
 
     static Action validateCommand(String command) throws DukeException {
