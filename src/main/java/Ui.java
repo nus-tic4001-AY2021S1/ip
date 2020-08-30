@@ -24,14 +24,18 @@ public class Ui {
 
     public void tasks() {
         divider();
-        System.out.println("todo task press 1");
-        System.out.println("event current task press 2");
-        System.out.println("deadline task press 3");
-        System.out.println("list task press 4");
-        System.out.println("mark done task press 5");
-        System.out.println("Show current task press 6");
+        System.out.println("Press 1: Add a to do task");
+        System.out.println("Press 2: Add an event ");
+        System.out.println("Press 3: Add a deadline task");
+        System.out.println("Press 4: List all task");
+        System.out.println("Press 5: Mark a task to be done");
+        System.out.println("Press 6: Exit");
         divider();
 
+    }
+
+    public void addTask(String obj){
+        System.out.println("added " + obj);
     }
 
     public void time(){
@@ -46,6 +50,13 @@ public class Ui {
         return obj1;
 
     }
+
+    public void goodBye(){
+        divider();
+        System.out.println("Bye. Hope to see you again soon!");
+    }
+
+
 
 
 }

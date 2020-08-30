@@ -8,8 +8,8 @@ public class ShowTasks {
     private ArrayList type;
     private ArrayList time;
 
-    int tick1 = 10003;
-    int cross1 = 9587;
+    private int tick1 = 10003;
+    private int cross1 = 9587;
     private String tick;
     private String cross;
 

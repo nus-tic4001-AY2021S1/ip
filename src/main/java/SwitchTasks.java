@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class SwitchTasks {
 
 
     private boolean task;
-
-    public static String obj;
+    private static String obj;
 
     AddTasks addTasks = new AddTasks();
     Ui ui = new Ui();
@@ -14,6 +11,7 @@ public class SwitchTasks {
 
     public SwitchTasks(){
         this.task=true;
+        this.obj=obj;
     }
 
     public void option(){
@@ -22,12 +20,12 @@ public class SwitchTasks {
 
         while (task == true) {
 
-
             ui.tasks();
             obj = ui.input();
 
             switch(obj){
                 case "1":
+                    System.out.println("Please add a to do task");
                       obj = ui.input();
                       addTasks.toDoTask(obj);
                       ui.time();
@@ -36,38 +34,43 @@ public class SwitchTasks {
                       break;
 
                 case "2":
-                    System.out.println("Event");
+                    System.out.println("Please add a event task");
                     obj = ui.input();
                     addTasks.eventTask(obj);
+                    obj = ui.input();
+                    addTasks.addTime(obj);
                     break;
 
                 case "3":
-                    System.out.println("deadline");
+                    System.out.println("Please add a deadline task");
                     obj = ui.input();
                     addTasks.deadLineTask(obj);
+                    obj = ui.input();
+                    addTasks.addTime(obj);
                     break;
-
 
                 case "4":
                     System.out.println("list");
                     addTasks.showTask();
                     break;
 
-
                 case "5":
-                    System.out.println("mark done");
+                    System.out.println("Please mark done a task");
                     obj = ui.input();
                     addTasks.makeDone(obj);
+                    obj = ui.input();
+                    addTasks.addTime(obj);
                     break;
 
-                case "bye":
+                case "6":
                     task = false;
                     break;
                 default:
-                    System.out.println("Invalid Input");
+                    System.out.println("Invalid Input please enter again");
                     break;
             }
         }
 
+        ui.goodBye();
     }
 }

@@ -7,12 +7,5 @@ public class Duke {
         SwitchTasks switchTasks = new SwitchTasks();
         switchTasks.option();
 
-
-
-
-        //Good Bye msg
-        System.out.println("Bye. Hope to see you again soon!");
-
-
     }
 }
