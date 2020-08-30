@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Global {
-    static String PATTERNLINE = "___________________________________________________________________________";
+    static String PATTERNLINE = "____________________________________________________________________________";
 }
 
 enum Action {
