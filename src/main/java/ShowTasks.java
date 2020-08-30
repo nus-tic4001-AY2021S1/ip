@@ -3,54 +3,58 @@ import java.util.ArrayList;
 public class ShowTasks {
 
 
-    public ArrayList commandName = new ArrayList(100);
-    public ArrayList check = new ArrayList(100);
-
-    public ArrayList type = new ArrayList(100);
-
-
+    private ArrayList commandName;
+    private ArrayList check;
+    private ArrayList type;
+    private ArrayList time;
 
     int tick1 = 10003;
     int cross1 = 9587;
-    public String tick = Character.toString((char)tick1);
-    public String cross = Character.toString((char)cross1);
+    private String tick;
+    private String cross;
 
 
 
     public ShowTasks(){
 
-    }
-    public void showTasks(){
-        System.out.println("Here are the tasks in your list:");
-        int number = 1;
-        for( int i = 0; i < commandName.size(); i++){
-            System.out.println(number +"."+ type.get(i) +"["+check.get(i)+"]"+" "+commandName.get(i));
-            number++;
-        }
+        this.commandName = new ArrayList(100);
+        this.check = new ArrayList(100);
+        this.type = new ArrayList(100);
+        this.time = new ArrayList(100);
+        this.tick= Character.toString((char)tick1);
+        this.cross= Character.toString((char)cross1);
 
     }
 
+    public void setCommandName(String obj){
+        commandName.add(obj);
+    }
+    public void setCheck(){
+        check.add(cross);
+    }
+    public void setCheck(int obj){
+        check.set(obj-1,tick);
+    }
+    public void setType(String obj){
+        type.add(obj);
+    }
+    public void setTime(String obj){
+        time.add(obj);
+    }
 
+    public ArrayList getCommandName() {
+        return commandName;
+    }
 
-//    public void twoDimension(){
-//
-//        SwitchTasks switchTasks=new SwitchTasks();
-//
-//
-//        switchTasks.check
-//
-//
-//        String[][] taskArray = new String[100][2];
-//
-//
-//
-//
-//
-//        for(int i = 0; i < 100; i++){
-//            taskArray[i][0]=check[i];
-//            taskArray[i][0]=commandName[i];
-//        }
-//
-//    }
+    public ArrayList getCheck() {
+        return check;
+    }
 
+    public ArrayList getType() {
+        return type;
+    }
+
+    public ArrayList getTime(){
+        return time;
+    }
 }

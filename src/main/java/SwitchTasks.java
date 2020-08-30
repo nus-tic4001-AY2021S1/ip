@@ -4,70 +4,70 @@ import java.util.Scanner;
 public class SwitchTasks {
 
 
-    //System.out.println(tick);
-    //System.out.println(cross);
+    private boolean task;
+
+    public static String obj;
+
+    AddTasks addTasks = new AddTasks();
+    Ui ui = new Ui();
+
 
     public SwitchTasks(){
-
+        this.task=true;
     }
 
     public void option(){
 
-        ShowTasks showTasks= new ShowTasks();
-        TodoTasks todoTasks= new TodoTasks();
-        EventTasks eventTasks=new EventTasks();
-        DeadlineTasks deadlineTasks=new DeadlineTasks();
-        MakeDoneTasks makeDoneTasks=new MakeDoneTasks();
+        ui.welcome();
 
-        Scanner myObj = new Scanner(System.in);
+        while (task == true) {
 
 
+            ui.tasks();
+            obj = ui.input();
 
-        while (myObj.hasNext()) {
-
-            // System.out.println("Added task press 1");
-            // System.out.println("Show current task press 2");
-
-            
-
-            String obj1 = myObj.nextLine();
-
-            switch(obj1){
+            switch(obj){
                 case "1":
-                      System.out.println("todo");
-                      //Scanner myObj1 = new Scanner(System.in);
-                      String todo = myObj.nextLine();
-                      todoTasks.toDoTask(todo);
+                      obj = ui.input();
+                      addTasks.toDoTask(obj);
+                      ui.time();
+                      obj = ui.input();
+                      addTasks.addTime(obj);
+                      break;
 
                 case "2":
                     System.out.println("Event");
-                    //Scanner myObj1 = new Scanner(System.in);
-                    String event = myObj.nextLine();
-                    eventTasks.eventTask(event);
+                    obj = ui.input();
+                    addTasks.eventTask(obj);
+                    break;
+
                 case "3":
                     System.out.println("deadline");
-                    //Scanner myObj1 = new Scanner(System.in);
-                    String deadLine = myObj.nextLine();
-                    deadlineTasks.deadLineTask(deadLine);
+                    obj = ui.input();
+                    addTasks.deadLineTask(obj);
+                    break;
+
 
                 case "4":
                     System.out.println("list");
-                    //Scanner myObj1 = new Scanner(System.in);
-                    //String deadLine = myObj.nextLine();
-                    showTasks.showTasks();
+                    addTasks.showTask();
+                    break;
+
 
                 case "5":
-                    System.out.println("deadline");
-                    //Scanner myObj1 = new Scanner(System.in);
-                    String markDone = myObj.nextLine();
-                    makeDoneTasks.makeDone(markDone);
+                    System.out.println("mark done");
+                    obj = ui.input();
+                    addTasks.makeDone(obj);
+                    break;
+
+                case "bye":
+                    task = false;
+                    break;
                 default:
-
+                    System.out.println("Invalid Input");
+                    break;
             }
-
         }
 
-
     }
-
 }
