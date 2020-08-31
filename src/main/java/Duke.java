@@ -38,10 +38,11 @@ public class Duke {
                     listTasks();
                     break;
                 default:
-                    printError("Duke: Unknown command! Please try again.");
+                    printError("Duke: \u2639 OPPS!!! "
+                            + "You have entered an unknown command! Please try again.");
                 }
-            } catch (Exception e) {
-                System.out.print("Duke: ");
+            } catch (DukeException e) {
+                System.out.print("Duke: \u2639 OPPS!!! ");
                 printError(e.getMessage());
             }
         }
@@ -78,9 +79,9 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static void addTodo(String commandParameter) throws Exception{
+    private static void addTodo(String commandParameter) throws DukeException{
         if (commandParameter.isEmpty()){
-            throw new Exception("Task description is empty!");
+            throw new DukeException("Task description is empty!");
         }
         tasks.add(new Task(commandParameter));
         System.out.println("Duke: Got it! I have added this task:");
@@ -89,14 +90,14 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static void addDeadline(String commandParameter) throws Exception{
+    private static void addDeadline(String commandParameter) throws DukeException{
         String description;
         String by;
         try {
             description = commandParameter.split("/by")[0].trim();
             by = commandParameter.split("/by")[1].trim();
         } catch(ArrayIndexOutOfBoundsException e) {
-            throw new Exception("Missing by for deadline task!");
+            throw new DukeException("Missing by for deadline task!");
         }
         tasks.add(new Deadline(description, by));
         System.out.println("Duke: Got it! I have added this task:");
@@ -105,14 +106,14 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static void addEvent(String commandParameter) throws Exception{
+    private static void addEvent(String commandParameter) throws DukeException{
         String description;
         String at;
         try {
             description = commandParameter.split("/at")[0].trim();
             at = commandParameter.split("/at")[1].trim();
         } catch(ArrayIndexOutOfBoundsException e) {
-            throw new Exception("Missing at for event task!");
+            throw new DukeException("Missing at for event task!");
         }
         tasks.add(new Event(description, at));
         System.out.println("Duke: Got it! I have added this task:");
@@ -143,7 +144,7 @@ public class Duke {
         return commandParameter;
     }
 
-    private static void markTaskAsDone(String commandParameter) throws Exception {
+    private static void markTaskAsDone(String commandParameter) throws DukeException {
         int taskIndex = getTaskIndex(commandParameter);
         setTaskAsDone(taskIndex);
         System.out.println("Duke: I have marked this task as done:");
@@ -151,23 +152,23 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static void setTaskAsDone(int taskIndex) throws Exception {
+    private static void setTaskAsDone(int taskIndex) throws DukeException {
         try {
             tasks.get(taskIndex - 1).setDone(true);
         } catch (IndexOutOfBoundsException e) {
-            throw new Exception("Invalid task index!");
+            throw new DukeException("Invalid task index!");
         }
     }
 
-    private static int getTaskIndex(String commandParameter) throws Exception {
+    private static int getTaskIndex(String commandParameter) throws DukeException {
         int taskIndex;
         if (commandParameter.isEmpty()) {
-            throw new Exception("Missing task index!");
+            throw new DukeException("Missing task index!");
         }
         try {
             taskIndex = Integer.parseInt(commandParameter);
         } catch(NumberFormatException e) {
-            throw new Exception("Invalid task index!");
+            throw new DukeException("Invalid task index!");
         }
         return taskIndex;
     }
