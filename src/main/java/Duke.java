@@ -10,17 +10,18 @@ public class Duke {
     public static void main(String[] args) {
         printWelcome();
 
-        boolean isExit = false;
-        while (!isExit) {
+        boolean isBye = false;
+        while (!isBye) {
             String userInput = readUserInput();
             String command = getCommand(userInput);
             String commandParameter = getCommandParameter(userInput);
+
             System.out.println(LINE);
 
             try {
                 switch(command) {
                 case "bye":
-                    isExit = true;
+                    isBye = true;
                     break;
                 case "todo":
                     addTodo(commandParameter);
@@ -42,7 +43,6 @@ public class Duke {
                             + "I'm sorry, I don't know what that means.");
                 }
             } catch (DukeException e) {
-                System.out.print("Duke: \u2639 OPPS!!! ");
                 printError(e.getMessage());
             }
         }
@@ -56,6 +56,7 @@ public class Duke {
                 + "| | | | | | | |/ / _ \\" + System.lineSeparator()
                 + "| |_| | |_| |   <  __/" + System.lineSeparator()
                 + "|____/ \\__,_|_|\\_\\___|" + System.lineSeparator();
+
         System.out.println(LINE);
         System.out.println(logo);
         System.out.println("Duke: Hello! I'm Duke, your personal chatbot.");
@@ -75,7 +76,7 @@ public class Duke {
     }
 
     private static void printError(String errorMessage) {
-        System.out.println(errorMessage);
+        System.out.println("Duke: \u2639 OPPS!!! " + errorMessage);
         System.out.println(LINE);
     }
 
@@ -83,17 +84,17 @@ public class Duke {
         if (commandParameter.isEmpty()){
             throw new DukeException("The description of a todo task cannot be empty.");
         }
+
         tasks.add(new Task(commandParameter));
-        System.out.println("Duke: Got it! I have added this task:");
-        System.out.println(INDENT + tasks.get(tasks.size() - 1).toString());
-        System.out.println(INDENT + "Now you have " + tasks.size() + " tasks in the list.");
-        System.out.println(LINE);
+
+        printAddedTask();
     }
 
     private static void addDeadline(String commandParameter) throws DukeException {
         if (commandParameter.isEmpty()){
             throw new DukeException("The description of a deadline task cannot be empty.");
         }
+
         String description;
         String by;
         try {
@@ -105,17 +106,17 @@ public class Duke {
         if (description.isEmpty()){
             throw new DukeException("The description of a deadline task cannot be empty.");
         }
+
         tasks.add(new Deadline(description, by));
-        System.out.println("Duke: Got it! I have added this task:");
-        System.out.println(INDENT + tasks.get(tasks.size() - 1).toString());
-        System.out.println(INDENT + "Now you have " + tasks.size() + " tasks in the list.");
-        System.out.println(LINE);
+
+        printAddedTask();
     }
 
     private static void addEvent(String commandParameter) throws DukeException {
         if (commandParameter.isEmpty()){
             throw new DukeException("The description of an event task cannot be empty.");
         }
+
         String description;
         String at;
         try {
@@ -127,7 +128,13 @@ public class Duke {
         if (description.isEmpty()){
             throw new DukeException("The description of an event task cannot be empty.");
         }
+
         tasks.add(new Event(description, at));
+
+        printAddedTask();
+    }
+
+    private static void printAddedTask() {
         System.out.println("Duke: Got it! I have added this task:");
         System.out.println(INDENT + tasks.get(tasks.size() - 1).toString());
         System.out.println(INDENT + "Now you have " + tasks.size() + " tasks in the list.");
@@ -153,6 +160,7 @@ public class Duke {
                 .replace("done", "")
                 .replace("list", "")
                 .trim();
+
         return commandParameter;
     }
 
@@ -173,15 +181,17 @@ public class Duke {
     }
 
     private static int getTaskIndex(String commandParameter) throws DukeException {
-        int taskIndex;
         if (commandParameter.isEmpty()) {
             throw new DukeException("The task index is missing.");
         }
+
+        int taskIndex;
         try {
             taskIndex = Integer.parseInt(commandParameter);
         } catch(NumberFormatException e) {
             throw new DukeException("The task index is invalid.");
         }
+
         return taskIndex;
     }
 }
