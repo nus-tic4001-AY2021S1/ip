@@ -39,8 +39,7 @@ public class Duke {
                     listTasks();
                     break;
                 default:
-                    printError("Duke: \u2639 OPPS!!! "
-                            + "I'm sorry, I don't know what that means.");
+                    printError("I'm sorry, I don't know what that means.");
                 }
             } catch (DukeException e) {
                 printError(e.getMessage());
@@ -85,7 +84,7 @@ public class Duke {
             throw new DukeException("The description of a todo task cannot be empty.");
         }
 
-        tasks.add(new Task(commandParameter));
+        tasks.add(new Todo(commandParameter));
 
         printAddedTask();
     }
