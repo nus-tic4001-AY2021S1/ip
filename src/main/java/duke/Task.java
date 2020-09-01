@@ -1,7 +1,5 @@
 package duke;
 
-import duke.Deadline;
-
 public abstract class Task {
     private String description;
     private boolean isDone;
@@ -22,5 +20,10 @@ public abstract class Task {
 
     public void setDone(boolean isDone) {
         this.isDone = true;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + getStatusIcon() + "] " + getDescription();
     }
 }

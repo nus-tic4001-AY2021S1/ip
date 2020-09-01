@@ -1,6 +1,6 @@
 package duke;
 
-public class Deadline extends Todo {
+public class Deadline extends Task {
     private String by;
 
     public Deadline(String description, String by) {
@@ -10,6 +10,6 @@ public class Deadline extends Todo {
 
     @Override
     public String toString() {
-        return "[D][" + getStatusIcon() + "] " + getDescription() + " (by: " + by + ")";
+        return "[D]" + super.toString() + " (by: " + by + ")";
     }
 }

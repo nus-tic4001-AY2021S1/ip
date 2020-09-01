@@ -1,6 +1,6 @@
 package duke;
 
-public class Event extends Todo {
+public class Event extends Task {
     private String at;
 
     public Event(String description, String at) {
@@ -10,6 +10,6 @@ public class Event extends Todo {
 
     @Override
     public String toString() {
-        return "[E][" + getStatusIcon() + "] " + getDescription() + " (at: " + at + ")";
+        return "[E]" + super.toString() + " (at: " + at + ")";
     }
 }
