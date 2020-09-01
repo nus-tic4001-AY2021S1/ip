@@ -8,14 +8,29 @@ public class Duke {
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
 
-        String line = "_____________________________________________\n";
+        String line = "\t_____________________________________________\n";
 
-        String greetings = line + "Hello! I'm Duke\n"
-                + "What can I do for you?\n";
+        String greetings = line + "\t Hello! I'm Duke\n"
+                + "\t What can I do for you?\n" + line;
 
-        String closing = line + "Bye. Hope to see you again soon!\n" + line;
+        String closing = line + "\t Bye. Hope to see you again soon!\n" + line;
 
+        String input;
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println(greetings + closing);
+        //Greet
+        System.out.println(greetings);
+
+        //Echo & Exit
+        do{
+            input = sc.nextLine();
+            if (input.equals("bye")){
+                System.out.println(closing);
+                break;
+            }
+            else {
+                System.out.println(line + "\t" + input + "\n" + line);
+            }
+        } while(sc.hasNext());
     }
 }
