@@ -15,21 +15,48 @@ public class Duke {
 
         String closing = line + "\t Bye. Hope to see you again soon!\n" + line;
 
+        List<String> arrlist = new ArrayList<String>();
         String input;
         Scanner sc = new Scanner(System.in);
 
         //Greet
         System.out.println(greetings);
 
-        //Echo & Exit
+        //Waiting for user input
         do{
             input = sc.nextLine();
+
+            //Exit
             if (input.equals("bye")){
                 System.out.println(closing);
                 break;
             }
+            //Process commands
             else {
-                System.out.println(line + "\t" + input + "\n" + line);
+                switch(input){
+
+                    case "list":
+                        if(arrlist.size() == 0){
+                            System.out.println(line + "\t No record added\n" + line);
+                        }
+                        else{
+                            System.out.println(line);
+                            for(int i=0; i<arrlist.size(); i++){
+                                System.out.println("\t" + (i+1) + ". " + arrlist.get(i));
+                            }
+                            System.out.println(line);
+                        }
+                        break;
+
+                    case "bye":
+                        System.out.println(closing);
+                        break;
+
+                    default:
+                        arrlist.add(input);
+                        System.out.println(line + "\t added: " + input + "\n" + line);
+                        break;
+                }
             }
         } while(sc.hasNext());
     }
