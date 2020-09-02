@@ -25,10 +25,10 @@ public class Storage {
             throw new DukeException("No /by found in command.");
         }
         String description = toAdd.split(" /by ")[0];
-        String by = toAdd.split(" /by ")[1];
-        if(by.isEmpty()){
-            throw new DukeException("No deadline found after keyword /by .");
+        if(toAdd.split(" /by ").length<2){
+            throw new DukeException("No event time found after keyword /by .");
         }
+        String by = toAdd.split(" /by ")[1];
         tempStorage.add(new Deadline(description,by));
     }
     public void addEventToTemp(String toAdd) throws DukeException{
@@ -36,10 +36,10 @@ public class Storage {
             throw new DukeException("No /at found in command.");
         }
         String description = toAdd.split(" /at ")[0];
-        String at = toAdd.split(" /at ")[1];
-        if(at.isEmpty()){
+        if(toAdd.split(" /at ").length<2){
             throw new DukeException("No event time found after keyword /at .");
         }
+        String at = toAdd.split(" /at ")[1];
         tempStorage.add(new Event(description,at));
     }
     public int getSize(){
