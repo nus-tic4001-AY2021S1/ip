@@ -1,4 +1,4 @@
-
+package duke;
 
 public class Duke {
     public static void main(String[] args) {
@@ -13,7 +13,12 @@ public class Duke {
         Parser parser = new Parser();
         ui.greetUser();
         while(!store.getIsExit()){
-            parser.getCommand(ui.readCommand(),store,ui);
+            try {
+                parser.getCommand(ui.readCommand(), store, ui);
+            } catch (DukeException e) {
+                ui.indentPrint("☹ OOPS!!! " +e.getMessage());
+            }
+            ui.printLine();
         }
     }
 }

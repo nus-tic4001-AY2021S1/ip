@@ -1,3 +1,5 @@
+package duke;
+
 import java.util.Scanner;
 
 public class Ui {
@@ -15,9 +17,7 @@ public class Ui {
         printLine();
     }
     public void byeToUser(){
-        printLine();
         indentPrint("Bye. Hope to see you again soon!");
-        printLine();
     }
     public String readCommand(){
         return in.nextLine();

@@ -1,5 +1,8 @@
+package duke;
+
 public class Parser {
-    public void getCommand(String input,Storage store, Ui ui){
+    public void getCommand (String input,Storage store, Ui ui) throws DukeException{
+        ui.printLine();
         String command, others;
         if(input.contains(" ")){
             command = input.split(" ",2)[0];
@@ -14,50 +17,49 @@ public class Parser {
                 ui.byeToUser();
                 break;
             case "list":
-                ui.printLine();
                 ui.indentPrint("Here are the tasks in your list:");
                 for(int i=0;i<store.getSize();i++){
                     ui.indentPrint((i+1)+". "+store.getTask(i).toString());
                 }
-                ui.printLine();
                 break;
             case "done":
+                if(others.isEmpty()){
+                    throw new DukeException("The index of a done command cannot be empty.");
+                }
                 int index = Integer.parseInt(others);
                 store.setDoneAt(index-1);
-                ui.printLine();
                 ui.indentPrint("Nice! I've marked this task as done: ");
                 ui.indentPrint("  "+store.getTask(index-1).toString());
-                ui.printLine();
                 break;
             case "todo":
+                if(others.isEmpty()){
+                    throw new DukeException("The description of a todo cannot be empty.");
+                }
                 store.addToDoToTemp(others);
-                ui.printLine();
                 ui.indentPrint("Got it. I've added this task: ");
                 ui.indentPrint("  "+store.getTask(store.getSize()-1).toString());
                 ui.indentPrint( "Now you have "+store.getSize()+" tasks in the list.");
-                ui.printLine();
                 break;
             case "deadline":
+                if(others.isEmpty()){
+                    throw new DukeException("The description of a deadline cannot be empty.");
+                }
                 store.addDeadlineToTemp(others);
-                ui.printLine();
                 ui.indentPrint("Got it. I've added this task: ");
                 ui.indentPrint("  "+store.getTask(store.getSize()-1).toString());
                 ui.indentPrint( "Now you have "+store.getSize()+" tasks in the list.");
-                ui.printLine();
                 break;
             case "event":
+                if(others.isEmpty()){
+                    throw new DukeException("The description of a event cannot be empty.");
+                }
                 store.addEventToTemp(others);
-                ui.printLine();
                 ui.indentPrint("Got it. I've added this task: ");
                 ui.indentPrint("  "+store.getTask(store.getSize()-1).toString());
                 ui.indentPrint( "Now you have "+store.getSize()+" tasks in the list.");
-                ui.printLine();
                 break;
             default:
-                ui.printLine();
-                ui.indentPrint("unknown command, please try again");
-                ui.printLine();
-                break;
+                throw new DukeException("I'm sorry, but I don't know what that means :-(");
         }
     }
 }
