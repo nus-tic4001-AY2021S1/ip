@@ -1,5 +1,7 @@
-import Tasks.Deadline;
-import Tasks.Todo;
+package duke.command;
+
+import duke.Tasks.Deadline;
+import duke.Tasks.Todo;
 
 public class Parser {
 

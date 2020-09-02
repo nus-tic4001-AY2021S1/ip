@@ -1,7 +1,9 @@
-import Tasks.Deadline;
-import Tasks.Event;
-import Tasks.Task;
-import Tasks.Todo;
+package duke.command;
+
+import duke.Tasks.Deadline;
+import duke.Tasks.Event;
+import duke.Tasks.Task;
+import duke.Tasks.Todo;
 
 import java.util.ArrayList;
 
@@ -70,7 +72,7 @@ public class TaskList {
             assert index <= tasks.size() : "☹ OOPS!!!Command number is invalid"; //assert error when index bigger than tasks size.
             if (index <= tasks.size() && index > 0) {
                 tasks.get(index - 1).setDone(true);
-                System.out.println("Tasks: " + index + " has marked as DONE.");
+                System.out.println("duke.Tasks: " + index + " has marked as DONE.");
             } else System.out.println("☹ OOPS!!!Marking as done range should be 1 to " + tasks.size());
         } catch (NumberFormatException e) {
             System.out.println("☹ OOPS!!!markAsDone command not Integer!");
