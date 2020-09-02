@@ -23,7 +23,7 @@ public class Ui {
 
     public void greetUser() {
         printLine();
-        printWord("Hi! I'm Jojo");
+        printWord("Hi! I'm Jojo ☺");
         printWord("What can I do for you?");
         printLine();
     }
