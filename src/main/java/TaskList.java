@@ -59,9 +59,9 @@ public class TaskList {
             int index = Integer.parseInt(description);
             if (index <= tasks.size() && index > 0) {
                 System.out.println("[" + (index) + "] " + tasks.get(index - 1));
-            } else System.out.println("Error:Printing range should be 1 to " + tasks.size());
+            } else System.out.println("☹ OOPS!!!Printing range should be 1 to " + tasks.size());
         } catch (NumberFormatException e) {
-            System.out.println("Error:Print command should be ‘print' or 'print INTEGER'");
+            System.out.println("☹ OOPS!!!Print command should be ‘print' or 'print INTEGER'");
         }
         ui.printLine();
     }
@@ -69,13 +69,13 @@ public class TaskList {
     public void markAsDone(String fullCommand) {
         try {
             int index = Integer.parseInt(fullCommand.substring("done".length()).trim());
-            assert index <= tasks.size() : "Command number is invalid"; //assert error when index bigger than tasks size.
+            assert index <= tasks.size() : "☹ OOPS!!!Command number is invalid"; //assert error when index bigger than tasks size.
             if (index <= tasks.size() && index > 0) {
                 tasks.get(index - 1).setDone(true);
                 System.out.println("Tasks: " + index + " has marked as DONE.");
-            } else System.out.println("Error:Marking as done range should be 1 to " + tasks.size());
+            } else System.out.println("☹ OOPS!!!Marking as done range should be 1 to " + tasks.size());
         } catch (NumberFormatException e) {
-            System.out.println("Error:markAsDone command not Integer!");
+            System.out.println("☹ OOPS!!!markAsDone command not Integer!");
         }
     }
 
@@ -96,5 +96,4 @@ public class TaskList {
         return isExit;
     }
 
-    //public void markAsDone(int i){tasks.get(i).setDone();}
 }

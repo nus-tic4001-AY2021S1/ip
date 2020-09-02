@@ -35,9 +35,12 @@ public class Ui {
     }
 
     public void printError() {
-        System.out.println("Unknown command! please try again.");
+        System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
 
+    public void printEmptyError(){
+        System.out.println("☹ OOPS!!! The description of a todo cannot be empty.");
+    }
     public String readCommand() {
         String command = in.nextLine().trim();
         return command.toLowerCase();

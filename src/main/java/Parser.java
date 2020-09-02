@@ -31,45 +31,49 @@ public class Parser {
         String description = line.substring("deadline".trim().length());
 
         if (description.isEmpty()) {
-            throw new TaskManagerException("Error: Empty description for DEADLINE");
+            throw new TaskManagerException("Error: Empty description for TODO");
         }
         if (!description.contains("/by")) {
-            throw new TaskManagerException("Error: need '/by' for DEADLINE");
+            throw new TaskManagerException("☹ OOPS!!!: need '/by' for DEADLINE");
         }
         return new Deadline(line.trim().substring("deadline".length()).trim().split(" /by")[0],
-                line.trim().split("/by ")[1]);  //[bB][yY] ignore /by or /BY
+                line.trim().split("/by ")[1]);
     }
 
-    public static void run() throws TaskManagerException {
+    public static void run() {
         ui.printLogo();
         ui.greetUser();
         boolean isExit = false;
         while (!isExit) {
-            String fullCommand = ui.readCommand();
-            String commandWord = Parser.getCommand(fullCommand);//convert command word to lowercase
-            switch (commandWord) {
-                case "bye":
-                    ui.farewellUser();
-                case "":
-                    isExit = true;
-                    break;
-                case "todo":
-                    tasks.addTodo(fullCommand);
-                    break;
-                case "deadline":
-                    tasks.addDeadline(fullCommand);
-                    break;
-                case "done":
-                    tasks.markAsDone(fullCommand);
-                    break;
-                case "list":
-                    tasks.showTasks(fullCommand);
-                    break;
-                case "event":
-                    tasks.addEvent(fullCommand);
-                    break;
-                default:
-                    ui.printError();
+            try {
+                String fullCommand = ui.readCommand();
+                String commandWord = Parser.getCommand(fullCommand);//convert command word to lowercase
+                switch (commandWord) {
+                    case "bye":
+                        ui.farewellUser();
+                    case "":
+                        isExit = true;
+                        break;
+                    case "todo":
+                        tasks.addTodo(fullCommand);
+                        break;
+                    case "deadline":
+                        tasks.addDeadline(fullCommand);
+                        break;
+                    case "done":
+                        tasks.markAsDone(fullCommand);
+                        break;
+                    case "list":
+                        tasks.showTasks(fullCommand);
+                        break;
+                    case "event":
+                        tasks.addEvent(fullCommand);
+                        break;
+                    default:
+                        ui.printError();
+                }
+            } catch (TaskManagerException e) {
+                ui.printError(e.getMessage());
             }
         }
     }
