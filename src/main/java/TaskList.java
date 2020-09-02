@@ -8,12 +8,10 @@ import java.util.ArrayList;
 public class TaskList {
     static Ui ui = new Ui();
     private final ArrayList<Task> tasks;
-    private boolean isExit;
 
 
     public TaskList() {
         tasks = new ArrayList<>(100);
-        isExit = false;
     }
 
     public void addTodo(String fullCommand) throws TaskManagerException {
@@ -78,22 +76,4 @@ public class TaskList {
             System.out.println("☹ OOPS!!!markAsDone command not Integer!");
         }
     }
-
-
-    public int getSize() {
-        return tasks.size();
-    }
-
-    public Task getTask(int i) {
-        return tasks.get(i);
-    }
-
-    public void toExit() {
-        isExit = true;
-    }
-
-    public boolean getIsExit() {
-        return isExit;
-    }
-
 }
