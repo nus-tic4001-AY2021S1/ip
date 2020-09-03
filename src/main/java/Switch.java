@@ -1,24 +1,23 @@
-
-public class SwitchTasks {
-
+public class Switch {
 
     private boolean task;
     private static String obj;
+    private static String obj1;
 
-    AddTasks addTasks = new AddTasks();
+    Storage storage = new Storage();
+  //  AddTasks addTasks = new AddTasks();
     Ui ui = new Ui();
 
 
-    public SwitchTasks(){
+    public Switch(){
         this.task=true;
-        this.obj=obj;
     }
 
     public void option(){
 
         ui.welcome();
 
-        while (task == true) {
+        while (task == true || obj.equalsIgnoreCase("bye")) {
 
             ui.tasks();
             obj = ui.input();
@@ -26,40 +25,37 @@ public class SwitchTasks {
             switch(obj){
                 case "1":
                     System.out.println("Please add a to do task");
-                      obj = ui.input();
-                      addTasks.toDoTask(obj);
-                      ui.time();
-                      obj = ui.input();
-                      addTasks.addTime(obj);
-                      break;
+                    obj = ui.input();
+                    ui.time();
+                    obj1 = ui.input();
+                    storage.setCommandName(new Todo(obj , obj1));
+                    break;
 
                 case "2":
                     System.out.println("Please add a event task");
                     obj = ui.input();
-                    addTasks.eventTask(obj);
-                    obj = ui.input();
-                    addTasks.addTime(obj);
+                    ui.time();
+                    obj1 = ui.input();
+                    storage.setCommandName(new Event(obj , obj1));
                     break;
 
                 case "3":
                     System.out.println("Please add a deadline task");
                     obj = ui.input();
-                    addTasks.deadLineTask(obj);
-                    obj = ui.input();
-                    addTasks.addTime(obj);
+                    ui.time();
+                    obj1 = ui.input();
+                    storage.setCommandName(new Deadline(obj , obj1));
                     break;
 
                 case "4":
                     System.out.println("list");
-                    addTasks.showTask();
+                    storage.getCommandName();
                     break;
 
                 case "5":
                     System.out.println("Please mark done a task");
                     obj = ui.input();
-                    addTasks.makeDone(obj);
-                    obj = ui.input();
-                    addTasks.addTime(obj);
+                    storage.setCommandName(obj);
                     break;
 
                 case "6":

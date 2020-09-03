@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Duke {
     public static void main(String[] args) {
 
-        SwitchTasks switchTasks = new SwitchTasks();
+        Switch switchTasks = new Switch();
         switchTasks.option();
 
     }

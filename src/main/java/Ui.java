@@ -51,6 +51,7 @@ public class Ui {
 
     }
 
+
     public void goodBye(){
         divider();
         System.out.println("Bye. Hope to see you again soon!");
