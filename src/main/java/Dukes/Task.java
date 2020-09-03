@@ -1,6 +1,5 @@
 package Dukes;
 
-import java.util.ArrayList;
 
 public abstract class Task {
     protected String description;

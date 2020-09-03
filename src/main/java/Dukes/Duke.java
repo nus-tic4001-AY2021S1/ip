@@ -98,6 +98,7 @@ public class Duke {
             assert false : "Uncaught exception";
         }
     }
+
     public static void addTaskCase(Task taskWord){
         tasks.add(taskWord);
         System.out.println("Got it, I've added the following task:\n"
