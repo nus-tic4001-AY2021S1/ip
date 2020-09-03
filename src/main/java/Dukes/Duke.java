@@ -43,7 +43,7 @@ public class Duke {
     }
 
     private static void addTasks(String input) {
-        Task taskWord = new Task("");
+        Task taskWord;
         try {
             if (input.startsWith("todo")) {
                 if (input.length() < 6) {
@@ -77,7 +77,10 @@ public class Duke {
                 addTaskCase(taskWord);
             } else if (input.startsWith("done")) {
                 if (input.length() < 6) {
-                    throw new DukeException("please key in correct format.");
+                    throw new DukeException("please key in correct format.\n");
+                }
+                else if(tasks.isEmpty()){
+                    throw new DukeException("There is no task need to be done\n");
                 }
                     int toEdit = Integer.parseInt(input.substring(input.indexOf(' ') + 1, input.length())) - 1;
                     Task task = tasks.get(toEdit);
