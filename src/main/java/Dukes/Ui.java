@@ -1,3 +1,5 @@
+package Dukes;
+
 import java.util.Scanner;
 
 public class Ui {
