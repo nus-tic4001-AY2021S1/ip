@@ -30,17 +30,17 @@ public class Duke {
                         count++;
                         ui.printTask(singleTask.toString(), count);
                     } else if (str.split(" ")[0].equals("deadline")) {
-                        String[] dl = str.substring(9).split(" /by ");
-                        if (dl.length == 2) {
-                            singleTask = new Deadline(dl[0], dl[1]);
+                        String[] deadline = str.substring(9).split(" /by ");
+                        if (deadline.length == 2) {
+                            singleTask = new Deadline(deadline[0], deadline[1]);
                             paser.storeInArray(singleTask, count);
                             count++;
                             ui.printTask(singleTask.toString(), count);
                         }
                     } else if (str.split(" ")[0].equals("event")) {
-                        String[] ev = str.substring(6).split(" /at ");
-                        if (ev.length == 2) {
-                            singleTask = new Event(ev[0], ev[1]);
+                        String[] event = str.substring(6).split(" /at ");
+                        if (event.length == 2) {
+                            singleTask = new Event(event[0], event[1]);
                             paser.storeInArray(singleTask, count);
                             count++;
                             ui.printTask(singleTask.toString(), count);
