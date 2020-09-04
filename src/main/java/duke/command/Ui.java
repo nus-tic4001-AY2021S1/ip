@@ -48,4 +48,6 @@ public class Ui {
     public void printError(String message) {
         System.out.println(message);
     }
+
+    public void mergeAbstractClasses(){}// mergeAbstractClasses
 }
