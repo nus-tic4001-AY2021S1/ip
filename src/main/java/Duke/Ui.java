@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Ui {
     private Scanner in = new Scanner(System.in);
-    public void printlogo(){
+    public void printLogo(){
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"

@@ -6,7 +6,7 @@ public class Duke {
     public static int size=100;
     public static void main(String[] args) {
         Ui ui = new Ui();
-        ui.printlogo();
+        ui.printLogo();
         ui.greetInfo();
 
         Task[] tasks = new Task[size];
