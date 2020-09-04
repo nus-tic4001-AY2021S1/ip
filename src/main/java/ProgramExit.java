@@ -1,7 +1,6 @@
 public class ProgramExit {
     // A boolean value, if true: Exit the program, otherwise false.
     private boolean isExit;
-    //yt test branch
 
     /**
      * Creating an object of ProgramExit class
