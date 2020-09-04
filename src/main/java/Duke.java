@@ -102,8 +102,10 @@ public class Duke {
     }
 
     private static void printTask(Task t, ArrayList<Task> tasks) {
+
         System.out.println("Got it. I've added this task:");
         System.out.println(t.toString());
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+
     }
 }
