@@ -1,12 +1,9 @@
-package Duke.ui;
+package ui;
 
-import Duke.task.Task;
-import Duke.tasklist.TaskList;
+import Duke.Task;
 
 import java.util.List;
 import java.util.Scanner;
-
-import static Duke.constants.Constants.*;
 
 public class Ui {
 
@@ -25,31 +22,31 @@ public class Ui {
      * @return the line read in after trimming trailing and leading spaces
      */
     public String readUserCommand() {
-//        System.out.print("Your task? ");
+
         return in.nextLine().trim();
     }
 
     /**
-     * Prints "Welcome to Task Manager :D".
+     * Prints "Welcome to Duke :D".
      */
     public static void printWelcome() {
-        System.out.print(greeting);
+        System.out.print(Constants.GREETING);
     }
 
     public static void printGoodBye() {
-//        System.out.println("\nGoodbye, see you soon!");
-        System.out.println(farewell);
+
+        System.out.println(Constants.FAREWELL);
     }
 
     public void printTasks(List<Task> tasks) {
-        System.out.println(hLine);
-        System.out.println(displayTaskList);
+        System.out.println(Constants.H_LINE);
+        System.out.println(Constants.DISPLAY_TASK_LIST);
         int i = 1;
         for (Task t : tasks) {
-            if (t.getClass().toString().contains("Duke.task.Todo")) {
+            if (t.getClass().toString().contains("main.java.Duke.Todo")) {
                 System.out.println(i + "." + "[T] " + t);
 
-            } else if (t.getClass().toString().contains("Duke.task.Deadline")) {
+            } else if (t.getClass().toString().contains("main.java.Duke.Deadline")) {
                 System.out.println(i + "." + "[D] " + t);
 
             } else {
@@ -57,43 +54,43 @@ public class Ui {
             }
             i++;
         }
-        System.out.println(hLine);
+        System.out.println(Constants.H_LINE);
     }
 
     public static void printNumberOfTasks(int taskListSize) {
-//        return "Tasks in the list: " + tasks.size();
-        System.out.println(String.format(numberOfTasks, taskListSize));
+        //return "Tasks in the list: " + tasks.size();
+        System.out.println(String.format(Constants.NUMBER_OF_TASKS, taskListSize));
     }
 
     public void printTaskAddAck(Task task, int taskListSize) {
-        System.out.println(hLine);
-        System.out.println(acknowledgement);
-        if (task.getClass().toString().contains("Duke.task.Todo")) {
+        System.out.println(Constants.H_LINE);
+        System.out.println(Constants.ACKNOWLEDGEMENT);
+        if (task.getClass().toString().contains("main.java.Duke.Todo")) {
             System.out.println("[T] " + task);
 
-        } else if (task.getClass().toString().contains("Duke.task.Deadline")) {
+        } else if (task.getClass().toString().contains("main.java.Duke.Deadline")) {
             System.out.println("[D] " + task);
 
         } else {
             System.out.println("[E] " + task);
         }
-        System.out.println(String.format(numberOfTasks, taskListSize));
-        System.out.println(hLine);
+        printNumberOfTasks(taskListSize);
+        System.out.println(Constants.H_LINE);
     }
 
     public void printTaskMarkedAsDone(Task task) {
-        System.out.println(hLine);
-        System.out.println(acknowledgementAsDone);
-        if (task.getClass().toString().contains("Duke.task.Todo")) {
+        System.out.println(Constants.H_LINE);
+        System.out.println(Constants.ACKNOWLEDGEMENT_AS_DONE);
+        if (task.getClass().toString().contains("main.java.Duke.Todo")) {
             System.out.println("[T] " + task);
 
-        } else if (task.getClass().toString().contains("Duke.task.Deadline")) {
+        } else if (task.getClass().toString().contains("main.java.Duke.Deadline")) {
             System.out.println("[D] " + task);
 
         } else {
             System.out.println("[E] " + task);
         }
-        System.out.println(hLine);
+        System.out.println(Constants.H_LINE);
     }
 
     /**
@@ -126,11 +123,11 @@ public class Ui {
 
     public static void helpMessage() {
         String helpMessage = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n",
-                TODO, TODO_HELP_STATEMENT,
-                DEADLINE, DEADLINE_HELP_STATEMENT,
-                PRINT, PRINT_HELP_STATEMENT,
-                DONE, DONE_HELP_STATEMENT,
-                EXIT, EXIT_HELP_STATEMENT);
+                Constants.TODO, Constants.TODO_HELP_STATEMENT,
+                Constants.DEADLINE, Constants.DEADLINE_HELP_STATEMENT,
+                Constants.PRINT, Constants.PRINT_HELP_STATEMENT,
+                Constants.DONE, Constants.DONE_HELP_STATEMENT,
+                Constants.EXIT, Constants.EXIT_HELP_STATEMENT);
 
         System.out.println(helpMessage);
     }

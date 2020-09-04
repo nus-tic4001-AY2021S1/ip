@@ -1,9 +1,9 @@
-package Duke.parser;
+package ui;
 
-
-import Duke.task.Deadline;
-import Duke.task.Event;
-import Duke.task.Todo;
+import Duke.DukeException;
+import Duke.Deadline;
+import Duke.Event;
+import Duke.Todo;
 
 /**
  * public static getCommandWord(String fullCommand): Returns a the command word i.e., the first word of the given fullCommand
@@ -18,50 +18,50 @@ public class Parser {
         return command;
     }
 
-    public static Todo createTodo(String fullCommand) {
+    public static Todo createTodo(String fullCommand) throws DukeException {
         String description = fullCommand.substring("todo".length()).trim();
-        assert (("todo " + description).equals(fullCommand)) : "Something went wrong during the substring for todo description";
-        if (description.isEmpty()) {
-            System.out.println("Empty description for TODO");
+        //Use isBlank() rather than isEmpty(). isBlank() checks for whitespace
+        if (description.isBlank()) {
+            throw new DukeException("Empty description for TODO");
         } else {
             return new Todo(description);
         }
-        return new Todo(description);
+
     }
 
-    public static Deadline createDeadLine(String fullCommand) {
+    public static Deadline createDeadLine(String fullCommand) throws DukeException {
         int idxOfBy = fullCommand.indexOf("/by");
         if (idxOfBy < 0) {
-            System.out.println("Deadline does not contain /by");
+            throw new DukeException("Deadline does not contain /by");
         }
 
         String description = fullCommand.substring(0, idxOfBy).substring("deadline".length()).trim();
-        assert (fullCommand.contains(description)) : "Something went wrong during the substring for deadline description";
+        //Use isBlank() rather than isEmpty(). isBlank() checks for whitespace
         if (description.isEmpty() || description.equals("")) {
-            System.out.println("Empty description for DEADLINE");
+            throw new DukeException("Empty description for DEADLINE");
         }
         String deadline = fullCommand.substring(idxOfBy, fullCommand.length()).substring("/by".length()).trim();
         if (deadline.isEmpty() || deadline.equals("")) {
-            System.out.println("Empty deadline for DEADLINE");
+            throw new DukeException("Empty deadline for DEADLINE");
         }
 //        return new Deadline(description, deadline);
         return new Deadline(description, deadline);
     }
 
-    public static Event createEvent(String fullCommand) {
+    public static Event createEvent(String fullCommand) throws DukeException {
         int idxOfBy = fullCommand.indexOf("/at");
         if (idxOfBy < 0) {
-            System.out.println("Event does not contain /at");
+            throw new DukeException("Event does not contain /at");
         }
 
         String description = fullCommand.substring(0, idxOfBy).substring("event".length()).trim();
-        assert (fullCommand.contains(description)) : "Something went wrong during the substring for event description";
+        //assert (fullCommand.contains(description)) : "Something went wrong during the substring for event description";
         if (description.isEmpty() || description.equals("")) {
-            System.out.println("Empty description for EVENT");
+            throw new DukeException("Empty description for EVENT");
         }
         String schedule = fullCommand.substring(idxOfBy, fullCommand.length()).substring("/at".length()).trim();
         if (schedule.isEmpty() || schedule.equals("")) {
-            System.out.println("Empty schedule for EVENT");
+            throw new DukeException("Empty schedule for EVENT");
         }
         return new Event(description, schedule);
     }

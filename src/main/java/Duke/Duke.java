@@ -1,9 +1,7 @@
-package Duke.main;
+package Duke;
 
-
-import Duke.tasklist.TaskList;
-import Duke.ui.Ui;
-import Duke.parser.Parser;
+import ui.Parser;
+import ui.Ui;
 
 public class Duke {
 
@@ -14,7 +12,6 @@ public class Duke {
         ui = new Ui();
         tasks = new TaskList();
     }
-
 
     public void run() {
         ui.printWelcome();

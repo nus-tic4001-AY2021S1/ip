@@ -1,4 +1,4 @@
-package Duke.task;
+package Duke;
 
 public class Event extends Todo {
     private String schedule;
