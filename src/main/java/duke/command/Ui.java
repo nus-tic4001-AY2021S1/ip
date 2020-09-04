@@ -1,4 +1,4 @@
-package duke.command;
+package duke.command; // Organize the classes into suitable duke.command packages.
 
 import java.util.Scanner;
 
@@ -49,5 +49,4 @@ public class Ui {
         System.out.println(message);
     }
 
-    public void mergeAbstractClasses(){}// mergeAbstractClasses
 }

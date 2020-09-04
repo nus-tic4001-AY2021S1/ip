@@ -1,4 +1,4 @@
-package duke.Tasks;
+package duke.Tasks;// Organize the classes into suitable duke.Tasks packages.
 
 public class Deadline extends Task {
 
