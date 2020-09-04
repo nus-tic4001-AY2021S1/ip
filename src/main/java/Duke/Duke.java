@@ -1,3 +1,5 @@
+package Duke;
+
 import java.util.Scanner;
 
 public class Duke {
@@ -8,7 +10,7 @@ public class Duke {
         ui.greetInfo();
 
         Task[] tasks = new Task[size];
-        Paser paser = new Paser(tasks, size);
+        Parser paser = new Parser(tasks, size);
         Scanner in = new Scanner(System.in);
         String str = "";
         Task singleTask;

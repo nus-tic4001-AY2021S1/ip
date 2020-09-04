@@ -1,11 +1,11 @@
-import java.util.*;
+package Duke;
 
-public class Paser {
+public class Parser {
     private Task[] tasks;
     private int arrSize;
     private int actualSize;
 
-    public Paser(Task[] tasks,int arrSize){
+    public Parser(Task[] tasks,int arrSize){
         this.tasks = tasks;
         this.arrSize=arrSize;
 
