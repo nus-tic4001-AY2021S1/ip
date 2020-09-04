@@ -1,15 +1,10 @@
+package Dukes;
+
 import java.util.Scanner;
 
 public class Ui {
-    public Scanner in = new Scanner(System.in);
-
     public Ui() {
     }
-
-    public String getInput() {
-        return in.nextLine();
-    }
-
 
     public static void printWelcome() {
         String logo = " ____        _        \n"

@@ -1,4 +1,4 @@
-package Tasks;
+package Dukes;
 
 public class Deadline extends Task {
     protected String by;
