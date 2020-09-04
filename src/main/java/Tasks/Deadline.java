@@ -2,6 +2,7 @@ package Tasks;
 
 public class Deadline extends Task {
     // A String that holds the deadline date
+
     protected String by;
 
     /**
