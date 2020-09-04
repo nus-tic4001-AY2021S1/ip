@@ -12,11 +12,11 @@ public class Ui {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
     }
-    public void greetInfo() {
+    public void greetMessage() {
         System.out.println("Hello! I'm Duke.Duke");
         System.out.println("What can I do for you?");
     }
-    public void exitInfo(){
+    public void exitMessage(){
         System.out.println("----------------\n"+"Bye. Hope to see you again soon!");
     }
     public String getInput(Scanner in) throws DukeException{
@@ -25,12 +25,14 @@ public class Ui {
        if(s.equals("todo") | s.equals("deadline") | s.equals("event"))
             throw new DukeException("OOPS!!! The description of a "+s+" cannot be empty");
         else if(!s.startsWith("todo") & !s.startsWith("deadline") & !s.startsWith("event")
-                & !s.equals("List") & !s.equals("done") & !s.equals("bye"))
+              & !s.startsWith("done") & !s.equals("List") & !s.equals("bye"))
             throw new DukeException("OOPS!!! I'm sorry, but I don't know what that means :-(");
         else if(s.startsWith("event") & !s.contains("/at"))
             throw new DukeException("OOPS!!! The date of event cannot be empty");
         else if(s.startsWith("deadline") & !s.contains("/by"))
            throw new DukeException("OOPS!!! The date of deadline cannot be empty");
+        else if(s.equals("done"))
+           throw new DukeException("OOPS!!! The index of task cannot be empty");
         return s;
     }
     public void printList(Task [] tasks,int size){
@@ -45,7 +47,7 @@ public class Ui {
         System.out.println("--------------\nGot it. I've added this task: " + "\n"+str);
         System.out.println("Now you have "+count+" in the list.\n-------------------");
     }
-    public void printMsg(Task t){
+    public void printMarkAsDone(Task t){
         System.out.println( "-----------------\n"+"Nice! I've marked this task as done:\n"+"["+t.getStatusIcon()+"] "+
                 t.description);
     }

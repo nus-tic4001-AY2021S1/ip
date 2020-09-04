@@ -6,8 +6,8 @@ public class Duke {
     public static int size=100;
     public static void main(String[] args) {
         Ui ui = new Ui();
-        ui.printlogo();
-        ui.greetInfo();
+        ui.printLogo();
+        ui.greetMessage();
 
         Task[] tasks = new Task[size];
         Parser paser = new Parser(tasks, size);
@@ -25,7 +25,7 @@ public class Duke {
                     } else if (str.contains("done")) {
                         selectedIn = Integer.parseInt(str.split(" ")[1]) - 1;
                         tasks[selectedIn].markAsDone();
-                        ui.printMsg(tasks[selectedIn]);
+                        ui.printMarkAsDone(tasks[selectedIn]);
                     } else {
 
                         if (str.split(" ")[0].equals("todo")) {
@@ -59,7 +59,7 @@ public class Duke {
             }
 
            if(str.equals("bye")) {
-                ui.exitInfo();
+                ui.exitMessage();
             }
 
         }
