@@ -36,6 +36,8 @@ public class Ui {
         printLine();
     }
 
+
+    // print out error message
     public void printError() {
         System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
