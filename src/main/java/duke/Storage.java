@@ -14,9 +14,6 @@ public class Storage {
         tempStorage = new ArrayList<>(100);
         isExit = false;
     }
-    public void addTaskToTemp(String toAdd){
-        tempStorage.add(new Task(toAdd));
-    }
     public void addToDoToTemp(String toAdd){
         tempStorage.add(new Todo(toAdd));
     }
@@ -41,6 +38,9 @@ public class Storage {
         }
         String at = toAdd.split(" /at ")[1];
         tempStorage.add(new Event(description,at));
+    }
+    public Task deleteTaskAt(int i){
+        return tempStorage.remove(i);
     }
     public int getSize(){
         return tempStorage.size();
