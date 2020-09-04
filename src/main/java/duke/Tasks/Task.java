@@ -21,7 +21,7 @@ public abstract class Task {
         return this.description;
     }
 
-    public abstract String toString();
+    public abstract String toString();// add abstract class
 
     public String printDescription() {
         return "[" + getStatusIcon() + "]" + " " + getDescription();
