@@ -49,5 +49,5 @@ public class Ui {
         System.out.println(message);
     }
 
-    public void mergeTest(){}
+    public void mergeTest(){}//test
 }
