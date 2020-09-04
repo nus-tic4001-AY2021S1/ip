@@ -7,11 +7,4 @@ public class ToDos extends Task {
         super.taskType = "[T]";
     }
 
-    //this comment from master
-
-    //this comment from test branch
-
-
-    //branch test
-    //this comment from master
 }
