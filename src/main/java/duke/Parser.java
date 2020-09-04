@@ -2,6 +2,7 @@ package duke;
 
 public class Parser {
     public void getCommand (String input,Storage store, Ui ui) throws DukeException{
+        int index;
         ui.printLine();
         String command, others;
         if(input.contains(" ")){
@@ -26,10 +27,18 @@ public class Parser {
                 if(others.isEmpty()){
                     throw new DukeException("The index of a done command cannot be empty.");
                 }
-                int index = Integer.parseInt(others);
+                index = Integer.parseInt(others);
                 store.setDoneAt(index-1);
                 ui.indentPrint("Nice! I've marked this task as done: ");
                 ui.indentPrint("  "+store.getTask(index-1).toString());
+                break;
+            case "delete":
+                if(others.isEmpty()){
+                    throw new DukeException("The index of a delete command cannot be empty.");
+                }
+                index = Integer.parseInt(others);
+                ui.indentPrint("Noted. I've removed this task: ");
+                ui.indentPrint("  "+store.deleteTaskAt(index-1).toString());
                 break;
             case "todo":
                 if(others.isEmpty()){
