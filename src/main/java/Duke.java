@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Global {
-    static String PATTERNLINE = "____________________________________________________________________________";
+    static String PATTERNLINE = "___________________________________________________________________________";
 }
 
 enum Action {
@@ -11,12 +11,11 @@ enum Action {
     AddTodo,
     AddDeadlines,
     AddEvents,
-    Invalid,
 }
 
 public class Duke {
 
-    public static void main(String[] args) throws DukeException {
+    public static void main(String[] args) {
 
         ArrayList<Task> tasks = new ArrayList<>();
 
@@ -60,10 +59,10 @@ public class Duke {
             System.out.println(farewell);
         }
     }
-    private static void processInput(String input, ArrayList<Task> tasks) throws DukeException {
+    private static void processInput(String input, ArrayList<Task> tasks){
 
         String command = input.toLowerCase();
-        Action action;// = Action.Invalid;
+        Action action;
         int count = tasks.size();
 
         try {
@@ -148,48 +147,50 @@ public class Duke {
         if (input.length() < 6) {
             throw new DukeException("☹ OOPS!!! The description of a Todo cannot be empty.\n" +
                     "Please re-input or enter bye to terminate the program\n");
+        } else {
+            tasks.add(new ToDos(input.substring(5)));
+            replyLine(tasks, input, count);
         }
-        tasks.add(new ToDos(input.substring(5)));
-        replyLine(tasks, input, count);
     }
     private static void addDeadlines(ArrayList<Task> tasks, String input, int count) throws DukeException{
+        String errorEmpty = "☹ OOPS!!! The description of a Deadlines cannot be empty.\n " +
+                "Please re-input or enter bye to terminate the program\n";
+        String errorMissing = "You have input your Schedule or Wrong format\nPlease include -> /by when\n";
+
         if(!input.contains(" ")) {
-            throw new DukeException("☹ OOPS!!! The description of a Deadlines cannot be empty.\n " +
-                    "Please re-input or enter bye to terminate the program\n");
+            throw new DukeException(errorEmpty);
         } else if(input.length()-1 == input.indexOf(" ")) {
-            throw new DukeException("☹ OOPS!!! The description of a Deadlines cannot be empty.\n " +
-                    "Please re-input or enter bye to terminate the program\n");
+            throw new DukeException(errorEmpty);
+        } else if(!input.contains("/by")) {
+            throw new DukeException(errorMissing);
+        } else {
+            int index = input.indexOf("/by");
+            String schedule = input.substring(index + 4);
+            String taskName = input.substring(input.indexOf(" ")+1, index);
+            tasks.add(new Deadlines(taskName, schedule));
+            replyLine(tasks, input, count);
         }
 
-        int index = input.indexOf("/by");
-        if(index == -1) {
-            throw new DukeException("You have input your Schedule or Wrong format\nPlease include -> /by when\n");
-        }
-        String schedule = input.substring(index + 4);
-        String taskName = input.substring(input.indexOf(" ")+1, index);
-        tasks.add(new Deadlines(taskName, schedule));
-        replyLine(tasks, input, count);
     }
     private static void addEvents(ArrayList<Task> tasks, String input, int count) throws DukeException{
-        if(!input.contains(" ")) {
-            throw new DukeException("☹ OOPS!!! The description of a Events cannot be empty.\n " +
-                    "Please re-input or enter bye to terminate the program\n");
-        } else if(input.length()-1 == input.indexOf(" ")) {
-            throw new DukeException("☹ OOPS!!! The description of a Events cannot be empty.\n " +
-                    "Please re-input or enter bye to terminate the program\n");
-        }
-
-        int index = input.indexOf("/at");
+        String errorEmpty = "☹ OOPS!!! The description of a Events cannot be empty.\n " +
+                "Please re-input or enter bye to terminate the program\n";
+        String errorMissing = "You have not input your Schedule or Wrong format. \nPlease include -> /at when\n";
         String schedule, taskName;
 
-        if(index == -1) {
-           // System.out.println("You have not input your Schedule or Wrong format. \nPlease include -> /at when");
-            throw new DukeException("You have not input your Schedule or Wrong format. \nPlease include -> /at when\n");
+        if(!input.contains(" ")) {
+            throw new DukeException(errorEmpty);
+        } else if(input.length()-1 == input.indexOf(" ")) {
+            throw new DukeException(errorEmpty);
+        } else if(!input.contains("/at")) {
+            throw new DukeException(errorMissing);
+        } else {
+            int index = input.indexOf("/at");
+            schedule = input.substring(index + 4);
+            taskName = input.substring(input.indexOf(" ")+1, index);
+            tasks.add(new Events(taskName, schedule));
+            replyLine(tasks, input, count);
         }
-        schedule = input.substring(index + 4);
-        taskName = input.substring(input.indexOf(" ")+1, index);
-        tasks.add(new Events(taskName, schedule));
-        replyLine(tasks, input, count);
     }
 
     static Action validateCommand(String command) throws DukeException {
