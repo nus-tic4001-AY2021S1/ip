@@ -16,6 +16,8 @@ public class Deadline extends Task {
     }
 
 
+    
+
     /**
      * A method to get the Task data as formatted string to display task type [D], task status and task description
      *
