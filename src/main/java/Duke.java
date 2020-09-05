@@ -50,6 +50,19 @@ public class Duke {
                             throw new DukeException("☹ OOPS!!! Please specify the task need to be done.");
                         }
                         break;
+                    case "delete":
+                        try {
+                            int index = Integer.parseInt(userInput.split(" ")[1]);
+                            System.out.println("Noted. I've removed this task: ");
+                            System.out.println(tasks.get(index - 1).toString());
+                            tasks.remove(index - 1);
+                            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+                        }catch(IndexOutOfBoundsException e){
+                            throw new DukeException("☹ OOPS!!! The task does not exist.");
+                        }catch (NumberFormatException e) {
+                            throw new DukeException("☹ OOPS!!! Please specify the number of the task need to be delete.");
+                        }
+                        break;
                     case "todo":
                         try {
                             ToDos t = new ToDos(userInput.substring(5, userInput.length()));
