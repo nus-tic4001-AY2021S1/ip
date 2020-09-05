@@ -1,7 +1,7 @@
 package duke.task;
 
 import duke.exception.DukeException;
-import duke.ui.UI;
+import duke.ui.Ui;
 
 import java.util.ArrayList;
 
@@ -31,101 +31,113 @@ public class TaskList {
         return tasks.get(index);
     }
 
-    public void changeDone(String line, UI ui, TaskList tasks) {
-        line = line.substring("done".length()).trim();
-        try {
-            if (!line.isEmpty()) {
-                markAsDone(line, ui, tasks);
-            } else {
-                throw new DukeException(ui.colorRed("Please type in the" +
-                        " 'done <task index number>' format."));
-            }
-        } catch (DukeException e) {
-            ui.printError(e.getMessage());
-        }
+    public boolean isEmpty(String line) {
+        return line.isEmpty();
     }
 
-    private void markAsDone(String line, UI ui, TaskList tasks) {
+    public String removeCommandWord(String word, String line) {
+        return line.substring(word.length()).trim();
+    }
+
+    public String reformatLine(String type, String keyword, String line) {
+        line = line.replaceFirst("/" + keyword, "(" + keyword + ":").concat(")");
+        return type + line;
+    }
+
+    public void setAsDone(String line, Ui ui, TaskList tasks) {
+        line = removeCommandWord("done", line);
         try {
-            if (tasks.size() != 0) {
-                int index = Integer.parseInt(line);
-                tasks.get(index - 1).setDone(true);
-                ui.markedAsDone(index, tasks);
-            } else ui.printError("There are no tasks to mark as done.");
+            if (isEmpty(line)) {
+                throw new DukeException("You almost typed a proper done command, but you missed out the number!\n" +
+                        "Please type in the 'done <task index number>' format.");
+            }
+            if (tasks.size() == 0) {
+                ui.printRedBorderlines("It appears that you have no tasks yet, so you can't complete any!\n" +
+                        "Perhaps you should start creating one?");
+                return;
+            }
+            int index = Integer.parseInt(line);
+            tasks.get(index - 1).setDone(true);
+            ui.printTaskDone(index, tasks);
+
+        } catch (DukeException e) {
+            ui.printRedBorderlines(e.getMessage());
         } catch (NumberFormatException e) {
-            ui.printError("Please type a number for the index.");
+            ui.printRedBorderlines("I'm sorry, but the list goes numerically.\nPerhaps you could type a number for the index?");
         } catch (IndexOutOfBoundsException e) {
-            ui.printError("Please type an index number from 1 to "
-                    + tasks.size() + ".");
+            ui.printRedBorderlines("It appears that you only have " + tasks.size() + " task(s) in your list,\n" +
+                    "perhaps you might want to try typing an index number from 1 to " + tasks.size() + " instead?");
         }
     }
 
-    public void createTodo(String line, UI ui, TaskList tasks) {
+    public void createTodo(String line, Ui ui, TaskList tasks) {
+        line = removeCommandWord("done", line);
         try {
-            if (line.substring("todo".length()).trim().isEmpty()) {
-                throw new DukeException
-                        (ui.colorRed("Please type in the 'todo <something>' format."));
-            } else if (line.contains("todo")) {
-                line = line.replaceFirst("todo", "[Todo]    ");
-                tasks.add(new Todo(line));
-                ui.taskAdded(line, tasks);
+            if (isEmpty(line)) {
+                throw new DukeException("It seems that you missed out the task description!\n" +
+                        "Please type in the 'todo <something>' format.");
             }
+
+            line = "[Todo]     " + line;
+            tasks.add(new Todo(line));
+            ui.printTaskAdded(line, tasks);
+
         } catch (DukeException e) {
-            ui.printError(e.getMessage());
+            ui.printRedBorderlines(e.getMessage());
         }
     }
 
-    public void createDeadline(String line, UI ui, TaskList tasks) {
+    public void createDeadline(String line, Ui ui, TaskList tasks) {
+        line = removeCommandWord("deadline", line);
         try {
-            if (line.substring("deadline".length()).trim().isEmpty() || !line.contains("/by")) {
-                throw new DukeException
-                        (ui.colorRed("Please type in the 'deadline <something> /by <when>' format."));
-            } else if (line.contains("deadline")) {
-                String[] split = line.split("/by");
-                if (split[0].isEmpty() || split[1].isEmpty()) {
-                    throw new DukeException
-                            (ui.colorRed("Please type in the 'deadline " +
-                                    "<something> /by <when>' format."));
-                } else if (line.contains("deadline")) {
-                    line = line.replaceFirst("deadline", "[Deadline]")
-                            .replaceFirst("/by", "(by:")
-                            .concat(")");
-                    tasks.add(new Deadline(line));
-                    ui.taskAdded(line, tasks);
-                }
+            if (isEmpty(line) || !line.contains("/by")) {
+                throw new DukeException("It seems that you've missed out the task description or the /by <when> segment!\n" +
+                        "Please type in the 'deadline <something> /by <when>' format.");
             }
+            String[] split = line.split("/by");
+
+            if (isEmpty(split[0]) || isEmpty(split[1])) {
+                throw new DukeException("It seems that you've missed out the task description or the /by <when> segment!\n" +
+                        "Please type in the 'deadline <something> /by <when>' format.");
+            }
+
+            reformatLine("[Deadline] ", "by", line);
+            tasks.add(new Deadline(line));
+            ui.printTaskAdded(line, tasks);
+
         } catch (DukeException e) {
-            ui.printError(e.getMessage());
+            ui.printRedBorderlines(e.getMessage());
         } catch (IndexOutOfBoundsException e) {
-            ui.printError("Please type in something for <when>" +
-                    " after 'deadline <something> /by'.");
+            ui.printRedBorderlines("It seems that you've missed out the deadline time!\n" +
+                    "Please type in something for <when> after 'deadline <something> /by'.");
         }
     }
 
-    public void createEvent(String line, UI ui, TaskList tasks) {
+    public void createEvent(String line, Ui ui, TaskList tasks) {
+        line = removeCommandWord("event", line);
         try {
-            if (line.substring("event".length()).trim().isEmpty() || !line.contains("/at")) {
-                throw new DukeException
-                        (ui.colorRed("Please type in the 'event <something> /at <when>' format."));
-            } else if (line.contains("event")) {
-                String[] split = line.split("/at");
-                if (split[0].isEmpty() || split[1].isEmpty()) {
-                    throw new DukeException
-                            (ui.colorRed("Please type in the 'event " +
-                                    "<something> /at <when>' format."));
-                } else if (line.contains("event")) {
-                    line = line.replaceFirst("event", "[Event]   ")
-                            .replaceFirst("/at", "(at:")
-                            .concat(")");
-                    tasks.add(new Event(line));
-                    ui.taskAdded(line, tasks);
-                }
+            if (isEmpty(line) || !line.contains("/at")) {
+                throw new DukeException("It seems that you've missed out the task description " +
+                        "or the /at <when to when> segment!\n" +
+                        "Please type in the 'event <something> /at <when to when>' format.");
             }
+            String[] split = line.split("/at");
+
+            if (isEmpty(split[0]) || isEmpty(split[1])) {
+                throw new DukeException("It seems that you've missed out the task description " +
+                        "or the /at <when to when> segment!\n" +
+                        "Please type in the 'event <something> /at <when to when>' format.");
+            }
+
+            line = reformatLine("[Event]    ", "at", line);
+            tasks.add(new Deadline(line));
+            ui.printTaskAdded(line, tasks);
+
         } catch (DukeException e) {
-            ui.printError(e.getMessage());
+            ui.printRedBorderlines(e.getMessage());
         } catch (IndexOutOfBoundsException e) {
-            ui.printError("Please type in something for <when>" +
-                    " after 'deadline <something> /by'.");
+            ui.printRedBorderlines("It seems that you've missed out the event time!\n" +
+                    "Please type in something for <when> after 'deadline <something> /by'.");
         }
     }
 }

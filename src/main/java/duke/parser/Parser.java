@@ -1,7 +1,8 @@
 package duke.parser;
 
 import duke.task.TaskList;
-import duke.ui.UI;
+import duke.task.Todo;
+import duke.ui.Ui;
 
 public class Parser {
     /**
@@ -16,18 +17,16 @@ public class Parser {
      * @param ui    The UI created in the Duke class.
      * @param tasks The TaskList created in the Duke class.
      */
-    public boolean parseInput(String line, UI ui, TaskList tasks) {
+    public boolean parseInput(String line, Ui ui, TaskList tasks) {
 
         String command = getCommandWord(line);
         switch (command) {
             case "list" -> {
-                for (int i = 0; i < tasks.size(); i++) {
-                    System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
-                }
+                ui.printAllTasks(tasks);
                 return true;
             }
             case "done" -> {
-                tasks.changeDone(line, ui, tasks);
+                tasks.setAsDone(line, ui, tasks);
                 return true;
             }
             case "todo" -> {
@@ -42,16 +41,14 @@ public class Parser {
                 tasks.createEvent(line, ui, tasks);
                 return true;
             }
-            // also exit when user input is empty
-            case "bye", "" -> {
-                ui.farewell();
+            case "bye", "" -> {     // also exits when user input is empty
+                ui.printFarewell();
                 return false;
             }
             default -> {
-                ui.invalidCommand();
+                ui.printInvalidCommand();
                 return true;
             }
         }
     }
-
 }
