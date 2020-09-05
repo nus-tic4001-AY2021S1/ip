@@ -16,6 +16,9 @@ public class Duke {
     static final String CURRENTWORKINGDIR = System.getProperty("user.dir");
     static final String DIVIDER = "________________________________________________________";
 
+    /**
+     * @param args A commandline starting args.
+     */
     public static void main(String[] args) {
         String hello = " Hello! I'm Duke\n" +
                 " What can I do for you?";
