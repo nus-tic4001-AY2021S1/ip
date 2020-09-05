@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
+    /**
+     * @param args A commandline starting args.
+     */
     public static void main(String[] args) {
         String hello = " Hello! I'm Duke\n" +
                 " What can I do for you?";
