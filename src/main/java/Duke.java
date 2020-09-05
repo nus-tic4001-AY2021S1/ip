@@ -4,21 +4,44 @@ import Duke.Tasks.Events;
 import Duke.Tasks.Task;
 import Duke.Tasks.ToDos;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Duke {
+    static final String CURRENTWORKINGDIR = System.getProperty("user.dir");
+    static final String DIVIDER = "________________________________________________________";
+
     public static void main(String[] args) {
         String hello = " Hello! I'm Duke\n" +
                 " What can I do for you?";
 
         String bye = " Bye. Hope to see you again soon!";
-        System.out.println("________________________________________________________");
+
+        String path = CURRENTWORKINGDIR + "/data/duke.txt";
+
+        printDivider();
         System.out.println(hello);
-        System.out.println("________________________________________________________");
+        printDivider();
 
         Scanner scanner = new Scanner(System.in);
         ArrayList<Task> tasks = new ArrayList<>();
+        File f = new File(path);
+
+        try {
+            if(f.exists()){
+                load(f, tasks);
+            }else{
+                createDukeTXT(path);
+            }
+        } catch (DukeException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
         while (true) {
             String userInput = scanner.nextLine();
@@ -33,6 +56,7 @@ public class Duke {
                     case "list":
                         System.out.println("Here are the tasks in your list:");
                         int i = 1;
+
                         for (Task s : tasks) {
                             System.out.println(i + "." + s.toString());
                             i++;
@@ -65,7 +89,7 @@ public class Duke {
                         break;
                     case "todo":
                         try {
-                            ToDos t = new ToDos(userInput.substring(5, userInput.length()));
+                            ToDos t = createToDos(userInput.substring(5, userInput.length()),false);
                             tasks.add(t);
                             printTask(t, tasks);
                         }catch(StringIndexOutOfBoundsException e){
@@ -75,7 +99,7 @@ public class Duke {
                     case "deadline":
                         try {
                             String[] deadlineContent = userInput.split(" /by ");
-                            Deadlines d = new Deadlines(deadlineContent[0].substring(9, deadlineContent[0].length()), deadlineContent[1]);
+                            Deadlines d = createDeadlines(deadlineContent[0].substring(9, deadlineContent[0].length()), deadlineContent[1],false);
                             tasks.add(d);
                             printTask(d, tasks);
                         }catch(StringIndexOutOfBoundsException e){
@@ -87,7 +111,7 @@ public class Duke {
                     case "event":
                         try {
                             String[] eventContent = userInput.split(" /at ");
-                            Events e = new Events(eventContent[0].substring(6, eventContent[0].length()), eventContent[1]);
+                            Events e = createEvents(eventContent[0].substring(6, eventContent[0].length()), eventContent[1],false);
                             tasks.add(e);
                             printTask(e, tasks);
                         }catch(StringIndexOutOfBoundsException e){
@@ -106,12 +130,103 @@ public class Duke {
                 System.out.println("☹ OOPS!!! Unknown internal error occurs.");
                 continue;
             }
-            System.out.println("________________________________________________________");
+
+            try {
+                save(tasks, path);
+            }catch(IOException e){
+                System.out.println("☹ OOPS!!!Updating file is fail.");
+            }
+
+            printDivider();
         }
 
         System.out.println(bye);
-        System.out.println("________________________________________________________");
+        printDivider();
 
+    }
+
+    private static Events createEvents(String taskDescription, String taskDate, boolean taskDoneStatus) {
+        Events e = new Events(taskDescription,taskDate);
+        e.setDone(taskDoneStatus);
+        return e;
+    }
+
+    private static Deadlines createDeadlines(String taskDescription, String taskDate, boolean taskDoneStatus) {
+        Deadlines d = new Deadlines(taskDescription, taskDate);
+        d.setDone(taskDoneStatus);
+        return d;
+    }
+
+    private static ToDos createToDos(String taskDescription, boolean taskDoneStatus) {
+        ToDos t = new ToDos(taskDescription);
+        t.setDone(taskDoneStatus);
+        return t;
+    }
+
+    private static boolean checkDoneStatus(String content) {
+        return content.equalsIgnoreCase("1");
+    }
+
+    private static void load(File f,ArrayList<Task> tasks) throws IOException, DukeException {
+        Scanner s = new Scanner(f);
+
+        while (s.hasNext()) {
+            String line = s.nextLine();
+            String[] contents = line.split("\\|");
+
+            String taskDate = "unknown date";
+            String taskType = contents[0];
+            boolean taskDoneStatus = checkDoneStatus(contents[1]);
+            String taskDescription = contents[2];
+            if(contents.length == 4){
+                taskDate = contents[3];
+            }
+
+            try {
+                switch (taskType) {
+                    case "T":
+                        tasks.add(createToDos(taskDescription,taskDoneStatus));
+                        break;
+                    case "D":
+                        tasks.add(createDeadlines(taskDescription,taskDate,taskDoneStatus));
+                        break;
+                    case "E":
+                        tasks.add(createEvents(taskDescription,taskDate,taskDoneStatus));
+                        break;
+                    default:
+                        throw new DukeException("☹ OOPS!!!There's unknown tasks type in the file.");
+                }
+            }catch(Exception e){
+                throw new DukeException("☹ OOPS!!!There is error in the file,please check the format.");
+            }
+        }
+    }
+
+    private static void createDukeTXT(String path) throws IOException {
+        String folderPath = CURRENTWORKINGDIR + "/data";
+        File folder = new File(folderPath);
+        if (!folder.exists() && !folder.isDirectory()) {
+            folder.mkdirs();
+            System.out.println("Folder created");
+            printDivider();
+        } else {
+            System.out.println("Folder exist");
+            printDivider();
+        }
+        FileWriter fw = new FileWriter(path);
+        fw.close();
+    }
+
+    private static void save(ArrayList<Task> tasks,String path) throws IOException {
+        FileWriter fw = new FileWriter(path);
+
+        Iterator<Task> i = tasks.iterator();
+        while (i.hasNext()) {
+            fw.write(i.next().toSavingString());
+            fw.write("\n");
+        }
+
+        fw.close();
     }
 
     private static void printTask(Task t, ArrayList<Task> tasks) {
@@ -120,5 +235,9 @@ public class Duke {
         System.out.println(t.toString());
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
 
+    }
+
+    private static void printDivider() {
+        System.out.println(DIVIDER);
     }
 }

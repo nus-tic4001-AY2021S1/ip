@@ -13,4 +13,9 @@ public class Events extends Task {
     public String toString() {
         return super.toString() + " (at: " + eventTime + ")";
     }
+
+    @Override
+    public String toSavingString(){
+        return super.toSavingString()+"|"+eventTime;
+    }
 }

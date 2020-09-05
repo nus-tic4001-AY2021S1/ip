@@ -27,4 +27,9 @@ public abstract class Task {
             this.taskSymbol = "[✗]";
         }
     }
+
+    public String toSavingString(){
+        String doneStatus = isDone?"1":"0";
+        return taskType.charAt(1) + "|"+ doneStatus + "|" +taskDescription;
+    }
 }

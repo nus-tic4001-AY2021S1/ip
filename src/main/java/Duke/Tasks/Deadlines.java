@@ -13,4 +13,9 @@ public class Deadlines extends Task {
     public String toString() {
         return super.toString() + " (by: " + deadline + ")";
     }
+
+    @Override
+    public String toSavingString(){
+        return super.toSavingString()+"|"+deadline;
+    }
 }
