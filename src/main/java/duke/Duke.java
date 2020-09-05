@@ -1,6 +1,6 @@
 package duke;
 
-import duke.ui.UI;
+import duke.ui.Ui;
 import duke.parser.Parser;
 import duke.task.TaskList;
 
@@ -15,26 +15,25 @@ import java.util.Scanner;
  */
 
 class Duke {
-    private UI ui = new UI();
-    private Parser parser = new Parser();
-    private Scanner in = new Scanner(System.in);
-    private boolean repeat = true;
-
-    private void run() {
-        TaskList tasks = new TaskList();
-        ui.greet();
-        while (repeat) {
-            repeat = parser.parseInput(in.nextLine(), ui, tasks);
-        }
-    }
+    private final Ui ui = new Ui();
+    private final Parser parser = new Parser();
+    private final Scanner in = new Scanner(System.in);
+    private final TaskList tasks = new TaskList();
+    private boolean isRepeating = true;
 
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
         new Duke().run();
+    }
+
+    private void run() {
+        ui.printDukeLogo();
+        ui.printGreeting();
+        repeatedUserInput();
+    }
+
+    private void repeatedUserInput() {
+        while (isRepeating) {
+            isRepeating = parser.parseInput(in.nextLine(), ui, tasks);
+        }
     }
 }
