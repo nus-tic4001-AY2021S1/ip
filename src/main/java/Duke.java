@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class Duke {
+
     static final String CURRENTWORKINGDIR = System.getProperty("user.dir");
     static final String DIVIDER = "________________________________________________________";
 
