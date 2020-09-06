@@ -14,6 +14,26 @@ public class Deadline extends Task {
         super(description);
         this.by = by;
     }
+
+    /**
+     * Changes the deadline description of the task.
+     * This may involve a lengthy legal process.
+     *
+     * @param by This deadline description (BY)
+     */
+    public void setBy(String by) {
+        this.by = by;
+    }
+
+    /**
+     * Gets the deadline description of the task.
+     *
+     * @return by This deadline description (BY)
+     */
+    public String getBy() {
+        return by;
+    }
+
     
 
     /**

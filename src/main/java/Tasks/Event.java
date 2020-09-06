@@ -15,6 +15,27 @@ public class Event extends Task {
         this.at = at;
     }
 
+    /**
+     * Changes the deadline description of the task.
+     * This may involve a lengthy legal process.
+     *
+     * @param at This deadline description (At)
+     */
+    public void setAt(String by) {
+        this.at = at;
+    }
+
+    /**
+     * Gets the deadline description of the task.
+     *
+     * @return by This deadline description (BY)
+     */
+    public String getAt() {
+        return at;
+    }
+
+
+
 
     /**
      * A method to get the Task data as formatted string to display task type [E], task status and task description

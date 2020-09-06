@@ -13,7 +13,7 @@ public class Parser {
         String commandFirstWord = line.split(" ")[0].toLowerCase();
 
         if (len > 1) {
-            task_detail = line_arr[1];  // filter out the first words
+            task_detail = line_arr[1].trim();  // filter out the first words
         } else {
             throw new DukeException("\u2639 OOPS!!! The description of a " + commandFirstWord + " cannot be empty.");
         }
@@ -43,7 +43,7 @@ public class Parser {
      * @param todoList    A TodoList contains the ArrayList of Task objects
      */
 
-    public void getCommand(String input, Ui ui, ProgramExit programExit, TodoList todoList) {
+    public void getCommand(String input, Ui ui, ProgramExit programExit, TodoList todoList, String outputFileName) {
 
         String commandFirstWord = input.split(" ")[0].toLowerCase();//extract the first word of the user input, and lowercase it.
 
@@ -67,6 +67,11 @@ public class Parser {
                     todoList.markSelectedTaskDone(getSecondWord(input));
                     Ui.printLine();
                     break;
+//                case "delete":
+//                    Ui.printLine();
+//                    todoList.markSelectedTaskDelete(getSecondWord(input));
+//                    Ui.printLine();
+//                    break;
                 case "todo":
                     Ui.printLine();
                     todoList.addToDoType(filterTaskDetails(input));
@@ -85,6 +90,12 @@ public class Parser {
                     todoList.readTaskFromUser(filterTaskDetails(input));
                     Ui.printLine();
                     break;
+//                case "save":
+//                    Ui.printLine();
+//                  //  todoList.saveToFile(outputFileName);
+//                    Ui.printLine();
+//                    break;
+
                 default:
                     Ui.printLine();
                     Ui.showMessage("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
