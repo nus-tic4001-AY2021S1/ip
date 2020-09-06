@@ -45,13 +45,13 @@ public class Duke {
     private static void addTasks(String input) {
         Task taskWord;
         try {
-            if (input.startsWith("todo")) {
+            if (input.startsWith("todo") && input.contains(" ")) {
                 if (input.length() < 6) {
                     throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.\n");
                 }
                 taskWord = new ToDo(input.substring(5));
                 addTaskCase(taskWord);
-            } else if (input.startsWith("deadline")) {
+            } else if (input.startsWith("deadline") && input.contains(" ")) {
                 if (input.length() < 10) {
                     throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.\n");
                 }
@@ -63,7 +63,7 @@ public class Duke {
                 String by = splitDetail[1];
                 taskWord = new Deadline(task, by);
                 addTaskCase(taskWord);
-            } else if (input.startsWith("event")) {
+            } else if (input.startsWith("event") && input.contains(" ")) {
                 if (input.length() < 7) {
                     throw new DukeException("☹ OOPS!!! The description of a event cannot be empty.\n");
                 }
@@ -75,14 +75,29 @@ public class Duke {
                 String time = splitEvent[1];
                 taskWord = new Event(event, time);
                 addTaskCase(taskWord);
-            } else if (input.startsWith("done")) {
+            } else if(input.startsWith("delete") && input.contains(" ")) {
+                if (tasks.isEmpty()) {
+                    throw new DukeException("There is no task to delete\n");
+                }else if(input.length() < 8) {
+                    throw new DukeException("please key in correct format.\n");
+                }
+                int toDelete = Integer.parseInt(input.substring(input.indexOf(' ') + 1)) - 1;
+                Task task = tasks.get(toDelete);
+                tasks.remove(toDelete);
+                System.out.println("Noted, I've removed the following task:\n"
+                        + "  "
+                        + task
+                        + "\n"
+                        + "Now you have " + tasks.size()
+                        + " tasks in the list.");
+            } else if(input.startsWith("done") && input.contains(" ")) {
                 if (input.length() < 6) {
                     throw new DukeException("please key in correct format.\n");
                 }
                 else if(tasks.isEmpty()){
                     throw new DukeException("There is no task need to be done\n");
                 }
-                    int toEdit = Integer.parseInt(input.substring(input.indexOf(' ') + 1, input.length())) - 1;
+                    int toEdit = Integer.parseInt(input.substring(input.indexOf(' ') + 1)) - 1;
                     Task task = tasks.get(toEdit);
                     task.setDone();
                     System.out.println("     Nice! I've marked this task as done:\n"
