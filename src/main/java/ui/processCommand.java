@@ -47,6 +47,10 @@ public class processCommand {
                 addEvents(tasks, input, count);
                 break;
 
+            case Delete:
+                deleteTask(tasks,input);
+                break;
+
             default:
                 System.out.println(Global.PATTERNLINE + "\nYou have entered invalid input. Please re-input or \n" +
                         "Enter bye to terminate the program.\n" + Global.PATTERNLINE);
@@ -60,6 +64,8 @@ public class processCommand {
     static Action validateCommand (String command) throws DukeException {
         if(command.startsWith("list")) {
             return  Action.List;
+        } else if (command.startsWith("delete")) {
+            return Action.Delete;
         } else if (command.length()> 4 && command.substring(0, 4).equals("done")) {
             return Action.Done;
         } else if (command.length()> 3 && command.substring(0, 4).equals("todo")) {
@@ -86,15 +92,26 @@ public class processCommand {
 
         try {
             tasks.get(index-1).markAsDone();
-            System.out.println(Global.PATTERNLINE + "\nNice! I've marked this task as done:");
-            tasks.get(index-1).printTask();
-            System.out.println(Global.PATTERNLINE);
-
+            ui.replyMarkedDone(tasks, index);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println(Global.PATTERNLINE + "\nFriend, You do not have so much task in the list\n"
-                    + Global.PATTERNLINE);
+            ui.errIndexOutOfBoundsException();
         }
 
+    }
+    private static void deleteTask (ArrayList<Task> tasks, String command) {
+        int index = 0;
+        if(command.contains(" ")) {
+            index = Integer.parseInt(command.substring(7));
+        } else {
+            index = Integer.parseInt(command.substring(6));
+        }
+
+        try {
+            ui.replyDeleteTask(tasks, index);
+            tasks.remove(index-1);
+        } catch (IndexOutOfBoundsException e) {
+            ui.errIndexOutOfBoundsException();
+        }
     }
 
     private static void addTodo(ArrayList<Task> tasks, String input, int count) throws DukeException{
@@ -146,6 +163,7 @@ public class processCommand {
             ui.replyLine(tasks, input, count);
         }
     }
+
 
 
 }

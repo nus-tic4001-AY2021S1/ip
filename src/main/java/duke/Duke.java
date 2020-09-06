@@ -10,14 +10,7 @@ public class Duke {
 
         ArrayList<Task> tasks = new ArrayList<>();
 
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-
-        ui.ui.greetNote("welcome");
+        ui.ui.welcomeLogo();
 
         Scanner in = new Scanner(System.in);
 
