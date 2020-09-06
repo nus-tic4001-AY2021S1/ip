@@ -1,16 +1,30 @@
 package duke;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
     private static final String LINE = "____________________________________________________________";
     private static final String INDENT = "      ";
+    private static final String FILEPATH = "data/tasks.txt";
 
     private static ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
         printWelcome();
+
+        try {
+            tasks = loadTasks(FILEPATH);
+        } catch (DukeException e) {
+            printError(e.getMessage());
+        }
 
         boolean isBye = false;
         while (!isBye) {
@@ -84,12 +98,18 @@ public class Duke {
         System.out.println(LINE);
     }
 
-    private static void addTodo(String commandParameter) throws DukeException{
+    private static void addTodo(String commandParameter) throws DukeException {
         if (commandParameter.isEmpty()){
             throw new DukeException("The description of a todo task cannot be empty.");
         }
 
         tasks.add(new Todo(commandParameter));
+
+        try {
+            saveTask(FILEPATH);
+        } catch (IOException e) {
+            throw new DukeException(e.getMessage());
+        }
 
         printAddedTask();
     }
@@ -113,6 +133,12 @@ public class Duke {
 
         tasks.add(new Deadline(description, by));
 
+        try {
+            saveTask(FILEPATH);
+        } catch (IOException e) {
+            throw new DukeException(e.getMessage());
+        }
+
         printAddedTask();
     }
 
@@ -134,6 +160,12 @@ public class Duke {
         }
 
         tasks.add(new Event(description, at));
+
+        try {
+            saveTask(FILEPATH);
+        } catch (IOException e) {
+            throw new DukeException(e.getMessage());
+        }
 
         printAddedTask();
     }
@@ -172,6 +204,13 @@ public class Duke {
     private static void markTaskAsDone(String commandParameter) throws DukeException {
         int taskIndex = getTaskIndex(commandParameter);
         setTaskAsDone(taskIndex);
+
+        try {
+            saveTask(FILEPATH);
+        } catch (IOException e) {
+            throw new DukeException(e.getMessage());
+        }
+
         System.out.println("Duke: I have marked this task as done:");
         System.out.println(INDENT + tasks.get(taskIndex - 1).toString());
         System.out.println(LINE);
@@ -195,6 +234,12 @@ public class Duke {
             throw new DukeException("The task index is invalid.");
         }
 
+        try {
+            saveTask(FILEPATH);
+        } catch (IOException e) {
+            throw new DukeException(e.getMessage());
+        }
+
         System.out.println("Duke: Noted! I've removed this task: ");
         System.out.println(INDENT + taskDescription);
         System.out.println(INDENT + "Now you have " + tasks.size() + " tasks in the list.");
@@ -214,5 +259,92 @@ public class Duke {
         }
 
         return taskIndex;
+    }
+
+    private static void saveTask(String filePath) throws IOException {
+        FileWriter fw = new FileWriter(filePath);
+        String isDone;
+        String description;
+        String dateTime;
+
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getIsDone()) {
+                isDone = "1";
+            }
+            else {
+                isDone = "0";
+            }
+            description = tasks.get(i).getDescription();
+            if (tasks.get(i) instanceof Todo) {
+                fw.write("T" + " | " + isDone + " | " + description + System.lineSeparator());
+            } else if (tasks.get(i) instanceof Deadline) {
+                dateTime = ((Deadline) tasks.get(i)).getBy();
+                fw.write("D" + " | " + isDone + " | " + description + " | " + dateTime + System.lineSeparator());
+            } else {
+                dateTime = ((Event) tasks.get(i)).getAt();
+                fw.write("E" + " | " + isDone + " | " + description + " | " + dateTime + System.lineSeparator());
+            }
+        }
+
+        fw.close();
+    }
+
+    private static ArrayList<Task> loadTasks(String filePath) throws DukeException {
+        try {
+            Path path = Paths.get("data/");
+            if (!(Files.exists(path))) {
+                Files.createDirectory(path);
+            }
+        } catch (IOException e) {
+            throw new DukeException("Failed to create directory!" + e.getMessage());
+        }
+
+        ArrayList<Task> tasks = new ArrayList<>();
+        ArrayList<String> lines;
+
+        lines = getLines(filePath);
+        for (String line : lines) {
+            if (!(line.trim().isEmpty())) {
+                tasks.add(createTask(line));
+            }
+        }
+        return tasks;
+    }
+
+    private static ArrayList<String> getLines(String filePath) throws DukeException {
+        File f = new File(filePath);
+        ArrayList<String> result = new ArrayList<>();
+        try {
+            Scanner s = new Scanner(f);
+            while (s.hasNext()) {
+                result.add(s.nextLine());
+            }
+        } catch (IOException e) {
+            throw new DukeException("I've problem reading the save file. Let's start with an empty task list instead.");
+        }
+        return result;
+    }
+
+    private static Task createTask(String line) {
+        String taskType = line.split("\\|")[0].trim();
+        String isDoneString = line.split("\\|")[1].trim();
+        String description = line.split("\\|")[2].trim();
+
+        boolean isDone;
+        if (isDoneString.equals("1")) {
+            isDone = true;
+        } else {
+            isDone = false;
+        }
+
+        if (taskType.equals("D")) {
+            String by = line.split("\\|")[3].trim();
+            return new Deadline(description, by, isDone);
+        } else if (taskType.equals("E")) {
+            String at = line.split("\\|")[3].trim();
+            return new Event(description, at, isDone);
+        } else {
+            return new Todo(description, isDone);
+        }
     }
 }
