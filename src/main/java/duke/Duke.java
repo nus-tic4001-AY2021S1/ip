@@ -37,6 +37,9 @@ public class Duke {
                 case "done":
                     markTaskAsDone(commandParameter);
                     break;
+                case "delete":
+                    deleteTask(commandParameter);
+                    break;
                 case "list":
                     listTasks();
                     break;
@@ -159,6 +162,7 @@ public class Duke {
                 .replace("deadline", "")
                 .replace("event", "")
                 .replace("done", "")
+                .replace("delete", "")
                 .replace("list", "")
                 .trim();
 
@@ -179,6 +183,22 @@ public class Duke {
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("The task index is invalid.");
         }
+    }
+
+    private static void deleteTask(String commandParameter) throws DukeException {
+        int taskIndex = getTaskIndex(commandParameter);
+        String taskDescription;
+        try {
+            taskDescription =  tasks.get(taskIndex - 1).toString();
+            tasks.remove(taskIndex - 1);
+        } catch (IndexOutOfBoundsException e) {
+            throw new DukeException("The task index is invalid.");
+        }
+
+        System.out.println("Duke: Noted! I've removed this task: ");
+        System.out.println(INDENT + taskDescription);
+        System.out.println(INDENT + "Now you have " + tasks.size() + " tasks in the list.");
+        System.out.println(LINE);
     }
 
     private static int getTaskIndex(String commandParameter) throws DukeException {
