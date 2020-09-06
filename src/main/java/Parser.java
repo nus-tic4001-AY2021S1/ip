@@ -1,4 +1,5 @@
 public class Parser {
+    //// Pending to add the Java Doc into the system
     /**
      * A method to parser a String.
      * Assume that the Task Details start from the second words. This method can filter out the first words.
