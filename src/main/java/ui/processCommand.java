@@ -21,7 +21,7 @@ public class processCommand {
         try {
             action = validateCommand(command);
         } catch (Exception g) {
-            System.out.println(g + "\n" + Global.PATTERNLINE);
+            ui.errInvalidInput(g);
             return;
         }
 

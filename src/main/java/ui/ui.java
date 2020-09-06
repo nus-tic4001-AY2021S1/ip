@@ -71,8 +71,10 @@ public class ui {
         System.out.println(Global.PATTERNLINE + "\nFriend, You do not have so much task in the list\n"
                 + Global.PATTERNLINE);
     }
-    public static void errInvalidInput(){
-        System.out.println(Global.PATTERNLINE + "\nYou have entered invalid input. Please re-input or \n" +
-                "Enter bye to terminate the program.\n" + Global.PATTERNLINE);
+    public static void errInvalidInput(Exception e){
+        System.out.println(e + "\n" + Global.PATTERNLINE);
+        //System.out.println(Global.PATTERNLINE + "\nYou have entered invalid input. Please re-input or \n" +
+        //        "Enter bye to terminate the program.\n" + Global.PATTERNLINE);
     }
+
 }
