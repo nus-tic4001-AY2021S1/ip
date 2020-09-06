@@ -77,7 +77,7 @@ public class Duke {
                 addTaskCase(taskWord);
             } else if(input.startsWith("delete") && input.contains(" ")){
                 if(tasks.isEmpty() || input.length() < 8) {
-                    throw new DukeException(" There is no specific task to delete.\n");
+                    throw new DukeException("☹ OOPS!!! There is no specific task to delete.\n");
                 }
                 int toDelete = Integer.parseInt(input.substring(input.indexOf(' ') + 1)) - 1;
                 Task task = tasks.get(toDelete);
