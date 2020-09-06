@@ -5,3 +5,14 @@ Hello from
 | |_| | |_| |   <  __/
 |____/ \__,_|_|\_\___|
 
+Hello! I'm Duke
+What can I do for you?
+
+-----------------------------------------------------------------
+Press 1: Add a to do task
+Press 2: Add an event
+Press 3: Add a deadline task
+Press 4: List all task
+Press 5: Mark a task to be done
+Press 6: Exit
+-----------------------------------------------------------------
