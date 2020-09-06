@@ -27,6 +27,8 @@ public class TaskList {
         tasks.add(task);
     }
 
+    void remove(int index) { tasks.remove(index - 1); }
+
     public Task get(int index) {
         return tasks.get(index);
     }
@@ -44,21 +46,21 @@ public class TaskList {
         return type + line;
     }
 
-    public void setAsDone(String line, Ui ui, TaskList tasks) {
+    public void setAsCompleted(String line, Ui ui, TaskList tasks) {
         line = removeCommandWord("done", line);
         try {
-            if (isEmpty(line)) {
-                throw new DukeException("You almost typed a proper done command, but you missed out the number!\n" +
-                        "Please type in the 'done <task index number>' format.");
-            }
             if (tasks.size() == 0) {
                 ui.printRedBorderlines("It appears that you have no tasks yet, so you can't complete any!\n" +
                         "Perhaps you should start creating one?");
                 return;
             }
+            if (isEmpty(line)) {
+                throw new DukeException("You almost typed a proper done command, but you missed out the number!\n" +
+                        "Please type in the 'done <task index number>' format.");
+            }
             int index = Integer.parseInt(line);
             tasks.get(index - 1).setDone(true);
-            ui.printTaskDone(index, tasks);
+            ui.printTaskCompleted(index, tasks);
 
         } catch (DukeException e) {
             ui.printRedBorderlines(e.getMessage());
@@ -80,7 +82,7 @@ public class TaskList {
 
             line = "[Todo]     " + line;
             tasks.add(new Todo(line));
-            ui.printTaskAdded(line, tasks);
+            ui.printTaskAdded(tasks);
 
         } catch (DukeException e) {
             ui.printRedBorderlines(e.getMessage());
@@ -103,7 +105,7 @@ public class TaskList {
 
             reformatLine("[Deadline] ", "by", line);
             tasks.add(new Deadline(line));
-            ui.printTaskAdded(line, tasks);
+            ui.printTaskAdded(tasks);
 
         } catch (DukeException e) {
             ui.printRedBorderlines(e.getMessage());
@@ -131,13 +133,38 @@ public class TaskList {
 
             line = reformatLine("[Event]    ", "at", line);
             tasks.add(new Deadline(line));
-            ui.printTaskAdded(line, tasks);
+            ui.printTaskAdded(tasks);
 
         } catch (DukeException e) {
             ui.printRedBorderlines(e.getMessage());
         } catch (IndexOutOfBoundsException e) {
             ui.printRedBorderlines("It seems that you've missed out the event time!\n" +
                     "Please type in something for <when> after 'deadline <something> /by'.");
+        }
+    }
+    public void deleteTask(String line, Ui ui, TaskList tasks) {
+        line = removeCommandWord("delete", line);
+        try {
+            if (tasks.size() == 0) {
+                ui.printRedBorderlines("It appears that you have no tasks yet, so you can't delete any!\n" +
+                        "Perhaps you should start creating one?");
+                return;
+            }
+            if (isEmpty(line)) {
+                throw new DukeException("You almost typed a proper delete command, but you missed out the number!\n" +
+                        "Please type in the 'delete <task index number>' format.");
+            }
+            int index = Integer.parseInt(line);
+            ui.printTaskRemoved(tasks);
+            tasks.remove(index);
+
+        } catch (DukeException e) {
+            ui.printRedBorderlines(e.getMessage());
+        } catch (NumberFormatException e) {
+            ui.printRedBorderlines("I'm sorry, but the list goes numerically.\nPerhaps you could type a number for the index?");
+        } catch (IndexOutOfBoundsException e) {
+            ui.printRedBorderlines("It appears that you only have " + tasks.size() + " task(s) in your list,\n" +
+                    "perhaps you might want to try typing an index number from 1 to " + tasks.size() + " instead?");
         }
     }
 }

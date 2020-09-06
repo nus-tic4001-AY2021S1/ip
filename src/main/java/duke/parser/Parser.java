@@ -1,7 +1,6 @@
 package duke.parser;
 
 import duke.task.TaskList;
-import duke.task.Todo;
 import duke.ui.Ui;
 
 public class Parser {
@@ -26,7 +25,11 @@ public class Parser {
                 return true;
             }
             case "done" -> {
-                tasks.setAsDone(line, ui, tasks);
+                tasks.setAsCompleted(line, ui, tasks);
+                return true;
+            }
+            case "delete" -> {
+                tasks.deleteTask(line, ui, tasks);
                 return true;
             }
             case "todo" -> {
