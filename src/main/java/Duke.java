@@ -4,7 +4,7 @@ public class Duke {
 
     // A string to hold the data file name which contains all tasks and their details
     public static String filename = "src/main/java/data/duke.txt";
-    public static String outputFileName = "src/main/java/data/duke_OUT.txt";
+    //public static String outputFileName = "src/main/java/data/duke_OUT.txt";
 
     public static void main(String[] args)  {
 
@@ -17,11 +17,11 @@ public class Duke {
 
         // reading the date from task data file
         // if this is the first time, a message will be shown that no data file is found
-       // todoList.readFromFile(filename);
+        todoList.readFromFile(filename);
 
         Ui.sayWelcome();
         while (!programExit.getIsExit()) {
-            parser.getCommand(Ui.readUserCommand(), ui, programExit, todoList,outputFileName);
+            parser.getCommand(Ui.readUserCommand(), ui, programExit, todoList,filename);
         }
 
 

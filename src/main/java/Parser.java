@@ -90,11 +90,11 @@ public class Parser {
                     todoList.readTaskFromUser(filterTaskDetails(input));
                     Ui.printLine();
                     break;
-//                case "save":
-//                    Ui.printLine();
-//                  //  todoList.saveToFile(outputFileName);
-//                    Ui.printLine();
-//                    break;
+                case "save":
+                    Ui.printLine();
+                    todoList.saveToFile(outputFileName);
+                    Ui.printLine();
+                    break;
 
                 default:
                     Ui.printLine();
