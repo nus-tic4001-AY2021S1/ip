@@ -67,11 +67,11 @@ public class Parser {
                     todoList.markSelectedTaskDone(getSecondWord(input));
                     Ui.printLine();
                     break;
-//                case "delete":
-//                    Ui.printLine();
-//                    todoList.markSelectedTaskDelete(getSecondWord(input));
-//                    Ui.printLine();
-//                    break;
+                case "delete":
+                    Ui.printLine();
+                    todoList.markSelectedTaskDelete(getSecondWord(input));
+                    Ui.printLine();
+                    break;
                 case "todo":
                     Ui.printLine();
                     todoList.addToDoType(filterTaskDetails(input));
