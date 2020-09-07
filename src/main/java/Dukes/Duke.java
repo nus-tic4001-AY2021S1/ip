@@ -19,9 +19,7 @@ public class Duke {
     }
 
     public static void run() {
-        //Declare the object and initialize with
         Scanner in = new Scanner(System.in);
-        //String input
         String input = in.nextLine();
         while (!input.isEmpty()) {
             if (input.startsWith("bye") || input.startsWith("exit")) {
