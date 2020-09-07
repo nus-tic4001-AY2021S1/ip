@@ -10,6 +10,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The <code>Duke</code> class implements an application that allows users to manage tasks.
+ * It contains methods that allow the creation, modification and storage of tasks.
+ */
 public class Duke {
     private static final String LINE = "____________________________________________________________";
     private static final String INDENT = "      ";
