@@ -16,12 +16,12 @@ public class Duke {
     public static void main(String[] args) {
         ui.printWelcome();
         run();
+        readFile();
+        writeFile();
     }
 
     public static void run() {
-        //Declare the object and initialize with
         Scanner in = new Scanner(System.in);
-        //String input
         String input = in.nextLine();
         while (!input.isEmpty()) {
             if (input.startsWith("bye") || input.startsWith("exit")) {
@@ -132,6 +132,62 @@ public class Duke {
                 + " tasks in the list.\n"
                 + "___________________________________________________________________\n");
     }
+    private static void readFile() {
+        try {
+            File file = new File("src/main/java/data/duke.txt");
+            Scanner fileSc = new Scanner(file);
+            System.out.println("Your task are: ");
+            while (fileSc.hasNext()) {
+                String input = fileSc.nextLine();
+                String[] strArr = input.split(" \\| ");
+                Task tasks = null;
+                if (strArr[0].equals("T")) {
+                    tasks = new ToDo(strArr[2]);
+                }else if(strArr[0].equals("D")) {
+                    tasks = new Deadline(strArr[2], strArr[3]);
+                }else if(strArr[0].equals("E")) {
+                    tasks = new Event(strArr[2], strArr[3]);
+                }else{
+                    throw new DukeException("Previous Tasks are corrupted. Please resetting your task . .");
+                }
+                if (strArr[1].equals("1")) {
+                    tasks.setDone();
+                }
+                task.add(tasks);
+                System.out.println(strArr);
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("You have no task.");
+        } catch (DukeException e) {
+            try {
+                System.out.println(e.getMessage());
+                FileWriter fw = new FileWriter("src/main/java/data/duke.txt");
+                String fileDetails = "";
+                fw.write(fileDetails);
+                fw.close();
+            } catch (IOException ex) {
+                System.out.println("FileWriting got problem");
+                ex.printStackTrace();
+            }
+        }
+    }
+    private static void writeFile() {
+        try {
+            FileWriter fw = new FileWriter("src/main/java/data/duke.txt");
+            String fileDetails = "";
+            for (Task task : tasks) {
+                fileDetails += task.toWriteFile() + "\n";
+            }
+            System.out.println(fileDetails);
+            fw.write(fileDetails);
+            fw.close();
+        } catch (IOException e) {
+            assert(false);
+        }
+    }
+
+
 
 
 }

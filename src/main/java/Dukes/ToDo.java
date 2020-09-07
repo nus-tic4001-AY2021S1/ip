@@ -12,5 +12,11 @@ public class ToDo extends Task {
         return "[T]" + super.toString();
     }
 
+    @Override
+    public String toWriteFile() {
+        return "T | " + getFileStatusIcon() + " | " + description;
+    }
+
+
 
 }
