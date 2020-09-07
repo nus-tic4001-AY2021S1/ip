@@ -14,9 +14,6 @@ public abstract class Task {
         return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
     }
 
-    public String getFileStatusIcon() {
-        return (isDone ? "1" : "0");
-    }
 
     public void setDone() {
         this.isDone = true;
@@ -27,9 +24,6 @@ public abstract class Task {
         return "[" + getStatusIcon() + "] " + description;
     }
 
-    public String toWriteFile() {
-        return "T | " + getFileStatusIcon() + " | " + description;
-    }
 }
 
 

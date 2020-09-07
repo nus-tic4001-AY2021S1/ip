@@ -13,8 +13,5 @@ public class Event extends Task {
         return "[E]" + super.toString() + "(at:" + at + ")";
     }
 
-    public String toWriteFile() {
-        return "E | " + getFileStatusIcon() + " | " + description + " | " + at;
-    }
 }
 
