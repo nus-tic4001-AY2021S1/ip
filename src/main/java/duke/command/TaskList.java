@@ -16,7 +16,7 @@ public class TaskList {
         tasks = new ArrayList<>(100);
     }
 
-    public void addTodo(String fullCommand) throws TaskManagerException {
+    public void addTodo(String fullCommand) throws TaskException {
         Todo t = Parser.createTodo(fullCommand);
         tasks.add(t);
         ui.printLine();
@@ -26,7 +26,7 @@ public class TaskList {
         ui.printLine();
     }
 
-    public void addDeadline(String fullCommand) throws TaskManagerException {
+    public void addDeadline(String fullCommand) throws TaskException {
         Deadline t = Parser.createDeadline(fullCommand);
         tasks.add(t);
         ui.printLine();
@@ -58,10 +58,10 @@ public class TaskList {
         } else try {
             int index = Integer.parseInt(description);
             if (index <= tasks.size() && index > 0) {
-                System.out.println("[" + (index) + "] " + tasks.get(index - 1));
+                ui.printWord("[" + (index) + "] " + tasks.get(index - 1));
             } else System.out.println("☹ OOPS!!!Printing range should be 1 to " + tasks.size());
         } catch (NumberFormatException e) {
-            System.out.println("☹ OOPS!!!Print command should be ‘print' or 'print INTEGER'");
+            ui.printWord("☹ OOPS!!!Print command should be ‘print' or 'print INTEGER'");
         }
         ui.printLine();
     }
@@ -72,10 +72,25 @@ public class TaskList {
             assert index <= tasks.size() : "☹ OOPS!!!Command number is invalid"; //assert error when index bigger than tasks size.
             if (index <= tasks.size() && index > 0) {
                 tasks.get(index - 1).setDone(true);
-                System.out.println("duke.Tasks: " + index + " has marked as DONE.");
-            } else System.out.println("☹ OOPS!!!Marking as done range should be 1 to " + tasks.size());
+                ui.printWord("duke.Tasks: " + index + " has marked as DONE.");
+                ui.printLine();
+            } else ui.printWord("☹ OOPS!!!Marking as done range should be 1 to " + tasks.size());
         } catch (NumberFormatException e) {
-            System.out.println("☹ OOPS!!!markAsDone command not Integer!");
+            ui.printWord("☹ OOPS!!!markAsDone command not Integer!");
+        }
+    }
+
+    public void deleteTasks(String fullCommand) {
+        try {
+            int index = Integer.parseInt(fullCommand.substring("delete".length()).trim());
+            if (index <= tasks.size() && index > 0) {
+                ui.printWord("Noted. I've removed this task: \n" + "  " + tasks.get(index-1));
+                tasks.remove(index - 1);
+                ui.printWord("Now you have " + tasks.size() + " tasks in the list.");
+                ui.printLine();
+            } else ui.printWord("☹ OOPS!!!:Deleting range should be 1 to " + tasks.size());
+        } catch (NumberFormatException e) {
+            ui.printWord("☹ OOPS!!!:Deleted command not Integer!");
         }
     }
 }
