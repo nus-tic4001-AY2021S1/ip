@@ -26,4 +26,9 @@ public abstract class Task {
     public String printDescription() {
         return "[" + getStatusIcon() + "]" + " " + getDescription();
     }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
 }

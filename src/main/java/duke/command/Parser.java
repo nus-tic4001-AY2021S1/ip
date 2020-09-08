@@ -5,9 +5,9 @@ import duke.Tasks.Todo;
 
 public class Parser {
 
-    static Ui ui = new Ui();
-    static TaskList tasks = new TaskList();
+    public static Ui ui;
 
+    static TaskList tasks;
 
     private static String commandWord;
 
@@ -42,46 +42,6 @@ public class Parser {
                 line.trim().split("/by ")[1]);
     }
 
-    public static void run() {
-        ui.printLogo();
-        ui.greetUser();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                String commandWord = Parser.getCommand(fullCommand);//convert command word to lowercase
-                switch (commandWord) {
-                    case "bye":
-                        ui.farewellUser();
-                    case "":
-                        isExit = true;
-                        break;
-                    case "todo":
-                        tasks.addTodo(fullCommand);
-                        break;
-                    case "deadline":
-                        tasks.addDeadline(fullCommand);
-                        break;
-                    case "done":
-                        tasks.markAsDone(fullCommand);
-                        break;
-                    case "list":
-                        tasks.showTasks(fullCommand);
-                        break;
-                    case "event":
-                        tasks.addEvent(fullCommand);
-                        break;
-                    case "delete":
-                        tasks.deleteTasks(fullCommand);
-                        break;
-                    default:
-                        ui.printError();
-                }
-            } catch (TaskException e) {
-                ui.printError(e.getMessage());
-            }
-        }
-    }
 }
 
 

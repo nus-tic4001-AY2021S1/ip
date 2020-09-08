@@ -10,9 +10,9 @@ public class Ui {
         System.out.println("____________________________________________________________");
     }
 
-    public void printWord(String toPrint) {
+    /*public void printWord(String toPrint) {
         System.out.println(" " + toPrint);
-    }
+    }*/
 
     public void printLogo() {
         String logo = "  __          __ \n"
@@ -25,14 +25,14 @@ public class Ui {
 
     public void greetUser() {
         printLine();
-        printWord("Hi! I'm Jojo ☺");
-        printWord("What can I do for you?");
+        showToUser("Hi! I'm Jojo ☺");
+        showToUser("What can I do for you?");
         printLine();
     }
 
     public void farewellUser() {
         printLine();
-        printWord("Bye. Have a nice day!");
+        showToUser("Bye. Have a nice day!");
         printLine();
     }
 
@@ -41,6 +41,11 @@ public class Ui {
     public void printError() {
         System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
+
+    public void showToUser(String s) {
+        System.out.println(s);
+    }
+
 
     public String readCommand() {
         String command = in.nextLine().trim();
