@@ -20,23 +20,23 @@ public class Parser {
         return commandWord;
     }
 
-    public static Todo createTodo(String line) throws TaskManagerException {
+    public static Todo createTodo(String line) throws TaskException {
         String substring = line.trim().substring("todo".length());
         String description = substring.trim();
         if (description.isEmpty()) {
-            throw new TaskManagerException("Error: Empty description for TODO");
+            throw new TaskException("Error: Empty description for TODO");
         }
         return new Todo(substring.trim());
     }
 
-    public static Deadline createDeadline(String line) throws TaskManagerException {
+    public static Deadline createDeadline(String line) throws TaskException {
         String description = line.substring("deadline".trim().length());
 
         if (description.isEmpty()) {
-            throw new TaskManagerException("Error: Empty description for TODO");
+            throw new TaskException("Error: Empty description for TODO");
         }
         if (!description.contains("/by")) {
-            throw new TaskManagerException("☹ OOPS!!!: need '/by' for DEADLINE");
+            throw new TaskException("☹ OOPS!!!: need '/by' for DEADLINE");
         }
         return new Deadline(line.trim().substring("deadline".length()).trim().split(" /by")[0],
                 line.trim().split("/by ")[1]);
@@ -71,10 +71,13 @@ public class Parser {
                     case "event":
                         tasks.addEvent(fullCommand);
                         break;
+                    case "delete":
+                        tasks.deleteTasks(fullCommand);
+                        break;
                     default:
                         ui.printError();
                 }
-            } catch (TaskManagerException e) {
+            } catch (TaskException e) {
                 ui.printError(e.getMessage());
             }
         }
