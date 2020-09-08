@@ -98,7 +98,7 @@ public class Duke {
     }
 
     private static void printError(String errorMessage) {
-        System.out.println("Duke: \u2639 OPPS!! " + errorMessage);
+        System.out.println("Duke: OPPS!! " + errorMessage);
         System.out.println(LINE);
     }
 
