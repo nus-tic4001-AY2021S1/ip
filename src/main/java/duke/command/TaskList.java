@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class TaskList {
     static Ui ui = new Ui();
-    private final ArrayList<Task> tasks;
+    private final ArrayList<Task> tasks; //  Use Java Collections classes ArrayList<Task>
 
 
     public TaskList() {
