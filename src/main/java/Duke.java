@@ -1,11 +1,11 @@
 import java.util.*;
 
 public class Duke {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DukeException {
 
         String tab = "\t";
         String newLine = "\n";
-        String line = tab + "_____________________________________________" + newLine;
+        String line = tab + "____________________________________________________" + newLine;
         String logo = tab + " ____        _        \n"
                 + tab + "|  _ \\ _   _| | _____ \n"
                 + tab + "| | | | | | | |/ / _ \\\n"
@@ -54,7 +54,7 @@ public class Duke {
 
                 switch(command){
 
-                    case "list":
+                    case "list": //command: [list]
                         if(arrlist.size() == 0){
                             System.out.println(line
                                     + tab + "No record added" + newLine
@@ -72,7 +72,10 @@ public class Duke {
                         break;
 
 
-                    case "done":
+                    case "done": //command: [done] [task number]
+                        if(details.isEmpty()){
+                            throw new DukeException("The task number of done command cannot be empty.");
+                        }
                         int i = Integer.parseInt(details);
                         arrlist.get(i-1).markAsDone();
                         System.out.println(line
@@ -82,11 +85,13 @@ public class Duke {
                         break;
 
 
-                    case "todo":
-                        //add to array
-                        Todo newTodo = new Todo(details);
+                    case "todo": //command: [todo] [description]
+                        if(details.isEmpty()){
+                            throw new DukeException("The description of a todo cannot be empty.");
+                        }
+                        //add todo to arraylist
+                        Task newTodo = new Todo(details);
                         arrlist.add(newTodo);
-
                         //print reply
                         System.out.println(line
                                 + tab + "Got it. I've added this task:" + newLine
@@ -96,13 +101,22 @@ public class Duke {
                         break;
 
 
-                    case "deadline":
-                        //add
+                    case "deadline": //command: [deadline] [description] [/by] [time]
+                        if(details.isEmpty()){
+                            throw new DukeException("The description of a deadline cannot be empty.");
+                        }
+                        if(!details.contains(" /by ")){
+                            throw new DukeException("No /by found in command.");
+                        }
                         String dDescription = details.split(" /by ")[0];
+                        if(details.split(" /by ").length<2){
+                            throw new DukeException("No deadline time found after keyword /by.");
+                        }
                         String by = details.split(" /by ")[1];
-                        Deadline newDeadline = new Deadline(dDescription, by);
-                        arrlist.add(newDeadline);
 
+                        //add deadline to arraylist
+                        Task newDeadline = new Deadline(dDescription, by);
+                        arrlist.add(newDeadline);
                         //print reply
                         System.out.println(line
                                 + tab + "Got it. I've added this task:" + newLine
@@ -112,14 +126,22 @@ public class Duke {
                         break;
 
 
-                    case "event":
-                        //add
+                    case "event": //command: [event] [description] [/at] [time]
+                        if(details.isEmpty()){
+                            throw new DukeException("The description of event cannot be empty.");
+                        }
+                        if(!details.contains(" /at ")){
+                            throw new DukeException("No /at found in command.");
+                        }
                         String eDescription = details.split(" /at ")[0];
+                        if(details.split(" /at ").length<2){
+                            throw new DukeException("No event time found after keyword /at.");
+                        }
                         String at = details.split(" /at ")[1];
-                        Event newEvent = new Event(eDescription, at);
+
+                        //add event to arraylist
+                        Task newEvent = new Event(eDescription, at);
                         arrlist.add(newEvent);
-
-
                         //print reply
                         System.out.println(line
                                 + tab + "Got it. I've added this task:" + newLine
@@ -130,10 +152,7 @@ public class Duke {
 
 
                     default:
-                        System.out.println(line
-                                + tab + "OOPS!!! I'm sorry, but I don't know what that means :-(" + newLine
-                                + line);
-                        break;
+                        throw new DukeException("I'm sorry, but I don't know what that means :-(");
                 }
             }
         } while(sc.hasNext());

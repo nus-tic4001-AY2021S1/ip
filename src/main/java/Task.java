@@ -1,25 +1,22 @@
-class Task {
+abstract class Task {
     protected String description;
-    protected boolean isDone;
 
+    //constructor
     public Task(String description) {
         this.description = description;
-        this.isDone = false;
     }
 
-    public String getStatusIcon() {
-        return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
-    }
+    //abstract methods
+    public abstract String getStatusIcon();
 
-    public void markAsDone(){
-        this.isDone = true;
-    }
+    public abstract void markAsDone();
 
-    public String getDescription(){
+    public String getDescription() {
         return this.description;
     }
 
-    public String toString(){
-        return "["+getStatusIcon()+"]" + " " + getDescription();
+    public String toString() {
+        return "[" + getStatusIcon() + "]" + " " + getDescription();
     }
 }
+
