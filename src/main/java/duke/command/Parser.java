@@ -3,23 +3,47 @@ package duke.command;
 import duke.Tasks.Deadline;
 import duke.Tasks.Todo;
 
+/**
+ *This Parser class is to parser users' command and create todo, deadline, event tasks.
+ *
+ * @author Dai Wei
+ * @version Finial version 2020.9.9
+ * @since Duke javadoc
+ */
 public class Parser {
 
-    public static Ui ui;
-
-    static TaskList tasks;
+    //public TaskList tasks;
 
     private static String commandWord;
 
+    /**
+     * This constructs parser with command string
+     *
+     * @param commandWord user command string
+     */
     public Parser(String commandWord) {
         Parser.commandWord = commandWord;
     }
 
+    /**
+     * This function is get key command word from full command.
+     *
+     * @param fullCommand tasks' full command
+     * @return tasks' commandWord
+     */
     public static String getCommand(String fullCommand) {
         commandWord = fullCommand.trim().split(" ")[0];
         return commandWord;
     }
 
+    /**
+     * This function is create todo object in task arrarylist.
+     *
+     * @param line tasks' full command
+     * @return tasks' Todo
+     * @throws TaskException if empty description for todo can
+     *                              throw this exception.
+     */
     public static Todo createTodo(String line) throws TaskException {
         String substring = line.trim().substring("todo".length());
         String description = substring.trim();
@@ -29,6 +53,14 @@ public class Parser {
         return new Todo(substring.trim());
     }
 
+    /**
+     * This function is create deadline object in task arrarylist.
+     *
+     * @param line tasks' full command
+     * @return tasks' Deadline and by
+     * @throws TaskException if empty description for deadline and /by can
+     *                              throw this exception.
+     */
     public static Deadline createDeadline(String line) throws TaskException {
         String description = line.substring("deadline".trim().length());
 

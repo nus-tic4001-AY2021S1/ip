@@ -2,18 +2,27 @@ package duke.command; // Organize the classes into suitable duke.command package
 
 import java.util.Scanner;
 
+/**
+ *This Ui class is to read user command and print duke logo & error.
+ *
+ * @author Dai Wei
+ * @version Finial version 2020.9.9
+ * @since Duke javadoc
+ */
 public class Ui {
 
     private final Scanner in = new Scanner(System.in);
 
+    /**
+     * print a line ro separate the chat text
+     */
     public void printLine() {
         System.out.println("____________________________________________________________");
     }
 
-    /*public void printWord(String toPrint) {
-        System.out.println(" " + toPrint);
-    }*/
-
+    /**
+     * print the duke chatbot logo
+     */
     public void printLogo() {
         String logo = "  __          __ \n"
                 + "  | | ____    | | ____\n"
@@ -23,6 +32,9 @@ public class Ui {
         System.out.println("Hello from\n" + logo);
     }
 
+    /**
+     * print duke duke chatbot welcome
+     */
     public void greetUser() {
         printLine();
         showToUser("Hi! I'm Jojo ☺");
@@ -30,6 +42,9 @@ public class Ui {
         printLine();
     }
 
+    /**
+     * print duke chatbot farewell to user
+     */
     public void farewellUser() {
         printLine();
         showToUser("Bye. Have a nice day!");
@@ -37,21 +52,38 @@ public class Ui {
     }
 
 
-    // print out error message
+    /**
+     * print out error message
+     */
     public void printError() {
         System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
 
+    /**
+     * help chatbot print message to user
+     *
+     * @param s string
+     */
     public void showToUser(String s) {
         System.out.println(s);
     }
 
 
+    /**
+     * read the user command
+     *
+     * @return user command with lowercase
+     */
     public String readCommand() {
         String command = in.nextLine().trim();
         return command.toLowerCase();
     }
 
+    /**
+     * help chatbot print program error message
+     *
+     * @param message string
+     */
     public void printError(String message) {
         System.out.println(message);
     }
