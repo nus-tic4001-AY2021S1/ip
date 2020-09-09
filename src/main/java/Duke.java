@@ -85,6 +85,20 @@ public class Duke {
                         break;
 
 
+                    case "delete":
+                        if(details.isEmpty()){
+                            throw new DukeException("The task number of delete command cannot be empty.");
+                        }
+                        int j = Integer.parseInt(details);
+                        System.out.println(line
+                                + tab + "Noted. I've removed this task:" + newLine
+                                + tab + tab + arrlist.remove(j-1).toString() + newLine
+                                + tab + "Now you have " + arrlist.size() + " tasks in the list." + newLine
+                                + line);
+
+                        break;
+
+
                     case "todo": //command: [todo] [description]
                         if(details.isEmpty()){
                             throw new DukeException("The description of a todo cannot be empty.");
