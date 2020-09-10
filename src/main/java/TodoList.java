@@ -7,12 +7,12 @@ import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileWriter;
 
 
 public class TodoList {
@@ -103,7 +103,6 @@ public class TodoList {
     }
 
 
-
     /**
      * A method to delete the task as the user requested.
      * Show the message to user and notify the user that a current task is deleted in the list
@@ -184,6 +183,7 @@ public class TodoList {
 
     /* readFromFile
      * This method will read the data file from disk which will contain the data of previously saved tasks
+     * It can handle the case that data folder is not exist. this method can auto create data folder and data file
      * @param filename A String that contains the file path
      *
      * */
@@ -192,12 +192,20 @@ public class TodoList {
             if (!Files.isReadable(Paths.get(filename))) {
                 Ui.showMessage("The data file i.e.: " + filename + " does not exists!");
 
+                String folderPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "data";
+
+                File folder = new File(folderPath);
                 File myObj = new File(filename);
-                if (myObj.createNewFile()) {
-                    System.out.println("Now, New file created: " + myObj.getName());
+
+                if (!folder.exists() && !folder.isDirectory()) {
+                    folder.mkdirs();
+                    System.out.println("Folder created:"+folder);
                 } else {
-                    System.out.println("File already exists.");
+                    System.out.println("Folder exist");
                 }
+                Ui.showMessage("Now, New file created: " + myObj.getName());
+
+
                 return;
             }
 
@@ -207,7 +215,7 @@ public class TodoList {
             int line = 1; //// the line number is started from 1st
 
             try {
-                Ui.showMessage("Read tasks from txt file, line by line:"+filename);
+                Ui.showMessage("Read tasks from txt file, line by line:" + filename);
                 reader = new BufferedReader(new FileReader(filename));
                 while ((tempString = reader.readLine()) != null) {
                     System.out.println("Line" + line + ":" + tempString);
@@ -241,8 +249,8 @@ public class TodoList {
     /**
      * This method will auto create relevant task from the data file
      * the task could be event task, deadline task, todo task
-     * @param line get the task content from txt file, which contains task type, task description, task status
      *
+     * @param line get the task content from txt file, which contains task type, task description, task status
      */
     private void createTaskFromFile(String line) {
 
