@@ -10,8 +10,16 @@ import duke.Action;
 
 import java.util.ArrayList;
 
+/**
+ * This class is to understand User input and process the input accordingly.
+ * User can add Task, view Task, delete Task and mark the Task done.
+ * Otherwise other command will take it as INVALID and throws.
+ */
 public class processCommand {
 
+    /**
+     * This method is to take action from validateCommand and then proecss the action accordingly.
+     */
     public static void processInput(String input, ArrayList<Task> tasks) {
 
         String command = input.toLowerCase();
@@ -61,6 +69,10 @@ public class processCommand {
         }
     }
 
+    /**
+     * This method analysed and clasified the user input to Process input accordingly.
+     * Any unknown command will be throw.
+     */
     static Action validateCommand (String command) throws DukeException {
         if(command.startsWith("list")) {
             return  Action.List;
