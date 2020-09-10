@@ -53,8 +53,8 @@ public class TaskList {
         tasks.get(idx - 1).setDone(false);
     }
 
-//    public void removeTask(String fullCommand) {
-//        int index = Integer.parseInt(fullCommand.substring("remove".length()).trim());
-//        tasks.remove(index - 1);
-//    }
+    public void removeTask(String fullCommand) {
+        int index = Integer.parseInt(fullCommand.substring("remove".length()).trim());
+        tasks.remove(index - 1);
+    }
 }
