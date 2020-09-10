@@ -44,15 +44,37 @@ public class Switch {
 
                 case "4":
                     System.out.println("list");
-                    converter.printData();
+                    if(converter.checkDataSize()){
+                        System.out.println("No data in the database");
+                    }
+                    else {
+                        converter.printData();
+                    }
                     break;
 
                 case "5":
                     System.out.println("Please mark done a task");
-                    converter.makeDone(descriptionCheck());
+                    if(converter.checkDataSize()){
+                        System.out.println("No data in the database");
+                    }
+                    else {
+                        converter.printData();
+                        converter.makeDone(descriptionCheck());
+                    }
                     break;
 
                 case "6":
+                    System.out.println("Please delete a task");
+                    if(converter.checkDataSize()){
+                        System.out.println("No data in the database");
+                    }
+                    else {
+                        converter.printData();
+                        converter.makeDelete(descriptionCheck());
+                    }
+                    break;
+
+                case "7":
                     task = false;
                     break;
                 default:
@@ -80,4 +102,5 @@ public class Switch {
         }
         return time;
     }
+
 }

@@ -30,49 +30,78 @@ public class Converter {
 
     }
 
+
+
+
+   // make done method
     public void makeDone(String description) throws DukeException {
-        if(checkDataSize()){
-            System.out.println("Not data in the database");
-        }
-        else {
-            printData();
+
+
             String clean = description.replaceAll("\\D+", "");
             int num = Integer.parseInt(clean);
             changeToDone(num);
-        }
+
+
     }
+
 
     private void changeToDone(int num){
-        if (num < storage.getCommandName().size()){
+        if (num <= storage.getCommandName().size()){
             int num1=num - 1;
             String makeDone = storage.getCommandName().get(num1).toString();
-
+            System.out.println(makeDone.replace("x","c") + "has been set to done");
             storage.getCommandName().set(num1,makeDone.replace("x","c"));
+
         }
         else {
-           System.out.println("Invalid Input");
+            System.out.println("Invalid Input");
         }
     }
 
 
+    // make delete method
+    public void makeDelete(String description) throws DukeException {
+
+            String clean = description.replaceAll("\\D+", "");
+            int num = Integer.parseInt(clean);
+            deleting(num);
+
+    }
+
+    private void deleting(int num){
+
+        if (num <= storage.getCommandName().size()){
+            int num1=num - 1;
+            System.out.println(storage.getCommandName().get(num1) + "has been deleted");
+            storage.getCommandName().remove(num1);
+            System.out.println("there are " +storage.getCommandName().size()+ " tasks in the lists");
+
+        }
+        else {
+            System.out.println("Invalid Input");
+        }
+
+    }
+
+
+
+    // print array list method
     public void printData() throws DukeException {
        printArray();
     }
 
     private void printArray(){
 
-        if(checkDataSize()){
-            System.out.println("Not data in the database");
-        }
-        else {
+
             int number = 1;
             for (Object task : storage.getCommandName()) {
                 System.out.println(number + ". " + task.toString());
                 number ++;
             }
-        }
+
     }
-    private boolean checkDataSize(){
+
+    public boolean checkDataSize(){
         if(storage.getCommandName().isEmpty()){
             return true;
         }

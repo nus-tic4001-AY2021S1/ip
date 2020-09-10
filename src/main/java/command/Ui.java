@@ -31,7 +31,8 @@ public class Ui {
         System.out.println("Press 3: Add a deadline task");
         System.out.println("Press 4: List all task");
         System.out.println("Press 5: Mark a task to be done");
-        System.out.println("Press 6: Exit");
+        System.out.println("Press 6: Delete a task");
+        System.out.println("Press 7: Exit");
         divider();
 
     }
