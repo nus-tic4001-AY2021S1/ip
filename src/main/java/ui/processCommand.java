@@ -7,11 +7,19 @@ import duke.Deadlines;
 import duke.Events;
 import duke.Global;
 import duke.Action;
-
 import java.util.ArrayList;
 
+/**
+ * This class is to process user input accordingly.
+ * Current function of the systems are adding Tasks, view Tasks, set Tasks Done
+ * Any unrecognized will be throws.
+ */
 public class processCommand {
 
+    /**
+     * Receive required action from ValidateCommand methods and perform action accordingly.
+     * Otherwise errors will be throws
+     */
     public static void processInput(String input, ArrayList<Task> tasks) {
 
         String command = input.toLowerCase();
@@ -57,6 +65,10 @@ public class processCommand {
         }
     }
 
+    /**
+     * Interpret users input and return required actions to ProcessInput Method.
+     * Otherwise errors will be throws
+     */
     static Action validateCommand (String command) throws DukeException {
         if(command.startsWith("list")) {
             return  Action.List;
