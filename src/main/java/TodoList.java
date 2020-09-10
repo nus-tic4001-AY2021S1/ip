@@ -104,7 +104,12 @@ public class TodoList {
 
 
 
-    /* Level 6. Delete */
+    /**
+     * A method to delete the task as the user requested.
+     * Show the message to user and notify the user that a current task is deleted in the list
+     *
+     * @param selectedTask A String that holds the user input from the terminal
+     */
 
     public void markSelectedTaskDelete(String selectedTask) {
         try {
@@ -186,8 +191,16 @@ public class TodoList {
         try {
             if (!Files.isReadable(Paths.get(filename))) {
                 Ui.showMessage("The data file i.e.: " + filename + " does not exists!");
+
+                File myObj = new File(filename);
+                if (myObj.createNewFile()) {
+                    System.out.println("Now, New file created: " + myObj.getName());
+                } else {
+                    System.out.println("File already exists.");
+                }
                 return;
             }
+
 
             BufferedReader reader = null;
             String tempString = null;
