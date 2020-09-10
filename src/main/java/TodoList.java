@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileWriter;
 
-//// Pending to add the Java Doc into the system
+
 public class TodoList {
 
     // An array list of task objects
@@ -177,9 +177,9 @@ public class TodoList {
     }
 
 
-    /*  Level 7:  readFromFile
+    /* readFromFile
      * This method will read the data file from disk which will contain the data of previously saved tasks
-     *
+     * @param filename A String that contains the file path
      *
      * */
     public void readFromFile(String filename) {
@@ -226,7 +226,10 @@ public class TodoList {
 
 
     /**
-     * @param line get the task content from txt file
+     * This method will auto create relevant task from the data file
+     * the task could be event task, deadline task, todo task
+     * @param line get the task content from txt file, which contains task type, task description, task status
+     *
      */
     private void createTaskFromFile(String line) {
 
@@ -267,9 +270,9 @@ public class TodoList {
 
 
     /**
-     * This method will write the data of Tasks from ArrayList to data file on disk, i.e., tasks.obj
+     * This method will write the data of Tasks from ArrayList to data file on disk
      *
-     * @param filename a string specifying the full path and extension of data file, for example,  "resources/tasks.obj"
+     * @param filename a string specifying the full path and extension of data file
      */
     public void saveToFile(String filename) {
 

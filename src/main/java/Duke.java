@@ -1,11 +1,11 @@
-import java.io.IOException;
+
 
 public class Duke {
-    //// Pending to add the Java Doc into the system
+
 
     // A string to hold the data file name which contains all tasks and their details
     public static String filename = "src/main/java/data/duke.txt";
-    //public static String outputFileName = "src/main/java/data/duke_OUT.txt";
+
 
     public static void main(String[] args)  {
 
