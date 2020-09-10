@@ -22,6 +22,8 @@ public class Constants {
 
     public static final String ACKNOWLEDGEMENT_AS_DONE = "Nice! I've marked this task as done:";
 
+    public static final String FileNotReadableException = "There was an issue with reading from the save file. Loading Duke with an empty task list";
+
     public static final String TODO = "todo";
     public static final String DEADLINE = "deadline";
     public static final String SAVE = "save";

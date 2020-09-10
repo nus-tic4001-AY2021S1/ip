@@ -17,6 +17,10 @@ public abstract class Task {
         return description;
     }
 
+    public boolean isDone() {
+        return this.isDone;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -31,5 +35,9 @@ public abstract class Task {
 
     public String toString() {
         return String.format("%s", this.getDescription());
+    }
+
+    public String save() {
+        return this.getDescription();
     }
 }

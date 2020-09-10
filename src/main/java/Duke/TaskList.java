@@ -5,10 +5,10 @@ import java.util.List;
 
 public class TaskList {
 
-    private static List<Task> tasks;
+    private static List<Task> tasks = new ArrayList<>();
 
-    public TaskList() {
-        tasks = new ArrayList<Task>();
+    public TaskList(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public String getDescription() {

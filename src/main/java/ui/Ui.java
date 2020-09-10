@@ -74,15 +74,15 @@ public class Ui {
         System.out.println(Constants.ACKNOWLEDGEMENT);
         if (task.getClass().toString().contains("Duke.Todo")) {
             System.out.println("[T] " + task);
-            System.out.println(task.getClass());
+
 
         } else if (task.getClass().toString().contains("Duke.Deadline")) {
             System.out.println("[D] " + task);
-            System.out.println(task.getClass());
+
 
         } else {
             System.out.println("[E] " + task);
-            System.out.println(task.getClass());
+
         }
         printNumberOfTasks(taskListSize);
         System.out.println(Constants.H_LINE);
