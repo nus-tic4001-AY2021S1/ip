@@ -31,7 +31,7 @@ public class Ui {
     }
 
     /**
-     * Prints "Welcome to Duke :D".
+     * Prints "Welcome to Duke".
      */
     public static void printWelcome() {
         System.out.print(Constants.GREETING);
@@ -47,14 +47,17 @@ public class Ui {
         System.out.println(Constants.DISPLAY_TASK_LIST);
         int i = 1;
         for (Task t : tasks) {
-            if (t.getClass().toString().contains("main.java.Duke.Todo")) {
+            if (t.getClass().toString().contains("Duke.Todo")) {
                 System.out.println(i + "." + "[T] " + t);
 
-            } else if (t.getClass().toString().contains("main.java.Duke.Deadline")) {
+
+            } else if (t.getClass().toString().contains("Duke.Deadline")) {
                 System.out.println(i + "." + "[D] " + t);
+
 
             } else {
                 System.out.println(i + "." + "[E] " + t);
+
             }
             i++;
         }
@@ -69,14 +72,17 @@ public class Ui {
     public void printTaskAddAck(Task task, int taskListSize) {
         System.out.println(Constants.H_LINE);
         System.out.println(Constants.ACKNOWLEDGEMENT);
-        if (task.getClass().toString().contains("main.java.Duke.Todo")) {
+        if (task.getClass().toString().contains("Duke.Todo")) {
             System.out.println("[T] " + task);
+            System.out.println(task.getClass());
 
-        } else if (task.getClass().toString().contains("main.java.Duke.Deadline")) {
+        } else if (task.getClass().toString().contains("Duke.Deadline")) {
             System.out.println("[D] " + task);
+            System.out.println(task.getClass());
 
         } else {
             System.out.println("[E] " + task);
+            System.out.println(task.getClass());
         }
         printNumberOfTasks(taskListSize);
         System.out.println(Constants.H_LINE);
@@ -126,11 +132,12 @@ public class Ui {
     }
 
     public static void helpMessage() {
-        String helpMessage = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n",
+        String helpMessage = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n",
                 Constants.TODO, Constants.TODO_HELP_STATEMENT,
                 Constants.DEADLINE, Constants.DEADLINE_HELP_STATEMENT,
                 Constants.PRINT, Constants.PRINT_HELP_STATEMENT,
                 Constants.DONE, Constants.DONE_HELP_STATEMENT,
+                Constants.REMOVE, Constants.REMOVE_HELP_STATEMENT,
                 Constants.EXIT, Constants.EXIT_HELP_STATEMENT);
 
         System.out.println(helpMessage);
