@@ -41,6 +41,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Returns the current number of tasks in the list
+     *
+     * @return
+     */
     public static int getNumberOfTasks() {
         return tasks.isEmpty() ? 0 : tasks.size();
     }
@@ -53,6 +58,10 @@ public class TaskList {
         tasks.get(idx - 1).setDone(false);
     }
 
+    /**
+     * Remove a task at the index specified in the list
+     * @param fullCommand
+     */
     public void removeTask(String fullCommand) {
         int index = Integer.parseInt(fullCommand.substring("remove".length()).trim());
         tasks.remove(index - 1);

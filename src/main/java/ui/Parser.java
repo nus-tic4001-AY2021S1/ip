@@ -5,19 +5,26 @@ import Duke.Deadline;
 import Duke.Event;
 import Duke.Todo;
 
-/**
- * public static getCommandWord(String fullCommand): Returns a the command word i.e., the first word of the given fullCommand
- * e.g., Parser.getCommandWord("todo read book") "todo"
- * public static createTodo(String fullCommand): Returns a Todo object to match the fullCommand. Assumption: the fullCommand is for creating a Todo object.
- * e.g., Parser.createTodo("todo read book") a Todo object containing the description "read book"
- */
+
 public class Parser {
 
+    /**
+     * Split the user input and return the command action to process
+     * @param fullCommand
+     * @return
+     */
     public static String getCommandWord(String fullCommand) {
         String command = fullCommand.trim().split(" ")[0];
         return command;
     }
 
+    /**
+     * Creates a Todo object and returns it.
+     *
+     * @param fullCommand
+     * @return
+     * @throws DukeException
+     */
     public static Todo createTodo(String fullCommand) throws DukeException {
         String description = fullCommand.substring("todo".length()).trim();
         //Use isBlank() rather than isEmpty(). isBlank() checks for whitespace
@@ -29,6 +36,13 @@ public class Parser {
 
     }
 
+    /**
+     * Creates a Deadline object and returns it
+     *
+     * @param fullCommand
+     * @return
+     * @throws DukeException
+     */
     public static Deadline createDeadLine(String fullCommand) throws DukeException {
         int idxOfBy = fullCommand.indexOf("/by");
         if (idxOfBy < 0) {
@@ -48,6 +62,13 @@ public class Parser {
         return new Deadline(description, deadline);
     }
 
+    /**
+     * Creates a Event object and returns it
+     *
+     * @param fullCommand
+     * @return
+     * @throws DukeException
+     */
     public static Event createEvent(String fullCommand) throws DukeException {
         int idxOfBy = fullCommand.indexOf("/at");
         if (idxOfBy < 0) {
@@ -66,6 +87,12 @@ public class Parser {
         return new Event(description, schedule);
     }
 
+    /**
+     * Parses the user input for the idx of the Task and returns as Int
+     *
+     * @param fullCommand
+     * @return
+     */
     public static int parseTaskNum(String fullCommand) {
         int index = fullCommand.contains("undone") ?
                 Integer.parseInt(fullCommand.substring("undone".length()).trim()) : Integer.parseInt(fullCommand.substring("done".length()).trim());
