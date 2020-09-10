@@ -18,9 +18,12 @@ public class Duke {
 
         boolean isExit = false;
         while (!isExit) {
+
             try {
+
                 String fullCommand = ui.readUserCommand();
                 String commandWord = Parser.getCommandWord(fullCommand);
+
                 switch (commandWord) {
                     case "":
                         ui.printError("No command input! Please enter a command or type \"help\" to view a list of commands.");
@@ -31,6 +34,7 @@ public class Duke {
 
                         } else {
                         }
+                        ui.endInputFeed();
                         ui.printGoodBye();
                         break;
                     case "help":
@@ -80,15 +84,12 @@ public class Duke {
                 ui.printError(e.getMessage());
             }
         }
-        exit();
+        System.exit(0);
     }
 
     public static void main(String[] args) {
         new Duke().run();
     }
 
-    public static void exit() {
-//        System.out.println(0);
-    }
 }
     

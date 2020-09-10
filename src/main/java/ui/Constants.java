@@ -41,5 +41,5 @@ public class Constants {
             "Use \"print\" to display the tasks and their corresponding number first. E.g. done 1\n" +
             "\t\t\t   [This will set that task's status to done/ complete]";
 
-    public static final String EXIT_HELP_STATEMENT = "Type \"exit\" and press 'Enter' in order to exit the main.java.Duke chatbot application.";
+    public static final String EXIT_HELP_STATEMENT = "Type \"exit\" and press 'Enter' in order to exit the Duke chatbot.";
 }

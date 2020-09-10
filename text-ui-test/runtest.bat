@@ -8,8 +8,7 @@ if not exist ..\text-ui-test\ACTUAL.TXT echo. >NUL 2>ACTUAL.TXT else del ACTUAL.
 echo. >NUL 2>..\text-ui-test\ACTUAL.TXT
 
 REM compile the code into the bin folder
-javac  -cp ..\src\main\java\Duke;..\src\main\java\ui -Xlint:none -d ..\bin ..\src\main\java\Duke\*.java ..\src\main\java\ui\*.java
-
+javac -cp ..\src\main\java -Xlint:none -d ..\bin ..\src\main\java\Duke\*.java
 
 IF ERRORLEVEL 1 (
     echo ********** BUILD FAILURE **********
@@ -18,7 +17,7 @@ IF ERRORLEVEL 1 (
 REM no error here, errorlevel == 0
 
 REM run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
-java -classpath ..\bin Duke < input.txt > ACTUAL.TXT
+java -classpath ..\bin Duke.Duke < input.txt > ACTUAL.TXT
 
 REM compare the output to the expected output
 FC ACTUAL.TXT EXPECTED.TXT

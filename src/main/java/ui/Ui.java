@@ -26,6 +26,10 @@ public class Ui {
         return in.nextLine().trim();
     }
 
+    public void endInputFeed() {
+        in.close();
+    }
+
     /**
      * Prints "Welcome to Duke :D".
      */
