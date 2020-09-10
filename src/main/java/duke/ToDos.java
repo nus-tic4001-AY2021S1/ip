@@ -2,7 +2,7 @@ package duke;
 
 public class ToDos extends Task{
 
-    protected String by;
+    //protected String by;
 
     public ToDos(String description) {
         super(description);

@@ -8,6 +8,7 @@ import duke.Events;
 import duke.Global;
 import duke.Action;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +30,7 @@ public class processCommand {
         try {
             action = validateCommand(command);
         } catch (Exception g) {
-            System.out.println(g + "\n" + Global.PATTERNLINE);
+            ui.errInvalidInput(g);
             return;
         }
 
@@ -41,18 +42,29 @@ public class processCommand {
 
             case Done:
                 markDone(command, tasks);
+                FileHandling.updateStatusToFile(tasks);
+               /* try {
+                    FileHandling.addToFile(command);
+                } catch (FileNotFoundException e) {
+                    FileHandling.createFile();
+                    FileHandling.addToFile(command);
+                }*/
+
                 break;
 
             case AddTodo:
                 addTodo(tasks, input, count);
+                FileHandling.addToFile(tasks);
                 break;
 
             case AddDeadlines:
                 addDeadlines(tasks, input, count);
+                FileHandling.addToFile(tasks);
                 break;
 
             case AddEvents:
                 addEvents(tasks, input, count);
+                FileHandling.addToFile(tasks);
                 break;
 
             case Delete:
@@ -175,6 +187,7 @@ public class processCommand {
             ui.replyLine(tasks, input, count);
         }
     }
+
 
 
 
