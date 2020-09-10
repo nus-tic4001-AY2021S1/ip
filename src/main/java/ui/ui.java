@@ -3,18 +3,11 @@ package ui;
 import duke.DukeException;
 import duke.Global;
 import duke.Task;
+
 import java.util.ArrayList;
 
-
-/**
- * This class is to return appropriate display to the to User.
- * Mainly Printing to response to Users
- */
 public class ui {
 
-    /**
-     * This method is a WelcomeNote to greet the users whenever the system launch.
-     */
      public static void greetNote(String hi_bye) {
 
         String welcome = Global.PATTERNLINE
@@ -33,9 +26,6 @@ public class ui {
         }
     }
 
-    /**
-     * This method is a print out a list of existing task whenever user requested.
-     */
     static void printList(ArrayList<Task> tasks) throws DukeException {
         if(tasks.size() == 0) {
             throw new DukeException("Your List is Empty\n");
@@ -48,9 +38,6 @@ public class ui {
         System.out.println(Global.PATTERNLINE);
     }
 
-    /**
-     * This method is a acknowledge reply from the system whenever User input new Task.
-     */
     static void replyLine(ArrayList<Task> tasks, String input, int count) {
         System.out.print(Global.PATTERNLINE + "\nGot it. I've added this task: \n\t" );
         tasks.get(count).printTask();
