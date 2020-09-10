@@ -13,7 +13,9 @@ public class Duke {
         tasks = new TaskList();
     }
 
-
+    /**
+     * Begin running main processing loop
+     */
     public void run() {
         ui.printWelcome();
 
@@ -67,10 +69,6 @@ public class Duke {
                         tasks.markAsDone(Parser.parseTaskNum(fullCommand));
                         ui.printTaskMarkedAsDone(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1));
                         break;
-
-//                    case "save":
-////                        storage.save(tasks.getTasks());
-//                        break;
 
                     case "remove":
                         tasks.removeTask(fullCommand);
