@@ -1,16 +1,35 @@
 package Duke;
 
+import ui.Constants;
 import ui.Parser;
 import ui.Ui;
 
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Duke {
 
+    private Storage storage;
     private TaskList tasks;
     private Ui ui;
 
-    public Duke() {
+    public Duke(String filePath) {
         ui = new Ui();
-        tasks = new TaskList();
+        storage = new Storage(filePath);
+        try {
+            tasks = new TaskList(storage.load());
+        } catch (FileNotFoundException | DukeException e) {
+
+            if (e.toString().contains("FileNotFoundException")) {
+
+            } else if (e.toString().contains("DukeException")) {
+                ui.showToUser(Constants.FileNotReadableException);
+            }
+            tasks = new TaskList(new ArrayList<>());
+        }
+
     }
 
 
@@ -32,10 +51,9 @@ public class Duke {
 
                     case "exit":
                         isExit = true;
-//                        if (tasks.getNumberOfTasks() > 0) {
-//
-//                        } else {
-//                        }
+                        if (tasks.getNumberOfTasks() > 0) {
+                            storage.save(tasks.getTasks());
+                        }
                         ui.endInputFeed();
                         ui.printGoodBye();
                         break;
@@ -47,16 +65,19 @@ public class Duke {
                     case "todo":
                         tasks.addTask(Parser.createTodo(fullCommand));
                         ui.printTaskAddAck(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), TaskList.getNumberOfTasks());
+                        storage.save(tasks.getTasks());
                         break;
 
                     case "deadline":
                         tasks.addTask(Parser.createDeadLine(fullCommand));
                         ui.printTaskAddAck(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), TaskList.getNumberOfTasks());
+                        storage.save(tasks.getTasks());
                         break;
 
                     case "event":
                         tasks.addTask(Parser.createEvent(fullCommand));
                         ui.printTaskAddAck(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), TaskList.getNumberOfTasks());
+                        storage.save(tasks.getTasks());
                         break;
 
                     case "print":
@@ -66,6 +87,7 @@ public class Duke {
                     case "done":
                         tasks.markAsDone(Parser.parseTaskNum(fullCommand));
                         ui.printTaskMarkedAsDone(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1));
+                        storage.save(tasks.getTasks());
                         break;
 
 //                    case "save":
@@ -75,6 +97,7 @@ public class Duke {
                     case "remove":
                         tasks.removeTask(fullCommand);
                         ui.printNumberOfTasks(TaskList.getNumberOfTasks());
+                        storage.save(tasks.getTasks());
                         break;
 
                     default:
@@ -89,7 +112,7 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        new Duke().run();
+        new Duke("data/tasks.txt").run();
     }
 
 }

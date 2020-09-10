@@ -25,4 +25,10 @@ public class Deadline extends Todo {
     public String toString() {
         return String.format(super.toString() + " (by: " + this.getDeadLine() + ")");
     }
+
+    @Override
+    public String save() {
+        return "D" + " | " + (this.isDone() ? 1 : 0) + " | " + this.getDescription().trim()
+                + " | " + this.getDeadLine().trim() + System.lineSeparator();
+    }
 }

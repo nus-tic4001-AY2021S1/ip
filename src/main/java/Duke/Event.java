@@ -25,4 +25,10 @@ public class Event extends Todo {
     public String toString() {
         return String.format(super.toString() + " (at: " + this.getSchedule() + ")");
     }
+
+    @Override
+    public String save() {
+        return "E" + " | " + (this.isDone() ? 1 : 0) + " | " + this.getDescription().trim()
+                + " | " + this.getSchedule().trim() + System.lineSeparator();
+    }
 }
