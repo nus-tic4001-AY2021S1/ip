@@ -49,4 +49,25 @@ public class DeadlineDTO extends TaskDTO {
         sb.append(" )");
         return sb.toString();
     }
+
+    @Override
+    public String getPrintFileString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(getTaskType());
+        sb.append(" | ");
+
+        if (!isDone()){
+            sb.append("0");
+        }else {
+            sb.append("1");
+        }
+        sb.append(" | ");
+        sb.append(getTaskName());
+        sb.append(" | ");
+        sb.append(deadlineDateString);
+        sb.append("\n");
+        return sb.toString();
+    }
+
 }

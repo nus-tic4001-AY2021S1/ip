@@ -26,6 +26,7 @@ public class Duke {
     }
 
 
+
     public static void processCommand(String originalCommand) {
         System.out.println("____________________________________________________________");
         String operation = ParserUtil.getFunctionCommand(originalCommand);
@@ -58,6 +59,9 @@ public class Duke {
                 break;
             case "delete":
                 ParserUtil.deleteTask(Integer.parseInt(details));
+                break;
+            case "save":
+                ParserUtil.writeToFile();
                 break;
             default:
                 UI.printErrorMessage("Sorry i dont understand the command");

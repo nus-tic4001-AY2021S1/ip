@@ -60,4 +60,6 @@ public abstract class TaskDTO {
     }
 
     public abstract String getTaskFullDescription();
+
+    public abstract String getPrintFileString();
 }

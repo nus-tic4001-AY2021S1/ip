@@ -35,4 +35,21 @@ public class TodoDTO extends TaskDTO {
         sb.append(getTaskName());
         return sb.toString();
     }
+    @Override
+    public String getPrintFileString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(getTaskType());
+        sb.append(" | ");
+
+        if (!isDone()){
+            sb.append("0");
+        }else {
+            sb.append("1");
+        }
+        sb.append(" | ");
+        sb.append(getTaskName());
+        sb.append("\n");
+        return sb.toString();
+    }
 }
