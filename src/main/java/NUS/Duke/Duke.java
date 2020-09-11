@@ -1,3 +1,5 @@
+package NUS.Duke;
+
 import NUS.Duke.DTO.TaskDTO;
 import NUS.Duke.ProcessingException;
 import NUS.Duke.utils.ParserUtil;
