@@ -7,6 +7,9 @@ import duke.tasks.Todo;
 
 import java.io.*;
 import java.util.ArrayList;
+/**
+ * Storage class handles List of task as tempStorage,
+ */
 
 public class Storage {
     private String storageFilePath="../ip/data/duke.txt";
