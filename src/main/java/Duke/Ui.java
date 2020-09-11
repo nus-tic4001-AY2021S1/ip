@@ -25,7 +25,7 @@ public class Ui {
        if(s.equals("todo") | s.equals("deadline") | s.equals("event"))
             throw new DukeException("OOPS!!! The description of a "+s+" cannot be empty");
         else if(!s.startsWith("todo") & !s.startsWith("deadline") & !s.startsWith("event")
-              & !s.startsWith("done") & !s.equals("List") & !s.equals("bye"))
+              & !s.startsWith("done") & !s.equals("list") & !s.equals("bye") & !s.startsWith("delete") )
             throw new DukeException("OOPS!!! I'm sorry, but I don't know what that means :-(");
         else if(s.startsWith("event") & !s.contains("/at"))
             throw new DukeException("OOPS!!! The date of event cannot be empty");
@@ -50,6 +50,13 @@ public class Ui {
     public void printMarkAsDone(Task t){
         System.out.println( "-----------------\n"+"Nice! I've marked this task as done:\n"+"["+t.getStatusIcon()+"] "+
                 t.description);
+    }
+    public void printDeleteMsg(Task t){
+        System.out.println("____________________________________________________________\n" +
+                "     Noted. I've removed this task: \n" + t.description +
+                "     \n" +
+                "     Now you have 4 tasks in the list.\n" +
+                "    ____________________________________________________________");
     }
     public void printError(Exception e){
         System.out.println("--------------\n"+e+"\n-------------------");

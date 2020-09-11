@@ -51,6 +51,12 @@ public class Duke {
                                 ui.printTask(singleTask.toString(), count);
 
                             }
+                        }else if (str.split(" ")[0].equals("delete")){
+                            selectedIn = Integer.parseInt(str.split(" ")[1]) - 1;
+                            singleTask=tasks[selectedIn];
+                            paser.deleteInArray(selectedIn);
+                            count--;
+                            ui.printDeleteMsg(singleTask);
                         }
                     }
                 }
