@@ -8,6 +8,8 @@ import NUS.Duke.ProcessingException;
 import NUS.Duke.utils.UI;
 
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -104,5 +106,25 @@ public class ParserUtil {
 
         taskId--;
 
+    }
+
+    public static void writeToFile(){
+        try {
+            FileWriter myWriter = new FileWriter("DukeFile.txt");
+            taskList.forEach(task -> {
+                try {
+                    myWriter.write(task.getPrintFileString());
+                } catch (IOException e) {
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+            });
+
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 }
