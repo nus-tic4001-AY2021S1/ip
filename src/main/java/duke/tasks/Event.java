@@ -7,6 +7,9 @@ public class Event extends Todo {
         this.at = at;
     }
     public String toString(){
-        return "[E]" + super.toString() + " (at: " + at + ")";
+        return "[E]" + "["+getStatusIcon()+"]"+" "+getDescription() + " (at: " + at + ")";
+    }
+    public String getAt(){
+        return at;
     }
 }

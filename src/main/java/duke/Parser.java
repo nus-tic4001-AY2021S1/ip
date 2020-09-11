@@ -1,7 +1,7 @@
 package duke;
 
 public class Parser {
-    public void getCommand (String input,Storage store, Ui ui) throws DukeException{
+    public void getCommand (String input,Storage store, Ui ui) throws Exception{
         int index;
         ui.printLine();
         String command, others;
@@ -31,6 +31,7 @@ public class Parser {
                 store.setDoneAt(index-1);
                 ui.indentPrint("Nice! I've marked this task as done: ");
                 ui.indentPrint("  "+store.getTask(index-1).toString());
+                store.saveToFile();
                 break;
             case "delete":
                 if(others.isEmpty()){
@@ -39,6 +40,7 @@ public class Parser {
                 index = Integer.parseInt(others);
                 ui.indentPrint("Noted. I've removed this task: ");
                 ui.indentPrint("  "+store.deleteTaskAt(index-1).toString());
+                store.saveToFile();
                 break;
             case "todo":
                 if(others.isEmpty()){
@@ -48,6 +50,7 @@ public class Parser {
                 ui.indentPrint("Got it. I've added this task: ");
                 ui.indentPrint("  "+store.getTask(store.getSize()-1).toString());
                 ui.indentPrint( "Now you have "+store.getSize()+" tasks in the list.");
+                store.saveToFile();
                 break;
             case "deadline":
                 if(others.isEmpty()){
@@ -57,6 +60,7 @@ public class Parser {
                 ui.indentPrint("Got it. I've added this task: ");
                 ui.indentPrint("  "+store.getTask(store.getSize()-1).toString());
                 ui.indentPrint( "Now you have "+store.getSize()+" tasks in the list.");
+                store.saveToFile();
                 break;
             case "event":
                 if(others.isEmpty()){
@@ -66,6 +70,7 @@ public class Parser {
                 ui.indentPrint("Got it. I've added this task: ");
                 ui.indentPrint("  "+store.getTask(store.getSize()-1).toString());
                 ui.indentPrint( "Now you have "+store.getSize()+" tasks in the list.");
+                store.saveToFile();
                 break;
             default:
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
