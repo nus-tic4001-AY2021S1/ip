@@ -7,6 +7,9 @@ public class Deadline extends Todo {
         this.by=by;
     }
     public String toString(){
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        return "[D]" + "["+getStatusIcon()+"]"+" "+getDescription() + " (by: " + by + ")";
+    }
+    public String getBy(){
+        return by;
     }
 }

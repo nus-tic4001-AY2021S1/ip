@@ -13,6 +13,8 @@ public abstract class Task {
 
     public abstract void setNotDone();
 
+    public abstract boolean getIsDone();
+
     public String getDescription(){
         return this.description;
     }

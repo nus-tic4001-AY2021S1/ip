@@ -15,7 +15,7 @@ public class Duke {
         while(!store.getIsExit()){
             try {
                 parser.getCommand(ui.readCommand(), store, ui);
-            } catch (DukeException e) {
+            } catch (Exception e) {
                 ui.indentPrint("☹ OOPS!!! " +e.getMessage());
             }
             ui.printLine();
