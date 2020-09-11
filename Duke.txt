@@ -1,0 +1,6 @@
+T|0|aaa
+T|0|bbb
+T|0|ccc
+T|0|aaa
+E|0|bbb|bbb
+D|0|ccc|cccc
