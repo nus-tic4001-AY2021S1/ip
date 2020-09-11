@@ -26,7 +26,7 @@ public class UI {
         System.out.println("Hello from\n" + logo);
 
         System.out.println("____________________________________________________________");
-        System.out.println("Hello! I'm Duke\n" +
+        System.out.println("Hello! I'm NUS.Duke.Duke\n" +
                 "What can I do for you?");
     }
 
