@@ -1,16 +1,14 @@
 import NUS.Duke.DTO.TaskDTO;
 import NUS.Duke.ProcessingException;
+import NUS.Duke.utils.ParserUtil;
 import NUS.Duke.utils.UI;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class Duke {
 
-    public static List<TaskDTO> taskList = new ArrayList<>();
-    public static int taskId = 0;
     public static void main(String[] args) {
 
 
@@ -49,7 +47,7 @@ public class Duke {
                 }
                 break;
             case "list":
-                UI.printList(Duke.taskList);
+                UI.printList(ParserUtil.taskList);
                 break;
             case "bye":
                 UI.printByeMessage();
@@ -57,6 +55,9 @@ public class Duke {
                 break;
             case "done":
                 ParserUtil.doneTask(Integer.parseInt(details));
+                break;
+            case "delete":
+                ParserUtil.deleteTask(Integer.parseInt(details));
                 break;
             default:
                 UI.printErrorMessage("Sorry i dont understand the command");

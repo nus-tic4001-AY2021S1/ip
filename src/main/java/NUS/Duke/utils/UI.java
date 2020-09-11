@@ -57,4 +57,9 @@ public class UI {
         System.out.println(" Got it. I've added this task: \n"+ task.getTaskFullDescription() +"\n"
                 +" Now you have "+task.getTaskId()+" tasks in the list");
     }
+
+    public static void printDeleteTaskMessage(TaskDTO task){
+        System.out.println(" Noted. I've removed this task: \n"+ task.getTaskFullDescription() +"\n"
+                +" Now you have "+ParserUtil.taskList.size()+" tasks in the list");
+    }
 }

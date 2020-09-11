@@ -1,3 +1,5 @@
+package NUS.Duke.utils;
+
 import NUS.Duke.DTO.DeadlineDTO;
 import NUS.Duke.DTO.EventDTO;
 import NUS.Duke.DTO.TaskDTO;
@@ -6,10 +8,12 @@ import NUS.Duke.ProcessingException;
 import NUS.Duke.utils.UI;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ParserUtil {
-
+    public static List<TaskDTO> taskList = new ArrayList<>();
     public static int taskId = 0;
     public static String getFunctionCommand(String originalCommand){
         String operation ="";
@@ -33,7 +37,7 @@ public class ParserUtil {
 
 
     public static void doneTask (int taskId){
-        Duke.taskList.forEach(task -> {
+        taskList.forEach(task -> {
             if (taskId == task.getTaskId()){
                 task.processDoneTask();
             }
@@ -44,7 +48,7 @@ public class ParserUtil {
             String taskName = details.substring(0, details.indexOf("/at"));
             String eventTime = details.substring(details.indexOf("/at") + 4).trim();
             EventDTO task = new EventDTO(taskName, ++taskId, eventTime);
-            Duke.taskList.add(task);
+            taskList.add(task);
             UI.printAddTaskMessage(task);
         }catch (Exception e){
             UI.printErrorMessage("Please check your input, /at is missing");
@@ -56,7 +60,7 @@ public class ParserUtil {
             String taskName = details.substring(0,details.indexOf("/by"));
             String deadlineDate = details.substring(details.indexOf("/by")+4).trim();
             DeadlineDTO task = new DeadlineDTO(taskName,deadlineDate,++taskId);
-            Duke.taskList.add(task);
+            taskList.add(task);
             UI.printAddTaskMessage(task);
         }catch (Exception e){
             UI.printErrorMessage("Please check your input, /by is missing");
@@ -67,9 +71,38 @@ public class ParserUtil {
     public static void createTodoTask(String details){
 
         TodoDTO task = new TodoDTO(details,++taskId);
-        Duke.taskList.add(task);
+        taskList.add(task);
         UI.printAddTaskMessage(task);
 
+
+    }
+
+    public static void deleteTask (int taskIdNumber){
+        TaskDTO tempTask = null;
+
+        try {
+
+
+            for(TaskDTO task : taskList){
+                if (taskIdNumber == task.getTaskId()) {
+                    tempTask = task;
+                }
+            }
+
+            taskList.remove(tempTask);
+            UI.printDeleteTaskMessage(tempTask);
+
+            taskList.forEach(task -> {
+                if (taskIdNumber < task.getTaskId()) {
+                    task.setTaskId(task.getTaskId() - 1);
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        taskId--;
 
     }
 }
