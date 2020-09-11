@@ -6,6 +6,9 @@ import duke.tasks.Task;
 import duke.tasks.Todo;
 
 import java.util.ArrayList;
+/**
+ * Storage class handles List of task as tempStorage,
+ */
 
 public class Storage {
     private ArrayList<Task> tempStorage;

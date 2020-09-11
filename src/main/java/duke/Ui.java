@@ -1,7 +1,9 @@
 package duke;
 
 import java.util.Scanner;
-
+/**
+ * Ui class handles all the print out to users, and read input from users.
+ */
 public class Ui {
     protected Scanner in = new Scanner(System.in);
     public void printLine(){

@@ -1,5 +1,7 @@
 package duke;
-
+/**
+ * Parser class handles command parser and identify different keywords with switch cases.
+ */
 public class Parser {
     public void getCommand (String input,Storage store, Ui ui) throws DukeException{
         int index;
