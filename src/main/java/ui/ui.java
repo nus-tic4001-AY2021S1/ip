@@ -54,13 +54,11 @@ public class ui {
         System.out.println(Global.PATTERNLINE);
     }
 
-<<<<<<< HEAD
+
     //Reply Message Section
-=======
     /**
      * This method is to print out and reply to acknowledge whenever user added new Task.
      */
->>>>>>> branch-A-JavaDoc
     static void replyLine(ArrayList<Task> tasks, String input, int count) {
         System.out.print(Global.PATTERNLINE + "\nGot it. I've added this task: \n\t" );
         tasks.get(count).printTask();
