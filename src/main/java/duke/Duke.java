@@ -9,6 +9,11 @@ public class Duke {
     private TaskList tasks;
     private Ui ui;
 
+    /**
+     * Constructor for a <code>Duke</code> object.
+     *
+     * @param filePath Path of the text file used for storing app data.
+     */
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -50,6 +55,9 @@ public class Duke {
                 case "delete":
                     deleteTask(fullCommand);
                     break;
+                case "find":
+                    findTasks(fullCommand);
+                    break;
                 case "list":
                     listTasks();
                     break;
@@ -89,12 +97,19 @@ public class Duke {
     }
 
     private void listTasks() {
-        System.out.println("Duke: Here are the tasks in your list:");
+       ui.printTasks(tasks);
+    }
+
+    private void findTasks(String fullCommand) throws DukeException {
+        String searchString = Parser.getSearchString(fullCommand);
+        TaskList filteredTasks = new TaskList();
         for (int i = 0; i < tasks.getSize(); i++) {
-            ui.printIndentation();
-            System.out.println((i + 1) + ". " + tasks.getTask(i).toString());
+            String taskDescription = tasks.getTask(i).getDescription();
+            if (taskDescription.contains(searchString)) {
+                filteredTasks.addTask(tasks.getTask(i));
+            }
         }
-        ui.printLine();
+        ui.printFilteredTasks(filteredTasks);
     }
 
     private void markTaskAsDone(String fullCommand) throws DukeException {
@@ -125,6 +140,10 @@ public class Duke {
         ui.printRemovedTask(tasks.getSize(), taskDescription);
     }
 
+    /**
+     *  Main method of Duke. This is the starting point of the app.
+     *  @param args Command line arguments. Not used.
+     */
     public static void main(String[] args) {
         new Duke("data/tasks.txt").run();
     }

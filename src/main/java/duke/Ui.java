@@ -68,4 +68,30 @@ public class Ui {
         System.out.println(task.toString());
         printLine();
     }
+
+    public void printTasks(TaskList tasks) {
+        if (tasks.getSize() == 0) {
+            System.out.println("Duke: Sorry, there is no task in your list.");
+        } else {
+            System.out.println("Duke: Here are the tasks in your list:");
+            for (int i = 0; i < tasks.getSize(); i++) {
+                printIndentation();
+                System.out.println((i + 1) + ". " + tasks.getTask(i).toString());
+            }
+            printLine();
+        }
+    }
+
+    public void printFilteredTasks(TaskList filteredTasks) {
+        if (filteredTasks.getSize() == 0) {
+            System.out.println("Duke: Sorry, there is no matching task.");
+        } else {
+            System.out.println("Duke: Here are the matching task(s) in your list:");
+            for (int i = 0; i < filteredTasks.getSize(); i++) {
+                printIndentation();
+                System.out.println((i + 1) + ". " + filteredTasks.getTask(i).toString());
+            }
+            printLine();
+        }
+    }
 }
