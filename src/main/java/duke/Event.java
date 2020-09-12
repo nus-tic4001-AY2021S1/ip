@@ -20,11 +20,24 @@ public class Event extends Task {
         this.at = at;
     }
 
+    /**
+     * Instantiate an <code>Event</code> object.
+     *
+     * @param description Description of an <code>Event</code> object.
+     * @param at Start and End time of an <code>Event</code> object.
+     * @param isDone Completion status of an <code>Event</code> object.
+     * @return <code>Event</code> object.
+     */
     public Event(String description, String at, boolean isDone) {
         super(description, isDone);
         this.at = at;
     }
 
+    /**
+     * Get the start/end time of an <code>Event</code> object.
+     *
+     *  @return Start/End time of an <code>Event</code> object.
+     */
     public String getAt() {
         return at;
     }

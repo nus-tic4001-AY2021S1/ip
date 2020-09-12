@@ -20,11 +20,24 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    /**
+     * Instantiate a <code>Deadline</code> object.
+     *
+     * @param description Description of a <code>Deadline</code> object.
+     * @param by Deadline of a <code>Deadline</code> object.
+     * @param isDone Completion status of a <code>Deadline</code> object.
+     * @return <code>Deadline</code> object.
+     */
     public Deadline(String description, String by, boolean isDone) {
         super(description, isDone);
         this.by = by;
     }
 
+    /**
+     * Get the deadline of a <code>Deadline</code> object.
+     *
+     *  @return Deadline of a <code>Deadline</code> object.
+     */
     public String getBy() {
         return by;
     }
