@@ -114,6 +114,7 @@ public class Parser {
         }
         return taskIndex - 1;
     }
+}
 
     public static String getSearchString(String fullCommand) throws DukeException {
         String searchString = fullCommand.replaceFirst("find", "").trim();
