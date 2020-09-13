@@ -13,15 +13,22 @@ public abstract class Task {
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
     }
+    public String getFileStatusIcon() {
+        return (isDone ? "1" : "0");
+    }
 
-
-    public void setDone() {
+    public Task markAsDone() {
         this.isDone = true;
+        return this;
     }
 
     @Override
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
+    }
+
+    public String toWriteFile() {
+        return "T | " + getFileStatusIcon() + " | " + description;
     }
 
 }
