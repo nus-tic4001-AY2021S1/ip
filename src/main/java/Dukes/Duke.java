@@ -34,7 +34,7 @@ public class Duke {
      * run program implements an application that simply shows the tasks and print on the screen
      *
      * @return task and the number of task in the list
-     * @throws <code>DukeException</code>Exception if the command word not in the case
+     * @throws <code>DukeException</code>Exception if the command word not in the case.
      */
     public void run() {
         ui.printWelcome();
