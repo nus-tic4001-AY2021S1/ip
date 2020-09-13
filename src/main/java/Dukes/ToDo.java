@@ -3,7 +3,7 @@ package Dukes;
 
 public class ToDo extends Task {
 
-    public ToDo(String description){
+    public ToDo(String description) {
         super(description);
     }
 
@@ -11,4 +11,6 @@ public class ToDo extends Task {
     public String toString() {
         return "[T]" + super.toString();
     }
+
+
 }

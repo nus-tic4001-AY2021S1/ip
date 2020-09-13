@@ -2,10 +2,16 @@ package Dukes;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileWriter;
 
 public class Duke {
     private static ArrayList<Task> tasks = new ArrayList<>(100);
     private static Ui ui;
+    static ArrayList<Task> task = new ArrayList<>();
+
 
     public static void main(String[] args) {
         ui.printWelcome();
@@ -18,12 +24,12 @@ public class Duke {
         //String input
         String input = in.nextLine();
         while (!input.isEmpty()) {
-            if (input.startsWith("bye")) {
+            if (input.startsWith("bye") || input.startsWith("exit")) {
                 ui.showExit();
                 break;
             } else if (input.startsWith("list")) {
                 if(tasks.isEmpty()){
-                    System.out.println("no task in your list");
+                    System.out.println("no task in your list.");
                 } else {
                     printList();
                 }
@@ -45,13 +51,13 @@ public class Duke {
     private static void addTasks(String input) {
         Task taskWord;
         try {
-            if (input.startsWith("todo")) {
+            if (input.startsWith("todo") && input.contains(" ")) {
                 if (input.length() < 6) {
                     throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.\n");
                 }
                 taskWord = new ToDo(input.substring(5));
                 addTaskCase(taskWord);
-            } else if (input.startsWith("deadline")) {
+            } else if (input.startsWith("deadline") && input.contains(" ")) {
                 if (input.length() < 10) {
                     throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.\n");
                 }
@@ -62,8 +68,9 @@ public class Duke {
                 String task = splitDetail[0];
                 String by = splitDetail[1];
                 taskWord = new Deadline(task, by);
+                //taskWord = new Deadline(task, Deadline.timeChange(by));
                 addTaskCase(taskWord);
-            } else if (input.startsWith("event")) {
+            } else if (input.startsWith("event") && input.contains(" ")) {
                 if (input.length() < 7) {
                     throw new DukeException("☹ OOPS!!! The description of a event cannot be empty.\n");
                 }
@@ -75,14 +82,28 @@ public class Duke {
                 String time = splitEvent[1];
                 taskWord = new Event(event, time);
                 addTaskCase(taskWord);
-            } else if (input.startsWith("done")) {
+            } else if(input.startsWith("delete") && input.contains(" ")){
+                if(tasks.isEmpty() || input.length() < 7) {
+                    throw new DukeException("☹ OOPS!!! There is no specific task to delete.\n");
+                }
+                int toDelete = Integer.parseInt(input.substring(input.indexOf(' ') + 1)) - 1;
+                Task task = tasks.get(toDelete);
+                tasks.remove(toDelete);
+                System.out.println("Noted, I've removed the following task:\n"
+                        + "  "
+                        + task
+                        + "\n"
+                        + "Now you have "
+                        + tasks.size()
+                        + " tasks in the list.");
+            } else if (input.startsWith("done") && input.contains(" ")) {
                 if (input.length() < 6) {
                     throw new DukeException("please key in correct format.\n");
                 }
                 else if(tasks.isEmpty()){
                     throw new DukeException("There is no task need to be done\n");
                 }
-                    int toEdit = Integer.parseInt(input.substring(input.indexOf(' ') + 1, input.length())) - 1;
+                    int toEdit = Integer.parseInt(input.substring(input.indexOf(' ') + 1)) - 1;
                     Task task = tasks.get(toEdit);
                     task.setDone();
                     System.out.println("     Nice! I've marked this task as done:\n"
@@ -97,6 +118,7 @@ public class Duke {
         } catch (Exception e) {
             assert false : "Uncaught exception";
         }
+
     }
 
     public static void addTaskCase(Task taskWord){
@@ -110,6 +132,7 @@ public class Duke {
                 + " tasks in the list.\n"
                 + "___________________________________________________________________\n");
     }
+
 
 }
 
