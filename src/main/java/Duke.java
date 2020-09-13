@@ -100,11 +100,19 @@ public class Duke {
 
     private static void processCommand(Command cmd, TaskList tasks, Ui ui) {
         int index;
+        int i = 1;
+
         switch (cmd.getCMDType()) {
             case "list":
                 ui.show("Here are the tasks in your list:");
-                int i = 1;
                 for (Task t : tasks.getWholeList()) {
+                    ui.show(i + "." + t.toString());
+                    i++;
+                }
+                break;
+            case "find":
+                ui.show("Here are the matching tasks in your list:");
+                for (Task t : tasks.findKeywordList(cmd.getCMDContent())) {
                     ui.show(i + "." + t.toString());
                     i++;
                 }
