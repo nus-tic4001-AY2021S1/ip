@@ -16,7 +16,7 @@ public class Duke {
         try {
             tasks = new TaskList(storage.load());
         } catch ( DukeException e ) {
-            ui.printLoadingError("Problem reading file. Starting with an empty task list");
+            ui.printLoadingError("Problem reading file. an empty task list is there");
             tasks = new TaskList();
         }
     }
