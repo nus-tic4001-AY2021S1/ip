@@ -1,4 +1,4 @@
-package Dukes;
+package Dukes.Exceptions;
 /**
  * Represents a checked exception.
  * A <code>DukeException</code> object corresponds to an exception that is thrown when user inputs are invalid or

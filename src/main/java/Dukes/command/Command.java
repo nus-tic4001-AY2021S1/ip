@@ -4,7 +4,7 @@ import Dukes.Storage;
 import Dukes.Task;
 import Dukes.TaskList;
 import Dukes.Ui;
-import Dukes.DukeException;
+import Dukes.Exceptions.DukeException;
 /**
  * Represents a command.
  * Parent class of all other types of commands to perform some action.

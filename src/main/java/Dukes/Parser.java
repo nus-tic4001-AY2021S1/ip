@@ -1,5 +1,6 @@
 package Dukes;
 
+import Dukes.Exceptions.DukeException;
 import Dukes.command.AddCommand;
 import Dukes.command.DeleteCommand;
 import Dukes.command.DoneCommand;

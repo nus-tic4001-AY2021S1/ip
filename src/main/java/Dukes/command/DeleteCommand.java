@@ -4,7 +4,7 @@ import Dukes.Storage;
 import Dukes.TaskList;
 import Dukes.Task;
 import Dukes.Ui;
-import Dukes.DukeException;
+import Dukes.Exceptions.DukeException;
 /**
  * Create a DeleteCommand. It removes user's task from the list.
  */

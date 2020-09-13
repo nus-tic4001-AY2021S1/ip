@@ -18,7 +18,7 @@ public class Storage {
         this.filePath = filePath;
     }
 
-    public ArrayList<String> load() throws Dukes.FileNotFoundException {
+    public ArrayList<String> load() throws Dukes.Exceptions.FileNotFoundException {
         try {
             File file = new File(filePath);
             file.createNewFile();
@@ -34,7 +34,7 @@ public class Storage {
                 } else if (strArr[0].equals("E")) {
                     tasks = new Event(strArr[2], strArr[3]);
                 } else {
-                    throw new Dukes.FileNotFoundException("Previous Tasks are corrupted. Please resetting your task . .");
+                    throw new Dukes.Exceptions.FileNotFoundException("Previous Tasks are corrupted. Please resetting your task . .");
                 }
                 if (strArr[1].equals("1")) {
                     tasks.markAsDone();
