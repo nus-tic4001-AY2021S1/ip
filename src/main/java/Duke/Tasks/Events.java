@@ -1,7 +1,10 @@
 package Duke.Tasks;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Events extends Task {
-    private String eventTime;
+    private LocalDate eventTime;
 
     /**
      * @param taskDescription description of the event
@@ -11,16 +14,16 @@ public class Events extends Task {
     public Events(String taskDescription, String eventTime) {
         super(taskDescription);
         super.taskType = "[E]";
-        this.eventTime = eventTime;
+        this.eventTime = LocalDate.parse(eventTime, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     @Override
     public String toString() {
-        return super.toString() + " (at: " + eventTime + ")";
+        return super.toString() + " (at: " + eventTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + ")";
     }
 
     @Override
     public String toSavingString(){
-        return super.toSavingString()+"|"+eventTime;
+        return super.toSavingString()+"|"+eventTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
     }
 }
