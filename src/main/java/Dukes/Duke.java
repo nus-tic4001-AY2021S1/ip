@@ -10,7 +10,7 @@ public class Duke {
     private TaskList tasks;
     private  Ui ui;
 
-    public Duke(String path) throws Dukes.FileNotFoundException {
+    public Duke(String path) throws FileNotFoundException {
         ui = new Ui();
         storage = new Storage(path);
         try {
@@ -28,7 +28,7 @@ public class Duke {
         while (!isExit) {
             try {
                 String fullCommand = ui.readCommand();
-                ui.showLine(); // show the divider line ("_______")
+                ui.showLine();
                 Command c = Parser.parse(fullCommand);
                 c.execute(tasks, ui, storage);
                 isExit = c.isExit();
@@ -40,7 +40,7 @@ public class Duke {
         }
     }
 
-        public static void main(String[] args) throws Dukes.FileNotFoundException {
+        public static void main(String[] args) throws FileNotFoundException {
             assert (args.length) > 0;
                 new Duke("data/duke.txt").run();
         }
