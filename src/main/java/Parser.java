@@ -1,3 +1,6 @@
+/**
+ * Parser: deals with making sense of the user command
+ */
 public class Parser {
 
     /**
@@ -27,7 +30,6 @@ public class Parser {
      * @param input A String that holds the user input.
      */
 
-
     public String getSecondWord(String input) {
         String commandSecondWord = input.split(" ")[1];
         return commandSecondWord;
@@ -37,14 +39,13 @@ public class Parser {
     /**
      * A method to parser a String and process necessary steps and tasks based on the user inputs.
      * Assume that the Task Details start from the second words. This method can filter out the first words.
-     *
-     * @param input       A String that holds the user input.
+     *  @param input       A String that holds the user input.
      * @param ui          A Ui that show message to user.
      * @param programExit A ProgramExit  to check if it is needed to exit the program.
-     * @param todoList    A TodoList contains the ArrayList of Task objects
+     * @param taskList    A Task TodoList contains the ArrayList of Task objects, contains the task list e.g., it has operations to add/delete tasks in the list
      */
 
-    public void getCommand(String input, Ui ui, ProgramExit programExit, TodoList todoList, String outputFileName) {
+    public void getCommand(String input, Ui ui, ProgramExit programExit, TaskList taskList, String outputFileName , Storage store) {
 
         String commandFirstWord = input.split(" ")[0].toLowerCase();//extract the first word of the user input, and lowercase it.
 
@@ -60,40 +61,46 @@ public class Parser {
                     break;
                 case "list":
                     Ui.printLine();
-                    todoList.listAllTasks();
+                    TaskList.listAllTasks();
                     Ui.printLine();
                     break;
                 case "done":
                     Ui.printLine();
-                    todoList.markSelectedTaskDone(getSecondWord(input));
+                    taskList.markSelectedTaskDone(getSecondWord(input));
                     Ui.printLine();
                     break;
                 case "delete":
                     Ui.printLine();
-                    todoList.markSelectedTaskDelete(getSecondWord(input));
+                    taskList.markSelectedTaskDelete(getSecondWord(input));
                     Ui.printLine();
                     break;
                 case "todo":
                     Ui.printLine();
-                    todoList.addToDoType(filterTaskDetails(input));
-                    todoList.readTaskFromUser(filterTaskDetails(input));
+                    taskList.addToDoType(filterTaskDetails(input));
+                    taskList.readTaskFromUser(filterTaskDetails(input));
                     Ui.printLine();
                     break;
                 case "deadline":
                     Ui.printLine();
-                    todoList.addDeadlineType(filterTaskDetails(input));
-                    todoList.readTaskFromUser(filterTaskDetails(input));
+                    taskList.addDeadlineType(filterTaskDetails(input));
+                    taskList.readTaskFromUser(filterTaskDetails(input));
                     Ui.printLine();
                     break;
                 case "event":
                     Ui.printLine();
-                    todoList.addEventType(filterTaskDetails(input));
-                    todoList.readTaskFromUser(filterTaskDetails(input));
+                    taskList.addEventType(filterTaskDetails(input));
+                    taskList.readTaskFromUser(filterTaskDetails(input));
                     Ui.printLine();
                     break;
                 case "save":
                     Ui.printLine();
-                    todoList.saveToFile(outputFileName);
+                   // todoList.saveToFile(outputFileName);
+                    store.saveToFile(outputFileName);
+                    Ui.printLine();
+                    break;
+                case "find":
+                    Ui.printLine();
+                    taskList.findTaskByKeyword(filterTaskDetails(input));
                     Ui.printLine();
                     break;
 

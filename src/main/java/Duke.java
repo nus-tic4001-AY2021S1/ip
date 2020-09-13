@@ -14,15 +14,18 @@ public class Duke {
         Ui ui = new Ui();
         ProgramExit programExit = new ProgramExit();
         Parser parser = new Parser();
-        TodoList todoList = new TodoList();
+        TaskList taskList = new TaskList();
+        Storage store = new Storage();
 
         // reading the date from task data file
         // if this is the first time, a message will be shown that no data file is found
-        todoList.readFromFile(filename);
+       // todoList.readFromFile(filename);
+
+        store.readFromFile(filename);
 
         Ui.sayWelcome();
         while (!programExit.getIsExit()) {
-            parser.getCommand(Ui.readUserCommand(), ui, programExit, todoList,filename);
+            parser.getCommand(Ui.readUserCommand(), ui, programExit, taskList,filename , store);
         }
 
 

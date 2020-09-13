@@ -3,28 +3,34 @@ import Tasks.Event;
 import Tasks.Task;
 import Tasks.Todo;
 
-import java.io.BufferedWriter;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 
+import java.text.ParseException;
+import java.time.format.DateTimeParseException;
+import java.util.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
 
-public class TodoList {
+/**
+ * TaskList: contains the task list e.g., it has operations to add/delete tasks in the list
+ * TodoList
+ */
+
+public class TaskList {
 
     // An array list of task objects
-    private ArrayList<Task> taskList;
+    private static ArrayList<Task> taskList;
 
     /**
      * creating an TodoList object
      */
-    public TodoList() {
+    public TaskList() {
         taskList = new ArrayList<>();
+    }
+
+    public static ArrayList<Task> getList() {
+        return taskList;
     }
 
 
@@ -32,11 +38,39 @@ public class TodoList {
      * A method to list done all the tasks from the list and show the list to user.
      * Show the message to user and notify the user that "Here are the tasks in your list"
      */
-    public void listAllTasks() {
+    public static void listAllTasks() {
         Ui.showMessage("Here are the tasks in your list:");
         for (int i = 0; i < taskList.size(); i++) {
             Ui.showMessage((i + 1) + "." + taskList.get(i).toString());
         }
+    }
+
+    public static boolean isValidDateTimeFormat(String format, String value, Locale locale) {
+        LocalDateTime ldt = null;
+        DateTimeFormatter fomatter = DateTimeFormatter.ofPattern(format, locale);
+
+        try {
+            ldt = LocalDateTime.parse(value, fomatter);
+            String result = ldt.format(fomatter);
+            return result.equals(value);
+        } catch (DateTimeParseException e) {
+            try {
+                LocalDate ld = LocalDate.parse(value, fomatter);
+                String result = ld.format(fomatter);
+                return result.equals(value);
+            } catch (DateTimeParseException exp) {
+                try {
+                    LocalTime lt = LocalTime.parse(value, fomatter);
+                    String result = lt.format(fomatter);
+                    return result.equals(value);
+                } catch (DateTimeParseException e2) {
+                    // Debugging purposes
+                    //e2.printStackTrace();
+                }
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -66,7 +100,16 @@ public class TodoList {
 
         String taskDescription = (toAddTaskDetails.split("(?i)/by")[0]).trim();// splits case insensitive
         String taskDeadline = (toAddTaskDetails.split("(?i)/by")[1]).trim();// splits case insensitive
-        taskList.add(new Deadline(taskDescription, taskDeadline));
+
+        boolean dateTimeFormatChecker = isValidDateTimeFormat("yyyy-MM-dd", taskDeadline, Locale.ENGLISH); // to check if the user enter the correct date format
+        if (!dateTimeFormatChecker) {
+            throw new DukeException("Please enter correct deadline Due Date yyyy-MM-dd, example: 2019-12-31");
+        }
+
+        LocalDate dueDate = LocalDate.parse(taskDeadline);
+        taskList.add(new Deadline(taskDescription, dueDate));
+
+
     }
 
     /**
@@ -81,12 +124,23 @@ public class TodoList {
         }
 
         if (toAddTaskDetails.split("(?i)/at ").length < 2) {
-            throw new DukeException("No deadline time found after keyword /at.Please enter valid task details.");
+            throw new DukeException("No event time found after keyword /at.Please enter valid task details.");
         }
 
         String taskDescription = (toAddTaskDetails.split("(?i)/at")[0]).trim();// splits case insensitive
         String taskEventDate = (toAddTaskDetails.split("(?i)/at")[1]).trim();// splits case insensitive
-        taskList.add(new Event(taskDescription, taskEventDate));
+
+        boolean dateTimeFormatChecker = isValidDateTimeFormat("yyyy-MM-dd HH:mm", taskEventDate, Locale.ENGLISH); // to check if the user enter the correct date format
+        if (!dateTimeFormatChecker) {
+            throw new DukeException("Please enter correct event Date yyyy-MM-dd HH:mm, example: 2019-12-31 11:10");
+        }
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime formatDateTime = LocalDateTime.parse(taskEventDate, formatter);
+        taskList.add(new Event(taskDescription, formatDateTime));
+
+
     }
 
     /**
@@ -180,79 +234,13 @@ public class TodoList {
         }
     }
 
-
-    /* readFromFile
-     * This method will read the data file from disk which will contain the data of previously saved tasks
-     * It can handle the case that data folder is not exist. this method can auto create data folder and data file
-     * @param filename A String that contains the file path
-     *
-     * */
-    public void readFromFile(String filename) {
-        try {
-            if (!Files.isReadable(Paths.get(filename))) {
-                Ui.showMessage("The data file i.e.: " + filename + " does not exists!");
-
-                String folderPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "data";
-
-                File folder = new File(folderPath);
-                File myObj = new File(filename);
-
-                if (!folder.exists() && !folder.isDirectory()) {
-                    folder.mkdirs();
-                    System.out.println("Folder created:"+folder);
-                } else {
-                    System.out.println("Folder exist");
-                }
-                Ui.showMessage("Now, New file created: " + myObj.getName());
-
-
-                return;
-            }
-
-
-            BufferedReader reader = null;
-            String tempString = null;
-            int line = 1; //// the line number is started from 1st
-
-            try {
-                Ui.showMessage("Read tasks from txt file, line by line:" + filename);
-                reader = new BufferedReader(new FileReader(filename));
-                while ((tempString = reader.readLine()) != null) {
-                    System.out.println("Line" + line + ":" + tempString);
-                    createTaskFromFile(tempString);
-                    line++;
-                }
-                reader.close();
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-
-            } finally {
-                if (reader != null) {
-                    try {
-                        reader.close();
-                    } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-
-                }
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     /**
      * This method will auto create relevant task from the data file
      * the task could be event task, deadline task, todo task
      *
      * @param line get the task content from txt file, which contains task type, task description, task status
      */
-    private void createTaskFromFile(String line) {
+    private void createTaskFromFile(String line) throws ParseException {
 
         String taskDescription;
         String taskSchedule = null;
@@ -265,19 +253,21 @@ public class TodoList {
         }
 
         Task task = new Task("default");
+        DateTimeFormatter formatterEventSchedule = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+
         /* pass the value to Task:  todo / deadline /event, and lable the task status */
         if (line_arr[0].equals("D ") & line_arr[1].equals(" 1 ")) {
-            task = new Deadline(taskDescription, taskSchedule);
+            task = new Deadline(taskDescription, LocalDate.parse(taskSchedule));
             task.setDone();
             taskList.add(task);
         } else if (line_arr[0].equals("D ") & line_arr[1].equals(" 0 ")) {
-            taskList.add((new Deadline(taskDescription, taskSchedule)));
+            taskList.add((new Deadline(taskDescription, LocalDate.parse(taskSchedule))));
         } else if (line_arr[0].equals("E ") & line_arr[1].equals(" 1 ")) {
-            task = new Event(taskDescription, taskSchedule);
+            task = new Event(taskDescription, LocalDateTime.parse(taskSchedule, formatterEventSchedule));
             task.setDone();
             taskList.add(task);
         } else if (line_arr[0].equals("E ") & line_arr[1].equals(" 0 ")) {
-            taskList.add(new Event(taskDescription, taskSchedule));
+            taskList.add(new Event(taskDescription, LocalDateTime.parse(taskSchedule, formatterEventSchedule)));
         } else if (line_arr[0].equals("T ") & line_arr[1].equals(" 1 ")) {
             task = new Todo(taskDescription);
             task.setDone();
@@ -291,41 +281,32 @@ public class TodoList {
 
 
     /**
-     * This method will write the data of Tasks from ArrayList to data file on disk
+     * A method to find a task by searching for a keyword.
+     * Show the message to user and notify the user that "Here are the matching tasks in your list"
      *
-     * @param filename a string specifying the full path and extension of data file
+     * @param line get the task content from txt file, which contains keyword
      */
-    public void saveToFile(String filename) {
+    public void findTaskByKeyword(String line) {
+        String taskDescription;
+        ArrayList<Task> taskListKeywordFound = new ArrayList<>();
 
-
-        File out = new File(filename);
-        if (out.exists()) {
-            out.delete();
-        }
-
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(out))) {
-            for (int i = 0; i < taskList.size(); i++) {
-                if (taskList.get(i) instanceof Deadline) {
-                    bw.append("D ");
-                    bw.append("| ").append(taskList.get(i).isDone() ? "1" : "0").append(" | ").append(taskList.get(i).getDescription()).append(" | ").append(((Deadline) taskList.get(i)).getBy());
-                } else if (taskList.get(i) instanceof Event) {
-                    bw.append("E ");
-                    bw.append("| ").append(taskList.get(i).isDone() ? "1" : "0").append(" | ").append(taskList.get(i).getDescription()).append(" | ").append(((Event) taskList.get(i)).getAt());
-
-                } else if (taskList.get(i) instanceof Todo) {
-                    bw.append("T ");
-                    bw.append("| ").append(taskList.get(i).isDone() ? "1" : "0").append(" | ").append(taskList.get(i).getDescription());
-
-                }
-
-
-                bw.append("\n");
+        int matchedCount = 0;
+        for (Task task : taskList) {
+            taskDescription = task.toString();
+            if (taskDescription.toLowerCase().contains(line.toLowerCase())) {
+                matchedCount = matchedCount + 1;
+//                Ui.showMessage((matchedCount) + "." + taskList.get(i).toString());
+                taskListKeywordFound.add(task);  // once there is a match to a task, add this task to the new task list:taskListKeywordFound
             }
-        } catch (IOException ex) {
-            Ui.showMessage(ex.getMessage());
         }
-        Ui.showMessage("Task save to disk txt file--->:" + filename);
+        if (matchedCount == 0) {
+            Ui.showMessage("Sorry! Cannot find any matched tasks in your list.");
+        } else {
+            Ui.showMessage("Here are the matching tasks in your list:");
+            for (int i = 0; i < taskListKeywordFound.size(); i++) {
+                Ui.showMessage((i + 1) + "." + taskListKeywordFound.get(i).toString());  // display the matched tasks to user from the task list:taskListKeywordFound
+            }
+        }
 
 
     }

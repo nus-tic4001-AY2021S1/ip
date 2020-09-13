@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+/**
+ * Ui: deals with interactions with the user
+ */
+
 public class Ui {
     /**
      * This method will scan the user input

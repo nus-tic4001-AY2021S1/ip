@@ -1,11 +1,14 @@
 package Tasks;
-//A-Packages: Organize into Packages named Tasks
-//A-AbstractClasses:abstract class Task declares some methods that it implements here, and some that are implemented by the subclasses.
+
+
+
 public class Task {
     // A String that holds the description of a task
     protected String description;
     // A boolean value, if true: the task is completed, otherwise false.
     protected boolean isDone;
+
+
 
     /**
      * Creating an object of Task class

@@ -1,37 +1,60 @@
 package Tasks;
 
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+
+
 public class Event extends Task {
     // A String that holds the event date or time
     protected String at;
+
+
+    protected LocalDateTime dueDateTime;
+
 
     /**
      * Creating an object of Event class
      *
      * @param description A String that holds the description of a task
-     * @param at          A String that holds the event date or time
+     * @param dueDateTime          A LocalDateTime that holds the event date or time
      */
-    public Event(String description, String at) {
+    public Event(String description, LocalDateTime dueDateTime) {
         super(description);
-        this.at = at;
+        this.dueDateTime=dueDateTime;
+
     }
 
-    /**
-     * Changes the deadline description of the task.
-     * This may involve a lengthy legal process.
-     *
-     * @param at This deadline description (At)
-     */
-    public void setAt(String by) {
-        this.at = at;
-    }
 
     /**
-     * Gets the deadline description of the task.
-     *
-     * @return by This deadline description (BY)
+     * A method to set the due date of a task
+     * @param dueDateTime The due date of the task as yyyy-MM-dd HH:mm
+     * @throws DateTimeException if given date is a past date
      */
-    public String getAt() {
-        return at;
+    protected void setDueDateTime (LocalDateTime dueDateTime) throws DateTimeException {
+//        // Throw DateTimeException if past date is given
+//        if (dueDate.compareTo(LocalDate.now())<0) {
+//            throw new DateTimeException("Past Date not allowed");
+//        }
+
+        //Ensure dueDate is saved as yyyy-MM-dd
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        this.dueDateTime = LocalDateTime.parse(dueDateTime.format(formattedDate));
+
+    }
+
+
+
+
+    /**
+     * Gets the Event duration.
+     *
+     * @return getDueDateTime This Event duration/duedate (BY)
+     */
+    public LocalDateTime getDueDateTime() {
+
+        return dueDateTime;
     }
 
 
@@ -45,7 +68,12 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (at: " + at + ")";
+
+        //Create formatter
+        DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("EEEE, MMM dd, yyyy HH:mm:ss a");
+        //Get formatted String
+        String formattedDate = FOMATTER.format(dueDateTime);
+        return "[E]" + super.toString() + " (at: " + formattedDate + ")";
     }
 
 
