@@ -55,7 +55,7 @@ public class Storage {
     /**
      *  Save information of all <code>Tasks</code> objects to text file.
      *
-     * @throws IOException If text file is not found or inaccessible.
+     * @throws DukeException If text file is not found or inaccessible.
      */
     public void saveTasks(TaskList tasks) throws DukeException {
         FileWriter fw;
@@ -91,7 +91,7 @@ public class Storage {
         }
     }
 
-    private Task createTask(String line) {
+    private Task createTask(String line) throws DukeException {
         String taskType = line.split("\\|")[0].trim();
         String isDoneString = line.split("\\|")[1].trim();
         String description = line.split("\\|")[2].trim();
@@ -109,8 +109,10 @@ public class Storage {
         } else if (taskType.equals("E")) {
             String at = line.split("\\|")[3].trim();
             return new Event(description, at, isDone);
-        } else {
+        } else if (taskType.equals("T")){
             return new Todo(description, isDone);
+        } else {
+            throw new DukeException("There is invalid data in the save file!");
         }
     }
 
