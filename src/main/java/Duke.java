@@ -2,7 +2,6 @@
 
 public class Duke {
 
-
     // A string to hold the data file name which contains all tasks and their details
     public static String filename = "src/main/java/data/duke.txt";
 
