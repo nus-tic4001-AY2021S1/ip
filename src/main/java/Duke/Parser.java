@@ -3,7 +3,8 @@ package Duke;
 import Duke.Command.*;
 import Duke.Exceptions.DukeException;
 
-import javax.print.attribute.standard.MediaSize;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Parser {
 
@@ -37,27 +38,33 @@ public class Parser {
                 }
             case "todo":
                 try {
-                    return new TodoCommand(userInput.substring(5, userInput.length()));
+                    return new TodoCommand(userInput.substring(5));
                 }catch(StringIndexOutOfBoundsException e){
                     throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
                 }
             case "deadline":
                 try {
                     String[] deadlineContent = userInput.split(DEADLINE_SPLITER);
-                    return new DeadlineCommand(deadlineContent[0].substring(9, deadlineContent[0].length()), deadlineContent[1]);
+                    LocalDate.parse(deadlineContent[1].trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    return new DeadlineCommand(deadlineContent[0].substring(9), deadlineContent[1].trim());
                 }catch(StringIndexOutOfBoundsException e){
                     throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.");
                 }catch(ArrayIndexOutOfBoundsException e){
                     throw new DukeException("☹ OOPS!!! The keyword /by is missing.");
+                }catch(java.time.format.DateTimeParseException e){
+                    throw new DukeException("☹ OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\" ");
                 }
             case "event":
                 try {
                     String[] eventContent = userInput.split(EVENT_SPLITER);
-                    return new EventCommand(eventContent[0].substring(6, eventContent[0].length()), eventContent[1]);
+                    LocalDate.parse(eventContent[1].trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    return new EventCommand(eventContent[0].substring(6), eventContent[1].trim());
                 }catch(StringIndexOutOfBoundsException e){
                     throw new DukeException("☹ OOPS!!! The description of a event cannot be empty.");
                 }catch(ArrayIndexOutOfBoundsException e){
                     throw new DukeException("☹ OOPS!!! The keyword /at is missing.");
+                }catch(java.time.format.DateTimeParseException e){
+                    throw new DukeException("☹ OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\"");
                 }
             default:
                 return new OtherCommand(cmd[0]);
