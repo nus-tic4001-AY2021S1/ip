@@ -1,9 +1,22 @@
 package Dukes;
 
-import Dukes.command.*;
+import Dukes.command.AddCommand;
+import Dukes.command.DeleteCommand;
+import Dukes.command.DoneCommand;
+import Dukes.command.ExitCommand;
+import Dukes.command.Command;
+import Dukes.command.ListCommand;
 
-
+/**
+ * Parser program containing methods that deals with parsing the user command to extract meaningful details from it.
+ */
 public class Parser {
+    /**
+     * Processes the user input and creates the corresponding commands.
+     * @param input Command input by user.
+     * @return Corresponding command that is input by user.
+     * @throws <code>DukeException</code>If a new command cannot be created due to invalid input parameters.
+     */
 
     public static Command parse(String input) throws DukeException {
         Task taskWord;

@@ -1,6 +1,12 @@
 package Dukes;
 
+/**
+ * deadline task description /by deadline description: add to the task list a deadline task with the given task
+ * description and with the deadline description
+ *
+ * @inheritDoc
 
+ */
 public class Deadline extends Task {
     protected String by;
 
