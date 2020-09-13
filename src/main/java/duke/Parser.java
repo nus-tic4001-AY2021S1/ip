@@ -84,7 +84,7 @@ public class Parser {
     }
 
     private static String getCommandParameter(String fullCommand) {
-        return fullCommand.replace("todo", "")
+        return fullCommand.replaceFirst("todo", "")
                 .replace("deadline", "")
                 .replace("event", "")
                 .replace("done", "")
@@ -113,5 +113,14 @@ public class Parser {
             throw new DukeException("The task index is invalid.");
         }
         return taskIndex - 1;
+    }
+}
+
+    public static String getSearchString(String fullCommand) throws DukeException {
+        String searchString = fullCommand.replaceFirst("find", "").trim();
+        if (searchString.isEmpty()){
+            throw new DukeException("The search string is missing.");
+        }
+        return searchString;
     }
 }
