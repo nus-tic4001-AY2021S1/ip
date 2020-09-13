@@ -66,6 +66,8 @@ public class Parser {
                 }catch(java.time.format.DateTimeParseException e){
                     throw new DukeException("☹ OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\"");
                 }
+            case "find":
+                return new FindCommand(userInput.substring(5));
             default:
                 return new OtherCommand(cmd[0]);
         }

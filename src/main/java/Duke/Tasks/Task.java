@@ -41,4 +41,8 @@ public abstract class Task {
         String doneStatus = isDone?"1":"0";
         return taskType.charAt(1) + "|"+ doneStatus + "|" +taskDescription;
     }
+
+    public String getTaskDescription(){
+        return this.taskDescription;
+    }
 }
