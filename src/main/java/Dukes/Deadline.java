@@ -1,5 +1,6 @@
 package Dukes;
 
+
 public class Deadline extends Task {
     protected String by;
 
@@ -15,6 +16,8 @@ public class Deadline extends Task {
 
     @Override
     public String toWriteFile() {
-        return "D | " + getFileStatusIcon()+ " | " + description + " | " + by;
+        return "D | " + getFileStatusIcon() + " | " + description + " | " + by;
+
     }
 }
+

@@ -17,8 +17,9 @@ public abstract class Task {
         return (isDone ? "1" : "0");
     }
 
-    public void setDone() {
+    public Task markAsDone() {
         this.isDone = true;
+        return this;
     }
 
     @Override
