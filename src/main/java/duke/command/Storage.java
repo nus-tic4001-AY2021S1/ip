@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Save {
+public class Storage {
 
 
     private static String filePath;
@@ -16,8 +16,8 @@ public class Save {
      *
      * @param filePath task save file path
      */
-    public Save(String filePath) {
-        Save.filePath = filePath;
+    public Storage(String filePath) {
+        Storage.filePath = filePath;
     }
 
     /**
@@ -29,8 +29,8 @@ public class Save {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(out))) {
             for (Task task : tasks) {
                 if (task instanceof Deadline) {
-                    bw.append("D ");
-                    bw.append(" | ").append(task.isDone() ? "1" : "0").append(" | ").append(task.getDescription()).append(" | ").append(((Deadline) task).getBy());
+                   bw.append("D ");
+                    bw.append("| ").append(task.isDone() ? "1" : "0").append(" | ").append(task.getDescription()).append(" | ").append(((Deadline) task).getBy());
                 } else if (task instanceof Event) {
                     bw.append("E ");
                     bw.append(" | ").append(task.isDone() ? "1" : "0").append(" | ").append(task.getDescription()).append(" | ").append(((Event) task).getAt());

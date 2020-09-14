@@ -16,7 +16,7 @@ public class Duke {
 
     public TaskList tasks;
     public Ui ui;
-    public Save save;
+    public Storage storage;
 
     /**
      * This constructs is TaskManager with a filePath,
@@ -27,9 +27,9 @@ public class Duke {
      */
     public Duke(String filePath)  {
         ui = new Ui();
-        save = new Save(filePath);
+        storage = new Storage(filePath);
         try {
-            tasks = new TaskList(save.readTaskFromFile());
+            tasks = new TaskList(storage.readTaskFromFile());
         } catch (TaskException e) {
             ui.showToUser("☹ OOPS!!!folder does not exist yet!");
             tasks = new TaskList();
@@ -37,7 +37,7 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        new Duke("C:/Users/David/Desktop/ip/Duke.txt").run();
+        new Duke("Duke.txt").run();
     }
 
     /**

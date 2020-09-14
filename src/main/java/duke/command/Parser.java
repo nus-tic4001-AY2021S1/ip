@@ -54,7 +54,7 @@ public class Parser {
     }
 
     /**
-     * This function is create deadline object in task arrarylist.
+     * This function is create deadline object in task arraylist.
      *
      * @param line tasks' full command
      * @return tasks' Deadline and by
