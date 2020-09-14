@@ -2,12 +2,29 @@ package duke;
 
 import duke.command.*;
 
+/**
+ * This class implements simple Duke chatbot named Jojo,that can write, read and save
+ * tasks in the assigned filePath.
+ * This Duke class contained 3 methods Duke ,run and main.
+ *
+ * @author Dai Wei
+ * @version Finial version 2020.9.9
+ * @since Duke javadoc
+ */
+
 public class Duke {
 
     public TaskList tasks;
     public Ui ui;
     public Save save;
 
+    /**
+     * This constructs is TaskManager with a filePath,
+     * This TaskManager try call save.readTaskFromFile to load tasks from filePath
+     * and throw an exception if the file does not exist yet!
+     *
+     * @param filePath duke command save file path
+     */
     public Duke(String filePath)  {
         ui = new Ui();
         save = new Save(filePath);
@@ -23,6 +40,9 @@ public class Duke {
         new Duke("C:/Users/David/Desktop/ip/Duke.txt").run();
     }
 
+    /**
+     * This run method switch different duke command to different method.
+     */
     public void run() {
         ui.printLogo();
         ui.greetUser();

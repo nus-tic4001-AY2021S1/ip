@@ -8,11 +8,24 @@ import duke.Tasks.Todo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This TaskList class to add Task,deadline, event in duke task list,
+ * and edit, delete the duke Task.
+ *
+ * @author Dai Wei
+ * @version Finial version 2020.9.9
+ * @since Duke javadoc
+ */
 public class TaskList {
     static Ui ui = new Ui();
     private List<Task> tasks = new ArrayList<>(); //  Use Java Collections classes ArrayList<Task>
 
 
+    /**
+     * This constructs a TaskList with a List<Task> parameter
+     *
+     * @param tasks tasks
+     */
     public TaskList(List<Task> tasks) {
         this.tasks = tasks;
     }
@@ -21,6 +34,12 @@ public class TaskList {
 
     }
 
+    /**
+     * This function is to add todo.
+     *
+     * @param fullCommand tasks' full command
+     * @throws TaskException if create todo have error can throw this exception.
+     */
     public void addTodo(String fullCommand) throws TaskException {
         Todo t = Parser.createTodo(fullCommand);
         tasks.add(t);
@@ -31,6 +50,12 @@ public class TaskList {
         ui.printLine();
     }
 
+    /**
+     * This function is to add deadline.
+     *
+     * @param fullCommand tasks' full command
+     * @throws TaskException if create deadline have error can throw this exception.
+     */
     public void addDeadline(String fullCommand) throws TaskException {
         Deadline t = Parser.createDeadline(fullCommand);
         tasks.add(t);
@@ -41,6 +66,11 @@ public class TaskList {
         ui.printLine();
     }
 
+    /**
+     *This function is to add event.
+     *
+     * @param toAdd tasks' full command
+     */
     public void addEvent(String toAdd) {
         String description = toAdd.split(" /at ")[0];
         String at = toAdd.split(" /at ")[1];
@@ -52,6 +82,11 @@ public class TaskList {
         ui.printLine();
     }
 
+    /**
+     *This function is to print tasks.
+     *
+     * @param fullCommand tasks' full command
+     */
     public void showTasks(String fullCommand) {
         ui.printLine();
         ui.showToUser("Here are the tasks in your list:");
@@ -71,6 +106,11 @@ public class TaskList {
         ui.printLine();
     }
 
+    /**
+     *This function is to mark tasks as done.
+     *
+     * @param fullCommand tasks' full command
+     */
     public void markAsDone(String fullCommand) {
         try {
             int index = Integer.parseInt(fullCommand.substring("done".length()).trim());
@@ -85,6 +125,11 @@ public class TaskList {
         }
     }
 
+    /**
+     *This function is to deleted tasks from task list.
+     *
+     * @param fullCommand tasks' full command
+     */
     public void deleteTasks(String fullCommand) {
         try {
             int index = Integer.parseInt(fullCommand.substring("delete".length()).trim());
@@ -99,5 +144,8 @@ public class TaskList {
         }
     }
 
+    /**
+     *This function is to call saveTasks method to save tasks in user driver.
+     */
     public void saveTasks() { Save.writeTaskToFile(tasks); }
 }

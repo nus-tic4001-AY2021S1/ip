@@ -12,9 +12,9 @@ public class Save {
     private static String filePath;
 
     /**
-     * This constructs s TaskManager with string filepath
+     * This constructs duke tasks with string filepath
      *
-     * @param filePath task storage file path
+     * @param filePath task save file path
      */
     public Save(String filePath) {
         Save.filePath = filePath;
@@ -31,6 +31,9 @@ public class Save {
                 if (task instanceof Deadline) {
                     bw.append("D ");
                     bw.append(" | ").append(task.isDone() ? "1" : "0").append(" | ").append(task.getDescription()).append(" | ").append(((Deadline) task).getBy());
+                } else if (task instanceof Event) {
+                    bw.append("E ");
+                    bw.append(" | ").append(task.isDone() ? "1" : "0").append(" | ").append(task.getDescription()).append(" | ").append(((Event) task).getAt());
                 } else if (task instanceof Todo) {
                     bw.append("T ");
                     bw.append(" | ").append(task.isDone() ? "1" : "0").append(" | ").append(task.getDescription());
@@ -46,7 +49,7 @@ public class Save {
     /**
      * This function is to read task from storage file line by line.
      *
-     * @param filePath tasks'storage filepath
+     * @param filePath tasks' save filepath
      * @return tasks line by line
      */
     public List<String> getLines(String filePath) {
@@ -62,7 +65,12 @@ public class Save {
         return lines;
     }
 
-    //convert the line to a task and add to the list
+    /**
+     * his function is to convert the line to a task and add to the list.
+     *
+     * @param line storage tasks line by line
+     * @return task array list
+     */
     public static Task createTask(String line) {
         Task task = null;
         String type = line.split("\\|")[0].trim();
@@ -76,6 +84,11 @@ public class Save {
             case "D":
                 String by = line.split("\\|")[3].trim();
                 task = new Deadline(desc, by);
+                task.setDone(isDone);
+                break;
+            case "E":
+                String at = line.split("\\|")[3].trim();
+                task = new Event(desc, at);
                 task.setDone(isDone);
                 break;
         }
@@ -93,7 +106,7 @@ public class Save {
         List<String> lines = getLines(filePath);
         for (String line : lines) {
             if (line.trim().isEmpty()) { //ignore empty lines
-                throw new TaskException("Problem reading file. Starting with an empty task list");
+                throw new TaskException("☹ OOPS!!!folder does not exist yet!");
             }
             loadedTasks.add(createTask(line)); //convert the line to a task and add to the list
         }
