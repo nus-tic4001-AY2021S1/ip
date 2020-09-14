@@ -1,5 +1,10 @@
 package Dukes;
 
+import Dukes.Tasks.Deadline;
+import Dukes.Tasks.Event;
+import Dukes.Tasks.Task;
+import Dukes.Tasks.ToDo;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

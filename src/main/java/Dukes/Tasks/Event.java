@@ -1,4 +1,5 @@
-package Dukes;
+package Dukes.Tasks;
+
 /**
  * Represents an event task.
  */

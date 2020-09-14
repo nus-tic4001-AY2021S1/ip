@@ -1,6 +1,10 @@
 package Dukes;
 
 import Dukes.Exceptions.DukeException;
+import Dukes.Tasks.Deadline;
+import Dukes.Tasks.Event;
+import Dukes.Tasks.Task;
+import Dukes.Tasks.ToDo;
 import Dukes.command.AddCommand;
 import Dukes.command.DeleteCommand;
 import Dukes.command.DoneCommand;

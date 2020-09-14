@@ -1,8 +1,8 @@
 package Dukes.command;
 
 import Dukes.Storage;
-import Dukes.TaskList;
-import Dukes.Task;
+import Dukes.Tasks.TaskList;
+import Dukes.Tasks.Task;
 import Dukes.Ui;
 import Dukes.Exceptions.DukeException;
 

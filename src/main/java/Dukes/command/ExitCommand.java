@@ -1,7 +1,7 @@
 package Dukes.command;
 
 import Dukes.Storage;
-import Dukes.TaskList;
+import Dukes.Tasks.TaskList;
 import Dukes.Ui;
 /**
  * Create an ExitCommand. It ends and exit the programme and stores user's tasks.

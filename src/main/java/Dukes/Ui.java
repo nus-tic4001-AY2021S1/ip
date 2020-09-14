@@ -1,5 +1,7 @@
 package Dukes;
 
+import Dukes.Tasks.Task;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

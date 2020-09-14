@@ -1,8 +1,8 @@
 package Dukes.command;
 
 import Dukes.Storage;
-import Dukes.Task;
-import Dukes.TaskList;
+import Dukes.Tasks.Task;
+import Dukes.Tasks.TaskList;
 import Dukes.Ui;
 /**
  * Create an AddCommand. It adds tasks to user's list.

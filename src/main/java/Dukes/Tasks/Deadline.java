@@ -1,4 +1,4 @@
-package Dukes;
+package Dukes.Tasks;
 
 /**
  * deadline task description /by deadline description: add to the task list a deadline task with the given task

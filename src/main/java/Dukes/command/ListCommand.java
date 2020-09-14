@@ -1,7 +1,7 @@
 package Dukes.command;
 
 import Dukes.Storage;
-import Dukes.TaskList;
+import Dukes.Tasks.TaskList;
 import Dukes.Ui;
 /**
  * Create a ListCommand. It lists all tasks for users.
