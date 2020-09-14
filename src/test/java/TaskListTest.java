@@ -1,8 +1,10 @@
+import Tasks.Deadline;
 import Tasks.Event;
 import Tasks.Task;
 import Tasks.Todo;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,63 +14,37 @@ import static org.junit.jupiter.api.Assertions.*;
 class TaskListTest {
 
 
-    private Todo task1 = new Todo("To try out Todo");
+    private Todo taskT = new Todo("To try out Todo");
 
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    LocalDateTime formatDateTime = LocalDateTime.parse("2020-10-14 22:00", formatter);
-    private Event task2 = new Event("To try out Event", formatDateTime);
+    DateTimeFormatter formatterDT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    LocalDateTime formatDateTime = LocalDateTime.parse("2020-10-14 22:00", formatterDT);
+    private Event taskE = new Event("To try out Event", formatDateTime);
+
+
+    DateTimeFormatter formatterD = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    LocalDate formatDate = LocalDate.parse("2020-10-14", formatterD);
+    private Tasks.Deadline taskD = new Deadline("To try out Event",formatDate);
 
 
 
-/*
-    [[T][✘] write a program,
-    [E][✓] visit zoo (at: 星期二, 11月 10, 2020 10:30:00 上午),
-    [D][✓] read book (by: 2020年11月23日星期一),
-    [T][✘] hahah, [T][✘] sdfhskj,
-    [D][✘] dksfh (by: 2022年12月12日星期一),
-    [T][✓] MEET FRIENDS,
-    [E][✘] be happy (at: 星期六, 10月 10, 2020 11:11:00 上午),
-    [D][✘] to submit assignment (by: 2020年10月11日星期日)]
-*/
+    // An array list of task objects
+    private static ArrayList<Task> taskList;
 
+    /**
+     * creating an TodoList object
+     */
+    public TaskListTest() {
+        taskList = new ArrayList<>();
+        taskList.add(taskT);
+        taskList.add(taskE);
+        taskList.add(taskD);
+        System.out.println(taskList);
+
+    }
 
     @Test
     void getList() {
+        assertEquals("[[T][✘] To try out Todo, [E][✘] To try out Event (at: 星期三, 10月 14, 2020 22:00:00 下午), [D][✘] To try out Event (by: 2020年10月14日星期三)]", taskList.toString());
     }
 
-    @Test
-    void listAllTasks() {
-    }
-
-    @Test
-    void isValidDateTimeFormat() {
-    }
-
-    @Test
-    void addToDoType() {
-    }
-
-    @Test
-    void addDeadlineType() {
-    }
-
-    @Test
-    void addEventType() {
-    }
-
-    @Test
-    void readTaskFromUser() {
-    }
-
-    @Test
-    void markSelectedTaskDelete() {
-    }
-
-    @Test
-    void markSelectedTaskDone() {
-    }
-
-    @Test
-    void findTaskByKeyword() {
-    }
 }
