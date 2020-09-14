@@ -55,7 +55,7 @@ public class Duke {
         }
     }
     /**
-     * This is Main method which made use of Duke and run methods
+     * This is main method which made use of Duke and run methods
      */
         public static void main(String[] args){
             assert (args.length) > 0;
