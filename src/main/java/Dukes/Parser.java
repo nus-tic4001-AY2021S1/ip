@@ -35,87 +35,83 @@ public class Parser {
         String action = input.split(" ")[0].toLowerCase();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HHmm");
         SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy, hh:mm a");
-        try {
-            switch (action) {
-                case "list":
-                    c = new ListCommand();
-                    break;
+        switch (action) {
+            case "list":
+                c = new ListCommand();
+                break;
 
-                case "todo":
-                    if (input.length() < 6) {
-                        throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
-                    }
-                    taskWord = new ToDo(input.substring(5));
-                    c = new AddCommand(taskWord);
-                    break;
+            case "todo":
+                if (input.length() < 6) {
+                    throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
+                }
+                taskWord = new ToDo(input.substring(5));
+                c = new AddCommand(taskWord);
+                break;
 
-                case "delete":
-                    if (input.isEmpty() || input.length() < 7) {
-                        throw new DukeException("☹ OOPS!!! There is no specific task to delete.\n");
-                    }
-                    int toDelete = Ui.indexDetails(input);
-                    c = new DeleteCommand(toDelete);
-                    break;
+            case "delete":
+                if (input.isEmpty() || input.length() < 7) {
+                    throw new DukeException("☹ OOPS!!! There is no specific task to delete.\n");
+                }
+                int toDelete = Ui.indexDetails(input);
+                c = new DeleteCommand(toDelete);
+                break;
 
-                case "done":
-                    if (input.length() < 6) {
-                        throw new DukeException("please key in correct format.\n");
-                    }
-                    int toEdit = Ui.indexDetails(input);
-                    c = new DoneCommand(toEdit);
-                    break;
+            case "done":
+                if (input.length() < 6) {
+                    throw new DukeException("please key in correct format.\n");
+                }
+                int toEdit = Ui.indexDetails(input);
+                c = new DoneCommand(toEdit);
+                break;
 
-                case "deadline":
-                    if (input.length() < 10) {
-                        throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.\n");
-                    }
-                    String[] splitDetail = input.split("/by");
-                    if (splitDetail.length < 2) {
-                        throw new DukeException("Please specify the deadline time\n");
-                    }
-                    String task = splitDetail[0].substring(9);
-                    String by = splitDetail[1];
+            case "deadline":
+                if (input.length() < 10) {
+                    throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.\n");
+                }
+                String[] splitDetail = input.split("/by");
+                if (splitDetail.length < 2) {
+                    throw new DukeException("Please specify the deadline time\n");
+                }
+                String task = splitDetail[0].substring(9);
+                String by = splitDetail[1];
+                try {
                     Date byDeadline = format.parse(by);
-                    try {
-                        taskWord = new Deadline(task, formatter.format(byDeadline));
-                    }catch (Exception e){
-                        throw new DukeException("Please input a date in this format : dd/MM/yyyy HHmm");
-                    }
-                    c = new AddCommand(taskWord);
-                    break;
+                    taskWord = new Deadline(task, formatter.format(byDeadline));
+                }catch (Exception e){
+                    throw new DukeException("Please input a date in this format : dd/MM/yyyy HHmm");
+                }
+                c = new AddCommand(taskWord);
+                break;
 
-                case "event":
-                    if (input.length() < 7) {
-                        throw new DukeException("☹ OOPS!!! The description of a event cannot be empty.\n");
-                    }
-                    String[] splitEvent = input.split("/at");
-                    if (splitEvent.length < 2) {
-                        throw new DukeException("Please specify the event time\n");
-                    }
-                    String event = splitEvent[0].substring(7);
-                    String time = splitEvent[1];
+            case "event":
+                if (input.length() < 7) {
+                    throw new DukeException("☹ OOPS!!! The description of a event cannot be empty.\n");
+                }
+                String[] splitEvent = input.split("/at");
+                if (splitEvent.length < 2) {
+                    throw new DukeException("Please specify the event time\n");
+                }
+                String event = splitEvent[0].substring(7);
+                String time = splitEvent[1];
+                try {
                     Date timeEvent = format.parse(time);
-                    try {
-                        taskWord = new Event(event, formatter.format(timeEvent));
-                    }catch(Exception e){
-                        throw new DukeException("Please input a date in this format : dd/MM/yyyy HHmm");
-                    }
-                    c = new AddCommand(taskWord);
-                    break;
+                    taskWord = new Event(event, formatter.format(timeEvent));
+                }catch(Exception e){
+                    throw new DukeException("Please input a date in this format : dd/MM/yyyy HHmm");
+                }
+                c = new AddCommand(taskWord);
+                break;
 
-                case "bye":
-                case "exit":
-                    c = new ExitCommand();
-                    break;
+            case "bye":
+            case "exit":
+                c = new ExitCommand();
+                break;
 
-                default:
-                    throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
-            }
-            return c;
-        } catch(Exception e){
-            e.printStackTrace();
+            default:
+                throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
         }
         return c;
     }
+
 }
 

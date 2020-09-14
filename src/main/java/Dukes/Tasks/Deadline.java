@@ -1,12 +1,5 @@
 package Dukes.Tasks;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 /**
  * deadline task description /by deadline description: add to the task list a deadline task with the given task
