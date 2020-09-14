@@ -45,6 +45,16 @@ public class Parser {
             task=new Todo(taskInfo[2],'T',isDone);
         return task;
     }
+    public  void deleteInArray(int index) throws DukeException{
+        if(index < 0 | index >= actualSize){
+            throw new DukeException("OOPS!!! The selected index is invalid!");
+        }
+        for(int i = index;i <= this.actualSize-2;i++ ){
+            tasks[i] = tasks[i+1];
+        }
+        tasks[actualSize-1]=null;
+        this.actualSize--;
+    }
 
     public int loadTasks(ArrayList<Task> tasks) throws DukeException{
         int count=0;
