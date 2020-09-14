@@ -4,73 +4,59 @@ import java.io.*;
 import java.util.*;
 
 public class Parser {
-    private ArrayList<Task> tasks;
-    private int arrSize;
-    private int actualSize;
+    private Ui ui;
+    private TaskList tasks;
 
-    public Parser(ArrayList<Task> tasks,int arrSize){
+    public Parser(Ui ui,TaskList tasks){
+        this.ui = ui;
         this.tasks = tasks;
-        this.arrSize=arrSize;
-
-    }
-    public void storeInArray(Task t) {
-       tasks.add(t);
-    }
-    public void deleteFromList(int index) {
-        tasks.remove(index);
-    }
-    public void saveToFile(ArrayList<Task> tasks) throws DukeException{
-        try {
-            FileWriter fw = null;
-            fw = new FileWriter("Duke.txt", false);
-            PrintWriter pw = new PrintWriter(fw);
-            for (Task t : tasks) {
-                pw.println(t.printToFIle());
-            }
-            pw.close();
-            fw.close();
-        } catch (IOException e) {
-            throw new DukeException("problem encountered while writing data: " + e.getMessage());
-        }
-    }
-    private static Task createTask(String line){
-        String[] taskInfo = line.split("\\|");
-        Task task;
-        boolean isDone = (Integer.parseInt(taskInfo[1].trim())==1);
-        if(taskInfo[0].trim().equals("D"))
-            task=new Deadline(taskInfo[2],'D',taskInfo[3],isDone);
-        else if(taskInfo[0].trim().equals("E"))
-            task=new Deadline(taskInfo[2],'E',taskInfo[3],isDone);
-        else
-            task=new Todo(taskInfo[2],'T',isDone);
-        return task;
-    }
-    public  void deleteInArray(int index) throws DukeException{
-        if(index < 0 | index >= actualSize){
-            throw new DukeException("OOPS!!! The selected index is invalid!");
-        }
-        for(int i = index;i <= this.actualSize-2;i++ ){
-            tasks[i] = tasks[i+1];
-        }
-        tasks[actualSize-1]=null;
-        this.actualSize--;
     }
 
-    public int loadTasks(ArrayList<Task> tasks) throws DukeException{
-        int count=0;
-        try {
-            File tasksFile = new File("Duke.txt");
-            Scanner rf= new Scanner(tasksFile);
-            while(rf.hasNextLine()) {
-                String line= rf.nextLine().trim();
-                if(line.trim().isEmpty())continue;
-                tasks.add(createTask(line));
-                count++;
+    public void handleCommands(String str){
+        Task singleTask;
+        int selectedIn;
+
+        if (!str.equals("") & !str.equals("bye")) {
+            if (str.equals("list")) {
+                ui.printList(tasks.getTasks());
+            } else if (str.contains("done")) {
+                selectedIn = Integer.parseInt(str.split(" ")[1]) - 1;
+                tasks.getTasks().get(selectedIn).markAsDone();
+                ui.printMarkAsDone(tasks.getTasks().get(selectedIn));
+            } else {
+                if (str.split(" ")[0].equals("todo")) {
+                    singleTask = new Todo(str.substring(5), 'T');
+                    tasks.storeInArray(singleTask);
+
+                    ui.printTask(singleTask.toString(), tasks.getSize());
+                } else if (str.split(" ")[0].equals("deadline")) {
+                    String[] deadline = str.substring(9).split(" /by ");
+                    if (deadline.length == 2) {
+                        singleTask = new Deadline(deadline[0], 'D', deadline[1]);
+                        tasks.storeInArray(singleTask);
+                        ui.printTask(singleTask.toString(), tasks.getSize());
+                    }
+                } else if (str.split(" ")[0].equals("event")) {
+                    String[] event = str.substring(6).split(" /at ");
+                    if (event.length == 2) {
+                        singleTask = new Event(event[0], 'E', event[1]);
+                        tasks.storeInArray(singleTask);
+                        ui.printTask(singleTask.toString(), tasks.getSize());
+
+                    }
+                } else if (str.contains("delete")) {
+                    selectedIn = Integer.parseInt(str.split(" ")[1]) - 1;
+                    System.out.println("selectedIn:" + selectedIn);
+                    singleTask = tasks.getTasks().get(selectedIn);
+                    tasks.deleteFromList(selectedIn);
+                    ui.printDeleteMsg(singleTask, tasks.getSize());
+                }
             }
-            rf.close();
-        }catch (FileNotFoundException e){
-            throw new DukeException(e.getMessage());
         }
-        return count;
+        if(str.equals("bye")) {
+            ui.exitMessage();
+        }
     }
+
+
 }

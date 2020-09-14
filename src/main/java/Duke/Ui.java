@@ -36,12 +36,12 @@ public class Ui {
            throw new DukeException("OOPS!!! The index of task cannot be empty");
         return s;
     }
-    public void printList(ArrayList<Task> tasks, int size){
+    public void printList(ArrayList<Task> tasks){
         System.out.println("-----------");
         int i=1;
         for (Task t:tasks){
             System.out.println((i)+"."+ "["+t.type+"]["+t.getStatusIcon()+"] "+
-                    t.description);
+                    t.description + " ");
             i++;
         }
         System.out.println("-----------");
