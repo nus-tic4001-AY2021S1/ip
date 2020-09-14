@@ -11,7 +11,7 @@ public class Parser {
     private static String DEADLINE_SPLITER = "/by";
     private static String EVENT_SPLITER = "/at";
 
-    public static String[] commandSplit(String s,String splitBy){
+    private static String[] commandSplit(String s,String splitBy){
         return s.split(splitBy);
     }
 
@@ -46,7 +46,7 @@ public class Parser {
                 try {
                     String[] deadlineContent = userInput.split(DEADLINE_SPLITER);
                     LocalDate.parse(deadlineContent[1].trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    return new DeadlineCommand(deadlineContent[0].substring(9), deadlineContent[1].trim());
+                    return new DeadlineCommand(deadlineContent[0].substring(9,deadlineContent[0].length()-1), deadlineContent[1].trim());
                 }catch(StringIndexOutOfBoundsException e){
                     throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.");
                 }catch(ArrayIndexOutOfBoundsException e){
@@ -58,7 +58,7 @@ public class Parser {
                 try {
                     String[] eventContent = userInput.split(EVENT_SPLITER);
                     LocalDate.parse(eventContent[1].trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    return new EventCommand(eventContent[0].substring(6), eventContent[1].trim());
+                    return new EventCommand(eventContent[0].substring(6,eventContent[0].length()-1), eventContent[1].trim());
                 }catch(StringIndexOutOfBoundsException e){
                     throw new DukeException("☹ OOPS!!! The description of a event cannot be empty.");
                 }catch(ArrayIndexOutOfBoundsException e){
