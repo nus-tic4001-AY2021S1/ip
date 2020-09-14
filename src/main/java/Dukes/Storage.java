@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents a storage in the hard disk.
+ */
 public class Storage {
     private ArrayList<String> details = new ArrayList<String>();
     public static String filePath = "data/duke.txt";
@@ -15,7 +18,7 @@ public class Storage {
         this.filePath = filePath;
     }
 
-    public ArrayList<String> load() throws DukeException{
+    public ArrayList<String> load() throws Dukes.Exceptions.FileNotFoundException {
         try {
             File file = new File(filePath);
             file.createNewFile();
@@ -31,7 +34,7 @@ public class Storage {
                 } else if (strArr[0].equals("E")) {
                     tasks = new Event(strArr[2], strArr[3]);
                 } else {
-                    throw new DukeException("Previous Tasks are corrupted. Please resetting your task . .");
+                    throw new Dukes.Exceptions.FileNotFoundException("Previous Tasks are corrupted. Please resetting your task . .");
                 }
                 if (strArr[1].equals("1")) {
                     tasks.markAsDone();
