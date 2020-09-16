@@ -23,10 +23,10 @@ public class Ui {
     public String getInput(Scanner in) throws DukeException{
         String s=in.nextLine().trim();
 
-       if(s.equals("todo") | s.equals("deadline") | s.equals("event") | s.equals("delete"))
+       if(s.equals("todo") | s.equals("deadline") | s.equals("event") | s.equals("delete") | s.equals("find") )
             throw new DukeException("OOPS!!! The description of a "+s+" cannot be empty");
         else if(!s.startsWith("todo") & !s.startsWith("deadline") & !s.startsWith("event") & !s.startsWith("delete")
-              & !s.startsWith("done") & !s.equals("list") & !s.equals("bye"))
+              & !s.startsWith("done") & !s.equals("list") & !s.equals("bye") & !s.startsWith("find"))
             throw new DukeException("OOPS!!! I'm sorry, but I don't know what that means :-(");
         else if(s.startsWith("event") & !s.contains("/at"))
             throw new DukeException("OOPS!!! The date of event cannot be empty");
@@ -59,5 +59,14 @@ public class Ui {
     public void printDeleteMsg(Task t,int count){
         System.out.println( "-----------------\n Noted. I've removed this task: \n"+"["+t.getStatusIcon()+"]"+
                 t.description+"\n Now you have "+count+" tasks in the list.\n-----------------");
+    }
+    public void printFind(ArrayList<Task> tasks){
+        System.out.println("--------------\nHere are the matching tasks in your list: " + "\n");
+        int i=1;
+        for (Task t:tasks){
+            System.out.println((i)+"."+t.toString());
+            i++;
+        }
+        System.out.println("-----------");
     }
 }

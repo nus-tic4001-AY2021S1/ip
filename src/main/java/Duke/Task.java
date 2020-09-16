@@ -27,4 +27,7 @@ public abstract class Task {
     }
     public abstract String toString();
     public abstract String printToFIle();
+    public String getDescription(){
+        return this.description;
+    }
 }

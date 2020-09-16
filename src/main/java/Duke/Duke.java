@@ -38,11 +38,9 @@ public class Duke {
             }catch (DukeException e){
                 ui.printError(e);
             }
-
         }
     }
     public static void main(String[] args) {
-
          new Duke("/Users/chenduo/Desktop/ip/Duke.txt").run();
         /*
         LocalDate d1 = LocalDate.parse("2019-12-01");

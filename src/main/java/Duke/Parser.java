@@ -22,7 +22,7 @@ public class Parser {
     public void handleCommands(String str) throws DukeException{
         Task singleTask;
         int selectedIn;
-
+        String keyword;
         if (!str.equals("") & !str.equals("bye")) {
             if (str.equals("list")) {
                 ui.printList(tasks.getTasks());
@@ -44,7 +44,6 @@ public class Parser {
                             tasks.storeInArray(singleTask);
                             ui.printTask(singleTask.toString(), tasks.getSize());
                         }else {
-
                             throw new DukeException("OOPS!!! The format of date is not valid");
                         }
                     }
@@ -55,7 +54,8 @@ public class Parser {
                             singleTask = new Event(event[0], 'E', LocalDate.parse(event[1]));
                             tasks.storeInArray(singleTask);
                             ui.printTask(singleTask.toString(), tasks.getSize());
-                        }
+                        }else
+                            throw new DukeException("OOPS!!! The format of date is not valid");
                     }
                 } else if (str.contains("delete")) {
                     selectedIn = Integer.parseInt(str.split(" ")[1]) - 1;
@@ -63,6 +63,16 @@ public class Parser {
                     singleTask = tasks.getTasks().get(selectedIn);
                     tasks.deleteFromList(selectedIn);
                     ui.printDeleteMsg(singleTask, tasks.getSize());
+                } else if(str.contains("find")){
+                    ArrayList<Task> temp = new  ArrayList<Task>();
+                    keyword=str.split(" ")[1];
+                    for(Task t:tasks.getTasks()){
+                        if(t.getDescription().contains(keyword)){
+                            temp.add(t);
+                        }
+                    }
+                    ui.printFind(temp);
+
                 }
             }
         }
