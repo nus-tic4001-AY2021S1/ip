@@ -13,8 +13,12 @@ class Todo extends Task {
     public void markAsDone(){
         this.isDone = true;
     }
+    public boolean getIsDone(){
+        return this.isDone;
+    }
     @Override
     public String toString(){
         return "[T]" + super.toString();
     }
 }
+

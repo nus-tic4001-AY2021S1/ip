@@ -14,6 +14,12 @@ class Deadline extends Task {
     public void markAsDone(){
         this.isDone = true;
     }
+    public boolean getIsDone(){
+        return this.isDone;
+    }
+    public String getBy(){
+        return this.by;
+    }
     @Override
     public String toString(){
         return "[D]" + super.toString() + " (by: " + by + ")";
