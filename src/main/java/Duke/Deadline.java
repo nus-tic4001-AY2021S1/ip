@@ -1,28 +1,29 @@
 package Duke;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Deadline extends Task {
 
-    protected String by;
+    protected LocalDate by;
 
-    public Deadline(String description, String by) {
+    public Deadline(String description, LocalDate by) {
         super(description);
         this.by = by;
     }
-    public Deadline(String description, char type,String by) {
+    public Deadline(String description, char type,LocalDate by) {
         super(description,type);
         this.by = by;
     }
-    public Deadline(String description, char type,String by,boolean isDone) {
+    public Deadline(String description, char type,LocalDate by,boolean isDone) {
         super(description,type,isDone);
         this.by = by;
     }
     @Override
     public String toString() {
-        return "["+this.type+"] " + this.getStatusIcon() + " " + this.description + " (by: " + by + ")";
+        return "["+this.type+"] " + this.getStatusIcon() + " " + this.description + " (by: " + by.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
     }
     public String printToFIle(){
-        int i=0;
-        if(this.isDone) i=1;
-        return this.type+"|" + i + "|" + this.description + "|" + by;
+        return this.type+"|" + (isDone ? "1" : "0") + "|" + this.description + "|" + by;
     }
 }

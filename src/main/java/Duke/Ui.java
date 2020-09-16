@@ -40,8 +40,7 @@ public class Ui {
         System.out.println("-----------");
         int i=1;
         for (Task t:tasks){
-            System.out.println((i)+"."+ "["+t.type+"]["+t.getStatusIcon()+"] "+
-                    t.description + " ");
+            System.out.println((i)+"."+t.toString());
             i++;
         }
         System.out.println("-----------");

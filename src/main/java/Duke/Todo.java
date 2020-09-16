@@ -16,9 +16,7 @@ public class Todo extends Task{
         return "["+this.type+"] " + this.getStatusIcon() + " " + this.description;
     }
     public String printToFIle(){
-        int i=0;
-        if(this.isDone) i=1;
-        return this.type+"|" + i+ "|" + this.description;
+        return this.type+"|" + (isDone ? "1" : "0")+ "|" + this.description;
     }
 }
 

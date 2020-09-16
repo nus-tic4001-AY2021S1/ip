@@ -1,6 +1,10 @@
 package Duke;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,9 +33,9 @@ public class Storage {
         Task task;
         boolean isDone = (Integer.parseInt(taskInfo[1].trim())==1);
         if(taskInfo[0].trim().equals("D"))
-            task=new Deadline(taskInfo[2],'D',taskInfo[3],isDone);
+            task=new Deadline(taskInfo[2],'D', LocalDate.parse(taskInfo[3]),isDone);
         else if(taskInfo[0].trim().equals("E"))
-            task=new Deadline(taskInfo[2],'E',taskInfo[3],isDone);
+            task=new Event(taskInfo[2],'E', LocalDate.parse(taskInfo[3]),isDone);
         else
             task=new Todo(taskInfo[2],'T',isDone);
         return task;
@@ -56,4 +60,5 @@ public class Storage {
         }
         return ts;
     }
+
 }
