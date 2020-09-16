@@ -36,6 +36,22 @@ public class Ui {
            throw new DukeException("OOPS!!! The index of task cannot be empty");
         return s;
     }
+    public String getInputForTestOnly(String in) throws DukeException{
+        String s=in;
+
+        if(s.equals("todo") | s.equals("deadline") | s.equals("event") | s.equals("delete") | s.equals("find") )
+            throw new DukeException("OOPS!!! The description of a "+s+" cannot be empty");
+        else if(!s.startsWith("todo") & !s.startsWith("deadline") & !s.startsWith("event") & !s.startsWith("delete")
+                & !s.startsWith("done") & !s.equals("list") & !s.equals("bye") & !s.startsWith("find"))
+            throw new DukeException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+        else if(s.startsWith("event") & !s.contains("/at"))
+            throw new DukeException("OOPS!!! The date of event cannot be empty");
+        else if(s.startsWith("deadline") & !s.contains("/by"))
+            throw new DukeException("OOPS!!! The date of deadline cannot be empty");
+        else if(s.equals("done") | s.equals("delete"))
+            throw new DukeException("OOPS!!! The index of task cannot be empty");
+        return s;
+    }
     public void printList(ArrayList<Task> tasks){
         System.out.println("-----------");
         int i=1;

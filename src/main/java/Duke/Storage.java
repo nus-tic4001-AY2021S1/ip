@@ -14,6 +14,7 @@ public class Storage {
     public Storage (String path){
         this.path=path;
     }
+    public Storage(){}
     public void saveToFile(TaskList tasks) throws DukeException{
         try {
             FileWriter fw = null;
@@ -28,7 +29,7 @@ public class Storage {
             throw new DukeException("problem encountered while writing data: " + e.getMessage());
         }
     }
-    private static Task createTask(String line){
+    public Task createTask(String line){
         String[] taskInfo = line.split("\\|");
         Task task;
         boolean isDone = (Integer.parseInt(taskInfo[1].trim())==1);

@@ -34,7 +34,6 @@ public class Parser {
                 if (str.split(" ")[0].equals("todo")) {
                     singleTask = new Todo(str.substring(5), 'T');
                     tasks.storeInArray(singleTask);
-
                     ui.printTask(singleTask.toString(), tasks.getSize());
                 } else if (str.split(" ")[0].equals("deadline")) {
                     String[] deadline = str.substring(9).split(" /by ");
