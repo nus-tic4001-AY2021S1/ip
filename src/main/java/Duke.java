@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Duke {
     public static void main(String[] args) throws DukeException {
@@ -22,13 +23,23 @@ public class Duke {
                 + tab + "Bye. Hope to see you again soon!" + newLine
                 + line;
 
-        List<Task> arrlist = new ArrayList<Task>();
+        //Load from file
+        ArrayList<Task> arrlist = new ArrayList<Task>();
+        String dir = System.getProperty("user.dir");
+        checkFolder(dir);
+        boolean fileExists = checkTextFile(dir);
+        if(fileExists){ //exist a file, load to arraylist if it's not empty
+            File dukeFile = new File(dir+"/data/duke.txt");
+            if(dukeFile.length() != 0){
+                arrlist = readFile(dukeFile);
+            }
+        }
+
         String input;
         Scanner sc = new Scanner(System.in);
 
         //Greet
         System.out.println(greetings);
-
         //Waiting for user input
         do{
             input = sc.nextLine();
@@ -82,10 +93,11 @@ public class Duke {
                                 + tab + "Nice! I've marked this task as done:" + newLine
                                 + tab + tab + arrlist.get(i-1).toString() + newLine
                                 + line);
+                        saveToFile(arrlist, dir);
                         break;
 
 
-                    case "delete":
+                    case "delete": //command: [delete] [task number]
                         if(details.isEmpty()){
                             throw new DukeException("The task number of delete command cannot be empty.");
                         }
@@ -95,7 +107,7 @@ public class Duke {
                                 + tab + tab + arrlist.remove(j-1).toString() + newLine
                                 + tab + "Now you have " + arrlist.size() + " tasks in the list." + newLine
                                 + line);
-
+                        saveToFile(arrlist, dir);
                         break;
 
 
@@ -112,6 +124,7 @@ public class Duke {
                                 + tab + tab + arrlist.get(arrlist.size()-1).toString() + newLine
                                 + tab + "Now you have " + arrlist.size() + " tasks in the list." + newLine
                                 + line);
+                        saveToFile(arrlist, dir);
                         break;
 
 
@@ -137,6 +150,7 @@ public class Duke {
                                 + tab + tab + arrlist.get(arrlist.size()-1).toString() + newLine
                                 + tab + "Now you have " + arrlist.size() + " tasks in the list." + newLine
                                 + line);
+                        saveToFile(arrlist, dir);
                         break;
 
 
@@ -162,6 +176,7 @@ public class Duke {
                                 + tab + tab + arrlist.get(arrlist.size()-1).toString() + newLine
                                 + tab + "Now you have " + arrlist.size() + " tasks in the list." + newLine
                                 + line);
+                        saveToFile(arrlist, dir);
                         break;
 
 
@@ -170,5 +185,115 @@ public class Duke {
                 }
             }
         } while(sc.hasNext());
+    }
+
+    public static void checkFolder(String dir){
+        //check if folder exists
+        java.nio.file.Path checkFolderPath = java.nio.file.Paths.get(dir+"/data");
+        boolean directoryExists = java.nio.file.Files.exists(checkFolderPath);
+        //folder not exists, create one
+        if(!directoryExists) {
+            new File(dir+"/data").mkdirs();
+        }
+    }
+
+    public static boolean checkTextFile(String dir){
+        //check if text file exists
+        java.nio.file.Path checkFilePath = java.nio.file.Paths.get(dir+"/data/duke.txt");
+        boolean fileExists = java.nio.file.Files.exists(checkFilePath);
+        //text file not exists, create one
+        if(!fileExists) {
+            try {
+                File dukeFile = new File(dir+"/data/duke.txt");
+                dukeFile.createNewFile();
+            } catch (IOException e) {
+                System.out.println("An error occurred while creating file.");
+                e.printStackTrace();
+            }
+        }
+        return fileExists;
+    }
+
+    public static ArrayList<Task> readFile(File file){
+        ArrayList<Task> arrlist = new ArrayList<Task>();
+        try {
+            Scanner myReader = new Scanner(file);
+            while (myReader.hasNextLine()) {
+                String instructions = myReader.nextLine();
+                String type = instructions.split(" \\| ",4)[0];
+                String done = instructions.split(" \\| ",4)[1];
+                String description = instructions.split(" \\| ",4)[2];
+
+                switch(type){
+                    case "T":
+                        Task newTodo = new Todo(description);
+                        if(done.equals("1")){
+                            newTodo.markAsDone();
+                        }
+                        arrlist.add(newTodo);
+                        break;
+
+                    case "D":
+                        String dTime = instructions.split(" \\| ",4)[3];
+                        Task newDeadline = new Deadline(description, dTime);
+                        if(done.equals("1")){
+                            newDeadline.markAsDone();
+                        }
+                        arrlist.add(newDeadline);
+                        break;
+
+                    case "E":
+                        String eTime = instructions.split(" \\| ",4)[3];
+                        Task newEvent = new Event(description, eTime);
+                        if(done.equals("1")){
+                            newEvent.markAsDone();
+                        }
+                        arrlist.add(newEvent);
+                        break;
+                }
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred while reading text file.");
+            e.printStackTrace();
+        }
+        return arrlist;
+    }
+
+    public static void saveToFile(ArrayList<Task> arrlist, String dir){
+        try {
+            BufferedWriter myWriter = new BufferedWriter(new FileWriter(dir+"/data/duke.txt"));
+            for(int i=0; i<arrlist.size(); i++){
+                myWriter.write(writeToFile(arrlist.get(i)));
+                if(i != arrlist.size()-1){
+                    myWriter.newLine();
+                }
+            }
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred in saving file.");
+            e.printStackTrace();
+        }
+    }
+
+    public static String writeToFile(Task t){
+        int done = 0; //default false
+        if(t.getIsDone()){
+            done = 1;
+        }
+
+        //[command] [done] [description] [time]
+        if(t instanceof Todo){
+            return "T | " + done + " | " + t.getDescription();
+        }
+        else if(t instanceof Deadline){
+            return "D | " + done + " | " + t.getDescription() + " | " + ((Deadline)t).getBy();
+        }
+        else if(t instanceof Event){
+            return "E | " + done + " | " + t.getDescription() + " | " + ((Event)t).getAt();
+        }
+        else{
+            return "";
+        }
     }
 }

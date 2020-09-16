@@ -13,6 +13,12 @@ class Event extends Task {
     public void markAsDone(){
         this.isDone = true;
     }
+    public boolean getIsDone(){
+        return this.isDone;
+    }
+    public String getAt(){
+        return this.at;
+    }
     @Override
     public String toString(){
         return "[E]" + super.toString() + " (at: " + at + ")";
