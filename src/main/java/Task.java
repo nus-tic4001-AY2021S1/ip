@@ -8,15 +8,12 @@ abstract class Task {
 
     //abstract methods
     public abstract String getStatusIcon();
-
     public abstract void markAsDone();
 
-    public String getDescription() {
+    public String getDescription(){
         return this.description;
     }
-
-    public String toString() {
-        return "[" + getStatusIcon() + "]" + " " + getDescription();
+    public String toString(){
+        return "["+getStatusIcon()+"]" + " " + getDescription();
     }
 }
-
