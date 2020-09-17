@@ -64,6 +64,28 @@ public class Ui {
         System.out.println(Constants.H_LINE);
     }
 
+    public void printFoundTasks(List<Task> tasks){
+        System.out.println(Constants.H_LINE);
+        System.out.println(Constants.FOUND_MATCHING_TASKS);
+        int i = 1;
+        for (Task t : tasks) {
+            if (t.getClass().toString().contains("Duke.Todo")) {
+                System.out.println(i + "." + "[T] " + t);
+
+
+            } else if (t.getClass().toString().contains("Duke.Deadline")) {
+                System.out.println(i + "." + "[D] " + t);
+
+
+            } else {
+                System.out.println(i + "." + "[E] " + t);
+
+            }
+            i++;
+        }
+        System.out.println(Constants.H_LINE);
+    }
+
     public static void printNumberOfTasks(int taskListSize) {
         //return "Tasks in the list: " + tasks.size();
         System.out.println(String.format(Constants.NUMBER_OF_TASKS, taskListSize));
