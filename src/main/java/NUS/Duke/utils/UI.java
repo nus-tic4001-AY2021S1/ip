@@ -62,4 +62,17 @@ public class UI {
         System.out.println(" Noted. I've removed this task: \n"+ task.getTaskFullDescription() +"\n"
                 +" Now you have "+ParserUtil.taskList.size()+" tasks in the list");
     }
+
+    public static void printFoundTaskList(List<TaskDTO> foundList){
+        StringBuilder sb = new StringBuilder();
+        if (foundList.size()>0){
+            sb.append(" Here are the matching tasks in your list: \n");
+            foundList.forEach(taskDTO -> {
+                sb.append(taskDTO.getTaskId()+":"+taskDTO.getTaskFullDescription()+"\n");
+            });
+            System.out.println(sb.toString());
+        }else {
+            System.out.println("Sorry here are no match task in your list.");
+        }
+    }
 }

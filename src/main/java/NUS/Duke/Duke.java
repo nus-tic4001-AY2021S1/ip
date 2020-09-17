@@ -65,6 +65,9 @@ public class Duke {
             case "save":
                 ParserUtil.writeToFile();
                 break;
+            case "find":
+                ParserUtil.findTask(details);
+                break;
             default:
                 UI.printErrorMessage("Sorry i dont understand the command");
 
