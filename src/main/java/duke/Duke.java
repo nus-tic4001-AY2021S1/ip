@@ -12,6 +12,7 @@ public class Duke {
 
     public static void main(String[] args) throws IOException, DukeException {
 
+        //private ui ui;
         ArrayList<Task> tasks = new ArrayList<>();
 
         try {
