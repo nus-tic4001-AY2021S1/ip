@@ -48,8 +48,6 @@ public class Storage {
             File myObj = new File(filePath);
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
-            } else {
-                System.out.println("File already exists.");
             }
         } catch (IOException e) {
             System.out.println("An error occurred.");
@@ -61,13 +59,11 @@ public class Storage {
         try {
             fileChecker();
             FileWriter myWriter = new FileWriter(filePath, false);
-            System.out.println();
             for (Object task : commandName) {
                 System.out.println(task.toString());
                 String obj = task.toString().replace("][", "|").replace("[", "")
                         .replace("]", "|").replace("(", "|").replace(")", "")
                         .replace("x", "0").replace("c", "1");
-                System.out.println(obj);
                 myWriter.write(obj);
             }
             myWriter.close();
