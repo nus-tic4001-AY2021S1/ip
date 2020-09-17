@@ -1,8 +1,8 @@
-package duke;
+package duke.commands;
 
+import duke.Storage;
+import duke.Ui;
 import duke.tasks.TaskList;
-
-import java.io.IOException;
 
 public class ByeCommand extends Command {
     public void execute(Ui ui, Storage storage, TaskList taskList){
