@@ -21,9 +21,19 @@ public class Switch {
 
         ui.welcome();
 
+        converter.fileLoader();
+        if(converter.checkDataSize()){
+            System.out.println("No data in the database");
+        }
+        else {
+            System.out.println("This is current tasks");
+            converter.printData();
+        }
+
         while (task) {
 
             ui.tasks();
+
             descriptionCheck();
 
             switch(description){
@@ -82,7 +92,7 @@ public class Switch {
                     break;
             }
         }
-
+        converter.fileWriter();
         ui.goodBye();
     }
 

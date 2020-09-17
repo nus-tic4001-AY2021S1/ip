@@ -15,6 +15,7 @@ public class Converter {
 
     public void saveToDo(String description, String time){
         storage.setCommandName(new Todo(description,time));
+
     }
 
 
@@ -22,25 +23,32 @@ public class Converter {
 
         storage.setCommandName(new Event(description,time));
 
+
     }
 
     public void saveDeadLine(String description, String time){
-
         storage.setCommandName(new Deadline(description,time));
+
 
     }
 
+    public void fileLoader(){
+        storage.readFromFile();
 
+    }
+
+    public void fileWriter(){
+        storage.saveToFile();
+
+    }
 
 
    // make done method
     public void makeDone(String description) throws DukeException {
 
-
             String clean = description.replaceAll("\\D+", "");
             int num = Integer.parseInt(clean);
             changeToDone(num);
-
 
     }
 
@@ -66,6 +74,7 @@ public class Converter {
             int num = Integer.parseInt(clean);
             deleting(num);
 
+
     }
 
     private void deleting(int num){
@@ -83,10 +92,8 @@ public class Converter {
 
     }
 
-
-
     // print array list method
-    public void printData() throws DukeException {
+    public void printData() {
        printArray();
     }
 
