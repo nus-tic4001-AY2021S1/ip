@@ -22,6 +22,9 @@ public class Duke {
 
             switch (arrayOfStr[0]) {
                 case "list":
+                    if( taskList.size()<1){
+                        System.out.println("Sorry, no Tasks to list");
+                    }
                     for (int i = 0; i < taskList.size();i++)
                     {
                         System.out.println(i+1 + taskList.get(i).toString());
@@ -80,6 +83,6 @@ public class Duke {
         }
 
         System.out.println(" Bye.Hope to see you again soon!\n" );
-        
+
     }
 }
