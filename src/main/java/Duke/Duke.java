@@ -86,6 +86,14 @@ public class Duke {
                         ui.printTasks(tasks.getTasks());
                         break;
 
+                    case "find":
+                        if (tasks.findTasks(Parser.getKeyword(fullCommand)).size() > 0) {
+                            ui.printFoundTasks(tasks.findTasks(Parser.getKeyword(fullCommand)));
+                        } else {
+                            Ui.showToUser(Constants.NO_MATCHING_TASKS);
+                        }
+                        break;
+
                     case "done":
                         tasks.markAsDone(Parser.parseTaskNum(fullCommand));
                         ui.printTaskMarkedAsDone(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1));

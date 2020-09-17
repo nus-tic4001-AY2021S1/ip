@@ -60,10 +60,21 @@ public class TaskList {
 
     /**
      * Remove a task at the index specified in the list
+     *
      * @param fullCommand
      */
     public void removeTask(String fullCommand) {
         int index = Integer.parseInt(fullCommand.substring("remove".length()).trim());
         tasks.remove(index - 1);
+    }
+
+    public List<Task> findTasks(String keyword) {
+        List<Task> foundTasks = new ArrayList<>();
+        for (Task task : this.tasks) {
+            if (task.getDescription().contains(keyword.trim())) {
+                foundTasks.add(task);
+            }
+        }
+        return foundTasks;
     }
 }

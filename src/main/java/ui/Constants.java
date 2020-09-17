@@ -48,5 +48,7 @@ public class Constants {
             "\t\t\t   Use \"print\" to display the tasks and their corresponding number first. E.g. remove 1\n" +
             "\t\t\t   [This will remove that task from the list.]";
 
+    public static final String FOUND_MATCHING_TASKS = "Here are the matching tasks in your list:";
+    public static final String NO_MATCHING_TASKS = "____________________________________________________________\nThere are no matching tasks in your list :(\n____________________________________________________________";
     public static final String EXIT_HELP_STATEMENT = "Type \"exit\" and press 'Enter' in order to exit the Duke chatbot.";
 }
