@@ -1,9 +1,12 @@
 package duke;
+
+import duke.tasks.TaskList;
+
 /**
  * Parser class handles command parser and identify different keywords with switch cases.
  */
 public class Parser {
-    public void getCommand (String input,Storage store, Ui ui) throws Exception{
+    public void getCommand (String input, Storage store, Ui ui, TaskList taskList) throws Exception{
         int index;
         ui.printLine();
         String command, others;
@@ -16,63 +19,25 @@ public class Parser {
         }
         switch (command) {
             case "bye":
-                store.toExit();
-                ui.byeToUser();
+                new ByeCommand().execute(ui,store,taskList);
                 break;
             case "list":
-                ui.indentPrint("Here are the tasks in your list:");
-                for(int i=0;i<store.getSize();i++){
-                    ui.indentPrint((i+1)+". "+store.getTask(i).toString());
-                }
+                new ListCommand().execute(ui,store,taskList);
                 break;
             case "done":
-                if(others.isEmpty()){
-                    throw new DukeException("The index of a done command cannot be empty.");
-                }
-                index = Integer.parseInt(others);
-                store.setDoneAt(index-1);
-                ui.indentPrint("Nice! I've marked this task as done: ");
-                ui.indentPrint("  "+store.getTask(index-1).toString());
-                store.saveToFile();
+                new DoneCommand().execute(others,ui,store,taskList);
                 break;
             case "delete":
-                if(others.isEmpty()){
-                    throw new DukeException("The index of a delete command cannot be empty.");
-                }
-                index = Integer.parseInt(others);
-                ui.indentPrint("Noted. I've removed this task: ");
-                ui.indentPrint("  "+store.deleteTaskAt(index-1).toString());
-                store.saveToFile();
+                new DeleteCommand().execute(others,ui,store,taskList);
                 break;
             case "todo":
-                if(others.isEmpty()){
-                    throw new DukeException("The description of a todo cannot be empty.");
-                }
-                store.addToDoToTemp(others);
-                ui.indentPrint("Got it. I've added this task: ");
-                ui.indentPrint("  "+store.getTask(store.getSize()-1).toString());
-                ui.indentPrint( "Now you have "+store.getSize()+" tasks in the list.");
-                store.saveToFile();
+                new TodoCommand().execute(others,ui,store,taskList);
                 break;
             case "deadline":
-                if(others.isEmpty()){
-                    throw new DukeException("The description of a deadline cannot be empty.");
-                }
-                store.addDeadlineToTemp(others);
-                ui.indentPrint("Got it. I've added this task: ");
-                ui.indentPrint("  "+store.getTask(store.getSize()-1).toString());
-                ui.indentPrint( "Now you have "+store.getSize()+" tasks in the list.");
-                store.saveToFile();
+                new DeadlineCommand().execute(others,ui,store,taskList);
                 break;
             case "event":
-                if(others.isEmpty()){
-                    throw new DukeException("The description of a event cannot be empty.");
-                }
-                store.addEventToTemp(others);
-                ui.indentPrint("Got it. I've added this task: ");
-                ui.indentPrint("  "+store.getTask(store.getSize()-1).toString());
-                ui.indentPrint( "Now you have "+store.getSize()+" tasks in the list.");
-                store.saveToFile();
+                new EventCommand().execute(others,ui,store,taskList);
                 break;
             default:
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
