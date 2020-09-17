@@ -10,12 +10,18 @@ public class Parser {
 
     /**
      * Split the user input and return the command action to process
+     *
      * @param fullCommand
      * @return
      */
     public static String getCommandWord(String fullCommand) {
         String command = fullCommand.trim().split(" ")[0];
         return command;
+    }
+
+    public static String getKeyword(String fullCommand) {
+        String keyword = fullCommand.trim().split(" ")[1];
+        return keyword;
     }
 
     /**
