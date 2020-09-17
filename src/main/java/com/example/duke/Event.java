@@ -1,3 +1,5 @@
+package com.example.duke;
+
 public class Event extends Task{
     protected String by;
 
