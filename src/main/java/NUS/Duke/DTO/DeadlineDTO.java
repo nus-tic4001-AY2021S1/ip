@@ -1,17 +1,39 @@
 package NUS.Duke.DTO;
 
+import NUS.Duke.ProcessingException;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DeadlineDTO extends TaskDTO {
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat printFormat = new SimpleDateFormat("yyyy MMM dd");
     private String deadlineDateString;
+    private Date deadline;
 
     @Override
     public String getTaskType() {
         return "D";
     }
 
-    public DeadlineDTO(String taskName , String deadlineDateString, int taskId) {
+    public DeadlineDTO(String taskName , String deadlineDateString, int taskId) throws ProcessingException {
         this.setTaskName(taskName);
         this.deadlineDateString = deadlineDateString;
         this.setTaskId(taskId);
+        try {
+            this.deadline = simpleDateFormat.parse(deadlineDateString);
+        } catch (ParseException e) {
+            throw new ProcessingException("Wrong date format. Please use the format as yyyy-mm-dd+");
+        }
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 
     public String getDeadlineDateString() {
@@ -45,7 +67,7 @@ public class DeadlineDTO extends TaskDTO {
         sb.append(sign +"]");
         sb.append(getTaskName());
         sb.append("(by: ");
-        sb.append(deadlineDateString);
+        sb.append(printFormat.format(deadline));
         sb.append(" )");
         return sb.toString();
     }
