@@ -4,6 +4,9 @@ import tasks.Deadline;
 import tasks.Event;
 import tasks.Todo;
 
+/**
+ * This is a action class, all command wil be exec down here.
+ */
 public class Converter {
 
 
@@ -32,6 +35,7 @@ public class Converter {
 
     }
 
+
     public void fileLoader(){
         storage.readFromFile();
 
@@ -53,6 +57,7 @@ public class Converter {
     }
 
 
+    // change task into done. c means complete x means not done yet.
     private void changeToDone(int num){
         if (num <= storage.getCommandName().size()){
             int num1=num - 1;
@@ -77,6 +82,7 @@ public class Converter {
 
     }
 
+    // tasks deleting function
     private void deleting(int num){
 
         if (num <= storage.getCommandName().size()){
@@ -97,9 +103,8 @@ public class Converter {
        printArray();
     }
 
+
     private void printArray(){
-
-
             int number = 1;
             for (Object task : storage.getCommandName()) {
                 System.out.println(number + ". " + task.toString());

@@ -9,10 +9,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+/**
+ * This is a storage class and file read and write. All data will be handle down here.
+ */
 public class Storage {
 
-    String filePath="/Users/linbinhui/Documents/TIC4001/data/duke.txt";
-
+    private String filePath="/Users/linbinhui/Documents/TIC4001/data/duke.txt";
     private ArrayList commandName;
 
     public Storage(){
@@ -39,6 +42,7 @@ public class Storage {
         return new ArrayList(commandName);
     }
 
+    // fild checker, check whether the file is create or not
     private void fileChecker() {
         try {
             File myObj = new File(filePath);
@@ -52,6 +56,7 @@ public class Storage {
         }
     }
 
+    // save the tasks into the txt file
     public void saveToFile() {
         try {
             fileChecker();
@@ -73,6 +78,8 @@ public class Storage {
         }
     }
 
+
+    // read the task from the current file on the system
     public void readFromFile(){
         try {
             File myObj = new File(filePath);
@@ -88,6 +95,7 @@ public class Storage {
         }
     }
 
+    // convert the data from file into wanted form.
     private void divider(String data){
         String[] words=data.split("\\|");
         String word0=words[0];
@@ -108,8 +116,6 @@ public class Storage {
             data = "[" + word0 + "]" + "[" + word1 + "] " + word2 + "(" + word3 + ")";
 
         }
-
-
         setCommandName(data);
     }
 

@@ -1,7 +1,10 @@
 package tasks;
 
-import tasks.Tasks;
 
+/**
+ * This is extend class inherited from Tasks.
+ * adding todo task
+ */
 public class Todo extends Tasks {
 
   public Todo(String description, String time){

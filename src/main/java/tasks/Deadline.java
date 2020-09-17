@@ -1,6 +1,9 @@
 package tasks;
 
-import tasks.Tasks;
+/**
+ * This is extend class inherited from Tasks.
+ * adding deadline task
+ */
 
 public class Deadline extends Tasks {
 

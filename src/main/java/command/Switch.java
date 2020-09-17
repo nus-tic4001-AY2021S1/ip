@@ -1,6 +1,9 @@
 package command;
 
-import command.Converter;
+
+/**
+ * This is a switch class, all the choices will be make by here.
+ */
 
 public class Switch {
 
@@ -19,8 +22,10 @@ public class Switch {
 
     public void option() throws DukeException {
 
+        // print out welcome msg
         ui.welcome();
 
+        // load the task from the txt file
         converter.fileLoader();
         if(converter.checkDataSize()){
             System.out.println("No data in the database");
@@ -30,12 +35,14 @@ public class Switch {
             converter.printData();
         }
 
+        // While loop will be exit once the task become false.
         while (task) {
 
+            // print the choices we have
             ui.tasks();
-
             descriptionCheck();
 
+            // redirect by using switch loop
             switch(description){
                 case "1":
                     System.out.println("Please add a to do task");
@@ -92,6 +99,7 @@ public class Switch {
                     break;
             }
         }
+        // save the tasks into txt file.
         converter.fileWriter();
         ui.goodBye();
     }

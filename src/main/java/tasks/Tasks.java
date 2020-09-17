@@ -1,5 +1,10 @@
 package tasks;
 
+/**
+ * This is a class to manage all the tasks
+ *
+ */
+
 public class Tasks {
 
     protected String status;
@@ -16,7 +21,6 @@ public class Tasks {
         this.time=time;
         this.isDone=false;
     }
-
 
     public String toString(){
 

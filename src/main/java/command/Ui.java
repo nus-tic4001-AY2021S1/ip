@@ -8,7 +8,7 @@ public class Ui {
     public Ui(){
 
     }
-
+    // welcome come msg for the UI
     public void welcome(){
             String logo = " ____        _        \n"
                     + "|  _ \\ _   _| | _____ \n"
@@ -20,10 +20,12 @@ public class Ui {
             System.out.println("Hello! I'm Duke\nWhat can I do for you?\n");
     }
 
+    // divider for each line
     public void divider(){
         System.out.println("-----------------------------------------------------------------");
     }
 
+    // options to choose the feature
     public void tasks() {
         divider();
         System.out.println("Press 1: Add a to do task");
@@ -37,22 +39,20 @@ public class Ui {
 
     }
 
-    public void addTask(String obj){
-        System.out.println("added " + obj);
-    }
-
+    // add time msg
     public void time(){
         System.out.println("please add time");
-
     }
 
+
+    // user input
     public String input(){
 
         Scanner myObj = new Scanner(System.in);
 
         return myObj.nextLine();
     }
-
+    // good bye msg
     public void goodBye(){
         divider();
         System.out.println("Bye. Hope to see you again soon!");

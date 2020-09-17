@@ -1,6 +1,9 @@
 package tasks;
 
-import tasks.Tasks;
+/**
+ * This is extend class inherited from Tasks.
+ * adding event task
+ */
 
 public class Event extends Tasks {
 
