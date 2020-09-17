@@ -9,7 +9,11 @@ import java.util.ArrayList;
 /**
  * This class is to output the appropriate display to user based on user input.
  */
-public class ui {
+public class Ui {
+
+    public Ui () {
+        welcomeLogo();
+    }
 
     public static void welcomeLogo() {
         String logo = " ____        _        \n"
@@ -87,4 +91,9 @@ public class ui {
         //        "Enter bye to terminate the program.\n" + Global.PATTERNLINE);
     }
 
+    public void showLoadingError() throws DukeException {
+        System.out.println(Global.PATTERNLINE + "File Not Found");
+        //System.out.println(Global.PATTERNLINE + "\nYou have en
+        throw new DukeException("No File");
+    }
 }

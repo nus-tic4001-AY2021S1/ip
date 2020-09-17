@@ -8,9 +8,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class FileHandling {
+public class Storage {
 
-    static String FILEPATH ="ip/record.txt";
+    //static String FILEPATH ="ip/record.txt";
+    static String FILEPATH;
+
+    public Storage(String filePath) {
+        this.FILEPATH = filePath;
+    }
 
     public static void createFile() throws IOException, DukeException {
         File f = new File (FILEPATH);
@@ -36,9 +41,17 @@ public class FileHandling {
         fw.close();
     }
 
-    public static void readFileToTask (ArrayList<Task> tasks) throws IOException {
+    //public static void load (ArrayList<Task> tasks) throws IOException {
+    public static ArrayList<Task> load () throws IOException, DukeException  {
+
+
         File fw = new File(FILEPATH);
+        if (! fw.exists()) {
+            throw new DukeException("File Not Found");
+        }
+
         Scanner s = new Scanner(fw);
+        ArrayList<Task> tasks = new ArrayList<>();
         int count = 0;
 
         while (s.hasNextLine()) {
@@ -52,6 +65,8 @@ public class FileHandling {
             }
             count ++;
         }
+
+        return tasks;
     }
 
     private static void addTodosToArray (ArrayList<Task> tasks, String line, int ArrIndex) {

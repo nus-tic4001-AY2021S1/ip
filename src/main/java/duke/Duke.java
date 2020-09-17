@@ -1,7 +1,10 @@
 package duke;
 
-import ui.FileHandling;
-import ui.processCommand;
+//import duke.utils.ui
+import ui.Storage;
+import ui.Parser;
+import ui.TaskList;
+import ui.Ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,19 +13,22 @@ import java.util.Scanner;
 
 public class Duke {
 
-    public static void main(String[] args) throws IOException, DukeException {
+    private Ui ui;
+    private Storage storage;
+    private TaskList tasks;
 
-        //private ui ui;
-        ArrayList<Task> tasks = new ArrayList<>();
-
+    public Duke(String filePath) throws IOException, DukeException {
+        ui = new Ui();
+        storage = new Storage(filePath);
         try {
-            FileHandling.readFileToTask(tasks);
-        } catch (FileNotFoundException e) {
-            FileHandling.createFile();
-            FileHandling.readFileToTask(tasks);
+            tasks = new TaskList(storage.load());
+        } catch (DukeException e) {
+            ui.showLoadingError();
+            tasks = new TaskList();
         }
+    }
 
-        ui.ui.welcomeLogo();
+    public void run() {
 
         Scanner in = new Scanner(System.in);
 
@@ -30,12 +36,17 @@ public class Duke {
             String input = in.nextLine();
 
             if(!(input.toLowerCase()).equals("bye")) {
-                processCommand.processInput(input, tasks);
+                Parser.processInput(input, tasks.getTasksArr());
             } else {
-                ui.ui.greetNote("bye");
+                ui.greetNote("bye");
                 return;
             }
         }
     }
+
+    public static void main(String[] args) throws IOException, DukeException {
+        new Duke("ip/record.txt").run();
+    }
+
 
 }

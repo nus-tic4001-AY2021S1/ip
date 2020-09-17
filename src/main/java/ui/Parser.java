@@ -8,7 +8,6 @@ import duke.Events;
 import duke.Global;
 import duke.Action;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +15,7 @@ import java.util.ArrayList;
  * User can add Task, view Task, delete Task and mark the Task done.
  * Otherwise other command will take it as INVALID and throws.
  */
-public class processCommand {
+public class Parser {
 
     /**
      * This method is to take action from validateCommand and then proecss the action accordingly.
@@ -30,19 +29,19 @@ public class processCommand {
         try {
             action = validateCommand(command);
         } catch (Exception g) {
-            ui.errInvalidInput(g);
+            Ui.errInvalidInput(g);
             return;
         }
 
         try {
             switch (action) {
             case List:
-                ui.printList(tasks);
+                Ui.printList(tasks);
                 break;
 
             case Done:
                 markDone(command, tasks);
-                FileHandling.updateStatusToFile(tasks);
+                Storage.updateStatusToFile(tasks);
                /* try {
                     FileHandling.addToFile(command);
                 } catch (FileNotFoundException e) {
@@ -53,22 +52,26 @@ public class processCommand {
                 break;
 
             case AddTodo:
-                addTodo(tasks, input, count);
-                FileHandling.addToFile(tasks);
+                //addTodo(tasks, input, count);
+                TaskList.addTodo(tasks, input, count);
+                Storage.addToFile(tasks);
                 break;
 
             case AddDeadlines:
-                addDeadlines(tasks, input, count);
-                FileHandling.addToFile(tasks);
+                //addDeadlines(tasks, input, count);
+                TaskList.addDeadlines(tasks, input, count);
+                Storage.addToFile(tasks);
                 break;
 
             case AddEvents:
-                addEvents(tasks, input, count);
-                FileHandling.addToFile(tasks);
+                //addEvents(tasks, input, count);
+                TaskList.addEvents(tasks, input, count);
+                Storage.addToFile(tasks);
                 break;
 
             case Delete:
-                deleteTask(tasks,input);
+                TaskList.deleteTask(tasks, command);
+                //deleteTask(tasks,input);
                 break;
 
             default:
@@ -116,12 +119,14 @@ public class processCommand {
 
         try {
             tasks.get(index-1).markAsDone();
-            ui.replyMarkedDone(tasks, index);
+            Ui.replyMarkedDone(tasks, index);
         } catch (IndexOutOfBoundsException e) {
-            ui.errIndexOutOfBoundsException();
+            Ui.errIndexOutOfBoundsException();
         }
 
     }
+
+    /*list
     private static void deleteTask (ArrayList<Task> tasks, String command) {
         int index = 0;
         if(command.contains(" ")) {
@@ -131,20 +136,19 @@ public class processCommand {
         }
 
         try {
-            ui.replyDeleteTask(tasks, index);
+            Ui.replyDeleteTask(tasks, index);
             tasks.remove(index-1);
         } catch (IndexOutOfBoundsException e) {
-            ui.errIndexOutOfBoundsException();
+            Ui.errIndexOutOfBoundsException();
         }
     }
-
     private static void addTodo(ArrayList<Task> tasks, String input, int count) throws DukeException{
         if (input.length() < 6) {
             throw new DukeException("☹ OOPS!!! The description of a Todo cannot be empty.\n" +
                     "Please re-input or enter bye to terminate the program\n");
         } else {
             tasks.add(new ToDos(input.substring(5)));
-            ui.replyLine(tasks, input, count);
+            Ui.replyLine(tasks, input, count);
         }
     }
     private static void addDeadlines(ArrayList<Task> tasks, String input, int count) throws DukeException{
@@ -163,7 +167,7 @@ public class processCommand {
             String schedule = input.substring(index + 4);
             String taskName = input.substring(input.indexOf(" ")+1, index);
             tasks.add(new Deadlines(taskName, schedule));
-            ui.replyLine(tasks, input, count);
+            Ui.replyLine(tasks, input, count);
         }
 
     }
@@ -184,8 +188,8 @@ public class processCommand {
             schedule = input.substring(index + 4);
             taskName = input.substring(input.indexOf(" ")+1, index);
             tasks.add(new Events(taskName, schedule));
-            ui.replyLine(tasks, input, count);
+            Ui.replyLine(tasks, input, count);
         }
     }
-
+*/
 }
