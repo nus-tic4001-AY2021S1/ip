@@ -1,18 +1,21 @@
 package duke.tasks;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * To test Deadline, please run DeadlineTest
  */
 public class Deadline extends Todo {
-    protected String by;
+    protected LocalDate by;
     public Deadline(String description, String by){
         super(description);
-        this.by=by;
+        this.by=LocalDate.parse(by);
     }
     public String toString(){
-        return "[D]" + "["+getStatusIcon()+"]"+" "+getDescription() + " (by: " + by + ")";
+        return "[D]" + "["+getStatusIcon()+"]"+" "+getDescription() + " (by: " + getBy() + ")";
     }
     public String getBy(){
-        return by;
+        return by.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
     }
 }
