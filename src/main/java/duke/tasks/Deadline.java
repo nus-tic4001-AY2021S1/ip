@@ -1,5 +1,8 @@
 package duke.tasks;
 
+/**
+ * To test Deadline, please run DeadlineTest
+ */
 public class Deadline extends Todo {
     protected String by;
     public Deadline(String description, String by){
