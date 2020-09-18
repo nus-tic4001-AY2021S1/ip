@@ -147,5 +147,5 @@ public class TaskList {
     /**
      *This function is to call saveTasks method to save tasks in user driver.
      */
-    public void saveTasks() { Save.writeTaskToFile(tasks); }
+    public void saveTasks() { Storage.writeTaskToFile(tasks); }
 }

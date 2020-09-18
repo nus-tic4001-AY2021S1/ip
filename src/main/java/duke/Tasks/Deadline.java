@@ -1,5 +1,8 @@
 package duke.Tasks;// Organize the classes into suitable duke.Tasks packages.
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * This Deadline class extends from task object.
  *
@@ -12,6 +15,20 @@ public class Deadline extends Task {
     protected String by;
 
     /**
+     *convert data string to except format
+     *
+     * @param startDate data/time string with yyyy-MM-dd format
+     * @return  data/time string with MMM d yyyy format
+     */
+    public String getStartDate(String startDate)
+    {
+        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("MMM d yyyy");
+
+        return LocalDate.parse(startDate, inputFormat).format(outputFormat);
+    }
+
+    /**
      * entity deadline.
      *
      * @param description tasks' description
@@ -19,7 +36,8 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String by) {
         super(description);
-        this.by = by;
+        //this.by = by;
+        this.by =  getStartDate(by);
     }
 
     /**
