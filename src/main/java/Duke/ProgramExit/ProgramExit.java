@@ -1,4 +1,4 @@
-package Duke;
+package Duke.ProgramExit;
 
 public class ProgramExit {
     // A boolean value, if true: Exit the program, otherwise false.
@@ -8,7 +8,7 @@ public class ProgramExit {
      * Creating an object of ProgramExit class
      * set the default Exit as false
      */
-    ProgramExit() {
+    public ProgramExit() {
         isExit = false;
     }
 
