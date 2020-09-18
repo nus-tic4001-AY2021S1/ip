@@ -4,11 +4,11 @@ public  abstract class Tasks {
     protected String type;
     protected String description;
     protected String statusIcon;
-    protected boolean isdone;
+    protected boolean isDone;
 
     public Tasks(String description) {
         this.description = description;
-        this.isdone = false;
+        this.isDone = false;
         this.statusIcon="[✗]";
     }
 
@@ -17,25 +17,30 @@ public  abstract class Tasks {
     }
 
     public String getTaskStatus() {
-        if (isdone ==true){
+        if (isDone ==true){
             return "[✓]";
         }
         else return"[✗]";
     }
 
     public void setTaskStatus(boolean status){
-        this.isdone=status;
+        this.isDone=status;
         setTaskStatusIcon();
 
     }
 
     public void setTaskStatusIcon(){
-        if(isdone){
+        if(isDone){
             this.statusIcon="[✓]";
         }
         else{
             this.statusIcon="[✗]";
         }
+    }
+
+    public String saveToString(){
+        String doneStatus = isDone?"1":"0";
+        return type.charAt(1) + "|"+ doneStatus + "|" +description;
     }
 
     @Override
