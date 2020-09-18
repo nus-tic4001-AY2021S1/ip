@@ -1,3 +1,8 @@
+package Duke;
+
+import Duke.commands.FindCommand;
+import Duke.commands.ListCommand;
+
 /**
  * Parser: deals with making sense of the user command
  */
@@ -61,7 +66,8 @@ public class Parser {
                     break;
                 case "list":
                     Ui.printLine();
-                    TaskList.listAllTasks();
+//                    TaskList.listAllTasks();
+                    new ListCommand().executeCommand();
                     Ui.printLine();
                     break;
                 case "done":
@@ -100,7 +106,8 @@ public class Parser {
                     break;
                 case "find":
                     Ui.printLine();
-                    taskList.findTaskByKeyword(filterTaskDetails(input));
+                   // taskList.findTaskByKeyword(filterTaskDetails(input));
+                    new FindCommand().executeCommand(filterTaskDetails(input));
                     Ui.printLine();
                     break;
 

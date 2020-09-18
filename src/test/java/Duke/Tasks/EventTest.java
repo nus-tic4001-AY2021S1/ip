@@ -1,6 +1,5 @@
-package Tasks;
+package Duke.Tasks;
 
-import Tasks.Event;
 import org.junit.jupiter.api.Test;
 
 
@@ -13,7 +12,7 @@ public class EventTest {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     LocalDateTime formatDateTime = LocalDateTime.parse("2020-10-14 22:00", formatter);
-    private Tasks.Event task2 = new Event("To try out Event", formatDateTime);
+    private Duke.Tasks.Event task2 = new Event("To try out Event", formatDateTime);
 
     @Test
     public void getDescription() {

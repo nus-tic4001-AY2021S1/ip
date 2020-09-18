@@ -1,4 +1,4 @@
-
+package Duke;
 
 public class Duke {
 
@@ -7,6 +7,12 @@ public class Duke {
 
 
     public static void main(String[] args)  {
+        String logo = " ____        _        \n"
+                + "|  _ \\ _   _| | _____ \n"
+                + "| | | | | | | |/ / _ \\\n"
+                + "| |_| | |_| |   <  __/\n"
+                + "|____/ \\__,_|_|\\_\\___|\n";
+        System.out.println("Hello from\n" + logo);
 
 
 
@@ -24,10 +30,20 @@ public class Duke {
 
         Ui.sayWelcome();
         while (!programExit.getIsExit()) {
+            //parser.getCommand(Ui.readUserCommand(), ui, programExit, taskList,filename , store);
             parser.getCommand(Ui.readUserCommand(), ui, programExit, taskList,filename , store);
         }
 
 
+    }
+
+    public abstract static class Command {
+        protected String commandBody;
+        public Command(String fullCommand){
+            this.commandBody=fullCommand;
+        }
+        public Command(){ }
+        public abstract void executeCommand(String line);
     }
 }
 
