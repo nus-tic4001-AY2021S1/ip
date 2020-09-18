@@ -7,6 +7,10 @@ import duke.tasks.TaskList;
 
 import java.io.IOException;
 
+/**
+ * An abstract Command Class to provide structure for
+ * other commands
+ */
 public abstract class Command {
     protected String commandBody;
     public Command(String fullCommand){
