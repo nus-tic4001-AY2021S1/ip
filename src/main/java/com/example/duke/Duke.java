@@ -91,6 +91,9 @@ public class Duke {
                     }
                     break;
                  }
+                case "save":{
+                    SaveTaskToFile.saveFile(taskList);
+                }
 
                 default:
                     System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
