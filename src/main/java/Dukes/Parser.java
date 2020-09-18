@@ -91,7 +91,7 @@ public class Parser {
                 if (splitEvent.length < 2) {
                     throw new DukeException("Please specify the event time\n");
                 }
-                String event = splitEvent[0].substring(7);
+                String event = splitEvent[0].substring(6);
                 String time = splitEvent[1];
                 try {
                     Date timeEvent = format.parse(time);
