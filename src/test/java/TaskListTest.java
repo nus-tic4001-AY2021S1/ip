@@ -1,7 +1,7 @@
-import Tasks.Deadline;
-import Tasks.Event;
-import Tasks.Task;
-import Tasks.Todo;
+import Duke.Tasks.Deadline;
+import Duke.Tasks.Event;
+import Duke.Tasks.Task;
+import Duke.Tasks.Todo;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TaskListTest {
 
@@ -23,7 +23,7 @@ class TaskListTest {
 
     DateTimeFormatter formatterD = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     LocalDate formatDate = LocalDate.parse("2020-10-14", formatterD);
-    private Tasks.Deadline taskD = new Deadline("To try out Event",formatDate);
+    private Duke.Tasks.Deadline taskD = new Deadline("To try out Event",formatDate);
 
 
 
@@ -46,5 +46,6 @@ class TaskListTest {
     void getList() {
         assertEquals("[[T][✘] To try out Todo, [E][✘] To try out Event (at: 星期三, 10月 14, 2020 22:00:00 下午), [D][✘] To try out Event (by: 2020年10月14日星期三)]", taskList.toString());
     }
+
 
 }

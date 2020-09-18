@@ -1,7 +1,10 @@
-import Tasks.Deadline;
-import Tasks.Event;
-import Tasks.Task;
-import Tasks.Todo;
+package Duke;
+
+import Duke.Tasks.Deadline;
+import Duke.Tasks.Event;
+import Duke.Tasks.Task;
+import Duke.Tasks.Todo;
+
 
 
 import java.text.ParseException;
@@ -37,16 +40,16 @@ public class TaskList {
     }
 
 
-    /**
-     * A method to list done all the tasks from the list and show the list to user.
-     * Show the message to user and notify the user that "Here are the tasks in your list"
-     */
-    public static void listAllTasks() {
-        Ui.showMessage("Here are the tasks in your list:");
-        for (int i = 0; i < taskList.size(); i++) {
-            Ui.showMessage((i + 1) + "." + taskList.get(i).toString());
-        }
-    }
+//    /**
+//     * A method to list done all the tasks from the list and show the list to user.
+//     * Show the message to user and notify the user that "Here are the tasks in your list"
+//     */
+//    public static void listAllTasks() {
+//        Ui.showMessage("Here are the tasks in your list:");
+//        for (int i = 0; i < taskList.size(); i++) {
+//            Ui.showMessage((i + 1) + "." + taskList.get(i).toString());
+//        }
+//    }
 
     public static boolean isValidDateTimeFormat(String format, String value, Locale locale) {
         LocalDateTime ldt = null;
@@ -283,36 +286,36 @@ public class TaskList {
     }
 
 
-    /**
-     * A method to find a task by searching for a keyword.
-     * Show the message to user and notify the user that "Here are the matching tasks in your list"
-     *
-     * @param line get the task content from txt file, which contains keyword
-     */
-    public void findTaskByKeyword(String line) {
-        String taskDescription;
-        ArrayList<Task> taskListKeywordFound = new ArrayList<>();
-
-        int matchedCount = 0;
-        for (Task task : taskList) {
-            taskDescription = task.toString();
-            if (taskDescription.toLowerCase().contains(line.toLowerCase())) {
-                matchedCount = matchedCount + 1;
-//                Ui.showMessage((matchedCount) + "." + taskList.get(i).toString());
-                taskListKeywordFound.add(task);  // once there is a match to a task, add this task to the new task list:taskListKeywordFound
-            }
-        }
-        if (matchedCount == 0) {
-            Ui.showMessage("Sorry! Cannot find any matched tasks in your list.");
-        } else {
-            Ui.showMessage("Here are the matching tasks in your list:");
-            for (int i = 0; i < taskListKeywordFound.size(); i++) {
-                Ui.showMessage((i + 1) + "." + taskListKeywordFound.get(i).toString());  // display the matched tasks to user from the task list:taskListKeywordFound
-            }
-        }
-
-
-    }
+//    /**
+//     * A method to find a task by searching for a keyword.
+//     * Show the message to user and notify the user that "Here are the matching tasks in your list"
+//     *
+//     * @param line get the task content from txt file, which contains keyword
+//     */
+//    public void findTaskByKeyword(String line) {
+//        String taskDescription;
+//        ArrayList<Task> taskListKeywordFound = new ArrayList<>();
+//
+//        int matchedCount = 0;
+//        for (Task task : taskList) {
+//            taskDescription = task.toString();
+//            if (taskDescription.toLowerCase().contains(line.toLowerCase())) {
+//                matchedCount = matchedCount + 1;
+////                Ui.showMessage((matchedCount) + "." + taskList.get(i).toString());
+//                taskListKeywordFound.add(task);  // once there is a match to a task, add this task to the new task list:taskListKeywordFound
+//            }
+//        }
+//        if (matchedCount == 0) {
+//            Ui.showMessage("Sorry! Cannot find any matched tasks in your list.");
+//        } else {
+//            Ui.showMessage("Here are the matching tasks in your list:");
+//            for (int i = 0; i < taskListKeywordFound.size(); i++) {
+//                Ui.showMessage((i + 1) + "." + taskListKeywordFound.get(i).toString());  // display the matched tasks to user from the task list:taskListKeywordFound
+//            }
+//        }
+//
+//
+//    }
 
 
 }

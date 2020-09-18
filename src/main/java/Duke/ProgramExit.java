@@ -1,3 +1,5 @@
+package Duke;
+
 public class ProgramExit {
     // A boolean value, if true: Exit the program, otherwise false.
     private boolean isExit;

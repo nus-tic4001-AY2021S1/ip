@@ -1,12 +1,12 @@
-/**
+package Duke; /**
  * Storage: deals with loading tasks from the file and saving tasks in the file
  */
 
 
-import Tasks.Deadline;
-import Tasks.Event;
-import Tasks.Task;
-import Tasks.Todo;
+import Duke.Tasks.Deadline;
+import Duke.Tasks.Event;
+import Duke.Tasks.Task;
+import Duke.Tasks.Todo;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -55,6 +55,8 @@ public class Storage {
                 Ui.showMessage("Now, New file created: " + myObj.getName());
                 return;
             }
+
+
 
 
             BufferedReader reader = null;
