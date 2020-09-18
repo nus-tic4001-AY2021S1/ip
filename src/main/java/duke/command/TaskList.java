@@ -148,4 +148,29 @@ public class TaskList {
      *This function is to call saveTasks method to save tasks in user driver.
      */
     public void saveTasks() { Storage.writeTaskToFile(tasks); }
+
+    /**
+     * This function is to find tasks from task list.
+     *
+     * @param fullCommand tasks' full command
+     */
+    public void findTasks(String fullCommand) {
+        List<String> ss = new ArrayList<>();
+        String description = fullCommand.trim().substring("find".length()).trim();
+            for (int i = 0; i < tasks.size(); i++) {
+                String s = tasks.get(i).toString();
+                if (s.contains(description)) {
+                    ss.add(i+1 + "." + s );
+                }
+            }
+        if(ss.size() != 0) {
+            ui.showToUser("Here are the matching tasks in your list: ");
+            ss.forEach(System.out::println);
+            ui.printLine();
+        }
+        else {
+            ui.showToUser("☹ OOPS!!! Our list not contain " + "'" + description + "'.");
+            ui.printLine();
+        }
+    }
 }
