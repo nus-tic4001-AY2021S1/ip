@@ -39,6 +39,9 @@ public class Parser {
             case "event":
                 new EventCommand().execute(others,ui,store,taskList);
                 break;
+            case "find":
+                new FindCommand().execute(others,ui,store,taskList);
+                break;
             default:
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
         }
