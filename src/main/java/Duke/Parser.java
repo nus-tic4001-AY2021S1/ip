@@ -1,7 +1,9 @@
 package Duke;
 
-import Duke.commands.FindCommand;
-import Duke.commands.ListCommand;
+import Duke.Commands.FindCommand;
+import Duke.Commands.ListCommand;
+import Duke.Exceptions.DukeException;
+import Duke.ProgramExit.ProgramExit;
 
 /**
  * Parser: deals with making sense of the user command
