@@ -77,6 +77,21 @@ public class Duke {
                     }
                     break;
 
+                case "delete":{
+                    int taskNumToDelete=Integer.parseInt(arrayOfStr[1]);
+                    if (taskNumToDelete>taskList.size()){
+                        System.out.println("Sorry. The index number seems wrong. Pls retry the command\n");
+                    }
+                    else{
+                        taskNumToDelete=taskNumToDelete-1;
+                        System.out.println("Noted. I've removed this task:\n");
+                        System.out.println(taskList.get(taskNumToDelete).toString());
+                        taskList.remove(taskNumToDelete);
+                        System.out.println("\nyou have " +taskList.size()+ " tasks in the list");
+                    }
+                    break;
+                 }
+
                 default:
                     System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
             }
