@@ -18,8 +18,7 @@ public class Ui {
                 + "  ⬢  Complete a task        | " + colorGreen("done <task index number>\n")
                 + "  ⬡  Delete a task          | " + colorGreen("delete <task index number>\n")
                 + "  ⬡  List down all tasks    | " + colorGreen("list\n")
-                + "  ⬢  Exit my program        | " + colorGreen("bye or hit Enter\n")
-                + "So, what would you like to start with?";
+                + "  ⬢  Exit my program        | " + colorGreen("bye or hit Enter\n");
         printBorderlines(greeting);
     }
 
@@ -84,5 +83,16 @@ public class Ui {
 
     public String colorGreen(String input) {
         return "\033[33m" + input + "\033[0m";
+    }
+
+    public void printNoFileFound() {
+        String message = "It looks like it's your first time as I could not find any existing task file.\n" +
+                "Get started by creating a task!";
+        System.out.println(message);
+    }
+    public void printExistingTasks(TaskList tasks) {
+        String message = "An existing task file is found!";
+        System.out.println(message);
+        printAllTasks(tasks);
     }
 }

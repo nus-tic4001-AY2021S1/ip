@@ -1,9 +1,9 @@
 package duke.task;
 
-class Deadline extends Todo {
+public class Deadline extends Todo {
     private String[] split;
 
-    Deadline(String input) {
+    public Deadline(String input) {
         super(input);
         split = input.split("/by");
     }

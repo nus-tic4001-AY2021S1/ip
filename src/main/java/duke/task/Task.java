@@ -12,12 +12,8 @@ public abstract class Task {
         task = input;
     }
 
-    void setDone(boolean isDone) {
-        this.isDone = isDone;
-    }
-
-    boolean getDone() {
-        return isDone;
+    public void setDone() {
+        this.isDone = true;
     }
 
     String getTaskStatus(Boolean isDone) {

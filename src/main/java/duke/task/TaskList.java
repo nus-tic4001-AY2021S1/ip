@@ -2,14 +2,16 @@ package duke.task;
 
 import duke.exception.DukeException;
 import duke.ui.Ui;
+import duke.database.Database;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
  * Responsible for managing all the tasks in the list. This class will use an ArrayList inside it.
  */
 public class TaskList {
-    private ArrayList<Task> tasks;
+    private final ArrayList<Task> tasks;
 
     TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
@@ -23,11 +25,13 @@ public class TaskList {
         return tasks.size();
     }
 
-    void add(Task task) {
+    public void add(Task task) {
         tasks.add(task);
     }
 
-    void remove(int index) { tasks.remove(index - 1); }
+    void remove(int index) {
+        tasks.remove(index - 1);
+    }
 
     public Task get(int index) {
         return tasks.get(index);
@@ -46,8 +50,7 @@ public class TaskList {
         return type + line;
     }
 
-    public void setAsCompleted(String line, Ui ui, TaskList tasks) {
-        line = removeCommandWord("done", line);
+    public void setAsCompleted(String line, TaskList tasks, Ui ui, Database database) {
         try {
             if (tasks.size() == 0) {
                 ui.printRedBorderlines("It appears that you have no tasks yet, so you can't complete any!\n" +
@@ -59,10 +62,11 @@ public class TaskList {
                         "Please type in the 'done <task index number>' format.");
             }
             int index = Integer.parseInt(line);
-            tasks.get(index - 1).setDone(true);
+            tasks.get(index - 1).setDone();
             ui.printTaskCompleted(index, tasks);
+            database.updateDatabase(tasks);
 
-        } catch (DukeException e) {
+        } catch (DukeException | IOException e) {
             ui.printRedBorderlines(e.getMessage());
         } catch (NumberFormatException e) {
             ui.printRedBorderlines("I'm sorry, but the list goes numerically.\nPerhaps you could type a number for the index?");
@@ -72,8 +76,7 @@ public class TaskList {
         }
     }
 
-    public void createTodo(String line, Ui ui, TaskList tasks) {
-        line = removeCommandWord("done", line);
+    public void createTodo(String line, TaskList tasks, Ui ui, Database database) {
         try {
             if (isEmpty(line)) {
                 throw new DukeException("It seems that you missed out the task description!\n" +
@@ -83,14 +86,14 @@ public class TaskList {
             line = "[Todo]     " + line;
             tasks.add(new Todo(line));
             ui.printTaskAdded(tasks);
+            database.updateDatabase(tasks);
 
-        } catch (DukeException e) {
+        } catch (DukeException | IOException e) {
             ui.printRedBorderlines(e.getMessage());
         }
     }
 
-    public void createDeadline(String line, Ui ui, TaskList tasks) {
-        line = removeCommandWord("deadline", line);
+    public void createDeadline(String line, TaskList tasks, Ui ui, Database database) {
         try {
             if (isEmpty(line) || !line.contains("/by")) {
                 throw new DukeException("It seems that you've missed out the task description or the /by <when> segment!\n" +
@@ -106,8 +109,9 @@ public class TaskList {
             reformatLine("[Deadline] ", "by", line);
             tasks.add(new Deadline(line));
             ui.printTaskAdded(tasks);
+            database.updateDatabase(tasks);
 
-        } catch (DukeException e) {
+        } catch (DukeException | IOException e) {
             ui.printRedBorderlines(e.getMessage());
         } catch (IndexOutOfBoundsException e) {
             ui.printRedBorderlines("It seems that you've missed out the deadline time!\n" +
@@ -115,8 +119,7 @@ public class TaskList {
         }
     }
 
-    public void createEvent(String line, Ui ui, TaskList tasks) {
-        line = removeCommandWord("event", line);
+    public void createEvent(String line, TaskList tasks, Ui ui, Database database) {
         try {
             if (isEmpty(line) || !line.contains("/at")) {
                 throw new DukeException("It seems that you've missed out the task description " +
@@ -134,16 +137,17 @@ public class TaskList {
             line = reformatLine("[Event]    ", "at", line);
             tasks.add(new Deadline(line));
             ui.printTaskAdded(tasks);
+            database.updateDatabase(tasks);
 
-        } catch (DukeException e) {
+        } catch (DukeException | IOException e) {
             ui.printRedBorderlines(e.getMessage());
         } catch (IndexOutOfBoundsException e) {
             ui.printRedBorderlines("It seems that you've missed out the event time!\n" +
                     "Please type in something for <when> after 'deadline <something> /by'.");
         }
     }
-    public void deleteTask(String line, Ui ui, TaskList tasks) {
-        line = removeCommandWord("delete", line);
+
+    public void deleteTask(String line, TaskList tasks, Ui ui, Database database) {
         try {
             if (tasks.size() == 0) {
                 ui.printRedBorderlines("It appears that you have no tasks yet, so you can't delete any!\n" +
@@ -157,8 +161,9 @@ public class TaskList {
             int index = Integer.parseInt(line);
             ui.printTaskRemoved(tasks);
             tasks.remove(index);
+            database.updateDatabase(tasks);
 
-        } catch (DukeException e) {
+        } catch (DukeException | IOException e) {
             ui.printRedBorderlines(e.getMessage());
         } catch (NumberFormatException e) {
             ui.printRedBorderlines("I'm sorry, but the list goes numerically.\nPerhaps you could type a number for the index?");

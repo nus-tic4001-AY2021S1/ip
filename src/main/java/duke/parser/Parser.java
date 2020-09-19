@@ -1,5 +1,6 @@
 package duke.parser;
 
+import duke.database.Database;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
@@ -16,32 +17,34 @@ public class Parser {
      * @param ui    The UI created in the Duke class.
      * @param tasks The TaskList created in the Duke class.
      */
-    public boolean parseInput(String line, Ui ui, TaskList tasks) {
+    public boolean parseInput(String line, Ui ui, TaskList tasks, Database database) {
 
         String command = getCommandWord(line);
+        String taskDescription = line.substring(line.indexOf(" ") + 1).trim();
+
         switch (command) {
             case "list" -> {
                 ui.printAllTasks(tasks);
                 return true;
             }
             case "done" -> {
-                tasks.setAsCompleted(line, ui, tasks);
+                tasks.setAsCompleted(taskDescription, tasks, ui, database);
                 return true;
             }
             case "delete" -> {
-                tasks.deleteTask(line, ui, tasks);
+                tasks.deleteTask(taskDescription, tasks, ui, database);
                 return true;
             }
             case "todo" -> {
-                tasks.createTodo(line, ui, tasks);
+                tasks.createTodo(taskDescription, tasks, ui, database);
                 return true;
             }
             case "deadline" -> {
-                tasks.createDeadline(line, ui, tasks);
+                tasks.createDeadline(taskDescription, tasks, ui, database);
                 return true;
             }
             case "event" -> {
-                tasks.createEvent(line, ui, tasks);
+                tasks.createEvent(taskDescription, tasks, ui, database);
                 return true;
             }
             case "bye", "" -> {     // also exits when user input is empty
