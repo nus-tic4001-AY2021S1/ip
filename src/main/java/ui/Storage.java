@@ -1,6 +1,10 @@
 package ui;
 
-import duke.*;
+import duke.DukeException;
+import duke.Task;
+import duke.ToDos;
+import duke.Deadlines;
+import duke.Events;
 
 import java.util.ArrayList;
 import java.io.File;
@@ -8,10 +12,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+
+/**
+ * This class in charge of memory side, where Task  will read from or write to the txt File
+ * File Path is a fixed Path, file address is passed from main class.
+ */
 public class Storage {
 
-    //static String FILEPATH ="ip/record.txt";
-    static String FILEPATH;
+    private static String FILEPATH;
 
     public Storage(String filePath) {
         this.FILEPATH = filePath;
@@ -25,6 +33,9 @@ public class Storage {
         }
     }
 
+    /**
+     * This method append Task List to File, to be called whenever new tasks was entered
+     */
     public static void addToFile(ArrayList<Task> tasks) throws IOException{
 
         FileWriter fw = new FileWriter(FILEPATH, true);
@@ -33,6 +44,21 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * This method update the current Task List to File before the program terminate
+     */
+    public static void writeToFile(ArrayList<Task> tasks) throws IOException {
+        FileWriter fw = new FileWriter(FILEPATH, false);
+        for(int i = 0; i < tasks.size(); i++) {
+            fw.write(String.valueOf(tasks.get(i)+ "\n"));
+        }
+        fw.close();
+    }
+
+    /**
+     * This method is updating task status to the file.
+     * This method is called whenever user change the status of the task
+     */
     public static void updateStatusToFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(FILEPATH);
         for (int i = 0; i < tasks.size(); i++) {

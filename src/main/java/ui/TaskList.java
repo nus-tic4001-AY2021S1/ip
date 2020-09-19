@@ -1,9 +1,18 @@
 package ui;
 
-import duke.*;
+
+import duke.DukeException;
+import duke.Task;
+import duke.ToDos;
+import duke.Deadlines;
+import duke.Events;
 
 import java.util.ArrayList;
 
+/**
+ * This class in charge of performing action related to TaskList (only RAM, not related to Memory)
+ * Adding new Task, delete task.
+ */
 public class TaskList {
 
     ArrayList<Task> tasks;

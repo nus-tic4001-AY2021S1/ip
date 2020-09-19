@@ -1,14 +1,11 @@
 package duke;
 
-//import duke.utils.ui
 import ui.Storage;
 import ui.Parser;
 import ui.TaskList;
 import ui.Ui;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
@@ -28,10 +25,9 @@ public class Duke {
         }
     }
 
-    public void run() {
+    public void run() throws IOException {
 
         Scanner in = new Scanner(System.in);
-
         while(in.hasNextLine()){
             String input = in.nextLine();
 
@@ -39,6 +35,7 @@ public class Duke {
                 Parser.processInput(input, tasks.getTasksArr());
             } else {
                 ui.greetNote("bye");
+                Storage.writeToFile(tasks.getTasksArr());
                 return;
             }
         }

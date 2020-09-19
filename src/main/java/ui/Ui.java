@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 /**
  * This class is to output the appropriate display to user based on user input.
+ * Greeting, reply, error Messages.
  */
 public class Ui {
 
@@ -44,7 +45,7 @@ public class Ui {
     }
 
     /**
-     * This method is a print out a list of existing task whenever user requested.
+     * This method is a print out a list of existing task whenever user requested from Array List.
      */
     static void printList(ArrayList<Task> tasks) throws DukeException {
         if(tasks.size() == 0) {
@@ -58,11 +59,11 @@ public class Ui {
         System.out.println(Global.PATTERNLINE);
     }
 
-
-    //Reply Message Section
     /**
-     * This method is to print out and reply to acknowledge whenever user added new Task.
+     * The following method is to print out and send reply to acknowledge whenever user
+     * perform these function -> added new Task, set Done, delete Task
      */
+
     static void replyLine(ArrayList<Task> tasks, String input, int count) {
         System.out.print(Global.PATTERNLINE + "\nGot it. I've added this task: \n\t" );
         tasks.get(count).printTask();
@@ -80,7 +81,10 @@ public class Ui {
         System.out.println("Now you have " + (tasks.size()-1) + " tasks in the list.\n" + Global.PATTERNLINE);
     }
 
-    //Error Message From Here On
+    /**
+     * The following methods is to show Error Exception Throw at different scenarios
+     */
+
     public static void errIndexOutOfBoundsException(){
         System.out.println(Global.PATTERNLINE + "\nFriend, You do not have so much task in the list\n"
                 + Global.PATTERNLINE);
@@ -93,7 +97,6 @@ public class Ui {
 
     public void showLoadingError() throws DukeException {
         System.out.println(Global.PATTERNLINE + "File Not Found");
-        //System.out.println(Global.PATTERNLINE + "\nYou have en
         throw new DukeException("No File");
     }
 }
