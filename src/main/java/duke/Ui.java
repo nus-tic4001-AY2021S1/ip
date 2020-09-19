@@ -52,7 +52,7 @@ public class Ui {
         System.out.println("Duke: Bye! Hope to see you again soon.");
         printLine();
     }
-    
+
     public void printAddedTask(TaskList tasks) {
         System.out.println("Duke: Got it! I have added this task:");
         printIndentation();

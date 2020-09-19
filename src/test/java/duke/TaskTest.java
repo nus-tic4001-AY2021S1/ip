@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * JUnit tests for Task class
+ */
 public class TaskTest {
     private Task task = new Todo("Have lunch with John");
     private Task task2 = new Todo("Have lunch with John", true);
