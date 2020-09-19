@@ -36,42 +36,48 @@ _**Auto saving** and **loading** existing task file._
 This command will add a todo task in the list with specific content
 
 Example of usage: 
-
-`todo read a book`
+```
+todo read a book
+```
 
 Expected outcome:
-
-`Got it. I've added this task:
+```
+Got it. I've added this task:
 [T][✗] read a book
-Now you have 1 tasks in the list.`
+Now you have 1 tasks in the list.
+```
 
 ### `deadline <something> /by <sometime>` - add a deadline task in the list
 
 This command will add a deadline task in the list with specific content and deadline time. The time is supposed to be in format "yyyy-MM-dd".
 
 Example of usage: 
-
-`deadline read a book /by 2019-09-20`
+```
+deadline read a book /by 2019-09-20
+```
 
 Expected outcome:
-
-`Got it. I've added this task:
+```
+Got it. I've added this task:
 [D][✗] read a book (by: Sep 20 2019)
-Now you have 2 tasks in the list.`
+Now you have 2 tasks in the list.
+```
 
 ### `event <something> /at <sometime>` - add a event task in the list
 
 This command will add a event task in the list with specific content and occuring time. The time is supposed to be in format "yyyy-MM-dd".
 
 Example of usage: 
-
-`event read a book /at 2019-09-20`
+```
+event read a book /at 2019-09-20
+```
 
 Expected outcome:
-
-`Got it. I've added this task:
+```
+Got it. I've added this task:
 [E][✗] read a book (at: Sep 20 2019)
-Now you have 3 tasks in the list.`
+Now you have 3 tasks in the list.
+```
 
 
 
@@ -80,15 +86,17 @@ Now you have 3 tasks in the list.`
 This command will list down all tasks in the list.
 
 Example of usage: 
-
-`list`
+```
+list
+```
 
 Expected outcome:
-
-`Here are the tasks in your list:
+```
+Here are the tasks in your list:
 1.[T][✗] read a book
 2.[D][✗] read a book (by: Sep 20 2019)
-3.[E][✗] read a book (at: Sep 20 2019)`
+3.[E][✗] read a book (at: Sep 20 2019)
+```
 
 
 
@@ -97,13 +105,15 @@ Expected outcome:
 This command will set the task to be done.
 
 Example of usage: 
-
-`done 2`
+```
+done 2
+```
 
 Expected outcome:
-
-`Nice! I've marked this task as done: 
-[D][✓] read a book (by: Sep 20 2019)`
+```
+Nice! I've marked this task as done: 
+[D][✓] read a book (by: Sep 20 2019)
+```
 
 
 ### `delete <index>` - delete the task with the specific index. 
@@ -111,14 +121,16 @@ Expected outcome:
 This command will delete the task with the specific index in the list.
 
 Example of usage: 
-
-`delete 2`
+```
+delete 2
+```
 
 Expected outcome:
-
-`Noted. I've removed this task: 
+```
+Noted. I've removed this task: 
 [D][✓] read a book (by: Sep 20 2019)
-Now you have 2 tasks in the list.`
+Now you have 2 tasks in the list.
+```
 
 
 ### `find <something>` - find the tasks with the keyword. 
@@ -126,13 +138,15 @@ Now you have 2 tasks in the list.`
 This command will find all the tasks with the keyword specified in the list.
 
 Example of usage: 
-
-`find book`
+```
+find book
+```
 
 Expected outcome:
-
-`Here are the matching tasks in your list:
+```
+Here are the matching tasks in your list:
 1.[T][✗] read a book
-2.[E][✗] read a book (at: Sep 20 2019)`
+2.[E][✗] read a book (at: Sep 20 2019)
+```
 
 
