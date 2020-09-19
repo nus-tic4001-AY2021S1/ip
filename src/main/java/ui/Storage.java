@@ -6,10 +6,18 @@ import duke.ToDos;
 import duke.Deadlines;
 import duke.Events;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
 
 
@@ -104,12 +112,27 @@ public class Storage {
         }
     }
 
-    private static void addDeadlinesToArray(ArrayList<Task> tasks, String line, int ArrIndex) {
+    private static void addDeadlinesToArray(ArrayList<Task> tasks, String line, int ArrIndex){
         int index = line.indexOf("(by");
-        String schedule = line.substring(index + 4);
-        String taskName = line.substring(7, index);
+        String taskName = line.substring(7, index-1);
         String status = line.substring(4,5);
-        tasks.add(new Deadlines(taskName, schedule));
+        String tschedule = line.substring(line.length() - 6, line.length() -1);
+
+        if(tschedule.contains(":")){
+
+            String schedule = line.substring(index + 5, line.length()-7);
+            LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
+            LocalTime timeline = LocalTime.parse(tschedule);
+            tasks.add(new Deadlines(taskName, dateline,timeline));
+
+        } else{
+
+            String schedule = line.substring(index + 5, line.length()-1);
+            LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
+            tasks.add(new Deadlines(taskName, dateline));
+
+        }
+
         if(status.equals("\u2713") ) {
             tasks.get(ArrIndex).markAsDone();
         }

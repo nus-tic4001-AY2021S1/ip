@@ -99,4 +99,16 @@ public class Ui {
         System.out.println(Global.PATTERNLINE + "File Not Found");
         throw new DukeException("No File");
     }
+
+    public static String deadlineErrEmpty() {
+        String errorEmpty = "☹ OOPS!!! The description of a Deadlines cannot be empty.\n " +
+                "Please re-input or enter bye to terminate the program\n";
+        return errorEmpty;
+    }
+
+    public static String deadlineNoBy () {
+        String errorMissing = "You have input your Schedule or Wrong format\nPlease include -> /by when\n";
+        return errorMissing;
+    }
+
 }
