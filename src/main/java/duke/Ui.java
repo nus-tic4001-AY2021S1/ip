@@ -86,7 +86,7 @@ public class Ui {
         if (filteredTasks.getSize() == 0) {
             System.out.println("Duke: Sorry, there is no matching task.");
         } else {
-            System.out.println("Duke: Here are the matching task(s) in your list:");
+            System.out.println("Duke: Here are the matching tasks in your list:");
             for (int i = 0; i < filteredTasks.getSize(); i++) {
                 printIndentation();
                 System.out.println((i + 1) + ". " + filteredTasks.getTask(i).toString());

@@ -101,10 +101,10 @@ public class Duke {
     }
 
     private void findTasks(String fullCommand) throws DukeException {
-        String searchString = Parser.getSearchString(fullCommand);
+        String searchString = Parser.getSearchString(fullCommand).toLowerCase();
         TaskList filteredTasks = new TaskList();
         for (int i = 0; i < tasks.getSize(); i++) {
-            String taskDescription = tasks.getTask(i).getDescription();
+            String taskDescription = tasks.getTask(i).getDescription().toLowerCase();
             if (taskDescription.contains(searchString)) {
                 filteredTasks.addTask(tasks.getTask(i));
             }
