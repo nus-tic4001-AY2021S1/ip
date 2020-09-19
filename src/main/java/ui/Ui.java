@@ -1,5 +1,6 @@
 package ui;
 
+import duke.Duke;
 import duke.DukeException;
 import duke.Global;
 import duke.Task;
@@ -59,6 +60,30 @@ public class Ui {
         System.out.println(Global.PATTERNLINE);
     }
 
+    static void findTask(String input, ArrayList<Task> tasks) throws DukeException {
+
+        String keyword = input.substring(5);
+        int count = 1;
+
+        for(int i = 0; i < tasks.size(); i++) {
+            String temp = tasks.get(i).toString();
+
+            if(temp.contains(keyword)) {
+                if(count == 1) {
+                    System.out.println(Global.PATTERNLINE + "\nHere are the matching tasks in your list:");
+                }
+                System.out.println(count + ". " + temp );
+                count ++;
+            }
+        }
+
+        if(count == 1) {
+            throw new DukeException(noKeywords());
+        } else {
+            System.out.println(Global.PATTERNLINE );
+        }
+    }
+
     /**
      * The following method is to print out and send reply to acknowledge whenever user
      * perform these function -> added new Task, set Done, delete Task
@@ -109,6 +134,12 @@ public class Ui {
     public static String deadlineNoBy () {
         String errorMissing = "You have input your Schedule or Wrong format\nPlease include -> /by when\n";
         return errorMissing;
+    }
+
+    private static String noKeywords() {
+        String err = "No Tasks with Similar Keyword was found from the List\n";
+        //System.out.println(err);
+        return err;
     }
 
 }
