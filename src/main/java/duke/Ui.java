@@ -3,10 +3,18 @@ package duke;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * A <code>Ui</code> class contains methods that interacts with the users
+ * such as obtaining commands from user input and displaying messages to the users.
+ */
 public class Ui {
     public static final String LINE = "____________________________________________________________";
     public static final String INDENT = "      ";
 
+    /**
+     * Get the input stream from the user.
+     * @return Input stream from the user.
+     */
     public String readUserInput() {
         Scanner in = new Scanner(System.in);
         System.out.print("You:  ");
@@ -44,7 +52,7 @@ public class Ui {
         System.out.println("Duke: Bye! Hope to see you again soon.");
         printLine();
     }
-
+    
     public void printAddedTask(TaskList tasks) {
         System.out.println("Duke: Got it! I have added this task:");
         printIndentation();
