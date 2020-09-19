@@ -66,7 +66,7 @@ public class Parser {
     public static Event createEvent(String fullCommand) throws DukeException {
         String commandParameter = getCommandParameter(fullCommand);
         if (commandParameter.isEmpty()){
-            throw new DukeException("The description of a deadline task cannot be empty.");
+            throw new DukeException("The description of a event task cannot be empty.");
         }
 
         String description;
@@ -94,7 +94,7 @@ public class Parser {
     }
 
     /**
-     *  Gets task index from user's full input string.
+     * Gets task index from user's full input string.
      *
      * @param fullCommand User's full input string.
      * @return Task index.
@@ -103,7 +103,7 @@ public class Parser {
     public static int getTaskIndex(String fullCommand) throws DukeException {
         String commandParameter = getCommandParameter(fullCommand);
         if (commandParameter.isEmpty()){
-            throw new DukeException("The description of a deadline task cannot be empty.");
+            throw new DukeException("The task index is missing.");
         }
 
         int taskIndex;

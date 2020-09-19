@@ -25,7 +25,7 @@ public class Deadline extends Task {
         try {
             this.by = LocalDateTime.parse(by, formatter);
         } catch (DateTimeParseException e) {
-            throw new DukeException("The by field should be in yyyy-MM-dd HHmm format.");
+            throw new DukeException("The by field should be in yyyy-MM-dd HHmm format. E.g. 2020-12-25 1800");
         }
     }
 
@@ -42,7 +42,7 @@ public class Deadline extends Task {
         try {
             this.by = LocalDateTime.parse(by);
         } catch (DateTimeParseException e) {
-            throw new DukeException("The by field should be in yyyy-MM-dd HHmm format.");
+            throw new DukeException("The by field should be in yyyy-MM-dd HHmm format. E.g. 2020-12-25 1800");
         }
     }
 

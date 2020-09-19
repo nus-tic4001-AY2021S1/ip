@@ -1,13 +1,16 @@
 package duke;
 
+import java.util.ArrayList;
+
 /**
  * The <code>Duke</code> class implements an application that allows users to manage tasks.
  * It contains methods that allow the creation, modification and storage of tasks.
  */
 public class Duke {
-    private Storage storage;
+    private final Storage storage;
+    private final Ui ui;
     private TaskList tasks;
-    private Ui ui;
+    private ArrayList<Integer> taskListIndexes;
 
     /**
      * Constructor for a <code>Duke</code> object.
@@ -97,40 +100,50 @@ public class Duke {
     }
 
     private void listTasks() {
-       ui.printTasks(tasks);
+        taskListIndexes = new ArrayList<>();
+        for (int i = 0; i < tasks.getSize(); i++) {
+            taskListIndexes.add(i);
+        }
+
+        ui.printTasks(tasks);
     }
 
     private void findTasks(String fullCommand) throws DukeException {
         String searchString = Parser.getSearchString(fullCommand).toLowerCase();
-        TaskList filteredTasks = new TaskList();
+        taskListIndexes = new ArrayList<>();
         for (int i = 0; i < tasks.getSize(); i++) {
             String taskDescription = tasks.getTask(i).getDescription().toLowerCase();
             if (taskDescription.contains(searchString)) {
-                filteredTasks.addTask(tasks.getTask(i));
+                taskListIndexes.add(i);
             }
         }
-        ui.printFilteredTasks(filteredTasks);
+
+        ui.printFilteredTasks(tasks, taskListIndexes);
     }
 
     private void markTaskAsDone(String fullCommand) throws DukeException {
         int taskIndex = Parser.getTaskIndex(fullCommand);
         try {
-            tasks.getTask(taskIndex).setDone(true);
+            tasks.getTask(taskListIndexes.get(taskIndex)).setDone(true);
+        } catch (NullPointerException e) {
+            throw new DukeException("Please run the list or find command first.");
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("The task index is invalid.");
         }
 
         storage.saveTasks(tasks);
 
-        ui.printDoneTask(tasks.getTask(taskIndex));
+        ui.printDoneTask(tasks.getTask(taskListIndexes.get(taskIndex)));
     }
 
     private void deleteTask(String fullCommand) throws DukeException {
         int taskIndex = Parser.getTaskIndex(fullCommand);
         String taskDescription;
         try {
-            taskDescription =  tasks.getTask(taskIndex).toString();
-            tasks.removeTask(taskIndex);
+            taskDescription =  tasks.getTask(taskListIndexes.get(taskIndex)).toString();
+            tasks.removeTask(taskListIndexes.get(taskIndex));
+        } catch (NullPointerException e) {
+            throw new DukeException("Please run the list or find command first.");
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("The task index is invalid.");
         }

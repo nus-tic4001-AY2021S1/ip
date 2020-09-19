@@ -1,5 +1,6 @@
 package duke;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
@@ -82,14 +83,14 @@ public class Ui {
         }
     }
 
-    public void printFilteredTasks(TaskList filteredTasks) {
-        if (filteredTasks.getSize() == 0) {
+    public void printFilteredTasks(TaskList tasks, ArrayList<Integer> taskListIndexes) {
+        if (taskListIndexes.size() == 0) {
             System.out.println("Duke: Sorry, there is no matching task.");
         } else {
             System.out.println("Duke: Here are the matching tasks in your list:");
-            for (int i = 0; i < filteredTasks.getSize(); i++) {
+            for (int i = 0; i < taskListIndexes.size(); i++) {
                 printIndentation();
-                System.out.println((i + 1) + ". " + filteredTasks.getTask(i).toString());
+                System.out.println((i + 1) + ". " + tasks.getTask(taskListIndexes.get(i)).toString());
             }
             printLine();
         }
