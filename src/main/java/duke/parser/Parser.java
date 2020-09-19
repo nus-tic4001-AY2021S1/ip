@@ -1,8 +1,11 @@
 package duke.parser;
 
+import duke.database.Database;
 import duke.task.TaskList;
-import duke.ui.UI;
-
+import duke.ui.Ui;
+/**
+ * Parses the user command to extract meaningful details from it.
+ */
 public class Parser {
     /**
      * @param line The entire user input.
@@ -11,47 +14,44 @@ public class Parser {
         return line.trim().split(" ")[0];
     }
 
-    /**
-     * @param line  The entire user input.
-     * @param ui    The UI created in the Duke class.
-     * @param tasks The TaskList created in the Duke class.
-     */
-    public boolean parseInput(String line, UI ui, TaskList tasks) {
+    public boolean parseInput(String line, Ui ui, TaskList tasks, Database database) {
 
         String command = getCommandWord(line);
+        String taskDescription = line.substring(line.indexOf(" ") + 1).trim();
+
         switch (command) {
             case "list" -> {
-                for (int i = 0; i < tasks.size(); i++) {
-                    System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
-                }
+                ui.printAllTasks(tasks);
                 return true;
             }
             case "done" -> {
-                tasks.changeDone(line, ui, tasks);
+                tasks.setAsCompleted(taskDescription, tasks, ui, database);
+                return true;
+            }
+            case "delete" -> {
+                tasks.deleteTask(taskDescription, tasks, ui, database);
                 return true;
             }
             case "todo" -> {
-                tasks.createTodo(line, ui, tasks);
+                tasks.createTodo(taskDescription, tasks, ui, database);
                 return true;
             }
             case "deadline" -> {
-                tasks.createDeadline(line, ui, tasks);
+                tasks.createDeadline(taskDescription, tasks, ui, database);
                 return true;
             }
             case "event" -> {
-                tasks.createEvent(line, ui, tasks);
+                tasks.createEvent(taskDescription, tasks, ui, database);
                 return true;
             }
-            // also exit when user input is empty
-            case "bye", "" -> {
-                ui.farewell();
+            case "bye", "" -> {     // also exits when user input is empty
+                ui.printFarewell();
                 return false;
             }
             default -> {
-                ui.invalidCommand();
+                ui.printInvalidCommand();
                 return true;
             }
         }
     }
-
 }

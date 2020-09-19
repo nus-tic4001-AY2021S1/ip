@@ -1,9 +1,7 @@
 package duke.task;
-
 /**
  * An abstract class that is inherited by the Todo, Deadline and Event classes.
  */
-
 public abstract class Task {
     String task;
     private boolean isDone;
@@ -12,12 +10,8 @@ public abstract class Task {
         task = input;
     }
 
-    void setDone(boolean isDone) {
-        this.isDone = isDone;
-    }
-
-    boolean getDone() {
-        return isDone;
+    public void setDone() {
+        this.isDone = true;
     }
 
     String getTaskStatus(Boolean isDone) {

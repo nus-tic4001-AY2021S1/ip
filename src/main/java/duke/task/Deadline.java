@@ -1,10 +1,11 @@
 package duke.task;
+/**
+ * Inherits the Todo class to represent Deadline tasks.
+ */
+public class Deadline extends Todo {
 
-class Deadline extends Todo {
-    private String[] split;
-
-    Deadline(String input) {
+    public Deadline(String input) {
         super(input);
-        split = input.split("/by");
+        String[] split = input.split("/by");
     }
 }

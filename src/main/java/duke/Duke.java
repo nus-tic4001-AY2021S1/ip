@@ -1,8 +1,9 @@
 package duke;
 
-import duke.ui.UI;
+import duke.ui.Ui;
 import duke.parser.Parser;
 import duke.task.TaskList;
+import duke.database.Database;
 
 import java.util.Scanner;
 
@@ -10,31 +11,32 @@ import java.util.Scanner;
  * A Personal Assistant Chatbot that helps a person to keep track of various things.
  *
  * @author Wang Zhenquan
- * @version Level 5
+ * @version Level 7
  * @since 20/08/2020
  */
 
 class Duke {
-    private UI ui = new UI();
-    private Parser parser = new Parser();
-    private Scanner in = new Scanner(System.in);
-    private boolean repeat = true;
-
-    private void run() {
-        TaskList tasks = new TaskList();
-        ui.greet();
-        while (repeat) {
-            repeat = parser.parseInput(in.nextLine(), ui, tasks);
-        }
-    }
+    private final Ui ui = new Ui();
+    private final Parser parser = new Parser();
+    private final Scanner in = new Scanner(System.in);
+    private final TaskList tasks = new TaskList();
+    private final Database database = new Database("duke.txt", tasks, ui);
+    private boolean isRepeating = true;
 
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
         new Duke().run();
+    }
+
+    private void run() {
+        ui.printDukeLogo();
+        ui.printGreeting();
+        database.readDatabase(tasks, ui, database);
+        repeatedUserInput();
+    }
+
+    private void repeatedUserInput() {
+        while (isRepeating) {
+            isRepeating = parser.parseInput(in.nextLine(), ui, tasks, database);
+        }
     }
 }

@@ -1,10 +1,11 @@
 package duke.task;
+/**
+ * Inherits the Todo class to represent Event tasks.
+ */
+public class Event extends Todo {
 
-class Event extends Todo {
-    private String[] split;
-
-    Event(String input) {
+    public Event(String input) {
         super(input);
-        split = input.split("/at");
+        String[] split = input.split("/at");
     }
 }

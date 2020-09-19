@@ -1,8 +1,10 @@
 package duke.task;
+/**
+ * Inherits the Task class to represent Todo tasks.
+ */
+public class Todo extends Task {
 
-class Todo extends Task {
-
-    Todo(String input) {
+    public Todo(String input) {
         super(input);
     }
 
