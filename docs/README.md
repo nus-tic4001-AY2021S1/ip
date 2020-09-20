@@ -66,10 +66,10 @@ Adding an event task helps to remember to join or complete the event with specif
 
 ### `event` - Adding an event task
 
-<br/>:black_medium_small_square:The keyword 'event' with description can be **upper and lowercase letters**.
-<br/>:black_medium_small_square:The outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
-<br/>:black_medium_small_square:If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a event cannot be empty."
-<br/>:black_medium_small_square:If you missing the date and time or /by, there will be an reminder message:"Please specify the event date and time."
+<br/>>:The keyword 'event' with description can be **upper and lowercase letters**.
+<br/>>The outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
+<br/>>:If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a event cannot be empty."
+<br/>>If you missing the date and time or /by, there will be an reminder message:"Please specify the event date and time."
 
 **Format**: event  Description /by dd/mm/yyyy HHmm
 
@@ -87,10 +87,10 @@ Marking a specific task: done
 Marking a specific task to remind the user that he has finished the task.
 
 ### `done` - Marking a specific task from the task list.
-<br/>:black_medium_small_square:The keyword 'done' can be **upper and lowercase letters** 
-<br/>:black_medium_small_square:The outcome will be change the X to ✓ in the specific task.
-<br/>:black_medium_small_square:The index refers to the index number shown in the displayed task list and the index **must be positive integer** 1,2,3...
-<br/>:black_medium_small_square:If you key in the keyword without INDEX. There will be an error message:"please key in correct format." 
+<br/>>The keyword 'done' can be **upper and lowercase letters** 
+<br/>>The outcome will be change the X to ✓ in the specific task.
+<br/>>The index refers to the index number shown in the displayed task list and the index **must be positive integer** 1,2,3...
+<br/>>:If you key in the keyword without INDEX. There will be an error message:"please key in correct format." 
 
 **Format**: done INDEX
 
@@ -109,9 +109,9 @@ Deleting a task: delete
 Delete a specific task from task list to helps remove the completed task and tidy the task list. It will show the total number of tasks left in the task list. 
 
 ### `delete` - Deleting a specific task from the task list.
-<br/>:black_medium_small_square:The keyword 'delete' can be **upper and lowercase letters** and its outcome will be remove the specific task and reduce the total number of task in the list.
-<br/>:black_medium_small_square:The index refers to the index number shown in the displayed task list and the index **must be a positive integer** 1,2,3...
-<br/>:black_medium_small_square:If you key in the keyword without INDEX. There will be an error message:"☹ OOPS!!! There is no specific task to delete."
+<br/>>The keyword 'delete' can be **upper and lowercase letters** and its outcome will be remove the specific task and reduce the total number of task in the list.
+<br/>>The index refers to the index number shown in the displayed task list and the index **must be a positive integer** 1,2,3...
+<br/>>If you key in the keyword without INDEX. There will be an error message:"☹ OOPS!!! There is no specific task to delete."
 
 **Format**: delete INDEX
 
@@ -131,8 +131,8 @@ Listing all tasks: list
 ## Usage
 It shows a list of all task in the task list with a number. it helps to summarize the task list.
 ### `list` - Listing all tasks with number.
-<br/>:black_medium_small_square:The keyword 'list' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list
-<br/>:black_medium_small_square:If you key in the keyword with empty task.There will be an error message:"☹ OOPS!!! There are no tasks in your list."
+<br/>>The keyword 'list' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list
+<br/>>:If you key in the keyword with empty task.There will be an error message:"☹ OOPS!!! There are no tasks in your list."
 
 **Format**: list
 
@@ -150,10 +150,10 @@ Locating tasks by description_keyword: find
 ## Usage
 It helps to search a task that contain any of the given description_keyword, and the search is case-insensitive. e.g book will match BOOK. Therefore, the user can easily find out the specific task base on find function.
 ### `find` - Locating tasks with given description_keyword
-<br/>:black_medium_small_square:The keyword 'find' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list when the task is match the specific description keywords.
-<br/>:black_medium_small_square:The order of the description_keyword does not matter.
-<br/>:black_medium_small_square:If you key in the specific description keyword that does not match the task in your list.There will be an error message:"☹ OOPS!!! There is no matching tasks in your list."
-<br/>:black_medium_small_square:If you only key in the **keyword**, there will be an error message:"☹ OOPS!!! The description of a find cannot be empty."
+<br/>>The keyword 'find' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list when the task is match the specific description keywords.
+<br/>>The order of the description_keyword does not matter.
+<br/>>If you key in the specific description keyword that does not match the task in your list.There will be an error message:"☹ OOPS!!! There is no matching tasks in your list."
+<br/>>If you only key in the **keyword**, there will be an error message:"☹ OOPS!!! The description of a find cannot be empty."
 
 **Format**: find description_keyword[more_keyword]
 
@@ -216,15 +216,15 @@ It helps to handle error message that will guid the user.
 **Expected outcome**:
    <br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 
-## Command Summary
-Action | Format, Examples
------------- | -------------
-Todo | todo Description e.g. todo read book
-Deadline | deadline Description /by dd/mm/yyyy HHmm e.g. deadline return book /by 12/12/2019 1800
-Event | event Description /at dd/mm/yyyy HHmm e.g. event join club /by 11/1/2019 1300
-Done | done INDEX e.g. done 1
-Delete | delete INDEX e.g. delete 1
+###### 6 Command Summary
+Action | Format | Examples
+------------ | --------|-----
+Todo | todo Description | e.g. todo read book
+Deadline | deadline Description /by dd/mm/yyyy HHmm | e.g. deadline return book /by 12/12/2019 1800
+Event | event Description /at dd/mm/yyyy HHmm | e.g. event join club /by 11/1/2019 1300
+Done | done INDEX | e.g. done 1
+Delete | delete INDEX |e.g. delete 1
 List | list
-Find | find description_keyword[more_keywords] e.g. find book
+Find | find description_keyword[more_keywords] |e.g. find book
 Exit | exit
 Bye | bye
