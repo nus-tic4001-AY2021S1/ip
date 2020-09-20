@@ -3,6 +3,18 @@ Dukes Project is a program that helps forgetful user to remember things and fini
 
 ## Quick start 
 
+1. Ensure you have Java 11 or above installed in your Computer
+1. Download the IntelliJ
+1. Set up the correct JDK version as follows:
+   1. Click `Configure` > `Structure for New Projects` and then `Project Settings` > `Project` > `Project SDK`
+   1. If JDK 11 is listed in the drop down, select it. If it is not, click `New...` and select the directory where you installed JDK 11
+   1. Click `OK`
+1.Download the latest project from Github:[links](https://github.com/linqing42/ip)
+1.Import the project into Intellij.
+1. Go to the sr folder and find src\main\java\Dukes\Duke
+1. Right click the Duke and select Run Duke
+1. The program now should run on the Console (usually located at the bottom side)
+
 ## Features 
 
 ### Feature 1 
