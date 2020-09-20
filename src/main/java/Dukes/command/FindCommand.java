@@ -44,7 +44,7 @@ public class FindCommand extends Command {
                     }
                 }
             }catch (IndexOutOfBoundsException e) {
-            System.out.print("current task is empty in your list.");
+            System.out.print("Current task is empty in your list.");
         }
         }
     }
