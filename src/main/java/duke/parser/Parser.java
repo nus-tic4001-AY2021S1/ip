@@ -1,4 +1,9 @@
-package duke;
+package duke.parser;
+
+import duke.exception.DukeException;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Todo;
 
 /**
  * A <code>Parser</code> class contains methods that deals with parsing

@@ -1,4 +1,4 @@
-package duke;
+package duke.task;
 
 /**
  * Represents a task that a user wants to do. An <code>Event</code> object has a

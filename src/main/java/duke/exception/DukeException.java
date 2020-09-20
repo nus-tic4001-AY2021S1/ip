@@ -1,4 +1,4 @@
-package duke;
+package duke.exception;
 
 /**
  * The <code>DukeException</code> class overrides the Exception class's constructor
