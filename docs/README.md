@@ -23,9 +23,9 @@ Adding a task: todo
 ## Usage
 Adding a task in the task list and show the total number of task in the list. Therefore, the user know the task that he need to do.
 
-#### `todo` - Adding a task into a task list.
-<br/>:black_medium_small_square:The keyword 'todo' with description can be **upper and lowercase letters** and its outcome will not include the keyword.
-<br/>:black_medium_small_square:If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a todo cannot be empty. "
+### `todo` - Adding a task into a task list.
+<br/>>The keyword 'todo' with description can be **upper and lowercase letters** and its outcome will not include the keyword.
+<br/>>If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a todo cannot be empty. "
 
 **Format**: todo Description
 
@@ -42,12 +42,12 @@ Adding a deadline task: deadline
 ## Usage
 Adding a deadline task helps to know the deadline for the specific task in the task list and show the total number of task in the list.
 
-#### `deadline` - Adding a deadline task
+### `deadline` - Adding a deadline task
 
-<br/>:black_medium_small_square:The keyword 'deadline' with description can be **upper and lowercase letters**.
-<br/>:black_medium_small_square:The outcome will not include the keyword with date and time format: dd MMM yyyy, hh:mm a
-<br/>:black_medium_small_square:If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a deadline cannot be empty." 
-<br/>:black_medium_small_square:If you missing the date and time or /by, there will be an reminder message:"Please specify the deadline date and time."
+<br/>>The keyword 'deadline' with description can be **upper and lowercase letters**.
+<br/>>The outcome will not include the keyword with date and time format: dd MMM yyyy, hh:mm a
+<br/>>If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a deadline cannot be empty." 
+<br/>>If you missing the date and time or /by, there will be an reminder message:"Please specify the deadline date and time."
 
 **Format**: deadline  Description /by dd/mm/yyyy HHmm
 
