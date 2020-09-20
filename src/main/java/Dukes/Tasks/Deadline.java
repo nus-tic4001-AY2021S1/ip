@@ -2,11 +2,8 @@ package Dukes.Tasks;
 
 
 /**
- * deadline task description /by deadline description: add to the task list a deadline task with the given task
- * description and with the deadline description
+ * deadline task description /by specific date and time  e.g. return book by 12/12/2019 1800.
  *
- * @inheritDoc
-
  */
 public class Deadline extends Task {
     protected String by;

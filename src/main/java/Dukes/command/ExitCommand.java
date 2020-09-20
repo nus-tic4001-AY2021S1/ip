@@ -8,9 +8,8 @@ import Dukes.Ui;
  */
 public class ExitCommand extends Command {
     /**
-     * Saves the tasks into storage and ends the programme.
-     *
-     * @param tasks TaskList to be appended.
+     * Saves the tasks into storage and display bye message to the user.
+     *  @param tasks TaskList to be appended.
      * @param ui UI to interact with user.
      * @param storage Storage to read and write files and temporary store in hard disk.
      */

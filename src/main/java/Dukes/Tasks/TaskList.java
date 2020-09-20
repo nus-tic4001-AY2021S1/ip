@@ -10,6 +10,7 @@ public class TaskList {
     protected ArrayList<Task> tasks = new ArrayList<Task>(100);
     public ArrayList<Task> list = new ArrayList<Task>();
 
+
     public TaskList() {
 
     }

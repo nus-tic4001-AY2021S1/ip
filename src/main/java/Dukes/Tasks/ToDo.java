@@ -2,7 +2,7 @@ package Dukes.Tasks;
 
 /**
  * Represents a todo task.
- * An <code>Todo</code>object corresponds to a type of <code>Task<code> object with a task to be completed.
+ * An <code>ToDo</code>object corresponds to a type of <code>Task<code> object with a task to be completed.
  */
 public class ToDo extends Task {
 
