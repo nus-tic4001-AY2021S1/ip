@@ -90,8 +90,8 @@ public class Ui {
                 printIndentation();
                 System.out.println((i + 1) + ". " + tasks.getTask(i).toString());
             }
-            printLine();
         }
+        printLine();
     }
 
     public void printFilteredTasks(TaskList tasks) {
@@ -104,7 +104,7 @@ public class Ui {
                 printIndentation();
                 System.out.println((i + 1) + ". " + tasks.getTask(searchResultIndexes.get(i)).toString());
             }
-            printLine();
         }
+        printLine();
     }
 }
