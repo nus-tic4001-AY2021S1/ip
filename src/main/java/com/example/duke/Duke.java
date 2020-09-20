@@ -6,7 +6,31 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Duke {
-    public static void main(String[] args) throws IOException {
+
+    private Ui ui;
+    private Storage storage;
+    private ArrayList tasks;
+
+    public Duke (String filePath) {
+        ui=new Ui();
+        storage=new Storage(filePath);
+        tasks= storage.load();
+
+    }
+    public void run (){
+        ui.printWelcome();
+        String fullCommand= ui.readCommand();
+        System.out.println(fullCommand);
+
+    }
+
+    public static void main(String[] args) {
+        new Duke("/Users/januariusjang/Downloads/iP/data/tasks.txt").run();
+
+    }
+
+
+    /*public static void main(String[] args) throws IOException {
 
         ArrayList<Task> taskList = new ArrayList<Task>();
         String commandKeyword;
@@ -105,5 +129,5 @@ public class Duke {
 
         System.out.println(" Bye.Hope to see you again soon!\n" );
 
-    }
+    }*/
 }
