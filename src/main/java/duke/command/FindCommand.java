@@ -16,12 +16,16 @@ public class FindCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         String searchString = Parser.getSearchString(fullCommand).toLowerCase();
+        String[] searchWords = searchString.split(" ");
         tasks.setIsInitialized(true);
         tasks.clearSearchResultIndexes();
         for (int i = 0; i < tasks.getSize(); i++) {
             String taskDescription = tasks.getTask(i).getDescription().toLowerCase();
-            if (taskDescription.contains(searchString)) {
-                tasks.addSearchResultIndex(i);
+            for (int j = 0; j < searchWords.length; j++) {
+                if (taskDescription.contains(searchWords[j].trim())) {
+                    tasks.addSearchResultIndex(i);
+                    break;
+                }
             }
         }
         ui.printFilteredTasks(tasks);
