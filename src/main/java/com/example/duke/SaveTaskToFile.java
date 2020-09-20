@@ -28,7 +28,7 @@ public class SaveTaskToFile {
             //for (int i = currentCount; i < myTasks.size(); i++) {
             for (int i = 0; i < myTasks.size(); i++) {
                 //System.out.println(myTasks.get(i).asSaveString());
-                writeToFile(myFile, myTasks.get(i).toString());
+                writeToFile(myFile, myTasks.get(i).toWriteFileString());
 
             }
 

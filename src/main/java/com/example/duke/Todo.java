@@ -5,8 +5,17 @@ public class Todo extends Task {
         super(description);
     }
 
+    public Todo (String description, boolean isDone){
+        super(description,isDone);
+    }
+
     @Override
     public String toString(){
         return "[T]" + "["+ super.getStatusIcon()+ "]" + super.description ;
+    }
+
+    @Override
+    public String toWriteFileString(){
+        return "T" + "|"+ super.getStatusIconForFile()+ "|" + super.description ;
     }
 }

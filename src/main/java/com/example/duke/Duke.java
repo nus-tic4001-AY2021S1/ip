@@ -10,7 +10,8 @@ public class Duke {
 
         ArrayList<Task> taskList = new ArrayList<Task>();
         String commandKeyword;
-
+        taskList=CreateTaskFromFile.getTasksFromFile("/Users/januariusjang/Downloads/iP/data/tasks.txt");
+        System.out.println(taskList.size() + " tasks have been preloaded in the system\n");
         System.out.println("Hello! I'm Duke\n" );
         System.out.println("What can I do for you?\n" );
 

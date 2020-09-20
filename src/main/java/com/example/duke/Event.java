@@ -12,4 +12,8 @@ public class Event extends Task{
         return "[E]" + "["+ super.getStatusIcon()+ "]" + super.description + " (at: " + by + ")";
     }
 
+    @Override
+    public String toWriteFileString(){
+        return "E" + "|"+ super.getStatusIconForFile()+ "|" + super.description + "|" + by;
+    }
 }
