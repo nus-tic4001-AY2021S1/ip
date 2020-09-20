@@ -45,9 +45,9 @@ Adding a deadline task helps to know the deadline for the specific task in the t
 ### `deadline` - Adding a deadline task
 
 <br/>:black_medium_small_square:The keyword 'deadline' with description can be **upper and lowercase letters**.
-<br/>:black_medium_small_square:The outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
+<br/>:black_medium_small_square:The outcome will not include the keyword with date and time format: dd MMM yyyy, hh:mm a
 <br/>:black_medium_small_square:If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a deadline cannot be empty." 
-<br/>:black_medium_small_square:If you missing the date and time or /by, there will be an reminder message:"Please specify the deadline date and time"
+<br/>:black_medium_small_square:If you missing the date and time or /by, there will be an reminder message:"Please specify the deadline date and time."
 
 **Format**: deadline  Description /by dd/mm/yyyy HHmm
 
@@ -69,7 +69,7 @@ Adding an event task helps to remember to join or complete the event with specif
 <br/>:black_medium_small_square:The keyword 'event' with description can be **upper and lowercase letters**.
 <br/>:black_medium_small_square:The outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
 <br/>:black_medium_small_square:If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a event cannot be empty."
-<br/>:black_medium_small_square:If you missing the date and time or /by, there will be an reminder message:"Please specify the event date and time"
+<br/>:black_medium_small_square:If you missing the date and time or /by, there will be an reminder message:"Please specify the event date and time."
 
 **Format**: event  Description /by dd/mm/yyyy HHmm
 
