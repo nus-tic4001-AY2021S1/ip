@@ -66,9 +66,9 @@ Adding an event task helps to remember to join or complete the event with specif
 
 ### `event` - Adding an event task
 
-<br/>>:The keyword 'event' with description can be **upper and lowercase letters**.
+<br/>>The keyword 'event' with description can be **upper and lowercase letters**.
 <br/>>The outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
-<br/>>:If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a event cannot be empty."
+<br/>>If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a event cannot be empty."
 <br/>>If you missing the date and time or /by, there will be an reminder message:"Please specify the event date and time."
 
 **Format**: event  Description /by dd/mm/yyyy HHmm
@@ -132,7 +132,7 @@ Listing all tasks: list
 It shows a list of all task in the task list with a number. it helps to summarize the task list.
 ### `list` - Listing all tasks with number.
 <br/>>The keyword 'list' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list
-<br/>>:If you key in the keyword with empty task.There will be an error message:"☹ OOPS!!! There are no tasks in your list."
+<br/>>If you key in the keyword with empty task.There will be an error message:"☹ OOPS!!! There are no tasks in your list."
 
 **Format**: list
 
@@ -216,15 +216,15 @@ It helps to handle error message that will guid the user.
 **Expected outcome**:
    <br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 
-###### 6 Command Summary
+###### Command Summary
 Action | Format | Examples
 ------------ | --------|-----
-Todo | todo Description | e.g. todo read book
-Deadline | deadline Description /by dd/mm/yyyy HHmm | e.g. deadline return book /by 12/12/2019 1800
-Event | event Description /at dd/mm/yyyy HHmm | e.g. event join club /by 11/1/2019 1300
-Done | done INDEX | e.g. done 1
-Delete | delete INDEX |e.g. delete 1
+Todo | todo Description | todo read book
+Deadline | deadline Description /by dd/mm/yyyy HHmm | deadline return book /by 12/12/2019 1800
+Event | event Description /at dd/mm/yyyy HHmm | event join club /by 11/1/2019 1300
+Done | done INDEX | done 1
+Delete | delete INDEX | delete 1
 List | list
-Find | find description_keyword[more_keywords] |e.g. find book
+Find | find description_keyword[more_keywords] | find book
 Exit | exit
 Bye | bye
