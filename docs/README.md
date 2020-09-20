@@ -21,19 +21,18 @@ Dukes Project is a program that helps forgetful user to remember things and fini
 Adding a task: todo
 
 ## Usage
-Adding a task in the task list and show the total number of task in the list.
+Adding a task in the task list and show the total number of task in the list. Therefore, the user know the task that he need to do.
 
 ### `todo` - Adding a task into a task list.
 
-The keyword 'todo' with description can be **upper and lowercase letters** and its outcome will not include the keyword.
-If you key in the keyword without description. There will be an error message:☹ OOPS!!! The description of a todo cannot be empty. 
+black_medium_small_square:The keyword 'todo' with description can be **upper and lowercase letters** and its outcome will not include the keyword.
+black_medium_small_square:If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a todo cannot be empty. "
 
-Format: todo Description
+**Format**: todo Description
 
-Example of usage: 
-TOdo Read BOOK
+**Example of usage**: TOdo Read BOOK
 
-Expected outcome:
+**Expected outcome**:
 
 Got it. I've added this task: 
 [T][X] Read BOOK
@@ -47,20 +46,19 @@ Adding a deadline task helps to know the deadline for the specific task in the t
 
 ### `deadline` - Adding a deadline task
 
-The keyword 'deadline' with description can be **upper and lowercase letters**.the outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
-If you key in the keyword without description. There will be an error message:☹ OOPS!!! The description of a deadline cannot be empty. 
+black_medium_small_square:The keyword 'deadline' with description can be **upper and lowercase letters**.the outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
+black_medium_small_square:If you key in the keyword without description. There will be an error message:☹ OOPS!!! The description of a deadline cannot be empty. 
+black_medium_small_square:If you missing the date and time or /by, there will be an reminder message:"Please specify the deadline date and time"
 
--If you missing the date and time or /by, there will be an reminder message:"Please specify the deadline date and time"
-Format: deadline  Description /by dd/mm/yyyy HHmm
+**Format**: deadline  Description /by dd/mm/yyyy HHmm
 
-Example of usage: 
-deadline return book /by 12/12/2019 1800
+**Example of usage**: 
+1.deadline return book /by 12/12/2019 1800
 
-Expected outcome:
-
-Got it. I've added this task: 
-[D][X] return book (by:12 Dec 2019, 06:00 PM)
-Now you have [index number] task in the list.
+**Expected outcome**:
+1.Got it. I've added this task: 
+1.[D][X] return book (by:12 Dec 2019, 06:00 PM)
+1.Now you have [index number] task in the list.
 
 ### Feature 3 
 Adding an event task: event
@@ -70,9 +68,10 @@ Adding an event task helps to remember to join or complete the event with specif
 
 ### `event` - Adding an event task
 
-The keyword 'event' with description can be **upper and lowercase letters**.the outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
-If you key in the keyword without description. There will be an error message:☹ OOPS!!! The description of a event cannot be empty. 
--If you missing the date and time or /by, there will be an reminder message:"Please specify the event date and time"
+1.The keyword 'event' with description can be **upper and lowercase letters**.
+1.The outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
+1.If you key in the keyword without description. There will be an error message:☹ OOPS!!! The description of a event cannot be empty. 
+1.If you missing the date and time or /by, there will be an reminder message:"Please specify the event date and time"
 Format: event  Description /by dd/mm/yyyy HHmm
 
 Example of usage: 
