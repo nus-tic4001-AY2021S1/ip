@@ -218,7 +218,7 @@ It helps to handle error message that will guid the user.
 
 ###### Command Summary
 Action | Format | Examples
------------- | --------|-----
+-------| -------| -----
 Todo | todo Description | todo read book
 Deadline | deadline Description /by dd/mm/yyyy HHmm | deadline return book /by 12/12/2019 1800
 Event | event Description /at dd/mm/yyyy HHmm | event join club /by 11/1/2019 1300
