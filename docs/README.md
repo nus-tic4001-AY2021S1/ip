@@ -90,7 +90,7 @@ Marking a specific task to remind the user that he has finished the task.
 <br/>>The keyword 'done' can be **upper and lowercase letters** 
 <br/>>The outcome will be change the X to ✓ in the specific task.
 <br/>>The index refers to the index number shown in the displayed task list and the index **must be positive integer** 1,2,3...
-<br/>>:If you key in the keyword without INDEX. There will be an error message:"please key in correct format." 
+<br/>>If you key in the keyword without INDEX. There will be an error message:"please key in correct format." 
 
 **Format**: done INDEX
 
