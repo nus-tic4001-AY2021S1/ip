@@ -90,12 +90,12 @@ public class Parser {
     }
 
     private static String getCommandParameter(String fullCommand) {
-        return fullCommand.replaceFirst("todo", "")
-                .replace("deadline", "")
-                .replace("event", "")
-                .replace("done", "")
-                .replace("delete", "")
-                .replace("list", "")
+        return fullCommand.replaceFirst("(?i)todo", "")
+                .replaceFirst("(?i)deadline", "")
+                .replaceFirst("(?i)event", "")
+                .replaceFirst("(?i)done", "")
+                .replaceFirst("(?i)delete", "")
+                .replaceFirst("(?i)list", "")
                 .trim();
     }
 
