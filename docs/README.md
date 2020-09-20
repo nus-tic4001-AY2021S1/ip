@@ -23,9 +23,9 @@ Adding a task: todo
 ## Usage
 Adding a task in the task list and show the total number of task in the list. Therefore, the user know the task that he need to do.
 
-### `todo` - Adding a task into a task list.
-<br/>:black_medium_small_square:The keyword 'todo' with description can be **upper and lowercase letters** and its outcome will not include the keyword.
-<br/>:black_medium_small_square:If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a todo cannot be empty. "
+#### `todo` - Adding a task into a task list.
+<br/>The keyword 'todo' with description can be **upper and lowercase letters** and its outcome will not include the keyword.
+<br/>If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a todo cannot be empty. "
 
 **Format**: todo Description
 
