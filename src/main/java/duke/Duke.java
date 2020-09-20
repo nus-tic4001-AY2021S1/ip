@@ -1,5 +1,6 @@
 package duke;
 
+import duke.command.Command;
 import duke.exception.DukeException;
 import duke.parser.Parser;
 import duke.storage.Storage;
@@ -26,6 +27,7 @@ public class Duke {
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
+        taskListIndexes = new ArrayList<>();
         try {
             tasks = new TaskList(storage.loadTasks(filePath));
         } catch (DukeException e) {
@@ -36,127 +38,18 @@ public class Duke {
 
     public void run() {
         ui.printWelcome();
-
         boolean isBye = false;
         while (!isBye) {
-            String fullCommand = ui.readUserInput();
-            String command = Parser.getCommand(fullCommand);
-
-            ui.printLine();
-
             try {
-                switch(command) {
-                case "bye":
-                    isBye = true;
-                    break;
-                case "todo":
-                    addTodo(fullCommand);
-                    break;
-                case "deadline":
-                    addDeadline(fullCommand);
-                    break;
-                case "event":
-                    addEvent(fullCommand);
-                    break;
-                case "done":
-                    markTaskAsDone(fullCommand);
-                    break;
-                case "delete":
-                    deleteTask(fullCommand);
-                    break;
-                case "find":
-                    findTasks(fullCommand);
-                    break;
-                case "list":
-                    listTasks();
-                    break;
-                default:
-                    ui.printError("I'm sorry, I don't know what that means.");
-                }
+                String fullCommand = ui.readUserInput();
+                Command c = Parser.parse(fullCommand);
+                c.execute(tasks, taskListIndexes, ui, storage);
+                isBye = c.isBye();
             } catch (DukeException e) {
                 ui.printError(e.getMessage());
             }
         }
-
         ui.printGoodbye();
-    }
-
-    private void addTodo(String fullCommand) throws DukeException {
-        tasks.addTask(Parser.createTodo(fullCommand));
-
-        storage.saveTasks(tasks);
-
-        ui.printAddedTask(tasks);
-    }
-
-    private void addDeadline(String fullCommand) throws DukeException {
-        tasks.addTask(Parser.createDeadline(fullCommand));
-
-        storage.saveTasks(tasks);
-
-        ui.printAddedTask(tasks);
-    }
-
-    private void addEvent(String fullCommand) throws DukeException {
-        tasks.addTask(Parser.createEvent(fullCommand));
-
-        storage.saveTasks(tasks);
-
-        ui.printAddedTask(tasks);
-    }
-
-    private void listTasks() {
-        taskListIndexes = new ArrayList<>();
-        for (int i = 0; i < tasks.getSize(); i++) {
-            taskListIndexes.add(i);
-        }
-
-        ui.printTasks(tasks);
-    }
-
-    private void findTasks(String fullCommand) throws DukeException {
-        String searchString = Parser.getSearchString(fullCommand).toLowerCase();
-        taskListIndexes = new ArrayList<>();
-        for (int i = 0; i < tasks.getSize(); i++) {
-            String taskDescription = tasks.getTask(i).getDescription().toLowerCase();
-            if (taskDescription.contains(searchString)) {
-                taskListIndexes.add(i);
-            }
-        }
-
-        ui.printFilteredTasks(tasks, taskListIndexes);
-    }
-
-    private void markTaskAsDone(String fullCommand) throws DukeException {
-        int taskIndex = Parser.getTaskIndex(fullCommand);
-        try {
-            tasks.getTask(taskListIndexes.get(taskIndex)).setDone(true);
-        } catch (NullPointerException e) {
-            throw new DukeException("Please run the list or find command first.");
-        } catch (IndexOutOfBoundsException e) {
-            throw new DukeException("The task index is invalid.");
-        }
-
-        storage.saveTasks(tasks);
-
-        ui.printDoneTask(tasks.getTask(taskListIndexes.get(taskIndex)));
-    }
-
-    private void deleteTask(String fullCommand) throws DukeException {
-        int taskIndex = Parser.getTaskIndex(fullCommand);
-        String taskDescription;
-        try {
-            taskDescription =  tasks.getTask(taskListIndexes.get(taskIndex)).toString();
-            tasks.removeTask(taskListIndexes.get(taskIndex));
-        } catch (NullPointerException e) {
-            throw new DukeException("Please run the list or find command first.");
-        } catch (IndexOutOfBoundsException e) {
-            throw new DukeException("The task index is invalid.");
-        }
-
-        storage.saveTasks(tasks);
-
-        ui.printRemovedTask(tasks.getSize(), taskDescription);
     }
 
     /**

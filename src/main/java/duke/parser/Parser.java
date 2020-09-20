@@ -1,5 +1,6 @@
 package duke.parser;
 
+import duke.command.*;
 import duke.exception.DukeException;
 import duke.task.Deadline;
 import duke.task.Event;
@@ -120,11 +121,43 @@ public class Parser {
         return taskIndex - 1;
     }
 
+    /**
+     * Gets search string from user's full input string.
+     *
+     * @param fullCommand User's full input string.
+     * @return Search string.
+     * @throws DukeException If search string is missing or invalid.
+     */
     public static String getSearchString(String fullCommand) throws DukeException {
         String searchString = fullCommand.replaceFirst("find", "").trim();
         if (searchString.isEmpty()){
             throw new DukeException("The search string is missing.");
         }
         return searchString;
+    }
+
+    public static Command parse(String fullCommand) {
+        String command = getCommand(fullCommand).toLowerCase();
+        switch(command) {
+        case "bye":
+            return new ByeCommand();
+        case "todo":
+            return new TodoCommand(fullCommand);
+        case "deadline":
+            return new DeadlineCommand(fullCommand);
+        case "event":
+            return new EventCommand(fullCommand);
+        case "done":
+            return new DoneCommand(fullCommand);
+        case "delete":
+            return new DeleteCommand(fullCommand);
+        case "find":
+            return new FindCommand(fullCommand);
+        case "list":
+            return new ListCommand();
+        default:
+            return new UnknownCommand();
+        }
+
     }
 }
