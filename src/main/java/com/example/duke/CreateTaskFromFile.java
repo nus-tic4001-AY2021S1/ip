@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * @return An Arraylist of Tasks created from text files.
+ */
 public class CreateTaskFromFile {
     public static ArrayList<Task> getTasksFromFile(String filepath) {
         ArrayList<Task> loadedTasks = new ArrayList<>();
@@ -21,7 +25,7 @@ public class CreateTaskFromFile {
                 loadedTasks.add(createTask(line)); //convert the line to a task and add to the list
             }
         } catch (FileNotFoundException e) {
-            printError("problem encountered while loading data: " + e.getMessage());
+            printError("Problem encountered while loading data: " + e.getMessage());
         }
         return loadedTasks;
     }
@@ -36,6 +40,10 @@ public class CreateTaskFromFile {
         return myStrings;
     }
 
+    /**
+     * @param myTask the Task that is in the text file that gets decoded and created as object.
+     * @return the Task object.
+     */
     private static Task createTask(String myTask){
         String taskType=myTask.split("\\|")[0].trim();
         String doneOrNot=myTask.split("\\|")[1].trim();

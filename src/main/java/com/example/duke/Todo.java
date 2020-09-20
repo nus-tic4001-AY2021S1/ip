@@ -9,11 +9,19 @@ public class Todo extends Task {
         super(description,isDone);
     }
 
+    /**
+     *
+     * @return for onscreen display
+     */
     @Override
     public String toString(){
         return "[T]" + "["+ super.getStatusIcon()+ "]" + super.description ;
     }
 
+    /**
+     *
+     * @return for writing to file
+     */
     @Override
     public String toWriteFileString(){
         return "T" + "|"+ super.getStatusIconForFile()+ "|" + super.description ;

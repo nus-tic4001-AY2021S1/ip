@@ -13,11 +13,19 @@ public class Deadline extends Task {
         this.by=by;
     }
 
+    /**
+     *
+     * @return for onscreen display
+     */
     @Override
     public String toString(){
         return "[D]" + "["+ super.getStatusIcon()+ "]" + super.description + " (by: " + by + ")";
     }
 
+    /**
+     *
+     * @return for writing to file
+     */
     @Override
     public String toWriteFileString(){
         return "D" + "|"+ super.getStatusIconForFile()+ "|" + super.description + "|" + by;

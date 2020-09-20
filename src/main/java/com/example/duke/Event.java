@@ -7,11 +7,19 @@ public class Event extends Task{
         super(description);
         this.by=by;
     }
+    /**
+     *
+     * @return for onscreen display
+     */
     @Override
     public String toString(){
         return "[E]" + "["+ super.getStatusIcon()+ "]" + super.description + " (at: " + by + ")";
     }
 
+    /**
+     *
+     * @return for writing to file
+     */
     @Override
     public String toWriteFileString(){
         return "E" + "|"+ super.getStatusIconForFile()+ "|" + super.description + "|" + by;
