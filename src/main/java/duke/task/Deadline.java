@@ -12,19 +12,18 @@ import java.time.format.DateTimeParseException;
  * that indicates the deadline of the task.
  */
 public class Deadline extends Task {
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-    private LocalDateTime by;
+    private final LocalDateTime by;
 
     /**
      * Instantiate a <code>Deadline</code> object.
      *
      * @param description Description of a <code>Deadline</code> object.
      * @param by Deadline of a <code>Deadline</code> object.
-     * @return <code>Deadline</code> object.
      */
     public Deadline(String description, String by) throws DukeException {
         super(description);
         try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
             this.by = LocalDateTime.parse(by, formatter);
         } catch (DateTimeParseException e) {
             throw new DukeException("The by field should be in yyyy-MM-dd HHmm format. E.g. 2020-12-25 1800");
@@ -37,7 +36,6 @@ public class Deadline extends Task {
      * @param description Description of a <code>Deadline</code> object.
      * @param by Deadline of a <code>Deadline</code> object.
      * @param isDone Completion status of a <code>Deadline</code> object.
-     * @return <code>Deadline</code> object.
      */
     public Deadline(String description, String by, boolean isDone) throws DukeException {
         super(description, isDone);

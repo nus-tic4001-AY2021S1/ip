@@ -10,13 +10,12 @@ import java.util.ArrayList;
  * to perform operations such as adding and deleting task from the Task List.
  */
 public class TaskList {
-
     private ArrayList<Task> tasks = new ArrayList<>();
+    private final ArrayList<Integer> searchResultIndexes = new ArrayList<>();
+    private boolean isInitialized = false;
 
     /**
      * Instantiate a <code>TaskList<Task></code> object.
-     *
-     * @return <code>TaskList<Task></code> object.
      */
     public TaskList() {
     }
@@ -25,7 +24,6 @@ public class TaskList {
      * Instantiate a <code>TaskList<Task></code> object.
      *
      * @param tasks List of <code>Task</> objects.
-     * @return <code>TaskList<Task></code> object.
      */
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
@@ -70,5 +68,29 @@ public class TaskList {
      */
     public int getSize() {
         return tasks.size();
+    }
+
+    public void clearSearchResultIndexes() {
+        searchResultIndexes.clear();
+    }
+
+    public void addSearchResultIndex(int searchResultIndex) {
+        searchResultIndexes.add(searchResultIndex);
+    }
+
+    public ArrayList<Integer> getSearchResultIndexes() {
+        return searchResultIndexes;
+    }
+
+    public int getSearchResultIndex(int resultIndex) {
+        return searchResultIndexes.get(resultIndex);
+    }
+
+    public void setIsInitialized(boolean isInitialized) {
+        this.isInitialized = isInitialized;
+    }
+
+    public boolean getIsInitialized() {
+        return isInitialized;
     }
 }

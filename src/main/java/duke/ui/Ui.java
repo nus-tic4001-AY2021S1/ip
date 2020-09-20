@@ -41,13 +41,13 @@ public class Ui {
 
         printLine();
         System.out.println(logo);
-        System.out.println("Duke: Hello! I'm Duke, your personal chatbot.");
+        System.out.println("Duke: Hello! I'm Duke, your personal chat bot.");
         System.out.println("Duke: What can I do for you?");
         printLine();
     }
 
     public void printError(String errorMessage) {
-        System.out.println("Duke: OPPS!! " + errorMessage);
+        System.out.println("Duke: OOPS!! " + errorMessage);
         printLine();
     }
 
@@ -94,14 +94,15 @@ public class Ui {
         }
     }
 
-    public void printFilteredTasks(TaskList tasks, ArrayList<Integer> taskListIndexes) {
-        if (taskListIndexes.size() == 0) {
+    public void printFilteredTasks(TaskList tasks) {
+        ArrayList<Integer> searchResultIndexes = tasks.getSearchResultIndexes();
+        if (searchResultIndexes.size() == 0) {
             System.out.println("Duke: Sorry, there is no matching task.");
         } else {
             System.out.println("Duke: Here are the matching tasks in your list:");
-            for (int i = 0; i < taskListIndexes.size(); i++) {
+            for (int i = 0; i < searchResultIndexes.size(); i++) {
                 printIndentation();
-                System.out.println((i + 1) + ". " + tasks.getTask(taskListIndexes.get(i)).toString());
+                System.out.println((i + 1) + ". " + tasks.getTask(searchResultIndexes.get(i)).toString());
             }
             printLine();
         }

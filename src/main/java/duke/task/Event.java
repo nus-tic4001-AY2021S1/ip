@@ -6,14 +6,13 @@ package duke.task;
  * that indicates the start and end time of the task.
  */
 public class Event extends Task {
-    private String at;
+    private final String at;
 
     /**
      * Instantiate an <code>Event</code> object.
      *
      * @param description Description of an <code>Event</code> object.
      * @param at Start and End time of an <code>Event</code> object.
-     * @return <code>Event</code> object.
      */
     public Event(String description, String at) {
         super(description);
@@ -26,7 +25,6 @@ public class Event extends Task {
      * @param description Description of an <code>Event</code> object.
      * @param at Start and End time of an <code>Event</code> object.
      * @param isDone Completion status of an <code>Event</code> object.
-     * @return <code>Event</code> object.
      */
     public Event(String description, String at, boolean isDone) {
         super(description, isDone);

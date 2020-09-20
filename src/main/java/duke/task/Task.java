@@ -7,7 +7,7 @@ package duke.task;
  * implementation of a task.
  */
 public abstract class Task {
-    private String description;
+    private final String description;
     private boolean isDone;
 
     /**
@@ -56,9 +56,8 @@ public abstract class Task {
     /**
      * Set the completion status of a <code>Task</code> object to done.
      *
-     * @param isDone Completion status of a <code>Task</code> object.
      */
-    public void setDone(boolean isDone) {
+    public void setDone() {
         this.isDone = true;
     }
 

@@ -9,7 +9,6 @@ public class Todo extends Task {
      * Instantiate a <code>Todo</code> object.
      *
      * @param description Description of a <code>Todo</code> object.
-     * @return <code>Todo</code> object.
      */
     public Todo(String description) {
         super(description);
@@ -20,7 +19,6 @@ public class Todo extends Task {
      *
      * @param description Description of a <code>Todo</code> object.
      * @param isDone Completion status of a <code>Todo</code> object.
-     * @return <code>Todo</code> object.
      */
     public Todo(String description, boolean isDone) {
         super(description, isDone);

@@ -7,8 +7,6 @@ import duke.storage.Storage;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
-import java.util.ArrayList;
-
 /**
  * The <code>Duke</code> class implements an application that allows users to manage tasks.
  * It contains methods that allow the creation, modification and storage of tasks.
@@ -17,7 +15,6 @@ public class Duke {
     private final Storage storage;
     private final Ui ui;
     private TaskList tasks;
-    private ArrayList<Integer> taskListIndexes;
 
     /**
      * Constructor for a <code>Duke</code> object.
@@ -27,7 +24,6 @@ public class Duke {
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
-        taskListIndexes = new ArrayList<>();
         try {
             tasks = new TaskList(storage.loadTasks(filePath));
         } catch (DukeException e) {
@@ -43,7 +39,7 @@ public class Duke {
             try {
                 String fullCommand = ui.readUserInput();
                 Command c = Parser.parse(fullCommand);
-                c.execute(tasks, taskListIndexes, ui, storage);
+                c.execute(tasks, ui, storage);
                 isBye = c.isBye();
             } catch (DukeException e) {
                 ui.printError(e.getMessage());
