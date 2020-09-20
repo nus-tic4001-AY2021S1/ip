@@ -1,10 +1,11 @@
-package Dukes;
+package Dukes.parser;
 
 import Dukes.Exceptions.DukeException;
 import Dukes.Tasks.Deadline;
 import Dukes.Tasks.Event;
 import Dukes.Tasks.Task;
 import Dukes.Tasks.ToDo;
+import Dukes.Ui;
 import Dukes.command.*;
 
 import java.text.SimpleDateFormat;
@@ -85,7 +86,7 @@ public class Parser {
                 }
                 String[] splitEvent = input.split("/at");
                 if (splitEvent.length < 2) {
-                    throw new DukeException("Please specify the event time\n");
+                    throw new DukeException("Please specify the event date and time\n");
                 }
                 String event = splitEvent[0].substring(6);
                 String time = splitEvent[1];

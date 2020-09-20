@@ -2,6 +2,8 @@ package Dukes;
 import Dukes.Exceptions.DukeException;
 import Dukes.Tasks.TaskList;
 import Dukes.command.Command;
+import Dukes.parser.Parser;
+import Dukes.storage.Storage;
 
 
 /**
@@ -14,7 +16,7 @@ import Dukes.command.Command;
  * @since 14/9/2020
  */
 public class Duke {
-    private  Storage storage;
+    private Storage storage;
     private TaskList tasks;
     private  Ui ui;
     /**

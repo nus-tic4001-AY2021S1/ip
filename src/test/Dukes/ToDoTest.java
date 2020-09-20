@@ -9,7 +9,7 @@ public class ToDoTest {
     @Test
     public void ToDoTest() {
         ToDo todo = new ToDo("return book");
-        assertEquals("[T][✘] return book", todo.toString());
+        assertEquals("[T][X] return book", todo.toString());
         assertEquals("T | 0 | return book", todo.toWriteFile());
     }
 

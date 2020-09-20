@@ -1,6 +1,6 @@
 package Dukes.command;
 
-import Dukes.Storage;
+import Dukes.storage.Storage;
 import Dukes.Tasks.Task;
 import Dukes.Tasks.TaskList;
 import Dukes.Ui;

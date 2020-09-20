@@ -1,7 +1,7 @@
 package Dukes.command;
 
 import Dukes.Exceptions.DukeException;
-import Dukes.Storage;
+import Dukes.storage.Storage;
 import Dukes.Tasks.Task;
 import Dukes.Tasks.TaskList;
 import Dukes.Ui;
@@ -36,7 +36,7 @@ public class FindCommand extends Command {
                 }
             }
                 if (count == 0) {
-                    throw new DukeException("There is no task in the list");
+                    throw new DukeException("☹ OOPS!!! There is no matching task in the list");
                 } else {
                     System.out.println("Here are the matching tasks in your list:");
                     for (int i = 0; i < filteredTasks.list.size(); i++) {

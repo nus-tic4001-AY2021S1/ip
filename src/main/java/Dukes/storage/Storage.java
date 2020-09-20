@@ -1,4 +1,4 @@
-package Dukes;
+package Dukes.storage;
 
 import Dukes.Tasks.Deadline;
 import Dukes.Tasks.Event;
