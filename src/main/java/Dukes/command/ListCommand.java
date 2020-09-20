@@ -14,7 +14,7 @@ public class ListCommand extends Command {
         super();
     }
     /**
-     * print commands detail into the <code>TaskList</code>.
+     * List all the tasks in the task list that was saved on the disk, and display to user
      * @param tasks TaskList to be appended.
      * @param ui UI to interact with user.
      * @param storage Storage to read and write files and temporary store in hard disk.

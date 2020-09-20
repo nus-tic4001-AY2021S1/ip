@@ -20,7 +20,7 @@ public class DoneCommand extends Command {
         super.index = index;
     }
     /**
-     * Adds a done task to user's list.
+     * Mark a task in the task list as done if specified index is valid, save the task list and display to user
      *
      * @param tasks TaskList to be appended.
      * @param ui UI to interact with user.

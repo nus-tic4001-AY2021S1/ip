@@ -16,11 +16,10 @@ import java.util.Scanner;
  * Represents a storage in the hard disk.
  */
 public class Storage {
-    private ArrayList<String> details = new ArrayList<String>();
+    private ArrayList<String> details = new ArrayList<>();
     public static String filePath = "data/duke.txt";
 
-    public Storage(String filepath) {
-        this.filePath = filePath;
+    public Storage(String path) {
     }
 
     public ArrayList<String> load() throws Dukes.Exceptions.FileNotFoundException {

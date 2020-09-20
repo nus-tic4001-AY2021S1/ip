@@ -8,15 +8,16 @@ import Dukes.Exceptions.DukeException;
 /**
  * Create a DeleteCommand. It removes user's task from the list.
  */
-public class DeleteCommand extends Command{
-    public DeleteCommand (int index){
-        super.index =index;
+public class DeleteCommand extends Command {
+    public DeleteCommand(int index) {
+        super.index = index;
     }
+
     /**
-     * Adds a delete task to user's list.
+     * Adds a delete task from list with a specific index if index is valid, save the task to user's list.
      *
-     * @param tasks TaskList to be appended.
-     * @param ui UI to interact with user.
+     * @param tasks   TaskList to be appended.
+     * @param ui      UI to interact with user.
      * @param storage Storage to read and write files and temporary store in hard disk.
      * @throws DukeException If user key in a number that is not in the TaskList.
      */
@@ -29,5 +30,4 @@ public class DeleteCommand extends Command{
             throw new DukeException("Please key in a number from the list");
         }
     }
-
 }

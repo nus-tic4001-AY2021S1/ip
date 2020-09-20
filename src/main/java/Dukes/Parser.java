@@ -5,12 +5,7 @@ import Dukes.Tasks.Deadline;
 import Dukes.Tasks.Event;
 import Dukes.Tasks.Task;
 import Dukes.Tasks.ToDo;
-import Dukes.command.AddCommand;
-import Dukes.command.DeleteCommand;
-import Dukes.command.DoneCommand;
-import Dukes.command.ExitCommand;
-import Dukes.command.Command;
-import Dukes.command.ListCommand;
+import Dukes.command.*;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -31,6 +26,7 @@ public class Parser {
 
     public static Command parse(String input) throws DukeException {
         Task taskWord;
+        String keyword;
         Command c = null;
         String action = input.split(" ")[0].toLowerCase();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HHmm");
@@ -101,6 +97,17 @@ public class Parser {
                 }
                 c = new AddCommand(taskWord);
                 break;
+            case "find":
+                if (input.length() < 6) {
+                    throw new DukeException("☹ OOPS!!! The description of a find cannot be empty.\n");
+                }
+                try {
+                    keyword = input.substring(5).toLowerCase();
+                    c = new FindCommand(keyword);
+                    break;
+                } catch (NumberFormatException e) {
+                    throw new DukeException("please key in correct format");
+                }
 
             case "bye":
             case "exit":

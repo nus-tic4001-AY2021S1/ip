@@ -13,6 +13,8 @@ public abstract class Command {
 
     protected Task task;
     protected int index;
+    protected String keyWord;
+
 
     public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException;
 

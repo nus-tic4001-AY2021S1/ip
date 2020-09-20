@@ -33,6 +33,14 @@ public abstract class Task {
         this.isDone = true;
         return this;
     }
+    /**
+     * Get the description of the task
+     *
+     * @return the description of the task
+     */
+    public String getDescription() {
+        return this.description;
+    }
 
     @Override
     public String toString() {
