@@ -32,11 +32,13 @@ Adding a task in the task list and show the total number of task in the list. Th
 **Format**: todo Description
 
 **Example of usage**: 
-TOdo Read BOOK
+<br/>TOdo Read BOOK
+
 **Expected outcome**:
 <br/>Got it. I've added this task: 
 <br/>[T][X] Read BOOK
 <br/>Now you have [index number] task in the list.
+
 ### Feature 2 
 Adding a deadline task: deadline
 
@@ -53,11 +55,13 @@ Adding a deadline task helps to know the deadline for the specific task in the t
 **Format**: deadline  Description /by dd/mm/yyyy HHmm
 
 **Example of usage**:
-deadline return book /by 12/12/2019 1800
+<br/>deadline return book /by 12/12/2019 1800
+
 **Expected outcome**:
 <br/>Got it. I've added this task: 
 <br/>[D][X] return book (by:12 Dec 2019, 06:00 PM)
 <br/>Now you have [index number] task in the list.
+
 ### Feature 3 
 Adding an event task: event
 
@@ -65,7 +69,6 @@ Adding an event task: event
 Adding an event task helps to remember to join or complete the event with specific date and time in the task list and show the total number of task in the list.
 
 ### `event` - Adding an event task
-
 <br/>>The keyword 'event' with description can be **upper and lowercase letters**.
 <br/>>The outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
 <br/>>If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a event cannot be empty."
@@ -74,12 +77,9 @@ Adding an event task helps to remember to join or complete the event with specif
 **Format**: event  Description /by dd/mm/yyyy HHmm
 
 **Example of usage**:
-
-EVENT join club /at 12/11/2019 0900
-
+<br/>EVENT join club /at 12/11/2019 0900
 
 **Expected outcome**:
-
 <br/>Got it. I've added this task: 
 <br/>[E][X] join club (at:12 Nov 2019, 09:00 AM)
 
@@ -98,12 +98,10 @@ Marking a specific task to remind the user that he has finished the task.
 **Format**: done INDEX
 
 **Example of usage**: 
-
 <br/>step 1: TODO READ BOOK
 <br/>step 2: Done 1 or DONE 1 or done 1
 
 **Expected outcome**:
-
 <br/>Nice! I've marked this task as done:
 <br/>[T][✓] READ BOOK
 
@@ -135,6 +133,7 @@ Listing all tasks: list
 
 ## Usage
 It shows a list of all task in the task list with a number. it helps to summarize the task list.
+
 ### `list` - Listing all tasks with number.
 <br/>>The keyword 'list' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list
 <br/>>If you key in the keyword with empty task.There will be an error message:"☹ OOPS!!! There are no tasks in your list."
@@ -196,30 +195,33 @@ It helps to end the program and display the list of a task will be save in the h
 
 ### Feature 9
 Saving the task in the hard-disk
+
 ## Usage
 It helps to save the tasks in the hard disk automatically after exiting the program, and the format of display will be change when task save in hard disk. It saves the user's time as there is no need to save manually.
 
 **Example of usage**: 
-   step 1. todo read book
-   step 2. deadline return book /by 12/11/2019 1800
-   step 3. event join club /at 11/2/2020 1300
-   step 4. done 1
-   step 5. bye
+  <br/>step 1. todo read book
+  <br/>step 2. deadline return book /by 12/11/2019 1800
+  <br/> step 3. event join club /at 11/2/2020 1300
+  <br/>step 4. done 1
+  <br/> step 5. bye
+   
 **Expected outcome**: save into /data/duke.txt
- T | 1 | read book
- D | 0 | return book  | 12 Nov 2019, 06:00 PM
- E | 0 | join club  | 11 Feb 2020, 01:00 PM
+<br/> T | 1 | read book
+<br/> D | 0 | return book  | 12 Nov 2019, 06:00 PM
+<br/> E | 0 | join club  | 11 Feb 2020, 01:00 PM
+ 
 ### Feature 10
 Exceptions message
+
 ## Usage
 It helps to handle error message that will guid the user.
 
 **Example of usage**: 
-read book
+<br/>read book
 
 **Expected outcome**:
-
-☹ OOPS!!! I'm sorry, but I don't know what that means :-(
+<br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 
 ## Command Summary
 |**Action** | **Format** | **Examples**|
