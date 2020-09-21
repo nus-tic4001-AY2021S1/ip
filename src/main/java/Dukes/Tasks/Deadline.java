@@ -1,9 +1,5 @@
 package Dukes.Tasks;
 
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * deadline task description /by specific date and time  e.g. return book by 12/12/2019 1800.
  *

@@ -1,5 +1,5 @@
 # User Guide
-Project Duke is a educational software project that helps user to keep track of various things and finish the task before the deadline.
+Project Dukes.Duke is a educational software project that helps user to keep track of various things and finish the task before the deadline.
 
 ## Quick start 
 
@@ -11,8 +11,8 @@ Project Duke is a educational software project that helps user to keep track of 
    1. Click `OK`
 1. Download the latest project from [here](https://github.com/linqing42/ip).
 1. Import the project into Intellij.
-1. Go to the sr folder and find src\main\java\Dukes\Duke
-1. Right click the Duke and select Run Duke
+1. Go to the sr folder and find src\main\java\Dukes\Dukes.Duke
+1. Right click the Dukes.Duke and select Run Dukes.Duke
 1. The program now should run on the Console (usually located at the bottom side)
 1. Type the command and presse Enter to execute it.<br>
 1.Refer to teh [Feature](#features) below for details of each command.

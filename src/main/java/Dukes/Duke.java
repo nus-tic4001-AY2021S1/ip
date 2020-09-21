@@ -1,4 +1,5 @@
 package Dukes;
+
 import Dukes.Exceptions.DukeException;
 import Dukes.Tasks.TaskList;
 import Dukes.command.Command;
@@ -7,21 +8,20 @@ import Dukes.storage.Storage;
 
 
 /**
- * The Duke program implements an application that can store a list of task,save to a txt file.
+ * The Dukes.Duke program implements an application that can store a list of task,save to a txt file.
  * and print the task on the screen.
- * it link to other classes which is an member for Duke such as Storage, Task and Ui Class
+ * it link to other classes which is an member for Dukes.Duke such as Storage, Task and Ui Class
  *
  * @author LIN QING
  * @version 1.0
  * @since 14/9/2020
  */
 public class Duke {
-    private Storage storage;
+    private final Storage storage;
     private TaskList tasks;
-    private  Ui ui;
+    private final Ui ui;
     /**
      * @param path program will store the task in this path
-     * @throws <code>DukeException</code> if problem reading file.
      */
     public Duke(String path)  {
         ui = new Ui();
@@ -36,9 +36,7 @@ public class Duke {
 
     /**
      * run program implements an application that simply shows the tasks and print on the screen
-     *
-     * @return task and the number of task in the list
-     * @throws <code>DukeException</code>Exception if the command word not in the case.
+     * DukeException if the command word not in the case.
      */
     public void run() {
         ui.printWelcome();
@@ -58,7 +56,7 @@ public class Duke {
         }
     }
     /**
-     * This is main method which made use of Duke and run methods
+     * This is main method which made use of Dukes.Duke and run methods
      */
         public static void main(String[] args){
             assert (args.length) > 0;

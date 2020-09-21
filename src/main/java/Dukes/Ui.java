@@ -15,7 +15,7 @@ public class Ui {
      * Reads user input.
      * @return User input.
      */
-    String readCommand() {
+    public String readCommand() {
         return in.nextLine();
     }
 
@@ -30,7 +30,7 @@ public class Ui {
         System.out.println(message);
     }
     /**
-     * Prints the Duke logo and greets the user for the first time the program is run.
+     * Prints the Dukes.Duke logo and greets the user for the first time the program is run.
      */
     public void printWelcome() {
         String logo = " ____        _        \n"
@@ -39,7 +39,7 @@ public class Ui {
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
-        System.out.println("Hello! I'm Duke\nWhat can I do for you?\n");
+        System.out.println("Hello! I'm Dukes\nWhat can I do for you?\n");
 
     }
     /**
