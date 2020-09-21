@@ -1,5 +1,5 @@
 # User Guide
-Dukes Project is a program that helps forgetful user to remember things and finish the task before the deadline.
+Project Duke is a educational software project that helps user to keep track of various things and finish the task before the deadline.
 
 ## Quick start 
 
@@ -216,15 +216,15 @@ It helps to handle error message that will guid the user.
 **Expected outcome**:
    <br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 
-###### Command Summary
-Action | Format | Examples
--------| -------| -----
-Todo | todo Description | todo read book
-Deadline | deadline Description /by dd/mm/yyyy HHmm | deadline return book /by 12/12/2019 1800
-Event | event Description /at dd/mm/yyyy HHmm | event join club /by 11/1/2019 1300
-Done | done INDEX | done 1
-Delete | delete INDEX | delete 1
-List | list
-Find | find description_keyword[more_keywords] | find book
-Exit | exit
-Bye | bye
+## Command Summary
+|**Action** | **Format** | **Examples**|
+-------|:-------:| -----:|
+|Todo | todo Description | todo read book|
+|Deadline | deadline Description /by dd/mm/yyyy HHmm | deadline return book /by 12/12/2019 1800|
+|Event | event Description /at dd/mm/yyyy HHmm | event join club /by 11/1/2019 1300|
+|Done | done INDEX | done 1|
+|Delete | delete INDEX | delete 1|
+|List | list|
+|Find | find description_keyword[more_keywords] | find book|
+|Exit | exit|
+|Bye | bye|
