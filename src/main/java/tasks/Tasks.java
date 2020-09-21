@@ -15,7 +15,6 @@ public class Tasks {
 
 
     public Tasks(String description, String time){
-
         this.description=description;
         this.status="[x]";
         this.time=time;
@@ -26,6 +25,4 @@ public class Tasks {
 
         return status +" "+description;
     }
-
-
 }

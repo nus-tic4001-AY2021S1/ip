@@ -13,9 +13,7 @@ public class Deadline extends Tasks {
         super.type= "[D]";
     }
 
-
     public String toString(){
-
         return type + status +" "+description +" (" + time +")";
     }
 

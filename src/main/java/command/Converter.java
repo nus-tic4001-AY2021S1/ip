@@ -1,5 +1,6 @@
 package command;
 
+import storage.Storage;
 import tasks.Deadline;
 import tasks.Event;
 import tasks.Todo;
@@ -18,42 +19,32 @@ public class Converter {
 
     public void saveToDo(String description, String time){
         storage.setCommandName(new Todo(description,time));
-
     }
 
 
     public void saveEvent(String description, String time) {
-
         storage.setCommandName(new Event(description,time));
-
-
     }
 
     public void saveDeadLine(String description, String time){
         storage.setCommandName(new Deadline(description,time));
-
-
     }
 
 
     public void fileLoader(){
         storage.readFromFile();
-
     }
 
     public void fileWriter(){
         storage.saveToFile();
-
     }
 
 
    // make done method
     public void makeDone(String description) throws DukeException {
-
             String clean = description.replaceAll("\\D+", "");
             int num = Integer.parseInt(clean);
             changeToDone(num);
-
     }
 
 
@@ -64,7 +55,6 @@ public class Converter {
             String makeDone = storage.getCommandName().get(num1).toString();
             System.out.println(makeDone.replace("x","c") + "has been set to done");
             storage.getCommandName().set(num1,makeDone.replace("x","c"));
-
         }
         else {
             System.out.println("Invalid Input");
@@ -74,28 +64,21 @@ public class Converter {
 
     // make delete method
     public void makeDelete(String description) throws DukeException {
-
             String clean = description.replaceAll("\\D+", "");
             int num = Integer.parseInt(clean);
             deleting(num);
-
-
     }
 
     // tasks deleting function
     private void deleting(int num){
-
         if (num <= storage.getCommandName().size()){
             int num1=num - 1;
             System.out.println(storage.getCommandName().get(num1) + "has been deleted");
             storage.getCommandName().remove(num1);
-            System.out.println("there are " +storage.getCommandName().size()+ " tasks in the lists");
-
         }
         else {
             System.out.println("Invalid Input");
         }
-
     }
 
     // print array list method
@@ -110,7 +93,6 @@ public class Converter {
                 System.out.println(number + ". " + task.toString());
                 number ++;
             }
-
     }
 
     public boolean checkDataSize(){
@@ -119,5 +101,4 @@ public class Converter {
         }
         return false;
     }
-
 }

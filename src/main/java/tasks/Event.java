@@ -13,7 +13,6 @@ public class Event extends Tasks {
     }
 
     public String toString(){
-
         return type + status +" "+description + "(" + time +")";
     }
 }

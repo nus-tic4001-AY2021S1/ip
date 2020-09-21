@@ -1,6 +1,8 @@
 package command;
 
 
+import ui.Ui;
+
 /**
  * This is a switch class, all the choices will be make by here.
  */
@@ -22,44 +24,34 @@ public class Switch {
 
     public void option() throws DukeException {
 
+
         // print out welcome msg
         ui.welcome();
-
-        // load the task from the txt file
-        converter.fileLoader();
-        if(converter.checkDataSize()){
-            System.out.println("No data in the database");
-        }
-        else {
-            System.out.println("This is current tasks");
-            converter.printData();
-        }
-
         // While loop will be exit once the task become false.
         while (task) {
 
             // print the choices we have
-            ui.tasks();
             descriptionCheck();
 
             // redirect by using switch loop
-            switch(description){
-                case "1":
+            switch(description.toLowerCase().replace(" ","")){
+                case "todo":
                     System.out.println("Please add a to do task");
                     converter.saveToDo(descriptionCheck(),timeCheck());
+                    ui.addTask();
                     break;
 
-                case "2":
+                case "event":
                     System.out.println("Please add a event task");
                     converter.saveEvent(descriptionCheck(),timeCheck());
                     break;
 
-                case "3":
+                case "deadline":
                     System.out.println("Please add a deadline task");
                     converter.saveDeadLine(descriptionCheck(),timeCheck());
                     break;
 
-                case "4":
+                case "list":
                     System.out.println("list");
                     if(converter.checkDataSize()){
                         System.out.println("No data in the database");
@@ -69,7 +61,7 @@ public class Switch {
                     }
                     break;
 
-                case "5":
+                case "done":
                     System.out.println("Please mark done a task");
                     if(converter.checkDataSize()){
                         System.out.println("No data in the database");
@@ -80,7 +72,7 @@ public class Switch {
                     }
                     break;
 
-                case "6":
+                case "delete":
                     System.out.println("Please delete a task");
                     if(converter.checkDataSize()){
                         System.out.println("No data in the database");
@@ -91,11 +83,27 @@ public class Switch {
                     }
                     break;
 
-                case "7":
+                case "help":
+                    ui.tasks();
+                    break;
+
+                case "load":
+                    // load the task from the txt file
+                    converter.fileLoader();
+                    if(converter.checkDataSize()){
+                        System.out.println("No data in the database");
+                    }
+                    else {
+                        System.out.println("This is current tasks");
+                        converter.printData();
+                    }
+                    break;
+
+                case "bye":
                     task = false;
                     break;
                 default:
-                    System.out.println("Invalid Input please enter again");
+                    System.out.println("Invalid Input. Please enter help");
                     break;
             }
         }
