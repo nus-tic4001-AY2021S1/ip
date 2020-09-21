@@ -105,7 +105,7 @@ public class Parser {
                     c = new FindCommand(keyword);
                     break;
                 } catch (NumberFormatException e) {
-                    throw new DukeException("please key in correct format");
+                    throw new DukeException("please key in correct format.");
                 }
 
             case "bye":
