@@ -218,17 +218,17 @@ It helps to save the tasks in the hard disk automatically after exiting the prog
 
 **Example of usage**: 
 ```
-   <br/>step 1.todo read book
-   <br/>step 2. deadline return book /by 12/11/2019 1800
-   <br/>step 3. event join club /at 11/2/2020 1300
-   <br/>step 4. done 1
-   <br/>step 5. bye
+   step 1. todo read book
+   step 2. deadline return book /by 12/11/2019 1800
+   step 3. event join club /at 11/2/2020 1300
+   step 4. done 1
+   step 5. bye
 ```
 **Expected outcome**: save into /data/duke.txt
 ```
-   <br/>T | 1 | read book
-   <br/>D | 0 | return book  | 12 Nov 2019, 06:00 PM
-   <br/>E | 0 | join club  | 11 Feb 2020, 01:00 PM
+ T | 1 | read book
+ D | 0 | return book  | 12 Nov 2019, 06:00 PM
+ E | 0 | join club  | 11 Feb 2020, 01:00 PM
 ```
 ### Feature 10
 Exceptions message
@@ -237,14 +237,13 @@ It helps to handle error message that will guid the user.
 
 **Example of usage**: 
 ```
-   <br/>read book
+read book
 ```
 **Expected outcome**:
 ```
-   <br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
+☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 ```
 ## Command Summary
-```
 |**Action** | **Format** | **Examples**|
 -------|:-------:| :-----:|
 |Todo | todo Description | todo read book|
@@ -256,4 +255,3 @@ It helps to handle error message that will guid the user.
 |Find | find description_keyword[more_keywords] | find book|
 |Exit | exit|
 |Bye | bye|
-```
