@@ -1,5 +1,5 @@
 # User Guide
-Project Dukes.Duke is a educational software project that helps user to keep track of various things and finish the task before the deadline.
+Project Dukes.Duke is a educational software project that helps user to keep track of various things and try to finish the task before the deadline.
 
 ## Quick start 
 
