@@ -1,5 +1,5 @@
 # User Guide
-Dukes Project is a program that helps forgetful user to remember things and finish the task before the deadline.
+Project Duke is a educational software project that helps user to keep track of various things and finish the task before the deadline.
 
 ## Quick start 
 
@@ -9,11 +9,13 @@ Dukes Project is a program that helps forgetful user to remember things and fini
    1. Click `Configure` > `Structure for New Projects` and then `Project Settings` > `Project` > `Project SDK`
    1. If JDK 11 is listed in the drop down, select it. If it is not, click `New...` and select the directory where you installed JDK 11
    1. Click `OK`
-1. Download the latest project from Github: [links](https://github.com/linqing42/ip).
+1. Download the latest project from [here](https://github.com/linqing42/ip).
 1. Import the project into Intellij.
 1. Go to the sr folder and find src\main\java\Dukes\Duke
 1. Right click the Duke and select Run Duke
 1. The program now should run on the Console (usually located at the bottom side)
+1. Type the command and presse Enter to execute it.<br>
+1.Refer to teh [Feature](#features) below for details of each command.
 
 ## Features 
 
@@ -29,7 +31,8 @@ Adding a task in the task list and show the total number of task in the list. Th
 
 **Format**: todo Description
 
-**Example of usage**: TOdo Read BOOK
+**Example of usage**: 
+<br/>TOdo Read BOOK
 
 **Expected outcome**:
 <br/>Got it. I've added this task: 
@@ -51,7 +54,8 @@ Adding a deadline task helps to know the deadline for the specific task in the t
 
 **Format**: deadline  Description /by dd/mm/yyyy HHmm
 
-**Example of usage**: deadline return book /by 12/12/2019 1800
+**Example of usage**:
+<br/>deadline return book /by 12/12/2019 1800
 
 **Expected outcome**:
 <br/>Got it. I've added this task: 
@@ -65,7 +69,6 @@ Adding an event task: event
 Adding an event task helps to remember to join or complete the event with specific date and time in the task list and show the total number of task in the list.
 
 ### `event` - Adding an event task
-
 <br/>>The keyword 'event' with description can be **upper and lowercase letters**.
 <br/>>The outcome will not include the keyword with date adn time format: dd MMM yyyy, hh:mm a
 <br/>>If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a event cannot be empty."
@@ -73,12 +76,12 @@ Adding an event task helps to remember to join or complete the event with specif
 
 **Format**: event  Description /by dd/mm/yyyy HHmm
 
-**Example of usage**: EVENT join club /at 12/11/2019 0900
+**Example of usage**:
+<br/>EVENT join club /at 12/11/2019 0900
 
 **Expected outcome**:
 <br/>Got it. I've added this task: 
 <br/>[E][X] join club (at:12 Nov 2019, 09:00 AM)
-<br/>Now you have [index number] task in the list.
 
 ### Feature 4 
 Marking a specific task: done
@@ -115,7 +118,7 @@ Delete a specific task from task list to helps remove the completed task and tid
 
 **Format**: delete INDEX
 
-**Example of usage**: 
+**Example of usage**:
 <br/>step 1.TODO READ BOOK
 <br/>step 2: done 1
 <br/>steps 3:Delete 1 or DELETE 1 or delete 1
@@ -130,6 +133,7 @@ Listing all tasks: list
 
 ## Usage
 It shows a list of all task in the task list with a number. it helps to summarize the task list.
+
 ### `list` - Listing all tasks with number.
 <br/>>The keyword 'list' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list
 <br/>>If you key in the keyword with empty task.There will be an error message:"☹ OOPS!!! There are no tasks in your list."
@@ -143,6 +147,7 @@ It shows a list of all task in the task list with a number. it helps to summariz
 **Expected outcome**:
    <br/>Here are the tasks in your list:
    <br/>1.[T][X] READ BOOK
+
     
 ### Feature 7
 Locating tasks by description_keyword: find
@@ -190,41 +195,43 @@ It helps to end the program and display the list of a task will be save in the h
 
 ### Feature 9
 Saving the task in the hard-disk
+
 ## Usage
 It helps to save the tasks in the hard disk automatically after exiting the program, and the format of display will be change when task save in hard disk. It saves the user's time as there is no need to save manually.
 
 **Example of usage**: 
-   <br/>step 1.todo read book
-   <br/>step 2. deadline return book /by 12/11/2019 1800
-   <br/>step 3. event join club /at 11/2/2020 1300
-   <br/>step 4. done 1
-   <br/>step 5. bye
-
+  <br/>step 1. todo read book
+  <br/>step 2. deadline return book /by 12/11/2019 1800
+  <br/> step 3. event join club /at 11/2/2020 1300
+  <br/>step 4. done 1
+  <br/> step 5. bye
+   
 **Expected outcome**: save into /data/duke.txt
-   <br/>T | 1 | read book
-   <br/>D | 0 | return book  | 12 Nov 2019, 06:00 PM
-   <br/>E | 0 | join club  | 11 Feb 2020, 01:00 PM
-
+<br/> T | 1 | read book
+<br/> D | 0 | return book  | 12 Nov 2019, 06:00 PM
+<br/> E | 0 | join club  | 11 Feb 2020, 01:00 PM
+ 
 ### Feature 10
 Exceptions message
+
 ## Usage
 It helps to handle error message that will guid the user.
 
 **Example of usage**: 
-   <br/>read book
+<br/>read book
 
 **Expected outcome**:
-   <br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
+<br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 
-#Command Summary
-Action | Format | Examples
--------| -------| -----
-Todo | todo Description | todo read book
-Deadline | deadline Description /by dd/mm/yyyy HHmm | deadline return book /by 12/12/2019 1800
-Event | event Description /at dd/mm/yyyy HHmm | event join club /by 11/1/2019 1300
-Done | done INDEX | done 1
-Delete | delete INDEX | delete 1
-List | list
-Find | find description_keyword[more_keywords] | find book
-Exit | exit
-Bye | bye
+## Command Summary
+|**Action** | **Format** | **Examples**|
+-------|:-------:| :-----:|
+|Todo | todo Description | todo read book|
+|Deadline | deadline Description /by dd/mm/yyyy HHmm | deadline return book /by 12/12/2019 1800|
+|Event | event Description /at dd/mm/yyyy HHmm | event join club /by 11/1/2019 1300|
+|Done | done INDEX | done 1|
+|Delete | delete INDEX | delete 1|
+|List | list|
+|Find | find description_keyword[more_keywords] | find book|
+|Exit | exit|
+|Bye | bye|
