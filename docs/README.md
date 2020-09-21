@@ -216,7 +216,7 @@ It helps to handle error message that will guid the user.
 **Expected outcome**:
    <br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 
-###### Command Summary
+#Command Summary
 Action | Format | Examples
 -------| -------| -----
 Todo | todo Description | todo read book
