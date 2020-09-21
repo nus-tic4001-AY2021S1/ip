@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @return An Arraylist of Tasks created from text files.
  */
 public class CreateTaskFromFile {
-    public static ArrayList<Task> getTasksFromFile(String filepath) {
+    public static ArrayList<Task> getTasksFromFile(String filepath) throws DukeException {
         ArrayList<Task> loadedTasks = new ArrayList<>();
         try {
             List<String> lines = getLines(filepath);
@@ -26,6 +26,7 @@ public class CreateTaskFromFile {
             }
         } catch (FileNotFoundException e) {
             printError("Problem encountered while loading data: " + e.getMessage());
+            throw new DukeException("File path incorrect");
         }
         return loadedTasks;
     }

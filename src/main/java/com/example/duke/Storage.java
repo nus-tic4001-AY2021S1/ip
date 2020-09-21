@@ -10,7 +10,7 @@ public class Storage {
         this.filePath=filePath;
     }
 
-    public ArrayList<Task> load() {
+    public ArrayList<Task> load() throws DukeException {
         return CreateTaskFromFile.getTasksFromFile(filePath);
     }
 }

@@ -9,12 +9,16 @@ public class Duke {
 
     private Ui ui;
     private Storage storage;
-    private ArrayList tasks;
+    private TaskList tasks;
 
     public Duke (String filePath) {
         ui=new Ui();
         storage=new Storage(filePath);
-        tasks= storage.load();
+        try {
+            tasks= new TaskList(storage.load());
+        } catch (DukeException e) {
+           ui.showLoadingError();
+        }
 
     }
     public void run (){
@@ -25,7 +29,7 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        new Duke("/Users/januariusjang/Downloads/iP/data/tasks.txt").run();
+        new Duke("/Users/januariusjang/Downloads/iP/data/task.txt").run();
 
     }
 

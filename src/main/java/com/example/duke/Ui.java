@@ -27,4 +27,8 @@ public class Ui {
         return in.nextLine();
     }
 
+    public void showLoadingError(){
+        System.out.println("There seems to be a file loading error. No tasks are preloaded");
+    }
+
 }
