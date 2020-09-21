@@ -24,7 +24,7 @@ public class Storage {
     private final String filePath;
 
     /**
-     *  Instantiate a <code>Storage</code> object.
+     * Instantiate a <code>Storage</code> object.
      *
      * @param filePath Path of the text file used for storing app data.
      */
@@ -33,7 +33,7 @@ public class Storage {
     }
 
     /**
-     *  Load list of tasks from text file.
+     * Load list of tasks from text file.
      *
      * @throws DukeException If file folder is unable to be created.
      */
@@ -49,7 +49,6 @@ public class Storage {
 
         ArrayList<Task> tasks = new ArrayList<>();
         ArrayList<String> lines;
-
         lines = getLines(filePath);
         for (String line : lines) {
             if (!(line.trim().isEmpty())) {
@@ -60,13 +59,12 @@ public class Storage {
     }
 
     /**
-     *  Save information of all <code>Tasks</code> objects to text file.
+     * Save information of all <code>Tasks</code> objects to text file.
      *
      * @throws DukeException If text file is not found or inaccessible.
      */
     public void saveTasks(TaskList tasks) throws DukeException {
         FileWriter fw;
-
         try {
             fw = new FileWriter(filePath);
 
@@ -80,7 +78,7 @@ public class Storage {
                 }
 
                 String description = tasks.getTask(i).getDescription();
-                String lineToSave = null;
+                String lineToSave;
                 if (tasks.getTask(i) instanceof Todo) {
                     lineToSave = "T" + " | " + isDone + " | " + description + System.lineSeparator();
                 } else if (tasks.getTask(i) instanceof Deadline) {
@@ -88,7 +86,11 @@ public class Storage {
                     lineToSave = "D" + " | " + isDone + " | " + description + " | " + by + System.lineSeparator();
                 } else if (tasks.getTask(i) instanceof Event) {
                     String at = ((Event) tasks.getTask(i)).getAt();
-                    lineToSave = "E" + " | " + isDone + " | " + description + " | " + at + System.lineSeparator();
+                    String duration = ((Event) tasks.getTask(i)).getDuration();
+                    lineToSave = "E" + " | " + isDone + " | " + description
+                            + " | " + at + " | " + duration + System.lineSeparator();
+                } else {
+                    throw new DukeException("I've problem saving to the file.");
                 }
                 fw.write(lineToSave);
             }
@@ -104,21 +106,19 @@ public class Storage {
         String description = line.split("\\|")[2].trim();
 
         boolean isDone;
-        if (isDoneString.equals("1")) {
-            isDone = true;
-        } else {
-            isDone = false;
-        }
+        isDone = isDoneString.equals("1");
 
-        if (taskType.equals("D")) {
+        switch (taskType) {
+        case "D":
             String by = line.split("\\|")[3].trim();
             return new Deadline(description, by, isDone);
-        } else if (taskType.equals("E")) {
+        case "E":
             String at = line.split("\\|")[3].trim();
-            return new Event(description, at, isDone);
-        } else if (taskType.equals("T")){
+            String duration = line.split("\\|")[4].trim();
+            return new Event(description, at, duration, isDone);
+        case "T":
             return new Todo(description, isDone);
-        } else {
+        default:
             throw new DukeException("There is invalid data in the save file!");
         }
     }

@@ -49,7 +49,7 @@ public class Deadline extends Task {
     /**
      * Get the deadline of a <code>Deadline</code> object.
      *
-     *  @return Deadline of a <code>Deadline</code> object.
+     * @return Deadline of a <code>Deadline</code> object.
      */
     public String getBy() {
         return by.toString();

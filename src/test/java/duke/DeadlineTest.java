@@ -6,6 +6,8 @@ import duke.task.Task;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * JUnit tests for Deadline class
@@ -21,8 +23,8 @@ public class DeadlineTest {
     public void testGetIsDone() throws DukeException {
         Task testDeadline = new Deadline("Have lunch with John", "2020-12-25 1800");
         Task testDeadline2 = new Deadline("Have lunch with John", "2020-12-25T18:00", true);
-        assertEquals(false, testDeadline.getIsDone());
-        assertEquals(true, testDeadline2.getIsDone());
+        assertFalse(testDeadline.getIsDone());
+        assertTrue(testDeadline2.getIsDone());
     }
 
     @Test

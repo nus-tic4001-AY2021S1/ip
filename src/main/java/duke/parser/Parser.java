@@ -136,6 +136,12 @@ public class Parser {
         return searchString;
     }
 
+    /**
+     * Gets <code>Command</code> object from user's full input string.
+     *
+     * @param fullCommand User's full input string.
+     * @return <code>Command<Task></code> object.
+     */
     public static Command parse(String fullCommand) {
         String command = getCommand(fullCommand).toLowerCase();
         switch(command) {
@@ -158,6 +164,5 @@ public class Parser {
         default:
             return new UnknownCommand();
         }
-
     }
 }

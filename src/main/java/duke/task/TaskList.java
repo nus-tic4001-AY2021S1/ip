@@ -30,17 +30,17 @@ public class TaskList {
     }
 
     /**
-     *  Get a <code>Task<Task></code> object from the <code>TaskList</code>.
+     * Get a <code>Task<Task></code> object from the <code>TaskList</code>.
      *
-     *  @param index Index of Task in the <code>TaskList</code>.
-     *  @return <code>Task<Task></code> object.
+     * @param index Index of Task in the <code>TaskList</code>.
+     * @return <code>Task<Task></code> object.
      */
     public Task getTask(int index) {
         return tasks.get(index);
     }
 
     /**
-     *  Add a task to the <code>TaskList<Task></code> object.
+     * Add a task to the <code>TaskList<Task></code> object.
      *
      * @param t <code>Task</code> object.
      */
@@ -49,10 +49,10 @@ public class TaskList {
     }
 
     /**
-     *  Remove a <code>Task</code> object from the <code>TaskList</code>.
+     * Remove a <code>Task</code> object from the <code>TaskList</code>.
      *
-     *  @param index Index of a <code>Task</code> in <code>List<Task></code>.
-     *  @throws DukeException If index is invalid.
+     * @param index Index of a <code>Task</code> in <code>List<Task></code>.
+     * @throws DukeException If index is invalid.
      */
     public void removeTask(int index) throws DukeException {
         try {
@@ -63,8 +63,8 @@ public class TaskList {
     }
 
     /**
-     *  Get size of a <code>TaskList<Task></code> object.
-     *  @return Size of a <code>List<Task></code> object.
+     * Get size of a <code>TaskList<Task></code> object.
+     * @return Size of a <code>List<Task></code> object.
      */
     public int getSize() {
         return tasks.size();
