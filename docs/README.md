@@ -32,15 +32,11 @@ Adding a task in the task list and show the total number of task in the list. Th
 **Format**: todo Description
 
 **Example of usage**: 
-```
 TOdo Read BOOK
-```
 **Expected outcome**:
-```
 <br/>Got it. I've added this task: 
 <br/>[T][X] Read BOOK
 <br/>Now you have [index number] task in the list.
-```
 ### Feature 2 
 Adding a deadline task: deadline
 
@@ -57,15 +53,11 @@ Adding a deadline task helps to know the deadline for the specific task in the t
 **Format**: deadline  Description /by dd/mm/yyyy HHmm
 
 **Example of usage**:
-```
 deadline return book /by 12/12/2019 1800
-```
 **Expected outcome**:
-```
 <br/>Got it. I've added this task: 
 <br/>[D][X] return book (by:12 Dec 2019, 06:00 PM)
 <br/>Now you have [index number] task in the list.
-```
 ### Feature 3 
 Adding an event task: event
 
@@ -82,16 +74,15 @@ Adding an event task helps to remember to join or complete the event with specif
 **Format**: event  Description /by dd/mm/yyyy HHmm
 
 **Example of usage**:
-```
+
 EVENT join club /at 12/11/2019 0900
-```
+
 
 **Expected outcome**:
-```
+
 <br/>Got it. I've added this task: 
 <br/>[E][X] join club (at:12 Nov 2019, 09:00 AM)
-<br/>Now you have [index number] task in the list.
-```
+
 ### Feature 4 
 Marking a specific task: done
 
@@ -107,15 +98,15 @@ Marking a specific task to remind the user that he has finished the task.
 **Format**: done INDEX
 
 **Example of usage**: 
-```
+
 <br/>step 1: TODO READ BOOK
 <br/>step 2: Done 1 or DONE 1 or done 1
-```
+
 **Expected outcome**:
-```
+
 <br/>Nice! I've marked this task as done:
 <br/>[T][✓] READ BOOK
-```
+
 ### Feature 5
 Deleting a task: delete
 
@@ -130,17 +121,15 @@ Delete a specific task from task list to helps remove the completed task and tid
 **Format**: delete INDEX
 
 **Example of usage**:
-```
 <br/>step 1.TODO READ BOOK
 <br/>step 2: done 1
 <br/>steps 3:Delete 1 or DELETE 1 or delete 1
-```
+
 **Expected outcome**:
-```
 <br/>Noted. I've removed this task: 
 <br/>[T][✓] READ BOOK
 <br/>Now you have [INDEX-1] task in the list.
-```
+
 ### Feature 6
 Listing all tasks: list
 
@@ -153,15 +142,13 @@ It shows a list of all task in the task list with a number. it helps to summariz
 **Format**: list
 
 **Example of usage**: 
-```
 <br/>step 1.TODO READ BOOK
 <br/>step 2. list or List or LIST
-```
+
 **Expected outcome**:
-```
    <br/>Here are the tasks in your list:
    <br/>1.[T][X] READ BOOK
-```
+
     
 ### Feature 7
 Locating tasks by description_keyword: find
@@ -177,16 +164,14 @@ It helps to search a task that contain any of the given description_keyword, and
 **Format**: find description_keyword[more_keyword]
 
 **Example of usage**: 
-```
    <br/>step 1.TODO READ BOOK
    <br/>step 2. todo join club
    <br/>step 3. find book or Find BOok or FIND BOOK
-```
+
 **Expected outcome**:
-```
    <br/>Here are the matching tasks in your list:
    <br/>1.[T][X] READ BOOK
-```
+
 ### Feature 8
 Exiting the program: exit/bye
 
@@ -199,50 +184,43 @@ It helps to end the program and display the list of a task will be save in the h
 **Format**: bye
 
 **Example of usage**: 
-```
    <br/>step 1.TODO READ BOOK
    <br/>step 2. todo join club
    <br/>step 3. bye/exit/BYE/EXIT/Bye/Exit
-```
+
 **Expected outcome**:
-```
    <br/>Your following tasks will be save: 
    <br/>[T][X] READ BOOK
    <br/>[T][X] join club
    <br/>Bye. Hope to see you again soon!
-```
+
 ### Feature 9
 Saving the task in the hard-disk
 ## Usage
 It helps to save the tasks in the hard disk automatically after exiting the program, and the format of display will be change when task save in hard disk. It saves the user's time as there is no need to save manually.
 
 **Example of usage**: 
-```
    step 1. todo read book
    step 2. deadline return book /by 12/11/2019 1800
    step 3. event join club /at 11/2/2020 1300
    step 4. done 1
    step 5. bye
-```
 **Expected outcome**: save into /data/duke.txt
-```
  T | 1 | read book
  D | 0 | return book  | 12 Nov 2019, 06:00 PM
  E | 0 | join club  | 11 Feb 2020, 01:00 PM
-```
 ### Feature 10
 Exceptions message
 ## Usage
 It helps to handle error message that will guid the user.
 
 **Example of usage**: 
-```
 read book
-```
+
 **Expected outcome**:
-```
+
 ☹ OOPS!!! I'm sorry, but I don't know what that means :-(
-```
+
 ## Command Summary
 |**Action** | **Format** | **Examples**|
 -------|:-------:| :-----:|
