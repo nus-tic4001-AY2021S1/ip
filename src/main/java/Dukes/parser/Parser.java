@@ -65,7 +65,7 @@ public class Parser {
                 }
                 String[] splitDetail = input.split("/by");
                 if (splitDetail.length < 2) {
-                    throw new DukeException("Please specify the deadline date and time\n");
+                    throw new DukeException("Please specify the deadline date and time.\n");
                 }
                 String task = splitDetail[0].substring(9);
                 String by = splitDetail[1];
