@@ -17,14 +17,15 @@ import java.util.Scanner;
  */
 public class Storage {
     private ArrayList<String> details = new ArrayList<>();
-    public static String filePath = "data/duke.txt";
+    public static String path = "data/duke.txt";
 
     public Storage(String path) {
+        this.path = path;
     }
 
     public ArrayList<String> load() throws Dukes.Exceptions.FileNotFoundException {
         try {
-            File file = new File(filePath);
+            File file = new File(path);
             file.createNewFile();
             Scanner in = new Scanner(file);
             while (in.hasNext()) {
