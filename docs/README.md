@@ -9,11 +9,13 @@ Project Duke is a educational software project that helps user to keep track of 
    1. Click `Configure` > `Structure for New Projects` and then `Project Settings` > `Project` > `Project SDK`
    1. If JDK 11 is listed in the drop down, select it. If it is not, click `New...` and select the directory where you installed JDK 11
    1. Click `OK`
-1. Download the latest project from Github: [links](https://github.com/linqing42/ip).
+1. Download the latest project from [here](https://github.com/linqing42/ip).
 1. Import the project into Intellij.
 1. Go to the sr folder and find src\main\java\Dukes\Duke
 1. Right click the Duke and select Run Duke
 1. The program now should run on the Console (usually located at the bottom side)
+1. Type the command and presse Enter to execute it.<br>
+1.Refer to teh [Feature](#features) below for details of each command.
 
 ## Features 
 
@@ -217,8 +219,9 @@ It helps to handle error message that will guid the user.
    <br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 
 ## Command Summary
+
 |**Action** | **Format** | **Examples**|
--------|:-------:| -----:|
+-------|:-------:| :-----:|
 |Todo | todo Description | todo read book|
 |Deadline | deadline Description /by dd/mm/yyyy HHmm | deadline return book /by 12/12/2019 1800|
 |Event | event Description /at dd/mm/yyyy HHmm | event join club /by 11/1/2019 1300|
