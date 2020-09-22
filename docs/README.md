@@ -1,5 +1,7 @@
 # User Guide
 Project Dukes.Duke is a educational software project that helps user to keep track of various things.
+<br/> The link is [website for product user guid ](https://linqing42.github.io/ip/)
+
 ## Quick start 
 
 1. Ensure you have Java 11 or above installed in your Computer
