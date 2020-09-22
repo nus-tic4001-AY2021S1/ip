@@ -177,10 +177,10 @@ Exiting the program: exit/bye
 ## Usage
 It helps to end the program and display the list of a task will be save in the hard disk.
 ### `exit/bye` - Exiting the program 
-   <br/>The keyword 'exit/by' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list that will be save in hard disk and a bye message.
+   <br/>The keyword 'exit/bye' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list that will be save in hard disk and a bye message.
 
 **Format**: exit 
-**Format**: bye
+<br/>**Format**: bye
 
 **Example of usage**: 
    <br/>step 1.TODO READ BOOK
