@@ -177,10 +177,10 @@ Exiting the program: exit/bye
 ## Usage
 It helps to end the program and display the list of a task will be save in the hard disk.
 ### `exit/bye` - Exiting the program 
-   <br/>The keyword 'exit/by' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list that will be save in hard disk and a bye message.
+   <br/>The keyword 'exit/bye' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list that will be save in hard disk and a bye message.
 
 **Format**: exit 
-**Format**: bye
+<br/>**Format**: bye
 
 **Example of usage**: 
    <br/>step 1.TODO READ BOOK
@@ -224,14 +224,5 @@ It helps to handle error message that will guid the user.
 <br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 
 ## Command Summary
-|**Action** | **Format** | **Examples**|
--------|:-------:| :-----:|
-|Todo | todo Description | todo read book|
-|Deadline | deadline Description /by dd/mm/yyyy HHmm | deadline return book /by 12/12/2019 1800|
-|Event | event Description /at dd/mm/yyyy HHmm | event join club /by 11/1/2019 1300|
-|Done | done INDEX | done 1|
-|Delete | delete INDEX | delete 1|
-|List | list|
-|Find | find description_keyword[more_keywords] | find book|
-|Exit | exit|
-|Bye | bye|
+![image of Command Summary](Command Summary.PNG)
+
