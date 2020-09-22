@@ -1,6 +1,5 @@
 # User Guide
-Project Dukes.Duke is a educational software project that helps user to keep track of various things and try to finish the task before the deadline.
-
+Project Dukes.Duke is a educational software project that helps user to keep track of various things.
 ## Quick start 
 
 1. Ensure you have Java 11 or above installed in your Computer
@@ -224,5 +223,6 @@ It helps to handle error message that will guid the user.
 <br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
 
 ## Command Summary
+
 ![image of Command Summary](Command Summary.PNG)
 
