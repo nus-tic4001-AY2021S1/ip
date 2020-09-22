@@ -186,7 +186,7 @@ public class Duke {
             }
         } while(sc.hasNext());
     }
-
+    //check folder
     public static void checkFolder(String dir){
         //check if folder exists
         java.nio.file.Path checkFolderPath = java.nio.file.Paths.get(dir+"/data");
@@ -196,7 +196,7 @@ public class Duke {
             new File(dir+"/data").mkdirs();
         }
     }
-
+    //check text file
     public static boolean checkTextFile(String dir){
         //check if text file exists
         java.nio.file.Path checkFilePath = java.nio.file.Paths.get(dir+"/data/duke.txt");
@@ -213,7 +213,7 @@ public class Duke {
         }
         return fileExists;
     }
-
+    // Array to readfile
     public static ArrayList<Task> readFile(File file){
         ArrayList<Task> arrlist = new ArrayList<Task>();
         try {
