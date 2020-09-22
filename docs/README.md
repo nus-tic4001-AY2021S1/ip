@@ -13,7 +13,7 @@ Project Dukes.Duke is a educational software project that helps user to keep tra
 1. Go to the sr folder and find src\main\java\Dukes\Dukes.Duke
 1. Right click the Dukes.Duke and select Run Dukes.Duke
 1. The program now should run on the Console (usually located at the bottom side)
-1. Type the command and presse Enter to execute it.<br>
+1. Type the command and press Enter to execute it.<br>
 1.Refer to teh [Feature](#features) below for details of each command.
 
 ## Features 
