@@ -11,7 +11,7 @@ public abstract class Task {
     private boolean isDone;
 
     /**
-     * Constructor for a <code>Task</code> object.
+     * Initializes a <code>Task</code> object.
      *
      * @param description Description of a <code>Task</code> object.
      */
@@ -21,7 +21,7 @@ public abstract class Task {
     }
     
     /**
-     * Constructor for a <code>Task</code> object.
+     * Initializes a <code>Task</code> object.
      *
      * @param description Description of a <code>Task</code> object.
      * @param isDone Completion status of a <code>Task</code> object.
@@ -32,7 +32,7 @@ public abstract class Task {
     }
 
     /**
-     * Get the description of a <code>Task</code> object.
+     * Gets the description of a <code>Task</code> object.
      * @return Description of a <code>Task</code> object.
      */
 
@@ -45,7 +45,7 @@ public abstract class Task {
     }
 
     /**
-     * Get the status icon of a <code>Task</code> object.
+     * Gets the status icon of a <code>Task</code> object.
      * @return Status icon of a <code>Task</code> object.
      */
     public String getStatusIcon() {
@@ -54,7 +54,7 @@ public abstract class Task {
     }
 
     /**
-     * Set the completion status of a <code>Task</code> object to done.
+     * Sets the completion status of a <code>Task</code> object to done.
      *
      */
     public void setDone() {

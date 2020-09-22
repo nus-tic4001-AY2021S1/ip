@@ -7,14 +7,13 @@ import duke.task.Event;
 import duke.task.Todo;
 
 /**
- * A <code>Parser</code> class contains methods that deals with parsing
- * user commands to extract meaningful details from it.
+ * Contains methods that deal with parsing user commands to extract meaningful details from them.
  */
 public class Parser {
     /**
-     *  Get the command word from user's input string.
-     *  @param fullCommand User's full input string.
-     *  @return Command word from user's input string.
+     * Gets the command word from user's input string.
+     * @param fullCommand User's full input string.
+     * @return Command word from user's input string.
      */
     public static String getCommand(String fullCommand) {
         return fullCommand.split(" ")[0];
@@ -67,7 +66,7 @@ public class Parser {
      *
      * @param fullCommand User's full input string.
      * @return <code>Event</code> object.
-     * @throws DukeException If description or at field for <code>Deadline</code> is missing.
+     * @throws DukeException If description or at field for <code>Event</code> is missing.
      */
     public static Event createEvent(String fullCommand) throws DukeException {
         String commandParameter = getCommandParameter(fullCommand);
@@ -126,7 +125,7 @@ public class Parser {
      *
      * @param fullCommand User's full input string.
      * @return Search string.
-     * @throws DukeException If search string is missing or invalid.
+     * @throws DukeException If search string is missing.
      */
     public static String getSearchString(String fullCommand) throws DukeException {
         String searchString = fullCommand.replaceFirst("find", "").trim();

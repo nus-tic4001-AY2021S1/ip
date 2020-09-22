@@ -15,7 +15,7 @@ public class Deadline extends Task {
     private final LocalDateTime by;
 
     /**
-     * Instantiate a <code>Deadline</code> object.
+     * Initializes a <code>Deadline</code> object.
      *
      * @param description Description of a <code>Deadline</code> object.
      * @param by Deadline of a <code>Deadline</code> object.
@@ -31,7 +31,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * Instantiate a <code>Deadline</code> object.
+     * Initializes a <code>Deadline</code> object.
      *
      * @param description Description of a <code>Deadline</code> object.
      * @param by Deadline of a <code>Deadline</code> object.

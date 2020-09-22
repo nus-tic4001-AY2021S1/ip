@@ -5,9 +5,9 @@ import duke.exception.DukeException;
 import java.util.ArrayList;
 
 /**
- * A <code>TaskList</code> class manages the in-memory task list.
- * It contains an ArrayList that stores individual <code>Task</code> objects and methods
- * to perform operations such as adding and deleting task from the Task List.
+ * Manages the in-memory task list. It contains an ArrayList that stores
+ * individual <code>Task</code> objects and methods to perform operations
+ * such as adding and deleting task from the Task List.
  */
 public class TaskList {
     private ArrayList<Task> tasks = new ArrayList<>();
@@ -15,7 +15,7 @@ public class TaskList {
     private boolean isInitialized = false;
 
     /**
-     * Instantiate a <code>TaskList<Task></code> object.
+     * Initializes a <code>TaskList<Task></code> object.
      */
     public TaskList() {
     }

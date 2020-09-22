@@ -17,14 +17,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * A <code>Storage</code> class contains methods that load Tasks
- * from the hard disk and save tasks to the hard disk.
+ * Contains methods that load tasks from the hard disk and save tasks to the hard disk.
  */
 public class Storage {
     private final String filePath;
 
     /**
-     * Instantiate a <code>Storage</code> object.
+     * Initializes a <code>Storage</code> object.
      *
      * @param filePath Path of the text file used for storing app data.
      */
@@ -33,7 +32,7 @@ public class Storage {
     }
 
     /**
-     * Load list of tasks from text file.
+     * Loads list of tasks from text file.
      *
      * @throws DukeException If file folder is unable to be created.
      */
@@ -59,7 +58,7 @@ public class Storage {
     }
 
     /**
-     * Save information of all <code>Tasks</code> objects to text file.
+     * Saves information of all <code>Tasks</code> objects to text file.
      *
      * @throws DukeException If text file is not found or inaccessible.
      */
@@ -67,16 +66,8 @@ public class Storage {
         FileWriter fw;
         try {
             fw = new FileWriter(filePath);
-
             for (int i = 0; i < tasks.getSize(); i++) {
-                String isDone;
-                if (tasks.getTask(i).getIsDone()) {
-                    isDone = "1";
-                }
-                else {
-                    isDone = "0";
-                }
-
+                String isDone = getTaskStatus(tasks.getTask(i));
                 String description = tasks.getTask(i).getDescription();
                 String lineToSave;
                 if (tasks.getTask(i) instanceof Todo) {
@@ -132,8 +123,13 @@ public class Storage {
                 result.add(s.nextLine());
             }
         } catch (IOException e) {
-            throw new DukeException("I've problem reading the save file. Let's start with an empty task list instead.");
+            throw new DukeException("I've problem reading the save file."
+                    + " Let's start with an empty task list instead.");
         }
         return result;
+    }
+
+    private String getTaskStatus(Task task) {
+        return (task.getIsDone() ? "1" : "0");
     }
 }

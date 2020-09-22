@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * A <code>Ui</code> class contains methods that interacts with the users
- * such as obtaining commands from user input and displaying messages to the users.
+ * Contains methods that interacts with the users such as obtaining commands
+ * from user input and displaying messages to the users.
  */
 public class Ui {
     public static final String LINE = "____________________________________________________________";

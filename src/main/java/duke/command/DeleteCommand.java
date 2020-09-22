@@ -6,13 +6,28 @@ import duke.storage.Storage;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
+/**
+ * Contains the methods for user to delete task.
+ */
 public class DeleteCommand extends Command {
     private final String fullCommand;
 
+    /**
+     * Initializes a <code>DeleteCommand</code> object.
+     *
+     * @param fullCommand User's full input string.
+     */
     public DeleteCommand(String fullCommand) {
         this.fullCommand = fullCommand;
     }
 
+    /**
+     * Executes the delete task command.
+     *
+     * @param tasks List of <code>Task</> objects.
+     * @param ui <code>Ui</code> object for displaying user interactions.
+     * @param storage <code>Storage</code> object for loading and saving user data.
+     */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         if (!(tasks.getIsInitialized())) {

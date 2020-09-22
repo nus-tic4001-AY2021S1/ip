@@ -8,7 +8,7 @@ import duke.task.TaskList;
 import duke.ui.Ui;
 
 /**
- * The <code>Duke</code> class implements an application that allows users to manage tasks.
+ * Implements an application that allows users to manage tasks.
  * It contains methods that allow the creation, modification and storage of tasks.
  */
 public class Duke {
@@ -17,7 +17,7 @@ public class Duke {
     private TaskList tasks;
 
     /**
-     * Constructor for a <code>Duke</code> object.
+     * Initializes a <code>Duke</code> object.
      *
      * @param filePath Path of the text file used for storing app data.
      */

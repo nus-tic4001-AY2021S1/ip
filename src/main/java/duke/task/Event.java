@@ -17,7 +17,7 @@ public class Event extends Task {
     private final int duration;
 
     /**
-     * Instantiate an <code>Event</code> object.
+     * Initializes an <code>Event</code> object.
      *
      * @param description Description of an <code>Event</code> object.
      * @param at Start datetime of an <code>Event</code> object.
@@ -38,7 +38,7 @@ public class Event extends Task {
     }
 
     /**
-     * Instantiate an <code>Event</code> object.
+     * Initializes an <code>Event</code> object.
      *
      * @param description Description of an <code>Event</code> object.
      * @param at Start datetime of an <code>Event</code> object.
@@ -56,7 +56,7 @@ public class Event extends Task {
     }
 
     /**
-     * Get the start datetime of an <code>Event</code> object.
+     * Gets the start datetime of an <code>Event</code> object.
      *
      * @return Start datetime of an <code>Event</code> object.
      */

@@ -6,7 +6,7 @@ package duke.task;
  */
 public class Todo extends Task {
     /**
-     * Instantiate a <code>Todo</code> object.
+     * Initializes a <code>Todo</code> object.
      *
      * @param description Description of a <code>Todo</code> object.
      */
@@ -15,7 +15,7 @@ public class Todo extends Task {
     }
 
     /**
-     * Instantiate a <code>Todo</code> object.
+     * Initializes a <code>Todo</code> object.
      *
      * @param description Description of a <code>Todo</code> object.
      * @param isDone Completion status of a <code>Todo</code> object.
