@@ -1,4 +1,4 @@
-package duke.Tasks;// Organize the classes into suitable duke.Tasks packages.
+package duke.task;// Organize the classes into suitable duke.Tasks packages.
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
