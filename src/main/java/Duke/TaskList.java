@@ -6,24 +6,20 @@ import Duke.Tasks.Event;
 import Duke.Tasks.Task;
 import Duke.Tasks.Todo;
 
-
-
-import java.text.ParseException;
-import java.time.format.DateTimeParseException;
-import java.util.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalTime;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * TaskList: contains the task list e.g., it has operations to add/delete tasks in the list
  * TodoList
  */
 
-/////Level 8. Dates and Times
-/////Level 8. Dates and Times
-/////Level 9. Find
+
 public class TaskList {
 
     // An array list of task objects
@@ -241,82 +237,61 @@ public class TaskList {
         }
     }
 
+
     /**
-     * This method will auto create relevant task from the data file
-     * the task could be event task, deadline task, todo task
-     *
-     * @param line get the task content from txt file, which contains task type, task description, task status
+     * A method to clear all entries.
+     * Show the message to user and notify the user that "All entries have been cleared."
      */
-    private void createTaskFromFile(String line) throws ParseException {
+    public static void clearAllTasks() {
 
-        String taskDescription;
-        String taskSchedule = null;
+        // list initially
+        Ui.showMessage("The Task list initially:\n" + taskList);
 
-        String[] line_arr = line.split("\\|");
-        /* get the value of TaskDetail & TaskDeadlineDetail */
-        taskDescription = line_arr[2].trim();
-        if (line_arr.length > 3) {
-            taskSchedule = line_arr[3].trim();
-        }
+        // clear function used
+        taskList.clear();
 
-        Task task = new Task("default");
-        DateTimeFormatter formatterEventSchedule = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-
-        /* pass the value to Task:  todo / deadline /event, and lable the task status */
-        if (line_arr[0].equals("D ") & line_arr[1].equals(" 1 ")) {
-            task = new Deadline(taskDescription, LocalDate.parse(taskSchedule));
-            task.setDone();
-            taskList.add(task);
-        } else if (line_arr[0].equals("D ") & line_arr[1].equals(" 0 ")) {
-            taskList.add((new Deadline(taskDescription, LocalDate.parse(taskSchedule))));
-        } else if (line_arr[0].equals("E ") & line_arr[1].equals(" 1 ")) {
-            task = new Event(taskDescription, LocalDateTime.parse(taskSchedule, formatterEventSchedule));
-            task.setDone();
-            taskList.add(task);
-        } else if (line_arr[0].equals("E ") & line_arr[1].equals(" 0 ")) {
-            taskList.add(new Event(taskDescription, LocalDateTime.parse(taskSchedule, formatterEventSchedule)));
-        } else if (line_arr[0].equals("T ") & line_arr[1].equals(" 1 ")) {
-            task = new Todo(taskDescription);
-            task.setDone();
-            taskList.add(task);
-        } else if (line_arr[0].equals("T ") & line_arr[1].equals(" 0 ")) {
-            taskList.add(new Todo(taskDescription));
-        }
-
+        // list after clearing all elements
+        Ui.showMessage("The Task list after using clear() method:" + taskList);
 
     }
 
 
-//    /**
-//     * A method to find a task by searching for a keyword.
-//     * Show the message to user and notify the user that "Here are the matching tasks in your list"
-//     *
-//     * @param line get the task content from txt file, which contains keyword
-//     */
-//    public void findTaskByKeyword(String line) {
-//        String taskDescription;
-//        ArrayList<Task> taskListKeywordFound = new ArrayList<>();
-//
-//        int matchedCount = 0;
-//        for (Task task : taskList) {
-//            taskDescription = task.toString();
-//            if (taskDescription.toLowerCase().contains(line.toLowerCase())) {
-//                matchedCount = matchedCount + 1;
-////                Ui.showMessage((matchedCount) + "." + taskList.get(i).toString());
-//                taskListKeywordFound.add(task);  // once there is a match to a task, add this task to the new task list:taskListKeywordFound
-//            }
-//        }
-//        if (matchedCount == 0) {
-//            Ui.showMessage("Sorry! Cannot find any matched tasks in your list.");
-//        } else {
-//            Ui.showMessage("Here are the matching tasks in your list:");
-//            for (int i = 0; i < taskListKeywordFound.size(); i++) {
-//                Ui.showMessage((i + 1) + "." + taskListKeywordFound.get(i).toString());  // display the matched tasks to user from the task list:taskListKeywordFound
-//            }
-//        }
-//
-//
-//    }
+    /**
+     * A method to view the selected task details
+     *
+     * @param selectedTask A String that holds the ID (number) of a task
+     * @throws NullPointerException           If TASK NUM is Empty/Null: Returning to Main Menu
+     * @throws ArrayIndexOutOfBoundsException If TASK NUM is invalid, TASK NUM cannot be found in the task list: Returning to Main Menu
+     */
+    public void viewSelectedTask(String selectedTask) {
+
+        try {
+            // checking if the task number is given and empty string or null
+            if (selectedTask.trim().equals("")) {
+                throw new NullPointerException("TASK NUM is Empty/Null: Returning to Main Menu");
+            }
+
+            int taskIndex = Integer.parseInt(selectedTask) - 1;
+            if (taskIndex < 0 || taskIndex > taskList.size()) {
+                throw new ArrayIndexOutOfBoundsException("TASK NUM cannot be found in the task list: Returning to Main Menu");
+            }
+
+
+            for (int i = 0; i < taskList.size(); i++) {
+                if (i == taskIndex) {
+                    Ui.showMessage("Nice! Here is the task ready to view:");
+                    Ui.showMessage(taskList.get(i).toString());
+                }
+
+            }
+
+
+        } catch (Exception e) {
+            Ui.showMessage(e.getMessage());
+        }
+    }
+
+
 
 
 }

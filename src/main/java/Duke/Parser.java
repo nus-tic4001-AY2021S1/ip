@@ -52,7 +52,7 @@ public class Parser {
      * @param taskList    A Task TodoList contains the ArrayList of Task objects, contains the task list e.g., it has operations to add/delete tasks in the list
      */
 
-    public void getCommand(String input, Ui ui, ProgramExit programExit, TaskList taskList, String outputFileName , Storage store) {
+    public void getCommand(String input, Ui ui, ProgramExit programExit, TaskList taskList) {
 
         String commandFirstWord = input.split(" ")[0].toLowerCase();//extract the first word of the user input, and lowercase it.
 
@@ -100,16 +100,21 @@ public class Parser {
                     taskList.readTaskFromUser(filterTaskDetails(input));
                     Ui.printLine();
                     break;
-                case "save":
-                    Ui.printLine();
-                   // todoList.saveToFile(outputFileName);
-                    store.saveToFile(outputFileName);
-                    Ui.printLine();
-                    break;
                 case "find":
                     Ui.printLine();
                    // taskList.findTaskByKeyword(filterTaskDetails(input));
                     new FindCommand().executeCommand(filterTaskDetails(input));
+                    Ui.printLine();
+                    break;
+                case "clear":
+                    Ui.printLine();
+                    // taskList.findTaskByKeyword(filterTaskDetails(input));
+                    TaskList.clearAllTasks();
+                    Ui.printLine();
+                    break;
+                case "view":
+                    Ui.printLine();
+                    taskList.viewSelectedTask(getSecondWord(input));
                     Ui.printLine();
                     break;
 

@@ -1,5 +1,6 @@
 package Duke; /**
  * Storage: deals with loading tasks from the file and saving tasks in the file
+ * Task data is saved in the hard disk automatically after any command that changes the data.
  */
 
 
@@ -11,7 +12,6 @@ import Duke.Tasks.Todo;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -22,11 +22,15 @@ public class Storage {
     // An array list of task objects
     private ArrayList<Task> taskList;
 
+    // private boolean isExit;
+
     /**
      * creating an TodoList object
      */
     public Storage() {
+
         taskList = TaskList.getList();
+
     }
 
 
@@ -57,8 +61,6 @@ public class Storage {
             }
 
 
-
-
             BufferedReader reader = null;
             String tempString = null;
             int line = 1; //// the line number is started from 1st
@@ -72,7 +74,7 @@ public class Storage {
                     line++;
                 }
                 reader.close();
-            } catch (FileNotFoundException | ParseException e) {
+            } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } finally {
@@ -100,7 +102,7 @@ public class Storage {
      *
      * @param line get the task content from txt file, which contains task type, task description, task status
      */
-    private void createTaskFromFile(String line) throws ParseException {
+    private void createTaskFromFile(String line)  {
 
         String taskDescription;
         String taskSchedule = null;
@@ -174,7 +176,7 @@ public class Storage {
         } catch (IOException ex) {
             Ui.showMessage(ex.getMessage());
         }
-        Ui.showMessage("Task save to disk txt file--->:" + filename);
+       // Ui.showMessage("Task save to disk txt file--->:" + filename);
 
 
     }

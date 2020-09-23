@@ -26,27 +26,18 @@ public class Duke {
 
         // reading the date from task data file
         // if this is the first time, a message will be shown that no data file is found
-       // todoList.readFromFile(filename);
-
         store.readFromFile(filename);
 
         Ui.sayWelcome();
+
         while (!programExit.getIsExit()) {
-            //parser.getCommand(Ui.readUserCommand(), ui, programExit, taskList,filename , store);
-            parser.getCommand(Ui.readUserCommand(), ui, programExit, taskList,filename , store);
+            parser.getCommand(Ui.readUserCommand(), ui, programExit, taskList);
+            store.saveToFile(filename);
         }
-
 
     }
 
-    public abstract static class Command {
-        protected String commandBody;
-        public Command(String fullCommand){
-            this.commandBody=fullCommand;
-        }
-        public Command(){ }
-        public abstract void executeCommand(String line);
-    }
+
 }
 
 
