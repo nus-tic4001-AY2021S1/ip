@@ -28,7 +28,7 @@ public class Ui {
     }
 
     public void showLoadingError(){
-        System.out.println("There seems to be a file loading error. No tasks are preloaded");
+        System.out.println("There seems to be a file loading error. No tasks are preloaded\nStarting a new list...");
     }
 
 }

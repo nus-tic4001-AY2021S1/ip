@@ -18,6 +18,7 @@ public class Duke {
             tasks= new TaskList(storage.load());
         } catch (DukeException e) {
            ui.showLoadingError();
+           tasks=new TaskList();
         }
 
     }
@@ -25,12 +26,13 @@ public class Duke {
         ui.printWelcome();
         String fullCommand= ui.readCommand();
         System.out.println(fullCommand);
+        Command c=Parser.parse(fullCommand);
+        c.execute(tasks);
 
     }
 
     public static void main(String[] args) {
-        new Duke("/Users/januariusjang/Downloads/iP/data/task.txt").run();
-
+        new Duke("/Users/januariusjang/Downloads/iP/data/tasks.txt").run();
     }
 
 

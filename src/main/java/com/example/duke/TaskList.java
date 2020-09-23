@@ -13,4 +13,7 @@ public class TaskList {
         myTasks = new ArrayList<>();
         myTasks.addAll(tasksFromFile);
     }
+    public void add(Task myTask){
+        myTasks.add(myTask);
+    }
 }
