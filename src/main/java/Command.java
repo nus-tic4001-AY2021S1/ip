@@ -1,5 +1,3 @@
-
-
 abstract class Command {
     protected String content;
     //constructor

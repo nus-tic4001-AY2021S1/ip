@@ -47,6 +47,11 @@ class Parser {
                 new EventCommand().executeCommand(details, ui, storage, taskList);
                 break;
 
+            //command: [find] [keyword]
+            case "find":
+                new FindCommand().executeCommand(details, ui, storage, taskList);
+                break;
+
             //all other inputs
             default:
                 new DefaultCommand().executeCommand(details, ui, storage, taskList);

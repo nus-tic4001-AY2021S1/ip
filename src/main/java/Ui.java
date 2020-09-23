@@ -54,6 +54,12 @@ class Ui {
     public void printAddMsg(){
         indent(); System.out.println("Got it. I've added this task:");
     }
+    public void printNoMatchesMsg(){
+        indent(); System.out.println("No matching task found");
+    }
+    public void printMatchesMsg(){
+        indent(); System.out.println("Here are the matching tasks in your list:");
+    }
     public String readCommand(){
         return sc.nextLine();
     }
@@ -67,3 +73,4 @@ class Ui {
         System.out.println(error);
     }
 }
+
