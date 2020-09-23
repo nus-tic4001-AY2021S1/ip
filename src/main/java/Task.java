@@ -8,16 +8,14 @@ abstract class Task {
 
     //abstract methods
     public abstract String getStatusIcon();
-    // make abstract class
     public abstract void markAsDone();
-    // make abstract class
     public abstract boolean getIsDone();
 
-    public String getDescription() {
+    public String getDescription(){
         return this.description;
     }
-
-    public String toString() {
-        return "[" + getStatusIcon() + "]" + " " + getDescription();
+    public String toString(){
+        return "["+getStatusIcon()+"]" + " " + getDescription();
     }
 }
+

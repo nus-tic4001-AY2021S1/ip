@@ -7,12 +7,10 @@ class Deadline extends Task {
         super(description);
         this.by=by;
     }
-    //constructor
+
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
     }
-
-    //constructor
     public void markAsDone(){
         this.isDone = true;
     }
