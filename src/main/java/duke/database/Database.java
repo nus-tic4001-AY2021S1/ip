@@ -1,5 +1,6 @@
 package duke.database;
 
+import duke.commands.ListCommand;
 import duke.task.TaskList;
 import duke.task.Todo;
 import duke.task.Deadline;
@@ -12,7 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 /**
  * Responsible for all interactions between the in-memory tasks and the tasks file.
  */
@@ -36,7 +36,8 @@ public class Database {
         try {
             ArrayList<String> lines = getLines(fileName);
             tasks = extractTasks(lines, tasks, ui, database);
-            ui.printExistingTasks(tasks);
+            ui.printFileExists();
+            new ListCommand(tasks, ui).execute();
 
         } catch (FileNotFoundException e) {
             ui.printNoFileFound();
@@ -47,7 +48,7 @@ public class Database {
 
     private ArrayList<String> getLines(String fileName) throws FileNotFoundException {
         Scanner s = new Scanner(new File(fileName));
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         while (s.hasNextLine()) {
             list.add(s.nextLine());
         }
@@ -63,15 +64,9 @@ public class Database {
             String taskDescription = line.split("]")[2].trim();
 
             switch (taskType) {
-                case "Todo" -> {
-                    tasks.add(new Todo("[Todo]     " + taskDescription));
-                }
-                case "Deadline" -> {
-                    tasks.add(new Deadline("[Deadline] " + taskDescription));
-                }
-                case "Event" -> {
-                    tasks.add(new Event("[Event]    " + taskDescription));
-                }
+                case "Todo" -> tasks.add(new Todo("[Todo]     " + taskDescription));
+                case "Deadline" -> tasks.add(new Deadline("[Deadline] " + taskDescription));
+                case "Event" -> tasks.add(new Event("[Event]    " + taskDescription));
             }
             if (taskStatus.equals("\u2713")) {
                 tasks.get(tasks.size() - 1).setDone();

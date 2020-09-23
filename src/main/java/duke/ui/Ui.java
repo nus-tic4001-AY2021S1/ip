@@ -48,7 +48,7 @@ public class Ui {
                 + "  ⬢  Complete a task        | " + colorGreen("done <task index number>\n")
                 + "  ⬡  Delete a task          | " + colorGreen("delete <task index number>\n")
                 + "  ⬡  List down all tasks    | " + colorGreen("list\n")
-                + "  ⬢  Exit my program        | " + colorGreen("bye or hit Enter\n");
+                + "  ⬢  Exit my program        | " + colorGreen("bye or hit Enter");
         printBorderlines(greeting);
     }
 
@@ -78,18 +78,6 @@ public class Ui {
         printBorderlines(done);
     }
 
-    public void printAllTasks(TaskList tasks) {
-        if (tasks.size() == 0) {
-            printBorderlines("It appears that you have no tasks! Perhaps you should start creating one?");
-            return;
-        }
-        String total = "Here are the tasks that you currently have!\n";
-        for (int i = 0; i < tasks.size(); i++) {
-            total = total.concat((i + 1) + ". " + tasks.get(i).getDescription()) + "\n";
-        }
-        printBorderlines(total);
-    }
-
     public void printInvalidCommand() {
         printRedBorderlines("It seems that you have typed something out of my unfortunately\n"
                 + "limited vocabulary. Can you try again?");
@@ -100,9 +88,8 @@ public class Ui {
                 "Get started by creating a task!";
         System.out.println(message);
     }
-    public void printExistingTasks(TaskList tasks) {
+    public void printFileExists() {
         String message = "An existing task file is found!";
         System.out.println(message);
-        printAllTasks(tasks);
     }
 }
