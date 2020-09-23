@@ -1,4 +1,4 @@
-package duke.Tasks;
+package duke.task;
 
 /**
  * This class to create task object.

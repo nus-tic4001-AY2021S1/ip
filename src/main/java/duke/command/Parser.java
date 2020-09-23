@@ -1,7 +1,7 @@
 package duke.command;
 
-import duke.Tasks.Deadline;
-import duke.Tasks.Todo;
+import duke.task.Deadline;
+import duke.task.Todo;
 
 /**
  *This Parser class is to parser users' command and create todo, deadline, event tasks.
