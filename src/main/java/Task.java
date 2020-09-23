@@ -18,4 +18,3 @@ abstract class Task {
         return "["+getStatusIcon()+"]" + " " + getDescription();
     }
 }
-

@@ -1,11 +1,14 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 class Deadline extends Task {
     protected boolean isDone;
-    protected String by;
+    protected LocalDate by;
 
     //constructor
-    public Deadline(String description, String by){
+    public Deadline(String description, LocalDate by){
         super(description);
-        this.by=by;
+        this.by = by;
     }
 
     public String getStatusIcon() {
@@ -18,10 +21,10 @@ class Deadline extends Task {
         return this.isDone;
     }
     public String getBy(){
-        return this.by;
+        return this.by.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
     }
     @Override
     public String toString(){
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        return "[D]" + super.toString() + " (by: " + getBy() + ")";
     }
 }

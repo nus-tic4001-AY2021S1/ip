@@ -1,4 +1,7 @@
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Scanner;
 
 //deals with loading tasks from the file and saving tasks in the file
@@ -32,7 +35,8 @@ class Storage {
 
                     case "D":
                         String dTime = instructions.split(" \\| ",4)[3];
-                        Task newDeadline = new Deadline(description, dTime);
+                        DateTimeFormatter df = new DateTimeFormatterBuilder().appendPattern("MMM d yyyy").toFormatter();
+                        Task newDeadline = new Deadline(description, LocalDate.parse(dTime,df));
                         if(done.equals("1")){
                             newDeadline.markAsDone();
                         }
@@ -41,7 +45,8 @@ class Storage {
 
                     case "E":
                         String eTime = instructions.split(" \\| ",4)[3];
-                        Task newEvent = new Event(description, eTime);
+                        DateTimeFormatter ef = new DateTimeFormatterBuilder().appendPattern("MMM d yyyy").toFormatter();
+                        Task newEvent = new Event(description, LocalDate.parse(eTime,ef));
                         if(done.equals("1")){
                             newEvent.markAsDone();
                         }

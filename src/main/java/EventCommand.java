@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 
 class EventCommand extends Command {
     public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
@@ -16,14 +17,19 @@ class EventCommand extends Command {
                     }
                     else{
                         String at = details.split(" /at ")[1];
-                        //add event to arraylist
-                        Task newEvent = new Event(eDescription, at);
-                        taskList.addTask(newEvent);
-                        //print reply
-                        ui.printAddMsg();
-                        ui.indentPrintString(taskList.getTask(taskList.getSize()-1).toString());
-                        ui.printTotalListSize(taskList.getSize());
-                        storage.saveToFile(taskList);
+                        try{
+                            //add event to arraylist
+                            Task newEvent = new Event(eDescription, LocalDate.parse(at));
+                            taskList.addTask(newEvent);
+                            //print reply
+                            ui.printAddMsg();
+                            ui.indentPrintString(taskList.getTask(taskList.getSize()-1).toString());
+                            ui.printTotalListSize(taskList.getSize());
+                            storage.saveToFile(taskList);
+                        }
+                        catch(Exception ex){
+                            ui.showError("\tPlease enter date according to this format (yyyy-mm-dd)");
+                        }
                     }
                 }
             }

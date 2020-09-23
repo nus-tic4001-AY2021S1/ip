@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 class DeadlineCommand extends Command {
     public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
         try {
@@ -15,14 +17,19 @@ class DeadlineCommand extends Command {
                     }
                     else{
                         String by = details.split(" /by ")[1];
-                        //add deadline to arraylist
-                        Task newDeadline = new Deadline(dDescription, by);
-                        taskList.addTask(newDeadline);
-                        //print reply
-                        ui.printAddMsg();
-                        ui.indentPrintString(taskList.getTask(taskList.getSize()-1).toString());
-                        ui.printTotalListSize(taskList.getSize());
-                        storage.saveToFile(taskList);
+                        try{
+                            //add deadline to arraylist
+                            Task newDeadline = new Deadline(dDescription, LocalDate.parse(by));
+                            taskList.addTask(newDeadline);
+                            //print reply
+                            ui.printAddMsg();
+                            ui.indentPrintString(taskList.getTask(taskList.getSize()-1).toString());
+                            ui.printTotalListSize(taskList.getSize());
+                            storage.saveToFile(taskList);
+                        }
+                        catch(Exception ex){
+                            ui.showError("\tPlease enter date according to this format (yyyy-mm-dd)");
+                        }
                     }
                 }
             }
