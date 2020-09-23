@@ -4,10 +4,10 @@ that helps the users keep track of the tasks they need to do.
 
 ## Quick Start
 1. Ensure you have Java `11` or above installed in your Computer.
-2. Download the latest `duke.jar` [here](https://github.com/e0260222/ip/releases).
-3. Copy `duke.jar` to the folder you want to use as the home folder for Duke.
+2. Download the latest `ip.jar` [here](https://github.com/e0260222/ip/releases).
+3. Copy `ip.jar` to the folder you want to use as the home folder for Duke.
 4. Navigate to the home folder for Duke on your CLI program.
-5. Launch Duke by running the command `java -jar duke.jar`.
+5. Launch Duke by running the command `java -jar ip.jar`.
 6. Type the command in the CLI program and press `Enter` to execute it.
 <br>Some example commands you can try:
     - `todo Go to the gym`: Adds a todo to Duke.
