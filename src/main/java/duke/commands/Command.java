@@ -7,13 +7,13 @@ import duke.ui.Ui;
  * An abstract class that is inherited by every command.
  */
 public abstract class Command {
-    public String taskDescription;
+    public String line;
     public TaskList tasks;
     public Ui ui;
     public Database database;
 
-    protected Command(String taskDescription, TaskList tasks, Ui ui, Database database) {
-        this.taskDescription = taskDescription;
+    protected Command(String line, TaskList tasks, Ui ui, Database database) {
+        this.line = line;
         this.database = database;
         this.tasks = tasks;
         this.ui = ui;

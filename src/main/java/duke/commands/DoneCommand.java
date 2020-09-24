@@ -24,11 +24,11 @@ public class DoneCommand extends Command {
                         "Perhaps you should start creating one?");
                 return;
             }
-            if (taskDescription.isEmpty()) {
+            if (line.isEmpty()) {
                 throw new DukeException("You almost typed a proper done command, but you missed out the number!\n" +
                         "Please type in the 'done <task index number>' format.");
             }
-            int index = Integer.parseInt(taskDescription);
+            int index = Integer.parseInt(line);
             tasks.get(index - 1).setDone();
             ui.printTaskCompleted(index, tasks);
             database.updateDatabase(tasks);

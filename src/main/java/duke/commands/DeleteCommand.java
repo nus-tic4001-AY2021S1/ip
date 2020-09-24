@@ -24,11 +24,11 @@ public class DeleteCommand extends Command {
                         "Perhaps you should start creating one?");
                 return;
             }
-            if (taskDescription.isEmpty()) {
+            if (line.isEmpty()) {
                 throw new DukeException("You almost typed a proper delete command, but you missed out the number!\n" +
                         "Please type in the 'delete <task index number>' format.");
             }
-            int index = Integer.parseInt(taskDescription);
+            int index = Integer.parseInt(line);
             ui.printTaskRemoved(tasks, index);
             tasks.remove(index);
             database.updateDatabase(tasks);

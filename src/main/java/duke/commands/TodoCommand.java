@@ -20,12 +20,12 @@ public class TodoCommand extends Command {
     @Override
     public void execute() {
         try {
-            if (taskDescription.isEmpty()) {
+            if (line.isEmpty()) {
                 throw new DukeException("It seems that you missed out the task description!\n" +
                         "Please type in the 'todo <something>' format.");
             }
-            taskDescription = "[Todo]     " + taskDescription;
-            tasks.add(new Todo(taskDescription));
+            line = "[Todo]     " + line;
+            tasks.add(new Todo(line));
             ui.printTaskAdded(tasks);
             database.updateDatabase(tasks);
 
