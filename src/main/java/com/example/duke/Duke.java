@@ -24,11 +24,14 @@ public class Duke {
     }
     public void run (){
         ui.printWelcome();
-        String fullCommand= ui.readCommand();
-        System.out.println(fullCommand);
-        Command c=Parser.parse(fullCommand);
-        c.execute(tasks);
-
+        boolean isExit=false;
+        while(!isExit) {
+            String fullCommand = ui.readCommand();
+            System.out.println(fullCommand);
+            Command c = Parser.parse(fullCommand);
+            c.execute(tasks);
+            isExit=c.isExit();
+        }
     }
 
     public static void main(String[] args) {

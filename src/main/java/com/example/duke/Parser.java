@@ -8,8 +8,12 @@ public class Parser {
         switch (arrayOfStr[0]) {
 
             case "todo":
-
                 return new AddTodoCommand(arrayOfStr[1]);
+            case "list":
+                return new ListCommand();
+            case "bye":
+                return new ExitCommand();
+
 
             default:
                 System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");

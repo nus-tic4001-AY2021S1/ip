@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class Command {
     String taskDescription;
+    public Command(){
+
+    }
     public Command (String description){
         taskDescription=description;
     }
@@ -11,4 +14,9 @@ public class Command {
     public void execute (TaskList myTask){
 
     }
+    public boolean  isExit(){
+        return false;
+    }
+
+
 }

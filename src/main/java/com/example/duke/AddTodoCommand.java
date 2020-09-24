@@ -11,7 +11,7 @@ public class AddTodoCommand extends Command {
     public void execute (TaskList myTask){
         Todo myTodo=new Todo(taskDescription);
         myTask.add(myTodo);
-        System.out.println("new todo added");
+        System.out.println("new todo added, " + taskDescription);
 
     }
 }

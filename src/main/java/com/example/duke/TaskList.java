@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class TaskList {
-    private ArrayList myTasks;
+    private ArrayList<Task> myTasks;
     public TaskList(){
         myTasks=new ArrayList<Task>();
     }
@@ -15,5 +15,11 @@ public class TaskList {
     }
     public void add(Task myTask){
         myTasks.add(myTask);
+    }
+    public int size(){
+        return myTasks.size();
+    }
+    public Task get(int index){
+        return myTasks.get(index);
     }
 }
