@@ -1,7 +1,6 @@
-package Duke; /**
- * Storage: deals with loading tasks from the file and saving tasks in the file
- * Task data is saved in the hard disk automatically after any command that changes the data.
- */
+package Duke;
+
+
 
 
 import Duke.Tasks.Deadline;
@@ -17,12 +16,19 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+
+/**
+ * Storage: deals with loading tasks from the file and saving tasks in the file
+ * Task data is saved in the hard disk automatically after any command that changes the data.
+ */
+
 public class Storage {
 
     // An array list of task objects
     private ArrayList<Task> taskList;
+    private Task task;
 
-    // private boolean isExit;
+
 
     /**
      * creating an TodoList object
@@ -114,7 +120,7 @@ public class Storage {
             taskSchedule = line_arr[3].trim();
         }
 
-        Task task = new Task("default");
+
         DateTimeFormatter formatterEventSchedule = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
         /* pass the value to Task:  todo / deadline /event, and lable the task status */
