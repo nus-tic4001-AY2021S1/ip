@@ -1,8 +1,8 @@
 package Duke.Tasks;
 
 
-
-public class Task {
+// An abstract class
+public abstract class Task {
     // A String that holds the description of a task
     protected String description;
     // A boolean value, if true: the task is completed, otherwise false.

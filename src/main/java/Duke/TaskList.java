@@ -18,8 +18,6 @@ import java.util.Locale;
  * TaskList: contains the task list e.g., it has operations to add/delete tasks in the list
  * TodoList
  */
-
-
 public class TaskList {
 
     // An array list of task objects
@@ -32,22 +30,21 @@ public class TaskList {
         taskList = new ArrayList<>();
     }
 
+    /**
+     * creating a taskList
+     */
     public static ArrayList<Task> getList() {
         return taskList;
     }
 
 
-//    /**
-//     * A method to list done all the tasks from the list and show the list to user.
-//     * Show the message to user and notify the user that "Here are the tasks in your list"
-//     */
-//    public static void listAllTasks() {
-//        Ui.showMessage("Here are the tasks in your list:");
-//        for (int i = 0; i < taskList.size(); i++) {
-//            Ui.showMessage((i + 1) + "." + taskList.get(i).toString());
-//        }
-//    }
-
+    /**
+     * To check the datetime if it is valid.
+     *
+     * @param format A String that holds the format of date/time.
+     * @param value A String that holds the details of task
+     * @param locale A Locale that holds the locale
+     */
     public static boolean isValidDateTimeFormat(String format, String value, Locale locale) {
         LocalDateTime ldt = null;
         DateTimeFormatter fomatter = DateTimeFormatter.ofPattern(format, locale);
