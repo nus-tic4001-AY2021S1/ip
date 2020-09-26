@@ -117,7 +117,7 @@ public class TaskList {
             assert index <= tasks.size() : "☹ OOPS!!!Command number is invalid"; //assert error when index bigger than tasks size.
             if (index <= tasks.size() && index > 0) {
                 tasks.get(index - 1).setDone(true);
-                ui.showToUser("duke.Tasks: " + index + " has marked as DONE.");
+                ui.showToUser("Tasks: " + index + " has marked as DONE.");
                 ui.printLine();
             } else ui.showToUser("☹ OOPS!!!Marking as done range should be 1 to " + tasks.size());
         } catch (NumberFormatException e) {
@@ -166,11 +166,10 @@ public class TaskList {
         if(ss.size() != 0) {
             ui.showToUser("Here are the matching tasks in your list: ");
             ss.forEach(System.out::println);
-            ui.printLine();
         }
         else {
             ui.showToUser("☹ OOPS!!! Our list not contain " + "'" + description + "'.");
-            ui.printLine();
         }
+        ui.printLine();
     }
 }

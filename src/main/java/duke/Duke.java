@@ -74,6 +74,7 @@ public class Duke {
                         break;
                     case "delete":
                         tasks.deleteTasks(fullCommand);
+                        break;
                     case "find":
                         tasks.findTasks(fullCommand);
                         break;
