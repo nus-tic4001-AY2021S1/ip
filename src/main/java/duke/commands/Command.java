@@ -19,6 +19,12 @@ public abstract class Command {
         this.ui = ui;
     }
 
+    protected Command(String line, TaskList tasks, Ui ui) {
+        this.line = line;
+        this.tasks = tasks;
+        this.ui = ui;
+    }
+
     protected Command(TaskList tasks, Ui ui) {
         this.tasks = tasks;
         this.ui = ui;

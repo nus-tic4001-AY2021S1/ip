@@ -17,8 +17,8 @@ import java.time.format.DateTimeParseException;
 public class DeadlineCommand extends Command {
     public static final String word = "deadline";
 
-    public DeadlineCommand(String taskDescription, TaskList tasks, Ui ui, Database database) {
-        super(taskDescription, tasks, ui, database);
+    public DeadlineCommand(String line, TaskList tasks, Ui ui, Database database) {
+        super(line, tasks, ui, database);
     }
     /**
      * Changes the format of the whole line into proper task format.

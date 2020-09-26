@@ -13,8 +13,8 @@ import java.io.IOException;
 public class TodoCommand extends Command {
     public static final String word = "todo";
 
-    public TodoCommand(String taskDescription, TaskList tasks, Ui ui, Database database) {
-        super(taskDescription, tasks, ui, database);
+    public TodoCommand(String line, TaskList tasks, Ui ui, Database database) {
+        super(line, tasks, ui, database);
     }
 
     @Override

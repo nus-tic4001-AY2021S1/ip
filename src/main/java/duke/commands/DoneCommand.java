@@ -12,8 +12,8 @@ import java.io.IOException;
 public class DoneCommand extends Command {
     public static final String word = "done";
 
-    public DoneCommand(String taskDescription, TaskList tasks, Ui ui, Database database) {
-        super(taskDescription, tasks, ui, database);
+    public DoneCommand(String line, TaskList tasks, Ui ui, Database database) {
+        super(line, tasks, ui, database);
     }
 
     @Override
