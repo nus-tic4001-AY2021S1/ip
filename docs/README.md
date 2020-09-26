@@ -3,7 +3,7 @@ Jojo, a Personal Assistant Chatbot with Java-based Command Line Interface (CLI),
 
 ## Quick Start
 1. Ensure you have Java 11 or above installed in your Computer.
-2. Download the latest ip.jar here.
+2. Download the latest ip.jar [here](https://github.com/daiweinus/ip/releases).
 3. Open the Terminal/Command Prompt.
 4. Navigate to the project’s out\artifacts\ip_jar.
 5. Launch the Jojo Chatbot by running the command java -jar ip.jar.
@@ -166,4 +166,12 @@ save
 Expected outcome:
 ```
 Tasks save to disk Jojo.txt
+```
+```
+Hello from
+  __          __ 
+  | | ____    | | ____
+  | |/ __ \   | |/ __ \
+__/ | |__| |__/ | |__| |
+\__/ \____/ \__/ \____/
 ```
