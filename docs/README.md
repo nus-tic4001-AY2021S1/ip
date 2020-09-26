@@ -166,12 +166,4 @@ save
 Expected outcome:
 ```
 Tasks save to disk Jojo.txt
-```
-```
-Hello from
-  __          __ 
-  | | ____    | | ____
-  | |/ __ \   | |/ __ \
-__/ | |__| |__/ | |__| |
-\__/ \____/ \__/ \____/
-```
+
