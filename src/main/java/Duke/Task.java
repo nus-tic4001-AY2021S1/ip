@@ -1,3 +1,5 @@
+package Duke;
+
 abstract class Task {
     protected String description;
 
@@ -18,3 +20,4 @@ abstract class Task {
         return "["+getStatusIcon()+"]" + " " + getDescription();
     }
 }
+

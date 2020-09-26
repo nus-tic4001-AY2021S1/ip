@@ -1,14 +1,12 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+package Duke;
 
-class Deadline extends Task {
+class Todo extends Task {
     protected boolean isDone;
-    protected LocalDate by;
 
     //constructor
-    public Deadline(String description, LocalDate by){
+    public Todo(String description){
         super(description);
-        this.by = by;
+        this.isDone = false;
     }
 
     public String getStatusIcon() {
@@ -20,11 +18,9 @@ class Deadline extends Task {
     public boolean getIsDone(){
         return this.isDone;
     }
-    public String getBy(){
-        return this.by.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
-    }
     @Override
     public String toString(){
-        return "[D]" + super.toString() + " (by: " + getBy() + ")";
+        return "[T]" + super.toString();
     }
 }
+

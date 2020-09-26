@@ -1,3 +1,5 @@
+package Duke;
+
 //deals with making sense of the user command
 class Parser {
     public void execute(String fullCommand, Ui ui, Storage storage, TaskList taskList){

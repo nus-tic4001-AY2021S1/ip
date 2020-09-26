@@ -1,3 +1,5 @@
+package Duke;
+
 import java.util.*;
 import java.io.*;
 import java.time.LocalDate;
@@ -60,4 +62,3 @@ public class Duke {
         }
     }
 }
-

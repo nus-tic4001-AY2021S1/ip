@@ -1,13 +1,16 @@
+package Duke;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-class Event extends Task {
+class Deadline extends Task {
     protected boolean isDone;
-    protected LocalDate at;
+    protected LocalDate by;
 
-    public Event(String description, LocalDate at){
+    //constructor
+    public Deadline(String description, LocalDate by){
         super(description);
-        this.at = at;
+        this.by = by;
     }
 
     public String getStatusIcon() {
@@ -19,11 +22,12 @@ class Event extends Task {
     public boolean getIsDone(){
         return this.isDone;
     }
-    public String getAt(){
-        return this.at.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+    public String getBy(){
+        return this.by.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
     }
     @Override
     public String toString(){
-        return "[E]" + super.toString() + " (at: " + getAt() + ")";
+        return "[D]" + super.toString() + " (by: " + getBy() + ")";
     }
 }
+

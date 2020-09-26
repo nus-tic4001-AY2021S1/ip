@@ -1,4 +1,4 @@
-
+package Duke;
 
 class DefaultCommand extends Command {
     public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList){
@@ -10,3 +10,4 @@ class DefaultCommand extends Command {
         }
     }
 }
+

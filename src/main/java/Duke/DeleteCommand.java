@@ -1,4 +1,4 @@
-
+package Duke;
 
 class DeleteCommand extends Command {
     public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
@@ -18,3 +18,4 @@ class DeleteCommand extends Command {
         }
     }
 }
+

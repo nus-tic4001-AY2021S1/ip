@@ -1,3 +1,5 @@
+package Duke;
+
 abstract class Command {
     protected String content;
     //constructor

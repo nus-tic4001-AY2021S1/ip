@@ -1,3 +1,5 @@
+package Duke;
+
 import java.time.LocalDate;
 
 class DeadlineCommand extends Command {
@@ -39,3 +41,4 @@ class DeadlineCommand extends Command {
         }
     }
 }
+

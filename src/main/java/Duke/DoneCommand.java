@@ -1,3 +1,5 @@
+package Duke;
+
 class DoneCommand extends Command {
     public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
         try {

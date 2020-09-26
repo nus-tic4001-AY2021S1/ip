@@ -1,3 +1,5 @@
+package Duke;
+
 import java.time.LocalDate;
 
 class EventCommand extends Command {
