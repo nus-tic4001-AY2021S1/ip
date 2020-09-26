@@ -1,0 +1,9 @@
+T | 0 | checking code
+T | 1 | do a push
+E | 0 | have dinner at Tom's home | 2020-10-11T23:00
+D | 0 | read book | 2020-10-11
+T | 1 | return book
+E | 0 | go to school, buy book | 2020-12-12T12:00
+T | 0 | testing
+E | 0 | sfhsk | 2020-10-10T11:11
+T | 0 | sdhfksjh

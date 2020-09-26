@@ -34,7 +34,6 @@ public class FindCommand {
             taskDescription = task.toString();
             if (taskDescription.toLowerCase().contains(line.toLowerCase())) {
                 matchedCount = matchedCount + 1;
-//                Ui.showMessage((matchedCount) + "." + taskList.get(i).toString());
                 taskListKeywordFound.add(task);  // once there is a match to a task, add this task to the new task list:taskListKeywordFound
             }
         }
