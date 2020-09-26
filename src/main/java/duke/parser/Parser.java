@@ -1,6 +1,6 @@
 package duke.parser;
 
-import duke.commands.*;
+import duke.commands.*; //IntelliJ keeps reducing all the commands to wildcard.
 import duke.database.Database;
 import duke.task.TaskList;
 import duke.ui.Ui;
