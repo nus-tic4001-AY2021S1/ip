@@ -1,0 +1,4 @@
+T|0|goto gym
+T|0|goto cinema
+T|0|go to somewere
+T|0|go to gym
