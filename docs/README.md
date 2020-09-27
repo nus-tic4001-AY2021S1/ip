@@ -115,3 +115,8 @@ Expected outcome:
  Expected outcome:
  
  ` Successfully wrote to the file.`
+ 
+ ## Special Handle
+ When user use command promt to run the jar file, they should use the following command.
+ 1. in command promt, type `chcp` and enter, you will see this `Active code page: 65001`
+ 2. type `java -jar -Dfile.encoding=UTF-8 Duke.jar`
