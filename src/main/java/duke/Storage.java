@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 
 public class Storage {
-    private String storageFilePath="../ip/data/duke.txt";
+    private String storageFilePath= System.getProperty("user.dir") + File.separator + "data" + File.separator;
     private boolean isExit;
     public Storage(TaskList taskList){
         isExit = false;
@@ -29,7 +29,11 @@ public class Storage {
         }
     }
     public void loadFromFile(TaskList tempStorage) throws IOException{
-        File storage=new File(storageFilePath);
+        File directory = new File(storageFilePath);
+        if(!directory.exists()){
+            directory.mkdir();
+        }
+        File storage=new File(storageFilePath + "duke.txt");
         BufferedReader fileReader = new BufferedReader(new FileReader(storage));
         String savedTask;
         while((savedTask = fileReader.readLine())!=null) {
