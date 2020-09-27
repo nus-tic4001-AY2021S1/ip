@@ -7,6 +7,10 @@ import duke.ToDos;
 import duke.Deadlines;
 import duke.Events;
 
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -54,22 +58,29 @@ public class TaskList {
             Ui.replyLine(tasks, input, count);
         }
     }
-    public static void addDeadlines(ArrayList<Task> tasks, String input, int count) throws DukeException{
-        String errorEmpty = "☹ OOPS!!! The description of a Deadlines cannot be empty.\n " +
-                "Please re-input or enter bye to terminate the program\n";
-        String errorMissing = "You have input your Schedule or Wrong format\nPlease include -> /by when\n";
+    public static void addDeadlines(ArrayList<Task> tasks, String input, int count) throws DukeException {
 
         if(!input.contains(" ")) {
-            throw new DukeException(errorEmpty);
+            throw new DukeException(Ui.deadlineErrEmpty());
         } else if(input.length()-1 == input.indexOf(" ")) {
-            throw new DukeException(errorEmpty);
+            throw new DukeException(Ui.deadlineErrEmpty());
         } else if(!input.contains("/by")) {
-            throw new DukeException(errorMissing);
+            throw new DukeException(Ui.deadlineNoBy());
         } else {
             int index = input.indexOf("/by");
-            String schedule = input.substring(index + 4);
             String taskName = input.substring(input.indexOf(" ")+1, index);
-            tasks.add(new Deadlines(taskName, schedule));
+
+            if(input.indexOf(" ",index+7) != -1) {
+                int timeIndex = input.indexOf(" ",index+7);
+                LocalTime timeline = LocalTime.parse(input.substring(timeIndex+1));
+                String schedule = input.substring(index + 4, timeIndex);
+                LocalDate dateline = LocalDate.parse(schedule);
+                tasks.add(new Deadlines(taskName, dateline, timeline));
+            } else {
+                String schedule = input.substring(index + 4);
+                LocalDate dateline = LocalDate.parse(schedule);
+                tasks.add(new Deadlines(taskName, dateline));
+            }
             Ui.replyLine(tasks, input, count);
         }
 
