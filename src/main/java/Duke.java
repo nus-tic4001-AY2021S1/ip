@@ -46,7 +46,7 @@ public class Duke {
     public void run() {
 
         ui.printLine();
-        ui.print(greetingMsg);
+        ui.print(greetMsg);
         ui.printLine();
 
           /*
