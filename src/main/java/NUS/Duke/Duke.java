@@ -5,6 +5,7 @@ import NUS.Duke.ProcessingException;
 import NUS.Duke.utils.ParserUtil;
 import NUS.Duke.utils.UI;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,11 +14,9 @@ public class Duke {
 
     public static void main(String[] args) {
 
-
-        Scanner scanner = new Scanner(System.in);
-
         UI ui = new UI();
         UI.printWelcomeMessage();
+        ParserUtil.readTaskFromFile();
         String command = ui.readCommand();
 
         while (!ParserUtil.getFunctionCommand(command).equals("bye")) {
@@ -37,14 +36,14 @@ public class Duke {
 
         switch (operation){
             case "todo":
-                ParserUtil.createTodoTask(details);
+                ParserUtil.createTodoTask(details,0);
                 break;
             case "deadline":
-                ParserUtil.createDeadlineTask(details);
+                ParserUtil.createDeadlineTask(details,0);
                 break;
             case "event":
                 try {
-                    ParserUtil.createEventTask(details);
+                    ParserUtil.createEventTask(details,0);
                 } catch (ProcessingException e) {
                     e.printStackTrace();
                 }
@@ -60,7 +59,7 @@ public class Duke {
                 ParserUtil.doneTask(Integer.parseInt(details));
                 break;
             case "delete":
-                ParserUtil.deleteTask(Integer.parseInt(details));
+                    ParserUtil.deleteTask(Integer.parseInt(details));
                 break;
             case "save":
                 ParserUtil.writeToFile();
@@ -68,8 +67,15 @@ public class Duke {
             case "find":
                 ParserUtil.findTask(details);
                 break;
+            case "deleteall":
+                ParserUtil.deleteAllTask();
+                break;
+            case "help":
+                UI.printHelpList();
+                break;
             default:
-                UI.printErrorMessage("Sorry i dont understand the command");
+                UI.printErrorMessage("Sorry I dont understand the command, please use 'help' to see the command list");
+
 
         }
 

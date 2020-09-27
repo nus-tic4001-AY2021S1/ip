@@ -8,15 +8,18 @@ import NUS.Duke.ProcessingException;
 import NUS.Duke.utils.UI;
 
 
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class ParserUtil {
     public static List<TaskDTO> taskList = new ArrayList<>();
-    public static int taskId = 0;
 
     /**
      * this is the function to spilt the input string originalCommand and get operation
@@ -41,28 +44,28 @@ public class ParserUtil {
     }
 
 
-
-
     /**
      * This is the function to make task as done input param taskId
      * @param taskId
      */
     public static void doneTask (int taskId){
-        taskList.forEach(task -> {
-            if (taskId == task.getTaskId()){
-                task.processDoneTask();
-            }
-        });
+        TaskDTO task = taskList.get(--taskId);
+        task.processDoneTask();
     }
     /**
      * This is the function to create event task by input param details
      * @param details
      */
-    public static void createEventTask(String details) throws ProcessingException {
+    public static void createEventTask(String details,int doneInd) throws ProcessingException {
         try {
             String taskName = details.substring(0, details.indexOf("/at"));
             String eventTime = details.substring(details.indexOf("/at") + 4).trim();
-            EventDTO task = new EventDTO(taskName, ++taskId, eventTime);
+            EventDTO task = new EventDTO(taskName, eventTime);
+            if (doneInd==0){
+                task.setDone(false);
+            }else {
+                task.setDone(true);
+            }
             taskList.add(task);
             UI.printAddTaskMessage(task);
         }catch (Exception e){
@@ -74,15 +77,20 @@ public class ParserUtil {
      * This is the function to create deadline task by input param details
      * @param details
      */
-    public static void createDeadlineTask(String details) {
+    public static void createDeadlineTask(String details,int doneInd) {
         try {
             String taskName = details.substring(0,details.indexOf("/by"));
             String deadlineDate = details.substring(details.indexOf("/by")+4).trim();
-            DeadlineDTO task = new DeadlineDTO(taskName,deadlineDate,++taskId);
+            DeadlineDTO task = new DeadlineDTO(taskName,deadlineDate);
+            if (doneInd==0){
+                task.setDone(false);
+            }else {
+                task.setDone(true);
+            }
             taskList.add(task);
             UI.printAddTaskMessage(task);
         }catch (Exception e){
-            UI.printErrorMessage("Please check your input, /by is missing");
+            UI.printErrorMessage("Please check your input, /by is missing or date entered is incorrect");
         }
 
     }
@@ -90,9 +98,14 @@ public class ParserUtil {
      * This is the function to create todo task by input param details
      * @param details
      */
-    public static void createTodoTask(String details){
+    public static void createTodoTask(String details,int doneInd){
 
-        TodoDTO task = new TodoDTO(details,++taskId);
+        TodoDTO task = new TodoDTO(details);
+        if (doneInd==0){
+            task.setDone(false);
+        }else {
+            task.setDone(true);
+        }
         taskList.add(task);
         UI.printAddTaskMessage(task);
 
@@ -107,28 +120,15 @@ public class ParserUtil {
         TaskDTO tempTask = null;
 
         try {
-
-
-            for(TaskDTO task : taskList){
-                if (taskIdNumber == task.getTaskId()) {
-                    tempTask = task;
-                }
-            }
+            tempTask = taskList.get(--taskIdNumber);
 
             taskList.remove(tempTask);
             UI.printDeleteTaskMessage(tempTask);
 
-            taskList.forEach(task -> {
-                if (taskIdNumber < task.getTaskId()) {
-                    task.setTaskId(task.getTaskId() - 1);
-                }
-            });
         }catch (Exception e){
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-
-        taskId--;
 
     }
 
@@ -153,6 +153,53 @@ public class ParserUtil {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+
+    public static void readTaskFromFile(){
+        try {
+            File myObj = new File("DukeFile.txt");
+            Scanner scanner = new Scanner(myObj);
+            while (scanner.hasNextLine()) {
+                String data = scanner.nextLine();
+                if(data!="" && data!=null) {
+                    String values[] = data.split("\\|");
+                    Integer doneInd = Integer.parseInt(values[1].trim());
+                    String secValue = values[2].trim();
+                    switch (values[0].trim()){
+                        case "T":
+                            createTodoTask(secValue,doneInd);
+                            break;
+                        case "E":
+                            String details  = secValue +" /at " +values[3].substring(1);
+                            createEventTask(details,doneInd);
+                            break;
+                        case "D":
+                            String deadlineDetails  = secValue +" /by " +values[3].trim();
+                            createDeadlineTask(deadlineDetails,doneInd);
+                            break;
+                        default:
+                            System.out.println("There is a problem with the file, kindly check the file.");
+                    }
+
+                }
+            }
+            System.out.println("-------------------------------------------------------------");
+            System.out.println("Successfully load record from the file.");
+            System.out.println("-------------------------------------------------------------");
+            UI.printWelcomeMessage();
+            scanner.close();
+        } catch (FileNotFoundException e){
+            System.out.println("DukeFile is not found, skip reading task from file.");
+
+        } catch (ProcessingException e) {
+            System.out.println("An error occurred.");
+        }
+    }
+
+    public static void deleteAllTask(){
+        taskList.removeAll(taskList);
+        UI.printDeleteAllTaskMessage();
     }
 
     /**
