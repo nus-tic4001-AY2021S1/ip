@@ -1,6 +1,7 @@
-# Duke project template
+# Duke - Tasks Handler
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+The project template for a greenfield Java project provided by Lecturer. It's named after the Java mascot _Duke_. 
+Given below are instructions on how to use it.
 
 ## Setting up in Intellij
 
@@ -24,3 +25,17 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    | |_| | |_| |   <  __/
    |____/ \__,_|_|\_\___|
    ```
+
+## Project Overview and Operations
+
+This project is to manage Tasks with CLI. It is able to handle some simple tasks, such as add, delete, find and set task as completed. 
+
+Below are some basic command to manage Tasks
+1. Add Todo Your Task
+1. Add Deadlines Your Task /by 19-9-2020 18:00
+1. Add Events Your Task /at 19-9-2020 18:00-20:00
+1. List (View current existing tasks listing)
+1. Done 1 (Set item no 1 as completed Task)
+1. Delete 4 (Deleting item no 4 from the list)
+1. Find keywords 
+
