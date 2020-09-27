@@ -79,9 +79,9 @@ public class Storage {
             isDone=1;
         }
         if(toSave instanceof Deadline){
-            return "D | "+isDone+" | "+ toSave.getDescription()+ " | "+((Deadline) toSave).getBy();
+            return "D | "+isDone+" | "+ toSave.getDescription()+ " | "+((Deadline) toSave).getByForFile();
         }else if(toSave instanceof Event){
-            return "E | "+isDone+" | "+ toSave.getDescription()+ " | "+((Event) toSave).getAt();
+            return "E | "+isDone+" | "+ toSave.getDescription()+ " | "+((Event) toSave).getAtForFile();
         }else if(toSave instanceof Todo){
             return "T | "+isDone+" | "+ toSave.getDescription();
         } else {
