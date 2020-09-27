@@ -21,7 +21,7 @@ public class Duke {
             + "| |_| | |_| |   <  __/\n"
             + "|____/ \\__,_|_|\\_\\___|\n";
 
-    static final String greetingMsg = " Hello! I'm Duke\n" + logo +
+    static final String greetMsg = " Hello! I'm Duke\n" + logo +
             " What can I do for you?";
 
     static final String exitMsg = " Bye. Hope to see you again soon!";
