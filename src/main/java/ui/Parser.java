@@ -65,6 +65,10 @@ public class Parser {
                 TaskList.deleteTask(tasks, command);
                 break;
 
+            case Find:
+                Ui.findTask(command, tasks);
+                break;
+
             default:
                 System.out.println(Global.PATTERNLINE + "\nYou have entered invalid input. Please re-input or \n" +
                         "Enter bye to terminate the program.\n" + Global.PATTERNLINE);
@@ -82,6 +86,8 @@ public class Parser {
     private static Action validateCommand (String command) throws DukeException {
         if(command.startsWith("list")) {
             return  Action.List;
+        } else if (command.startsWith("find")) {
+            return Action.Find;
         } else if (command.startsWith("delete")) {
             return Action.Delete;
         } else if (command.length()> 4 && command.substring(0, 4).equals("done")) {
@@ -116,4 +122,5 @@ public class Parser {
         }
 
     }
+
 }
