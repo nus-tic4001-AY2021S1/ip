@@ -9,9 +9,8 @@ public class EventDTO extends TaskDTO {
         return "E";
     }
 
-    public EventDTO(String taskName,int taskId,String eventTime) {
+    public EventDTO(String taskName,String eventTime) {
         this.setTaskName(taskName);
-        this.setTaskId(taskId);
         this.eventTime = eventTime;
     }
 

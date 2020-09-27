@@ -1,9 +1,8 @@
 package NUS.Duke.DTO;
 
 public class TodoDTO extends TaskDTO {
-    public TodoDTO(String taskName,int taskId) {
+    public TodoDTO(String taskName) {
         this.setTaskName(taskName);
-        this.setTaskId(taskId);
     }
 
     @Override

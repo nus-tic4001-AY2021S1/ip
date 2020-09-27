@@ -14,9 +14,9 @@ public class JunitTest {
         ParserUtil parserUtil = new ParserUtil();
         UI ui = new UI();
 
-        parserUtil.createTodoTask("Buy food");
-        parserUtil.createDeadlineTask("Happy Birthday To dad /by 2020-01-22");
-        parserUtil.createTodoTask("TodoTest");
+        parserUtil.createTodoTask("Buy food",0);
+        parserUtil.createDeadlineTask("Happy Birthday To dad /by 2020-01-22",0);
+        parserUtil.createTodoTask("TodoTest",0);
         ui.printList(parserUtil.taskList);
 
         assertTrue(parserUtil.taskList.size()==3);

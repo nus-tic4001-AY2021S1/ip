@@ -17,14 +17,14 @@ public class DeadlineDTO extends TaskDTO {
         return "D";
     }
 
-    public DeadlineDTO(String taskName , String deadlineDateString, int taskId) throws ProcessingException {
+    public DeadlineDTO(String taskName , String deadlineDateString) throws ProcessingException {
         this.setTaskName(taskName);
         this.deadlineDateString = deadlineDateString;
-        this.setTaskId(taskId);
+
         try {
             this.deadline = simpleDateFormat.parse(deadlineDateString);
         } catch (ParseException e) {
-            throw new ProcessingException("Wrong date format. Please use the format as yyyy-mm-dd+");
+            throw new ProcessingException("Wrong date format. Please use the format as yyyy-mm-dd");
         }
     }
 

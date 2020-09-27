@@ -5,8 +5,7 @@ import java.util.Date;
 public abstract class TaskDTO {
     private String taskName;
     private Date recordDate = new Date();
-    private boolean isDone;
-    private int taskId;
+    private boolean isDone = false;
 
     public boolean isDone() {
         return isDone;
@@ -14,14 +13,6 @@ public abstract class TaskDTO {
 
     public void setDone(boolean done) {
         isDone = done;
-    }
-
-    public int getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
     }
 
     public String getTaskName() {
