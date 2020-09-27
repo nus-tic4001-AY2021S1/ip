@@ -16,9 +16,11 @@ public class TaskList {
     public void add(Task myTask){
         myTasks.add(myTask);
     }
+    public void remove (int index){myTasks.remove(index);}
     public int size(){
         return myTasks.size();
     }
+    public void markAsDone(int index){myTasks.get(index).markAsDone();}
     public Task get(int index){
         return myTasks.get(index);
     }

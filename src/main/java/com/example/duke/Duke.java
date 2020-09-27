@@ -27,9 +27,9 @@ public class Duke {
         boolean isExit=false;
         while(!isExit) {
             String fullCommand = ui.readCommand();
-            System.out.println(fullCommand);
+            //System.out.println(fullCommand);
             Command c = Parser.parse(fullCommand);
-            c.execute(tasks);
+            c.execute(tasks,ui);
             isExit=c.isExit();
         }
     }

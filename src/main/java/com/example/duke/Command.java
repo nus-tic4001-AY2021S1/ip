@@ -1,7 +1,5 @@
 package com.example.duke;
 
-import java.util.ArrayList;
-
 public class Command {
     String taskDescription;
     public Command(){
@@ -11,7 +9,7 @@ public class Command {
         taskDescription=description;
     }
 
-    public void execute (TaskList myTask){
+    public void execute(TaskList myTask, Ui ui){
 
     }
     public boolean  isExit(){

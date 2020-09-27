@@ -1,17 +1,15 @@
 package com.example.duke;
 
-import java.util.ArrayList;
-
 public class AddTodoCommand extends Command {
 
     public AddTodoCommand(String description) {
         super(description);
     }
 
-    public void execute (TaskList myTask){
+    public void execute(TaskList myTask, Ui ui){
         Todo myTodo=new Todo(taskDescription);
         myTask.add(myTodo);
-        System.out.println("new todo added, " + taskDescription);
-
+        //System.out.println("new todo added, " + taskDescription);
+        ui.showMessageToUser("Todo has been added successfully");
     }
 }

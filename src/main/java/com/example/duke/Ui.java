@@ -13,9 +13,7 @@ public class Ui {
     }
 
     public void printWelcome(){
-
         System.out.println("Hello, I'm Duke\nWhat can I do for you?\n");
-
     }
 
     public void printError(String errorMessage){
@@ -29,6 +27,9 @@ public class Ui {
 
     public void showLoadingError(){
         System.out.println("There seems to be a file loading error. No tasks are preloaded\nStarting a new list...");
+    }
+    public void showMessageToUser(String message){
+        System.out.println(message);
     }
 
 }
