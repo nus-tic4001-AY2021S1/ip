@@ -21,10 +21,10 @@ public class Duke {
             + "| |_| | |_| |   <  __/\n"
             + "|____/ \\__,_|_|\\_\\___|\n";
 
-    static final String HELLO = " Hello! I'm Duke\n" + logo +
+    static final String greetingMsg = " Hello! I'm Duke\n" + logo +
             " What can I do for you?";
 
-    static final String BYE = " Bye. Hope to see you again soon!";
+    static final String exitMsg = " Bye. Hope to see you again soon!";
 
     public Duke(String path) {
         this.ui = new Ui();
@@ -46,7 +46,7 @@ public class Duke {
     public void run() {
 
         ui.printLine();
-        ui.print(HELLO);
+        ui.print(greetingMsg);
         ui.printLine();
 
           /*
@@ -91,6 +91,9 @@ public class Duke {
              */
             executeCommand(cmd, tasks);
         }
+
+        ui.print(exitMsg);
+        ui.printLine();
 
     }
 
