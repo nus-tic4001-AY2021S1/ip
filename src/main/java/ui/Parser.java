@@ -13,6 +13,12 @@ import java.util.ArrayList;
  */
 public class Parser {
 
+    private static String input;
+
+    public Parser(String input) {
+        this.input = input;
+    }
+
     /**
      * This method is to take action from validateCommand and then proecss the action accordingly.
      */
