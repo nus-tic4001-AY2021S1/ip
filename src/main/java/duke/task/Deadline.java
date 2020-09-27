@@ -1,6 +1,7 @@
 package duke.task;
+
 /**
- * Inherits the Todo class to represent Deadline tasks.
+ * Inherits the duke.task.Todo class to represent duke.task.Deadline tasks.
  */
 public class Deadline extends Todo {
     public Deadline(String input) {
