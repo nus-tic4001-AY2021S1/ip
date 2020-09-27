@@ -126,6 +126,9 @@ public class Duke {
                 deleteTask(tasks, cmd);
                 updateDataFile(tasks);
                 break;
+            case"find":
+                findTask(tasks,cmd);
+                break;
         }
     }
 
@@ -166,6 +169,15 @@ public class Duke {
             storage.saveToFile(tasks);
         } catch (IOException e) {
             System.out.println("☹ OOPS!!!Update failed. Something went wrong when save data to the data file, please try again.");
+        }
+    }
+
+    public static void findTask(TaskList tasks,Command cmd){
+        int i=0;
+        System.out.println("Here are the matching tasks in your list:");
+        for (Tasks t : tasks.findTask(cmd.getCommandContent())) {
+            System.out.println(i + "." + t.toString());
+            i++;
         }
     }
 
