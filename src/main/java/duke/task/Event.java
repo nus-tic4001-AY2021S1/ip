@@ -36,7 +36,6 @@ public class Event extends Task {
      *
      * @return user event Deadline to "[E]"
      */
-    @Override
     public String toString() {
         return "[E]" + super.printDescription() + " (at: " + at + ")";
     }

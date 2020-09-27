@@ -12,21 +12,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class Deadline extends Task {
 
-    protected String by;
-
-    /**
-     *convert data string to except format
-     *
-     * @param startDate data/time string with yyyy-MM-dd format
-     * @return  data/time string with MMM d yyyy format
-     */
-    public String getStartDate(String startDate)
-    {
-        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("MMM d yyyy");
-
-        return LocalDate.parse(startDate, inputFormat).format(outputFormat);
-    }
+    protected LocalDate by;
 
     /**
      * entity deadline.
@@ -34,11 +20,11 @@ public class Deadline extends Task {
      * @param description tasks' description
      * @param by          tasks' deadline time
      */
-    public Deadline(String description, String by) {
+    public Deadline(String description, String by){
         super(description);
-        //this.by = by;
-        this.by =  getStartDate(by);
+        this.by=LocalDate.parse(by);
     }
+
 
     /**
      * get user command description of by
@@ -46,16 +32,17 @@ public class Deadline extends Task {
      * @return by
      */
     public String getBy() {
-        return by;
+        return by.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
     }
+
 
     /**
      * override the to string method
      *
      * @return user command Deadline to "[D]"
      */
-    @Override
     public String toString() {
-        return "[D]" + super.printDescription() + " (by: " + by + ")";
+        return "[D]" + super.printDescription() + " (by: " + getBy() + ")";
     }
+
 }

@@ -3,6 +3,8 @@ package duke.command;
 
 import duke.task.*;
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class Storage {
 
 
     private static String filePath;
+    static Ui ui = new Ui();
 
     /**
      * This constructs duke tasks with string filepath
@@ -44,6 +47,7 @@ public class Storage {
             System.out.println(ex.getMessage());
         }
         System.out.println("Tasks save to disk " + filePath);
+        ui.printLine();
     }
 
     /**
@@ -57,11 +61,11 @@ public class Storage {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             for (String line; (line = br.readLine()) != null; ) {
                 lines.add(line);
-                System.out.println(lines);
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        System.out.println(lines);
         return lines;
     }
 
@@ -83,7 +87,7 @@ public class Storage {
                 break;
             case "D":
                 String by = line.split("\\|")[3].trim();
-                task = new Deadline(desc, by);
+                task = new Deadline(desc, getDate(by));
                 task.setDone(isDone);
                 break;
             case "E":
@@ -93,6 +97,20 @@ public class Storage {
                 break;
         }
         return task;
+    }
+
+    /**
+     * This function is to convert MMM d yyyy string to yyyy-MM-dd
+     *
+     * @param startDate input date string MMM d yyyy
+     * @return output date string yyyy-MM-dd
+     */
+    public static String getDate(String startDate)
+    {
+        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("MMM d yyyy");
+        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        return LocalDate.parse(startDate, inputFormat).format(outputFormat);
     }
 
     /**
