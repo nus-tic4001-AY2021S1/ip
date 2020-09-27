@@ -14,7 +14,7 @@ public abstract class Task {
     /**
      * entity task.
      *
-     * @param description
+     * @param description user tasks description
      */
     public Task(String description) {
         this.description = description;
