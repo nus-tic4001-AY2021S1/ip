@@ -18,4 +18,7 @@ public class Deadline extends Todo {
     public String getBy(){
         return by.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
     }
+    public String getByForFile() {
+        return by.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
 }

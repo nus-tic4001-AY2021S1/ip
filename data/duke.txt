@@ -3,3 +3,5 @@ T | 1 | join sports club
 E | 1 | birthday party | Oct 20 2020
 D | 0 | return book | Sep 20 2020
 D | 0 | go shopping | Dec 31 2020
+D | 0 | return book | Sep 30 2020
+E | 1 | team meeting | Oct 1 2020

@@ -1,12 +1,15 @@
-package duke;
+package duke.commands;
 
+import duke.DukeException;
+import duke.Storage;
+import duke.Ui;
 import duke.tasks.TaskList;
 
 import java.io.IOException;
 
 public class FindCommand {
     protected TaskList findResult;
-    FindCommand(){
+    public FindCommand(){
         findResult=new TaskList();
     }
     public void execute(String others, Ui ui, Storage storage, TaskList taskList) throws DukeException {
