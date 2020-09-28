@@ -43,11 +43,12 @@ public class Ui {
                 + "I can help you manage a list of tasks!\n"
                 + "What you can tell me to do is listed below:\n"
                 + "  ⬡  Create a Todo task     | " + colorGreen("todo <your task>\n")
-                + "  ⬢  Create a Deadline task | " + colorGreen("deadline <your task> /by <when>\n")
-                + "  ⬡  Create an Event task   | " + colorGreen("event <your task> /at <when to when>\n")
+                + "  ⬢  Create a Deadline task | " + colorGreen("deadline <your task> /by <dd/MM/yyyy HHmm>\n")
+                + "  ⬡  Create an Event task   | " + colorGreen("event <your task> /at <dd/MM/yyyy HHmm> /to <HHmm>\n")
                 + "  ⬢  Complete a task        | " + colorGreen("done <task index number>\n")
                 + "  ⬡  Delete a task          | " + colorGreen("delete <task index number>\n")
-                + "  ⬡  List down all tasks    | " + colorGreen("list\n")
+                + "  ⬢  List down all tasks    | " + colorGreen("list\n")
+                + "  ⬡  Find tasks with word   | " + colorGreen("find <word>\n")
                 + "  ⬢  Exit my program        | " + colorGreen("bye or hit Enter");
         printBorderlines(greeting);
     }

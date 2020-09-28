@@ -12,8 +12,8 @@ import java.io.IOException;
 public class DoneCommand extends Command {
     public static final String word = "done";
 
-    public DoneCommand(String taskDescription, TaskList tasks, Ui ui, Database database) {
-        super(taskDescription, tasks, ui, database);
+    public DoneCommand(String line, TaskList tasks, Ui ui, Database database) {
+        super(line, tasks, ui, database);
     }
 
     @Override
@@ -24,11 +24,11 @@ public class DoneCommand extends Command {
                         "Perhaps you should start creating one?");
                 return;
             }
-            if (taskDescription.isEmpty()) {
+            if (line.isEmpty()) {
                 throw new DukeException("You almost typed a proper done command, but you missed out the number!\n" +
                         "Please type in the 'done <task index number>' format.");
             }
-            int index = Integer.parseInt(taskDescription);
+            int index = Integer.parseInt(line);
             tasks.get(index - 1).setDone();
             ui.printTaskCompleted(index, tasks);
             database.updateDatabase(tasks);

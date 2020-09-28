@@ -37,7 +37,7 @@ class Duke {
         while (true) {
             Command command = parser.parseInput(in.nextLine(), ui, tasks, database);
             command.execute();
-            if (command.equals(new ExitCommand(ui))) return;
+            if (ExitCommand.class.isAssignableFrom(command.getClass())) return;
         }
     }
 }

@@ -13,19 +13,19 @@ import java.io.IOException;
 public class TodoCommand extends Command {
     public static final String word = "todo";
 
-    public TodoCommand(String taskDescription, TaskList tasks, Ui ui, Database database) {
-        super(taskDescription, tasks, ui, database);
+    public TodoCommand(String line, TaskList tasks, Ui ui, Database database) {
+        super(line, tasks, ui, database);
     }
 
     @Override
     public void execute() {
         try {
-            if (taskDescription.isEmpty()) {
+            if (line.isEmpty()) {
                 throw new DukeException("It seems that you missed out the task description!\n" +
                         "Please type in the 'todo <something>' format.");
             }
-            taskDescription = "[Todo]     " + taskDescription;
-            tasks.add(new Todo(taskDescription));
+            line = "[Todo]     " + line;
+            tasks.add(new Todo(line));
             ui.printTaskAdded(tasks);
             database.updateDatabase(tasks);
 
