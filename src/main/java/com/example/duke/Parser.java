@@ -24,6 +24,8 @@ public class Parser {
                 return new DoneCommand(arrayOfStr[1]);
             case "bye":
                 return new ExitCommand();
+            case "find":
+                return new FindCommand(arrayOfStr[1]);
 
             default:
                 System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
