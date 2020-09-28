@@ -18,6 +18,7 @@ public class Parser {
             case "delete":
                 return new DeleteCommand(arrayOfStr[1]);
             case "list":
+                //System.out.println("list command");
                 return new ListCommand();
             case "done":
                 return new DoneCommand(arrayOfStr[1]);

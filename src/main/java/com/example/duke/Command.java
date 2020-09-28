@@ -9,7 +9,7 @@ public class Command {
         taskDescription=description;
     }
 
-    public void execute(TaskList myTask, Ui ui){
+    public void execute(TaskList myTask, Ui ui, Storage storage){
 
     }
     public boolean  isExit(){

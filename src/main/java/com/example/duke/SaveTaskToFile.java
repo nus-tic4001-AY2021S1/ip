@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SaveTaskToFile {
-    public static void saveFile(ArrayList<Task> myTasks) {
+    public static void saveFile(TaskList myTasks) {
         int currentCount=0;
         String myFile = "/Users/januariusjang/Downloads/iP/data/tasks.txt";
         try {
@@ -29,7 +29,6 @@ public class SaveTaskToFile {
             for (int i = 0; i < myTasks.size(); i++) {
                 //System.out.println(myTasks.get(i).asSaveString());
                 writeToFile(myFile, myTasks.get(i).toWriteFileString());
-
             }
 
         } catch (IOException e) {

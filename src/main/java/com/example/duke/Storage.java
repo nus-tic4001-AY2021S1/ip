@@ -13,6 +13,9 @@ public class Storage {
     public ArrayList<Task> load() throws DukeException {
         return CreateTaskFromFile.getTasksFromFile(filePath);
     }
+    public void saveFile(TaskList myTask){
+        SaveTaskToFile.saveFile(myTask);
+    }
 }
 
 

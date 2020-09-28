@@ -5,8 +5,9 @@ public class DoneCommand extends Command {
     public DoneCommand (String index){
         this.index = index;
     }
-    public void execute(TaskList myTask, Ui ui){
+    public void execute(TaskList myTask, Ui ui, Storage storage){
         myTask.markAsDone(Integer.parseInt(index)-1);
-        ui.showMessageToUser("Event has been added successfully");
+        ui.showMessageToUser("Marked as done successfully");
+        storage.saveFile(myTask);
     }
 }

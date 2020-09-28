@@ -6,9 +6,10 @@ public class AddDeadlineCommand extends Command {
         super(description);
         deadline=byDate;
     }
-    public void execute(TaskList myTask, Ui ui){
+    public void execute(TaskList myTask, Ui ui, Storage storage){
         Deadline myDeadline=new Deadline(taskDescription, deadline);
         myTask.add(myDeadline);
         ui.showMessageToUser("Deadline has been added successfully");
+        storage.saveFile(myTask);
     }
 }
