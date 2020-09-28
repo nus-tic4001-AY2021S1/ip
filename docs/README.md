@@ -31,7 +31,9 @@ Example of usage:
 Expected outcome:
 
 `Got it. I've added this task:`
+
  `	[T][✘] Submit tp`
+ 
  `Now you have 5 tasks in the list.`
 
 ### `Deadline` - Create a new Tasks with Deadline 
@@ -45,7 +47,9 @@ Example of usage:
 Expected outcome:
 
 `Got it. I've added this task:`
+
  `	[D][✘] Submit ip  (by: Sep 20 2020 09:30)`
+ 
  `Now you have 5 tasks in the list.`
  
  ### `Event` - Create a new Tasks with timeing
@@ -59,7 +63,9 @@ Expected outcome:
  Expected outcome:
  
  `Got it. I've added this task:`
+ 
   `	[D][✘] submit ip  (at: 28 Sept 2020 09:00-10:00)`
+  
   `Now you have 5 tasks in the list.`
 
 ### `List` - Display all existing Tasks
