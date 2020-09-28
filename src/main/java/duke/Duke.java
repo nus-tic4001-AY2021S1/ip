@@ -20,7 +20,8 @@ public class Duke {
         try {
             tasks = new TaskList(storage.load());
         } catch (DukeException e) {
-            ui.showLoadingError();
+            //ui.showLoadingError();
+            storage.createFile();
             tasks = new TaskList();
         }
     }
@@ -42,7 +43,7 @@ public class Duke {
     }
 
     public static void main(String[] args) throws IOException, DukeException {
-        new Duke("ip/record.txt").run();
+        new Duke("record.txt").run();
     }
 
 

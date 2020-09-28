@@ -6,18 +6,13 @@ import duke.ToDos;
 import duke.Deadlines;
 import duke.Events;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Scanner;
 
 
@@ -34,7 +29,7 @@ public class Storage {
     }
 
     public static void createFile() throws IOException, DukeException {
-        File f = new File (FILEPATH);
+        File f = new File ("ip/record.txt");
         boolean result = f.createNewFile();
         if(!result) {
             throw new DukeException("File Not Found");
@@ -81,7 +76,8 @@ public class Storage {
 
         File fw = new File(FILEPATH);
         if (! fw.exists()) {
-            throw new DukeException("File Not Found");
+            createFile();
+            //throw new DukeException("File Not Found");
         }
 
         Scanner s = new Scanner(fw);
@@ -141,7 +137,7 @@ public class Storage {
     private static void addEventsToArray (ArrayList <Task> tasks, String line, int ArrIndex) {
         int index = line.indexOf("(at");
         String status = line.substring(4,5);
-        String schedule = line.substring(index + 4);
+        String schedule = line.substring(index + 4, line.length()-1);
         String taskName = line.substring(line.indexOf(" ")+1, index);
         tasks.add(new Events(taskName, schedule));
         if(status.equals("\u2713") ) {
