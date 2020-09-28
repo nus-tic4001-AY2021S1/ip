@@ -72,7 +72,9 @@ Example of usage:
 Expected outcome:
 
 `1. [D][✘] Submit ip  (by: Aug 9 2020 09:04)   `
+
 `2. [T][✓] Submit tp  `
+
 `3. [E][✘] Submit ip  (at: Aug 9 2020 09:00-10:00)`
 
 ### `Delete` - Remove Tasks from the List
@@ -98,6 +100,7 @@ Example of usage:
 Expected outcome:
 
 `1. Todo Read Book  `
+
 `2 Todo Borrow book From Library`
 
 ### `Done` - Mark the Tasks as a completed Tasks
@@ -110,4 +113,5 @@ Example of usage:
 Expected outcome:
 
 `Nice! I've marked this task as done:  `
+
  `[D][✓]  Submit ip  (by: Aug 9 2020 09:04)`
