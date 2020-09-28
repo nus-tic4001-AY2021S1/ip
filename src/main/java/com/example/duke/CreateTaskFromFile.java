@@ -65,7 +65,7 @@ public class CreateTaskFromFile {
             String Deadline=myTask.split("\\|")[3].trim();
 
             boolean done=false;
-            if (doneOrNot=="1")
+            if (Integer.parseInt(doneOrNot)==1)
                 done=true;
             return new Deadline(taskDescription, Deadline, done);
 
@@ -73,7 +73,7 @@ public class CreateTaskFromFile {
         else if (taskType.contains("E")){
             String Duration = myTask.split("\\|")[3].trim();
             boolean done=false;
-            if (doneOrNot=="1")
+            if (Integer.parseInt(doneOrNot)==1)
                 done=true;
             return new Deadline(taskDescription, Duration, done);
 

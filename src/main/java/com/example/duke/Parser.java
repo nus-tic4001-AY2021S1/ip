@@ -25,10 +25,9 @@ public class Parser {
             case "bye":
                 return new ExitCommand();
 
-
             default:
                 System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
-                return new AddTodoCommand(arrayOfStr[1]);
+                return new Command();
         }
     }
 
