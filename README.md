@@ -42,7 +42,7 @@ It looks like it's your first time as I could not find any existing task file.
 Get started by creating a task!
 ```
 
-##Features    
+## Features    
   - Create a Todo task    : `todo`
   - Create a Deadline task: `deadline`
   - Create an Event task  : `event`
@@ -52,7 +52,7 @@ Get started by creating a task!
   - Find tasks with word  : `find`
   - Exit my program       : `exit`
   
- ####Create a Todo task    : `todo`
+ #### Create a Todo task    : `todo`
  Creates a Todo task and adds it to the task list.
  
  Format: `todo <your task>`
@@ -60,7 +60,7 @@ Get started by creating a task!
  Examples:
  - `todo feed a dodo`
  
- ####Create a Deadline task: `deadline`
+ #### Create a Deadline task: `deadline`
  Creates a Deadline task and adds it to the task list.
  
  Format: `deadline <your task> /by <dd/MM/yyyy HHmm>`
@@ -69,7 +69,7 @@ Get started by creating a task!
  Examples:
  - `deadline dead /by 28/09/2020 2359`
  
- ####Create an Event task  : `event`
+ #### Create an Event task  : `event`
  Creates an Event task and adds it to the task list.
  
  Format: `event <your task> /at <dd/MM/yyyy HHmm> /to <HHmm>`
@@ -79,7 +79,7 @@ Get started by creating a task!
  Examples:
  - `event internal meeting /at 28/09/2020 0900 /to 1100`
  
- ####Complete a task       : `done`
+ #### Complete a task       : `done`
  Completes a task and sets its status to ✓.
  
  Format: `done <task index number>`
@@ -88,7 +88,7 @@ Get started by creating a task!
  Examples:
  - `done 2`
  
- ####Delete a task         : `delete`
+ #### Delete a task         : `delete`
  Removes a task from the task list and shifts the remaining tasks accordingly.
  
  Format: `delete <task index number>`
@@ -96,12 +96,12 @@ Get started by creating a task!
  Examples:
  - `delete 3`
  
- ####List down all tasks   : `list`
+ #### List down all tasks   : `list`
  Lists down all tasks in the task list.
  
  Format: `list`
  
- ####Find tasks with word  : `find`
+ #### Find tasks with word  : `find`
  Finds all tasks that matches with the search word(s).
  
  Format: `find <word>`
@@ -114,13 +114,13 @@ Get started by creating a task!
  - `find 28 Sep`
  - `find ✓`
  
- ####Exit the program       : `exit`
+ #### Exit the program       : `exit`
  Exits the program.
  
  Format: `bye`, `exit`, `<hit Enter>`
  
  
- ##Command Summary
+ ## Command Summary
  Action | Format, Examples
  ------------ | -------------
  **todo** | `todo <your task>` <br> e.g. `todo feed a dodo`
