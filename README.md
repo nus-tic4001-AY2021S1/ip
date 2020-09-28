@@ -24,23 +24,24 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
 |____/ \__,_|_|\_\___|
 
 
-----------------------------------------------------------
+⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢
 Hello! I'm Duke.
 I can help you manage a list of tasks!
 What you can tell me to do is listed below:
-  -  Create a Todo task     | todo <your task>
-  -  Create a Deadline task | deadline <your task> /by <dd/MM/yyyy HHmm>
-  -  Create an Event task   | event <your task> /at <dd/MM/yyyy HHmm> /to <HHmm>
-  -  Complete a task        | done <task index number>
-  -  Delete a task          | delete <task index number>
-  -  List down all tasks    | list
-  -  Find tasks with word   | find <word>
-  -  Exit my program        | bye or hit Enter
-----------------------------------------------------------
+  ⬡  Create a Todo task     | todo <your task>
+  ⬢  Create a Deadline task | deadline <your task> /by <dd/MM/yyyy HHmm>
+  ⬡  Create an Event task   | event <your task> /at <dd/MM/yyyy HHmm> /to <HHmm>
+  ⬢  Complete a task        | done <task index number>
+  ⬡  Delete a task          | delete <task index number>
+  ⬢  List down all tasks    | list
+  ⬡  Find tasks with word   | find <word>
+  ⬢  Exit my program        | bye or hit Enter
+⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢
 
 It looks like it's your first time as I could not find any existing task file.
 Get started by creating a task!
-  ```
+```
+
 ##Features    
   - Create a Todo task    : `todo`
   - Create a Deadline task: `deadline`
@@ -58,6 +59,7 @@ Get started by creating a task!
  
  Examples:
  - `todo feed a dodo`
+ 
  ####Create a Deadline task: `deadline`
  Creates a Deadline task and adds it to the task list.
  
@@ -66,6 +68,7 @@ Get started by creating a task!
  
  Examples:
  - `deadline dead /by 28/09/2020 2359`
+ 
  ####Create an Event task  : `event`
  Creates an Event task and adds it to the task list.
  
@@ -75,6 +78,7 @@ Get started by creating a task!
   
  Examples:
  - `event internal meeting /at 28/09/2020 0900 /to 1100`
+ 
  ####Complete a task       : `done`
  Completes a task and sets its status to ✓.
  
@@ -83,6 +87,7 @@ Get started by creating a task!
    
  Examples:
  - `done 2`
+ 
  ####Delete a task         : `delete`
  Removes a task from the task list and shifts the remaining tasks accordingly.
  
@@ -90,6 +95,7 @@ Get started by creating a task!
  
  Examples:
  - `delete 3`
+ 
  ####List down all tasks   : `list`
  Lists down all tasks in the task list.
  
@@ -107,10 +113,12 @@ Get started by creating a task!
  - `find meeting`
  - `find 28 Sep`
  - `find ✓`
+ 
  ####Exit the program       : `exit`
  Exits the program.
  
  Format: `bye`, `exit`, `<hit Enter>`
+ 
  
  ##Command Summary
  Action | Format, Examples
