@@ -21,6 +21,7 @@ public class TaskList {
         return myTasks.size();
     }
     public void markAsDone(int index){myTasks.get(index).markAsDone();}
+    public String getDescription (int index){return myTasks.get(index).description;}
     public Task get(int index){
         return myTasks.get(index);
     }
