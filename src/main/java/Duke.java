@@ -26,19 +26,15 @@ public class Duke {
 
     static final String exitMsg = " Bye. Hope to see you again soon!";
 
-    public Duke(String path) {
+    public Duke(String filepath) {
         this.ui = new Ui();
-        this.storage = new Storage(path);
+        this.storage = new Storage(filepath);
         this.tasks = new TaskList();
     }
 
     public static void main(String[] args) {
-//        ArrayList<Tasks> tasks = new ArrayList<>();
-//        TaskList tasks= new TaskList();
-//        Storage storage = new Storage("/Users/yiheng/school_project/ip-master/data/duke.txt");
-//        Scanner scanner = new Scanner(System.in);
-
         new Duke("/Users/yiheng/school_project/ip-master/data/duke.txt").run();
+        //new Duke("duke.txt").run();
 
     }
 
