@@ -19,13 +19,13 @@ Expected outcome:
 
 `outcome`
 
-###Viewing help : help
+### Viewing help : help
 
 Format: `help`
 
 :bulb: Help will be shown if an incorrect command is entered. e.g. `1234abcd`
 
-###Adding a Todo Task
+### Adding a Todo Task
 
 Format: `todo <Task name>`
 
