@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import storage.Storage;
 
 public class StorageTest {
     @Test
-    public void saveTasks() throws FileNotFoundException, DukeException {
+    public void saveTasks() throws FileNotFoundException, DukeException, NoSuchFileException {
         Storage storage = new Storage("data/tasks_tests.txt");
         List<Task> tasks = new ArrayList<>();
         tasks.add(new Todo("Task 1"));

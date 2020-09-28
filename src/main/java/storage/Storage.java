@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,7 +28,7 @@ public class Storage {
         return filePath;
     }
 
-    public List<Task> load() throws FileNotFoundException, DukeException {
+    public List<Task> load() throws FileNotFoundException, DukeException, NoSuchFileException {
         List<Task> loadedTasks = new ArrayList<>();
 
         List<String> lines = getLines(this.filePath);
@@ -79,24 +81,45 @@ public class Storage {
      * @return List<String> lines
      * @throws FileNotFoundException
      */
-    private List<String> getLines(String filePath) throws FileNotFoundException {
+    private List<String> getLines(String filePath) throws FileNotFoundException, NoSuchFileException {
         List<String> lines = new ArrayList<String>();
 
-        // create a File for the given file path
-        File f = new File(filePath);
+        try {
+            lines = Files.readAllLines(Paths.get(filePath));
+        } catch (IOException e) {
 
-        // create a Scanner using the File as the source
-        Scanner s = new Scanner(f);
-
-        while (s.hasNext()) {
-            lines.add(s.nextLine());
         }
+
         return lines;
     }
 
     public void save(List<Task> tasks) {
+        Path newDirectory;
         try {
+            Path path = Path.of("data").resolve("tasks.txt");
+
+            boolean exists = Files.exists(path);
+
+            if (!exists) {
+                newDirectory = Files.createDirectories(Path.of("data"));
+                path = Files.createFile(newDirectory.resolve("tasks.txt"));
+            }
+            Files.writeString(path, "", StandardCharsets.ISO_8859_1);
+            for (Task task : tasks) {
+                Files.writeString(path, task.save(), StandardCharsets.ISO_8859_1, StandardOpenOption.APPEND);
+            }
+        } catch (IOException e) {
+
+        }
+    }
+
+    public void saveBackup(List<Task> tasks) {
+
+        try {
+
+
             FileWriter fw = new FileWriter(this.filePath);
+
 
             // create a File for the given file path
             File f = new File(this.filePath);

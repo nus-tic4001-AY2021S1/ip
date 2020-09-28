@@ -47,11 +47,11 @@ public class Ui {
         System.out.println(Constants.DISPLAY_TASK_LIST);
         int i = 1;
         for (Task t : tasks) {
-            if (t.getClass().toString().contains("Duke.Todo")) {
+            if (t.getClass().toString().contains("Todo")) {
                 System.out.println(i + "." + "[T] " + t);
 
 
-            } else if (t.getClass().toString().contains("Duke.Deadline")) {
+            } else if (t.getClass().toString().contains("Deadline")) {
                 System.out.println(i + "." + "[D] " + t);
 
 
@@ -61,19 +61,18 @@ public class Ui {
             }
             i++;
         }
-        System.out.println(Constants.H_LINE);
     }
 
-    public void printFoundTasks(List<Task> tasks){
+    public void printFoundTasks(List<Task> tasks) {
         System.out.println(Constants.H_LINE);
         System.out.println(Constants.FOUND_MATCHING_TASKS);
         int i = 1;
         for (Task t : tasks) {
-            if (t.getClass().toString().contains("Duke.Todo")) {
+            if (t.getClass().toString().contains("Todo")) {
                 System.out.println(i + "." + "[T] " + t);
 
 
-            } else if (t.getClass().toString().contains("Duke.Deadline")) {
+            } else if (t.getClass().toString().contains("Deadline")) {
                 System.out.println(i + "." + "[D] " + t);
 
 
@@ -83,7 +82,6 @@ public class Ui {
             }
             i++;
         }
-        System.out.println(Constants.H_LINE);
     }
 
     public static void printNumberOfTasks(int taskListSize) {
@@ -91,39 +89,30 @@ public class Ui {
         System.out.println(String.format(Constants.NUMBER_OF_TASKS, taskListSize));
     }
 
-    public void printTaskAddAck(Task task, int taskListSize) {
+    public void printTask(Task task, Constants.TaskDisplayType type) {
         System.out.println(Constants.H_LINE);
-        System.out.println(Constants.ACKNOWLEDGEMENT);
-        if (task.getClass().toString().contains("Duke.Todo")) {
-            System.out.println("[T] " + task);
 
+        if (type.equals(Constants.TaskDisplayType.DONE)) {
+            System.out.println(Constants.ACKNOWLEDGEMENT_AS_DONE);
 
-        } else if (task.getClass().toString().contains("Duke.Deadline")) {
-            System.out.println("[D] " + task);
-
+        } else if (type.equals(Constants.TaskDisplayType.ADD)) {
+            System.out.println(Constants.ACKNOWLEDGEMENT);
 
         } else {
-            System.out.println("[E] " + task);
-
+            System.out.println(Constants.ACKNOWLEDGEMENT_AS_UNDONE);
         }
-        printNumberOfTasks(taskListSize);
-        System.out.println(Constants.H_LINE);
-    }
 
-    public void printTaskMarkedAsDone(Task task) {
-        System.out.println(Constants.H_LINE);
-        System.out.println(Constants.ACKNOWLEDGEMENT_AS_DONE);
-        if (task.getClass().toString().contains("main.java.Duke.Todo")) {
+        if (task.getClass().toString().contains("Todo")) {
             System.out.println("[T] " + task);
 
-        } else if (task.getClass().toString().contains("main.java.Duke.Deadline")) {
+        } else if (task.getClass().toString().contains("Deadline")) {
             System.out.println("[D] " + task);
 
         } else {
             System.out.println("[E] " + task);
         }
-        System.out.println(Constants.H_LINE);
     }
+
 
     /**
      * Displays to user the message passed in.(Line by line)

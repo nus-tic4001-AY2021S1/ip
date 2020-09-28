@@ -1,6 +1,11 @@
 package ui;
 
 public class Constants {
+    public enum TaskDisplayType{
+        ADD,
+        DONE,
+        UNDONE
+    }
     public static final String LOGO = " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"
             + "| | | | | | | |/ / _ \\\n"
@@ -18,16 +23,24 @@ public class Constants {
 
     public static final String NUMBER_OF_TASKS = "Now you have %s tasks in the list.";
 
+    public static final String NO_TASKS = "There are currently no tasks in your list. Please add some :)";
+
+    public static final String SAVE_TASKS_ACKNOWLEGEMENT = "Your tasks have been saved to data/tasks.txt ";
+
     public static final String ACKNOWLEDGEMENT = "Got it. I've added this task:";
 
     public static final String ACKNOWLEDGEMENT_AS_DONE = "Nice! I've marked this task as done:";
 
+    public static final String ACKNOWLEDGEMENT_AS_UNDONE = "I've marked this task as not done:";
+
     public static final String FileNotReadableException = "There was an issue with reading from the save file. Loading Duke with an empty task list";
+
+    public static final String INVALIDIDXINPUT = "Invalid input. Please specify the correct index of the task you wish to modify";
 
     public static final String TODO = "todo";
     public static final String DEADLINE = "deadline";
     public static final String SAVE = "save";
-    public static final String PRINT = "print";
+    public static final String PRINT = "view";
     public static final String DONE = "done";
     public static final String REMOVE = "remove";
     public static final String EXIT = "exit";
@@ -38,7 +51,7 @@ public class Constants {
     public static final String DEADLINE_HELP_STATEMENT = "Type \"deadline\" \"description of task\" /by \"description of deadline\" and press 'Enter' to create a new Deadline Task. E.g. deadline Hand in Homework /by Monday 10am ";
 
 
-    public static final String PRINT_HELP_STATEMENT = "Type \"print\" and press 'Enter' to print out the current list of tasks.";
+    public static final String PRINT_HELP_STATEMENT = "Type \"view\" and press 'Enter' to print out the current list of tasks.";
 
     public static final String DONE_HELP_STATEMENT = "Type \"done\" and the number of the task from the list, then press 'Enter'." +
             "Use \"print\" to display the tasks and their corresponding number first. E.g. done 1\n" +

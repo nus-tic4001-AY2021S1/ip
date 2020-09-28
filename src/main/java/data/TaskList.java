@@ -1,6 +1,9 @@
 package data;
 
 import data.Task;
+import duke.Duke;
+import exception.DukeException;
+import ui.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +48,7 @@ public class TaskList {
 
     /**
      * Returns the current number of tasks in the list
+     *
      * @return 0 if list is empty or the number of tasks
      */
     public static int getNumberOfTasks() {
@@ -61,11 +65,12 @@ public class TaskList {
 
     /**
      * Remove a task at the index specified in the list
+     *
      * @param fullCommand
      */
-    public void removeTask(String fullCommand) {
-        int index = Integer.parseInt(fullCommand.substring("remove".length()).trim());
-        tasks.remove(index - 1);
+    public void removeTask(String fullCommand){
+            int index = Integer.parseInt(fullCommand.substring("remove".length()).trim());
+            tasks.remove(index - 1);
     }
 
     public List<Task> findTasks(String keyword) {

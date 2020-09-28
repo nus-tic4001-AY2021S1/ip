@@ -9,6 +9,7 @@ import ui.Ui;
 
 
 import java.io.FileNotFoundException;
+import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
 
 public class Duke {
@@ -22,9 +23,9 @@ public class Duke {
         storage = new Storage(filePath);
         try {
             tasks = new TaskList(storage.load());
-        } catch (FileNotFoundException | DukeException e) {
+        } catch (NoSuchFileException | FileNotFoundException | DukeException e) {
 
-            if (e.toString().contains("FileNotFoundException")) {
+            if (e.toString().contains("FileNotFoundException") || e.toString().contains("NoSuchFileException")) {
 
             } else if (e.toString().contains("DukeException")) {
                 ui.showToUser(Constants.FileNotReadableException);
@@ -48,12 +49,12 @@ public class Duke {
                 String fullCommand = ui.readUserCommand();
                 String commandWord = Parser.getCommandWord(fullCommand);
 
-                switch (commandWord) {
+                switch (commandWord.toUpperCase()) {
                     case "":
                         ui.printError("No command input! Please enter a command or type \"help\" to view a list of commands.");
                         break;
 
-                    case "exit":
+                    case "EXIT":
                         isExit = true;
                         if (tasks.getNumberOfTasks() > 0) {
                             storage.save(tasks.getTasks());
@@ -62,33 +63,46 @@ public class Duke {
                         ui.printGoodBye();
                         break;
 
-                    case "help":
+                    case "HELP":
                         ui.helpMessage();
+                        Ui.showToUser(Constants.H_LINE);
                         break;
 
-                    case "todo":
+                    case "TODO":
                         tasks.addTask(Parser.createTodo(fullCommand));
-                        ui.printTaskAddAck(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), TaskList.getNumberOfTasks());
+                        ui.printTask(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), Constants.TaskDisplayType.ADD);
+                        Ui.printNumberOfTasks(TaskList.getNumberOfTasks());
+                        Ui.showToUser(Constants.H_LINE);
                         storage.save(tasks.getTasks());
                         break;
 
-                    case "deadline":
+                    case "DEADLINE":
                         tasks.addTask(Parser.createDeadLine(fullCommand));
-                        ui.printTaskAddAck(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), TaskList.getNumberOfTasks());
+                        ui.printTask(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), Constants.TaskDisplayType.ADD);
+                        Ui.printNumberOfTasks(TaskList.getNumberOfTasks());
+                        Ui.showToUser(Constants.H_LINE);
                         storage.save(tasks.getTasks());
                         break;
 
-                    case "event":
+                    case "EVENT":
                         tasks.addTask(Parser.createEvent(fullCommand));
-                        ui.printTaskAddAck(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), TaskList.getNumberOfTasks());
+                        ui.printTask(tasks.getTasks().get(TaskList.getNumberOfTasks() - 1), Constants.TaskDisplayType.ADD);
+                        Ui.printNumberOfTasks(TaskList.getNumberOfTasks());
+                        Ui.showToUser(Constants.H_LINE);
                         storage.save(tasks.getTasks());
                         break;
 
-                    case "print":
-                        ui.printTasks(tasks.getTasks());
+                    case "VIEW":
+                        if (TaskList.getNumberOfTasks() > 0) {
+
+                            ui.printTasks(tasks.getTasks());
+                        } else {
+                            Ui.showToUser(Constants.NO_TASKS + "\n" + Constants.H_LINE);
+                        }
+
                         break;
 
-                    case "find":
+                    case "FIND":
                         if (tasks.findTasks(Parser.getKeyword(fullCommand)).size() > 0) {
                             ui.printFoundTasks(tasks.findTasks(Parser.getKeyword(fullCommand)));
                         } else {
@@ -96,16 +110,43 @@ public class Duke {
                         }
                         break;
 
-                    case "done":
-                        tasks.markAsDone(Parser.parseTaskNum(fullCommand));
-                        ui.printTaskMarkedAsDone(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1));
-                        storage.save(tasks.getTasks());
+                    case "DONE":
+                        try {
+                            tasks.markAsDone(Parser.parseTaskNum(fullCommand));
+                            ui.printTask(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1), Constants.TaskDisplayType.DONE);
+                            Ui.showToUser(Constants.H_LINE);
+                            storage.save(tasks.getTasks());
+                        } catch (IndexOutOfBoundsException idxE) {
+                            Ui.showToUser(Constants.INVALIDIDXINPUT + "\n" + Constants.H_LINE);
+                        }
                         break;
 
-                    case "remove":
-                        tasks.removeTask(fullCommand);
-                        ui.printNumberOfTasks(TaskList.getNumberOfTasks());
+                    case "UNDONE":
+                        try {
+                            tasks.markAsNotDone(Parser.parseTaskNum(fullCommand));
+                            ui.printTask(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1), Constants.TaskDisplayType.UNDONE);
+                            Ui.showToUser(Constants.H_LINE);
+                            storage.save(tasks.getTasks());
+                        } catch (IndexOutOfBoundsException idxE) {
+                            Ui.showToUser(Constants.INVALIDIDXINPUT + "\n" + Constants.H_LINE);
+                        }
+                        break;
+
+                    case "REMOVE":
+                        try {
+                            tasks.removeTask(fullCommand);
+                            Ui.printNumberOfTasks(TaskList.getNumberOfTasks());
+                            Ui.showToUser(Constants.H_LINE);
+                            storage.save(tasks.getTasks());
+                        } catch (IndexOutOfBoundsException idxE) {
+                            Ui.showToUser(Constants.INVALIDIDXINPUT + "\n" + Constants.H_LINE);
+                        }
+                        break;
+
+                    case "SAVE":
+                        Ui.printNumberOfTasks(TaskList.getNumberOfTasks());
                         storage.save(tasks.getTasks());
+                        Ui.showToUser(Constants.SAVE_TASKS_ACKNOWLEGEMENT);
                         break;
 
                     default:
