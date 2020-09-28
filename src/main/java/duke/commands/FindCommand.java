@@ -4,7 +4,7 @@ import duke.task.TaskList;
 import duke.ui.Ui;
 
 /**
- * A command to print out all tasks in the list.
+ * A command to print out all tasks that matches the search word.
  */
 public class FindCommand extends Command {
     public static final String word = "find";

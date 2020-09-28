@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @version A-MoreOOP
  * @since 20/08/2020
  */
-class Duke {
+public class Duke {
     private final Ui ui = new Ui();
     private final Parser parser = new Parser();
     private final Scanner in = new Scanner(System.in);

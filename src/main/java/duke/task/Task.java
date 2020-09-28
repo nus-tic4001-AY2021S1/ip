@@ -1,6 +1,6 @@
 package duke.task;
 /**
- * An abstract class that is inherited by the Todo, Deadline and Event classes.
+ * An abstract class that is inherited by the duke.task.Todo, duke.task.Deadline and duke.task.Event classes.
  */
 public abstract class Task {
     String task;
