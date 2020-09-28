@@ -52,7 +52,9 @@ Expected outcome:
  
  `Now you have 5 tasks in the list.`
  
- ### `Event` - Create a new Tasks with timeing
+ 
+ 
+ ### `Event` - Create a new Tasks with date and time frame
  
  Create a new tasks with timing to the list
  
