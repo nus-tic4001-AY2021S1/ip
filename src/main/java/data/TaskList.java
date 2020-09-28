@@ -1,4 +1,6 @@
-package Duke;
+package data;
+
+import data.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +45,7 @@ public class TaskList {
 
     /**
      * Returns the current number of tasks in the list
-     *
-     * @return
+     * @return 0 if list is empty or the number of tasks
      */
     public static int getNumberOfTasks() {
         return tasks.isEmpty() ? 0 : tasks.size();
@@ -60,7 +61,6 @@ public class TaskList {
 
     /**
      * Remove a task at the index specified in the list
-     *
      * @param fullCommand
      */
     public void removeTask(String fullCommand) {

@@ -1,4 +1,6 @@
-package Duke;
+package data;
+
+import data.Todo;
 
 public class Event extends Todo {
     private String schedule;

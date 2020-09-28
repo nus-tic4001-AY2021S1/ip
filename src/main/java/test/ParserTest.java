@@ -1,6 +1,6 @@
-import Duke.DukeException;
-import Duke.Todo;
-import ui.Parser;
+import exception.DukeException;
+import data.Todo;
+import parser.Parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

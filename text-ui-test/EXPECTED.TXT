@@ -5,7 +5,7 @@
 |____/ \__,_|_|\_\___|
 
 ____________________________________________________________
-Hello I'm Duke :) What can I do for you ?
+Hello I'm duke :) What can I do for you ?
 ____________________________________________________________
 
 todo           Type "todo" "description of task" and press 'Enter' to create a new Todo Task. E.g. todo Return textbook
@@ -17,7 +17,7 @@ print          Type "print" and press 'Enter' to print out the current list of t
 done           Type "done" and the number of the task from the list, then press 'Enter'.Use "print" to display the tasks and their corresponding number first. E.g. done 1
 			   [This will set that task's status to done/ complete]
 
-exit           Type "exit" and press 'Enter' in order to exit the Duke chatbot.
+exit           Type "exit" and press 'Enter' in order to exit the duke chatbot.
 
 
 Bye. Hope to see you again soon!

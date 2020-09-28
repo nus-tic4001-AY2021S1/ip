@@ -1,4 +1,4 @@
-package Duke;
+package exception;
 
 /**
  * Throw exception using this class

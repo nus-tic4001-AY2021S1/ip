@@ -1,16 +1,17 @@
-package ui;
+package parser;
 
-import Duke.DukeException;
-import Duke.Deadline;
-import Duke.Event;
-import Duke.Todo;
+import exception.DukeException;
+import data.Deadline;
+import data.Event;
+import data.Todo;
 
-
+/**
+ * Code structure referenced from https://github.com/se-edu/addressbook-level2/blob/master/src/seedu/addressbook/parser/Parser.java
+ */
 public class Parser {
 
     /**
      * Split the user input and return the command action to process
-     *
      * @param fullCommand
      * @return
      */
@@ -26,7 +27,6 @@ public class Parser {
 
     /**
      * Creates a Todo object and returns it.
-     *
      * @param fullCommand
      * @return
      * @throws DukeException
@@ -44,7 +44,6 @@ public class Parser {
 
     /**
      * Creates a Deadline object and returns it
-     *
      * @param fullCommand
      * @return
      * @throws DukeException
@@ -70,7 +69,6 @@ public class Parser {
 
     /**
      * Creates a Event object and returns it
-     *
      * @param fullCommand
      * @return
      * @throws DukeException
@@ -95,7 +93,6 @@ public class Parser {
 
     /**
      * Parses the user input for the idx of the Task and returns as Int
-     *
      * @param fullCommand
      * @return
      */

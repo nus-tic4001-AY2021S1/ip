@@ -2,11 +2,16 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Duke.*;
+import data.Deadline;
+import data.Task;
+import data.TaskList;
+import data.Todo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import exception.DukeException;
 import org.junit.jupiter.api.Test;
+import storage.Storage;
 
 public class StorageTest {
     @Test

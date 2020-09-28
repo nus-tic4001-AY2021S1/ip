@@ -1,4 +1,6 @@
-package Duke;
+package data;
+
+import data.Todo;
 
 public class Deadline extends Todo {
     private String deadLine;

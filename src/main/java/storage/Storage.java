@@ -1,4 +1,10 @@
-package Duke;
+package storage;
+
+import data.Deadline;
+import data.Event;
+import data.Task;
+import data.Todo;
+import exception.DukeException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +46,7 @@ public class Storage {
      * If it is a E then a event is created.
      *
      * @param line
-     * @return
+     * @return Task
      */
     private Task createTask(String line) throws DukeException {
         Task task = null;
@@ -75,8 +81,13 @@ public class Storage {
      */
     private List<String> getLines(String filePath) throws FileNotFoundException {
         List<String> lines = new ArrayList<String>();
-        File f = new File(filePath); // create a File for the given file path
-        Scanner s = new Scanner(f); // create a Scanner using the File as the source
+
+        // create a File for the given file path
+        File f = new File(filePath);
+
+        // create a Scanner using the File as the source
+        Scanner s = new Scanner(f);
+
         while (s.hasNext()) {
             lines.add(s.nextLine());
         }
@@ -87,8 +98,12 @@ public class Storage {
         try {
             FileWriter fw = new FileWriter(this.filePath);
 
-            File f = new File(this.filePath); // create a File for the given file path
-            Scanner s = new Scanner(f); // create a Scanner using the File as the source
+            // create a File for the given file path
+            File f = new File(this.filePath);
+
+            // create a Scanner using the File as the source
+            Scanner s = new Scanner(f);
+
             for (Task task : tasks) {
                 if (s.hasNext()) {
                     fw.write("\r\n");

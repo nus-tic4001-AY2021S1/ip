@@ -1,13 +1,15 @@
-package Duke;
+package duke;
 
+import data.TaskList;
+import exception.DukeException;
+import storage.Storage;
 import ui.Constants;
-import ui.Parser;
+import parser.Parser;
 import ui.Ui;
 
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Duke {
 
@@ -107,7 +109,7 @@ public class Duke {
                         break;
 
                     default:
-                        ui.printError("Unknown command! please try again. Please type \"help\" to view a list of commands.");
+                        ui.printError("Unknown command! Please try again. Type \"help\" to view a list of commands.");
                         break;
                 }
             } catch (Exception e) {
