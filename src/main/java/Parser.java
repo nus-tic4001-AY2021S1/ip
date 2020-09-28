@@ -8,10 +8,22 @@ public class Parser {
     private static String DEADLINE_SPLITER = "/by";
     private static String EVENT_SPLITER = "/at";
 
+    /**
+     * @param s user inputs
+     * @param splitBy a specified string string spliter
+     * @return a array of string contains split user commands
+     */
     private static String[] splitCommand(String s,String splitBy){
         return s.split(splitBy);
     }
 
+    /**
+     * This method will process the user input to get the respective user commands for each actions.
+     * It will also check if the date are in the correct format.
+     * @param userInput
+     * @return the command for each user actions. e.g. list, done, delete etc.
+     * @throws DukeException
+     */
     public static Command getCommand(String userInput) throws DukeException {
         String[] cmd = Parser.splitCommand(userInput,"\\s+");
         switch(cmd[0]){

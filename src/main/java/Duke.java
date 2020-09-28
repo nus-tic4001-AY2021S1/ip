@@ -8,7 +8,9 @@ import Command.*;
 import java.io.IOException;
 
 
-
+/**
+ * This class implements the Duke chatbot that can interact with user, it can read from user inputs, give user outputs and save user inputs.
+ */
 public class Duke {
 
     private Ui ui;
@@ -33,12 +35,16 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        new Duke("/Users/yiheng/school_project/ip-master/data/duke.txt").run();
-        //new Duke("duke.txt").run();
+        new Duke("./data/duke.txt").run();
 
     }
 
-
+    /**
+     * This method firstly print the greeting message to the user
+     * Then it will check if a data file is existed, if existed load the data file otherwise create a new data file
+     * Then it will parse user command to readable format and check if the commands are in the correct format
+     * Finally it will execute the user command and save changes to the data file
+     */
     public void run() {
 
         ui.printLine();
@@ -73,11 +79,13 @@ public class Duke {
             }
 
             /*
-            3.Check if user command is in correct format
+            3.Check if user commands are
+            in correct format
              */
             if (cmd instanceof OtherCommand && cmd.getCommandType().equalsIgnoreCase("bye")) {
                 break;
-            } else if (cmd instanceof OtherCommand) {
+            }
+            else if (cmd instanceof OtherCommand) {
                 ui.print(new DukeException("☹ OOPS!!! I'm sorry, I don't understand what are you trying to say").getMessage());
                 continue;
             }
@@ -93,6 +101,10 @@ public class Duke {
 
     }
 
+    /**
+     * @param cmd User inputs
+     * @param tasks A TaskList
+     */
     private static void executeCommand(Command cmd, TaskList tasks) {
         switch (cmd.getCommandType()) {
             case "list": {
@@ -125,13 +137,19 @@ public class Duke {
                 deleteTask(tasks, cmd);
                 updateDataFile(tasks);
                 break;
-            case"find":
-                findTask(tasks,cmd);
+            case "find":
+                findTask(tasks, cmd);
                 break;
         }
     }
 
 
+    /**
+     * This method will mark task status to "Done"
+     * @param tasks The task that need to be updated as "Done"
+     * @param status true is done, false is not done
+     * @param cmd User Input
+     */
     public static void changeTaskStatus(TaskList tasks, boolean status, Command cmd) {
         int index = ((DoneCommand) cmd).getIndex();
         tasks.get(index - 1).setTaskStatus(status);
@@ -139,12 +157,19 @@ public class Duke {
         System.out.println(tasks.get(index - 1).toString());
     }
 
+    /**
+     * @param task The new added task
+     * @param tasks The list contains all tasks
+     */
     public static void printTask(Tasks task, TaskList tasks) {
         System.out.println("Got it. I've added this task:");
         System.out.println(task.toString());
         System.out.println("Now you have " + tasks.size() + " task(s) in the list.");
     }
 
+    /**
+     * @param tasks The list contains all tasks
+     */
     public static void printTaskList(TaskList tasks) {
         int index = 1;
         for (Tasks task : tasks.getAllTaskList()) {
@@ -153,6 +178,10 @@ public class Duke {
         }
     }
 
+    /**
+     * @param tasks the task that need to be deleted
+     * @param cmd user inputs
+     */
     public static void deleteTask(TaskList tasks, Command cmd) {
         int index = ((DeleteCommand) cmd).getIndex();
         System.out.println(" Noted. I've removed this task:  ");
@@ -162,6 +191,9 @@ public class Duke {
 
     }
 
+    /**
+     * @param tasks the updated list of tasks that will be saved to the data file
+     */
     public static void updateDataFile(TaskList tasks) {
         Storage storage = new Storage("/data/duke.txt");
         try {
@@ -171,8 +203,12 @@ public class Duke {
         }
     }
 
-    public static void findTask(TaskList tasks,Command cmd){
-        int i=0;
+    /**
+     * @param tasks the list of all the tasks
+     * @param cmd keywords used to search for the tasks
+     */
+    public static void findTask(TaskList tasks, Command cmd) {
+        int i = 0;
         System.out.println("Here are the matching tasks in your list:");
         for (Tasks t : tasks.findTask(cmd.getCommandContent())) {
             System.out.println(i + "." + t.toString());
