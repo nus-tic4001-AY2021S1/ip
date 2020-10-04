@@ -11,7 +11,7 @@ class ParserTest {
     String cmdList = "list";
     String cmdDelete = "delete 3";
     String cmdDone = "done 2";
-    String cmdUnknown = "that's all?";
+    String cmdInvalid = "that's all?";
 
     @Test
     void getCommand() {
@@ -21,7 +21,7 @@ class ParserTest {
         Command list = new ListCommand();
         Command delete = new DeleteCommand("3");
         Command done = new DoneCommand("2");
-        Command unknown = new OtherCommand("that");
+        Command unknown = new InvalidCommand("that's");
 
         try {
 
@@ -31,7 +31,7 @@ class ParserTest {
             assertEquals(list.getCommandType(),Parser.getCommand(cmdList).getCommandType());
             assertEquals(delete.getCommandType(),Parser.getCommand(cmdDelete).getCommandType());
             assertEquals(done.getCommandType(),Parser.getCommand(cmdDone).getCommandType());
-            assertEquals(unknown.getCommandType(),Parser.getCommand(cmdUnknown).getCommandType());
+            assertEquals(unknown.getCommandType(),Parser.getCommand(cmdInvalid).getCommandType());
 
             assertEquals(todo.getCommandType(), Parser.getCommand(cmdTodo).getCommandType());
             assertEquals(deadline.getCommandType(),Parser.getCommand(cmdDeadline).getCommandType());
