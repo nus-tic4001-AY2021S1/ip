@@ -50,7 +50,7 @@ Now you have 3 tasks in the list.
 ```
 
 # Feature 4  
-_**List down** all existed task(s)._  
+_To **List down** all existed task(s)._  
   
 ### Usage  
 Example of usage:  
@@ -66,7 +66,7 @@ Here are the tasks in your list:
 ```
 
 # Feature 5  
-_**Set task** status to be **done**._  
+_To **Set task** status to be **done**._  
   
 ### Usage  
 Example of usage:  
@@ -80,7 +80,7 @@ Nice! I've marked this task as done:
 ```
 
 # Feature 6  
-_**Find (search) tasks** with **Key Word**._  
+_To **Find (search) tasks** with **Key Word**._  
   
 ### Usage  
 Example of usage:  
@@ -96,7 +96,7 @@ Here are the matching tasks in your list:
 ```
 
 # Feature 7  
-_**Delete a task** from the list._  
+_To **Delete a task** from the list._  
   
 ### Usage  
 Example of usage:  
@@ -112,11 +112,27 @@ Now you have 2 tasks in the list.
 ```  
 
 # Feature 8  
-Enter **bye** to exit the program.
+_To **exit** the program.
+
+### Usage  
+Example of usage:  
+```  
+bye
+```  
+  
+Expected outcome:  
+```  
+ Bye. Hope to see you again soon!
+```  
 
 
 # Feature 9
-_**Auto Load** from existing task file and **Auto save** changes to task file whenever user makes change._
+_To **Auto Load** from existing task file and **Auto save** changes to task file whenever user makes change._
+
+Example of usage:  
+```  
+No action is needed from user. Enter list to list all tasks loaded from data file
+```  
 
 
 
