@@ -132,7 +132,7 @@ _To **Auto Load** from existing task file and **Auto save** changes to task file
 Example of usage:  
 ```  
 No action is needed from user. 
-User will be enter `'list'` to list all tasks loaded from data file
+User need to enter 'list' to list all tasks loaded from data file
 ```  
 
 
