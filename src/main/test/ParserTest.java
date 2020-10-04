@@ -42,6 +42,5 @@ class ParserTest {
         }catch(Exception e){
             e.getMessage();
         }
-
     }
 }

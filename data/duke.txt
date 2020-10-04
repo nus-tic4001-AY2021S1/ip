@@ -1,4 +1,3 @@
-T|0|goto gym
-T|0|goto cinema
-T|0|go to somewere
-T|0|go to gym
+T|0|read books
+D|0|read some more book
+E|0|return all book

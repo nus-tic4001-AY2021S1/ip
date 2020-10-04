@@ -61,7 +61,7 @@ public class Parser {
                 }catch(ArrayIndexOutOfBoundsException e){
                     throw new DukeException("☹ OOPS!!! The keyword /by is missing.");
                 }catch(java.time.format.DateTimeParseException e){
-                    throw new DukeException("☹ OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\" ");
+                    throw new DukeException("☹ OOPS!!! The date format is incorrect.Format should be in \"yyyy-MM-dd\", please enter again.");
                 }
             case "event":
                 try {
@@ -73,12 +73,12 @@ public class Parser {
                 }catch(ArrayIndexOutOfBoundsException e){
                     throw new DukeException("☹ OOPS!!! The keyword /at is missing.");
                 }catch(java.time.format.DateTimeParseException e){
-                    throw new DukeException("☹ OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\"");
+                    throw new DukeException("☹ OOPS!!! The date format is incorrect.Format should be in \"yyyy-MM-dd\"，please enter again.");
                 }
             case "find":
                 return new FindCommand(userInput.substring(5));
             default:
-                return new OtherCommand(cmd[0]);
+                return new InvalidCommand(cmd[0]);
         }
     }
 
