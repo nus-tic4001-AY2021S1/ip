@@ -131,7 +131,8 @@ _To **Auto Load** from existing task file and **Auto save** changes to task file
 
 Example of usage:  
 ```  
-No action is needed from user. Enter list to list all tasks loaded from data file
+No action is needed from user. 
+User will be enter `'list'` to list all tasks loaded from data file
 ```  
 
 
