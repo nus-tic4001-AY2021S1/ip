@@ -1,14 +1,14 @@
-package Duke.Command;
+package duke.command;
 
 public abstract class Command {
     protected String type;
     protected String content;
 
-    public String getCMDContent(){
+    public String getCmdContent() {
         return content;
     }
 
-    public String getCMDType(){
+    public String getCmdType() {
         return type;
     }
 }

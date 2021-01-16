@@ -2,7 +2,7 @@
 
 ## Features 
 
-The Duke applet is a task management applet. It supports the following features
+The duke applet is a task management applet. It supports the following features
 
 ### Feature 1 
 _To **add a Todo task**. A Todo task is a basic type of task which is without time restriction._ 

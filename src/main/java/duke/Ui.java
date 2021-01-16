@@ -1,8 +1,8 @@
-package Duke;
-
-import Duke.Tasks.Task;
+package duke;
 
 import java.util.Scanner;
+
+import duke.tasks.Task;
 
 public class Ui {
     private Scanner scanner;
@@ -11,18 +11,22 @@ public class Ui {
         this.scanner = new Scanner(System.in);
     }
 
-    public String getCommand(){
+    public String getCommand() {
         return scanner.nextLine();
     }
 
-    public void show(String s){
+    public void show(String s) {
         System.out.println(s);
     }
 
-    public void showLine(){
+    public void showLine() {
         show("________________________________________________________");
     }
 
+    /**
+     * @param t A normal task
+     * @param tasks the stored task list
+     */
     public void printTask(Task t, TaskList tasks) {
         System.out.println("Got it. I've added this task:");
         System.out.println(t.toString());

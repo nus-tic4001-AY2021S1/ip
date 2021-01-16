@@ -1,9 +1,9 @@
-package Duke;
+package duke;
 
-import Duke.Tasks.Deadlines;
-import Duke.Tasks.Events;
-import Duke.Tasks.Task;
-import Duke.Tasks.ToDos;
+import duke.tasks.Deadlines;
+import duke.tasks.Events;
+import duke.tasks.Task;
+import duke.tasks.ToDos;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

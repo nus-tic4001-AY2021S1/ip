@@ -1,4 +1,4 @@
-package Duke.Tasks;
+package duke.tasks;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -23,7 +23,7 @@ public class Events extends Task {
     }
 
     @Override
-    public String toSavingString(){
-        return super.toSavingString()+"|"+eventTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+    public String toSavingString() {
+        return super.toSavingString() + "|" + eventTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
     }
 }

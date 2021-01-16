@@ -1,4 +1,4 @@
-package Duke.Tasks;
+package duke.tasks;
 
 public abstract class Task {
     protected String taskType;
@@ -37,12 +37,15 @@ public abstract class Task {
         }
     }
 
-    public String toSavingString(){
-        String doneStatus = isDone?"1":"0";
-        return taskType.charAt(1) + "|"+ doneStatus + "|" +taskDescription;
+    /**
+     * @return a saving method used to save string
+     */
+    public String toSavingString() {
+        String doneStatus = isDone ? "1" : "0";
+        return taskType.charAt(1) + "|" + doneStatus + "|" + taskDescription;
     }
 
-    public String getTaskDescription(){
+    public String getTaskDescription() {
         return this.taskDescription;
     }
 }

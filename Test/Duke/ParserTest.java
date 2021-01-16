@@ -1,6 +1,6 @@
-package Duke;
+package duke;
 
-import Duke.Command.*;
+import duke.command.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

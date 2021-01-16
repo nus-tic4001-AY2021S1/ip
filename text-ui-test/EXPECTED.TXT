@@ -1,5 +1,5 @@
 ________________________________________________________
- Hello! I'm Duke
+ Hello! I'm duke
  What can I do for you?
 ________________________________________________________
 Got it. I've added this task:
