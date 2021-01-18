@@ -203,7 +203,7 @@ It helps to save the tasks in the hard disk automatically after exiting the prog
 **Example of usage**: 
   <br/>step 1. todo read book
   <br/>step 2. deadline return book /by 12/11/2019 1800
-  <br/> step 3. event join club /at 11/2/2020 1300
+  <br/>step 3. event join club /at 11/2/2020 1300
   <br/>step 4. done 1
   <br/> step 5. bye
    
@@ -222,7 +222,7 @@ It helps to handle error message that will guid the user.
 <br/>read book
 
 **Expected outcome**:
-<br/>☹ OOPS!!! I'm sorry, but I don't know what that means :-(
+<br/>OOPS!!! I'm sorry, but I don't know what that means :-(
 
 ## Command Summary
 
