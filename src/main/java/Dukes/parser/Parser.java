@@ -37,7 +37,7 @@ public class Parser {
 
             case "todo":
                 if (input.length() < 6) {
-                    throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
+                    throw new DukeException("OOPS!!! The description of a todo cannot be empty.");
                 }
                 taskWord = new ToDo(input.substring(5));
                 c = new AddCommand(taskWord);
@@ -45,7 +45,7 @@ public class Parser {
 
             case "delete":
                 if (input.isEmpty() || input.length() < 7) {
-                    throw new DukeException("☹ OOPS!!! There is no specific task to delete.\n");
+                    throw new DukeException("OOPS!!! There is no specific task to delete.\n");
                 }
                 int toDelete = Ui.indexDetails(input);
                 c = new DeleteCommand(toDelete);
@@ -61,7 +61,7 @@ public class Parser {
 
             case "deadline":
                 if (input.length() < 10) {
-                    throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.\n");
+                    throw new DukeException("OOPS!!! The description of a deadline cannot be empty.\n");
                 }
                 String[] splitDetail = input.split("/by");
                 if (splitDetail.length < 2) {
@@ -80,7 +80,7 @@ public class Parser {
 
             case "event":
                 if (input.length() < 7) {
-                    throw new DukeException("☹ OOPS!!! The description of a event cannot be empty.\n");
+                    throw new DukeException("OOPS!!! The description of a event cannot be empty.\n");
                 }
                 String[] splitEvent = input.split("/at");
                 if (splitEvent.length < 2) {
@@ -98,7 +98,7 @@ public class Parser {
                 break;
             case "find":
                 if (input.length() < 6) {
-                    throw new DukeException("☹ OOPS!!! The description of a find cannot be empty.\n");
+                    throw new DukeException("OOPS!!! The description of a find cannot be empty.\n");
                 }
                 try {
                     keyword = input.substring(5).toLowerCase();
@@ -114,7 +114,7 @@ public class Parser {
                 break;
 
             default:
-                throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+                throw new DukeException("OOPS!!! I'm sorry, but I don't know what that means :-(");
         }
         return c;
     }

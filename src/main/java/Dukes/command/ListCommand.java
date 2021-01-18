@@ -25,7 +25,7 @@ public class ListCommand extends Command {
         try {
             int count =tasks.list.size();
             if(count ==0) {
-                System.out.println("☹ OOPS!!! There are no tasks in your list.");
+                System.out.println("OOPS!!! There are no tasks in your list.");
             }else{
                 System.out.println("     Here are the tasks in your list:");
                 for (int i = 0; i < tasks.list.size(); i++) {

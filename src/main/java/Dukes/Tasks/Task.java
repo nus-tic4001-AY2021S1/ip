@@ -21,7 +21,7 @@ public abstract class Task {
      * @return Icon to indicate status of the task.
      */
     public String getStatusIcon() {
-        return (isDone ? "✓" : "X");
+        return (isDone ? "Done" : "X");
     }
     public String getFileStatusIcon() {
         return (isDone ? "1" : "0");

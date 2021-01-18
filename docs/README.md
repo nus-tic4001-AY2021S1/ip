@@ -50,7 +50,7 @@ Adding a deadline task helps to know the deadline for the specific task in the t
 
 <br/>>The keyword 'deadline' with description can be **upper and lowercase letters**.
 <br/>>The outcome will not include the keyword with date and time format: dd MMM yyyy, hh:mm a
-<br/>>If you key in the keyword without description. There will be an error message:"☹ OOPS!!! The description of a deadline cannot be empty." 
+<br/>>If you key in the keyword without description. There will be an error message:"OOPS!!! The description of a deadline cannot be empty." 
 <br/>>If you missing the date and time or /by, there will be an reminder message:"Please specify the deadline date and time."
 
 **Format**: deadline  Description /by dd/mm/yyyy HHmm
@@ -104,7 +104,7 @@ Marking a specific task to remind the user that he has finished the task.
 
 **Expected outcome**:
 <br/>Nice! I've marked this task as done:
-<br/>[T][✓] READ BOOK
+<br/>[T][Done] READ BOOK
 
 ### Feature 5
 Deleting a task: delete
@@ -137,7 +137,7 @@ It shows a list of all task in the task list with a number. it helps to summariz
 
 ### `list` - Listing all tasks with number.
 <br/>>The keyword 'list' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list
-<br/>>If you key in the keyword with empty task.There will be an error message:"☹ OOPS!!! There are no tasks in your list."
+<br/>>If you key in the keyword with empty task.There will be an error message:"OOPS!!! There are no tasks in your list."
 
 **Format**: list
 
@@ -159,7 +159,7 @@ It helps to search a task that contain any of the given description_keyword, and
 <br/>>The keyword 'find' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list when the task is match the specific description keywords.
 <br/>>The order of the description_keyword does not matter.
 <br/>>If you key in the specific description keyword that does not match the task in your list.There will be an error message:"☹ OOPS!!! There is no matching tasks in your list."
-<br/>>If you only key in the **keyword**, there will be an error message:"☹ OOPS!!! The description of a find cannot be empty."
+<br/>>If you only key in the **keyword**, there will be an error message:"OOPS!!! The description of a find cannot be empty."
 
 **Format**: find description_keyword[more_keyword]
 
