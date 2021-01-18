@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * JUnit tests for Task class
+ * JUnit tests for Task class.
  */
 public class TaskTest {
     private Task task = new Todo("Have lunch with John");

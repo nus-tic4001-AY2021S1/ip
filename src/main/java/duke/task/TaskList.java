@@ -15,32 +15,32 @@ public class TaskList {
     private boolean isInitialized = false;
 
     /**
-     * Initializes a <code>TaskList<Task></code> object.
+     * Initializes a <code>TaskList</code> object.
      */
     public TaskList() {
     }
 
     /**
-     * Instantiate a <code>TaskList<Task></code> object.
+     * Instantiate a <code>TaskList</code> object.
      *
-     * @param tasks List of <code>Task</> objects.
+     * @param tasks List of <code>Task</code> objects.
      */
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
 
     /**
-     * Get a <code>Task<Task></code> object from the <code>TaskList</code>.
+     * Get a <code>Task</code> object from the <code>TaskList</code>.
      *
      * @param index Index of Task in the <code>TaskList</code>.
-     * @return <code>Task<Task></code> object.
+     * @return <code>Task<</code> object.
      */
     public Task getTask(int index) {
         return tasks.get(index);
     }
 
     /**
-     * Add a task to the <code>TaskList<Task></code> object.
+     * Add a task to the <code>TaskList</code> object.
      *
      * @param t <code>Task</code> object.
      */
@@ -51,20 +51,20 @@ public class TaskList {
     /**
      * Remove a <code>Task</code> object from the <code>TaskList</code>.
      *
-     * @param index Index of a <code>Task</code> in <code>List<Task></code>.
+     * @param index Index of a <code>Task</code> in <code>List</code>.
      * @throws DukeException If index is invalid.
      */
     public void removeTask(int index) throws DukeException {
         try {
             tasks.remove(tasks.get(index));
-        } catch(IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             throw new DukeException("Invalid index");
         }
     }
 
     /**
-     * Get size of a <code>TaskList<Task></code> object.
-     * @return Size of a <code>List<Task></code> object.
+     * Get size of a <code>TaskList</code> object.
+     * @return Size of a <code>List</code> object.
      */
     public int getSize() {
         return tasks.size();

@@ -1,6 +1,15 @@
 package duke.parser;
 
-import duke.command.*;
+import duke.command.Command;
+import duke.command.ByeCommand;
+import duke.command.DeadlineCommand;
+import duke.command.EventCommand;
+import duke.command.TodoCommand;
+import duke.command.DoneCommand;
+import duke.command.DeleteCommand;
+import duke.command.FindCommand;
+import duke.command.ListCommand;
+import duke.command.UnknownCommand;
 import duke.exception.DukeException;
 import duke.task.Deadline;
 import duke.task.Event;
@@ -28,7 +37,7 @@ public class Parser {
      */
     public static Todo createTodo(String fullCommand) throws DukeException {
         String commandParameter = getCommandParameter(fullCommand);
-        if (commandParameter.isEmpty()){
+        if (commandParameter.isEmpty()) {
             throw new DukeException("The description of a todo task cannot be empty.");
         }
         return new Todo(commandParameter);
@@ -43,7 +52,7 @@ public class Parser {
      */
     public static Deadline createDeadline(String fullCommand) throws DukeException {
         String commandParameter = getCommandParameter(fullCommand);
-        if (commandParameter.isEmpty()){
+        if (commandParameter.isEmpty()) {
             throw new DukeException("The description of a deadline task cannot be empty.");
         }
 
@@ -52,10 +61,10 @@ public class Parser {
         try {
             description = commandParameter.split("/by")[0].trim();
             by = commandParameter.split("/by")[1].trim();
-        } catch(ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeException("The by field of the deadline task is missing.");
         }
-        if (description.isEmpty()){
+        if (description.isEmpty()) {
             throw new DukeException("The description of a deadline task cannot be empty.");
         }
         return new Deadline(description, by);
@@ -70,7 +79,7 @@ public class Parser {
      */
     public static Event createEvent(String fullCommand) throws DukeException {
         String commandParameter = getCommandParameter(fullCommand);
-        if (commandParameter.isEmpty()){
+        if (commandParameter.isEmpty()) {
             throw new DukeException("The description of a event task cannot be empty.");
         }
 
@@ -79,10 +88,10 @@ public class Parser {
         try {
             description = commandParameter.split("/at")[0].trim();
             at = commandParameter.split("/at")[1].trim();
-        } catch(ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeException("The at field of the event task is missing.");
         }
-        if (description.isEmpty()){
+        if (description.isEmpty()) {
             throw new DukeException("The description of an event task cannot be empty.");
         }
         return new Event(description, at);
@@ -107,14 +116,14 @@ public class Parser {
      */
     public static int getTaskIndex(String fullCommand) throws DukeException {
         String commandParameter = getCommandParameter(fullCommand);
-        if (commandParameter.isEmpty()){
+        if (commandParameter.isEmpty()) {
             throw new DukeException("The task index is missing.");
         }
 
         int taskIndex;
         try {
             taskIndex = Integer.parseInt(commandParameter);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new DukeException("The task index is invalid.");
         }
         return taskIndex - 1;
@@ -129,7 +138,7 @@ public class Parser {
      */
     public static String getSearchString(String fullCommand) throws DukeException {
         String searchString = fullCommand.replaceFirst("find", "").trim();
-        if (searchString.isEmpty()){
+        if (searchString.isEmpty()) {
             throw new DukeException("The search string is missing.");
         }
         return searchString;
@@ -139,11 +148,11 @@ public class Parser {
      * Gets <code>Command</code> object from user's full input string.
      *
      * @param fullCommand User's full input string.
-     * @return <code>Command<Task></code> object.
+     * @return <code>Command</code> object.
      */
     public static Command parse(String fullCommand) {
         String command = getCommand(fullCommand).toLowerCase();
-        switch(command) {
+        switch (command) {
         case "bye":
             return new ByeCommand();
         case "todo":
