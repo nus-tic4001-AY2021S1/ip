@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * JUnit tests for Parser class
+ * JUnit tests for Parser class.
  */
 public class ParserTest {
     @Test

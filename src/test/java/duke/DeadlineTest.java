@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
- * JUnit tests for Deadline class
+ * JUnit tests for Deadline class.
  */
 public class DeadlineTest {
     @Test

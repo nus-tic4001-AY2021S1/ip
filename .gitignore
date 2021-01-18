@@ -17,3 +17,7 @@ bin/
 text-ui-test/EXPECTED-UNIX.TXT
 data/tasks.txt
 src/main/java/META-INF/MANIFEST.MF
+gradlew
+gradlew.bat
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties

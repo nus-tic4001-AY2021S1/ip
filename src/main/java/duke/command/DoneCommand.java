@@ -24,7 +24,7 @@ public class DoneCommand extends Command {
     /**
      * Executes the mark task as done command.
      *
-     * @param tasks List of <code>Task</> objects.
+     * @param tasks List of <code>Task</code> objects.
      * @param ui <code>Ui</code> object for displaying user interactions.
      * @param storage <code>Storage</code> object for loading and saving user data.
      */
