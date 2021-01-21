@@ -1,14 +1,9 @@
 package NUS.Duke;
 
-import NUS.Duke.DTO.TaskDTO;
-import NUS.Duke.ProcessingException;
+
 import NUS.Duke.utils.ParserUtil;
 import NUS.Duke.utils.UI;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class Duke {
 

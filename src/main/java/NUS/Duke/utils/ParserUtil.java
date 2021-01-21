@@ -5,7 +5,6 @@ import NUS.Duke.DTO.EventDTO;
 import NUS.Duke.DTO.TaskDTO;
 import NUS.Duke.DTO.TodoDTO;
 import NUS.Duke.ProcessingException;
-import NUS.Duke.utils.UI;
 
 
 
@@ -14,7 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
