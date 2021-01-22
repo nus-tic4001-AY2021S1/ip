@@ -1,0 +1,4 @@
+Januariuss-Mini:java januariusjang$ diff /Users/januariusjang/Downloads/iP/text-ui-test/output.txt /Users/januariusjang/Downloads/iP/text-ui-test/EXPECTED.TXT
+18d17
+< 
+Januariuss-Mini:java januariusjang$ 

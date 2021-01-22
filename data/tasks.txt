@@ -1,0 +1,7 @@
+D|1|Finish Assignment|Monday
+D|0|seminar|Monday 2-4pm
+T|0|return library books
+T|0|return library books
+D|1|finish assignment 2|Monday
+T|0|read book
+D|0|return book |June 6th

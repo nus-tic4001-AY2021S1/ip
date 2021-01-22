@@ -15,3 +15,4 @@ Now you have 3 tasks in the list
 2[D][✘]finish assignment  (by: Sunday)
 3[E][✘]attend seminar  (by: Monday 2-4pm)
  Bye.Hope to see you again soon!
+
