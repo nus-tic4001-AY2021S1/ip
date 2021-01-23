@@ -1,4 +1,4 @@
-package Duke.Tasks;
+package duke.tasks;
 
 
 // An abstract class
@@ -10,7 +10,7 @@ public abstract class Task {
 
 
 
-    /**
+    /** .
      * Creating an object of Task class
      *
      * @param description A String that holds the description of a task
@@ -20,16 +20,17 @@ public abstract class Task {
         isDone = false;
     }
 
-    /**
+    /** .
      * A method to get the Task Status Icon
      *
      * @return a String containing the icon: tick or X symbols
      */
     public String getStatusIcon() {
-        return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
+        return (isDone ? "Tick" : "X");
+        //(isDone ? "\u2713" : "\u2718", return tick or X symbols .
     }
 
-    /**
+    /** .
      * A method to get the Task description
      *
      * @return a String containing the description of task
@@ -38,7 +39,7 @@ public abstract class Task {
         return description;
     }
 
-    /**
+    /** .
      * A method to set the Task as done/completed
      */
     public void setDone() {
@@ -46,15 +47,15 @@ public abstract class Task {
     }
 
 
-    /**
+    /** .
      *
-     * @return declare is done status
+     * @return declare is done status.
      */
     public boolean isDone() {
         return isDone;
     }
 
-    /**
+    /** .
      * A method to get the Task data as formatted string to display both task status and task description
      *
      * @return a formatted String of task status and task description

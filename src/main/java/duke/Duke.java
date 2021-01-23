@@ -1,6 +1,6 @@
-package Duke;
+package duke;
 
-import Duke.ProgramExit.ProgramExit;
+import duke.programexit.ProgramExit;
 
 public class Duke {
 

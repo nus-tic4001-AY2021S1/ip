@@ -1,30 +1,30 @@
-package Duke.Tasks;
+package duke.tasks;
 
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DeadlineTest {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     LocalDate formatDate = LocalDate.parse("2020-10-14", formatter);
-    private Duke.Tasks.Deadline task = new Deadline("To try out Event",formatDate);
+    private duke.tasks.Deadline task = new Deadline("To try out Event",formatDate);
 
 
     @Test
     void getDueDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate expectedValue=  LocalDate.parse("2020-10-14",formatter);
+        LocalDate expectedValue = LocalDate.parse("2020-10-14",formatter);
         assertEquals(expectedValue, task.getDueDate());
     }
 
 
-
     @Test
     void testToString() {
-        assertEquals("[D][✘] To try out Event (by: 2020年10月14日星期三)", task.toString());
+        assertEquals("[D][X] To try out Event (by: Wednesday, October 14, 2020)", task.toString());
     }
 }

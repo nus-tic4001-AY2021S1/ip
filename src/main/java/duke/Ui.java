@@ -1,13 +1,13 @@
-package Duke;
+package duke;
 
 import java.util.Scanner;
 
-/**
+/** .
  * Ui: deals with interactions with the user
  */
 
 public class Ui {
-    /**
+    /** .
      * This method will scan the user input
      */
     public static String readUserCommand() {
@@ -15,7 +15,7 @@ public class Ui {
         return in.nextLine().trim();
     }
 
-    /**
+    /** .
      * This method will display line on standard output (terminal)
      */
     public static void printLine() {
@@ -23,7 +23,7 @@ public class Ui {
 
     }
 
-    /**
+    /** .
      * This method will display welcome message to user on standard output (terminal)
      */
     public static void sayWelcome() {
@@ -33,7 +33,7 @@ public class Ui {
         printLine();
     }
 
-    /**
+    /** .
      * This method will display any message to user on standard output (terminal)
      *
      * @param message A String which contains the message we will show to user
@@ -42,7 +42,7 @@ public class Ui {
         System.out.println(message);
     }
 
-    /**
+    /** .
      * This method will say goodbye to user on standard output (terminal)
      */
     public void sayBye() {

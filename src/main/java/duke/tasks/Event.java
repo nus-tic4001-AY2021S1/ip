@@ -1,4 +1,4 @@
-package Duke.Tasks;
+package duke.tasks;
 
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ public class Event extends Task {
     protected LocalDateTime dueDateTime;
 
 
-    /**
+    /** .
      * Creating an object of Event class
      *
      * @param description A String that holds the description of a task
@@ -22,21 +22,17 @@ public class Event extends Task {
      */
     public Event(String description, LocalDateTime dueDateTime) {
         super(description);
-        this.dueDateTime=dueDateTime;
+        this.dueDateTime = dueDateTime;
 
     }
 
 
-    /**
+    /** .
      * A method to set the due date of a task
      * @param dueDateTime The due date of the task as yyyy-MM-dd HH:mm
      * @throws DateTimeException if given date is a past date
      */
-    protected void setDueDateTime (LocalDateTime dueDateTime) throws DateTimeException {
-//        // Throw DateTimeException if past date is given
-//        if (dueDate.compareTo(LocalDate.now())<0) {
-//            throw new DateTimeException("Past Date not allowed");
-//        }
+    protected void setDueDateTime(LocalDateTime dueDateTime) throws DateTimeException {
 
         //Ensure dueDate is saved as yyyy-MM-dd
         DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -44,10 +40,7 @@ public class Event extends Task {
 
     }
 
-
-
-
-    /**
+    /** .
      * Gets the Event duration.
      *
      * @return getDueDateTime This Event duration/duedate (BY)
@@ -58,9 +51,7 @@ public class Event extends Task {
     }
 
 
-
-
-    /**
+    /** .
      * A method to get the Task data as formatted string to display task type [E], task status and task description
      *
      * @return a formatted String of task type [E], task status and task description
@@ -70,9 +61,9 @@ public class Event extends Task {
     public String toString() {
 
         //Create formatter
-        DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("EEEE, MMM dd, yyyy HH:mm:ss a");
+        DateTimeFormatter fomatter = DateTimeFormatter.ofPattern("EEEE, MMM dd, yyyy HH:mm:ss a");
         //Get formatted String
-        String formattedDate = FOMATTER.format(dueDateTime);
+        String formattedDate = fomatter.format(dueDateTime);
         return "[E]" + super.toString() + " (at: " + formattedDate + ")";
     }
 

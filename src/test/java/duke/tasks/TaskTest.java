@@ -1,4 +1,4 @@
-package Duke.Tasks;
+package duke.tasks;
 
 
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TaskTest {
     private Todo task1 = new Todo("To try out Todo");
@@ -15,11 +17,7 @@ public class TaskTest {
     LocalDateTime formatDateTime = LocalDateTime.parse("2020-10-14 22:00", formatter);
     private Event task2 = new Event("To try out Event", formatDateTime);
 
-    // test default done status, before any changes
-    @Test
-    void getStatusIcon() {
-        assertEquals("\u2718", task1.getStatusIcon());
-    }
+
 
     @Test
     void testGetDescription() {
@@ -44,15 +42,5 @@ public class TaskTest {
         assertTrue(task1.isDone());
         assertTrue(task2.isDone());
     }
-
-    // test updated done status, after the setDone changes
-    @Test
-    void getStatusIconAfter() {
-        task1.setDone();
-        assertEquals("\u2713", task1.getStatusIcon());
-    }
-
-
-
 
 }

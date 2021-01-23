@@ -1,10 +1,10 @@
-package Duke;
+package duke;
 
-import Duke.Exceptions.DukeException;
-import Duke.Tasks.Deadline;
-import Duke.Tasks.Event;
-import Duke.Tasks.Task;
-import Duke.Tasks.Todo;
+import duke.exceptions.DukeException;
+import duke.tasks.Deadline;
+import duke.tasks.Event;
+import duke.tasks.Task;
+import duke.tasks.Todo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,14 +23,14 @@ public class TaskList {
     // An array list of task objects
     private static ArrayList<Task> taskList;
 
-    /**
+    /** .
      * creating an TodoList object
      */
     public TaskList() {
         taskList = new ArrayList<>();
     }
 
-    /**
+    /** .
      * creating a taskList
      */
     public static ArrayList<Task> getList() {
@@ -73,7 +73,7 @@ public class TaskList {
         return false;
     }
 
-    /**
+    /** .
      * Adding a Task object in ArrayList
      * The Task is in "Todo"
      *
@@ -83,7 +83,7 @@ public class TaskList {
         taskList.add(new Todo(toAddTaskDetails));
     }
 
-    /**
+    /** .
      * Adding a Task object in ArrayList
      * The Task is in "Deadline"
      *
@@ -101,7 +101,8 @@ public class TaskList {
         String taskDescription = (toAddTaskDetails.split("(?i)/by")[0]).trim();// splits case insensitive
         String taskDeadline = (toAddTaskDetails.split("(?i)/by")[1]).trim();// splits case insensitive
 
-        boolean dateTimeFormatChecker = isValidDateTimeFormat("yyyy-MM-dd", taskDeadline, Locale.ENGLISH); // to check if the user enter the correct date format
+        boolean dateTimeFormatChecker = isValidDateTimeFormat("yyyy-MM-dd", taskDeadline, Locale.ENGLISH);
+        // to check if the user enter the correct date format
         if (!dateTimeFormatChecker) {
             throw new DukeException("Please enter correct deadline Due Date yyyy-MM-dd, example: 2019-12-31");
         }
@@ -112,7 +113,7 @@ public class TaskList {
 
     }
 
-    /**
+    /** .
      * Adding a Task object in ArrayList
      * The Task is in "Event"
      *
@@ -127,10 +128,13 @@ public class TaskList {
             throw new DukeException("No event time found after keyword /at.Please enter valid task details.");
         }
 
-        String taskDescription = (toAddTaskDetails.split("(?i)/at")[0]).trim();// splits case insensitive
-        String taskEventDate = (toAddTaskDetails.split("(?i)/at")[1]).trim();// splits case insensitive
+        String taskDescription = (toAddTaskDetails.split("(?i)/at")[0]).trim();
+        // splits case insensitive
+        String taskEventDate = (toAddTaskDetails.split("(?i)/at")[1]).trim();
+        // splits case insensitive
 
-        boolean dateTimeFormatChecker = isValidDateTimeFormat("yyyy-MM-dd HH:mm", taskEventDate, Locale.ENGLISH); // to check if the user enter the correct date format
+        boolean dateTimeFormatChecker = isValidDateTimeFormat("yyyy-MM-dd HH:mm", taskEventDate, Locale.ENGLISH);
+        // to check if the user enter the correct date format
         if (!dateTimeFormatChecker) {
             throw new DukeException("Please enter correct event Date yyyy-MM-dd HH:mm, example: 2019-12-31 11:10");
         }
@@ -173,7 +177,8 @@ public class TaskList {
 
             int taskIndex = Integer.parseInt(selectedTask) - 1;
             if (taskIndex < 0 || taskIndex > taskList.size()) {
-                throw new ArrayIndexOutOfBoundsException("TASK NUM cannot be found in the task list: Returning to Main Menu");
+                throw new ArrayIndexOutOfBoundsException(
+                        "TASK NUM cannot be found in the task list: Returning to Main Menu");
             }
 
 
@@ -196,13 +201,14 @@ public class TaskList {
     }
 
 
-    /**
-     * A method to mark the selected task as completed
-     * update value of the task field:isDone = true
+    /** .
+     * A method to mark the selected task as completed.
+     * update value of the task field:isDone = true.
      *
      * @param selectedTask A String that holds the ID (number) of a task
-     * @throws NullPointerException           If TASK NUM is Empty/Null: Returning to Main Menu
-     * @throws ArrayIndexOutOfBoundsException If TASK NUM is invalid, TASK NUM cannot be found in the task list: Returning to Main Menu
+     * @throws NullPointerException If TASK NUM is Empty/Null: Returning to Main Menu
+     * @throws ArrayIndexOutOfBoundsException If TASK NUM is invalid,
+     *          TASK NUM cannot be found in the task list: Returning to Main Menu
      */
     public void markSelectedTaskDone(String selectedTask) {
 
@@ -214,7 +220,8 @@ public class TaskList {
 
             int taskIndex = Integer.parseInt(selectedTask) - 1;
             if (taskIndex < 0 || taskIndex > taskList.size()) {
-                throw new ArrayIndexOutOfBoundsException("TASK NUM cannot be found in the task list: Returning to Main Menu");
+                throw new ArrayIndexOutOfBoundsException(
+                        "TASK NUM cannot be found in the task list: Returning to Main Menu");
             }
 
 
@@ -253,12 +260,13 @@ public class TaskList {
     }
 
 
-    /**
+    /** .
      * A method to view the selected task details
      *
      * @param selectedTask A String that holds the ID (number) of a task
-     * @throws NullPointerException           If TASK NUM is Empty/Null: Returning to Main Menu
-     * @throws ArrayIndexOutOfBoundsException If TASK NUM is invalid, TASK NUM cannot be found in the task list: Returning to Main Menu
+     * @throws NullPointerException If TASK NUM is Empty/Null: Returning to Main Menu
+     * @throws ArrayIndexOutOfBoundsException If TASK NUM is invalid,
+     *          TASK NUM cannot be found in the task list: Returning to Main Menu
      */
     public void viewSelectedTask(String selectedTask) {
 
@@ -270,7 +278,8 @@ public class TaskList {
 
             int taskIndex = Integer.parseInt(selectedTask) - 1;
             if (taskIndex < 0 || taskIndex > taskList.size()) {
-                throw new ArrayIndexOutOfBoundsException("TASK NUM cannot be found in the task list: Returning to Main Menu");
+                throw new ArrayIndexOutOfBoundsException(
+                        "TASK NUM cannot be found in the task list: Returning to Main Menu");
             }
 
 
