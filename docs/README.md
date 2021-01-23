@@ -7,8 +7,8 @@ This product is not meant for end-users and therefore there is no user-friendly 
 Using IntelliJ
 1.	Find the project in the Project Explorer (usually located at the left side)
 <br /> * If the Project Explorer is not visible, press `ALT`+`1` for Windows/Linux, `CMD`+`1` for macOS to open the Project Explorer tab
-2.	Go to the `src` folder and locate the Duke file
-3.	Right click the file and select Run `Duke.main()`
+2.	Go to the `src` folder and locate the duke file
+3.	Right click the file and select Run `duke.main()`
 4.	The program now should run on the `Console` (usually located at the bottom side)
 5.	Now you can interact with the program through the `Console`
 
@@ -274,7 +274,7 @@ Example of usage:
 <br />
 
 ### Feature 11: Loading the data
-Auto-load the data from the hard disk when Duke starts up. <br />
+Auto-load the data from the hard disk when duke starts up. <br />
 The file name and location `e.g., [project_root]/data/duke.txt`
  
 <br />

@@ -1,14 +1,20 @@
-package Duke;
+package duke;
 
 
 
 
-import Duke.Tasks.Deadline;
-import Duke.Tasks.Event;
-import Duke.Tasks.Task;
-import Duke.Tasks.Todo;
+import duke.tasks.Deadline;
+import duke.tasks.Event;
+import duke.tasks.Task;
+import duke.tasks.Todo;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -30,7 +36,7 @@ public class Storage {
 
 
 
-    /**
+    /** .
      * creating an TodoList object
      */
     public Storage() {
@@ -51,7 +57,9 @@ public class Storage {
             if (!Files.isReadable(Paths.get(filename))) {
                 Ui.showMessage("The data file i.e.: " + filename + " does not exists!");
 
-                String folderPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "data";
+                String folderPath = System.getProperty("user.dir")
+                        + File.separator + "src" + File.separator
+                        + "main" + File.separator + "java" + File.separator + "data";
 
                 File folder = new File(folderPath);
                 File myObj = new File(filename);
@@ -102,7 +110,7 @@ public class Storage {
     }
 
 
-    /**
+    /** .
      * This method will auto create relevant task from the data file
      * the task could be event task, deadline task, todo task
      *
@@ -113,34 +121,34 @@ public class Storage {
         String taskDescription;
         String taskSchedule = null;
 
-        String[] line_arr = line.split("\\|");
+        String[] lineArr = line.split("\\|");
         /* get the value of TaskDetail & TaskDeadlineDetail */
-        taskDescription = line_arr[2].trim();
-        if (line_arr.length > 3) {
-            taskSchedule = line_arr[3].trim();
+        taskDescription = lineArr[2].trim();
+        if (lineArr.length > 3) {
+            taskSchedule = lineArr[3].trim();
         }
 
 
         DateTimeFormatter formatterEventSchedule = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
         /* pass the value to Task:  todo / deadline /event, and lable the task status */
-        if (line_arr[0].equals("D ") & line_arr[1].equals(" 1 ")) {
+        if (lineArr[0].equals("D ") & lineArr[1].equals(" 1 ")) {
             task = new Deadline(taskDescription, LocalDate.parse(taskSchedule));
             task.setDone();
             taskList.add(task);
-        } else if (line_arr[0].equals("D ") & line_arr[1].equals(" 0 ")) {
+        } else if (lineArr[0].equals("D ") & lineArr[1].equals(" 0 ")) {
             taskList.add((new Deadline(taskDescription, LocalDate.parse(taskSchedule))));
-        } else if (line_arr[0].equals("E ") & line_arr[1].equals(" 1 ")) {
+        } else if (lineArr[0].equals("E ") & lineArr[1].equals(" 1 ")) {
             task = new Event(taskDescription, LocalDateTime.parse(taskSchedule, formatterEventSchedule));
             task.setDone();
             taskList.add(task);
-        } else if (line_arr[0].equals("E ") & line_arr[1].equals(" 0 ")) {
+        } else if (lineArr[0].equals("E ") & lineArr[1].equals(" 0 ")) {
             taskList.add(new Event(taskDescription, LocalDateTime.parse(taskSchedule, formatterEventSchedule)));
-        } else if (line_arr[0].equals("T ") & line_arr[1].equals(" 1 ")) {
+        } else if (lineArr[0].equals("T ") & lineArr[1].equals(" 1 ")) {
             task = new Todo(taskDescription);
             task.setDone();
             taskList.add(task);
-        } else if (line_arr[0].equals("T ") & line_arr[1].equals(" 0 ")) {
+        } else if (lineArr[0].equals("T ") & lineArr[1].equals(" 0 ")) {
             taskList.add(new Todo(taskDescription));
         }
 
@@ -148,7 +156,7 @@ public class Storage {
     }
 
 
-    /**
+    /** .
      * This method will write the data of Tasks from ArrayList to data file on disk
      *
      * @param filename a string specifying the full path and extension of data file
@@ -166,14 +174,19 @@ public class Storage {
                 //  System.out.println(taskList);
                 if (taskList.get(i) instanceof Deadline) {
                     bw.append("D ");
-                    bw.append("| ").append(taskList.get(i).isDone() ? "1" : "0").append(" | ").append(taskList.get(i).getDescription()).append(" | ").append(((Deadline) taskList.get(i)).getDueDate().toString());
+                    bw.append("| ").append(taskList.get(i).isDone() ? "1" : "0")
+                            .append(" | ").append(taskList.get(i).getDescription())
+                            .append(" | ").append(((Deadline) taskList.get(i)).getDueDate().toString());
                 } else if (taskList.get(i) instanceof Event) {
                     bw.append("E ");
-                    bw.append("| ").append(taskList.get(i).isDone() ? "1" : "0").append(" | ").append(taskList.get(i).getDescription()).append(" | ").append(((Event) taskList.get(i)).getDueDateTime().toString());
+                    bw.append("| ").append(taskList.get(i).isDone() ? "1" : "0")
+                            .append(" | ").append(taskList.get(i).getDescription())
+                            .append(" | ").append(((Event) taskList.get(i)).getDueDateTime().toString());
 
                 } else if (taskList.get(i) instanceof Todo) {
                     bw.append("T ");
-                    bw.append("| ").append(taskList.get(i).isDone() ? "1" : "0").append(" | ").append(taskList.get(i).getDescription());
+                    bw.append("| ").append(taskList.get(i).isDone() ? "1" : "0")
+                            .append(" | ").append(taskList.get(i).getDescription());
 
                 }
 
@@ -182,10 +195,5 @@ public class Storage {
         } catch (IOException ex) {
             Ui.showMessage(ex.getMessage());
         }
-       // Ui.showMessage("Task save to disk txt file--->:" + filename);
-
-
     }
-
-
 }
