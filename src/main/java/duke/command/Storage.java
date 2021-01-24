@@ -53,8 +53,8 @@ public class Storage {
     /**
      * This function is to read task from storage file line by line.
      *
-     * @param filePath tasks' save filepath
-     * @return tasks line by line
+     * @param filePath tasks' save filepath.
+     * @return tasks line by line.
      */
     public List<String> getLines(String filePath) {
         List<String> lines = new ArrayList<>();
