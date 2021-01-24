@@ -68,7 +68,7 @@ public class Parser {
             throw new TaskException("Error: Empty description for TODO");
         }
         if (!description.contains("/by")) {
-            throw new TaskException("☹ OOPS!!!: need '/by' for DEADLINE");
+            throw new TaskException("OOPS!!!: need '/by' for DEADLINE");
         }
         return new Deadline(line.trim().substring("deadline".length()).trim().split(" /by")[0],
                 line.trim().split("/by ")[1]);
