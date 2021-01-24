@@ -124,7 +124,7 @@ public class Storage {
         List<String> lines = getLines(filePath);
         for (String line : lines) {
             if (line.trim().isEmpty()) { //ignore empty lines
-                throw new TaskException("☹ OOPS!!!folder does not exist yet!");
+                throw new TaskException("OOPS!!!folder does not exist yet!");
             }
             loadedTasks.add(createTask(line)); //convert the line to a task and add to the list
         }
