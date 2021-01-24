@@ -15,9 +15,9 @@ public class Storage {
     static Ui ui = new Ui();
 
     /**
-     * This constructs duke tasks with string filepath
+     * This constructs duke tasks with string filepath.
      *
-     * @param filePath task save file path
+     * @param filePath task save file path.
      */
     public Storage(String filePath) {
         Storage.filePath = filePath;
