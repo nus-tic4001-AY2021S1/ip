@@ -15,9 +15,9 @@ public class Storage {
     static Ui ui = new Ui();
 
     /**
-     * This constructs duke tasks with string filepath
+     * This constructs duke tasks with string filepath.
      *
-     * @param filePath task save file path
+     * @param filePath task save file path.
      */
     public Storage(String filePath) {
         Storage.filePath = filePath;
@@ -53,8 +53,8 @@ public class Storage {
     /**
      * This function is to read task from storage file line by line.
      *
-     * @param filePath tasks' save filepath
-     * @return tasks line by line
+     * @param filePath tasks' save filepath.
+     * @return tasks line by line.
      */
     public List<String> getLines(String filePath) {
         List<String> lines = new ArrayList<>();
