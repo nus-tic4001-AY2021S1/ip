@@ -3,7 +3,7 @@ package duke;
 import duke.command.*;
 
 /**
- * This class implements simple Duke chatbot named Jojo,that can write, read and save
+ * This class implements simple Duke chat bot named Jojo,that can write, read and save
  * tasks in the assigned filePath.
  * This Duke class contained 3 methods Duke ,run and main.
  *
@@ -31,7 +31,7 @@ public class Duke {
         try {
             tasks = new TaskList(storage.readTaskFromFile());
         } catch (TaskException e) {
-            ui.showToUser("☹ OOPS!!!folder does not exist yet!");
+            ui.showToUser("OOPS!!!folder does not exist yet!");
             tasks = new TaskList();
         }
     }

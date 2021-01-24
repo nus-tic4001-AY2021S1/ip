@@ -37,7 +37,7 @@ public class Parser {
     }
 
     /**
-     * This function is create todo object in task arrarylist.
+     * This function is create todo object in task arraylist.
      *
      * @param line tasks' full command
      * @return tasks' Todo
