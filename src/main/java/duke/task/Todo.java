@@ -10,16 +10,16 @@ package duke.task;
  */
 public class Todo extends Task {
     /**
-     * entity Todo.
+     * entity todo.
      *
-     * @param description users' tasks' description
+     * @param description users' tasks' description.
      */
     public Todo(String description) {
         super(description);
     }
 
     /**
-     * override the to string method
+     * override the to string method.
      *
      * @return user command todo to "[T]"
      */

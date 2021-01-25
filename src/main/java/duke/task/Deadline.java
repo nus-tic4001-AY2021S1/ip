@@ -20,14 +20,14 @@ public class Deadline extends Task {
      * @param description tasks' description
      * @param by          tasks' deadline time
      */
-    public Deadline(String description, String by){
+    public Deadline(String description, String by) {
         super(description);
-        this.by=LocalDate.parse(by);
+        this.by = LocalDate.parse(by);
     }
 
 
     /**
-     * get user command description of by
+     * get user command description of by.
      *
      * @return by
      */
@@ -37,7 +37,7 @@ public class Deadline extends Task {
 
 
     /**
-     * override the to string method
+     * override the to string method.
      *
      * @return user command Deadline to "[D]"
      */

@@ -18,11 +18,12 @@ import java.util.List;
  */
 public class TaskList {
     static Ui ui = new Ui();
-    private List<Task> tasks = new ArrayList<>(); //  Use Java Collections classes ArrayList<Task>
+    //  Use Java Collections classes ArrayList<Task>
+    private List<Task> tasks = new ArrayList<>();
 
 
     /**
-     * This constructs a TaskList with a List<Task> parameter
+     * This constructs a TaskList with a ListTask parameter.
      *
      * @param tasks tasks
      */
@@ -95,13 +96,17 @@ public class TaskList {
             for (int i = 0; i < tasks.size(); i++) {
                 System.out.println((i + 1) + ". " + tasks.get(i));
             }
-        } else try {
-            int index = Integer.parseInt(description);
-            if (index <= tasks.size() && index > 0) {
-                ui.showToUser("[" + (index) + "] " + tasks.get(index - 1));
-            } else System.out.println("OOPS!!!Printing range should be 1 to " + tasks.size());
-        } catch (NumberFormatException e) {
-            ui.showToUser("OOPS!!!Print command should be ‘print' or 'print INTEGER'");
+        } else {
+            try {
+                int index = Integer.parseInt(description);
+                if (index <= tasks.size() && index > 0) {
+                    ui.showToUser("[" + (index) + "] " + tasks.get(index - 1));
+                } else {
+                    System.out.println("OOPS!!!Printing range should be 1 to " + tasks.size());
+                }
+            } catch (NumberFormatException e) {
+                ui.showToUser("OOPS!!!Print command should be ‘print' or 'print INTEGER'");
+            }
         }
         ui.printLine();
     }
@@ -114,12 +119,15 @@ public class TaskList {
     public void markAsDone(String fullCommand) {
         try {
             int index = Integer.parseInt(fullCommand.substring("done".length()).trim());
-            assert index <= tasks.size() : "OOPS!!!Command number is invalid"; //assert error when index bigger than tasks size.
+            assert index <= tasks.size() : "OOPS!!!Command number is invalid";
+            //assert error when index bigger than tasks size.
             if (index <= tasks.size() && index > 0) {
                 tasks.get(index - 1).setDone(true);
                 ui.showToUser("Tasks: " + index + " has marked as DONE.");
                 ui.printLine();
-            } else ui.showToUser("OOPS!!!Marking as done range should be 1 to " + tasks.size());
+            } else {
+                ui.showToUser("OOPS!!!Marking as done range should be 1 to " + tasks.size());
+            }
         } catch (NumberFormatException e) {
             ui.showToUser("OOPS!!!markAsDone command not Integer!");
         }
@@ -134,11 +142,13 @@ public class TaskList {
         try {
             int index = Integer.parseInt(fullCommand.substring("delete".length()).trim());
             if (index <= tasks.size() && index > 0) {
-                ui.showToUser("Noted. I've removed this task: \n" + "  " + tasks.get(index-1));
+                ui.showToUser("Noted. I've removed this task: \n" + "  " + tasks.get(index - 1));
                 tasks.remove(index - 1);
                 ui.showToUser("Now you have " + tasks.size() + " tasks in the list.");
                 ui.printLine();
-            } else ui.showToUser("OOPS!!!:Deleting range should be 1 to " + tasks.size());
+            } else {
+                ui.showToUser("OOPS!!!:Deleting range should be 1 to " + tasks.size());
+            }
         } catch (NumberFormatException e) {
             ui.showToUser("OOPS!!!:Deleted command not Integer!");
         }
@@ -147,7 +157,9 @@ public class TaskList {
     /**
      *This function is to call saveTasks method to save tasks in user driver.
      */
-    public void saveTasks() { Storage.writeTaskToFile(tasks); }
+    public void saveTasks() {
+        Storage.writeTaskToFile(tasks);
+    }
 
     /**
      * This function is to find tasks from task list.
@@ -157,17 +169,16 @@ public class TaskList {
     public void findTasks(String fullCommand) {
         List<String> ss = new ArrayList<>();
         String description = fullCommand.trim().substring("find".length()).trim();
-            for (int i = 0; i < tasks.size(); i++) {
-                String s = tasks.get(i).toString();
-                if (s.contains(description)) {
-                    ss.add(i+1 + "." + s );
-                }
+        for (int i = 0; i < tasks.size(); i++) {
+            String s = tasks.get(i).toString();
+            if (s.contains(description)) {
+                ss.add(i + 1 + "." + s);
             }
-        if(ss.size() != 0) {
+        }
+        if (ss.size() != 0) {
             ui.showToUser("Here are the matching tasks in your list: ");
             ss.forEach(System.out::println);
-        }
-        else {
+        } else {
             ui.showToUser("OOPS!!! Our list not contain " + "'" + description + "'.");
         }
         ui.printLine();

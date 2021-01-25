@@ -23,7 +23,7 @@ public class Event extends Task {
     }
 
     /**
-     * get user command description of at
+     * get user command description of at.
      *
      * @return at
      */
@@ -32,7 +32,7 @@ public class Event extends Task {
     }
 
     /**
-     * override the to string method
+     * override the to string method.
      *
      * @return user event Deadline to "[E]"
      */

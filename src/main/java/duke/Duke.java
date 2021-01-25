@@ -1,6 +1,10 @@
 package duke;
 
-import duke.command.*;
+import duke.command.Parser;
+import duke.command.Storage;
+import duke.command.TaskException;
+import duke.command.TaskList;
+import duke.command.Ui;
 
 /**
  * This class implements simple Duke chat bot named Jojo,that can write, read and save
@@ -44,6 +48,7 @@ public class Duke {
     /**
      * This run method switch different duke command to different method.
      */
+    @SuppressWarnings("checkstyle:Indentation")
     public void run() {
         ui.printLogo();
         ui.greetUser();
@@ -55,6 +60,7 @@ public class Duke {
                 switch (commandWord) {
                     case "bye":
                         ui.farewellUser();
+                        break;
                     case "":
                         isExit = true;
                         break;
@@ -82,8 +88,7 @@ public class Duke {
                     case "save":
                         tasks.saveTasks();
                         break;
-                    default:
-                        ui.printError();
+                    default: ui.printError();
                 }
             } catch (TaskException e) {
                 ui.printError(e.getMessage());

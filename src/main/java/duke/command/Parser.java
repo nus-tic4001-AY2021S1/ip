@@ -17,7 +17,7 @@ public class Parser {
     private static String commandWord;
 
     /**
-     * This constructs parser with command string
+     * This constructs parser with command string.
      *
      * @param commandWord user command string
      */

@@ -1,8 +1,17 @@
 package duke.command;
 
 
-import duke.task.*;
-import java.io.*;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Task;
+import duke.task.Todo;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -32,14 +41,17 @@ public class Storage {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(out))) {
             for (Task task : tasks) {
                 if (task instanceof Deadline) {
-                   bw.append("D ");
-                    bw.append("| ").append(task.isDone() ? "1" : "0").append(" | ").append(task.getDescription()).append(" | ").append(((Deadline) task).getBy());
+                    bw.append("D ");
+                    bw.append("| ").append(task.isDone() ? "1" : "0").append(" | ")
+                            .append(task.getDescription()).append(" | ").append(((Deadline) task).getBy());
                 } else if (task instanceof Event) {
                     bw.append("E ");
-                    bw.append(" | ").append(task.isDone() ? "1" : "0").append(" | ").append(task.getDescription()).append(" | ").append(((Event) task).getAt());
+                    bw.append(" | ").append(task.isDone() ? "1" : "0").append(" | ")
+                            .append(task.getDescription()).append(" | ").append(((Event) task).getAt());
                 } else if (task instanceof Todo) {
                     bw.append("T ");
-                    bw.append(" | ").append(task.isDone() ? "1" : "0").append(" | ").append(task.getDescription());
+                    bw.append(" | ").append(task.isDone() ? "1" : "0").append(" | ")
+                            .append(task.getDescription());
                 }
                 bw.append(System.lineSeparator());
             }
@@ -75,6 +87,7 @@ public class Storage {
      * @param line storage tasks line by line
      * @return task array list
      */
+    @SuppressWarnings("checkstyle:Indentation")
     public static Task createTask(String line) {
         Task task = null;
         String type = line.split("\\|")[0].trim();
@@ -95,18 +108,19 @@ public class Storage {
                 task = new Event(desc, at);
                 task.setDone(isDone);
                 break;
+            default:
+                break;
         }
         return task;
     }
 
     /**
-     * This function is to convert MMM d yyyy string to yyyy-MM-dd
+     * This function is to convert MMM d yyyy string to yyyy-MM-dd.
      *
      * @param startDate input date string MMM d yyyy
      * @return output date string yyyy-MM-dd
      */
-    public static String getDate(String startDate)
-    {
+    public static String getDate(String startDate) {
         DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("MMM d yyyy");
         DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 

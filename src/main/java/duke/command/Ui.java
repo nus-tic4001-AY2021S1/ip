@@ -14,14 +14,14 @@ public class Ui {
     private final Scanner in = new Scanner(System.in);
 
     /**
-     * print a line ro separate the chat text
+     * print a line ro separate the chat text.
      */
     public void printLine() {
         System.out.println("____________________________________________________________");
     }
 
     /**
-     * print the duke chatbot logo
+     * print the duke chat bot logo.
      */
     public void printLogo() {
         String logo = "  __          __ \n"
@@ -33,17 +33,17 @@ public class Ui {
     }
 
     /**
-     * print duke duke chatbot welcome
+     * print duke duke chat bot welcome.
      */
     public void greetUser() {
         printLine();
-        showToUser("Hi! I'm Jojo ☺");
+        showToUser("Hi! I'm Jojo");
         showToUser("What can I do for you?");
         printLine();
     }
 
     /**
-     * print duke chatbot farewell to user
+     * print duke chat bot farewell to user.
      */
     public void farewellUser() {
         printLine();
@@ -53,14 +53,23 @@ public class Ui {
 
 
     /**
-     * print out error message
+     * print out error message.
      */
     public void printError() {
-        System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+        System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
 
     /**
-     * help chatbot print message to user
+     * help chat bot print program error message.
+     *
+     * @param message string
+     */
+    public void printError(String message) {
+        System.out.println(message);
+    }
+
+    /**
+     * help chatbot print message to user.
      *
      * @param s string
      */
@@ -70,7 +79,7 @@ public class Ui {
 
 
     /**
-     * read the user command
+     * read the user command.
      *
      * @return user command with lowercase
      */
@@ -78,14 +87,4 @@ public class Ui {
         String command = in.nextLine().trim();
         return command.toLowerCase();
     }
-
-    /**
-     * help chatbot print program error message
-     *
-     * @param message string
-     */
-    public void printError(String message) {
-        System.out.println(message);
-    }
-
 }

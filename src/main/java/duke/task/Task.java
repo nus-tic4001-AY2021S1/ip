@@ -22,7 +22,7 @@ public abstract class Task {
     }
 
     /**
-     * This function is get done or noe statues icon symbols
+     * This function is get done or noe statues icon symbols.
      *
      * @return tick or X symbols
      */
@@ -31,7 +31,7 @@ public abstract class Task {
     }
 
     /**
-     * This constructs s setDone with is done
+     * This constructs s setDone with is done.
      *
      * @param isDone set status done
      */
@@ -40,7 +40,7 @@ public abstract class Task {
     }
 
     /**
-     * This constructs return description
+     * This constructs return description.
      *
      * @return user command description
      */
@@ -49,14 +49,14 @@ public abstract class Task {
     }
 
     /**
-     * Abstarct the toString method
+     * Abstarct the toString method.
      *
      * @return void
      */
     public abstract String toString();
 
     /**
-     * print the user command with status icon
+     * print the user command with status icon.
      *
      * @return user command with status icon
      */
@@ -65,7 +65,7 @@ public abstract class Task {
     }
 
     /**
-     * set user command to isDone
+     * set user command to isDone.
      *
      * @return user command status
      */
