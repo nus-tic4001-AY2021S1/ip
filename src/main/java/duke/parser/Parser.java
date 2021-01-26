@@ -40,7 +40,6 @@ public class Parser {
             return new EventCommand(lineWithoutCommand, tasks, ui, database);
         case "bye":
         case "exit":
-        case "":      // also exits when user input is empty
             return new ExitCommand(ui);
         default:
             return new InvalidCommand(ui);

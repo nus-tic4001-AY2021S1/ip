@@ -1,17 +1,17 @@
 package duke;
 
+import java.util.Scanner;
 import duke.commands.Command;
-import duke.commands.ExitCommand;
-import duke.ui.Ui;
+import duke.database.Database;
 import duke.parser.Parser;
 import duke.task.TaskList;
-import duke.database.Database;
-import java.util.Scanner;
+import duke.ui.Ui;
+
 /**
  * A Personal Assistant Chatbot that helps a person to keep track of various things.
  *
  * @author Wang Zhenquan
- * @version A-MoreOOP
+ * @version Level-10
  * @since 20/08/2020
  */
 
@@ -22,25 +22,16 @@ public class Duke {
     private final TaskList tasks = new TaskList();
     private final Database database = new Database("duke.txt", tasks, ui);
 
-    public static void main(String[] args) {
-        new Duke().run();
-    }
-
-    private void run() {
+    String getGreetingsAndTasks() {
         System.setProperty("file.encoding", "utf-8");
-        ui.printDukeLogo();
-        ui.printGreeting();
-        database.readDatabase(tasks, ui, database);
-        repeatedUserInput();
+        return ui.printDukeLogo()
+            + ui.printGreeting()
+            + database.readDatabase(tasks, ui, database);
     }
 
-    private void repeatedUserInput() {
-        while (true) {
-            Command command = parser.parseInput(in.nextLine(), ui, tasks, database);
-            command.execute();
-            if (ExitCommand.class.isAssignableFrom(command.getClass())) {
-                return;
-            }
-        }
+    String getResponse(String input) {
+        Command command = parser.parseInput(input, ui, tasks, database);
+        return command.execute();
     }
+
 }

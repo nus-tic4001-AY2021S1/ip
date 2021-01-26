@@ -11,7 +11,7 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    public void execute() {
-        ui.printFarewell();
+    public String execute()  {
+        return ui.printFarewell();
     }
 }

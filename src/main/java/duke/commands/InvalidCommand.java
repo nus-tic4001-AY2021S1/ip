@@ -11,7 +11,7 @@ public class InvalidCommand extends Command {
     }
 
     @Override
-    public void execute() {
-        ui.printInvalidCommand();
+    public String execute()  {
+        return ui.printInvalidCommand();
     }
 }

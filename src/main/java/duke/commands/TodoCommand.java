@@ -19,19 +19,19 @@ public class TodoCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public String execute()  {
         try {
             if (line.isEmpty()) {
-                throw new DukeException("It seems that you missed out the task description!\n"
+                return ui.printRed("It seems that you missed out the task description!\n"
                     + "Please type in the 'todo <something>' format.");
             }
             line = "[Todo]     " + line;
             tasks.add(new Todo(line));
-            ui.printTaskAdded(tasks);
             database.updateDatabase(tasks);
+            return ui.printTaskAdded(tasks);
 
-        } catch (DukeException | IOException e) {
-            ui.printRedBorderlines(e.getMessage());
+        } catch (IOException e) {
+            return ui.printRed(e.getMessage());
         }
     }
 }
