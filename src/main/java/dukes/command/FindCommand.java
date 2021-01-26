@@ -1,10 +1,10 @@
-package Dukes.command;
+package dukes.command;
 
-import Dukes.Exceptions.DukeException;
-import Dukes.storage.Storage;
-import Dukes.Tasks.Task;
-import Dukes.Tasks.TaskList;
-import Dukes.Ui;
+import dukes.exception.DukeException;
+import dukes.storage.Storage;
+import dukes.tasks.Task;
+import dukes.tasks.TaskList;
+import dukes.Ui;
 
 
 /**
@@ -35,18 +35,18 @@ public class FindCommand extends Command {
                     count += 1;
                 }
             }
-                if (count == 0) {
-                    throw new DukeException("OOPS!!! There is no matching task in the list");
-                } else {
-                    System.out.println("Here are the matching tasks in your list:");
-                    for (int i = 0; i < filteredTasks.list.size(); i++) {
-                        System.out.println((i + 1) + "." + filteredTasks.list.get(i));
-                    }
+            if (count == 0) {
+                throw new DukeException("OOPS!!! There is no matching task in the list");
+            } else {
+                System.out.println("Here are the matching tasks in your list:");
+                for (int i = 0; i < filteredTasks.list.size(); i++) {
+                    System.out.println((i + 1) + "." + filteredTasks.list.get(i));
                 }
-            }catch (IndexOutOfBoundsException e) {
+            }
+        } catch (IndexOutOfBoundsException e) {
             System.out.print("Current task is empty in your list.");
         }
-        }
     }
+}
 
 

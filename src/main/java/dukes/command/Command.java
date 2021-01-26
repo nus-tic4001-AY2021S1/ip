@@ -1,20 +1,19 @@
-package Dukes.command;
+package dukes.command;
 
-import Dukes.storage.Storage;
-import Dukes.Tasks.Task;
-import Dukes.Tasks.TaskList;
-import Dukes.Ui;
-import Dukes.Exceptions.DukeException;
+import dukes.storage.Storage;
+import dukes.tasks.Task;
+import dukes.tasks.TaskList;
+import dukes.Ui;
+import dukes.exception.DukeException;
 /**
  * Represents a command.
  * Parent class of all other types of commands to perform some action.
  */
-public abstract class Command {
 
+public abstract class Command {
     protected Task task;
     protected int index;
     protected String keyWord;
-
 
     public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException;
 

@@ -1,4 +1,4 @@
-package Dukes.Tasks;
+package dukes.tasks;
 
 /**
  * Represents a Task.
@@ -8,6 +8,7 @@ package Dukes.Tasks;
 public abstract class Task {
     protected String description;
     protected boolean isDone;
+
     /**
      * Constructor for <code>Task</code>.
      * @param description Description of the task.
@@ -16,6 +17,7 @@ public abstract class Task {
         this.description = description;
         this.isDone = false;
     }
+
     /**
      * Returns a tick icon if the task is completed and return a X icon if otherwise.
      * @return Icon to indicate status of the task.
@@ -23,9 +25,11 @@ public abstract class Task {
     public String getStatusIcon() {
         return (isDone ? "Done" : "X");
     }
+
     public String getFileStatusIcon() {
         return (isDone ? "1" : "0");
     }
+
     /**
      * Sets the task as done.
      */
@@ -33,8 +37,9 @@ public abstract class Task {
         this.isDone = true;
         return this;
     }
+
     /**
-     * Get the description of the task
+     * Get the description of the task.
      *
      * @return the description of the task
      */

@@ -1,4 +1,4 @@
-package Dukes.Exceptions;
+package dukes.exception;
 
 /**
  * Represents a checked exception.

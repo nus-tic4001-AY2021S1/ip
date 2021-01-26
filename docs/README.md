@@ -1,5 +1,5 @@
 # User Guide
-Project Dukes.Duke is a educational software project that helps user to keep track of various things.
+Project dukes.Duke is a educational software project that helps user to keep track of various things.
 <br/> The link is [website for product user guid ](https://linqing42.github.io/ip/)
 
 ## Quick start 
@@ -12,8 +12,8 @@ Project Dukes.Duke is a educational software project that helps user to keep tra
    1. Click `OK`
 1. Download the latest project from [here](https://github.com/linqing42/ip).
 1. Import the project into Intellij.
-1. Go to the sr folder and find src\main\java\Dukes\Dukes.Duke
-1. Right click the Dukes.Duke and select Run Dukes.Duke
+1. Go to the sr folder and find src\main\java\dukes\dukes.Duke
+1. Right click the dukes.Duke and select Run dukes.Duke
 1. The program now should run on the Console (usually located at the bottom side)
 1. Type the command and press Enter to execute it.<br>
 1.Refer to teh [Feature](#features) below for details of each command.
@@ -110,7 +110,7 @@ Marking a specific task to remind the user that he has finished the task.
 Deleting a task: delete
 
 ## Usage
-Delete a specific task from task list to helps remove the completed task and tidy the task list. It will show the total number of tasks left in the task list. 
+Delete a specific task from task list to helps remove the completed task and tidy the task list. It will show the total number of Tasks left in the task list. 
 
 ### `delete` - Deleting a specific task from the task list.
 <br/>>The keyword 'delete' can be **upper and lowercase letters** and its outcome will be remove the specific task and reduce the total number of task in the list.
@@ -130,14 +130,14 @@ Delete a specific task from task list to helps remove the completed task and tid
 <br/>Now you have [INDEX-1] task in the list.
 
 ### Feature 6
-Listing all tasks: list
+Listing all Tasks: list
 
 ## Usage
 It shows a list of all task in the task list with a number. it helps to summarize the task list.
 
-### `list` - Listing all tasks with number.
+### `list` - Listing all Tasks with number.
 <br/>>The keyword 'list' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list
-<br/>>If you key in the keyword with empty task.There will be an error message:"OOPS!!! There are no tasks in your list."
+<br/>>If you key in the keyword with empty task.There will be an error message:"OOPS!!! There are no Tasks in your list."
 
 **Format**: list
 
@@ -146,19 +146,19 @@ It shows a list of all task in the task list with a number. it helps to summariz
 <br/>step 2. list or List or LIST
 
 **Expected outcome**:
-   <br/>Here are the tasks in your list:
+   <br/>Here are the Tasks in your list:
    <br/>1.[T][X] READ BOOK
 
     
 ### Feature 7
-Locating tasks by description_keyword: find
+Locating Tasks by description_keyword: find
 
 ## Usage
 It helps to search a task that contain any of the given description_keyword, and the search is case-insensitive. e.g book will match BOOK. Therefore, the user can easily find out the specific task base on find function.
-### `find` - Locating tasks with given description_keyword
+### `find` - Locating Tasks with given description_keyword
 <br/>>The keyword 'find' can be **upper and lowercase letters** and its outcome will be show a list of task in the task list when the task is match the specific description keywords.
 <br/>>The order of the description_keyword does not matter.
-<br/>>If you key in the specific description keyword that does not match the task in your list.There will be an error message:"☹ OOPS!!! There is no matching tasks in your list."
+<br/>>If you key in the specific description keyword that does not match the task in your list.There will be an error message:"☹ OOPS!!! There is no matching Tasks in your list."
 <br/>>If you only key in the **keyword**, there will be an error message:"OOPS!!! The description of a find cannot be empty."
 
 **Format**: find description_keyword[more_keyword]
@@ -169,7 +169,7 @@ It helps to search a task that contain any of the given description_keyword, and
    <br/>step 3. find book or Find BOok or FIND BOOK
 
 **Expected outcome**:
-   <br/>Here are the matching tasks in your list:
+   <br/>Here are the matching Tasks in your list:
    <br/>1.[T][X] READ BOOK
 
 ### Feature 8
@@ -189,7 +189,7 @@ It helps to end the program and display the list of a task will be save in the h
    <br/>step 3. bye/exit/BYE/EXIT/Bye/Exit
 
 **Expected outcome**:
-   <br/>Your following tasks will be save: 
+   <br/>Your following Tasks will be save: 
    <br/>[T][X] READ BOOK
    <br/>[T][X] join club
    <br/>Bye. Hope to see you again soon!
@@ -198,7 +198,7 @@ It helps to end the program and display the list of a task will be save in the h
 Saving the task in the hard-disk
 
 ## Usage
-It helps to save the tasks in the hard disk automatically after exiting the program, and the format of display will be change when task save in hard disk. It saves the user's time as there is no need to save manually.
+It helps to save the Tasks in the hard disk automatically after exiting the program, and the format of display will be change when task save in hard disk. It saves the user's time as there is no need to save manually.
 
 **Example of usage**: 
   <br/>step 1. todo read book

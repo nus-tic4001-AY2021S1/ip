@@ -34,7 +34,7 @@ test {
 jar{
     manifest {
         attributes(
-                'Main-Class': 'Dukes.Duke'
+                'Main-Class': 'dukes.Duke'
         )
     }
 }
@@ -44,7 +44,7 @@ run {
 }
 
 application {
-    mainClassName = "Dukes.Duke"
+    mainClassName = "dukes.Duke"
 }
 
 shadowJar {

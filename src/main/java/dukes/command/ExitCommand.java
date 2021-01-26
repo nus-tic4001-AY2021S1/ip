@@ -1,11 +1,12 @@
-package Dukes.command;
+package dukes.command;
 
-import Dukes.storage.Storage;
-import Dukes.Tasks.TaskList;
-import Dukes.Ui;
+import dukes.storage.Storage;
+import dukes.tasks.TaskList;
+import dukes.Ui;
 /**
  * Create an ExitCommand. It ends and exit the programme and stores user's tasks.
  */
+
 public class ExitCommand extends Command {
     /**
      * Saves the tasks into storage and display bye message to the user.
@@ -18,6 +19,7 @@ public class ExitCommand extends Command {
         ui.showExitMessage(tasks.list);
         storage.saveTaskFile(tasks.list);
     }
+
     /**
      * Checks if this object is an <code>ExitCommand</code>.
      * @return Whether this command is an exit command.

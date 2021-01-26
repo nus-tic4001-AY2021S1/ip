@@ -1,10 +1,10 @@
-package Dukes.command;
+package dukes.command;
 
-import Dukes.storage.Storage;
-import Dukes.Tasks.TaskList;
-import Dukes.Tasks.Task;
-import Dukes.Ui;
-import Dukes.Exceptions.DukeException;
+import dukes.storage.Storage;
+import dukes.tasks.Task;
+import dukes.tasks.TaskList;
+import dukes.Ui;
+import dukes.exception.DukeException;
 
 /**
  * Represents a done command.
@@ -20,13 +20,14 @@ public class DoneCommand extends Command {
         super.index = index;
     }
     /**
-     * Mark a task in the task list as done if specified index is valid, save the task list and display to user
+     * Mark a task in the task list as done if specified index is valid, save the task list and display to user.
      *
      * @param tasks TaskList to be appended.
      * @param ui UI to interact with user.
      * @param storage Storage to read and write files and temporary store in hard disk.
-     * @throws <code>DukeException</code> If user key in a number that is not in the TaskList.
+     * @throws DukeException If user key in a number that is not in the TaskList.
      */
+
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         try {

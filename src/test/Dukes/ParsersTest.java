@@ -1,7 +1,7 @@
-package Dukes;
+package dukes;
 
 
-import Dukes.parser.Parser;
+import dukes.parser.Parser;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

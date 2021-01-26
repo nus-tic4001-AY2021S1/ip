@@ -1,10 +1,11 @@
-package Dukes.command;
+package dukes.command;
 
-import Dukes.storage.Storage;
-import Dukes.Tasks.TaskList;
-import Dukes.Tasks.Task;
-import Dukes.Ui;
-import Dukes.Exceptions.DukeException;
+import dukes.storage.Storage;
+import dukes.tasks.Task;
+import dukes.tasks.TaskList;
+import dukes.Ui;
+import dukes.exception.DukeException;
+
 /**
  * Create a DeleteCommand. It removes user's task from the list.
  */

@@ -1,4 +1,4 @@
-package Dukes.Tasks;
+package dukes.tasks;
 
 /**
  * deadline task description /by specific date and time  e.g. return book by 12/12/2019 1800.
@@ -10,7 +10,7 @@ public class Deadline extends Task {
 
     public Deadline(String description, String by) {
         super(description);
-        this.by= by;
+        this.by = by;
     }
 
     @Override

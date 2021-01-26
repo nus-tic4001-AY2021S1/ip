@@ -1,11 +1,11 @@
-package Dukes;
+package dukes;
 
-import Dukes.Exceptions.DukeException;
-import Dukes.Tasks.TaskList;
-import Dukes.command.Command;
-import Dukes.parser.Parser;
-import Dukes.storage.Storage;
 
+import dukes.command.Command;
+import dukes.exception.DukeException;
+import dukes.parser.Parser;
+import dukes.storage.Storage;
+import dukes.tasks.TaskList;
 
 /**
  * The Dukes.Duke program implements an application that can store a list of task,save to a txt file.
@@ -20,15 +20,14 @@ public class Duke {
     private final Storage storage;
     private TaskList tasks;
     private final Ui ui;
-    /**
-     * @param path program will store the task in this path
-     */
+
+    /** Path program will store the task in this path. */
     public Duke(String path)  {
         ui = new Ui();
         storage = new Storage(path);
         try {
             tasks = new TaskList(storage.load());
-        } catch ( DukeException e ) {
+        } catch (DukeException e) {
             ui.printLoadingError("Problem reading file. Starting with an empty task list.");
             tasks = new TaskList();
         }
@@ -55,13 +54,14 @@ public class Duke {
             }
         }
     }
+
     /**
-     * This is main method which made use of Dukes.Duke and run methods
+     * This is main method which made use of Dukes.Duke and run methods.
      */
-        public static void main(String[] args){
-            assert (args.length) > 0;
-                new Duke("data/duke.txt").run();
-        }
+    public static void main(String[] args) {
+        assert (args.length) > 0;
+        new Duke("data/duke.txt").run();
+    }
 }
 
 

@@ -1,9 +1,9 @@
-package Dukes.storage;
+package dukes.storage;
 
-import Dukes.Tasks.Deadline;
-import Dukes.Tasks.Event;
-import Dukes.Tasks.Task;
-import Dukes.Tasks.ToDo;
+import dukes.tasks.Deadline;
+import dukes.tasks.Event;
+import dukes.tasks.Task;
+import dukes.tasks.ToDo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,7 +23,7 @@ public class Storage {
         this.path = path;
     }
 
-    public ArrayList<String> load() throws Dukes.Exceptions.FileNotFoundException {
+    public ArrayList<String> load() throws dukes.exception.FileNotFoundException {
         try {
             File file = new File(path);
             file.createNewFile();
@@ -39,7 +39,8 @@ public class Storage {
                 } else if (strArr[0].equals("E")) {
                     tasks = new Event(strArr[2], strArr[3]);
                 } else {
-                    throw new Dukes.Exceptions.FileNotFoundException("Previous Tasks are corrupted. Please resetting your task . .");
+                    throw new dukes.exception.FileNotFoundException("Previous Tasks are corrupted."
+                            + "Please resetting your task.");
                 }
                 if (strArr[1].equals("1")) {
                     tasks.markAsDone();
