@@ -1,4 +1,4 @@
-package duke;
+package duke.main;
 
 import duke.command.Command;
 import duke.exception.DukeException;
@@ -32,26 +32,21 @@ public class Duke {
         }
     }
 
-    public void run() {
-        ui.printWelcome();
-        boolean isBye = false;
-        while (!isBye) {
-            try {
-                String fullCommand = ui.readUserInput();
-                Command c = Parser.parse(fullCommand);
-                c.execute(tasks, ui, storage);
-                isBye = c.isBye();
-            } catch (DukeException e) {
-                ui.printError(e.getMessage());
-            }
-        }
-    }
-
     /**
-     *  Main method of Duke. This is the starting point of the app.
-     *  @param args Command line arguments. Not used.
+     * You should have your own function to generate a response to user input.
+     * Replace this stub with your completed method.
      */
-    public static void main(String[] args) {
-        new Duke("data/tasks.txt").run();
+    public String getResponse(String input) {
+        ui.clearOutput();
+        Command c = Parser.parse(input);
+        try {
+            c.execute(tasks, ui, storage);
+            if (c.isBye()) {
+                System.exit(0);
+            }
+        } catch (DukeException e) {
+            return e.getMessage();
+        }
+        return ui.getOutput();
     }
 }
