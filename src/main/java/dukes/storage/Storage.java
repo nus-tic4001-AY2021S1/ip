@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Represents a storage in the hard disk.
+ * Represents storage in the hard disk.
  */
 public class Storage {
     private ArrayList<String> details = new ArrayList<>();
