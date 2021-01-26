@@ -15,10 +15,11 @@ public abstract class Task {
 
     public abstract boolean getIsDone();
 
-    public String getDescription(){
+    public String getDescription() {
         return this.description;
     }
-    public String toString(){
-        return "["+getStatusIcon()+"]"+" "+getDescription();
+
+    public String toString() {
+        return "[" + getStatusIcon() + "]" + " " + getDescription();
     }
 }
