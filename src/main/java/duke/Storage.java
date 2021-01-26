@@ -13,90 +13,98 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.util.ArrayList;
+
 /**
- * Storage class handles List of task as tempStorage,
+ * Storage class handles List of task as tempStorage.
  */
 
 public class Storage {
-    private String storageFilePath= System.getProperty("user.dir") + File.separator + "data" + File.separator;
+    private String storageFilePath = System.getProperty("user.dir") + File.separator + "data" + File.separator;
+
     private boolean isExit;
-    public Storage(TaskList taskList){
+
+    public Storage(TaskList taskList) {
         isExit = false;
-        try{
+        try {
             loadFromFile(taskList);
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e);
         }
     }
-    public void loadFromFile(TaskList tempStorage) throws IOException{
+
+    public void loadFromFile(TaskList tempStorage) throws IOException {
         File directory = new File(storageFilePath);
-        if(!directory.exists()){
+        if (!directory.exists()) {
             directory.mkdir();
         }
-        File storage=new File(storageFilePath + "duke.txt");
+        File storage = new File(storageFilePath + "duke.txt");
         BufferedReader fileReader = new BufferedReader(new FileReader(storage));
         String savedTask;
-        while((savedTask = fileReader.readLine())!=null) {
+        while ((savedTask = fileReader.readLine()) != null) {
             String taskType = savedTask.split(" \\| ",4)[0];
             String isDone = savedTask.split(" \\| ",4)[1];
             String taskDescription = savedTask.split(" \\| ",4)[2];
-
-            switch(taskType){
-                case "T":
-                    tempStorage.addTask(new Todo(taskDescription));
-                    if(isDone.matches("1")){
-                        tempStorage.setDoneAt(tempStorage.getSize()-1);
-                    }
-                    break;
-                case "D":
-                    String taskDeadline = savedTask.split(" \\| ",4)[3];
-                    tempStorage.addTask(new Deadline(taskDescription,taskDeadline));
-                    if(isDone.matches("1")){
-                        tempStorage.setDoneAt(tempStorage.getSize()-1);
-                    }
-                    break;
-                case "E":
-                    String taskEventTime = savedTask.split(" \\| ",4)[3];
-                    tempStorage.addTask(new Event(taskDescription,taskEventTime));
-                    if(isDone.matches("1")){
-                        tempStorage.setDoneAt(tempStorage.getSize()-1);
-                    }
-                    break;
+            switch (taskType) {
+            case "T":
+                tempStorage.addTask(new Todo(taskDescription));
+                if (isDone.matches("1")) {
+                    tempStorage.setDoneAt(tempStorage.getSize() - 1);
+                }
+                break;
+            case "D":
+                String taskDeadline = savedTask.split(" \\| ",4)[3];
+                tempStorage.addTask(new Deadline(taskDescription,taskDeadline));
+                if (isDone.matches("1")) {
+                    tempStorage.setDoneAt(tempStorage.getSize() - 1);
+                }
+                break;
+            case "E":
+                String taskEventTime = savedTask.split(" \\| ",4)[3];
+                tempStorage.addTask(new Event(taskDescription,taskEventTime));
+                if (isDone.matches("1")) {
+                    tempStorage.setDoneAt(tempStorage.getSize() - 1);
+                }
+                break;
+            default:
+                break;
             }
         }
         fileReader.close();
     }
+
     public void saveToFile(TaskList tempStorage) throws IOException {
         File storage = new File(storageFilePath);
         BufferedWriter toSaveTask = new BufferedWriter(new FileWriter(storage));
-        for(int i = 0;i< tempStorage.getSize();i++){
+        for (int i = 0;i < tempStorage.getSize();i++) {
             toSaveTask.write(outputTaskForSave(tempStorage.getTask(i)));
-            if(i!=tempStorage.getSize()-1){
+            if (i != tempStorage.getSize() - 1) {
                 toSaveTask.newLine();
             }
         }
         toSaveTask.close();
     }
-    public String outputTaskForSave(Task toSave){
-        int isDone=0;
-        if(toSave.getIsDone()){
-            isDone=1;
+
+    public String outputTaskForSave(Task toSave) {
+        int isDone = 0;
+        if (toSave.getIsDone()) {
+            isDone = 1;
         }
-        if(toSave instanceof Deadline){
-            return "D | "+isDone+" | "+ toSave.getDescription()+ " | "+((Deadline) toSave).getByForFile();
-        }else if(toSave instanceof Event){
-            return "E | "+isDone+" | "+ toSave.getDescription()+ " | "+((Event) toSave).getAtForFile();
-        }else if(toSave instanceof Todo){
-            return "T | "+isDone+" | "+ toSave.getDescription();
+        if (toSave instanceof Deadline) {
+            return "D | " + isDone + " | " + toSave.getDescription() + " | " + ((Deadline) toSave).getByForFile();
+        } else if (toSave instanceof Event) {
+            return "E | " + isDone + " | " + toSave.getDescription() + " | " + ((Event) toSave).getAtForFile();
+        } else if (toSave instanceof Todo) {
+            return "T | " + isDone + " | " + toSave.getDescription();
         } else {
             return "";
         }
     }
 
-    public void toExit(){
-        isExit=true;
+    public void toExit() {
+        isExit = true;
     }
-    public boolean getIsExit(){
+
+    public boolean getIsExit() {
         return isExit;
     }
 }
