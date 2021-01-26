@@ -14,6 +14,7 @@ import java.util.Scanner;
  * @version A-MoreOOP
  * @since 20/08/2020
  */
+
 public class Duke {
     private final Ui ui = new Ui();
     private final Parser parser = new Parser();
@@ -37,7 +38,9 @@ public class Duke {
         while (true) {
             Command command = parser.parseInput(in.nextLine(), ui, tasks, database);
             command.execute();
-            if (ExitCommand.class.isAssignableFrom(command.getClass())) return;
+            if (ExitCommand.class.isAssignableFrom(command.getClass())) {
+                return;
+            }
         }
     }
 }

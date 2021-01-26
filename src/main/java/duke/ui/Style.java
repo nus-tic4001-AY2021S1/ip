@@ -2,6 +2,7 @@ package duke.ui;
 /**
  * Defines the style of graphical content for the whole program.
  */
+
 public enum Style {
     BORDERLINE("\n⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢\n"),
 

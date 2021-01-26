@@ -1,5 +1,6 @@
 package duke.database;
 
+import duke.commands.InvalidCommand;
 import duke.commands.ListCommand;
 import duke.task.TaskList;
 import duke.task.Todo;
@@ -16,6 +17,7 @@ import java.util.Scanner;
 /**
  * Responsible for all interactions between the in-memory tasks and the tasks file.
  */
+
 public class Database {
     String fileName;
 
@@ -64,11 +66,17 @@ public class Database {
             String taskDescription = line.split("]")[2].trim();
 
             switch (taskType) {
-                case "Todo" -> tasks.add(new Todo("[Todo]     " + taskDescription));
-                case "Deadline" -> tasks.add(new Deadline("[Deadline] " + taskDescription));
-                case "Event" -> tasks.add(new Event("[Event]    " + taskDescription));
+            case "Todo": tasks.add(new Todo("[Todo]     " + taskDescription));
+                        break;
+            case "Deadline": tasks.add(new Deadline("[Deadline] " + taskDescription));
+                        break;
+            case "Event": tasks.add(new Event("[Event]    " + taskDescription));
+                        break;
+            default:
+                ui.printInvalidTask();
+                break;
             }
-            if (taskStatus.equals("\u2713")) {
+            if (taskStatus.equals("✓")) {
                 tasks.get(tasks.size() - 1).setDone();
             }
         }

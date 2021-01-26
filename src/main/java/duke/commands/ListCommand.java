@@ -2,6 +2,7 @@ package duke.commands;
 
 import duke.task.TaskList;
 import duke.ui.Ui;
+
 /**
  * A command to print out all tasks in the list.
  */
