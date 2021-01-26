@@ -9,13 +9,18 @@ import java.io.IOException;
 
 /**
  * An abstract Command Class to provide structure for
- * other commands
+ * other commands.
  */
 public abstract class Command {
     protected String commandBody;
-    public Command(String fullCommand){
-        this.commandBody=fullCommand;
+
+    public Command(String fullCommand) {
+        this.commandBody = fullCommand;
     }
-    public Command(){ }
+
+    public Command() {
+
+    }
+
     public abstract void execute(Ui ui, Storage storage, TaskList taskList) throws DukeException, IOException;
 }

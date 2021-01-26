@@ -6,6 +6,7 @@ public class Duke {
     public static void run(){
 
     }
+
     public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -18,11 +19,11 @@ public class Duke {
         Storage store = new Storage(taskList);
         Parser parser = new Parser();
         ui.greetUser();
-        while(!store.getIsExit()){
+        while (!store.getIsExit()) {
             try {
                 parser.getCommand(ui.readCommand(), store, ui, taskList);
             } catch (Exception e) {
-                ui.indentPrint("☹ OOPS!!! " +e.getMessage());
+                ui.indentPrint("☹ OOPS!!! " + e.getMessage());
             }
             ui.printLine();
         }
