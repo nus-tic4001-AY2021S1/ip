@@ -6,6 +6,7 @@ import duke.ui.Ui;
 /**
  * An abstract class that is inherited by every command.
  */
+
 public abstract class Command {
     public String line;
     public TaskList tasks;
@@ -34,5 +35,5 @@ public abstract class Command {
         this.ui = ui;
     }
 
-    public abstract void execute();
+    public abstract String execute();
 }

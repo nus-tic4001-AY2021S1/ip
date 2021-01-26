@@ -2,6 +2,7 @@ package duke.commands;
 
 import duke.task.TaskList;
 import duke.ui.Ui;
+
 /**
  * A command to print out all tasks in the list.
  */
@@ -13,15 +14,14 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public String execute()  {
         if (tasks.size() == 0) {
-            ui.printBorderlines("It appears that you have no tasks! Perhaps you should start creating one?");
-            return;
+            return ui.printRed("It appears that you have no tasks! Perhaps you should start creating one?");
         }
         String total = "Here are the tasks that you currently have!\n";
         for (int i = 0; i < tasks.size(); i++) {
-            total = total.concat((i + 1) + ". " + tasks.get(i).getDescription()) + "\n";
+            total = total.concat((i + 1) + ". " + tasks.get(i).getDescription()) + System.lineSeparator();
         }
-        ui.printBorderlines(total);
+        return total;
     }
 }

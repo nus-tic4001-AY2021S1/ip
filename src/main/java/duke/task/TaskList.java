@@ -5,6 +5,7 @@ import java.util.ArrayList;
  * Responsible for methods regarding the task list.
  * This class will use an ArrayList inside it.
  */
+
 public class TaskList {
     private final ArrayList<Task> tasks;
 

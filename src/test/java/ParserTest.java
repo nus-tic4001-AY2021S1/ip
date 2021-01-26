@@ -19,6 +19,8 @@ public class ParserTest {
         Command first = parser.parseInput("todo something", ui, tasks, database);
         TodoCommand second = new TodoCommand("something", tasks, ui, database);
 
-        assertEquals(TodoCommand.class.isAssignableFrom(first.getClass()), TodoCommand.class.isAssignableFrom(second.getClass()));
+        assertEquals(
+            TodoCommand.class.isAssignableFrom(first.getClass()),
+            TodoCommand.class.isAssignableFrom(second.getClass()));
     }
 }

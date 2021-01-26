@@ -6,6 +6,7 @@ import duke.ui.Ui;
 /**
  * A command to print out all tasks that matches the search word.
  */
+
 public class FindCommand extends Command {
     public static final String word = "find";
 
@@ -14,15 +15,13 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public String execute()  {
         String searchWord = line.trim();
         if (tasks.size() == 0) {
-            ui.printBorderlines("It appears that you have no tasks! Perhaps you should start creating one?");
-            return;
+            return "It appears that you have no tasks! Perhaps you should start creating one?";
         }
         if (searchWord.isEmpty()) {
-            ui.printBorderlines("Please type in the 'find <word>' format!");
-            return;
+            return ui.printRed("Please type in the 'find <word>' format!");
         }
         String matches = "Here are the tasks that matches '" + searchWord + "'!\n";
         boolean hasMatch = false;
@@ -33,9 +32,9 @@ public class FindCommand extends Command {
             }
         }
         if (!hasMatch) {
-            matches = "It appears that are no matches for '" + searchWord + "'!\n" +
-                    "Perhaps you could try searching another word?";
+            matches = "It appears that are no matches for '" + searchWord + "'!\n"
+                + "Perhaps you could try searching another word?";
         }
-        ui.printBorderlines(matches);
+        return matches;
     }
 }

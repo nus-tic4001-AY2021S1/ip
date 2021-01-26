@@ -2,6 +2,7 @@ package duke.task;
 /**
  * An abstract class that is inherited by the duke.task.Todo, duke.task.Deadline and duke.task.Event classes.
  */
+
 public abstract class Task {
     String task;
     private boolean isDone;
@@ -15,7 +16,7 @@ public abstract class Task {
     }
 
     String getTaskStatus(Boolean isDone) {
-        return "[" + (isDone ? "\u2713" : "\u2718") + "] "; //return tick or X symbols
+        return "[" + (isDone ? "D" : "X") + "] ";
     }
 
     public String getDescription() {
