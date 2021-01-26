@@ -31,7 +31,7 @@ public class Storage {
             while (in.hasNext()) {
                 String input = in.nextLine();
                 String[] strArr = input.split(" \\| ");
-                Task tasks = null;
+                Task tasks;
                 if (strArr[0].equals("T")) {
                     tasks = new ToDo(strArr[2]);
                 } else if (strArr[0].equals("D")) {
