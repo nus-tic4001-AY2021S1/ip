@@ -70,7 +70,7 @@ public class Ui {
 
     public String printTaskCompleted(int index, TaskList tasks) {
         return "Good work there! Now we have:\n"
-            + colorGreen("Task [" + index + "] ")
+            + colorGreen(index + ". ")
             + tasks.get(index - 1).getDescription() + colorGreen(" set as completed!");
     }
 

@@ -77,7 +77,7 @@ public class Database {
                 ui.printInvalidTask();
                 break;
             }
-            if (taskStatus.equals("✓")) {
+            if (taskStatus.equals("D")) {
                 tasks.get(tasks.size() - 1).setDone();
             }
         }

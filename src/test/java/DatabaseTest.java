@@ -18,6 +18,6 @@ public class DatabaseTest {
         lines.add("1. [✘] [Todo]     something");
         database.extractTasks(lines, tasks, ui, database);
 
-        assertEquals(tasks.get(0).getDescription(), "[✘] [Todo]     something");
+        assertEquals(tasks.get(0).getDescription(), "[X] [Todo]     something");
     }
 }

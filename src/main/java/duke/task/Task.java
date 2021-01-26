@@ -16,7 +16,7 @@ public abstract class Task {
     }
 
     String getTaskStatus(Boolean isDone) {
-        return "[" + (isDone ? "\u2713" : "\u2718") + "] "; //return tick or X symbols
+        return "[" + (isDone ? "D" : "X") + "] ";
     }
 
     public String getDescription() {
