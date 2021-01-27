@@ -50,7 +50,7 @@ public abstract class Task {
      */
     public String getStatusIcon() {
         //return tick or X symbol based on isDone value
-        return (isDone ? "Y" : "N");
+        return (isDone ? "\u2713" : "\u2718");
     }
 
     /**
