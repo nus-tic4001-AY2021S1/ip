@@ -33,7 +33,9 @@ public class Ui {
 
     public void printRemovedTask(int size, String taskDescription) {
         output.append("Noted! I've removed this task: ");
+        output.append(System.lineSeparator());
         output.append(taskDescription);
+        output.append(System.lineSeparator());
         output.append("Now you have ");
         output.append(size);
         output.append(" tasks in the list.");
@@ -66,10 +68,12 @@ public class Ui {
             output.append("Sorry, there is no matching task.");
         } else {
             output.append("Here are the matching tasks in your list:");
+            output.append(System.lineSeparator());
             for (int i = 0; i < searchResultIndexes.size(); i++) {
                 output.append(i + 1);
                 output.append(". ");
                 output.append(tasks.getTask(searchResultIndexes.get(i)).toString());
+                output.append(System.lineSeparator());
             }
         }
     }
