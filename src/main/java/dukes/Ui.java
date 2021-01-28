@@ -103,6 +103,5 @@ public class Ui {
         System.out.println("Nice! I've marked this task as done:\n"
                 + task);
     }
-
 }
 
