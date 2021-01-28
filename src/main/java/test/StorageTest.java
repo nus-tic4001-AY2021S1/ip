@@ -1,22 +1,23 @@
-import java.io.FileNotFoundException;
-import java.nio.file.NoSuchFileException;
+package test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.jupiter.api.Test;
 
 import data.Deadline;
 import data.Task;
 import data.TaskList;
 import data.Todo;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import exception.DukeException;
-import org.junit.jupiter.api.Test;
 import storage.Storage;
 
 public class StorageTest {
     @Test
-    public void saveTasks() throws FileNotFoundException, DukeException, NoSuchFileException {
+    public void saveTasks() throws IOException, DukeException {
         Storage storage = new Storage("data/tasks_tests.txt");
         List<Task> tasks = new ArrayList<>();
         tasks.add(new Todo("Task 1"));

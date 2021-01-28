@@ -28,6 +28,13 @@ public class Storage {
         return filePath;
     }
 
+    /**
+     * load() extracts values from each line and creates tasks to be loaded for Duke.
+     * @return loadedTasks
+     * @throws FileNotFoundException
+     * @throws DukeException
+     * @throws NoSuchFileException
+     */
     public List<Task> load() throws FileNotFoundException, DukeException, NoSuchFileException {
         List<Task> loadedTasks = new ArrayList<>();
 
@@ -75,21 +82,20 @@ public class Storage {
     }
 
     /**
-     * Returns the lines in the form of a List<String> variable
+     * Returns the lines in the form of a List<String> variable.
      *
      * @param filePath
      * @return List<String> lines
-     * @throws FileNotFoundException
+     * @throws IOException
      */
-    private List<String> getLines(String filePath) throws FileNotFoundException, NoSuchFileException {
+    private List<String> getLines(String filePath) throws DukeException {
         List<String> lines = new ArrayList<String>();
 
         try {
             lines = Files.readAllLines(Paths.get(filePath));
-        } catch (IOException e) {
-
+        } catch (Exception e) {
+            throw new DukeException("Error in creating a task from save file");
         }
-
         return lines;
     }
 
@@ -119,7 +125,6 @@ public class Storage {
 
 
             FileWriter fw = new FileWriter(this.filePath);
-
 
             // create a File for the given file path
             File f = new File(this.filePath);

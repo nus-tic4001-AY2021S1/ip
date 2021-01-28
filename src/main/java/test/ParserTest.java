@@ -1,3 +1,5 @@
+package test;
+
 import exception.DukeException;
 import data.Todo;
 import parser.Parser;

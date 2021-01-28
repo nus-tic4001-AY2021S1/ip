@@ -1,10 +1,13 @@
 package data;
 
-import data.Todo;
-
 public class Deadline extends Todo {
     private String deadLine;
 
+    /**
+     * Deadline constructor.
+     * @param description
+     * @param deadLine
+     */
     public Deadline(String description, String deadLine) {
         super(description);
         this.deadLine = deadLine;
