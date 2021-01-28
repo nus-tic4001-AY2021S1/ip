@@ -27,9 +27,8 @@ public class Ui {
      * @param t A normal task
      * @param tasks the stored task list
      */
-    public void printTask(Task t, TaskList tasks) {
-        System.out.println("Got it. I've added this task:");
-        System.out.println(t.toString());
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+    public String printTask(Task t, TaskList tasks) {
+        return "Got it. I've added this task:" + System.lineSeparator() + t.toString() + System.lineSeparator()
+                + "Now you have " + tasks.size() + " tasks in the list.";
     }
 }
