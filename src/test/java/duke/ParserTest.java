@@ -1,6 +1,8 @@
-package dukes;
+package duke;
 
 
+import dukes.command.Command;
+import dukes.command.ExitCommand;
 import dukes.parser.Parser;
 import org.junit.jupiter.api.Test;
 

@@ -9,38 +9,26 @@ repositories {
     mavenCentral()
     jcenter()
 }
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
 
 dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.0'
-    // https://mvnrepository.com/artifact/com.sun.mail/javax.mail
-    testCompile 'junit:junit:4.12'
-    compile 'junit:junit:4.12'
-
 }
 
 test {
     useJUnitPlatform()
+
     testLogging {
         events "passed", "skipped", "failed"
+
         showExceptions true
         exceptionFormat "full"
         showCauses true
         showStackTraces true
         showStandardStreams = false
     }
-}
-
-jar{
-    manifest {
-        attributes(
-                'Main-Class': 'dukes.Duke'
-        )
-    }
-}
-
-run {
-    enableAssertions = true
 }
 
 application {
