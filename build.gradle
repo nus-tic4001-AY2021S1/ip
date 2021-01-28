@@ -44,7 +44,7 @@ test {
 }
 
 application {
-    mainClassName = "seedu.duke.Duke"
+    mainClassName = "NUS.Duke.Duke"
 }
 
 shadowJar {
@@ -59,3 +59,4 @@ checkstyle {
 run{
     standardInput = System.in
 }
+
