@@ -1,6 +1,6 @@
 package duke;
 
-public class ToDos extends Task{
+public class ToDos extends Task {
 
     //protected String by;
 

@@ -20,6 +20,10 @@ checkstyleMain {
     source ='src/main/java'
 }
 
+//application {
+//    mainClassName = "duke.Duke"
+//}
+
 checkstyleTest {
     source ='src/test/java'
 }
@@ -39,6 +43,4 @@ dependencies {
     //)
 }
 
-application {
-    mainClassName = "duke.Duke"
-}
+

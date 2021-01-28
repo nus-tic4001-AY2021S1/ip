@@ -5,7 +5,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Deadlines extends Task {
-    protected String by, time;
+    protected String by;
+    protected String time;
     protected LocalDate deadline;
     protected LocalTime timeline;
 
@@ -13,7 +14,8 @@ public class Deadlines extends Task {
         super(description);
         this.deadline = by;
     }
-    public Deadlines(String description, LocalDate by, LocalTime time ) {
+
+    public Deadlines(String description, LocalDate by, LocalTime time) {
         super(description);
         this.deadline = by;
         this.timeline = time;
@@ -22,13 +24,13 @@ public class Deadlines extends Task {
     //@Override
     public String toString() {
         //return "[D]" + super.toString() + " (by: " + by + ")";
-        if(timeline != null) {
-            return "[D]" + "[" + this.getStatusIcon() + "] " +  this.description + " (by: " +
-                    deadline.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + " " +
-                    timeline.format(DateTimeFormatter.ofPattern("kk:mm")) + ")";
+        if (timeline != null) {
+            return "[D]" + "[" + this.getStatusIcon() + "] " +  this.description + " (by: "
+                    + deadline.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + " "
+                    + timeline.format(DateTimeFormatter.ofPattern("kk:mm")) + ")";
         } else {
-            return "[D]" + "[" + this.getStatusIcon() + "] " +  this.description + " (by: " +
-                    deadline.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
+            return "[D]" + "[" + this.getStatusIcon() + "] " +  this.description + " (by: "
+                    + deadline.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
         }
 
     }

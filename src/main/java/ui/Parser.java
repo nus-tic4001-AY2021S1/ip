@@ -8,7 +8,7 @@ import duke.Action;
 import java.util.ArrayList;
 
 /**
- * This class is to understand User input and ensure all request are handled by different classes
+ * This class is to understand User input and ensure all request are handled by different classes.
  *
  */
 public class Parser {
@@ -70,8 +70,8 @@ public class Parser {
                 break;
 
             default:
-                System.out.println(Global.PATTERNLINE + "\nYou have entered invalid input. Please re-input or \n" +
-                        "Enter bye to terminate the program.\n" + Global.PATTERNLINE);
+                System.out.println(Global.PATTERNLINE + "\nYou have entered invalid input. Please re-input or \n"
+                        + "Enter bye to terminate the program.\n" + Global.PATTERNLINE);
 
             }
         } catch (Exception m) {
@@ -83,24 +83,24 @@ public class Parser {
      * This method analysed and clasified the user input to Process input accordingly.
      * Any unknown command will be throw.
      */
-    private static Action validateCommand (String command) throws DukeException {
-        if(command.startsWith("list")) {
+    private static Action validateCommand(String command) throws DukeException {
+        if (command.startsWith("list")) {
             return  Action.List;
         } else if (command.startsWith("find")) {
             return Action.Find;
         } else if (command.startsWith("delete")) {
             return Action.Delete;
-        } else if (command.length()> 4 && command.substring(0, 4).equals("done")) {
+        } else if (command.length() > 4 && command.substring(0, 4).equals("done")) {
             return Action.Done;
-        } else if (command.length()> 3 && command.substring(0, 4).equals("todo")) {
+        } else if (command.length() > 3 && command.substring(0, 4).equals("todo")) {
             return Action.AddTodo;
-        } else if (command.length()> 7 && command.substring(0, 8).equals("deadline")) {
+        } else if (command.length() > 7 && command.substring(0, 8).equals("deadline")) {
             return Action.AddDeadlines;
-        } else if (command.length()> 4 && command.substring(0, 5).equals("event")) {
+        } else if (command.length() > 4 && command.substring(0, 5).equals("event")) {
             return Action.AddEvents;
         } else {
-            throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(\n" +
-                    "Please re-input or enter bye to terminate the program");
+            throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(\n"
+                    + "Please re-input or enter bye to terminate the program");
         }
     }
 
@@ -108,14 +108,14 @@ public class Parser {
         int index = 0;
 
         // If user input done1 instead of done 1
-        if(command.contains(" ")) {
+        if (command.contains(" ")) {
             index = Integer.parseInt(command.substring(5));
         } else {
             index = Integer.parseInt(command.substring(4));
         }
 
         try {
-            tasks.get(index-1).markAsDone();
+            tasks.get(index - 1).markAsDone();
             Ui.replyMarkedDone(tasks, index);
         } catch (IndexOutOfBoundsException e) {
             Ui.errIndexOutOfBoundsException();

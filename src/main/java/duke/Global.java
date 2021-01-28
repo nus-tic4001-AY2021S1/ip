@@ -1,5 +1,6 @@
 package duke;
 
 public class Global {
-    public static final String PATTERNLINE = "___________________________________________________________________________";
+    public static final String PATTERNLINE = "__________________"
+            + "_________________________________________________________";
 }

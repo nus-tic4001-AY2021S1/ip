@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 
 /**
- * This class in charge of memory side, where Task  will read from or write to the txt File
+ * This class in charge of memory side, where Task  will read from or write to the txt File.
  * File Path is a fixed Path, file address is passed from main class.
  */
 public class Storage {
@@ -29,31 +29,31 @@ public class Storage {
     }
 
     public static void createFile() throws IOException, DukeException {
-        File f = new File ("ip/record.txt");
+        File f = new File("ip/record.txt");
         boolean result = f.createNewFile();
-        if(!result) {
+        if (!result) {
             throw new DukeException("File Not Found");
         }
     }
 
     /**
-     * This method append Task List to File, to be called whenever new tasks was entered
+     * This method append Task List to File, to be called whenever new tasks was entered.
      */
-    public static void addToFile(ArrayList<Task> tasks) throws IOException{
+    public static void addToFile(ArrayList<Task> tasks) throws IOException {
 
         FileWriter fw = new FileWriter(FILEPATH, true);
         int index = tasks.size();
-        fw.write(String.valueOf(tasks.get(index-1))+ "\n");
+        fw.write(String.valueOf(tasks.get(index - 1)) + "\n");
         fw.close();
     }
 
     /**
-     * This method update the current Task List to File before the program terminate
+     * This method update the current Task List to File before the program terminate.
      */
     public static void writeToFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(FILEPATH, false);
         for(int i = 0; i < tasks.size(); i++) {
-            fw.write(String.valueOf(tasks.get(i)+ "\n"));
+            fw.write(String.valueOf(tasks.get(i) + "\n"));
         }
         fw.close();
     }
@@ -71,7 +71,7 @@ public class Storage {
     }
 
     //public static void load (ArrayList<Task> tasks) throws IOException {
-    public static ArrayList<Task> load () throws IOException, DukeException  {
+    public static ArrayList<Task> load() throws IOException, DukeException  {
 
 
         File fw = new File(FILEPATH);
@@ -93,54 +93,54 @@ public class Storage {
             } else {
                 addEventsToArray(tasks, item, count);
             }
-            count ++;
+            count++;
         }
 
         return tasks;
     }
 
-    private static void addTodosToArray (ArrayList<Task> tasks, String line, int ArrIndex) {
+    private static void addTodosToArray(ArrayList<Task> tasks, String line, int ArrIndex) {
         String status = line.substring(4,5);
         String taskName = line.substring(7);
-        tasks.add(new ToDos (taskName));
-        if(status.equals("\u2713") ) {
+        tasks.add(new ToDos(taskName));
+        if (status.equals("\u2713")) {
             tasks.get(ArrIndex).markAsDone();
         }
     }
 
-    private static void addDeadlinesToArray(ArrayList<Task> tasks, String line, int ArrIndex){
+    private static void addDeadlinesToArray(ArrayList<Task> tasks, String line, int ArrIndex) {
         int index = line.indexOf("(by");
-        String taskName = line.substring(7, index-1);
+        String taskName = line.substring(7, index - 1);
         String status = line.substring(4,5);
-        String tschedule = line.substring(line.length() - 6, line.length() -1);
+        String tschedule = line.substring(line.length() - 6, line.length() - 1);
 
-        if(tschedule.contains(":")){
+        if (tschedule.contains(":")) {
 
-            String schedule = line.substring(index + 5, line.length()-7);
+            String schedule = line.substring(index + 5, line.length() - 7);
             LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
             LocalTime timeline = LocalTime.parse(tschedule);
             tasks.add(new Deadlines(taskName, dateline,timeline));
 
-        } else{
+        } else {
 
-            String schedule = line.substring(index + 5, line.length()-1);
+            String schedule = line.substring(index + 5, line.length() - 1);
             LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
             tasks.add(new Deadlines(taskName, dateline));
 
         }
 
-        if(status.equals("\u2713") ) {
+        if (status.equals("\u2713")) {
             tasks.get(ArrIndex).markAsDone();
         }
     }
 
-    private static void addEventsToArray (ArrayList <Task> tasks, String line, int ArrIndex) {
+    private static void addEventsToArray(ArrayList<Task> tasks, String line, int ArrIndex) {
         int index = line.indexOf("(at");
         String status = line.substring(4,5);
-        String schedule = line.substring(index + 4, line.length()-1);
-        String taskName = line.substring(line.indexOf(" ")+1, index);
+        String schedule = line.substring(index + 4, line.length() - 1);
+        String taskName = line.substring(line.indexOf(" ") + 1, index);
         tasks.add(new Events(taskName, schedule));
-        if(status.equals("\u2713") ) {
+        if (status.equals("\u2713")) {
             tasks.get(ArrIndex).markAsDone();
         }
 

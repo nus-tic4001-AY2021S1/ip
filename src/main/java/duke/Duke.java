@@ -29,10 +29,10 @@ public class Duke {
     public void run() throws IOException {
 
         Scanner in = new Scanner(System.in);
-        while(in.hasNextLine()){
+        while (in.hasNextLine()) {
             String input = in.nextLine();
 
-            if(!(input.toLowerCase()).equals("bye")) {
+            if (!(input.toLowerCase()).equals("bye")) {
                 Parser.processInput(input, tasks.getTasksArr());
             } else {
                 ui.greetNote("bye");
