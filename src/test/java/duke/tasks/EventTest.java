@@ -38,6 +38,6 @@ public class EventTest {
 
     @Test
     void testToString() {
-        assertEquals("[E][X] To try out Event (at: Wednesday, Oct 14, 2020 22:00:00 PM)", task2.toString());
+        assertEquals("[E][✘] To try out Event (at: Wednesday, Oct 14, 2020 22:00:00 PM)", task2.toString());
     }
 }

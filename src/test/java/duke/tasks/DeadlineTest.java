@@ -25,6 +25,6 @@ class DeadlineTest {
 
     @Test
     void testToString() {
-        assertEquals("[D][X] To try out Event (by: Wednesday, October 14, 2020)", task.toString());
+        assertEquals("[D][✘] To try out Event (by: Wednesday, October 14, 2020)", task.toString());
     }
 }

@@ -1,43 +1,38 @@
 package duke.commands;
 
-import duke.TaskList;
+import duke.util.Storage;
+import duke.util.TaskList;
 import duke.tasks.Task;
-import duke.Ui;
+import duke.ui.Ui;
 
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
-public class FindCommand {
+public class FindCommand extends Command {
 
-    // An array list of task objects
-    private ArrayList<Task> taskList;
-
-    /** .
-     * creating an Task object
-     */
-    public FindCommand() {
-        taskList = TaskList.getList();
+    public FindCommand(String input) {
+        super(input);
+        //taskList = TaskList.getList();
     }
 
-
-    /** .
-     * A method to find a task by searching for a keyword.
-     * Show the message to user and notify the user that "Here are the matching tasks in your list"
-     *
-     * @param line get the task content from txt file, which contains keyword
-     */
-    public void executeCommand(String line) {
+    @Override
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         String taskDescription;
         ArrayList<Task> taskListKeywordFound = new ArrayList<>();
+        StringJoiner response = new StringJoiner("\n");
 
         int matchedCount = 0;
-        for (Task task : taskList) {
-            taskDescription = task.toString();
-            if (taskDescription.toLowerCase().contains(line.toLowerCase())) {
+        for (int i = 0; i < taskList.size(); i++) {
+            taskDescription = taskList.get(i).toString();
+            if (taskDescription.toLowerCase().contains(input.toLowerCase())) {
                 matchedCount = matchedCount + 1;
-                taskListKeywordFound.add(task);
+                taskListKeywordFound.add(taskList.get(i));
                 // once there is a match to a task, add this task to the new task list:taskListKeywordFound
             }
+
         }
+
+
         if (matchedCount == 0) {
             Ui.showMessage("Sorry! Cannot find any matched tasks in your list.");
         } else {
@@ -45,14 +40,24 @@ public class FindCommand {
             for (int i = 0; i < taskListKeywordFound.size(); i++) {
                 Ui.showMessage((i + 1) + "." + taskListKeywordFound.get(i).toString());
                 // display the matched tasks to user from the task list:taskListKeywordFound
+
+                response.add(String.format("%d.%s", i + 1, taskListKeywordFound.get(i).toString()));
+
             }
         }
 
-
+        if (matchedCount == 0) {
+            return "Sorry! Cannot find any matched tasks in your list.";
+        } else {
+            return String.format(
+                    "Here are the matching tasks in your list:\n%s",response.toString());
+        }
     }
 
-
-
-
-
 }
+
+
+
+
+
+

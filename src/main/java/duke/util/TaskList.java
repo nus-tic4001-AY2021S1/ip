@@ -1,10 +1,11 @@
-package duke;
+package duke.util;
 
 import duke.exceptions.DukeException;
 import duke.tasks.Deadline;
 import duke.tasks.Event;
 import duke.tasks.Task;
 import duke.tasks.Todo;
+import duke.ui.Ui;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -72,6 +73,16 @@ public class TaskList {
 
         return false;
     }
+
+    /**
+     * Adds a task to the list of tasks.
+     *
+     * @param task The task to add.
+     */
+    public void add(Task task) {
+        taskList.add(task);
+    }
+
 
     /** .
      * Adding a Task object in ArrayList
@@ -229,7 +240,6 @@ public class TaskList {
                 if (i == taskIndex) {
                     Ui.showMessage("Nice! I've marked this task as done: ");
                     taskList.get(i).setDone();
-
                     Ui.showMessage("[" + taskList.get(i).getStatusIcon() + "] " + taskList.get(i).getDescription());
                 }
 
@@ -239,6 +249,34 @@ public class TaskList {
         } catch (Exception e) {
             Ui.showMessage(e.getMessage());
         }
+    }
+
+
+
+    /**
+     * Returns the size of the list of tasks.
+     *
+     * @return The size of the list of tasks.
+     */
+    public int size() {
+        return taskList.size();
+    }
+
+    public Task remove(int index) {
+        return taskList.remove(index);
+    }
+
+
+
+
+    /**
+     * Returns a task from the list of tasks without removing it.
+     *
+     * @param index The index of the task to return.
+     * @return The task corresponding to the given index.
+     */
+    public Task get(int index) {
+        return taskList.get(index);
     }
 
 
@@ -298,8 +336,10 @@ public class TaskList {
     }
 
 
-
-
+    public void clear() {
+        // clear function used
+        taskList.clear();
+    }
 }
 
 
