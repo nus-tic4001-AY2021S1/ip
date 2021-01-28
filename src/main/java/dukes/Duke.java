@@ -6,6 +6,18 @@ import dukes.exception.DukeException;
 import dukes.parser.Parser;
 import dukes.storage.Storage;
 import dukes.tasks.TaskList;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * The Dukes.Duke program implements an application that can store a list of task,save to a txt file.
@@ -17,9 +29,16 @@ import dukes.tasks.TaskList;
  * @since 18/1/2021
  */
 public class Duke {
-    private final Storage storage;
+    private Storage storage;
     private TaskList tasks;
-    private final Ui ui;
+    private Ui ui;
+    private ScrollPane scrollPane;
+    private VBox dialogContainer;
+    private TextField userInput;
+    private Button sendButton;
+    private Scene scene;
+    private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
+    private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     /** Path program will store the task in this path. */
     public Duke(String path)  {
@@ -31,6 +50,10 @@ public class Duke {
             ui.printLoadingError("Problem reading file. Starting with an empty task list.");
             tasks = new TaskList();
         }
+    }
+
+    public Duke() {
+
     }
 
     /**
@@ -53,6 +76,14 @@ public class Duke {
                 ui.showLine();
             }
         }
+    }
+    /**
+     * You should have your own function to generate a response to user input.
+     * Replace this stub with your completed method.
+     */
+
+    String getResponse(String input) {
+        return "Duke heard: " + input;
     }
 
     /**
