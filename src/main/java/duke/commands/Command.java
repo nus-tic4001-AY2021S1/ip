@@ -1,7 +1,10 @@
 package duke.commands;
 
+import duke.util.Storage;
+import duke.exceptions.DukeException;
 import duke.tasks.Task;
-import duke.TaskList;
+import duke.util.TaskList;
+import duke.ui.Ui;
 
 import java.util.ArrayList;
 
@@ -10,16 +13,28 @@ import java.util.ArrayList;
  */
 public abstract class Command {
     // An array list of task objects
-    private ArrayList<Task> taskList;
+    public ArrayList<Task> taskList;
 
-    /** .
-     * creating an Task object
-     */
-    public Command() {
-        taskList = TaskList.getList();
+    protected String input;
+
+
+    Command(String input) {
+        this.input = input;
+
     }
 
-    public abstract void executeCommand(); // create abstract
+
+
+    /**
+     * Executes the command and then returns a response.
+     *
+     * @param taskList Contains the current tasks.
+     * @param ui Responsible for displaying information to the user.
+     * @param storage Reads and stores data into memory.
+     * @throws DukeException If could not execute command.
+     */
+    public abstract String execute(TaskList taskList, Ui ui, Storage storage)
+            throws DukeException;
 
 
 }

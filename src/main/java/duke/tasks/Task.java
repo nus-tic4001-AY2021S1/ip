@@ -26,8 +26,8 @@ public abstract class Task {
      * @return a String containing the icon: tick or X symbols
      */
     public String getStatusIcon() {
-        return (isDone ? "Tick" : "X");
-        //(isDone ? "\u2713" : "\u2718", return tick or X symbols .
+        return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
+        //(isDone ? "\u2713" : "\u2718", return tick or X symbols . (isDone ? "Tick" : "X");
     }
 
     /** .

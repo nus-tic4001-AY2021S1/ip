@@ -9,6 +9,6 @@ class TodoTest {
 
     @Test
     void testToString() {
-        assertEquals("[T][X] To try out Todo", task1.toString());
+        assertEquals("[T][✘] To try out Todo", task1.toString());
     }
 }
