@@ -28,7 +28,7 @@ public class Duke {
             if (e.toString().contains("FileNotFoundException") || e.toString().contains("NoSuchFileException")) {
 
             } else if (e.toString().contains("DukeException")) {
-                ui.showToUser(Constants.FileNotReadableException);
+                ui.showToUser(Constants.FILE_NOT_READABLE_EXCEPTION);
             }
             tasks = new TaskList(new ArrayList<>());
         }

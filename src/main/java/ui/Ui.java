@@ -1,9 +1,8 @@
 package ui;
-
-import data.Task;
-
 import java.util.List;
 import java.util.Scanner;
+
+import data.Task;
 
 public class Ui {
 
@@ -37,11 +36,17 @@ public class Ui {
         System.out.print(Constants.GREETING);
     }
 
+    /**
+     * Prints Farewell message
+     */
     public static void printGoodBye() {
-
         System.out.println(Constants.FAREWELL);
     }
 
+    /**
+     * Prints each task with formatting.
+     * @param tasks
+     */
     public void printTasks(List<Task> tasks) {
         System.out.println(Constants.H_LINE);
         System.out.println(Constants.DISPLAY_TASK_LIST);
@@ -63,6 +68,10 @@ public class Ui {
         }
     }
 
+    /**
+     * Print the tasks with formatting for searched tasks.
+     * @param tasks
+     */
     public void printFoundTasks(List<Task> tasks) {
         System.out.println(Constants.H_LINE);
         System.out.println(Constants.FOUND_MATCHING_TASKS);
@@ -84,11 +93,20 @@ public class Ui {
         }
     }
 
+    /**
+     * Prints the number of tasks.
+     * @param taskListSize
+     */
     public static void printNumberOfTasks(int taskListSize) {
         //return "Tasks in the list: " + tasks.size();
         System.out.println(String.format(Constants.NUMBER_OF_TASKS, taskListSize));
     }
 
+    /**
+     *
+     * @param task
+     * @param type
+     */
     public void printTask(Task task, Constants.TaskDisplayType type) {
         System.out.println(Constants.H_LINE);
 
@@ -142,6 +160,9 @@ public class Ui {
         System.out.println(message);
     }
 
+    /**
+     * Prints the help message.
+     */
     public static void helpMessage() {
         String helpMessage = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n",
                 Constants.TODO, Constants.TODO_HELP_STATEMENT,

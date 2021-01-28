@@ -1,10 +1,14 @@
 package data;
 
-import data.Todo;
 
 public class Event extends Todo {
     private String schedule;
 
+    /**
+     * Event constructor.
+     * @param description
+     * @param schedule
+     */
     public Event(String description, String schedule) {
         super(description);
         this.schedule = schedule;
