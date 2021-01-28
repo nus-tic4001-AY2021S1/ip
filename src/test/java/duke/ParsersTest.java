@@ -1,14 +1,15 @@
 package duke;
 
-
 import dukes.command.Command;
 import dukes.command.ExitCommand;
 import dukes.parser.Parser;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ParserTest {
+public class ParsersTest {
+
     @Test
     public void parseExit() {
         Parser exit = new Parser();
@@ -20,6 +21,7 @@ public class ParserTest {
             fail("Should not shown thrown Exception.");
         }
     }
+
     @Test
     public void parseBye() {
         Parser bye = new Parser();
@@ -31,5 +33,4 @@ public class ParserTest {
             fail("Should not shown thrown Exception.");
         }
     }
-
 }
