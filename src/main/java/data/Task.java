@@ -7,11 +7,14 @@ public abstract class Task {
     public Task() {
     }
 
+    /**
+     * Task Constructor.
+     * @param description
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
     }
-
 
     public String getDescription() {
         return description;

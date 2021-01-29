@@ -1,20 +1,24 @@
 package storage;
 
-import data.Deadline;
-import data.Event;
-import data.Task;
-import data.Todo;
-import exception.DukeException;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import data.Deadline;
+import data.Event;
+import data.Task;
+import data.Todo;
+import exception.DukeException;
 
 public class Storage {
 
@@ -82,10 +86,10 @@ public class Storage {
     }
 
     /**
-     * Returns the lines in the form of a List<String> variable.
+     * Returns the lines in the form of a list with String type variable.
      *
      * @param filePath
-     * @return List<String> lines
+     * @return ListString lines
      * @throws IOException
      */
     private List<String> getLines(String filePath) throws DukeException {
@@ -99,7 +103,12 @@ public class Storage {
         return lines;
     }
 
-    public void save(List<Task> tasks) {
+    /**
+     * Save the current list of tasks.
+     * @param tasks
+     * @throws DukeException
+     */
+    public void save(List<Task> tasks) throws DukeException {
         Path newDirectory;
         try {
             Path path = Path.of("data").resolve("tasks.txt");
@@ -115,14 +124,18 @@ public class Storage {
                 Files.writeString(path, task.save(), StandardCharsets.ISO_8859_1, StandardOpenOption.APPEND);
             }
         } catch (IOException e) {
-
+            throw new DukeException("Error when attempting save");
         }
     }
 
-    public void saveBackup(List<Task> tasks) {
+    /**
+     *
+     * @param tasks
+     * @throws DukeException
+     */
+    public void saveBackup(List<Task> tasks) throws DukeException {
 
         try {
-
 
             FileWriter fw = new FileWriter(this.filePath);
 
@@ -140,7 +153,7 @@ public class Storage {
             }
             fw.close();
         } catch (IOException e) {
-
+            throw new DukeException("Error when attempting saveBackup");
         }
     }
 }

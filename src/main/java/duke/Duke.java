@@ -1,5 +1,9 @@
 package duke;
 
+import java.io.FileNotFoundException;
+import java.nio.file.NoSuchFileException;
+import java.util.ArrayList;
+
 import data.TaskList;
 import exception.DukeException;
 import parser.Parser;
@@ -7,17 +11,16 @@ import storage.Storage;
 import ui.Constants;
 import ui.Ui;
 
-
-import java.io.FileNotFoundException;
-import java.nio.file.NoSuchFileException;
-import java.util.ArrayList;
-
 public class Duke {
 
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
 
+    /**
+     * Duke Main.
+     * @param filePath
+     */
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -50,7 +53,8 @@ public class Duke {
 
                 switch (commandWord.toUpperCase()) {
                 case "":
-                    ui.printError("No command input! Please enter a command or type \"help\" to view a list of commands.");
+                    ui.printError("No command input! Please enter a command "
+                            + "or type \"help\" to view a list of commands.");
                     break;
 
                 case "EXIT":
@@ -112,7 +116,8 @@ public class Duke {
                 case "DONE":
                     try {
                         tasks.markAsDone(Parser.parseTaskNum(fullCommand));
-                        ui.printTask(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1), Constants.TaskDisplayType.DONE);
+                        ui.printTask(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1),
+                                Constants.TaskDisplayType.DONE);
                         Ui.showToUser(Constants.H_LINE);
                         storage.save(tasks.getTasks());
                     } catch (IndexOutOfBoundsException idxE) {
@@ -123,7 +128,8 @@ public class Duke {
                 case "UNDONE":
                     try {
                         tasks.markAsNotDone(Parser.parseTaskNum(fullCommand));
-                        ui.printTask(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1), Constants.TaskDisplayType.UNDONE);
+                        ui.printTask(tasks.getTasks().get(Parser.parseTaskNum(fullCommand) - 1),
+                                Constants.TaskDisplayType.UNDONE);
                         Ui.showToUser(Constants.H_LINE);
                         storage.save(tasks.getTasks());
                     } catch (IndexOutOfBoundsException idxE) {
@@ -164,4 +170,3 @@ public class Duke {
     }
 
 }
-    

@@ -1,6 +1,5 @@
 package data;
 
-
 public class Event extends Todo {
     private String schedule;
 

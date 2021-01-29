@@ -1,12 +1,13 @@
 package parser;
 
-import exception.DukeException;
 import data.Deadline;
 import data.Event;
 import data.Todo;
+import exception.DukeException;
 
 /**
- * Code structure referenced from https://github.com/se-edu/addressbook-level2/blob/master/src/seedu/addressbook/parser/Parser.java
+ * Code structure referenced from
+ * https://github.com/se-edu/addressbook-level2/blob/master/src/seedu/addressbook/parser/Parser.java
  */
 public class Parser {
 
@@ -28,7 +29,7 @@ public class Parser {
     /**
      * Creates a Todo object and returns it.
      * @param fullCommand
-     * @return
+     * @return Todo
      * @throws DukeException
      */
     public static Todo createTodo(String fullCommand) throws DukeException {
@@ -45,7 +46,7 @@ public class Parser {
     /**
      * Creates a Deadline object and returns it
      * @param fullCommand
-     * @return
+     * @return Deadline
      * @throws DukeException
      */
     public static Deadline createDeadLine(String fullCommand) throws DukeException {
@@ -63,14 +64,14 @@ public class Parser {
         if (deadline.isEmpty() || deadline.equals("")) {
             throw new DukeException("Empty deadline for DEADLINE");
         }
-//        return new Deadline(description, deadline);
+        //return new Deadline(description, deadline);
         return new Deadline(description, deadline);
     }
 
     /**
      * Creates a Event object and returns it
      * @param fullCommand
-     * @return
+     * @return Event
      * @throws DukeException
      */
     public static Event createEvent(String fullCommand) throws DukeException {
@@ -80,7 +81,8 @@ public class Parser {
         }
 
         String description = fullCommand.substring(0, idxOfBy).substring("event".length()).trim();
-        //assert (fullCommand.contains(description)) : "Something went wrong during the substring for event description";
+        //assert (fullCommand.contains(description)) :
+        // "Something went wrong during the substring for event description";
         if (description.isEmpty() || description.equals("")) {
             throw new DukeException("Empty description for EVENT");
         }
@@ -97,8 +99,9 @@ public class Parser {
      * @return
      */
     public static int parseTaskNum(String fullCommand) {
-        int index = fullCommand.contains("undone") ?
-                Integer.parseInt(fullCommand.substring("undone".length()).trim()) : Integer.parseInt(fullCommand.substring("done".length()).trim());
+        int index = fullCommand.contains("undone")
+                ? Integer.parseInt(fullCommand.substring("undone".length()).trim())
+                : Integer.parseInt(fullCommand.substring("done".length()).trim());
         return index;
     }
 

@@ -1,12 +1,12 @@
 package test;
 
-import exception.DukeException;
-import data.Todo;
-import parser.Parser;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+
+import data.Todo;
+import exception.DukeException;
+import parser.Parser;
 
 public class ParserTest {
     @Test
