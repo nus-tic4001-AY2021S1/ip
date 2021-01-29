@@ -15,20 +15,6 @@ import duke.tasks.Deadlines;
 import duke.tasks.Events;
 import duke.tasks.Task;
 import duke.tasks.ToDos;
-/*
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
- */
 
 public class Duke {
 
@@ -36,35 +22,17 @@ public class Duke {
 
     static final String BYE = " Bye. Hope to see you again soon!";
 
+    static final String path = "/data/duke.txt";
     private Ui ui;
     private Storage storage;
     private TaskList tasks;
-    /*
-    private ScrollPane scrollPane;
-    private VBox dialogContainer;
-    private TextField userInput;
-    private Button sendButton;
-    private Scene scene;
-
-    private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
-     */
 
     /**
-     * @param relativePath constructor, generate Duke with an relative path
-     */
-    public Duke(String relativePath) {
-        this.ui = new Ui();
-        this.storage = new Storage(relativePath);
-        this.tasks = new TaskList();
-    }
-
-    /**
-     * test
+     * constructor
      */
     public Duke() {
         this.ui = new Ui();
-        //this.storage = new Storage(relativePath);
+        this.storage = new Storage(path);
         this.tasks = new TaskList();
     }
 
@@ -134,6 +102,15 @@ public class Duke {
         ui.showLine();
     }
 
+    String loadFile() {
+        try {
+            storage.load(tasks);
+            return "Load data successfully.";
+        } catch (DukeException | IOException e) {
+            return "Load data fails. Reason: " + e.getMessage();
+        }
+    }
+
     private static String processCommand(Command cmd, TaskList tasks, Ui ui) {
         int index;
         int i = 1;
@@ -183,109 +160,6 @@ public class Duke {
             return "Nothing done bro.";
         }
     }
-    /*
-    @Override
-    public void start(Stage primaryStage) {
-        scrollPane = new ScrollPane();
-        dialogContainer = new VBox();
-        scrollPane.setContent(dialogContainer);
-
-        userInput = new TextField();
-        sendButton = new Button("Send");
-
-        AnchorPane mainLayout = new AnchorPane();
-        mainLayout.getChildren().addAll(scrollPane, userInput, sendButton);
-
-        scene = new Scene(mainLayout);
-
-        //1. set up the entire GUI
-        primaryStage.setScene(scene); // Setting the stage to show our screen
-        primaryStage.setResizable(false);
-        primaryStage.setHeight(600);
-        primaryStage.setWidth(800);
-        primaryStage.setTitle("Duke");
-
-        mainLayout.setPrefSize(400.0, 600.0);
-
-        scrollPane.setPrefSize(385, 535);
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-
-        scrollPane.setVvalue(1.0);
-        scrollPane.setFitToWidth(true);
-
-        dialogContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
-
-        userInput.setPrefWidth(325.0);
-
-        sendButton.setPrefWidth(55.0);
-
-        AnchorPane.setTopAnchor(scrollPane, 1.0);
-
-        AnchorPane.setBottomAnchor(sendButton, 1.0);
-        AnchorPane.setRightAnchor(sendButton, 1.0);
-
-        AnchorPane.setLeftAnchor(userInput , 1.0);
-        AnchorPane.setBottomAnchor(userInput, 1.0);
-
-        primaryStage.show(); // Render the stage.
-
-        //Step 3. Add functionality to handle user input.
-        sendButton.setOnMouseClicked((event) -> {
-            dialogContainer.getChildren().add(getDialogLabel(userInput.getText()));
-            userInput.clear();
-        });
-
-        userInput.setOnAction((event) -> {
-            dialogContainer.getChildren().add(getDialogLabel(userInput.getText()));
-            userInput.clear();
-        });
-
-        sendButton.setOnMouseClicked((event) -> {
-            handleUserInput();
-        });
-
-        userInput.setOnAction((event) -> {
-            handleUserInput();
-        });
-
-        //Scroll down to the end every time dialogContainer's height changes.
-        dialogContainer.heightProperty().addListener((observable) -> scrollPane.setVvalue(1.0));
-    }
-     */
-
-    /*
-     * Iteration 1:
-     * Creates a label with the specified text and adds it to the dialog container.
-     * @param text String containing text to add
-     * @return a label with the specified text that has word wrap enabled.
-     */
-    /*
-    private Label getDialogLabel(String text) {
-        // You will need to import `javafx.scene.control.Label`.
-        Label textToAdd = new Label(text);
-        textToAdd.setWrapText(true);
-
-        return textToAdd;
-    }
-     */
-
-    /*
-     * Iteration 2:
-     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
-     * the dialog container. Clears the user input after processing.
-     */
-    /*
-    private void handleUserInput() {
-        Label userText = new Label(userInput.getText());
-        Label dukeText = new Label(getResponse(userInput.getText()));
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(userText, new ImageView(user)),
-                DialogBox.getDukeDialog(dukeText, new ImageView(duke))
-        );
-        userInput.clear();
-    }
-     */
 
     /*
      * You should have your own function to generate a response to user input.
@@ -309,7 +183,15 @@ public class Duke {
             return new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(").getMessage();
         }
 
-        return processCommand(cmd, tasks, ui);
+        String result = processCommand(cmd, tasks, ui);
+
+        try {
+            storage.save(tasks);
+        } catch (IOException e) {
+            return "☹ OOPS!!!Updating file is fail.";
+        }
+
+        return result;
 
     }
 

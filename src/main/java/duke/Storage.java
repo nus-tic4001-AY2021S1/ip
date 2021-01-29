@@ -22,7 +22,7 @@ public class Storage {
      */
     public Storage(String path) {
         this.path = CURRENTWORKINGDIR + path;
-        this.f = new File(path);
+        this.f = new File(this.path);
     }
 
     /**
