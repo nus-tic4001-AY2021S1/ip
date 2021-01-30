@@ -1,15 +1,19 @@
 package duke;
 
-import duke.task.TaskList;
-import duke.task.Todo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import duke.task.TaskList;
+import duke.task.Todo;
 
 /**
  * JUnit tests for TaskList class.
  */
 public class TestTaskList {
+    /**
+     * Tests the correctness of the getSize() method
+     */
     @Test
     public void testGetSize() {
         TaskList tasks = new TaskList();

@@ -19,7 +19,7 @@ public abstract class Task {
         this.description = description;
         isDone = false;
     }
-    
+
     /**
      * Initializes a <code>Task</code> object.
      *
@@ -35,7 +35,6 @@ public abstract class Task {
      * Gets the description of a <code>Task</code> object.
      * @return Description of a <code>Task</code> object.
      */
-
     public String getDescription() {
         return description;
     }

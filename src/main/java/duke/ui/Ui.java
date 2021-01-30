@@ -1,9 +1,9 @@
 package duke.ui;
 
+import java.util.ArrayList;
+
 import duke.task.Task;
 import duke.task.TaskList;
-
-import java.util.ArrayList;
 
 /**
  * Contains methods that interacts with the users such as obtaining commands
@@ -12,15 +12,17 @@ import java.util.ArrayList;
 public class Ui {
     private final StringBuilder output = new StringBuilder();
 
+    /**
+     * Builds the error message string
+     */
     public void printError(String errorMessage) {
         output.append("OOPS!! ");
         output.append(errorMessage);
     }
 
-    public void printGoodbye() {
-        output.append("Bye! Hope to see you again soon.");
-    }
-
+    /**
+     * Builds the added task message string
+     */
     public void printAddedTask(TaskList tasks) {
         output.append("Got it! I have added this task:");
         output.append(System.lineSeparator());
@@ -31,6 +33,9 @@ public class Ui {
         output.append(" tasks in the list.");
     }
 
+    /**
+     * Builds the removed task message string
+     */
     public void printRemovedTask(int size, String taskDescription) {
         output.append("Noted! I've removed this task: ");
         output.append(System.lineSeparator());
@@ -41,12 +46,18 @@ public class Ui {
         output.append(" tasks in the list.");
     }
 
+    /**
+     * Builds the done task message string
+     */
     public void printDoneTask(Task task) {
         output.append("I have marked this task as done:");
         output.append(System.lineSeparator());
         output.append(task.toString());
     }
 
+    /**
+     * Builds the list of tasks message string
+     */
     public void printTasks(TaskList tasks) {
         if (tasks.getSize() == 0) {
             output.append("Sorry, there is no task in your list.");
@@ -62,6 +73,9 @@ public class Ui {
         }
     }
 
+    /**
+     * Builds the list of filtered tasks message string
+     */
     public void printFilteredTasks(TaskList tasks) {
         ArrayList<Integer> searchResultIndexes = tasks.getSearchResultIndexes();
         if (searchResultIndexes.size() == 0) {
