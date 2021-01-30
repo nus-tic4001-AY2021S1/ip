@@ -1,11 +1,12 @@
 package duke;
 
-import duke.exception.DukeException;
-import duke.parser.Parser;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+import duke.exception.DukeException;
+import duke.parser.Parser;
 
 /**
  * JUnit tests for Parser class.

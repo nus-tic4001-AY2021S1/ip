@@ -1,13 +1,14 @@
 package duke;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
 import duke.exception.DukeException;
 import duke.task.Deadline;
 import duke.task.Task;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * JUnit tests for Deadline class.
@@ -31,7 +32,7 @@ public class DeadlineTest {
     public void testToString() throws DukeException {
         Task testDeadline = new Deadline("Have lunch with John", "2020-12-25 1800");
         Task testDeadline3 = new Deadline("Have lunch with John", "2020-12-25T18:00", true);
-        assertEquals("[D][N] Have lunch with John (by: 25 Dec 2020 6:00PM)", testDeadline.toString());
-        assertEquals("[D][Y] Have lunch with John (by: 25 Dec 2020 6:00PM)", testDeadline3.toString());
+        assertEquals("[D][\u2718] Have lunch with John (by: 25 Dec 2020 6:00PM)", testDeadline.toString());
+        assertEquals("[D][\u2713] Have lunch with John (by: 25 Dec 2020 6:00PM)", testDeadline3.toString());
     }
 }

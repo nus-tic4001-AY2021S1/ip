@@ -1,8 +1,8 @@
 package duke.task;
 
-import duke.exception.DukeException;
-
 import java.util.ArrayList;
+
+import duke.exception.DukeException;
 
 /**
  * Manages the in-memory task list. It contains an ArrayList that stores

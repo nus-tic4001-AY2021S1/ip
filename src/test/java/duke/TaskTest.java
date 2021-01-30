@@ -1,10 +1,11 @@
 package duke;
 
-import duke.task.Task;
-import duke.task.Todo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import duke.task.Task;
+import duke.task.Todo;
 
 /**
  * JUnit tests for Task class.
@@ -26,7 +27,7 @@ public class TaskTest {
 
     @Test
     public void testToString() {
-        assertEquals("[T][N] Have lunch with John", task.toString());
-        assertEquals("[T][Y] Have lunch with John", task2.toString());
+        assertEquals("[T][\u2718] Have lunch with John", task.toString());
+        assertEquals("[T][\u2713] Have lunch with John", task2.toString());
     }
 }
