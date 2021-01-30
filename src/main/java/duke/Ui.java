@@ -8,23 +8,17 @@ import java.util.Scanner;
 public class Ui {
     protected Scanner in = new Scanner(System.in);
 
-    public void printLine() {
-        System.out.println("____________________________________________________________");
+    public String indentPrint(String toPrint) {
+        return " " + toPrint + "" + "\n";
     }
 
-    public void indentPrint(String toPrint) {
-        System.out.println(" " + toPrint);
+    public String greetUser() {
+        return indentPrint("Hello! I'm Duke") +
+            indentPrint("What can I do for you?");
     }
 
-    public void greetUser() {
-        printLine();
-        indentPrint("Hello! I'm Duke");
-        indentPrint("What can I do for you?");
-        printLine();
-    }
-
-    public void byeToUser() {
-        indentPrint("Bye. Hope to see you again soon!");
+    public String byeToUser() {
+        return indentPrint("Bye. Hope to see you again soon!");
     }
 
     public String readCommand() {

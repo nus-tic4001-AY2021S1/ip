@@ -15,13 +15,22 @@ import javafx.scene.image.ImageView;
 import duke.tasks.TaskList;
 
 public class Duke {
-    private ScrollPane scrollPane;
-    private VBox dialogContainer;
-    private TextField userInput;
-    private Button sendButton;
-    private Scene scene;
-    private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Ui ui = new Ui();
+    private TaskList taskList = new TaskList();
+    private Storage store = new Storage(taskList);
+    private Parser parser = new Parser();
+    private String logo = " ____        _        \n"
+            + "|  _ \\ _   _| | _____ \n"
+            + "| | | | | | | |/ / _ \\\n"
+            + "| |_| | |_| |   <  __/\n"
+            + "|____/ \\__,_|_|\\_\\___|\n";
+
+    Duke() {
+        Ui ui = new Ui();
+        TaskList taskList = new TaskList();
+        Storage store = new Storage(taskList);
+        Parser parser = new Parser();
+    }
 
     public static void run(){
 
@@ -33,29 +42,30 @@ public class Duke {
      */
 
     String getResponse(String input) {
+        //ui.greetUser();
+        while (!store.getIsExit()) {
+            try {
+                return parser.getCommand(input, store, ui, taskList);
+            } catch (Exception e) {
+                return "OOPS!!! " + e.getMessage();
+            }
+        }
         return "Duke heard: " + input;
     }
 
-
+    /**
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        Ui ui = new Ui();
-        TaskList taskList = new TaskList();
-        Storage store = new Storage(taskList);
-        Parser parser = new Parser();
+
+
         ui.greetUser();
         while (!store.getIsExit()) {
             try {
                 parser.getCommand(ui.readCommand(), store, ui, taskList);
             } catch (Exception e) {
-                ui.indentPrint("☹ OOPS!!! " + e.getMessage());
+                ui.indentPrint("OOPS!!! " + e.getMessage());
             }
             ui.printLine();
         }
     }
+     */
 }

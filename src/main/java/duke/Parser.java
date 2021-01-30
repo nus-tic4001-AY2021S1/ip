@@ -14,9 +14,8 @@ import duke.tasks.TaskList;
  * Parser class handles command parser and identify different keywords with switch cases.
  */
 public class Parser {
-    public void getCommand(String input, Storage store, Ui ui, TaskList taskList) throws Exception {
+    public String getCommand(String input, Storage store, Ui ui, TaskList taskList) throws Exception {
         int index;
-        ui.printLine();
         String command;
         String others;
         if (input.contains(" ")) {
@@ -28,29 +27,21 @@ public class Parser {
         }
         switch (command) {
         case "bye":
-            new ByeCommand().execute(ui,store,taskList);
-            break;
+            return new ByeCommand().execute(ui,store,taskList);
         case "list":
-            new ListCommand().execute(ui,store,taskList);
-            break;
+            return new ListCommand().execute(ui,store,taskList);
         case "done":
-            new DoneCommand().execute(others,ui,store,taskList);
-            break;
+            return new DoneCommand().execute(others,ui,store,taskList);
         case "delete":
-            new DeleteCommand().execute(others,ui,store,taskList);
-            break;
+            return new DeleteCommand().execute(others,ui,store,taskList);
         case "todo":
-            new TodoCommand().execute(others,ui,store,taskList);
-            break;
+            return new TodoCommand().execute(others,ui,store,taskList);
         case "deadline":
-            new DeadlineCommand().execute(others,ui,store,taskList);
-            break;
+            return new DeadlineCommand().execute(others,ui,store,taskList);
         case "event":
-            new EventCommand().execute(others,ui,store,taskList);
-            break;
+            return new EventCommand().execute(others,ui,store,taskList);
         case "find":
-            new FindCommand().execute(others,ui,store,taskList);
-            break;
+            return new FindCommand().execute(others,ui,store,taskList);
         default:
             throw new DukeException("I'm sorry, but I don't know what that means :-(");
         }

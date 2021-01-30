@@ -14,7 +14,7 @@ public class FindCommand {
         findResult = new TaskList();
     }
 
-    public void execute(String others, Ui ui, Storage storage, TaskList taskList) throws DukeException {
+    public String execute(String others, Ui ui, Storage storage, TaskList taskList) throws DukeException {
         if (others.isEmpty()) {
             throw new DukeException("The find term cannot be empty.");
         }
@@ -23,9 +23,10 @@ public class FindCommand {
                 findResult.addTask(taskList.getTask(i));
             }
         }
-        ui.indentPrint("Here are the matching tasks in your list:");
+        String toPrint = ui.indentPrint("Here are the matching tasks in your list:");
         for (int j = 0;j < findResult.getSize();j++) {
-            ui.indentPrint((j + 1) + ". " + findResult.getTask(j).toString());
+            toPrint += ui.indentPrint((j + 1) + ". " + findResult.getTask(j).toString());
         }
+        return toPrint;
     }
 }
