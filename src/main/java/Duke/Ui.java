@@ -32,35 +32,44 @@ class Ui {
         indent(); System.out.println("What can I do for you?");
         printLine();
     }
-    public void printClosing(){
-        indent(); System.out.println("Bye. Hope to see you again soon!");
+    public String printClosing(){
+        return "Bye. Hope to see you again soon!";
+        //System.out.println("Bye. Hope to see you again soon!");
     }
-    public void printNoRecords(){
-        indent(); System.out.println("No record added");
+    public String printNoRecords(){
+        return "No record added";
+        //indent(); System.out.println("No record added");
     }
-    public void printList(){
-        indent(); System.out.println("Here are the tasks in your list:");
+    public String printList(){
+        return "Here are the tasks in your list:";
+        //indent(); System.out.println("Here are the tasks in your list:");
     }
     public void indentPrintString(String toPrint){
         indent(); indent(); System.out.println(toPrint);
     }
-    public void printDoneMsg(){
-        indent(); System.out.println("Nice! I've marked this task as done:");
+    public String printDoneMsg(){
+        return "Nice! I've marked this task as done:";
+        //indent(); System.out.println("Nice! I've marked this task as done:");
     }
-    public void printDeleteMsg(){
-        indent(); System.out.println("Noted. I've removed this task:");
+    public String printDeleteMsg(){
+        return "Noted. I've removed this task:";
+       // indent(); System.out.println("Noted. I've removed this task:");
     }
-    public void printTotalListSize(int size){
-        indent(); System.out.println("Now you have " + size + " tasks in the list.");
+    public String printTotalListSize(int size){
+        return "Now you have \" + size + \" tasks in the list.";
+       // indent(); System.out.println("Now you have " + size + " tasks in the list.");
     }
-    public void printAddMsg(){
-        indent(); System.out.println("Got it. I've added this task:");
+    public String printAddMsg(){
+        return "Got it. I've added this task:";
+        //indent(); System.out.println("Got it. I've added this task:");
     }
-    public void printNoMatchesMsg(){
-        indent(); System.out.println("No matching task found");
+    public String printNoMatchesMsg(){
+        return "No matching task found";
+        //indent(); System.out.println("No matching task found");
     }
-    public void printMatchesMsg(){
-        indent(); System.out.println("Here are the matching tasks in your list:");
+    public String printMatchesMsg(){
+        return "Here are the matching tasks in your list:";
+        //indent(); System.out.println("Here are the matching tasks in your list:");
     }
     public String readCommand(){
         return sc.nextLine();
