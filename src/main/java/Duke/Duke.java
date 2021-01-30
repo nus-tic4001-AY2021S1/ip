@@ -2,9 +2,6 @@ package Duke;
 
 import java.util.*;
 import java.io.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
 public class Duke {
     private Ui ui;
