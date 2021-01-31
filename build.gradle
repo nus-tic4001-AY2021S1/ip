@@ -48,16 +48,22 @@ test {
 }
 
 application {
-    mainClassName = "moneytracker.MoneyTracker"
+    mainClassName = "duke.Launcher"
 }
 
 shadowJar {
-    archiveBaseName = "MoneyTracker"
+    archiveBaseName = "Duke"
     archiveClassifier = null
 }
 
 checkstyle {
     toolVersion = '8.23'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'duke.Launcher'
+    }
 }
 
 run{
