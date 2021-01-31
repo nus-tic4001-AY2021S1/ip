@@ -1,12 +1,14 @@
-T | 0 | checking code
-E | 0 | have dinner at Tom's home | 2020-10-11T23:00
-D | 0 | read book | 2020-10-11
+E | 1 | have dinner at Tom's home | 2020-10-11T23:00
+D | 1 | read book | 2020-10-11
 T | 1 | return book
-E | 0 | go to school, buy book | 2020-12-12T12:00
+E | 1 | go to school, buy book | 2020-12-12T12:00
 T | 0 | testing
-E | 0 | sfhsk | 2020-10-10T11:11
-T | 0 | sdhfksjh
-T | 1 | sdfhsk
 E | 0 | Birthday | 2021-09-12T08:11
-D | 0 | eat | 2020-09-19
+D | 1 | eat | 2020-09-19
 E | 0 | Friend | 2020-05-12T10:21
+D | 0 |  | 2020-09-19
+D | 0 |  | 2020-09-19
+D | 1 | eat | 2020-09-19
+E | 0 | Birthday | 2021-09-12T08:11
+T | 1 | testing on PC
+T | 0 | eatting

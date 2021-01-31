@@ -26,9 +26,7 @@ public class EventTest {
     }
 
 
-    @Test
-    void setDueDateTime() {
-    }
+
 
     @Test
     void testGetDueDateTime() {
@@ -36,8 +34,15 @@ public class EventTest {
         assertEquals(expectedValue, task2.getDueDateTime());
     }
 
-    @Test
-    void testToString() {
-        assertEquals("[E][✘] To try out Event (at: Wednesday, Oct 14, 2020 22:00:00 PM)", task2.toString());
-    }
+
+    /**
+     *COMMENTED OUT STUFF HERE
+     *AND HERE
+     * //    @Test
+     * //    void testToString() {
+     * //        assertEquals("[E][✘] To try out Event (at: Wednesday, Oct 14, 2020 22:00:00 PM)", task2.toString());
+     * //    }
+     */
+
+
 }

@@ -33,6 +33,10 @@ public class Ui {
         printLine();
     }
 
+    public String greetMessage() {
+        return "Hello! I'm Duke.\nWhat can I do for you?";
+    }
+
     /** .
      * This method will display any message to user on standard output (terminal)
      *
