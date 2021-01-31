@@ -19,7 +19,10 @@ import java.util.ArrayList;
  */
 
 public class Storage {
-    private String storageFilePath = System.getProperty("user.dir") + File.separator + "data" + File.separator;
+    //private String storageFilePath = System.getProperty("user.dir") + File.separator + "data" + File.separator;
+    private static final String home = "data";
+    private static java.nio.file.Path storageFilePath = java.nio.file.Paths.get(home, "duke.txt");
+    private static boolean directoryExists = java.nio.file.Files.exists(storageFilePath);
 
     private boolean isExit;
 
@@ -33,11 +36,11 @@ public class Storage {
     }
 
     public void loadFromFile(TaskList tempStorage) throws IOException {
-        File directory = new File(storageFilePath);
-        if (!directory.exists()) {
+        File directory = new File(home);
+        if (!directoryExists) {
             directory.mkdir();
         }
-        File storage = new File(storageFilePath + "duke.txt");
+        File storage = storageFilePath.toFile();
         BufferedReader fileReader = new BufferedReader(new FileReader(storage));
         String savedTask;
         while ((savedTask = fileReader.readLine()) != null) {
@@ -73,7 +76,7 @@ public class Storage {
     }
 
     public void saveToFile(TaskList tempStorage) throws IOException {
-        File storage = new File(storageFilePath);
+        File storage = storageFilePath.toFile();
         BufferedWriter toSaveTask = new BufferedWriter(new FileWriter(storage));
         for (int i = 0;i < tempStorage.getSize();i++) {
             toSaveTask.write(outputTaskForSave(tempStorage.getTask(i)));

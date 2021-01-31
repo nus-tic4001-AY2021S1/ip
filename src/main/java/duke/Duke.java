@@ -50,7 +50,12 @@ public class Duke {
                 return "OOPS!!! " + e.getMessage();
             }
         }
+
         return "Duke heard: " + input;
+    }
+
+    boolean getExit() {
+        return store.getIsExit();
     }
 
     /**
