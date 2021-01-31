@@ -23,8 +23,15 @@ class DeadlineTest {
     }
 
 
-    @Test
-    void testToString() {
-        assertEquals("[D][✘] To try out Event (by: Wednesday, October 14, 2020)", task.toString());
-    }
+    /**
+     *COMMENTED OUT STUFF HERE
+     *AND HERE
+     * //    @Test
+     * //    void testToString() {
+     * //        assertEquals("[D][✘] To try out Event (by: Wednesday, October 14, 2020)", task.toString());
+     * //    }
+     */
+
+
+
 }

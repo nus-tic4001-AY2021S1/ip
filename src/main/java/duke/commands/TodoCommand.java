@@ -1,5 +1,6 @@
 package duke.commands;
 
+import duke.exceptions.DukeException;
 import duke.util.Storage;
 import duke.util.TaskList;
 import duke.tasks.Task;
@@ -13,9 +14,22 @@ public class TodoCommand extends Command {
 
 
     @Override
-    public String execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
 
-        Task task = new Todo(input);
+        String taskDetail;
+        int len = input.split(" ").length; // to check who many words
+        String[] lineArr = input.split(" ", 2);
+        String commandFirstWord = input.split(" ")[0].toLowerCase();
+
+        if (len > 1) {
+            taskDetail = lineArr[1].trim();  // filter out the first words
+        } else {
+            throw new DukeException("OOPS!!! The description of a " + commandFirstWord + " cannot be empty.");
+        }
+
+
+
+        Task task = new Todo(taskDetail);
         int previousTaskSize = taskList.size();
         taskList.add(task);
         int subsequentTaskSize = taskList.size();
@@ -27,9 +41,6 @@ public class TodoCommand extends Command {
         );
     }
 
-    @Override
-    public String toString() {
-        return "todo <description>";
-    }
+
 
 }

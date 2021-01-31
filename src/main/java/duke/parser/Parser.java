@@ -15,6 +15,8 @@ import duke.commands.Command;
 import duke.exceptions.DukeException;
 import duke.ui.Ui;
 
+import java.util.Arrays;
+
 /** .
  * Parser: deals with making sense of the user command
  */
@@ -43,21 +45,22 @@ public class Parser {
             case "list":
                 return new ListCommand(input);
             case "done":
-                return new DoneCommand(getSecondWord(input));
+                return new DoneCommand(input);
             case "delete":
-                return new DeleteCommand(getSecondWord(input));
+                return new DeleteCommand(input);
             case "todo":
-                return new TodoCommand(filterTaskDetails(input));
+                return new TodoCommand(input);
             case "deadline":
-                return new DeadLineCommand(filterTaskDetails(input));
+                return new DeadLineCommand(input);
             case "event":
-                return new EventCommand(filterTaskDetails(input));
+                return new EventCommand(input);
             case "find":
-                return new FindCommand(filterTaskDetails(input));
+                return new FindCommand(input);
             case "clear":
                 return new ClearCommand(input);
             default:
                 return new UnknownCommand(input);
+
             }
 
         } catch (Exception e) {
@@ -69,53 +72,10 @@ public class Parser {
     }
 
 
-    private static String[] getInputArray(String input) {
+    public static String[] getInputArray(String input) {
         return input.trim().replaceAll(KEYWORD_MULTIPLE_SPACE, KEYWORD_ONE_SPACE).split(KEYWORD_ONE_SPACE, 2);
     }
 
-    /**
-     * A method to parser a String.
-     * Assume that the Task Details start from the second words. This method can filter out the first words.
-     *
-     * @param line A String that holds the user input.
-     * @throws DukeException If Task Detail is Empty/Null:
-     *          Returning to Main MenuShow the message to user and notify the user.
-     * */
-    public static String filterTaskDetails(String line) throws DukeException {
-        String taskDetail;
-        int len = line.split(" ").length; // to check who many words
-        String[] lineArr = line.split(" ", 2);
-        String commandFirstWord = line.split(" ")[0].toLowerCase();
-
-        if (len > 1) {
-            taskDetail = lineArr[1].trim();  // filter out the first words
-        } else {
-            throw new DukeException("OOPS!!! The description of a " + commandFirstWord + " cannot be empty.");
-        }
-        return taskDetail;
-    }
-
-    /**
-     * A method to parser a String and get the second word from the string.
-     *
-     * @param input A String that holds the user input.
-     */
-
-    public static String getSecondWord(String input) {
-        String commandSecondWord = input.split(" ")[1];
-        return commandSecondWord;
-    }
-
-
-    /**
-     * A method to parser a String and process necessary steps and tasks based on the user inputs.
-     * Assume that the Task Details start from the second words. This method can filter out the first words.
-     *  @param input       A String that holds the user input.
-     * @param ui          A Ui that show message to user.
-     * @param programExit A ProgramExit  to check if it is needed to exit the program.
-     * @param taskList    A Task TodoList contains the ArrayList of Task objects,
-     *                    contains the task list e.g., it has operations to add/delete tasks in the list
-     */
 
 
 

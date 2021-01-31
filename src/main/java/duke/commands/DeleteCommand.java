@@ -1,5 +1,6 @@
 package duke.commands;
 
+import duke.exceptions.DukeException;
 import duke.util.Storage;
 import duke.util.TaskList;
 import duke.tasks.Task;
@@ -12,17 +13,29 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList taskList, Ui ui, Storage storage) {
-        String selectedTask = input;
+    public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
+
+
+        String selectedTask;
+        int len = input.split(" ").length; // to check who many words
+
+        if (len > 1) {
+            selectedTask =  input.split(" ")[1];
+        } else {
+            throw new DukeException("TASK NUM is Empty/Null/Invalid: Returning to Main Menu");
+            // checking if the task number is given and empty string or null
+        }
+
 
         // checking if the task number is given and empty string or null
         if (selectedTask.trim().equals("")) {
-            throw new NullPointerException("TASK NUM is Empty/Null: Returning to Main Menu");
+            throw new DukeException("TASK NUM is Empty/Null/Invalid: Returning to Main Menu");
         }
+
 
         int taskIndex = Integer.parseInt(selectedTask) - 1;
         if (taskIndex < 0 || taskIndex > taskList.size()) {
-            throw new ArrayIndexOutOfBoundsException(
+            throw new DukeException(
                     "TASK NUM cannot be found in the task list: Returning to Main Menu");
         }
 
@@ -33,11 +46,6 @@ public class DeleteCommand extends Command {
         return String.format("Noted. I've removed this task:\n"
                 + "%s\n" + "Now you have %d tasks in the list.", task, taskList.size());
 
-    }
-
-    @Override
-    public String toString() {
-        return "delete <task taskIndex>";
     }
 
 

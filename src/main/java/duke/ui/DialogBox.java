@@ -13,14 +13,21 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Circle;
 
 public class DialogBox extends HBox {
+
+    private static final String User_MessageBox =
+            "-fx-background-color: rgba(165, 239, 127, 0.9); -fx-background-radius: 15; -fx-font-weight: bold;";
+    private static final String Duke_MessageBox =
+            "-fx-background-color: rgba(252, 253, 253, 0.9); -fx-background-radius: 15; -fx-font-weight: bold;";
+
     @FXML
     private Label dialog;
     @FXML
     private ImageView displayPicture;
 
-    private DialogBox(String text, Image img) {
+    private DialogBox(String text, Image img, boolean isDuke) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogBox.fxml"));
             fxmlLoader.setController(this);
@@ -31,7 +38,16 @@ public class DialogBox extends HBox {
         }
 
         dialog.setText(text);
+        if (isDuke) {
+            dialog.setStyle(Duke_MessageBox);
+        } else {
+            dialog.setStyle(User_MessageBox);
+        }
+
+
         displayPicture.setImage(img);
+        final Circle clip = new Circle(50, 50, 45);
+        displayPicture.setClip(clip);
     }
 
     /**
@@ -45,11 +61,11 @@ public class DialogBox extends HBox {
     }
 
     public static DialogBox getUserDialog(String text, Image img) {
-        return new DialogBox(text, img);
+        return new DialogBox(text, img,false);
     }
 
     public static DialogBox getDukeDialog(String text, Image img) {
-        var db = new DialogBox(text, img);
+        var db = new DialogBox(text, img,true);
         db.flip();
         return db;
     }
