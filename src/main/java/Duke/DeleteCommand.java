@@ -1,7 +1,7 @@
 package Duke;
 
 class DeleteCommand extends Command {
-    public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
+    public String executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
         try {
             if(details.isEmpty()){
                 throw new DukeException("The task number of delete command cannot be empty.");
@@ -10,11 +10,13 @@ class DeleteCommand extends Command {
                 int j = Integer.parseInt(details);
                 ui.printDeleteMsg();
                 ui.indentPrintString(taskList.deleteTask(j-1).toString());
-                ui.printTotalListSize(taskList.getSize());
+                String msgPrint = ui.printTotalListSize(taskList.getSize());
                 storage.saveToFile(taskList);
+                return msgPrint;
             }
         } catch(DukeException ex) {
-            ui.showError(ex.getMessage());
+            String msgPrint = ui.showError(ex.getMessage());
+            return msgPrint;
         }
     }
 }

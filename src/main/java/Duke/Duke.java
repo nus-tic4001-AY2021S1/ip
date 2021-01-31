@@ -17,10 +17,14 @@ import javafx.scene.image.ImageView;
 
 
 public class Duke  {
-    private Ui ui;
+    private Ui ui = new Ui();
+    private TaskList taskList = new TaskList();
+    //private Storage storage = new Storage(taskList);
+    private Parser parser = new Parser();
+    //private Ui ui;
     private Storage storage;
-    private Parser parser;
-    private TaskList taskList;
+    //private Parser parser;
+    //private TaskList taskList;
     private ScrollPane scrollPane;
     private VBox dialogContainer;
     private TextField userInput;
@@ -83,12 +87,42 @@ public class Duke  {
         }
     }
 
+
     /**
      * You should have your own function to generate a response to user input.
      * Replace this stub with your completed method.
      */
-    public String getResponse(String input) {
+//    public String getResponse(String input) {
+//        return "Duke heard: " + input;
+//    }
+
+    //working code
+    String getResponse(String input) {
+        try {
+            if(true){
+                return parser.execute(input, ui, storage, taskList);
+            }
+            else{
+
+            }
+        } catch(Exception ex) {
+            String msgPrint = ui.showError(ex.getMessage());
+            return msgPrint;
+        }
+        //ui.greetUser();
+//        if(true) {
+//            try {
+//                return parser.execute(input, ui, storage, taskList);
+//            } catch (Exception e) {
+//                return "OOPS!!! " + e.getMessage();
+//            }
+//        }
+
         return "Duke heard: " + input;
+    }
+
+    boolean getExit() {
+        return ui.getIsExit();
     }
 
 }

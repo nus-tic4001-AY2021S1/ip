@@ -1,10 +1,10 @@
 package Duke;
 
 class TodoCommand extends Command {
-    public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
+    public String executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
         try {
             if(details.isEmpty()){
-                throw new DukeException("The description of a todo cannot be empty.");
+               throw new DukeException("The description of a todo cannot be empty.");
             }
             else{
                 //add todo to arraylist
@@ -13,11 +13,13 @@ class TodoCommand extends Command {
                 //print reply
                 ui.printAddMsg();
                 ui.indentPrintString(taskList.getTask(taskList.getSize()-1).toString());
-                ui.printTotalListSize(taskList.getSize());
+                String msgPrint = ui.printTotalListSize(taskList.getSize());
                 storage.saveToFile(taskList);
+                return msgPrint;
             }
         } catch(DukeException ex) {
-            ui.showError(ex.getMessage());
+            String msgPrint = ui.showError(ex.getMessage());
+            return msgPrint;
         }
     }
 }

@@ -3,7 +3,7 @@ package Duke;
 import java.time.LocalDate;
 
 class EventCommand extends Command {
-    public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
+    public String executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
         try {
             if(details.isEmpty()){
                 throw new DukeException("The description of event cannot be empty.");
@@ -26,18 +26,21 @@ class EventCommand extends Command {
                             //print reply
                             ui.printAddMsg();
                             ui.indentPrintString(taskList.getTask(taskList.getSize()-1).toString());
-                            ui.printTotalListSize(taskList.getSize());
+                            String msgPrint = ui.printTotalListSize(taskList.getSize());
                             storage.saveToFile(taskList);
+                            return  msgPrint;
                         }
                         catch(Exception ex){
-                            ui.showError("\tPlease enter date according to this format (yyyy-mm-dd)");
+                            String msgPrint = ui.showError("\tPlease enter date according to this format (yyyy-mm-dd)");
+                            return msgPrint;
                         }
                     }
                 }
             }
         }
         catch(DukeException ex) {
-            ui.showError(ex.getMessage());
+            String msgPrint = ui.showError(ex.getMessage());
+            return msgPrint;
         }
     }
 }

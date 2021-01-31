@@ -8,5 +8,5 @@ abstract class Command {
         this.content = content;
     }
     //abstract methods
-    public abstract void executeCommand(String details, Ui ui, Storage storage, TaskList taskList);
+    public abstract String executeCommand(String details, Ui ui, Storage storage, TaskList taskList);
 }
