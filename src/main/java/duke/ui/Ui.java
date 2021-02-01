@@ -99,7 +99,7 @@ public class Ui {
         if (tasks.getSize() == 0) {
             output.append("Sorry, there is no task in your list.");
         } else {
-            output.append("Here are the tasks in your sorted list:");
+            output.append("Tasks sorted! Here are the tasks in your list:");
             output.append(System.lineSeparator());
             for (int i = 0; i < tasks.getSize(); i++) {
                 output.append(i + 1);
