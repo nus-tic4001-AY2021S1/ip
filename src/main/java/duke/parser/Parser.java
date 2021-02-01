@@ -8,6 +8,7 @@ import duke.command.DoneCommand;
 import duke.command.EventCommand;
 import duke.command.FindCommand;
 import duke.command.ListCommand;
+import duke.command.SortCommand;
 import duke.command.TodoCommand;
 import duke.command.UnknownCommand;
 import duke.exception.DukeException;
@@ -104,6 +105,7 @@ public class Parser {
                 .replaceFirst("(?i)done", "")
                 .replaceFirst("(?i)delete", "")
                 .replaceFirst("(?i)list", "")
+                .replaceFirst("(?i)sort", "")
                 .trim();
     }
 
@@ -169,6 +171,8 @@ public class Parser {
             return new FindCommand(fullCommand);
         case "list":
             return new ListCommand();
+        case "sort":
+            return new SortCommand();
         default:
             return new UnknownCommand();
         }
