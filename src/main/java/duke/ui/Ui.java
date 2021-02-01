@@ -92,6 +92,24 @@ public class Ui {
         }
     }
 
+    /**
+     * Builds the list of tasks message string
+     */
+    public void printSortedTasks(TaskList tasks) {
+        if (tasks.getSize() == 0) {
+            output.append("Sorry, there is no task in your list.");
+        } else {
+            output.append("Tasks sorted! Here are the tasks in your list:");
+            output.append(System.lineSeparator());
+            for (int i = 0; i < tasks.getSize(); i++) {
+                output.append(i + 1);
+                output.append(". ");
+                output.append(tasks.getTask(i).toString());
+                output.append(System.lineSeparator());
+            }
+        }
+    }
+
     public void clearOutput() {
         output.setLength(0);
     }

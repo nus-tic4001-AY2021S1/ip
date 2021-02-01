@@ -1,6 +1,7 @@
 package duke.task;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import duke.exception.DukeException;
 
@@ -21,7 +22,7 @@ public class TaskList {
     }
 
     /**
-     * Instantiate a <code>TaskList</code> object.
+     * Instantiates a <code>TaskList</code> object.
      *
      * @param tasks List of <code>Task</code> objects.
      */
@@ -30,7 +31,7 @@ public class TaskList {
     }
 
     /**
-     * Get a <code>Task</code> object from the <code>TaskList</code>.
+     * Gets a <code>Task</code> object from the <code>TaskList</code>.
      *
      * @param index Index of Task in the <code>TaskList</code>.
      * @return <code>Task<</code> object.
@@ -40,7 +41,7 @@ public class TaskList {
     }
 
     /**
-     * Add a task to the <code>TaskList</code> object.
+     * Adds a task to the <code>TaskList</code> object.
      *
      * @param t <code>Task</code> object.
      */
@@ -49,7 +50,7 @@ public class TaskList {
     }
 
     /**
-     * Remove a <code>Task</code> object from the <code>TaskList</code>.
+     * Removes a <code>Task</code> object from the <code>TaskList</code>.
      *
      * @param index Index of a <code>Task</code> in <code>List</code>.
      * @throws DukeException If index is invalid.
@@ -63,11 +64,18 @@ public class TaskList {
     }
 
     /**
-     * Get size of a <code>TaskList</code> object.
+     * Gets the size of a <code>TaskList</code> object.
      * @return Size of a <code>List</code> object.
      */
     public int getSize() {
         return tasks.size();
+    }
+
+    /**
+     *  Sorts a <code>TaskList</code> object.
+     */
+    public void sortTasks() {
+        Collections.sort(tasks, new TaskListSorter());
     }
 
     public void clearSearchResultIndexes() {
