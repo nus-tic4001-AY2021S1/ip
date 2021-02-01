@@ -42,7 +42,7 @@ public class Duke {
         try {
             c.execute(tasks, ui, storage);
             if (c.isBye()) {
-                System.exit(0);
+                return null;
             }
         } catch (DukeException e) {
             return e.getMessage();
