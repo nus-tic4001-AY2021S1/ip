@@ -3,6 +3,7 @@ This product is not meant for end-users and therefore there is no user-friendly 
 
 
 
+
 #Starting the program
 Using IntelliJ
 1.	Find the project in the Project Explorer (usually located at the left side)
