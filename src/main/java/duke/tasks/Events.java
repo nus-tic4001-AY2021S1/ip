@@ -19,6 +19,10 @@ public class Events extends Task {
 
     @Override
     public String toString() {
+        if (existTags()) {
+            return super.toString() + " (at: " + eventTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + ")"
+                    + System.lineSeparator() + printTags();
+        }
         return super.toString() + " (at: " + eventTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + ")";
     }
 

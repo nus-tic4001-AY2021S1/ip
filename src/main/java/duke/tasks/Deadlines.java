@@ -19,6 +19,10 @@ public class Deadlines extends Task {
 
     @Override
     public String toString() {
+        if (existTags()) {
+            return super.toString() + " (by: " + deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + ")"
+                    + System.lineSeparator() + printTags();
+        }
         return super.toString() + " (by: " + deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + ")";
     }
 

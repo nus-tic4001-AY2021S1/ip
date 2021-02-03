@@ -10,6 +10,7 @@ import duke.command.DeleteCommand;
 import duke.command.DoneCommand;
 import duke.command.EventCommand;
 import duke.command.OtherCommand;
+import duke.command.tagCommand;
 import duke.exceptions.DukeException;
 import duke.tasks.Deadlines;
 import duke.tasks.Events;
@@ -152,6 +153,11 @@ public class Duke {
             tasks.remove(index - 1);
             s.append("Now you have " + tasks.size() + " tasks in the list.");
             return s.toString();
+        case "tag":
+            index = ((tagCommand) cmd).getIndex();
+            tasks.get(index - 1).addTag(cmd.getCmdContent());
+            s.append("Adding tag " + cmd.getCmdContent() + " to task: " + index + System.lineSeparator());
+            return s.toString();
         case "todo":
             ToDos t = new ToDos(cmd.getCmdContent());
             tasks.add(t);
@@ -176,6 +182,7 @@ public class Duke {
 
     String getResponse(String input) {
         Command cmd = null;
+        String result = null;
 
         try {
             cmd = Parser.getCommand(input);
@@ -191,7 +198,12 @@ public class Duke {
             return new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(").getMessage();
         }
 
-        String result = processCommand(cmd, tasks, ui);
+        try {
+            result = processCommand(cmd, tasks, ui);
+        } catch (Exception e) {
+            result = new DukeException("☹ OOPS!!! Unknown error occurs when process command.").getMessage();
+        }
+
 
         try {
             storage.save(tasks);

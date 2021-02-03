@@ -12,9 +12,11 @@ import duke.command.FindCommand;
 import duke.command.ListCommand;
 import duke.command.OtherCommand;
 import duke.command.TodoCommand;
+import duke.command.tagCommand;
 import duke.exceptions.DukeException;
 
 public class Parser {
+
 
     private static String[] commandSplit(String s, String splitBy) {
         return s.split(splitBy);
@@ -79,6 +81,20 @@ public class Parser {
             }
         case "find":
             return new FindCommand(userInput.substring(5));
+        case "tag":
+            //valid command format: tag 1 /t xxxxxxx
+            try {
+                String tagSpliter = "/t";
+                String[] tagCommandContent = userInput.split(tagSpliter);
+                int index = Integer.parseInt(tagCommandContent[0].split(" ")[1]);
+                return new tagCommand(index, tagCommandContent[1]);
+            } catch (StringIndexOutOfBoundsException e) {
+                throw new DukeException("☹ OOPS!!! The description of the tag cannot be empty.");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new DukeException("☹ OOPS!!! The keyword /t is missing.");
+            } catch (NumberFormatException e) {
+                throw new DukeException("☹ OOPS!!! Please specify the number of the task need to be tagged.");
+            }
         default:
             return new OtherCommand(cmd[0]);
         }

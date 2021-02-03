@@ -10,4 +10,11 @@ public class ToDos extends Task {
         super.taskType = "[T]";
     }
 
+    @Override
+    public String toString() {
+        if (existTags()) {
+            return super.toString() + System.lineSeparator() + printTags();
+        }
+        return super.toString();
+    }
 }
