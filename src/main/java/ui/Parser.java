@@ -22,7 +22,7 @@ public class Parser {
     /**
      * This method is to take action from validateCommand and then proecss the action accordingly.
      */
-    public static void processInput(String input, ArrayList<Task> tasks) {
+    public static String processInput(String input, ArrayList<Task> tasks) {
 
         String command = input.toLowerCase();
         Action action;
@@ -31,51 +31,54 @@ public class Parser {
         try {
             action = validateCommand(command);
         } catch (Exception g) {
-            Ui.errInvalidInput(g);
-            return;
+            return Ui.errInvalidInput(g);
+            //return "Error";
         }
 
         try {
             switch (action) {
             case List:
-                Ui.printList(tasks);
-                break;
+                return Ui.printList(tasks);
+                //break;
 
             case Done:
                 markDone(command, tasks);
                 Storage.updateStatusToFile(tasks);
-                break;
+                return "Marked as Done";
+                //break;
 
             case AddTodo:
-                TaskList.addTodo(tasks, input, count);
+                return TaskList.addTodo(tasks, input, count);
                 //Storage.addToFile(tasks);
-                break;
 
             case AddDeadlines:
-                TaskList.addDeadlines(tasks, input, count);
+                return TaskList.addDeadlines(tasks, input, count);
                 //Storage.addToFile(tasks);
-                break;
 
             case AddEvents:
-                TaskList.addEvents(tasks, input, count);
+                return TaskList.addEvents(tasks, input, count);
                 //Storage.addToFile(tasks);
-                break;
 
             case Delete:
                 TaskList.deleteTask(tasks, command);
-                break;
+                return "Task Deleted";
+                //break;
 
             case Find:
-                Ui.findTask(command, tasks);
-                break;
+                return Ui.findTask(command, tasks);
+
+            case Bye:
+                Storage.writeToFile(tasks);
+                return Ui.greetNote("bye");
 
             default:
-                System.out.println(Global.PATTERNLINE + "\nYou have entered invalid input. Please re-input or \n"
-                        + "Enter bye to terminate the program.\n" + Global.PATTERNLINE);
+                return Global.PATTERNLINE + "\nYou have entered invalid input. Please re-input or \n"
+                        + "Enter bye to terminate the program.\n" + Global.PATTERNLINE;
 
             }
         } catch (Exception m) {
-            System.out.println(m + Global.PATTERNLINE);
+            //System.out.println(m + Global.PATTERNLINE);
+            return m + Global.PATTERNLINE;
         }
     }
 
@@ -90,6 +93,8 @@ public class Parser {
             return Action.Find;
         } else if (command.startsWith("delete")) {
             return Action.Delete;
+        } else if (command.startsWith("bye")) {
+            return Action.Bye;
         } else if (command.length() > 4 && command.substring(0, 4).equals("done")) {
             return Action.Done;
         } else if (command.length() > 3 && command.substring(0, 4).equals("todo")) {

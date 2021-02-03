@@ -1,6 +1,4 @@
-[D][✓] thinking  (by: Aug 9 2020 09:04)
 [T][✘] submit ip
 [D][✘] submit ip  (by: Sep 20 2020 09:00)
-[E][✓] submit ip         (at:        28 sept 2020 09:00-10:00)
-[E][✘] submit ip        (at:       28 Sept 2020 09:00-10:00)
+[E][✘] submit ip              (at:             28 Sept 2020 09:00-10:00)
 [T][✘] think

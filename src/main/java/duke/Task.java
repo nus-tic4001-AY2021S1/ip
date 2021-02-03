@@ -18,13 +18,14 @@ public abstract class Task {
     }
 
     //public String toString() {
-    abstract public String toString(); /*{
+    public abstract String toString(); /*{
         //return this.toString() ;
         return ("[" + this.getStatusIcon() + "] " +  this.description );
     }*/
 
-    public void printTask() {
+    public String printTask() {
         //System.out.println("[" + this.getStatusIcon() + "] " +  this.description ) ;
-        System.out.println(this.toString());
+        //Workable - System.out.println(this.toString());
+        return this.toString();
     }
 }

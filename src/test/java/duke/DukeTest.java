@@ -2,7 +2,9 @@ package duke;
 
 import jdk.jfr.Event;
 import org.junit.jupiter.api.Test;
-import ui.*;
+import ui.Parser;
+import ui.TaskList;
+import ui.Ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,10 +18,10 @@ public class DukeTest {
 
         String command = "Todo Adding New";
 
-        ArrayList<Task> expectedTasks = new ArrayList<> ();
+        ArrayList<Task> expectedTasks = new ArrayList<>();
         expectedTasks.add(new ToDos("Adding New"));
 
-        ArrayList<Task> actualTasks = new ArrayList<> ();
+        ArrayList<Task> actualTasks = new ArrayList<>();
         Parser parser = new Parser(command);
         TaskList tasklist = new TaskList(actualTasks);
         parser.processInput(command,actualTasks);
@@ -31,13 +33,13 @@ public class DukeTest {
     @Test
     public void checkDeleteFunction() throws IOException, DukeException {
 
-        ArrayList<Task> expectedTasks = new ArrayList<> ();
+        ArrayList<Task> expectedTasks = new ArrayList<>();
         expectedTasks.add(new ToDos("Adding New One"));
 
-        ArrayList<Task> actualTasks = new ArrayList<> ();
+        ArrayList<Task> actualTasks = new ArrayList<>();
         String commandAdd = "Todo Adding New One";
         String commandAdd2 = "Deadlines Adding New 2 /by 2020-09-20 09:00";
-        String deleteCommand = "delete 2";
+        final String deleteCommand = "delete 2";
         Parser parser = new Parser(commandAdd);
         TaskList tasklist = new TaskList(actualTasks);
         parser.processInput(commandAdd,actualTasks);
