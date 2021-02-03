@@ -9,13 +9,27 @@ import duke.ui.Ui;
 import java.util.ArrayList;
 import java.util.StringJoiner;
 
+/** .
+ * Executes a find command.
+ */
 public class FindCommand extends Command {
 
+    /** .
+     * Constructs a FindCommand.
+     *  @param input The strings contains keywords.
+     */
     public FindCommand(String input) {
         super(input);
-        //taskList = TaskList.getList();
     }
 
+    /** .
+     * Executes a find command and returns a response.
+     *
+     * @param taskList Contains the tasks.
+     * @param ui Displays information to the user.
+     * @param storage Reads and stores data into memory.
+     * @return Message to users.
+     */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
 
@@ -29,12 +43,6 @@ public class FindCommand extends Command {
         } else {
             throw new DukeException("OOPS!!! The description of a " + commandFirstWord + " cannot be empty.");
         }
-
-
-
-
-
-
 
 
         String taskDescription;

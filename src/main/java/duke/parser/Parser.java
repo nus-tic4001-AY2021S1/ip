@@ -11,7 +11,7 @@ import duke.commands.FindCommand;
 import duke.commands.ClearCommand;
 import duke.commands.UnknownCommand;
 import duke.commands.Command;
-
+import duke.commands.SortCommand;
 import duke.exceptions.DukeException;
 import duke.ui.Ui;
 
@@ -58,6 +58,8 @@ public class Parser {
                 return new FindCommand(input);
             case "clear":
                 return new ClearCommand(input);
+            case "sort":
+                return new SortCommand(input);
             default:
                 return new UnknownCommand(input);
 

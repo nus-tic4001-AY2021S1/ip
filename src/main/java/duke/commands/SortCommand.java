@@ -1,26 +1,26 @@
 package duke.commands;
 
-import duke.util.TaskList;
 import duke.ui.Ui;
-import java.util.StringJoiner;
 import duke.util.Storage;
+import duke.util.TaskList;
 
+import java.util.StringJoiner;
 
 /** .
- * Executes a list command.
+ * Executes a sort command.
  */
-public class ListCommand extends Command {
+public class SortCommand extends Command {
 
     /** .
-     * Constructs a ListCommand.
+     * Constructs a SortCommand.
+     *  @param input The strings contains keywords.
      */
-    public ListCommand(String input) {
+    public SortCommand(String input) {
         super(input);
     }
 
-
     /** .
-     * Executes a list command and returns a response.
+     * Executes a sort command and returns a response.
      *
      * @param taskList Contains the tasks.
      * @param ui Displays information to the user.
@@ -29,13 +29,16 @@ public class ListCommand extends Command {
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
+
+        taskList.sort();
         StringJoiner response = new StringJoiner("\n");
         for (int i = 0; i < taskList.size(); i++) {
             response.add(String.format("%d.%s", i + 1, taskList.get(i)));
         }
-        return response.toString().isEmpty()
-                ? "You have no tasks at the moment :)"
-                : response.toString();
+
+        return String.format(
+                "Hi, your tasks have been sorted based on Task Status and Description. Thanks\n%s",response.toString());
+
     }
 
 

@@ -1,8 +1,10 @@
 package duke.tasks;
 
 
+import java.util.Comparator;
+
 // An abstract class
-public abstract class Task {
+public abstract class Task  implements Comparable<Task> {
     // A String that holds the description of a task
     protected String description;
     // A boolean value, if true: the task is completed, otherwise false.
@@ -47,6 +49,7 @@ public abstract class Task {
     }
 
 
+
     /** .
      *
      * @return declare is done status.
@@ -65,6 +68,17 @@ public abstract class Task {
     public String toString() {
         return "[" + getStatusIcon() + "]" + " " + getDescription();
     }
+
+
+
+    @Override
+    public int compareTo(Task task) {
+        return Comparator
+                .comparing(Task::getStatusIcon)
+                .thenComparing(Task::getDescription)
+                .compare(this, task);
+    }
+
 
 
 }
