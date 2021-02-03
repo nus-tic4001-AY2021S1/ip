@@ -6,16 +6,27 @@ import duke.util.Storage;
 import duke.util.TaskList;
 import duke.ui.Ui;
 
-import java.util.Arrays;
-
-import static duke.parser.Parser.getInputArray;
-
+/** .
+ * Executes a done command.
+ */
 public class DoneCommand extends Command {
 
+    /** .
+     * Constructs a DoneCommand.
+     *  @param input The strings contains keywords.
+     */
     public DoneCommand(String input) {
         super(input);
     }
 
+    /** .
+     * Executes a sort command and returns a response.
+     *
+     * @param taskList Contains the tasks.
+     * @param ui Displays information to the user.
+     * @param storage Reads and stores data into memory.
+     * @return Message to users.
+     */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
 
@@ -28,7 +39,6 @@ public class DoneCommand extends Command {
             throw new DukeException("TASK NUM is Empty/Null/Invalid: Returning to Main Menu");
             // checking if the task number is given and empty string or null
         }
-
 
         // checking if the task number is given and empty string or null
         if (selectedTask.trim().equals("")) {
@@ -44,10 +54,6 @@ public class DoneCommand extends Command {
         task.setDone();
         return String.format(
                 "Nice! I've marked this task as done:\n%s",task);
-
-
     }
-
-
 
 }

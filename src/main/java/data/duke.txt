@@ -1,14 +1,19 @@
+T | 1 | DFS
+E | 1 | go to school, buy book | 2020-12-12T12:00
+T | 1 | haha
 E | 1 | have dinner at Tom's home | 2020-10-11T23:00
 D | 1 | read book | 2020-10-11
 T | 1 | return book
-E | 1 | go to school, buy book | 2020-12-12T12:00
-T | 0 | testing
-E | 0 | Birthday | 2021-09-12T08:11
-D | 1 | eat | 2020-09-19
-E | 0 | Friend | 2020-05-12T10:21
-D | 0 |  | 2020-09-19
-D | 0 |  | 2020-09-19
-D | 1 | eat | 2020-09-19
-E | 0 | Birthday | 2021-09-12T08:11
+T | 1 | test
 T | 1 | testing on PC
-T | 0 | eatting
+T | 0 | ADD Food
+E | 0 | Birthday | 2021-09-12T08:11
+T | 1 | DSFS
+T | 0 | DSFS
+E | 0 | Friend | 2020-05-12T10:21
+E | 0 | Java | 2021-03-12T09:51
+E | 0 | Java | 2021-03-12T09:51
+T | 0 | assignm
+D | 0 | eat | 2020-09-19
+D | 0 | eat | 2020-09-19
+T | 0 | testing

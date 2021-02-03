@@ -67,7 +67,7 @@ public class DeadLineCommand extends Command {
 
 
         return String.format(
-                "I've added this task:\n%s\nNow you have %s tasks in the list.",
+                "Got it. I've added this task:\n%s\nNow you have %s tasks in the list.",
                 task, taskList.size()
         );
     }

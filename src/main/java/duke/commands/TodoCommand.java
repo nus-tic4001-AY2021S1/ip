@@ -7,12 +7,28 @@ import duke.tasks.Task;
 import duke.tasks.Todo;
 import duke.ui.Ui;
 
+/** .
+ * Executes a todo command.
+ */
 public class TodoCommand extends Command {
+
+    /** .
+     * Constructs a TodoCommand.
+     *  @param input The strings contains keywords.
+     */
     public TodoCommand(String input) {
         super(input);
     }
 
 
+    /** .
+     * Executes a find command and returns a response.
+     *
+     * @param taskList Contains the tasks.
+     * @param ui Displays information to the user.
+     * @param storage Reads and stores data into memory.
+     * @return Message to users.
+     */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
 
@@ -26,7 +42,6 @@ public class TodoCommand extends Command {
         } else {
             throw new DukeException("OOPS!!! The description of a " + commandFirstWord + " cannot be empty.");
         }
-
 
 
         Task task = new Todo(taskDetail);

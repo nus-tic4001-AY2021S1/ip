@@ -13,15 +13,30 @@ import java.util.Locale;
 
 import static duke.util.TaskList.isValidDateTimeFormat;
 
+/** .
+ * Executes a event command.
+ */
 public class EventCommand extends Command {
     private String taskDescription;
     private  LocalDateTime formatDateTime;
 
-
+    /** .
+     * Constructs a EventCommand.
+     *  @param input The strings contains keywords.
+     */
     public EventCommand(String input) {
         super(input);
     }
 
+
+    /** .
+     * Executes a sort command and returns a response.
+     *
+     * @param taskList Contains the tasks.
+     * @param ui Displays information to the user.
+     * @param storage Reads and stores data into memory.
+     * @return Message to users.
+     */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
 
@@ -35,14 +50,6 @@ public class EventCommand extends Command {
         } else {
             throw new DukeException("OOPS!!! The description of a " + commandFirstWord + " cannot be empty.");
         }
-
-
-
-
-
-
-
-
 
         String toAddTaskDetails = taskDetail;
 
@@ -65,11 +72,8 @@ public class EventCommand extends Command {
             throw new DukeException("Please enter correct event Date yyyy-MM-dd HH:mm, example: 2019-12-31 11:10");
         }
 
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         formatDateTime = LocalDateTime.parse(taskEventDate, formatter);
-
-
 
         Task task = new Event(taskDescription, formatDateTime);
         int previousTaskSize = taskList.size();
@@ -78,9 +82,12 @@ public class EventCommand extends Command {
         assert (previousTaskSize + 1 == subsequentTaskSize);
 
         return String.format(
-                "I've added this task:\n%s\nNow you have %s tasks in the list.",
+                "Got it. I've added this task:\n%s\nNow you have %s tasks in the list.",
                 task, taskList.size()
         );
+
+
+
     }
 
 
