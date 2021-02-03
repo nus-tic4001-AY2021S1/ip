@@ -37,6 +37,14 @@ public class Duke {
     }
 
     /**
+     * Main method
+     */
+    public static void main(String[] args) {
+        Duke duke = new Duke();
+        duke.run();
+    }
+
+    /**
      * The normal run method.
      */
     public void run() {
