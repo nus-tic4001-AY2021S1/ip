@@ -104,7 +104,7 @@ Marking a specific task to remind the user that he has finished the task.
 
 **Expected outcome**:
 <br/>Nice! I've marked this task as done:
-<br/>[T][Done] READ BOOK
+<br/>[T][Y] READ BOOK
 
 ### Feature 5
 Deleting a task: delete
@@ -207,7 +207,7 @@ It helps to save the Tasks in the hard disk automatically after exiting the prog
   <br/>step 4. done 1
   <br/> step 5. bye
    
-**Expected outcome**: save into /data/duke.txt
+**Expected outcome**: save into /data/dukes.txt
 <br/> T | 1 | read book
 <br/> D | 0 | return book  | 12 Nov 2019, 06:00 PM
 <br/> E | 0 | join club  | 11 Feb 2020, 01:00 PM

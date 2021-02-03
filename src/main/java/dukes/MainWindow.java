@@ -1,5 +1,7 @@
 package dukes;
 
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -8,10 +10,14 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Controller for MainWindow. Provides the layout for the other controls.
  */
 public class MainWindow extends AnchorPane {
+
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -29,6 +35,9 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        String hello = "Hello! I'm your task manager ^_^\nWhat can I do for you?";
+        dialogContainer.getChildren().addAll(
+                DialogBox.getDukeDialog(hello, dukeImage));
     }
 
     public void setDuke(Duke d) {
@@ -43,10 +52,28 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = duke.getResponse(input);
+        if (input.isEmpty()) {
+            return;
+        }
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getDukeDialog(response, dukeImage)
         );
+        if (response.equals("Bye. Hope to see you again soon!")) {
+            terminationExit();
+        }
         userInput.clear();
+    }
+
+    private void terminationExit() {
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                Platform.exit();
+                System.exit(0);
+            }
+        };
+        Timer delay = new Timer();
+        delay.schedule(timerTask, 500);
     }
 }
