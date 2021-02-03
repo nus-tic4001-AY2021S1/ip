@@ -13,8 +13,8 @@ public class Ui {
     }
 
     public String greetUser() {
-        return indentPrint("Hello! I'm Duke") +
-            indentPrint("What can I do for you?");
+        return indentPrint("Hello! I'm Duke")
+            + indentPrint("What can I do for you?");
     }
 
     public String byeToUser() {
