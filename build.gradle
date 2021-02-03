@@ -16,31 +16,57 @@ checkstyle {
     toolVersion = '8.29'
 }
 
-checkstyleMain {
-    source ='src/main/java'
-}
-
-//application {
-//    mainClassName = "duke.Duke"
+//checkstyleMain {
+//    source ='src/main/java'
 //}
 
-checkstyleTest {
-    source ='src/test/java'
-}
+//checkstyleTest {
+//    source ='src/test/java'
+//}
 
 repositories {
     mavenCentral()
 }
 
+application {
+    mainClassName = "Launcher"
+}
+
+shadowJar {
+    archiveBaseName = "duke"
+    archiveClassifier = null
+}
+
 dependencies {
-    testImplementation(
+
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.0'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.0'
+    implementation 'org.testng:testng:6.9.6'
+    String javaFxVersion = '11'
+
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'linux'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'linux'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'linux'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'linux'
+    /*testImplementation(
             'junit:junit:4.12',
             'org.junit.jupiter:junit-jupiter-api:5.4.2'
-    )
+    )*/
+
     //testRuntime(
     //        'org.junit.jupiter:junit-jupiter-engine:5.4.2',
     //        'org.junit.vintage:junit-vintage-engine:5.4.2'
     //)
+
+
 }
 
 

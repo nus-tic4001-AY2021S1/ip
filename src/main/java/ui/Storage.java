@@ -52,7 +52,7 @@ public class Storage {
      */
     public static void writeToFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(FILEPATH, false);
-        for(int i = 0; i < tasks.size(); i++) {
+        for (int i = 0; i < tasks.size(); i++) {
             fw.write(String.valueOf(tasks.get(i) + "\n"));
         }
         fw.close();
@@ -99,16 +99,18 @@ public class Storage {
         return tasks;
     }
 
-    private static void addTodosToArray(ArrayList<Task> tasks, String line, int ArrIndex) {
+    @SuppressWarnings("checkstyle:ParameterName")
+    private static void addTodosToArray(ArrayList<Task> tasks, String line, int arrIndex) {
         String status = line.substring(4,5);
         String taskName = line.substring(7);
         tasks.add(new ToDos(taskName));
-        if (status.equals("\u2713")) {
-            tasks.get(ArrIndex).markAsDone();
+        if (status.equals("✓")) {
+            tasks.get(arrIndex).markAsDone();
         }
     }
 
-    private static void addDeadlinesToArray(ArrayList<Task> tasks, String line, int ArrIndex) {
+    @SuppressWarnings("checkstyle:ParameterName")
+    private static void addDeadlinesToArray(ArrayList<Task> tasks, String line, int arrIndex) {
         int index = line.indexOf("(by");
         String taskName = line.substring(7, index - 1);
         String status = line.substring(4,5);
@@ -129,19 +131,19 @@ public class Storage {
 
         }
 
-        if (status.equals("\u2713")) {
-            tasks.get(ArrIndex).markAsDone();
+        if (status.equals("✓")) {
+            tasks.get(arrIndex).markAsDone();
         }
     }
 
-    private static void addEventsToArray(ArrayList<Task> tasks, String line, int ArrIndex) {
+    private static void addEventsToArray(ArrayList<Task> tasks, String line, int arrIndex) {
         int index = line.indexOf("(at");
         String status = line.substring(4,5);
         String schedule = line.substring(index + 4, line.length() - 1);
         String taskName = line.substring(line.indexOf(" ") + 1, index);
         tasks.add(new Events(taskName, schedule));
-        if (status.equals("\u2713")) {
-            tasks.get(ArrIndex).markAsDone();
+        if (status.equals("✓")) {
+            tasks.get(arrIndex).markAsDone();
         }
 
     }
