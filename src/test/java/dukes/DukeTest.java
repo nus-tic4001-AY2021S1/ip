@@ -1,4 +1,4 @@
-package duke;
+package dukes;
 
 import org.junit.jupiter.api.Test;
 

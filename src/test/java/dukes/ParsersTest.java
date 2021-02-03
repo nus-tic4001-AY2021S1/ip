@@ -1,4 +1,4 @@
-package duke;
+package dukes;
 
 import dukes.command.Command;
 import dukes.command.ExitCommand;

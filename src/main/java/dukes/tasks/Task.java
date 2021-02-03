@@ -3,7 +3,7 @@ package dukes.tasks;
 /**
  * Represents a Task.
  * Parent class of all other types of tasks.
- * A <code>Task</code> object corresponds to a task to be added to a <code>TaskList</code>.
+ * A Task object corresponds to a task to be added to a <code>TaskList</code>.
  */
 public abstract class Task {
     protected String description;
@@ -23,7 +23,7 @@ public abstract class Task {
      * @return Icon to indicate status of the task.
      */
     public String getStatusIcon() {
-        return (isDone ? "Done" : "X");
+        return (isDone ? "Y" : "X");
     }
 
     public String getFileStatusIcon() {

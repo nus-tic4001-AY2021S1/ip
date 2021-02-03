@@ -34,11 +34,12 @@ public class Parser {
         Command c = null;
         String action = input.split(" ")[0].toLowerCase();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HHmm");
-        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy, hh:mm a");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
         switch (action) {
         case "list":
             c = new ListCommand();
             break;
+
         case "todo":
             if (input.length() < 6) {
                 throw new DukeException("OOPS!!! The description of a todo cannot be empty.");
@@ -46,6 +47,7 @@ public class Parser {
             taskWord = new ToDo(input.substring(5));
             c = new AddCommand(taskWord);
             break;
+
         case "delete":
             if (input.isEmpty() || input.length() < 7) {
                 throw new DukeException("OOPS!!! There is no specific task to delete.\n");

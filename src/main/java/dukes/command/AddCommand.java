@@ -16,13 +16,14 @@ public class AddCommand extends Command {
 
     /**
      * Adds a Deadline/ Event/ Todo task to the task list and save the list to disk and display to user.
-     *  @param tasks TaskList to be appended.
+     * @param tasks TaskList to be appended.
      * @param ui UI to interact with user.
      * @param storage Storage to read and write files,temporary save and store in hard disk.
+     * @return
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         tasks.list.add(task);
-        ui.printAddedMessage(task, tasks.list.size());
+        return ui.printAddedMessage(task, tasks.list.size());
     }
 }

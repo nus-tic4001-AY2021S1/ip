@@ -23,6 +23,10 @@ public class Storage {
         Storage.path = path;
     }
 
+    public Storage() {
+
+    }
+
     public ArrayList<String> load() throws dukes.exception.FileNotFoundException {
         try {
             File file = new File(path);

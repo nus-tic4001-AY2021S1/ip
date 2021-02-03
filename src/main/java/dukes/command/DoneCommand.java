@@ -26,13 +26,14 @@ public class DoneCommand extends Command {
      * @param ui UI to interact with user.
      * @param storage Storage to read and write files and temporary store in hard disk.
      * @throws DukeException If user key in a number that is not in the TaskList.
+     * @return
      */
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         try {
             Task doneTask = tasks.list.get(index).markAsDone();
-            ui.printDoneMessage(doneTask);
+            return ui.printDoneMessage(doneTask);
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("Please key in a number from the list");
         }

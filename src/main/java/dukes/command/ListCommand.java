@@ -24,19 +24,20 @@ public class ListCommand extends Command {
      * @throws IndexOutOfBoundsException if there is empty list.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         try {
             int count = tasks.list.size();
             if (count == 0) {
-                System.out.println("OOPS!!! There are no tasks in your list.");
+                return ("OOPS!!! There are no tasks in your list.");
             } else {
-                System.out.println("     Here are the tasks in your list:");
+                String toPrint = ui.indentPrint("     Here are the tasks in your list:");
                 for (int i = 0; i < tasks.list.size(); i++) {
-                    System.out.println("    " + (i + 1) + "." + tasks.list.get(i));
+                    toPrint += ui.indentPrint("    " + (i + 1) + "." + tasks.list.get(i));
                 }
+                return toPrint;
             }
         } catch (IndexOutOfBoundsException e) {
-            System.out.print("current task is empty in your list.");
+            return ("current task is empty in your list.");
         }
     }
 }

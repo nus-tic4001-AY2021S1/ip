@@ -34,26 +34,25 @@ public class Ui {
      * Prints the Dukes.Duke logo and greets the user for the first time the program is run.
      */
     public void printWelcome() {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
+        showLine();
         System.out.println("Hello! I'm Dukes\nWhat can I do for you?\n");
+        showLine();
 
+    }
+
+    public String greetMessage() {
+        return "Hello! I'm Duke.\nWhat can I do for you?";
     }
 
     /**
      * Prints the bye message and the list that will be save in hard disk when the user exits the program.
      */
-    public void showExitMessage(ArrayList<Task> task) {
-
+    public String showExitMessage(ArrayList<Task> task) {
         System.out.println("Your following tasks will be save: ");
         for (Task t : task) {
             System.out.println(t);
         }
-        System.out.println("Bye. Hope to see you again soon!");
+        return ("Bye. Hope to see you again soon!");
     }
 
     /**
@@ -74,12 +73,14 @@ public class Ui {
      * @param task Task that has been added.
      * @param numberOfTasks Number of tasks currently in the list.
      */
-    public void printAddedMessage(Task task, int numberOfTasks) {
-        System.out.println("Got it. I've added this task: \n"
+    public String printAddedMessage(Task task, int numberOfTasks) {
+        StringBuilder msg = new StringBuilder();
+        msg.append("Got it. I've added this task: \n"
                 + task);
-        System.out.println("Now you have "
+        msg.append("\n Now you have "
                 + numberOfTasks + (numberOfTasks == 1 ? " task" : " tasks")
                 + " in the list.");
+        return msg.toString();
     }
 
     /**
@@ -87,21 +88,30 @@ public class Ui {
      * @param task Task that has been deleted.
      * @param numberOfTasks Number of tasks left in the list.
      */
-    public void printDeleteMessage(Task task, int numberOfTasks) {
-        System.out.println("Noted. I've removed this task: \n"
+    public String printDeleteMessage(Task task, int numberOfTasks) {
+        StringBuilder msg = new StringBuilder();
+        msg.append("Noted. I've removed this task: \n"
                 + task);
-        System.out.println("Now you have "
+        msg.append("\nNow you have "
                 + numberOfTasks + (numberOfTasks == 1 ? " task" : " tasks")
                 + " in the list.");
+        return msg.toString();
     }
 
     /**
      * Prints the message to inform user that a task has been successfully marked as done.
      * @param task Task that has been marked as done.
      */
-    public void printDoneMessage(Task task) {
-        System.out.println("Nice! I've marked this task as done:\n"
+    public String printDoneMessage(Task task) {
+        StringBuilder msg = new StringBuilder();
+        msg.append("Nice! I've marked this task as done:\n"
                 + task);
+        return msg.toString();
     }
+
+    public String indentPrint(String toPrint) {
+        return " " + toPrint + "" + "\n";
+    }
+
 }
 

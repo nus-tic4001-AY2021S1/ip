@@ -6,18 +6,12 @@ import dukes.exception.DukeException;
 import dukes.parser.Parser;
 import dukes.storage.Storage;
 import dukes.tasks.TaskList;
-import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 /**
  * The Dukes.Duke program implements an application that can store a list of task,save to a txt file.
@@ -31,6 +25,7 @@ import javafx.scene.image.ImageView;
 public class Duke {
     private Storage storage;
     private TaskList tasks;
+    private Parser parser;
     private Ui ui;
     private ScrollPane scrollPane;
     private VBox dialogContainer;
@@ -40,7 +35,7 @@ public class Duke {
     private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
-    /** Path program will store the task in this path. */
+    /** Path program will store the task in this path.*/
     public Duke(String path)  {
         ui = new Ui();
         storage = new Storage(path);
@@ -53,6 +48,18 @@ public class Duke {
     }
 
     public Duke() {
+        String logo = " ____        _        \n"
+                + "|  _ \\ _   _| | _____ \n"
+                + "| | | | | | | |/ / _ \\\n"
+                + "| |_| | |_| |   <  __/\n"
+                + "|____/ \\__,_|_|\\_\\___|\n";
+        System.out.println("Hello from\n" + logo);
+        parser = new Parser();
+        tasks = new TaskList();
+        storage = new Storage();
+        ui = new Ui();
+        storage.saveTaskFile(tasks.list);
+
 
     }
 
@@ -83,7 +90,12 @@ public class Duke {
      */
 
     String getResponse(String input) {
-        return "Duke heard: " + input;
+        try {
+            Command c = Parser.parse(input);
+            return c.execute(tasks, ui, storage);
+        } catch (DukeException e) {
+            return e.getMessage();
+        }
     }
 
     /**
