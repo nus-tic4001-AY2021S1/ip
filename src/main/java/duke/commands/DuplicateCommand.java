@@ -29,7 +29,7 @@ public class DuplicateCommand {
             }
         }
         String toPrint;
-        if (noDuplicate){
+        if (noDuplicate) {
             toPrint = ui.indentPrint("There is no duplicated task in your list.");
         } else {
             toPrint = ui.indentPrint("Here are duplicated tasks in your list:");
@@ -38,7 +38,8 @@ public class DuplicateCommand {
                     toPrint += ui.indentPrint((i + 1) + ". " + taskList.getTask(i).toString());
                     toPrint += ui.indentPrint("Duplicates:");
                     for (int j = 1; j <= duplicate[i][0]; j++) {
-                        toPrint += ui.indentPrint((duplicate[i][j] + 1) + ". " + taskList.getTask(duplicate[i][j]).toString());
+                        toPrint += ui.indentPrint((duplicate[i][j] + 1)
+                                + ". " + taskList.getTask(duplicate[i][j]).toString());
                     }
                 }
             }
