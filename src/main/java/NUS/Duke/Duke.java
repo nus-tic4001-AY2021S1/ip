@@ -36,10 +36,6 @@ public class Duke extends Application {
     private Button sendButton;
     private Scene scene;
 
-    public static void main(String[] args) {
-        Application.launch(Duke.class, args);
-    }
-
 
 
     public static String processCommand(String originalCommand) {
