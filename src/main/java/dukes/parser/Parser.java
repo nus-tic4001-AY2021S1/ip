@@ -6,8 +6,9 @@ import dukes.command.Command;
 import dukes.command.DeleteCommand;
 import dukes.command.DoneCommand;
 import dukes.command.ExitCommand;
-import dukes.command.FindCommand;
 import dukes.command.ListCommand;
+import dukes.command.FindCommand;
+import dukes.command.HelpCommand;
 import dukes.exception.DukeException;
 import dukes.tasks.Deadline;
 import dukes.tasks.Event;
@@ -112,6 +113,8 @@ public class Parser {
             } catch (NumberFormatException e) {
                 throw new DukeException("please key in correct format.");
             }
+        case "help":
+            return new HelpCommand();
 
         case "bye":
         case "exit":

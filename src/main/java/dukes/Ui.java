@@ -113,5 +113,19 @@ public class Ui {
         return " " + toPrint + "" + "\n";
     }
 
+    public String showHelp() {
+        String content = "Use following commands to control me:\n"
+                + "\t- todo [desc]\n"
+                + "\t- event [desc] /at [date time]\n"
+                + "\t- deadline [desc] /by [date time]\n"
+                + "\t- list\n"
+                + "\t- done [task number]\n"
+                + "\t- bye|exit (exits duke)\n"
+                + "\t- find [keyword]\n"
+                + "\t* date format - DD/MM/YYYY \n"
+                + "\t* time format - HHmm";
+        return content;
+    }
+
 }
 
