@@ -22,4 +22,11 @@ public class Event extends Todo {
     public String getAtForFile() {
         return at.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
+
+    public boolean isEquals(Event toCompare) {
+        if (this.at.equals(toCompare.getAt())) {
+            return super.isEquals(toCompare);
+        }
+        return false;
+    }
 }

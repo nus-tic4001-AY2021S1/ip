@@ -25,4 +25,11 @@ public class Deadline extends Todo {
     public String getByForFile() {
         return by.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
+
+    public boolean isEquals(Deadline toCompare) {
+        if (this.by.equals(toCompare.getBy())) {
+            return super.isEquals(toCompare);
+        }
+        return false;
+    }
 }
