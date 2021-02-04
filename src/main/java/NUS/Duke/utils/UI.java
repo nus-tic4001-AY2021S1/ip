@@ -46,6 +46,8 @@ public class UI {
         sb.append("deleteAll - this is to delete all the tasks.\n");
         sb.append("find (task description) - this is to find the task with matching description. " +
                 "usage example : find do homework\n");
+        sb.append("findBy (/s date /e date), /s is the start date and /e is the end date. Date format must be 'YYYY-MM-DD'." +
+                " Usage example : findby /s 2020-05-01 /e 2020-05-20");
         sb.append("done (task id) - this is to mark the task is done. usage example : done 1 \n");
         sb.append("save - this is to save all the tasks you have created to file in the folder named DukeFile.txt. \n");
         sb.append("bye - this is to list all the task you have created. \n");

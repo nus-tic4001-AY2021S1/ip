@@ -82,6 +82,9 @@ public class Duke extends Application {
             case "find":
                 result=ParserUtil.findTask(details);
                 break;
+            case "findby":
+                result=ParserUtil.findTaskByDate(details);
+                break;
             case "deleteall":
                 result=ParserUtil.deleteAllTask();
                 break;
