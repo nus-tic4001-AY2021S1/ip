@@ -4,6 +4,7 @@ import duke.commands.ByeCommand;
 import duke.commands.DeadlineCommand;
 import duke.commands.DeleteCommand;
 import duke.commands.DoneCommand;
+import duke.commands.DuplicateCommand;
 import duke.commands.EventCommand;
 import duke.commands.FindCommand;
 import duke.commands.ListCommand;
@@ -42,6 +43,8 @@ public class Parser {
             return new EventCommand().execute(others,ui,store,taskList);
         case "find":
             return new FindCommand().execute(others,ui,store,taskList);
+        case "duplicate":
+            return new DuplicateCommand().execute(others,ui,store,taskList);
         default:
             throw new DukeException("I'm sorry, but I don't know what that means :-(");
         }
