@@ -42,7 +42,6 @@ public class Duke {
      */
 
     String getResponse(String input) {
-        //ui.greetUser();
         while (!store.getIsExit()) {
             try {
                 return parser.getCommand(input, store, ui, taskList);
