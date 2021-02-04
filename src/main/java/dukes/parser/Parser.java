@@ -32,7 +32,7 @@ public class Parser {
     public static Command parse(String input) throws DukeException {
         Task taskWord;
         String keyword;
-        Command c = null;
+        Command c;
         String action = input.split(" ")[0].toLowerCase();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HHmm");
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");

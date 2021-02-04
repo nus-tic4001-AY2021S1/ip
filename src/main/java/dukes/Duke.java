@@ -23,22 +23,24 @@ import javafx.scene.image.Image;
  * @since 18/1/2021
  */
 public class Duke {
-    private Storage storage;
+    private final Storage storage;
+    public static String path = "data/duke.txt";
     private TaskList tasks;
-    private Parser parser;
-    private Ui ui;
+    private final Ui ui;
     private ScrollPane scrollPane;
     private VBox dialogContainer;
     private TextField userInput;
     private Button sendButton;
     private Scene scene;
-    private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private final Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
+    private final Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
-    /** Path program will store the task in this path.*/
+    /** Path program will store the task in this path.
+     * @param path the path of which data is saved and loaded from
+     * */
     public Duke(String path)  {
         ui = new Ui();
-        storage = new Storage(path);
+        storage = new Storage();
         try {
             tasks = new TaskList(storage.load());
         } catch (DukeException e) {
@@ -54,12 +56,16 @@ public class Duke {
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
-        parser = new Parser();
+        Parser parser = new Parser();
         tasks = new TaskList();
         storage = new Storage();
         ui = new Ui();
-        storage.saveTaskFile(tasks.list);
-
+        try {
+            tasks = new TaskList(storage.load());
+        } catch (DukeException e) {
+            ui.printLoadingError("Problem reading file. Starting with an empty task list.");
+            tasks = new TaskList();
+        }
 
     }
 
@@ -100,6 +106,7 @@ public class Duke {
 
     /**
      * This is main method which made use of Dukes.Duke and run methods.
+     * @param args a value passed to a function.
      */
     public static void main(String[] args) {
         assert (args.length) > 0;

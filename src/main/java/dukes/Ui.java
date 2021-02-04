@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Create a UI class to manage user interface for users and handles interaction between the user.
  */
 public class Ui {
-    private Scanner in = new Scanner(System.in);
+    private final Scanner in = new Scanner(System.in);
 
     /**
      * Reads user input.
@@ -40,12 +40,10 @@ public class Ui {
 
     }
 
-    public String greetMessage() {
-        return "Hello! I'm Duke.\nWhat can I do for you?";
-    }
-
     /**
      * Prints the bye message and the list that will be save in hard disk when the user exits the program.
+     * @param task the list of task that will be saved.
+     * @return the list of task and the goodbye message will be show.
      */
     public String showExitMessage(ArrayList<Task> task) {
         System.out.println("Your following tasks will be save: ");
@@ -57,6 +55,7 @@ public class Ui {
 
     /**
      * Prints the error when the information in storage could not be loaded.
+     * @param s the string of the message.
      */
     public void printLoadingError(String s) {
         System.out.println(s);
@@ -64,49 +63,45 @@ public class Ui {
 
 
     public static int indexDetails(String input) {
-        int number = Integer.parseInt(input.substring(input.indexOf(' ') + 1)) - 1;
-        return number;
+        return Integer.parseInt(input.substring(input.indexOf(' ') + 1)) - 1;
     }
 
     /**
      * Prints the message to inform user of a successful addition of a task to the list.
      * @param task Task that has been added.
      * @param numberOfTasks Number of tasks currently in the list.
+     * @return a message to add in the task.
      */
     public String printAddedMessage(Task task, int numberOfTasks) {
-        StringBuilder msg = new StringBuilder();
-        msg.append("Got it. I've added this task: \n"
-                + task);
-        msg.append("\n Now you have "
+        return "Got it. I've added this task: \n"
+                + task +
+                "\n Now you have "
                 + numberOfTasks + (numberOfTasks == 1 ? " task" : " tasks")
-                + " in the list.");
-        return msg.toString();
+                + " in the list.";
     }
 
     /**
      * Prints the message to inform user of a successful deletion.
      * @param task Task that has been deleted.
      * @param numberOfTasks Number of tasks left in the list.
+     * @return a message for remove the a task.
      */
     public String printDeleteMessage(Task task, int numberOfTasks) {
-        StringBuilder msg = new StringBuilder();
-        msg.append("Noted. I've removed this task: \n"
-                + task);
-        msg.append("\nNow you have "
+        return "Noted. I've removed this task: \n"
+                + task +
+                "\nNow you have "
                 + numberOfTasks + (numberOfTasks == 1 ? " task" : " tasks")
-                + " in the list.");
-        return msg.toString();
+                + " in the list.";
     }
 
     /**
      * Prints the message to inform user that a task has been successfully marked as done.
      * @param task Task that has been marked as done.
+     * @return a message to show the done task.
      */
     public String printDoneMessage(Task task) {
-        StringBuilder msg = new StringBuilder();
-        msg.append("Nice! I've marked this task as done:\n"
-                + task);
-        return msg.toString();
+        return "Nice! I've marked this task as done:\n"
+                + task;
     }
 
     public String indentPrint(String toPrint) {
@@ -114,7 +109,7 @@ public class Ui {
     }
 
     public String showHelp() {
-        String content = "Use following commands to control me:\n"
+        return "Use following commands to control me:\n"
                 + "\t- todo [desc]\n"
                 + "\t- event [desc] /at [date time]\n"
                 + "\t- deadline [desc] /by [date time]\n"
@@ -124,7 +119,6 @@ public class Ui {
                 + "\t- find [keyword]\n"
                 + "\t* date format - DD/MM/YYYY \n"
                 + "\t* time format - HHmm";
-        return content;
     }
 
 }

@@ -20,7 +20,7 @@ public class FindCommand extends Command {
      *  @param tasks   TaskList to be appended.
      * @param ui      UI to interact with user.
      * @param storage Storage to read and write files.
-     * @return
+     * @return a list of tasks with the specific keyword will be show.
      */
 
     @Override
@@ -38,11 +38,11 @@ public class FindCommand extends Command {
             if (count == 0) {
                 throw new DukeException("OOPS!!! There is no matching task in the list");
             } else {
-                String toPrint = ui.indentPrint("Here are the matching tasks in your list:");
+                StringBuilder toPrint = new StringBuilder(ui.indentPrint("Here are the matching tasks in your list:"));
                 for (int i = 0; i < filteredTasks.list.size(); i++) {
-                    toPrint += ui.indentPrint((i + 1) + "." + filteredTasks.list.get(i));
+                    toPrint.append(ui.indentPrint((i + 1) + "." + filteredTasks.list.get(i)));
                 }
-                return toPrint;
+                return toPrint.toString();
             }
         } catch (IndexOutOfBoundsException e) {
             return ("Current task is empty in your list.");
