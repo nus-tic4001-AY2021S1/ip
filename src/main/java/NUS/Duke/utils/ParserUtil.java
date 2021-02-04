@@ -46,15 +46,19 @@ public class ParserUtil {
      * This is the function to make task as done input param taskId
      * @param taskId
      */
-    public static void doneTask (int taskId){
+    public static String doneTask (int taskId){
+        String result ="";
         TaskDTO task = taskList.get(--taskId);
-        task.processDoneTask();
+        result = task.processDoneTask();
+
+        return result;
     }
     /**
      * This is the function to create event task by input param details
      * @param details
      */
-    public static void createEventTask(String details,int doneInd) throws ProcessingException {
+    public static String createEventTask(String details,int doneInd) throws ProcessingException {
+        String result ="";
         try {
             String taskName = details.substring(0, details.indexOf("/at"));
             String eventTime = details.substring(details.indexOf("/at") + 4).trim();
@@ -65,17 +69,21 @@ public class ParserUtil {
                 task.setDone(true);
             }
             taskList.add(task);
-            UI.printAddTaskMessage(task);
+            result = UI.printAddTaskMessage(task);
         }catch (Exception e){
+            result="Please check your input, /at is missing";
             UI.printErrorMessage("Please check your input, /at is missing");
         }
+
+        return result;
     }
 
     /**
      * This is the function to create deadline task by input param details
      * @param details
      */
-    public static void createDeadlineTask(String details,int doneInd) {
+    public static String createDeadlineTask(String details,int doneInd) {
+        String result = "";
         try {
             String taskName = details.substring(0,details.indexOf("/by"));
             String deadlineDate = details.substring(details.indexOf("/by")+4).trim();
@@ -86,17 +94,22 @@ public class ParserUtil {
                 task.setDone(true);
             }
             taskList.add(task);
-            UI.printAddTaskMessage(task);
+            result=UI.printAddTaskMessage(task);
         }catch (Exception e){
+            result="Please check your input, /by is missing or date entered is incorrect";
             UI.printErrorMessage("Please check your input, /by is missing or date entered is incorrect");
         }
+
+        return result;
+
 
     }
     /**
      * This is the function to create todo task by input param details
      * @param details
      */
-    public static void createTodoTask(String details,int doneInd){
+    public static String createTodoTask(String details,int doneInd){
+
 
         TodoDTO task = new TodoDTO(details);
         if (doneInd==0){
@@ -105,7 +118,9 @@ public class ParserUtil {
             task.setDone(true);
         }
         taskList.add(task);
-        UI.printAddTaskMessage(task);
+        String result = UI.printAddTaskMessage(task);
+
+        return result;
 
 
     }
@@ -114,47 +129,51 @@ public class ParserUtil {
      * This is a function to delete task from tasklist with input param taskIdNumber
      * @param taskIdNumber
      */
-    public static void deleteTask (int taskIdNumber){
+    public static String deleteTask (int taskIdNumber){
         TaskDTO tempTask = null;
+        String result ="";
 
         try {
             tempTask = taskList.get(--taskIdNumber);
 
             taskList.remove(tempTask);
-            UI.printDeleteTaskMessage(tempTask);
+            result=UI.printDeleteTaskMessage(tempTask);
 
         }catch (Exception e){
+            result=e.getMessage();
             e.printStackTrace();
-            System.out.println(e.getMessage());
         }
 
+        return result;
     }
 
     /**
      * This is the function to export the tasklist to a txt file in a format
      */
-    public static void writeToFile(){
+    public static String writeToFile(){
+        StringBuilder result =new StringBuilder();
         try {
             FileWriter myWriter = new FileWriter("DukeFile.txt");
             taskList.forEach(task -> {
                 try {
                     myWriter.write(task.getPrintFileString());
                 } catch (IOException e) {
-                    System.out.println("An error occurred.");
+                    result.append("An error occurred.");
                     e.printStackTrace();
                 }
             });
 
             myWriter.close();
-            System.out.println("Successfully wrote to the file.");
+            return ("Successfully wrote to the file.");
         } catch (IOException e) {
-            System.out.println("An error occurred.");
             e.printStackTrace();
+            return ("An error occurred.");
         }
     }
 
 
-    public static void readTaskFromFile(){
+    public static String readTaskFromFile(){
+        StringBuilder result = new StringBuilder();
         try {
             File myObj = new File("DukeFile.txt");
             Scanner scanner = new Scanner(myObj);
@@ -182,28 +201,32 @@ public class ParserUtil {
 
                 }
             }
-            System.out.println("-------------------------------------------------------------");
-            System.out.println("Successfully load record from the file.");
-            System.out.println("-------------------------------------------------------------");
-            UI.printWelcomeMessage();
+
+             result.append("Successfully load record from the file.\n");
+
+            result.append(UI.printWelcomeMessage());
             scanner.close();
         } catch (FileNotFoundException e){
-            System.out.println("DukeFile is not found, skip reading task from file.");
+            result = new StringBuilder();
+            result.append("DukeFile is not found, skip reading task from file.");
 
         } catch (ProcessingException e) {
-            System.out.println("An error occurred.");
+            result = new StringBuilder();
+            result.append("An error occurred.");
         }
+
+        return result.toString();
     }
 
-    public static void deleteAllTask(){
+    public static String deleteAllTask(){
         taskList.removeAll(taskList);
-        UI.printDeleteAllTaskMessage();
+        return UI.printDeleteAllTaskMessage();
     }
 
     /**
      * This is the function to find the description from list of task
      */
-    public static void findTask(String keyword){
+    public static String findTask(String keyword){
         List foundTasks = new ArrayList();
         taskList.forEach(task -> {
             if (task.getTaskName().toLowerCase().contains(keyword)){
@@ -211,7 +234,7 @@ public class ParserUtil {
             }
         });
 
-        UI.printFoundTaskList(foundTasks);
+       return UI.printFoundTaskList(foundTasks);
     }
 
     static boolean match(String first, String second)

@@ -37,9 +37,9 @@ public abstract class TaskDTO {
 
 
 
-    public void processDoneTask(){
+    public String processDoneTask(){
         this.isDone = true;
-        System.out.println(" Nice! I've marked this task as done: \n" +
+       return (" Nice! I've marked this task as done: \n" +
                 "[✓]"+this.taskName);
     }
 

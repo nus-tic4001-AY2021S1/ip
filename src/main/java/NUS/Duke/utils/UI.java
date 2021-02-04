@@ -17,20 +17,20 @@ public class UI {
         return in.nextLine();
     }
 
-    public static void printWelcomeMessage(){
+    public static String printWelcomeMessage(){
+        StringBuilder sb = new StringBuilder();
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-
-        System.out.println("____________________________________________________________");
-        System.out.println("Hello! I'm NUS Duke System\n" +
+        sb.append("Hello from\n" + logo);
+        sb.append("Hello! I'm NUS Duke System\n" +
                 "What can I do for you?");
+        return sb.toString();
     }
 
-    public static void printHelpList(){
+    public static String printHelpList(){
         StringBuilder sb = new StringBuilder();
         sb.append("Thank you for using Duke, please see the command below for each task: \n");
         sb.append("list - this is to list all the task you have created. \n");
@@ -50,13 +50,14 @@ public class UI {
         sb.append("save - this is to save all the tasks you have created to file in the folder named DukeFile.txt. \n");
         sb.append("bye - this is to list all the task you have created. \n");
 
-        System.out.println(sb.toString());
+        return sb.toString();
 
     }
-    public static void printList(List<TaskDTO> taskList){
+    public static String printList(List<TaskDTO> taskList){
         StringBuilder sb = new StringBuilder();
+        StringBuilder finalSb = new StringBuilder();
         if (taskList.size()==0){
-            System.out.println("You have no task yet, please add task.");
+            finalSb.append("You have no task yet, please add task.");
         }else {
             taskList.forEach(task -> {
                 sb.append(taskList.indexOf(task)+1 + ". ");
@@ -64,19 +65,21 @@ public class UI {
                 sb.append("\n");
             });
 
-            System.out.println(sb.toString());
+            finalSb.append(sb.toString());
         }
+        return finalSb.toString();
     }
 
     public static void printDoneMessage(){
         System.out.println("");
     }
-    public static void printDeleteAllTaskMessage(){
-        System.out.println("All the task has been deleted.");
+    public static String printDeleteAllTaskMessage(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("All the task has been deleted.");
+        return sb.toString();
     }
 
-    public static void printByeMessage(){
-        System.out.println("Bye. Hope to see you again soon!");
+    public static String printByeMessage(){ return "Bye. Hope to see you again soon!";
     }
     public static void printErrorMessage(String message) {
         try {
@@ -86,26 +89,31 @@ public class UI {
         }
     }
 
-    public static void printAddTaskMessage(TaskDTO task){
-        System.out.println(" Got it. I've added this task: \n"+ task.getTaskFullDescription() +"\n"
+    public static String printAddTaskMessage(TaskDTO task){
+        StringBuilder sb = new StringBuilder();
+        sb.append(" Got it. I've added this task: \n"+ task.getTaskFullDescription() +"\n"
                 +" Now you have "+ParserUtil.taskList.size()+" tasks in the list");
+
+        return sb.toString();
     }
 
-    public static void printDeleteTaskMessage(TaskDTO task){
-        System.out.println(" Noted. I've removed this task: \n"+ task.getTaskFullDescription() +"\n"
+    public static String printDeleteTaskMessage(TaskDTO task){
+        StringBuilder sb = new StringBuilder();
+        sb.append(" Noted. I've removed this task: \n"+ task.getTaskFullDescription() +"\n"
                 +" Now you have "+ParserUtil.taskList.size()+" tasks in the list");
+        return sb.toString();
     }
 
-    public static void printFoundTaskList(List<TaskDTO> foundList){
+    public static String printFoundTaskList(List<TaskDTO> foundList){
         StringBuilder sb = new StringBuilder();
         if (foundList.size()>0){
             sb.append(" Here are the matching tasks in your list: \n");
             foundList.forEach(taskDTO -> {
                 sb.append((ParserUtil.taskList.indexOf(taskDTO)+1)+":"+taskDTO.getTaskFullDescription()+"\n");
             });
-            System.out.println(sb.toString());
+            return (sb.toString());
         }else {
-            System.out.println("Sorry here are no match task in your list.");
+           return ("Sorry here are no match task in your list.");
         }
     }
 }
