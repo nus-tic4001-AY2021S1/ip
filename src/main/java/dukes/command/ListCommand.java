@@ -30,11 +30,11 @@ public class ListCommand extends Command {
             if (count == 0) {
                 return ("OOPS!!! There are no tasks in your list.");
             } else {
-                String toPrint = ui.indentPrint("     Here are the tasks in your list:");
+                StringBuilder toPrint = new StringBuilder(ui.indentPrint("     Here are the tasks in your list:"));
                 for (int i = 0; i < tasks.list.size(); i++) {
-                    toPrint += ui.indentPrint("    " + (i + 1) + "." + tasks.list.get(i));
+                    toPrint.append(ui.indentPrint("    " + (i + 1) + "." + tasks.list.get(i)));
                 }
-                return toPrint;
+                return toPrint.toString();
             }
         } catch (IndexOutOfBoundsException e) {
             return ("current task is empty in your list.");

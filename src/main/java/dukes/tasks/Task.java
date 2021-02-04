@@ -32,6 +32,7 @@ public abstract class Task {
 
     /**
      * Sets the task as done.
+     * @return it will show Y if the task is done.
      */
     public Task markAsDone() {
         this.isDone = true;

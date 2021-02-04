@@ -19,7 +19,6 @@ public class AddCommand extends Command {
      * @param tasks TaskList to be appended.
      * @param ui UI to interact with user.
      * @param storage Storage to read and write files,temporary save and store in hard disk.
-     * @return
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) {
