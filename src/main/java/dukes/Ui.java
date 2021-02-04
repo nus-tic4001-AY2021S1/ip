@@ -74,8 +74,8 @@ public class Ui {
      */
     public String printAddedMessage(Task task, int numberOfTasks) {
         return "Got it. I've added this task: \n"
-                + task +
-                "\n Now you have "
+                + task
+                + "\n Now you have "
                 + numberOfTasks + (numberOfTasks == 1 ? " task" : " tasks")
                 + " in the list.";
     }
@@ -88,8 +88,8 @@ public class Ui {
      */
     public String printDeleteMessage(Task task, int numberOfTasks) {
         return "Noted. I've removed this task: \n"
-                + task +
-                "\nNow you have "
+                + task
+                + "\nNow you have "
                 + numberOfTasks + (numberOfTasks == 1 ? " task" : " tasks")
                 + " in the list.";
     }
