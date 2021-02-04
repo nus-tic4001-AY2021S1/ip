@@ -10,7 +10,7 @@ import duke.command.DeleteCommand;
 import duke.command.DoneCommand;
 import duke.command.EventCommand;
 import duke.command.OtherCommand;
-import duke.command.tagCommand;
+import duke.command.TagCommand;
 import duke.exceptions.DukeException;
 import duke.tasks.Deadlines;
 import duke.tasks.Events;
@@ -154,7 +154,7 @@ public class Duke {
             s.append("Now you have " + tasks.size() + " tasks in the list.");
             return s.toString();
         case "tag":
-            index = ((tagCommand) cmd).getIndex();
+            index = ((TagCommand) cmd).getIndex();
             tasks.get(index - 1).addTag(cmd.getCmdContent());
             s.append("Adding tag " + cmd.getCmdContent() + " to task: " + index + System.lineSeparator());
             return s.toString();

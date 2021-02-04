@@ -1,6 +1,6 @@
 package duke.tasks;
 
-public abstract class Task extends tag {
+public abstract class Task extends Tag {
     protected String taskType;
     protected boolean isDone = false;
     protected String taskDescription;

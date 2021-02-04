@@ -2,7 +2,7 @@ package duke.tasks;
 
 import java.util.ArrayList;
 
-public abstract class tag {
+public abstract class Tag {
     protected ArrayList<String> tags = new ArrayList<>();
 
     public ArrayList<String> getTags() {

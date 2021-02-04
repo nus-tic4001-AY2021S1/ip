@@ -12,7 +12,7 @@ import duke.command.FindCommand;
 import duke.command.ListCommand;
 import duke.command.OtherCommand;
 import duke.command.TodoCommand;
-import duke.command.tagCommand;
+import duke.command.TagCommand;
 import duke.exceptions.DukeException;
 
 public class Parser {
@@ -87,7 +87,7 @@ public class Parser {
                 String tagSpliter = "/t";
                 String[] tagCommandContent = userInput.split(tagSpliter);
                 int index = Integer.parseInt(tagCommandContent[0].split(" ")[1]);
-                return new tagCommand(index, tagCommandContent[1]);
+                return new TagCommand(index, tagCommandContent[1]);
             } catch (StringIndexOutOfBoundsException e) {
                 throw new DukeException("☹ OOPS!!! The description of the tag cannot be empty.");
             } catch (ArrayIndexOutOfBoundsException e) {
