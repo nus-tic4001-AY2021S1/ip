@@ -31,39 +31,29 @@ public class Parser {
      */
     public static Command parse(String input) throws DukeException {
         Task taskWord;
-        String keyword;
-        Command c;
         String action = input.split(" ")[0].toLowerCase();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HHmm");
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
         switch (action) {
         case "list":
-            c = new ListCommand();
-            break;
-
+            return new ListCommand();
         case "todo":
             if (input.length() < 6) {
                 throw new DukeException("OOPS!!! The description of a todo cannot be empty.");
             }
-            taskWord = new ToDo(input.substring(5));
-            c = new AddCommand(taskWord);
-            break;
-
+            return new AddCommand(new ToDo(input.substring(5)));
         case "delete":
             if (input.isEmpty() || input.length() < 7) {
                 throw new DukeException("OOPS!!! There is no specific task to delete.\n");
             }
             int toDelete = Ui.indexDetails(input);
-            c = new DeleteCommand(toDelete);
-            break;
+            return  new DeleteCommand(toDelete);
         case "done":
             if (input.length() < 6) {
                 throw new DukeException("please key in correct format.\n");
             }
             int toEdit = Ui.indexDetails(input);
-            c = new DoneCommand(toEdit);
-            break;
-
+            return new DoneCommand(toEdit);
         case "deadline":
             if (input.length() < 10) {
                 throw new DukeException("OOPS!!! The description of a deadline cannot be empty.\n");
@@ -80,8 +70,7 @@ public class Parser {
             } catch (Exception e) {
                 throw new DukeException("Please input a date in this format : dd/MM/yyyy HHmm");
             }
-            c = new AddCommand(taskWord);
-            break;
+            return new AddCommand(taskWord);
 
         case "event":
             if (input.length() < 7) {
@@ -99,32 +88,25 @@ public class Parser {
             } catch (Exception e) {
                 throw new DukeException("Please input a date in this format : dd/MM/yyyy HHmm");
             }
-            c = new AddCommand(taskWord);
-            break;
+            return new AddCommand(taskWord);
 
         case "find":
             if (input.length() < 6) {
                 throw new DukeException("OOPS!!! The description of a find cannot be empty.\n");
             }
             try {
-                keyword = input.substring(5).toLowerCase();
-                c = new FindCommand(keyword);
-                break;
+                return new FindCommand(input.substring(5).toLowerCase());
             } catch (NumberFormatException e) {
                 throw new DukeException("please key in correct format.");
             }
         case "help":
             return new HelpCommand();
-
         case "bye":
         case "exit":
-            c = new ExitCommand();
-            break;
-
+            return new ExitCommand();
         default:
             throw new DukeException("OOPS!!! I'm sorry, but I don't know what that means :-(");
         }
-        return c;
     }
 
 }

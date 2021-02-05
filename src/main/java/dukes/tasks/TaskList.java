@@ -10,13 +10,12 @@ public class TaskList {
     public ArrayList<Task> list = new ArrayList<>();
 
 
-    public TaskList() {
-
-    }
-
     public TaskList(ArrayList<String> load) {
     }
 
+    public TaskList() {
+
+    }
 }
 
 
