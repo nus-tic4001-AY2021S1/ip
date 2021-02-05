@@ -17,9 +17,7 @@ public class ExitCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage)  {
-        String message = ui.showExitMessage(tasks.list);
-        storage.saveTaskFile(tasks.list);
-        return message;
+        return ui.showExitMessage(tasks.list);
     }
 
     /**

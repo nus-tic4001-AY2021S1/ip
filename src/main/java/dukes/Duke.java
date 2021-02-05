@@ -5,6 +5,7 @@ import dukes.command.Command;
 import dukes.exception.DukeException;
 import dukes.parser.Parser;
 import dukes.storage.Storage;
+import dukes.tasks.Task;
 import dukes.tasks.TaskList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +13,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
+
+import java.util.ArrayList;
 
 /**
  * The Dukes.Duke program implements an application that can store a list of task,save to a txt file.
@@ -24,7 +27,6 @@ import javafx.scene.image.Image;
  */
 public class Duke {
     private final Storage storage;
-    public static String path = "data/duke.txt";
     private TaskList tasks;
     private final Ui ui;
     private ScrollPane scrollPane;
@@ -66,6 +68,7 @@ public class Duke {
             ui.printLoadingError("Problem reading file. Starting with an empty task list.");
             tasks = new TaskList();
         }
+        storage.saveTaskFile(tasks.list);
 
     }
 
