@@ -40,17 +40,16 @@ public class EventCommand extends DeadlineCommand {
     public String execute() {
         try {
             if (line.isEmpty() || !line.contains("/at") || !line.contains("/to")) {
-                return ui.printRed("It seems that you've missed out the required keyword(s)!\n"
-                    + "Please type in the 'event <something> /at <dd/MM/yyyy HHmm> /to <HHmm>' format.");
+                return "It seems that you've missed out the required keyword(s)!\r"
+                    + "Please type in the 'event <something> /at <dd/MM/yyyy HHmm> /to <HHmm>' format.";
             }
             String description = line.split("/at ")[0];
             String startDateTime = line.split("/at ")[1].split(" /to ")[0];
             String endTime = line.split("/at ")[1].split(" /to ")[1];
 
             if (description.isEmpty() || startDateTime.isEmpty() || endTime.isEmpty()) {
-                return ui
-                    .printRed("It seems that you've missed out the task description or the start and end duration!\n"
-                        + "Please type in the 'event <something> /at <dd/MM/yyyy HHmm> /to <HHmm>' format.");
+                return "It seems that you've missed out the task description or the start and end duration!\r"
+                    + "Please type in the 'event <something> /at <dd/MM/yyyy HHmm> /to <HHmm>' format.";
             }
             startDateTime = reformatDateTime(startDateTime);
             endTime = reformatTime(endTime);
@@ -61,13 +60,13 @@ public class EventCommand extends DeadlineCommand {
             return ui.printTaskAdded(tasks);
 
         } catch (IOException e) {
-            return ui.printRed(e.getMessage());
+            return e.getMessage();
         } catch (IndexOutOfBoundsException e) {
-            return ui.printRed("It seems that you've missed out the event duration!\n"
-                + "Please type in something for <dd/MM/yyyy HHmm> after 'event <something> /at'.");
+            return "It seems that you've missed out the event duration!\r"
+                + "Please type in something for <dd/MM/yyyy HHmm> after 'event <something> /at'.";
         } catch (DateTimeParseException e) {
-            return ui.printRed("It seems that you didn't enter the time in the right format!\n"
-                + "Please type in the 'event <something> /at <dd/MM/yyyy HHmm>' format.");
+            return "It seems that you didn't enter the time in the right format!\r"
+                + "Please type in the 'event <something> /at <dd/MM/yyyy HHmm>' format.";
         }
     }
 }

@@ -1,6 +1,5 @@
 package duke.ui;
 
-import duke.MainWindow;
 import duke.task.TaskList;
 
 /**
@@ -9,47 +8,23 @@ import duke.task.TaskList;
 
 public class Ui {
 
-    private final MainWindow mw = new MainWindow();
-    /**
-     * Colors an input string in red.
-     */
-
-    public String colorRed(String input) {
-        return input; //"\033[31m" + input + "\033[0m";
-    }
-
-    /**
-     * Colors an input string in green.
-     */
-
-    public String colorGreen(String input) {
-        return input; //"\033[33m" + input + "\033[0m";
-    }
-
-    /**
-     * Prints the input string in red.
-     */
-
-    public String printRed(String input) {
-        return colorRed(input);
-    }
-
     public String printDukeLogo() {
         return Style.LOGO.getString();
     }
 
     public String printGreeting() {
-        return "Hello! I'm Duke.\n"
-            + "I can help you manage a list of tasks!\n"
-            + "What you can tell me to do is listed below:\n"
-            + "  ⬡  Create a Todo task     | " + colorGreen("todo <your task>\n")
-            + "  ⬢  Create a Deadline task | " + colorGreen("deadline <your task> /by <dd/MM/yyyy HHmm>\n")
-            + "  ⬡  Create an Event task   | " + colorGreen("event <your task> /at <dd/MM/yyyy HHmm> /to <HHmm>\n")
-            + "  ⬢  Complete a task        | " + colorGreen("done <task index number>\n")
-            + "  ⬡  Delete a task          | " + colorGreen("delete <task index number>\n")
-            + "  ⬢  List down all tasks    | " + colorGreen("list\n")
-            + "  ⬡  Find tasks with word   | " + colorGreen("find <word>\n")
-            + "  ⬢  Exit my program        | " + colorGreen("bye or hit Enter");
+        return "Hello! I'm Duke.\r"
+            + "I can help you manage a list of tasks!\r"
+            + "What you can tell me to do is listed below:\r"
+            + "  ⬡  Create a Todo task     | todo <task>\r"
+            + "  ⬢  Create a Deadline task | deadline <task> /by <dd/MM/yyyy HHmm>\r"
+            + "  ⬡  Create an Event task   | event <task> /at <dd/MM/yyyy HHmm> /to <HHmm>\r"
+            + "  ⬢  Complete a task        | done <index>\r"
+            + "  ⬡  Delete a task          | delete <index>\r"
+            + "  ⬢  List down all tasks    | list\r"
+            + "  ⬡  Find tasks with word   | find <word>\r"
+            + "  ⬢  Add a note to a task   | note <index> <text>\r"
+            + "  ⬡  Exit my program        | bye or exit";
     }
 
     public String printFarewell() {
@@ -57,38 +32,42 @@ public class Ui {
     }
 
     public String printTaskAdded(TaskList tasks) {
-        return "Great! You have entered a proper task as shown below:\n"
-            + colorGreen(tasks.get(tasks.size() - 1).getDescription()
-            + "\nWe now have " + tasks.size() + " task(s) in your list!");
+        return "Great! You have entered a proper task as shown below:\r"
+            + tasks.size() + ". " + tasks.get(tasks.size() - 1).getDescription()
+            + "\rWe now have " + tasks.size() + " task(s) in your list!";
     }
 
     public String printTaskRemoved(TaskList tasks, int index) {
-        return "Okay! We have removed the task as shown below:\n"
-            + colorRed(tasks.get(index - 1).getDescription()
-            + colorGreen("\nWe now have " + (tasks.size() - 1) + " task(s) in your list!"));
+        return "Okay! We have removed the task as shown below:\r"
+            + index + ". " + tasks.get(index - 1).getDescription()
+            + "\rWe now have " + (tasks.size() - 1) + " task(s) in your list!";
     }
 
     public String printTaskCompleted(int index, TaskList tasks) {
-        return "Good work there! Now we have:\n"
-            + colorGreen(index + ". ")
-            + tasks.get(index - 1).getDescription() + colorGreen(" set as completed!");
+        return "Good work there! Now we have completed the task as shown below:\r"
+            + index + ". " + tasks.get(index - 1).getDescription();
+    }
+
+    public String printNoteAdded(TaskList tasks, int index) {
+        return "Great! You have entered a proper note as shown below:\r"
+            + index + ". " + tasks.get(index - 1).getDescription();
     }
 
     public String printInvalidCommand() {
-        return printRed("It seems that you have typed something out of my unfortunately\n"
-            + "limited vocabulary. Can you try again?");
+        return "It seems that you have typed something out of my unfortunately\r"
+            + "limited vocabulary. Can you try again?";
     }
 
     public String printInvalidTask() {
-        return printRed("Task found is not a Todo, Deadline or Event task. Please verify the task.");
+        return "Task found is not a Todo, Deadline or Event task. Please verify the task.";
     }
 
     public String printNoFileFound() {
-        return "\nIt looks like it's your first time as I could not find any existing task file.\n"
+        return "\rIt looks like it's your first time as I could not find any existing task file.\r"
             + "Get started by creating a task!";
     }
 
     public String printFileExists() {
-        return "\nAn existing task file is found!\n";
+        return "\r\rAn existing task file is found!\r";
     }
 }

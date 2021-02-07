@@ -6,6 +6,7 @@ package duke.task;
 public abstract class Task {
     String task;
     private boolean isDone;
+    private String note;
 
     Task(String input) {
         task = input;
@@ -15,11 +16,20 @@ public abstract class Task {
         this.isDone = true;
     }
 
-    String getTaskStatus(Boolean isDone) {
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    String getDone(Boolean isDone) {
         return "[" + (isDone ? "D" : "X") + "] ";
     }
 
+    String getNote() {
+        if (note == null) return "\r";
+        return "\r       [Note]     " + note + "\r";
+    }
+
     public String getDescription() {
-        return getTaskStatus(isDone) + task;
+        return getDone(isDone) + task + getNote();
     }
 }

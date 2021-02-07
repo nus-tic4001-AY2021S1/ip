@@ -9,10 +9,10 @@ import duke.ui.Ui;
  * A command to set a particular task as completed.
  */
 
-public class DoneCommand extends Command {
-    public static final String word = "done";
+public class NoteCommand extends Command {
+    public static final String word = "note";
 
-    public DoneCommand(String line, TaskList tasks, Ui ui, Database database) {
+    public NoteCommand(String line, TaskList tasks, Ui ui, Database database) {
         super(line, tasks, ui, database);
     }
 
@@ -20,17 +20,21 @@ public class DoneCommand extends Command {
     public String execute()  {
         try {
             if (tasks.size() == 0) {
-                return "It appears that you have no tasks yet, so you can't complete any!\r"
+                return "It appears that you have no tasks to add notes to!\r"
                     + "Perhaps you should start creating one?";
             }
             if (line.isEmpty()) {
-                return "You almost typed a proper done command, but you missed out the number!\r"
-                    + "Please type in the 'done <task index number>' format.";
+                return "It seems that you've missed out the task index or the note text!\r"
+                    + "Please type in the 'note <index> <text>' format.";
             }
-            int index = Integer.parseInt(line);
-            tasks.get(index - 1).setDone();
+
+            String indexText = line.trim().split(" ")[0];
+            String noteText = line.substring(line.indexOf(" ") + 1).trim();
+
+            int index = Integer.parseInt(indexText);
+            tasks.get(index - 1).setNote(noteText);
             database.updateDatabase(tasks);
-            return ui.printTaskCompleted(index, tasks);
+            return ui.printNoteAdded(tasks, index);
 
         } catch (IOException e) {
             return e.getMessage();

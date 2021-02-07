@@ -22,8 +22,8 @@ public class TodoCommand extends Command {
     public String execute()  {
         try {
             if (line.isEmpty()) {
-                return ui.printRed("It seems that you missed out the task description!\n"
-                    + "Please type in the 'todo <something>' format.");
+                return "It seems that you missed out the task description!\r"
+                    + "Please type in the 'todo <something>' format.";
             }
             line = "[Todo]     " + line;
             tasks.add(new Todo(line));
@@ -31,7 +31,7 @@ public class TodoCommand extends Command {
             return ui.printTaskAdded(tasks);
 
         } catch (IOException e) {
-            return ui.printRed(e.getMessage());
+            return e.getMessage();
         }
     }
 }

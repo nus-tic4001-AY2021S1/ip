@@ -27,7 +27,7 @@ public class Database {
     public void updateDatabase(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter("./" + fileName, false);
         for (int i = 0; i < tasks.size(); i++) {
-            String line = (i + 1) + ". " + tasks.get(i).getDescription() + System.lineSeparator();
+            String line = (i + 1) + ". " + tasks.get(i).getDescription() + "\r";
             fw.write(line);
         }
         fw.close();
@@ -42,7 +42,7 @@ public class Database {
         } catch (FileNotFoundException e) {
             return ui.printNoFileFound();
         } catch (IOException e) {
-            return ui.printRed("IOException encountered: " + e.getMessage());
+            return "IOException encountered: " + e.getMessage();
         }
     }
 
@@ -59,6 +59,18 @@ public class Database {
     public TaskList extractTasks(ArrayList<String> lines, TaskList tasks, Ui ui, Database database) throws IOException {
         for (String line : lines) {
             FileWriter fw = new FileWriter(fileName, true);
+
+            if (line.isEmpty()) {
+                continue;
+            }
+
+            char note = line.charAt(line.indexOf("[") + 1);
+            if (note == 'N') {
+                String noteText = line.substring(line.indexOf("]") + 1).trim();
+                tasks.get(tasks.size() - 1).setNote(noteText);
+                continue;
+            }
+
             String taskStatus = line.split("]")[0].substring(line.indexOf("[") + 1);
             String taskType = line.split("]")[1].substring(line.indexOf("[") - 1);
             String taskDescription = line.split("]")[2].trim();
@@ -77,6 +89,7 @@ public class Database {
                 ui.printInvalidTask();
                 break;
             }
+
             if (taskStatus.equals("D")) {
                 tasks.get(tasks.size() - 1).setDone();
             }
