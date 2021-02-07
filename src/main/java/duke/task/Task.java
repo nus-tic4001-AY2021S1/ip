@@ -33,18 +33,25 @@ public abstract class Task {
 
     /**
      * Gets the description of a <code>Task</code> object.
+     *
      * @return Description of a <code>Task</code> object.
      */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Gets the completion station of a <code>Task</code> object.
+     *
+     * @return Completion status of a <code>Task</code> object.
+     */
     public boolean getIsDone() {
         return isDone;
     }
 
     /**
      * Gets the status icon of a <code>Task</code> object.
+     *
      * @return Status icon of a <code>Task</code> object.
      */
     public String getStatusIcon() {
@@ -54,12 +61,16 @@ public abstract class Task {
 
     /**
      * Sets the completion status of a <code>Task</code> object to done.
-     *
      */
     public void setDone() {
         this.isDone = true;
     }
 
+    /**
+     * Gets the String representation of a <code>Task</code> object.
+     *
+     * @return String representation of a <code>Task</code> object.
+     */
     @Override
     public String toString() {
         return "[" + getStatusIcon() + "] " + getDescription();

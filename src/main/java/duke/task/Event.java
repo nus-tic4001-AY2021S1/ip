@@ -66,6 +66,11 @@ public class Event extends Task {
         return at.toString();
     }
 
+    /**
+     * Gets the duration of an <code>Event</code> object.
+     *
+     * @return Duration of an <code>Event</code> object.
+     */
     public String getDuration() {
         return String.valueOf(duration);
     }
