@@ -6,8 +6,7 @@ import duke.task.Task;
 import duke.task.TaskList;
 
 /**
- * Contains methods that interacts with the users such as obtaining commands
- * from user input and displaying messages to the users.
+ * Contains methods that generate the output messages from user's input.
  */
 public class Ui {
     private final StringBuilder output = new StringBuilder();
