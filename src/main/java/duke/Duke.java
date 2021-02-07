@@ -56,8 +56,8 @@ public class Duke {
     String getResponse(String input) {
 
         String defaultReply = "Duke heard :\n";
-        //return "Duke heard: " ;
-        return  Parser.processInput(input, tasks.getTasksArr());
+        return "Duke heard: ";
+        //return  Parser.processInput(input, tasks.getTasksArr());
 
     }
 

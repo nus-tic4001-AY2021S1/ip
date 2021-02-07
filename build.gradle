@@ -5,6 +5,7 @@
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/6.8.1/samples
  */
 
+
 plugins {
     id 'java'
     id 'application'
@@ -16,12 +17,14 @@ checkstyle {
     toolVersion = '8.29'
 }
 
-//checkstyleMain {
-//    source ='src/main/java'
-//}
+run {
+    standardInput = System.in
+    enableAssertions = true
+}
 
-//checkstyleTest {
-//    source ='src/test/java'
+//runShadow {
+    //main = 'duke.Launcher'
+//    mainClassName = "duke.Launcher"
 //}
 
 repositories {
@@ -29,12 +32,25 @@ repositories {
 }
 
 application {
-    mainClassName = "Launcher"
+    mainClassName = "duke.Launcher"
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    mainClassName = "duke.Launcher"
+    archiveBaseName = "ip"
     archiveClassifier = null
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'duke.Launcher'
+        )
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 dependencies {
@@ -68,5 +84,3 @@ dependencies {
 
 
 }
-
-
