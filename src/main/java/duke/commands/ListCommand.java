@@ -16,11 +16,11 @@ public class ListCommand extends Command {
     @Override
     public String execute()  {
         if (tasks.size() == 0) {
-            return ui.printRed("It appears that you have no tasks! Perhaps you should start creating one?");
+            return "It appears that you have no tasks! Perhaps you should start creating one?";
         }
-        String total = "Here are the tasks that you currently have!\n";
+        String total = "Here are the tasks that you currently have!\r\r";
         for (int i = 0; i < tasks.size(); i++) {
-            total = total.concat((i + 1) + ". " + tasks.get(i).getDescription()) + System.lineSeparator();
+            total = total.concat((i + 1) + ". " + tasks.get(i).getDescription()) + "\r";
         }
         return total;
     }

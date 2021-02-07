@@ -9,6 +9,7 @@ import duke.commands.ExitCommand;
 import duke.commands.FindCommand;
 import duke.commands.InvalidCommand;
 import duke.commands.ListCommand;
+import duke.commands.NoteCommand;
 import duke.commands.TodoCommand;
 import duke.database.Database;
 import duke.task.TaskList;
@@ -38,6 +39,8 @@ public class Parser {
             return new DeadlineCommand(lineWithoutCommand, tasks, ui, database);
         case EventCommand.word:
             return new EventCommand(lineWithoutCommand, tasks, ui, database);
+        case NoteCommand.word:
+            return new NoteCommand(lineWithoutCommand, tasks, ui, database);
         case "bye":
         case "exit":
             return new ExitCommand(ui);

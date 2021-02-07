@@ -21,18 +21,18 @@ public class FindCommand extends Command {
             return "It appears that you have no tasks! Perhaps you should start creating one?";
         }
         if (searchWord.isEmpty()) {
-            return ui.printRed("Please type in the 'find <word>' format!");
+            return "Please type in the 'find <word>' format!";
         }
-        String matches = "Here are the tasks that matches '" + searchWord + "'!\n";
+        String matches = "Here are the tasks that contains '" + searchWord + "'!\r";
         boolean hasMatch = false;
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).getDescription().toLowerCase().contains(searchWord)) {
-                matches = matches.concat((i + 1) + ". " + tasks.get(i).getDescription()) + "\n";
+                matches = matches.concat((i + 1) + ". " + tasks.get(i).getDescription()) + System.lineSeparator();
                 hasMatch = true;
             }
         }
         if (!hasMatch) {
-            matches = "It appears that are no matches for '" + searchWord + "'!\n"
+            matches = "It appears that are no matches for '" + searchWord + "'!\r"
                 + "Perhaps you could try searching another word?";
         }
         return matches;
