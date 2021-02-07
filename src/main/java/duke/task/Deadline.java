@@ -19,6 +19,7 @@ public class Deadline extends Task {
      *
      * @param description Description of a <code>Deadline</code> object.
      * @param by Deadline of a <code>Deadline</code> object.
+     * @throws DukeException If datetime is in the wrong format.
      */
     public Deadline(String description, String by) throws DukeException {
         super(description);
@@ -36,6 +37,7 @@ public class Deadline extends Task {
      * @param description Description of a <code>Deadline</code> object.
      * @param by Deadline of a <code>Deadline</code> object.
      * @param isDone Completion status of a <code>Deadline</code> object.
+     * @throws DukeException If datetime is in the wrong format.
      */
     public Deadline(String description, String by, boolean isDone) throws DukeException {
         super(description, isDone);
@@ -47,7 +49,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * Get the deadline of a <code>Deadline</code> object.
+     * Gets the deadline of a <code>Deadline</code> object.
      *
      * @return Deadline of a <code>Deadline</code> object.
      */
@@ -55,6 +57,11 @@ public class Deadline extends Task {
         return by.toString();
     }
 
+    /**
+     * Gets the String representation of <code>Deadline</code> object.
+     *
+     * @return Deadline of a <code>Deadline</code> object.
+     */
     @Override
     public String toString() {
         return "[D]" + super.toString()
