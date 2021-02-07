@@ -12,9 +12,9 @@ public class EventCommandTest {
         Ui ui = new Ui();
         TaskList tasks = new TaskList();
         Database database = new Database("duke.txt", tasks, ui);
-        String lineWithoutCommand = "submit /at 27/09/2020 2323 /to 2359";
+        String lineWithoutCommand = "Submit /at 27/09/2020 2323 /to 2359";
         new EventCommand(lineWithoutCommand, tasks, ui, database).execute();
 
-        assertEquals(tasks.get(0).getDescription(),"[X] [Event]    submit (at: 27 Sep 2020 11:23PM - 11:59PM)");
+        assertEquals(tasks.get(0).getDescription(),"[X] [Event]    Submit (at: 27 Sep 2020 11:23PM - 11:59PM)");
     }
 }

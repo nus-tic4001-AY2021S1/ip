@@ -27,7 +27,7 @@ public class Database {
     public void updateDatabase(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter("./" + fileName, false);
         for (int i = 0; i < tasks.size(); i++) {
-            String line = (i + 1) + ". " + tasks.get(i).getDescription() + "\r";
+            String line = (i + 1) + ". " + tasks.get(i).getDescription() + "\r\r";
             fw.write(line);
         }
         fw.close();
@@ -36,8 +36,8 @@ public class Database {
     public String readDatabase(TaskList tasks, Ui ui, Database database) {
         try {
             ArrayList<String> lines = getLines(fileName);
-            tasks = extractTasks(lines, tasks, ui, database);
-            return ui.printFileExists() + new ListCommand(tasks, ui).execute();
+            return ui.printFileExists() + extractTasks(lines, tasks, ui, database)
+                + new ListCommand(tasks, ui).execute();
 
         } catch (FileNotFoundException e) {
             return ui.printNoFileFound();
@@ -56,22 +56,24 @@ public class Database {
         return list;
     }
 
-    public TaskList extractTasks(ArrayList<String> lines, TaskList tasks, Ui ui, Database database) throws IOException {
-        for (String line : lines) {
+    public String extractTasks(ArrayList<String> lines, TaskList tasks, Ui ui, Database database) throws IOException {
+        String message = "";
+
+        for (int i = 0; i < lines.size(); i++) {
             FileWriter fw = new FileWriter(fileName, true);
+            String line = lines.get(i);
 
             if (line.isEmpty()) {
                 continue;
             }
 
-            char note = line.charAt(line.indexOf("[") + 1);
-            if (note == 'N') {
-                String noteText = line.substring(line.indexOf("]") + 1).trim();
+            String note = line.split("]")[0].split("\\[")[1];
+            if (note.equals("Note")) {
+                String noteText = line.split("]")[1].trim();
                 tasks.get(tasks.size() - 1).setNote(noteText);
                 continue;
             }
 
-            String taskStatus = line.split("]")[0].substring(line.indexOf("[") + 1);
             String taskType = line.split("]")[1].substring(line.indexOf("[") - 1);
             String taskDescription = line.split("]")[2].trim();
 
@@ -86,14 +88,16 @@ public class Database {
                 tasks.add(new Event("[Event]    " + taskDescription));
                 break;
             default:
-                ui.printInvalidTask();
+                message = message.concat(ui.printInvalidTask(i, fileName));
                 break;
             }
+
+            String taskStatus = line.split("]")[0].split("\\[")[1];
 
             if (taskStatus.equals("D")) {
                 tasks.get(tasks.size() - 1).setDone();
             }
         }
-        return tasks;
+        return message;
     }
 }

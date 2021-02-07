@@ -58,8 +58,9 @@ public class Ui {
             + "limited vocabulary. Can you try again?";
     }
 
-    public String printInvalidTask() {
-        return "Task found is not a Todo, Deadline or Event task. Please verify the task.";
+    public String printInvalidTask(int index, String fileName) {
+        return "\r[Warning] Line " + (index + 1) + " is not a Todo, Deadline, Event or Note. "
+            + "Please verify " + fileName + ".\r";
     }
 
     public String printNoFileFound() {
