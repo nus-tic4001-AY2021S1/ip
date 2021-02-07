@@ -1,7 +1,6 @@
 package duke.task;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import duke.exception.DukeException;
 
@@ -22,7 +21,7 @@ public class TaskList {
     }
 
     /**
-     * Instantiates a <code>TaskList</code> object.
+     * Initializes a <code>TaskList</code> object.
      *
      * @param tasks List of <code>Task</code> objects.
      */
@@ -31,9 +30,9 @@ public class TaskList {
     }
 
     /**
-     * Gets a <code>Task</code> object from the <code>TaskList</code>.
+     * Gets a <code>Task</code> object from the <code>TaskList</code> object.
      *
-     * @param index Index of Task in the <code>TaskList</code>.
+     * @param index Index of Task in the <code>TaskList</code> object.
      * @return <code>Task<</code> object.
      */
     public Task getTask(int index) {
@@ -50,9 +49,9 @@ public class TaskList {
     }
 
     /**
-     * Removes a <code>Task</code> object from the <code>TaskList</code>.
+     * Removes a <code>Task</code> object from the <code>TaskList</code> object.
      *
-     * @param index Index of a <code>Task</code> in <code>List</code>.
+     * @param index Index of a <code>Task</code> in the <code>TaskList</code> object.
      * @throws DukeException If index is invalid.
      */
     public void removeTask(int index) throws DukeException {
@@ -65,6 +64,7 @@ public class TaskList {
 
     /**
      * Gets the size of a <code>TaskList</code> object.
+     *
      * @return Size of a <code>List</code> object.
      */
     public int getSize() {
@@ -75,29 +75,57 @@ public class TaskList {
      *  Sorts a <code>TaskList</code> object.
      */
     public void sortTasks() {
-        Collections.sort(tasks, new TaskListSorter());
+        tasks.sort(new TaskListSorter());
     }
 
-    public void clearSearchResultIndexes() {
-        searchResultIndexes.clear();
-    }
-
+    /**
+     * Adds the index of a <code>Task</code> object that contains the search keyword.
+     *
+     * @param searchResultIndex Index of a <code>Task</code> object in the <code>TaskList</code> object.
+     */
     public void addSearchResultIndex(int searchResultIndex) {
         searchResultIndexes.add(searchResultIndex);
     }
 
+    /**
+     * Clears the indexes of <code>Task</code> objects that contain the search keyword.
+     */
+    public void clearSearchResultIndexes() {
+        searchResultIndexes.clear();
+    }
+
+    /**
+     * Gets the indexes of <code>Task</code> objects that contain the search keyword.
+     *
+     * @return Indexes of <code>Task</code> objects that contain the search keyword.
+     */
     public ArrayList<Integer> getSearchResultIndexes() {
         return searchResultIndexes;
     }
 
+    /**
+     * Gets the index of a <code>Task</code> object that contains the search keyword.
+     *
+     * @return Index of <code>Task</code> object that contains the search keyword.
+     */
     public int getSearchResultIndex(int resultIndex) {
         return searchResultIndexes.get(resultIndex);
     }
 
+    /**
+     * Sets the initialization status of the <code>TaskList</code> object.
+     *
+     * @param isInitialized Initialization status of the <code>TaskList</code> object.
+     */
     public void setIsInitialized(boolean isInitialized) {
         this.isInitialized = isInitialized;
     }
 
+    /**
+     * Gets the initialization status of a <code>TaskList</code> object.
+     *
+     * @return Initialization status of a <code>List</code> object.
+     */
     public boolean getIsInitialized() {
         return isInitialized;
     }
