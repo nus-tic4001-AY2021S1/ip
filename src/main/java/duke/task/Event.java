@@ -21,6 +21,7 @@ public class Event extends Task {
      *
      * @param description Description of an <code>Event</code> object.
      * @param at Start datetime of an <code>Event</code> object.
+     * @throws DukeException If datetime is in the wrong format.
      */
     public Event(String description, String at) throws DukeException {
         super(description);
@@ -44,6 +45,7 @@ public class Event extends Task {
      * @param at Start datetime of an <code>Event</code> object.
      * @param duration Duration of an <code>Event</code> object.
      * @param isDone Completion status of an <code>Event</code> object.
+     * @throws DukeException If datetime is in the wrong format.
      */
     public Event(String description, String at, String duration, boolean isDone) throws DukeException {
         super(description, isDone);
@@ -64,10 +66,20 @@ public class Event extends Task {
         return at.toString();
     }
 
+    /**
+     * Gets the duration of an <code>Event</code> object.
+     *
+     * @return Duration of an <code>Event</code> object.
+     */
     public String getDuration() {
         return String.valueOf(duration);
     }
 
+    /**
+     * Gets the String representation of an <code>Event</code> object.
+     *
+     * @return String representation of an <code>Event</code> object.
+     */
     @Override
     public String toString() {
         return "[E]" + super.toString()

@@ -6,8 +6,7 @@ import duke.task.Task;
 import duke.task.TaskList;
 
 /**
- * Contains methods that interacts with the users such as obtaining commands
- * from user input and displaying messages to the users.
+ * Contains methods that generate the output messages from user's input.
  */
 public class Ui {
     private final StringBuilder output = new StringBuilder();
@@ -93,7 +92,7 @@ public class Ui {
     }
 
     /**
-     * Builds the list of tasks message string
+     * Builds the list of sorted tasks message string
      */
     public void printSortedTasks(TaskList tasks) {
         if (tasks.getSize() == 0) {
@@ -110,10 +109,18 @@ public class Ui {
         }
     }
 
+    /**
+     * Clears the output message string.
+     */
     public void clearOutput() {
         output.setLength(0);
     }
 
+    /**
+     * Gets the output message string.
+     *
+     * @return Output message string to be shown to the user.
+     */
     public String getOutput() {
         return output.toString();
     }

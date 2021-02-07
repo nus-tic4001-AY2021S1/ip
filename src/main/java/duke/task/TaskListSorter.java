@@ -3,7 +3,7 @@ package duke.task;
 import java.util.Comparator;
 
 /**
- * The <code>TaskListSorter</code> class implements the Comparator interface.
+ * Implements the Comparator interface.
  * It contains the compare method that sorts <code>Task</code> objects
  * based on task's deadline.
  */
