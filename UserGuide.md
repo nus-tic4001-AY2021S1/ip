@@ -28,14 +28,15 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
 Hello! I'm Duke.
 I can help you manage a list of tasks!
 What you can tell me to do is listed below:
-  ⬡  Create a Todo task     | todo <your task>
-  ⬢  Create a Deadline task | deadline <your task> /by <dd/MM/yyyy HHmm>
-  ⬡  Create an Event task   | event <your task> /at <dd/MM/yyyy HHmm> /to <HHmm>
-  ⬢  Complete a task        | done <task index number>
-  ⬡  Delete a task          | delete <task index number>
+  ⬡  Create a Todo task     | todo <task>
+  ⬢  Create a Deadline task | deadline <task> /by <dd/MM/yyyy HHmm>
+  ⬡  Create an Event task   | event <task> /at <dd/MM/yyyy HHmm> /to <HHmm>
+  ⬢  Complete a task        | done <index>
+  ⬡  Delete a task          | delete <index>
   ⬢  List down all tasks    | list
   ⬡  Find tasks with word   | find <word>
-  ⬢  Exit my program        | bye or hit Enter
+  ⬢  Add a note to a task   | note <index> <text>
+  ⬡  Exit my program        | bye or exit
 ⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢
 
 It looks like it's your first time as I could not find any existing task file.
@@ -50,12 +51,13 @@ Get started by creating a task!
   - Delete a task         : `delete`
   - List down all tasks   : `list`
   - Find tasks with word  : `find`
+  - Add a note to a task  : `note`
   - Exit my program       : `exit`
   
  #### Create a Todo task    : `todo`
  Creates a Todo task and adds it to the task list.
  
- Format: `todo <your task>`
+ Format: `todo <task>`
  
  Examples:
  - `todo feed a dodo`
@@ -63,7 +65,7 @@ Get started by creating a task!
  #### Create a Deadline task: `deadline`
  Creates a Deadline task and adds it to the task list.
  
- Format: `deadline <your task> /by <dd/MM/yyyy HHmm>`
+ Format: `deadline <task> /by <dd/MM/yyyy HHmm>`
  - `HHmm` ranges from 0000 to 2359.
  
  Examples:
@@ -72,7 +74,7 @@ Get started by creating a task!
  #### Create an Event task  : `event`
  Creates an Event task and adds it to the task list.
  
- Format: `event <your task> /at <dd/MM/yyyy HHmm> /to <HHmm>`
+ Format: `event <task> /at <dd/MM/yyyy HHmm> /to <HHmm>`
   - The first `HHmm` is referred as the starting time of the event.
   - The second `HHmm` is referred as the ending time of the event.
   
@@ -80,18 +82,18 @@ Get started by creating a task!
  - `event internal meeting /at 28/09/2020 0900 /to 1100`
  
  #### Complete a task       : `done`
- Completes a task and sets its status to ✓.
+ Completes a task and sets its status to D for Done.
  
- Format: `done <task index number>`
+ Format: `done <index>`
  - The first task starts from index number 1 and so on.
    
  Examples:
  - `done 2`
  
  #### Delete a task         : `delete`
- Removes a task from the task list and shifts the remaining tasks accordingly.
+ Removes a task and its note from the task list and shifts the remaining tasks accordingly.
  
- Format: `delete <task index number>`
+ Format: `delete <index>`
  
  Examples:
  - `delete 3`
@@ -112,7 +114,18 @@ Get started by creating a task!
  - `find deadline`
  - `find meeting`
  - `find 28 Sep`
- - `find ✓`
+ - `find D`
+ 
+ #### Add a note to a task  : `note`
+ Adds a note to an existing task, recording the textual information that the user inputs.
+ 
+ Format: `note <index> <text>`
+ - Adding a note to a task will replace any existing note.
+ - Deleting a task will also delete any attached note.
+
+ Examples:
+ - `note 1 This is a note.`
+ - `note 2 This note exists because it can.`
  
  #### Exit the program       : `exit`
  Exits the program.
@@ -120,14 +133,15 @@ Get started by creating a task!
  Format: `bye`, `exit`, `<hit Enter>`
  
  
- ## Command Summary
+ ##Command Summary
  Action | Format, Examples
- ------ | ----------------
- **todo** | `todo <your task>` <br> e.g. `todo feed a dodo`
- **deadline**   | `deadline <your task> /by <dd/MM/yyyy HHmm>` <br> e.g. `deadline dead /by 28/09/2020 2359`
- **event**   | `event <your task> /at <dd/MM/yyyy HHmm> /to <HHmm>` <br> e.g. `event internal meeting /at 28/09/2020 0900 /to 1100`
- **done**   | `done <task index number>` <br> e.g. `done 2`
- **delete**   | `delete <task index number>` <br> e.g. `delete 3`
+ ------------ | -------------
+ **todo** | `todo <task>` <br> e.g. `todo feed a dodo`
+ **deadline**   | `deadline <task> /by <dd/MM/yyyy HHmm>` <br> e.g. `deadline dead /by 28/09/2020 2359`
+ **event**   | `event <task> /at <dd/MM/yyyy HHmm> /to <HHmm>` <br> e.g. `event internal meeting /at 28/09/2020 0900 /to 1100`
+ **done**   | `done <index>` <br> e.g. `done 2`
+ **delete**   | `delete <index>` <br> e.g. `delete 3`
  **list**   | `list`
- **find**   | `find <word>` <br> e.g. <br> `find deadline` <br> `find meeting` <br> `find 28 Sep` <br> `find ✓`
+ **find**   | `find <word>` <br> e.g. <br> `find deadline` <br> `find meeting` <br> `find 28 Sep` <br> `find D`
+ **note**   | `note <index> <text>` <br> e.g. <br> `note 1 This is a note.` <br> `note 2 This note exists because it can.`
  **exit**   | `exit`
