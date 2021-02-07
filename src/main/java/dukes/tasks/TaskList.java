@@ -14,7 +14,11 @@ public class TaskList {
 
     }
 
-    public TaskList(ArrayList<String> load) {
+    public TaskList(ArrayList<Task> load) {
+        for (int i = 0; i < load.size(); i++) {
+            tasks.add(load.get(i));
+            list.add(load.get(i));
+        }
     }
 
 }

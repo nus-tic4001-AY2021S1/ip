@@ -26,6 +26,7 @@ public class DeleteCommand extends Command {
     public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         try {
             Task deletedTask = tasks.list.remove(index);
+            storage.saveTaskFile(tasks.list);
             return ui.printDeleteMessage(deletedTask, tasks.list.size());
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("Please key in a number from the list");

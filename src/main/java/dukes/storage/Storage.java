@@ -15,16 +15,16 @@ import java.util.Scanner;
  * Represents a storage in the hard disk.
  */
 public class Storage {
-    private final ArrayList<String> details = new ArrayList<>();
+    private final ArrayList<Task> details = new ArrayList<>();
     public static String filePath = "data/duke.txt";
 
     public Storage() {
     }
 
-    public ArrayList<String> load() throws dukes.exception.FileNotFoundException {
+    public ArrayList<Task> load() throws dukes.exception.FileNotFoundException {
         try {
             File file = new File(filePath);
-            file.createNewFile();
+            //file.createNewFile();
             Scanner in = new Scanner(file);
             while (in.hasNext()) {
                 String input = in.nextLine();
@@ -47,7 +47,7 @@ public class Storage {
                 if (strArr[1].equals("1")) {
                     tasks.markAsDone();
                 }
-                details.add(input);
+                details.add(tasks);
             }
             in.close();
         } catch (FileNotFoundException e) {

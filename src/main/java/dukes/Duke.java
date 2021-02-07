@@ -68,7 +68,7 @@ public class Duke {
             ui.printLoadingError("Problem reading file. Starting with an empty task list.");
             tasks = new TaskList();
         }
-        storage.saveTaskFile(tasks.list);
+        //storage.saveTaskFile(tasks.list);
 
     }
 
@@ -78,6 +78,12 @@ public class Duke {
      */
     public void run() {
         ui.printWelcome();
+        try {
+            tasks = new TaskList(storage.load());
+        } catch (DukeException e) {
+            ui.printLoadingError("Problem reading file. Starting with an empty task list.");
+            tasks = new TaskList();
+        }
         boolean isExit = false;
         while (!isExit) {
             try {
