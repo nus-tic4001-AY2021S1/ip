@@ -20,7 +20,7 @@ public class ListCommand extends Command {
         }
         String total = "Here are the tasks that you currently have!\r\r";
         for (int i = 0; i < tasks.size(); i++) {
-            total = total.concat((i + 1) + ". " + tasks.get(i).getDescription()) + "\r";
+            total = total.concat((i + 1) + ". " + tasks.get(i).getDescription()) + "\r\r";
         }
         return total;
     }

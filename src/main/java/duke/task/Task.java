@@ -1,4 +1,5 @@
 package duke.task;
+
 /**
  * An abstract class that is inherited by the duke.task.Todo, duke.task.Deadline and duke.task.Event classes.
  */
@@ -16,17 +17,19 @@ public abstract class Task {
         this.isDone = true;
     }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
-
     String getDone(Boolean isDone) {
         return "[" + (isDone ? "D" : "X") + "] ";
     }
 
     String getNote() {
-        if (note == null) return "\r";
-        return "\r       [Note]     " + note + "\r";
+        if (note == null) {
+            return "";
+        }
+        return "\r       [Note]     " + note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getDescription() {

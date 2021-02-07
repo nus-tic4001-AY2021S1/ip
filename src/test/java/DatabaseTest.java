@@ -15,9 +15,9 @@ public class DatabaseTest {
         TaskList tasks = new TaskList();
         Database database = new Database("duke.txt", tasks, ui);
         ArrayList<String> lines = new ArrayList<>();
-        lines.add("1. [✘] [Todo]     something");
+        lines.add("1. [X] [Todo]     Something");
         database.extractTasks(lines, tasks, ui, database);
 
-        assertEquals(tasks.get(0).getDescription(), "[X] [Todo]     something");
+        assertEquals(tasks.get(0).getDescription(), "[X] [Todo]     Something");
     }
 }
