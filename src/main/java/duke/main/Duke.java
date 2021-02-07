@@ -33,8 +33,9 @@ public class Duke {
     }
 
     /**
-     * You should have your own function to generate a response to user input.
-     * Replace this stub with your completed method.
+     * Generates the response for the user's input.
+     *
+     * @param input Input provided by user.
      */
     public String getResponse(String input) {
         ui.clearOutput();
