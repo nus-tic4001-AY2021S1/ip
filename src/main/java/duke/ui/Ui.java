@@ -92,7 +92,7 @@ public class Ui {
     }
 
     /**
-     * Builds the list of tasks message string
+     * Builds the list of sorted tasks message string
      */
     public void printSortedTasks(TaskList tasks) {
         if (tasks.getSize() == 0) {
