@@ -32,6 +32,7 @@ public class DoneCommand extends Command {
     public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         try {
             Task doneTask = tasks.list.get(index).markAsDone();
+            storage.saveTaskFile(tasks.list);
             return ui.printDoneMessage(doneTask);
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("Please key in a number from the list");
