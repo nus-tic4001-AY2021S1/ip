@@ -58,9 +58,9 @@ public class Deadline extends Task {
     }
 
     /**
-     * Gets the String representation of <code>Deadline</code> object.
+     * Gets the String representation of a <code>Deadline</code> object.
      *
-     * @return Deadline of a <code>Deadline</code> object.
+     * @return String representation of a <code>Deadline</code> object.
      */
     @Override
     public String toString() {
