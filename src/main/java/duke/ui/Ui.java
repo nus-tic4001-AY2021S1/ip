@@ -110,10 +110,18 @@ public class Ui {
         }
     }
 
+    /**
+     * Clears the output message string.
+     */
     public void clearOutput() {
         output.setLength(0);
     }
 
+    /**
+     * Gets the output message string.
+     *
+     * @return Output message string to be shown to the user.
+     */
     public String getOutput() {
         return output.toString();
     }
