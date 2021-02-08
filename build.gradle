@@ -32,11 +32,13 @@ repositories {
 }
 
 application {
-    mainClassName = "duke.Launcher"
+    //mainClassName = "duke.Launcher"
+    mainClass.set("duke.Launcher")
 }
 
 shadowJar {
     mainClassName = "duke.Launcher"
+    //mainClass.set("duke.Launcher")
     archiveBaseName = "ip"
     archiveClassifier = null
 }
