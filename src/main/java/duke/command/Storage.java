@@ -93,22 +93,22 @@ public class Storage {
         boolean isDone = line.split("\\|")[1].trim().equals("1");
         String desc = line.split("\\|")[2].trim();
         switch (type) {
-            case "T":
-                task = new Todo(desc);
-                task.setDone(isDone);
-                break;
-            case "D":
-                String by = line.split("\\|")[3].trim();
-                task = new Deadline(desc, getDate(by));
-                task.setDone(isDone);
-                break;
-            case "E":
-                String at = line.split("\\|")[3].trim();
-                task = new Event(desc, at);
-                task.setDone(isDone);
-                break;
-            default:
-                break;
+        case "T":
+            task = new Todo(desc);
+            task.setDone(isDone);
+            break;
+        case "D":
+            String by = line.split("\\|")[3].trim();
+            task = new Deadline(desc, getDate(by));
+            task.setDone(isDone);
+            break;
+        case "E":
+            String at = line.split("\\|")[3].trim();
+            task = new Event(desc, at);
+            task.setDone(isDone);
+            break;
+        default:
+            break;
         }
         return task;
     }

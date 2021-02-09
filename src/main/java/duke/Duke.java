@@ -48,30 +48,30 @@ public class Duke {
         try {
             String commandWord = Parser.getCommand(input);//convert command word to lowercase
             switch (commandWord) {
-                case "bye":
-                    System.exit(0); // End program
-                    break;
-                case "todo":
-                    return tasks.addTodo(input);
-                case "deadline":
-                    return tasks.addDeadline(input);
-                case "done":
-                    return tasks.markAsDone(input);
-                case "list":
-                    return tasks.showTasks(input);
-                case "event":
-                    return tasks.addEvent(input);
-                case "delete":
-                    return tasks.deleteTasks(input);
-                case "find":
-                    return tasks.findTasks(input);
-                case "save":
-                    return tasks.saveTasks();
-                case "help":
-                    return ui.showHelp();
-                default:
-                    ui.printError();
-                    break;
+            case "bye":
+                System.exit(0); // End program
+                break;
+            case "todo":
+                return tasks.addTodo(input);
+            case "deadline":
+                return tasks.addDeadline(input);
+            case "done":
+                return tasks.markAsDone(input);
+            case "list":
+                return tasks.showTasks(input);
+            case "event":
+                return tasks.addEvent(input);
+            case "delete":
+                return tasks.deleteTasks(input);
+            case "find":
+                return tasks.findTasks(input);
+            case "save":
+                return tasks.saveTasks();
+            case "help":
+                return ui.showHelp();
+            default:
+                ui.printError();
+                break;
             }
         } catch (TaskException e) {
             return String.valueOf(e);
