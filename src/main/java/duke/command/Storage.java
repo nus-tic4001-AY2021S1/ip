@@ -36,7 +36,7 @@ public class Storage {
      * This function is to save tasks in storage file.
      *
      */
-    public static void writeTaskToFile(List<Task> tasks) {
+    public static String writeTaskToFile(List<Task> tasks) {
         File out = new File(filePath);
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(out))) {
             for (Task task : tasks) {
@@ -56,10 +56,9 @@ public class Storage {
                 bw.append(System.lineSeparator());
             }
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            ui.showToUser(ex.getMessage());
         }
-        System.out.println("Tasks save to disk " + filePath);
-        ui.printLine();
+        return "Tasks save to disk " + filePath;
     }
 
     /**
@@ -75,9 +74,9 @@ public class Storage {
                 lines.add(line);
             }
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            ui.showToUser(ex.getMessage());
         }
-        System.out.println(lines);
+        ui.showToUser(lines);
         return lines;
     }
 
@@ -88,7 +87,7 @@ public class Storage {
      * @return task array list
      */
     @SuppressWarnings("checkstyle:Indentation")
-    public static Task createTask(String line) {
+    public static Task createTask(String line) throws TaskException {
         Task task = null;
         String type = line.split("\\|")[0].trim();
         boolean isDone = line.split("\\|")[1].trim().equals("1");

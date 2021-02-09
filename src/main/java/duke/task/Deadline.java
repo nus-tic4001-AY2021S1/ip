@@ -1,7 +1,10 @@
 package duke.task;// Organize the classes into suitable duke.Tasks packages.
 
+import duke.command.TaskException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * This Deadline class extends from task object.
@@ -20,9 +23,13 @@ public class Deadline extends Task {
      * @param description tasks' description
      * @param by          tasks' deadline time
      */
-    public Deadline(String description, String by) {
+    public Deadline(String description, String by) throws TaskException {
         super(description);
-        this.by = LocalDate.parse(by);
+        try {
+            this.by = LocalDate.parse(by);
+        } catch (DateTimeParseException e) {
+            throw new TaskException("\nThe by field should be in yyyy-MM-dd HHmm format.");
+        }
     }
 
 
