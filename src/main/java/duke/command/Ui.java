@@ -44,6 +44,9 @@ public class Ui {
         System.out.println(s);
     }
 
+    /**
+     * print help message with command help.
+     */
     public String showHelp() {
         return "List of commands:\n"
                 + "-> list: lists out all tasks.\n"
