@@ -44,6 +44,9 @@ public class Ui {
         System.out.println(s);
     }
 
+    /**
+     * print help message with command help.
+     */
     public String showHelp() {
         return "List of commands:\n"
                 + "-> list: lists out all tasks.\n"
@@ -53,6 +56,7 @@ public class Ui {
                 + "-> delete {index}: removes the item(s) at the specified position(s).\n"
                 + "-> done {index}: marks the item as done.\n"
                 + "-> find {detail}: searches for a task contain that detail.\n"
+                + "-> help: show user the app commands use manual.\n"
                 + "-> save: save all change to filepath data.txt.\n";
     }
 }
