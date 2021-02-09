@@ -1,6 +1,6 @@
 package duke.command; // Organize the classes into suitable duke.command packages.
 
-import java.util.Scanner;
+import java.util.List;
 
 /**
  *This Ui class is to read user command and print duke logo & error.
@@ -11,46 +11,18 @@ import java.util.Scanner;
  */
 public class Ui {
 
-    private final Scanner in = new Scanner(System.in);
-
-    /**
-     * print a line ro separate the chat text.
-     */
-    public void printLine() {
-        System.out.println("____________________________________________________________");
-    }
-
     /**
      * print the duke chat bot logo.
      */
-    public void printLogo() {
-        String logo = "  __          __ \n"
-                + "  | | ____    | | ____\n"
-                + "  | |/ __ \\   | |/ __ \\\n"
-                + "__/ | |__| |__/ | |__| |\n"
-                + "\\__/ \\____/ \\__/ \\____/\n";
-        System.out.println("Hello from\n" + logo);
+    public static String showWelcome() {
+        String logo = "   __            __ \n"
+                + "   | |  ____    | |  ____\n"
+                + "   | | / __ \\   | | / __ \\\n"
+                + "__/ |  |__| |__/ |  |__| |\n"
+                + "\\__/ \\__/ \\__/  \\___/\n";
+        String greet = "Hi! I'm Jojo\n" + "What can I do for you?";
+        return "Hello from\n" + logo + greet;
     }
-
-    /**
-     * print duke duke chat bot welcome.
-     */
-    public void greetUser() {
-        printLine();
-        showToUser("Hi! I'm Jojo");
-        showToUser("What can I do for you?");
-        printLine();
-    }
-
-    /**
-     * print duke chat bot farewell to user.
-     */
-    public void farewellUser() {
-        printLine();
-        showToUser("Bye. Have a nice day!");
-        printLine();
-    }
-
 
     /**
      * print out error message.
@@ -60,16 +32,7 @@ public class Ui {
     }
 
     /**
-     * help chat bot print program error message.
-     *
-     * @param message string
-     */
-    public void printError(String message) {
-        System.out.println(message);
-    }
-
-    /**
-     * help chatbot print message to user.
+     * help chat bot print message to user.
      *
      * @param s string
      */
@@ -77,14 +40,19 @@ public class Ui {
         System.out.println(s);
     }
 
+    public void showToUser(List<String> s) {
+        System.out.println(s);
+    }
 
-    /**
-     * read the user command.
-     *
-     * @return user command with lowercase
-     */
-    public String readCommand() {
-        String command = in.nextLine().trim();
-        return command.toLowerCase();
+    public String showHelp() {
+        return "List of commands:\n"
+                + "-> list: lists out all tasks.\n"
+                + "-> todo {detail}: add a todo item.\n"
+                + "-> event {detail} /at {address}: add an event item.\n"
+                + "-> deadline {detail} /at {datetime yyyy-MM-dd HHmm format}: add a deadline item.\n"
+                + "-> delete {index}: removes the item(s) at the specified position(s).\n"
+                + "-> done {index}: marks the item as done.\n"
+                + "-> find {detail}: searches for a task contain that detail.\n"
+                + "-> save: save all change to filepath data.txt.\n";
     }
 }

@@ -17,9 +17,9 @@ import java.util.List;
  * @since Duke javadoc
  */
 public class TaskList {
-    static Ui ui = new Ui();
     //  Use Java Collections classes ArrayList<Task>
     private List<Task> tasks = new ArrayList<>();
+    //private final StringBuilder output = new StringBuilder();
 
 
     /**
@@ -41,46 +41,45 @@ public class TaskList {
      * @param fullCommand tasks' full command
      * @throws TaskException if create todo have error can throw this exception.
      */
-    public void addTodo(String fullCommand) throws TaskException {
+    public String addTodo(String fullCommand) throws TaskException {
+        StringBuilder output = new StringBuilder();
         Todo t = Parser.createTodo(fullCommand);
         tasks.add(t);
-        ui.printLine();
-        ui.showToUser("Got it. I've added this task: ");
-        ui.showToUser("  " + tasks.get(tasks.size() - 1).toString());
-        ui.showToUser("Now you have " + tasks.size() + " tasks in the list.");
-        ui.printLine();
+        output.append("\nGot it. I've added this task: \n");
+        output.append("  ").append(tasks.get(tasks.size() - 1).toString());
+        output.append("\nNow you have ").append(tasks.size()).append(" tasks in the list.\n");
+        return String.valueOf(output);
     }
 
     /**
      * This function is to add deadline.
      *
-     * @param fullCommand tasks' full command
+     * @param fullCommand tasks' full command.
      * @throws TaskException if create deadline have error can throw this exception.
      */
-    public void addDeadline(String fullCommand) throws TaskException {
+    public String addDeadline(String fullCommand) throws TaskException {
+        StringBuilder output = new StringBuilder();
         Deadline t = Parser.createDeadline(fullCommand);
         tasks.add(t);
-        ui.printLine();
-        ui.showToUser("Got it. I've added this task: ");
-        ui.showToUser("  " + tasks.get(tasks.size() - 1).toString());
-        ui.showToUser("Now you have " + tasks.size() + " tasks in the list.");
-        ui.printLine();
+        output.append("\nGot it. I've added this task: \n");
+        output.append("  ").append(tasks.get(tasks.size() - 1).toString());
+        output.append("\nNow you have ").append(tasks.size()).append(" tasks in the list.\n");
+        return String.valueOf(output);
     }
 
     /**
      *This function is to add event.
      *
-     * @param toAdd tasks' full command
+     * @param fullCommand tasks' full command
      */
-    public void addEvent(String toAdd) {
-        String description = toAdd.split(" /at ")[0];
-        String at = toAdd.split(" /at ")[1];
-        tasks.add(new Event(description, at));
-        ui.printLine();
-        ui.showToUser("Got it. I've added this task: ");
-        ui.showToUser("  " + tasks.get(tasks.size() - 1).toString());
-        ui.showToUser("Now you have " + tasks.size() + " tasks in the list.");
-        ui.printLine();
+    public String addEvent(String fullCommand) throws TaskException {
+        StringBuilder output = new StringBuilder();
+        Event t = Parser.createEvent(fullCommand);
+        tasks.add(t);
+        output.append("\nGot it. I've added this task: \n");
+        output.append("  ").append(tasks.get(tasks.size() - 1).toString());
+        output.append("\nNow you have ").append(tasks.size()).append(" tasks in the list.\n");
+        return String.valueOf(output);
     }
 
     /**
@@ -88,27 +87,27 @@ public class TaskList {
      *
      * @param fullCommand tasks' full command
      */
-    public void showTasks(String fullCommand) {
-        ui.printLine();
-        ui.showToUser("Here are the tasks in your list:");
+    public String showTasks(String fullCommand) {
+        StringBuilder output = new StringBuilder();
+        output.append("\nHere are the tasks in your list:\n");
         String description = fullCommand.trim().substring("list".length()).trim();
         if (description.isEmpty()) {
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.println((i + 1) + ". " + tasks.get(i));
+                output.append(i + 1).append(". ").append(tasks.get(i)).append("\n");
             }
+            return String.valueOf(output);
         } else {
             try {
                 int index = Integer.parseInt(description);
                 if (index <= tasks.size() && index > 0) {
-                    ui.showToUser("[" + (index) + "] " + tasks.get(index - 1));
+                    return "[" + (index) + "] " + tasks.get(index - 1);
                 } else {
-                    System.out.println("OOPS!!!Printing range should be 1 to " + tasks.size());
+                    return "\nOOPS!!!Printing range should be 1 to " + tasks.size();
                 }
             } catch (NumberFormatException e) {
-                ui.showToUser("OOPS!!!Print command should be ‘print' or 'print INTEGER'");
+                return "\nOOPS!!!Print command should be ‘print' or 'print INTEGER'\n";
             }
         }
-        ui.printLine();
     }
 
     /**
@@ -116,20 +115,19 @@ public class TaskList {
      *
      * @param fullCommand tasks' full command
      */
-    public void markAsDone(String fullCommand) {
+    public String markAsDone(String fullCommand) {
         try {
             int index = Integer.parseInt(fullCommand.substring("done".length()).trim());
-            assert index <= tasks.size() : "OOPS!!!Command number is invalid";
+            assert index <= tasks.size() : "\nOOPS!!!Command number is invalid\n";
             //assert error when index bigger than tasks size.
             if (index <= tasks.size() && index > 0) {
                 tasks.get(index - 1).setDone(true);
-                ui.showToUser("Tasks: " + index + " has marked as DONE.");
-                ui.printLine();
+                return "\nTasks: " + index + " has marked as DONE.";
             } else {
-                ui.showToUser("OOPS!!!Marking as done range should be 1 to " + tasks.size());
+                return "\nOOPS!!!Marking as done range should be 1 to " + tasks.size();
             }
         } catch (NumberFormatException e) {
-            ui.showToUser("OOPS!!!markAsDone command not Integer!");
+            return "\nOOPS!!!markAsDone command not Integer!\n";
         }
     }
 
@@ -138,27 +136,29 @@ public class TaskList {
      *
      * @param fullCommand tasks' full command
      */
-    public void deleteTasks(String fullCommand) {
+    public String deleteTasks(String fullCommand) {
         try {
             int index = Integer.parseInt(fullCommand.substring("delete".length()).trim());
+            StringBuilder output = new StringBuilder();
             if (index <= tasks.size() && index > 0) {
-                ui.showToUser("Noted. I've removed this task: \n" + "  " + tasks.get(index - 1));
-                tasks.remove(index - 1);
-                ui.showToUser("Now you have " + tasks.size() + " tasks in the list.");
-                ui.printLine();
+                output.append("\nNoted. I've removed this task: \n" + "  ").append(tasks.get(index - 1));
+                output.append(tasks.remove(index - 1));
+                output.append("\nNow you have ").append(tasks.size()).append(" tasks in the list.\n");
+                return String.valueOf(output);
             } else {
-                ui.showToUser("OOPS!!!:Deleting range should be 1 to " + tasks.size());
+                return "\nOOPS!!!:Deleting range should be 1 to " + tasks.size();
             }
         } catch (NumberFormatException e) {
-            ui.showToUser("OOPS!!!:Deleted command not Integer!");
+            return "\nOOPS!!!:Deleted command not Integer!\n";
         }
     }
 
     /**
      *This function is to call saveTasks method to save tasks in user driver.
+     * @return null
      */
-    public void saveTasks() {
-        Storage.writeTaskToFile(tasks);
+    public String saveTasks() {
+        return Storage.writeTaskToFile(tasks);
     }
 
     /**
@@ -166,22 +166,23 @@ public class TaskList {
      *
      * @param fullCommand tasks' full command
      */
-    public void findTasks(String fullCommand) {
+    public String findTasks(String fullCommand) {
         List<String> ss = new ArrayList<>();
+        StringBuilder findList = new StringBuilder();
         String description = fullCommand.trim().substring("find".length()).trim();
         for (int i = 0; i < tasks.size(); i++) {
             String s = tasks.get(i).toString();
             if (s.contains(description)) {
-                ss.add(i + 1 + "." + s);
+                ss.add(i + 1 + "." + s + '\n');
             }
         }
         if (ss.size() != 0) {
-            ui.showToUser("Here are the matching tasks in your list: ");
-            ss.forEach(System.out::println);
+            findList.append("\nHere are the matching tasks in your list: \n");
+            ss.forEach(findList::append);
+            return String.valueOf(findList);
         } else {
-            ui.showToUser("OOPS!!! Our list not contain " + "'" + description + "'.");
+            return "\nOOPS!!! Our list not contain " + "'" + description + "'.\n";
         }
-        ui.printLine();
     }
 
 }

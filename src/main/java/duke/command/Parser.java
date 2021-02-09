@@ -1,6 +1,7 @@
 package duke.command;
 
 import duke.task.Deadline;
+import duke.task.Event;
 import duke.task.Todo;
 
 /**
@@ -48,7 +49,7 @@ public class Parser {
         String substring = line.trim().substring("todo".length());
         String description = substring.trim();
         if (description.isEmpty()) {
-            throw new TaskException("Error: Empty description for TODO");
+            throw new TaskException("\nOOPS!!! Empty description for TODO");
         }
         return new Todo(substring.trim());
     }
@@ -65,13 +66,34 @@ public class Parser {
         String description = line.substring("deadline".trim().length());
 
         if (description.isEmpty()) {
-            throw new TaskException("Error: Empty description for TODO");
+            throw new TaskException("\nOOPS!!! Empty description for Deadline");
         }
         if (!description.contains("/by")) {
-            throw new TaskException("OOPS!!!: need '/by' for DEADLINE");
+            throw new TaskException("\nOOPS!!!: need '/by' for DEADLINE");
+        }
+        if (description.trim().split("/by",2)[1].isBlank()) {
+            throw new TaskException("\nOOPS!!!:  Empty description for Event /by");
         }
         return new Deadline(line.trim().substring("deadline".length()).trim().split(" /by")[0],
                 line.trim().split("/by ")[1]);
+    }
+
+    @SuppressWarnings("checkstyle:WhitespaceAround")
+    public static Event createEvent(String line) throws TaskException {
+        String description = line.substring("event".trim().length());
+
+        if (description.isEmpty()) {
+            throw new TaskException("\nOOPS!!! Empty description for Event");
+        }
+        if (!description.contains("/at")) {
+            throw new TaskException("\nOOPS!!!: need '/at' for Event");
+        }
+        if (description.trim().split("/at",2)[1].isBlank()) {
+            throw new TaskException("\nOOPS!!!:  Empty description for Event /at");
+        }
+        return new Event(line.trim().substring("event".length()).trim().split(" /at")[0],
+                    line.trim().split("/at ")[1]);
+
     }
 
 }
