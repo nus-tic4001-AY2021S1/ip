@@ -1,4 +1,4 @@
-# User Guide - Duke
+# User Guide - The Duke Who Manages Tasks
 
 A Personal Assistant Chatbot that helps a person to keep track of various things. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
 
@@ -15,33 +15,9 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    1. Click: `Open or Import`.
    1. Select the project directory, and click: `OK`
    1. If there are any further prompts, accept the defaults.
-1. After the importing is complete, locate the: `src/main/java/duke/Duke.java` file, right-click it, and choose: `Run Duke.main()`. If the setup is correct, you should see something like the below:
-  ```
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
-
-⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢
-Hello! I'm Duke.
-I can help you manage a list of tasks!
-What you can tell me to do is listed below:
-  ⬡  Create a Todo task     | todo <task>
-  ⬢  Create a Deadline task | deadline <task> /by <dd/MM/yyyy HHmm>
-  ⬡  Create an Event task   | event <task> /at <dd/MM/yyyy HHmm> /to <HHmm>
-  ⬢  Complete a task        | done <index>
-  ⬡  Delete a task          | delete <index>
-  ⬢  List down all tasks    | list
-  ⬡  Find tasks with word   | find <word>
-  ⬢  Add a note to a task   | note <index> <text>
-  ⬡  Exit my program        | bye or exit
-⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢⬡⬡⬢⬢
-
-It looks like it's your first time as I could not find any existing task file.
-Get started by creating a task!
-```
+1. After the importing is complete, locate the: `src/main/java/Launcher.java` file, right-click it, and choose: `Run Launcher.main()`. If the setup is correct, you should see something like the below:
+   
+   ![GUI](images/DukeGUI.png)
 
 ## Features    
   - Create a Todo task    : `todo`

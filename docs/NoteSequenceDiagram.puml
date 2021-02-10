@@ -1,0 +1,70 @@
+@startuml
+!include style.puml
+
+box GUI UI_COLOR_T2
+participant ":MainWindow" as MainWindow UI_COLOR
+end box
+
+box Duke UI_COLOR_T3
+participant "duke:Duke" as Duke UI_COLOR
+end box
+
+box Parser MODEL_COLOR_T1
+participant "parser:Parser" as Parser MODEL_COLOR
+end box
+
+box Command MODEL_COLOR_T2
+participant "command:Command" as Command MODEL_COLOR
+participant "NoteCommand" as NoteCommand MODEL_COLOR
+end box
+
+box TaskList LOGIC_COLOR_T1
+participant "tasks:TaskList" as TaskList LOGIC_COLOR_T3
+end box
+
+box Database LOGIC_COLOR_T2
+participant "database:Database" as Database LOGIC_COLOR_T3
+end box
+
+[-> MainWindow : handleUserInput()
+activate MainWindow
+
+MainWindow -> Duke : getResponse("note 1 Note.")
+activate Duke
+
+create Command
+Duke -> Command
+activate Command
+
+Command --> Duke
+
+Duke -> Parser : parseInput("note 1 Note.")
+activate Parser
+
+create NoteCommand
+Parser -> NoteCommand : NoteCommand("1 Note.")
+deactivate Parser
+
+Command -> NoteCommand : execute()
+activate NoteCommand
+
+NoteCommand -> TaskList : tasks.get(1).setNote("Note.")
+activate TaskList
+TaskList --> NoteCommand
+deactivate TaskList
+
+NoteCommand -> Database : updateDatabase(tasks)
+activate Database
+Database --> NoteCommand
+deactivate Database
+
+NoteCommand -> MainWindow : ui.printNoteAdded()
+deactivate NoteCommand
+deactivate Command
+Command -[hidden]-> Parser
+NoteCommand -[hidden]-> Parser
+destroy NoteCommand
+destroy Command
+<-- MainWindow
+
+@enduml

@@ -1,6 +1,11 @@
 # Developer Guide
 
 A Personal Assistant Chatbot that helps a person to keep track of various things. It's named after the Java mascot _Duke_.
+## **Design**
+
+### Note Sequence Diagram
+Given below is a Sequence Diagram that shows how a note is added to a task, through the different components that processes the user input `"note 1 Note."` from the `GUI`.
+![NoteSequenceDiagram](images/NoteSequenceDiagram.png)
 
 ## Product scope
 ### Target user profile
@@ -20,7 +25,7 @@ Project Duke will help the user remember his/her tasks, deadlines and events tha
 |v0.1|student|add an end date to my task| know the deadline.|
 |v0.1|student|add a start and end date to my task| know the timeframe.|
 |v0.1|student|list down all tasks| see all the tasks that I have.|
-|v0.1|new user|see the commands list | know the features that the program has.|
+|v0.1|student|see the commands list | know the features that the program has.|
 |v0.1|student|set a task as completed| know that said task is done.|
 |v0.1|student|delete a task| remove unwanted clutter.|
 |v0.1|student|save my tasks|keep a record for use later.|

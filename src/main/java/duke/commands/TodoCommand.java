@@ -21,8 +21,8 @@ public class TodoCommand extends Command {
     public String execute()  {
         try {
             if (line.isEmpty()) {
-                return "It seems that you missed out the task description!\r"
-                    + "Please type in the 'todo <something>' format.";
+                return "You missed out the task description!\r"
+                    + "Type in the 'todo <something>' format, you dolt!";
             }
             line = "[Todo]     " + line;
             tasks.add(new Todo(line));

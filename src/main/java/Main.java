@@ -23,6 +23,7 @@ public class Main extends Application {
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().startDuke(duke);
+            stage.setTitle("The Duke Who Manages Tasks");
             stage.show();
 
         } catch (IOException e) {

@@ -18,12 +18,13 @@ public class FindCommand extends Command {
     public String execute()  {
         String searchWord = line.trim();
         if (tasks.size() == 0) {
-            return "It appears that you have no tasks! Perhaps you should start creating one?";
+            return "You don't have any tasks you dolt, so you can't find any!\r"
+                + "Go create one first!";
         }
         if (searchWord.isEmpty()) {
-            return "Please type in the 'find <word>' format!";
+            return "Type in the 'find <word>' format, you dolt!";
         }
-        String matches = "Here are the tasks that contains '" + searchWord + "'!\r";
+        String matches = "Here's the tasks that contains '" + searchWord + "'. Satisfied?\r";
         boolean hasMatch = false;
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).getDescription().toLowerCase().contains(searchWord)) {
@@ -32,8 +33,8 @@ public class FindCommand extends Command {
             }
         }
         if (!hasMatch) {
-            matches = "It appears that are no matches for '" + searchWord + "'!\r"
-                + "Perhaps you could try searching another word?";
+            matches = "There's no matches for '" + searchWord + "'!\r"
+                + "Go find something else!";
         }
         return matches;
     }
