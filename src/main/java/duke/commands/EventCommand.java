@@ -40,16 +40,16 @@ public class EventCommand extends DeadlineCommand {
     public String execute() {
         try {
             if (line.isEmpty() || !line.contains("/at") || !line.contains("/to")) {
-                return "It seems that you've missed out the required keyword(s)!\r"
-                    + "Please type in the 'event <something> /at <dd/MM/yyyy HHmm> /to <HHmm>' format.";
+                return "You've missed out the required keyword(s)!\r"
+                    + "Type in the 'event <something> /at <dd/MM/yyyy HHmm> /to <HHmm>' format, you dolt!";
             }
             String description = line.split("/at ")[0];
             String startDateTime = line.split("/at ")[1].split(" /to ")[0];
             String endTime = line.split("/at ")[1].split(" /to ")[1];
 
             if (description.isEmpty() || startDateTime.isEmpty() || endTime.isEmpty()) {
-                return "It seems that you've missed out the task description or the start and end duration!\r"
-                    + "Please type in the 'event <something> /at <dd/MM/yyyy HHmm> /to <HHmm>' format.";
+                return "You've missed out the task description or the start and end duration!\r"
+                    + "Type in the 'event <something> /at <dd/MM/yyyy HHmm> /to <HHmm>' format, you dolt!";
             }
             startDateTime = reformatDateTime(startDateTime);
             endTime = reformatTime(endTime);
@@ -62,11 +62,11 @@ public class EventCommand extends DeadlineCommand {
         } catch (IOException e) {
             return e.getMessage();
         } catch (IndexOutOfBoundsException e) {
-            return "It seems that you've missed out the event duration!\r"
+            return "You've missed out the event duration!\r"
                 + "Please type in something for <dd/MM/yyyy HHmm> after 'event <something> /at'.";
         } catch (DateTimeParseException e) {
-            return "It seems that you didn't enter the time in the right format!\r"
-                + "Please type in the 'event <something> /at <dd/MM/yyyy HHmm>' format.";
+            return "You didn't enter the time in the right format!\r"
+                + "Type in the 'event <something> /at <dd/MM/yyyy HHmm>' format, you dolt!";
         }
     }
 }

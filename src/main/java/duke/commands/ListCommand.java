@@ -16,9 +16,10 @@ public class ListCommand extends Command {
     @Override
     public String execute()  {
         if (tasks.size() == 0) {
-            return "It appears that you have no tasks! Perhaps you should start creating one?";
+            return "You don't have any tasks you dolt, so there's no list!\r"
+                + "Go create a task first!";
         }
-        String total = "Here are the tasks that you currently have!\r\r";
+        String total = "Here's the list of your tasks, you peasant.\r\r";
         for (int i = 0; i < tasks.size(); i++) {
             total = total.concat((i + 1) + ". " + tasks.get(i).getDescription()) + "\r\r";
         }

@@ -13,9 +13,9 @@ public class Ui {
     }
 
     public String printGreeting() {
-        return "Hello! I'm Duke.\r"
-            + "I can help you manage a list of tasks!\r"
-            + "What you can tell me to do is listed below:\r"
+        return "I'm a Duke, so I have no idea why I'm helping a yokel like you to manage your tasks...\r"
+            + "Might as well get on with it since I'm stuck here.\r"
+            + "Make sure you give me proper instructions like below, else it's the stocks for you!\r"
             + "  ⬡  Create a Todo task     | todo <task>\r"
             + "  ⬢  Create a Deadline task | deadline <task> /by <dd/MM/yyyy HHmm>\r"
             + "  ⬡  Create an Event task   | event <task> /at <dd/MM/yyyy HHmm> /to <HHmm>\r"
@@ -28,47 +28,46 @@ public class Ui {
     }
 
     public String printFarewell() {
-        return "Bye. Hope to see you again soon!";
+        return "Oh, you're finally done? Good riddance!";
     }
 
     public String printTaskAdded(TaskList tasks) {
-        return "Great! You have entered a proper task as shown below:\r"
+        return "At least your lowly self is able to properly add a task:\r"
             + tasks.size() + ". " + tasks.get(tasks.size() - 1).getDescription()
-            + "\rWe now have " + tasks.size() + " task(s) in your list!";
+            + "\rI hope you can count well enough to know that you have " + tasks.size() + " task(s) in your list!";
     }
 
     public String printTaskRemoved(TaskList tasks, int index) {
-        return "Okay! We have removed the task as shown below:\r"
+        return "I wish I could remove you too, along with the task that you removed:\r"
             + index + ". " + tasks.get(index - 1).getDescription()
-            + "\rWe now have " + (tasks.size() - 1) + " task(s) in your list!";
+            + "\rWith one less, you should know that there's " + (tasks.size() - 1) + " task(s) remaining, right?";
     }
 
     public String printTaskCompleted(int index, TaskList tasks) {
-        return "Good work there! Now we have completed the task as shown below:\r"
+        return "Maybe you're not a pathetic yokel after all, since you managed to complete:\r"
             + index + ". " + tasks.get(index - 1).getDescription();
     }
 
     public String printNoteAdded(TaskList tasks, int index) {
-        return "Great! You have entered a proper note as shown below:\r"
+        return "Good heavens, you're capable enough to add a note to a task:\r"
             + index + ". " + tasks.get(index - 1).getDescription();
     }
 
     public String printInvalidCommand() {
-        return "It seems that you have typed something out of my unfortunately\r"
-            + "limited vocabulary. Can you try again?";
+        return "Did you mutter something? Speak up!\r"
+            + "You want to be sent to the stocks, don't you?";
     }
 
     public String printInvalidTask(int index, String fileName) {
-        return "\r[Warning] Line " + (index + 1) + " is not a Todo, Deadline, Event or Note. "
-            + "Please verify " + fileName + ".\r";
+        return "\rYou messed up your " + fileName + " at Line " + (index + 1) + "! "
+            + "It's not a Todo, Deadline, Event or Note!\r";
     }
 
     public String printNoFileFound() {
-        return "\rIt looks like it's your first time as I could not find any existing task file.\r"
-            + "Get started by creating a task!";
+        return "\rLooks like it's your first time here. Get moving and create a task!";
     }
 
     public String printFileExists() {
-        return "\r\rAn existing task file is found!\r";
+        return "\r\rI still have the tasks you created before, so get on with it!\r";
     }
 }

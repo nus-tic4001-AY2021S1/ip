@@ -39,15 +39,15 @@ public class DeadlineCommand extends Command {
     public String execute() {
         try {
             if (line.isEmpty() || !line.contains("/by")) {
-                return "It seems that you've missed out the task description or the /by <when> segment!\r"
-                    + "Please type in the 'deadline <something> /by <dd/MM/yyyy HHmm>' format.";
+                return "You've missed out the task description or the /by <when> segment!\r"
+                    + "Type in the 'deadline <something> /by <dd/MM/yyyy HHmm>' format, you dolt!";
             }
             String description = line.split("/by ")[0];
             String dateTime = line.split("/by ")[1];
 
             if (description.isEmpty() || dateTime.isEmpty()) {
-                return "It seems that you've missed out the task description or the /by <when> segment!\r"
-                    + "Please type in the 'deadline <something> /by <dd/MM/yyyy HHmm>' format.";
+                return "You've missed out the task description or the /by <when> segment!\r"
+                    + "Type in the 'deadline <something> /by <dd/MM/yyyy HHmm>' format, you dolt!";
             }
             line = description + "/by " + reformatDateTime(dateTime);
             line = reformatLine("[Deadline] ", "by", line);
@@ -58,11 +58,11 @@ public class DeadlineCommand extends Command {
         } catch (IOException e) {
             return e.getMessage();
         } catch (IndexOutOfBoundsException e) {
-            return "It seems that you've missed out the deadline time!\r"
+            return "You've missed out the deadline time!\r"
                 + "Please type in something for <dd/MM/yyyy HHmm> after 'deadline <something> /by'.";
         } catch (DateTimeParseException e) {
-            return "It seems that you didn't enter the time in the right format!\r"
-                + "Please type in the 'deadline <something> /by <dd/MM/yyyy HHmm>' format.";
+            return "You didn't enter the time in the right format!\r"
+                + "Type in the 'deadline <something> /by <dd/MM/yyyy HHmm>' format, you dolt!";
         }
     }
 }

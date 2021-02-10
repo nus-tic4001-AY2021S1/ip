@@ -20,12 +20,12 @@ public class DoneCommand extends Command {
     public String execute()  {
         try {
             if (tasks.size() == 0) {
-                return "It appears that you have no tasks yet, so you can't complete any!\r"
-                    + "Perhaps you should start creating one?";
+                return "You don't have any tasks you dolt, so you can't complete any!\r"
+                    + "Go create one first!";
             }
             if (line.isEmpty()) {
                 return "You almost typed a proper done command, but you missed out the number!\r"
-                    + "Please type in the 'done <task index number>' format.";
+                    + "Type in the 'done <task index number>' format, you dolt!";
             }
             int index = Integer.parseInt(line);
             tasks.get(index - 1).setDone();
@@ -36,10 +36,10 @@ public class DoneCommand extends Command {
             return e.getMessage();
         } catch (NumberFormatException e) {
             return
-                "I'm sorry, but the list goes numerically.\rPerhaps you could type a number for the index?";
+                "Type a number for the index, you fool!";
         } catch (IndexOutOfBoundsException e) {
-            return "It appears that you only have " + tasks.size() + " task(s) in your list,\r"
-                + "perhaps you might want to try typing an index number from 1 to " + tasks.size() + " instead?";
+            return "You only have " + tasks.size() + " task(s) in your list,\r"
+                + "why can't you type an index number from 1 to " + tasks.size() + "?";
         }
     }
 }
