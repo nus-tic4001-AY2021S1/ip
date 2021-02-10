@@ -18,7 +18,7 @@ public class FindCommand extends Command {
     public String execute()  {
         String searchWord = line.trim();
         if (tasks.size() == 0) {
-            return "You don't have any tasks you dolt, so you can't find any!/r"
+            return "You don't have any tasks you dolt, so you can't find any!\r"
                 + "Go create one first!";
         }
         if (searchWord.isEmpty()) {
