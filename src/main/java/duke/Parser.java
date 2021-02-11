@@ -11,8 +11,8 @@ import duke.command.EventCommand;
 import duke.command.FindCommand;
 import duke.command.ListCommand;
 import duke.command.OtherCommand;
-import duke.command.TodoCommand;
 import duke.command.TagCommand;
+import duke.command.TodoCommand;
 import duke.exceptions.DukeException;
 
 public class Parser {
