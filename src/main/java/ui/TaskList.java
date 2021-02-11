@@ -119,4 +119,19 @@ public class TaskList {
             return Ui.replyLine(tasks, input, count);
         }
     }
+
+    public static boolean isDuplicates(ArrayList<Task> tasks, String input) {
+        int repeatedFreq = 0;
+        int index = input.indexOf(" ");
+        String newInputTask = input.substring(index + 2);
+        String newInputRecurr = input.substring(index + 4);
+        for (int i = 0; i < tasks.size(); i++) {
+            String taskName = tasks.get(i).toString();
+            if (taskName.contains(newInputTask) || taskName.contains(newInputRecurr)) {
+                //repeatedFreq += 1;
+                return true;
+            }
+        }
+        return false;
+    }
 }

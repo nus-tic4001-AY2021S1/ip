@@ -174,4 +174,10 @@ public class Ui {
         return err;
     }
 
+    public static String duplicatedMsg() {
+        String err = Global.PATTERNLINE + "\nSame or Similar tasks were detected in data\n"
+                + Global.PATTERNLINE;
+        return err;
+    }
+
 }

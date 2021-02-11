@@ -48,16 +48,36 @@ public class Parser {
                 //break;
 
             case AddTodo:
-                return TaskList.addTodo(tasks, input, count);
+                if (TaskList.isDuplicates(tasks, input) == false) {
+                    return TaskList.addTodo(tasks, input, count);
+                } else {
+                    return Ui.duplicatedMsg();
+                }
                 //Storage.addToFile(tasks);
 
             case AddDeadlines:
-                return TaskList.addDeadlines(tasks, input, count);
+                if (TaskList.isDuplicates(tasks, input) == false) {
+                    return TaskList.addDeadlines(tasks, input, count);
+                } else {
+                    return Ui.duplicatedMsg();
+                }
                 //Storage.addToFile(tasks);
 
             case AddEvents:
-                return TaskList.addEvents(tasks, input, count);
+                if (TaskList.isDuplicates(tasks, input) == false) {
+                    return TaskList.addEvents(tasks, input, count);
+                } else {
+                    return Ui.duplicatedMsg();
+                }
+
                 //Storage.addToFile(tasks);
+            case AddRecurringTasks:
+                if (TaskList.isDuplicates(tasks, input) == false) {
+                    return TaskList.addRecurringTasks(tasks, input, count);
+                } else {
+                    return Ui.duplicatedMsg();
+                }
+
 
             case Delete:
                 TaskList.deleteTask(tasks, command);
@@ -67,9 +87,6 @@ public class Parser {
             case Find:
                 return Ui.findTask(command, tasks);
 
-            case AddRecurringTasks:
-                return TaskList.addRecurringTasks(tasks, input, count);
-                //return "Temp";
 
             case Bye:
                 Storage.writeToFile(tasks);
