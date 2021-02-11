@@ -35,7 +35,7 @@ public class Duke {
         while (in.hasNextLine()) {
             String input = in.nextLine();
 
-            if (!(input.toLowerCase()).equals("bye")) {
+            if (!(input).equalsIgnoreCase("bye")) {
                 Parser.processInput(input, tasks.getTasksArr());
             } else {
                 ui.greetNote("bye");
@@ -55,9 +55,9 @@ public class Duke {
      */
     String getResponse(String input) {
 
-        String defaultReply = "Duke heard :\n";
-        return "Duke heard: ";
-        //return  Parser.processInput(input, tasks.getTasksArr());
+        //String defaultReply = "Duke heard :\n";
+        //return "Duke heard: ";
+        return  Parser.processInput(input, tasks.getTasksArr());
 
     }
 

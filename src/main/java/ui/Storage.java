@@ -1,10 +1,11 @@
 package ui;
 
+import duke.Deadlines;
 import duke.DukeException;
+import duke.Events;
+import duke.RecurrTask;
 import duke.Task;
 import duke.ToDos;
-import duke.Deadlines;
-import duke.Events;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -90,8 +91,10 @@ public class Storage {
                 addTodosToArray(tasks, item, count);
             } else if (item.startsWith("[D")) {
                 addDeadlinesToArray(tasks, item, count);
-            } else {
+            } else if (item.startsWith("[E")) {
                 addEventsToArray(tasks, item, count);
+            } else {
+                addRecurrTaskToArray(tasks, item, count);
             }
             count++;
         }
@@ -146,5 +149,12 @@ public class Storage {
             tasks.get(arrIndex).markAsDone();
         }
 
+    }
+
+    private static void addRecurrTaskToArray(ArrayList<Task> tasks, String line, int arrIndex) {
+        int index = line.indexOf(" ");
+        String taskType = line.substring(0, index);
+        String taskName = line.substring(index + 3);
+        tasks.add(new RecurrTask(taskName, taskType));
     }
 }

@@ -60,7 +60,7 @@ public class Ui {
         for (int i = 1; i <= tasks.size(); i++) {
             //System.out.print(i + ". ");
             //tasks.get(i - 1).printTask();
-            output = output + (i + ". ");
+            output = output + i + ". ";
             output += tasks.get(i - 1).printTask() + "\n";
         }
         //System.out.println(Global.PATTERNLINE);
@@ -110,7 +110,7 @@ public class Ui {
         output += Global.PATTERNLINE + "\nGot it. I've added this task: \n\t";
         output += tasks.get(count).printTask();
         count += 1;
-        output += "Now you have " + count + " tasks in the list.\n" + Global.PATTERNLINE;
+        output += "\nNow you have " + count + " tasks in the list.\n" + Global.PATTERNLINE;
         return output;
         //System.out.println("Now you have " + count + " tasks in the list.\n" + Global.PATTERNLINE);
     }

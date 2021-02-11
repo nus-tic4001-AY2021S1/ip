@@ -1,17 +1,17 @@
 package ui;
 
-
-import duke.DukeException;
 import duke.Task;
 import duke.ToDos;
 import duke.Deadlines;
 import duke.Events;
-
-import java.text.ParseException;
+import duke.RecurrTask;
+import duke.DukeException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+
+import java.text.ParseException;
+import java.time.LocalDateTime;
 
 /**
  * This class in charge of performing action related to TaskList (only RAM, not related to Memory)
@@ -104,6 +104,18 @@ public class TaskList {
             schedule = input.substring(index + 4);
             taskName = input.substring(input.indexOf(" ") + 1, index);
             tasks.add(new Events(taskName, schedule));
+            return Ui.replyLine(tasks, input, count);
+        }
+    }
+
+    public static String addRecurringTasks(ArrayList<Task> tasks, String input, int count) throws DukeException {
+
+        if (input.length() < 7) {
+            throw new DukeException("☹ OOPS!!! The description of a Todo cannot be empty.\n"
+                    + "Please re-input or enter bye to terminate the program\n");
+        } else {
+            int index = input.indexOf(" ");
+            tasks.add(new RecurrTask(input.substring(index + 1), input.substring(0, index)));
             return Ui.replyLine(tasks, input, count);
         }
     }
