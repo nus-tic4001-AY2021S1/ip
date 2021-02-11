@@ -37,80 +37,6 @@ public class Duke {
         this.tasks = new TaskList();
     }
 
-    /**
-     * Main method
-     */
-    public static void main(String[] args) {
-        Duke duke = new Duke();
-        duke.run();
-    }
-
-    /**
-     * The normal run method.
-     */
-    public void run() {
-
-        ui.showLine();
-        ui.show(HELLO);
-        ui.showLine();
-
-        /*
-        1. If a file exist, load it to memory, otherwise create a new file
-         */
-        try {
-            storage.load(tasks);
-        } catch (DukeException | IOException e) {
-            ui.show(e.getMessage());
-        }
-
-        while (true) {
-            String userInput = ui.getCommand();
-            Command cmd = null;
-
-            /*
-            2.Parse user command to readable format
-             */
-            try {
-                cmd = Parser.getCommand(userInput);
-            } catch (DukeException e) {
-                ui.show(e.getMessage());
-                continue;
-            } catch (Exception e) {
-                ui.show("☹ OOPS!!! Unknown internal error occurs.");
-                continue;
-            }
-
-            /*
-            3.Check the user command whether is legal.
-             */
-            if (cmd instanceof OtherCommand && cmd.getCmdType().equalsIgnoreCase("bye")) {
-                break;
-            } else if (cmd instanceof OtherCommand) {
-                ui.show(new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(").getMessage());
-                continue;
-            }
-
-            /*
-            4.Process the user command
-             */
-            processCommand(cmd, tasks, ui);
-
-            /*
-            5. Update the result to the file and  save it.
-             */
-            try {
-                storage.save(tasks);
-            } catch (IOException e) {
-                ui.show("☹ OOPS!!!Updating file is fail.");
-            }
-
-            ui.showLine();
-        }
-
-        ui.show(BYE);
-        ui.showLine();
-    }
-
     String loadFile() {
         try {
             storage.load(tasks);
@@ -121,57 +47,92 @@ public class Duke {
     }
 
     private static String processCommand(Command cmd, TaskList tasks, Ui ui) {
-        int index;
-        int i = 1;
         StringBuffer s = new StringBuffer();
 
         switch (cmd.getCmdType()) {
         case "list":
             s.append("Here are the tasks in your list:" + System.lineSeparator());
-            for (Task t : tasks.getWholeList()) {
-                s.append(i + "." + t.toString() + System.lineSeparator());
-                i++;
-            }
+            listTasks(tasks, s);
             return s.toString();
         case "find":
             s.append("Here are the matching tasks in your list:" + System.lineSeparator());
-            for (Task t : tasks.findKeywordList(cmd.getCmdContent())) {
-                s.append(i + "." + t.toString() + System.lineSeparator());
-                i++;
-            }
+            findKeywordTasks(tasks, cmd, s);
             return s.toString();
         case "done":
-            index = ((DoneCommand) cmd).getIndex();
-            tasks.get(index - 1).setDone(true);
-            s.append("Nice! I've marked this task as done: " + System.lineSeparator());
-            s.append(tasks.get(index - 1).toString() + System.lineSeparator());
+            setTaskDone(tasks, cmd, s);
             return s.toString();
         case "delete":
-            index = ((DeleteCommand) cmd).getIndex();
-            s.append("Noted. I've removed this task: " + System.lineSeparator());
-            s.append(tasks.get(index - 1).toString() + System.lineSeparator());
-            tasks.remove(index - 1);
-            s.append("Now you have " + tasks.size() + " tasks in the list.");
+            deleteTask(tasks, cmd, s);
             return s.toString();
         case "tag":
-            index = ((TagCommand) cmd).getIndex();
-            tasks.get(index - 1).addTag(cmd.getCmdContent());
-            s.append("Adding tag " + cmd.getCmdContent() + " to task: " + index + System.lineSeparator());
+            tagTask(tasks, cmd, s);
             return s.toString();
         case "todo":
-            ToDos t = new ToDos(cmd.getCmdContent());
-            tasks.add(t);
+            Task t = addTodoTask(tasks, cmd);
             return ui.printTask(t, tasks);
         case "deadline":
-            Deadlines d = new Deadlines(cmd.getCmdContent(), ((DeadlineCommand) cmd).getTime());
-            tasks.add(d);
+            Task d = addDeadlineTask(tasks, cmd);
             return ui.printTask(d, tasks);
         case "event":
-            Events e = new Events(cmd.getCmdContent(), ((EventCommand) cmd).getTime());
-            tasks.add(e);
+            Task e = addEventTask(tasks, cmd);
             return ui.printTask(e, tasks);
         default:
             return "Nothing done bro.";
+        }
+    }
+
+    private static Task addEventTask(TaskList tasks, Command cmd) {
+        Events e = new Events(cmd.getCmdContent(), ((EventCommand) cmd).getTime());
+        tasks.add(e);
+        return e;
+    }
+
+    private static Task addDeadlineTask(TaskList tasks, Command cmd) {
+        Deadlines d = new Deadlines(cmd.getCmdContent(), ((DeadlineCommand) cmd).getTime());
+        tasks.add(d);
+        return d;
+    }
+
+    private static Task addTodoTask(TaskList tasks, Command cmd) {
+        ToDos t = new ToDos(cmd.getCmdContent());
+        tasks.add(t);
+        return t;
+    }
+
+    private static void tagTask(TaskList tasks, Command cmd, StringBuffer s) {
+        int index = ((TagCommand) cmd).getIndex();
+        tasks.get(index - 1).addTag(cmd.getCmdContent());
+        s.append("Adding tag " + cmd.getCmdContent() + " to task: " + index + System.lineSeparator());
+    }
+
+    private static void deleteTask(TaskList tasks, Command cmd, StringBuffer s) {
+        int index = ((DeleteCommand) cmd).getIndex();
+        s.append("Noted. I've removed this task: " + System.lineSeparator());
+        s.append(tasks.get(index - 1).toString() + System.lineSeparator());
+        tasks.remove(index - 1);
+        s.append("Now you have " + tasks.size() + " tasks in the list.");
+    }
+
+    private static void setTaskDone(TaskList tasks, Command cmd, StringBuffer s) {
+        int index = ((DoneCommand) cmd).getIndex();
+        tasks.get(index - 1).setDone(true);
+        s.append("Nice! I've marked this task as done: " + System.lineSeparator());
+        s.append(tasks.get(index - 1).toString() + System.lineSeparator());
+    }
+
+    private static void findKeywordTasks(TaskList tasks, Command cmd, StringBuffer s) {
+        int i = 1;
+        for (Task t : tasks.findKeywordList(cmd.getCmdContent())) {
+            s.append(i + "." + t.toString() + System.lineSeparator());
+            i++;
+        }
+    }
+
+    private static void listTasks(TaskList tasks, StringBuffer s) {
+        int i = 1;
+        for (Task t : tasks.getWholeList()) {
+            s.append(i + "." + t.toString() + System.lineSeparator());
+            i++;
         }
     }
 
@@ -203,7 +164,6 @@ public class Duke {
         } catch (Exception e) {
             result = new DukeException("☹ OOPS!!! Unknown error occurs when process command.").getMessage();
         }
-
 
         try {
             storage.save(tasks);

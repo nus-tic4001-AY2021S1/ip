@@ -17,7 +17,6 @@ import duke.exceptions.DukeException;
 
 public class Parser {
 
-
     private static String[] commandSplit(String s, String splitBy) {
         return s.split(splitBy);
     }
