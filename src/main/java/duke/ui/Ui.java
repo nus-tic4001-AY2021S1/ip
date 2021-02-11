@@ -5,7 +5,6 @@ import java.util.Scanner;
 /** .
  * Ui: deals with interactions with the user
  */
-
 public class Ui {
     /** .
      * This method will scan the user input
@@ -32,7 +31,10 @@ public class Ui {
         System.out.println("What can I do for you?");
         printLine();
     }
-
+    /** .
+     * This method will display greeting message to user
+     *
+     */
     public String greetMessage() {
         return "Hello! I'm Duke.\nWhat can I do for you?";
     }

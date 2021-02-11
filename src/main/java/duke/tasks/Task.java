@@ -70,7 +70,12 @@ public abstract class Task  implements Comparable<Task> {
     }
 
 
-
+    /**
+     * Compares 2 tasks by task status (isDone), by task description.
+     *
+     * @param task The Task to compare.
+     * @return int corresponding to the order.
+     */
     @Override
     public int compareTo(Task task) {
         return Comparator

@@ -12,15 +12,30 @@ import java.util.Locale;
 
 import static duke.util.TaskList.isValidDateTimeFormat;
 
+/** .
+ * Executes a DeadLine command.
+ */
 public class DeadLineCommand extends Command {
     private String taskDescription;
     private LocalDate dueDate;
 
+    /** .
+     * Constructs a DeadLineCommand.
+     *  @param input The strings contains keywords.
+     */
     public DeadLineCommand(String input) {
         super(input);
     }
 
 
+    /** .
+     * Executes a DeadLine command and returns a response.
+     *
+     * @param taskList Contains the tasks.
+     * @param ui Displays information to the user.
+     * @param storage Reads and stores data into memory.
+     * @return Message to users.
+     */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
 
