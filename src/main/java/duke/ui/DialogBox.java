@@ -15,8 +15,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 
+// Reference https://se-education.org/guides/tutorials/javaFxPart4.html
+// Edit: JavaFX tutorial part 4 Using FXML
 public class DialogBox extends HBox {
-
+    // Sets the background of message box based on the role: User or Duke
     private static final String User_MessageBox =
             "-fx-background-color: rgba(165, 239, 127, 0.9); -fx-background-radius: 15; -fx-font-weight: bold;";
     private static final String Duke_MessageBox =
@@ -51,7 +53,7 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Flips the dialog box such that the ImageView is on the left and text on the right.
+     * Flips the dialog box to set the ImageView is on the left and text on the right.
      */
     private void flip() {
         ObservableList<Node> tmp = FXCollections.observableArrayList(this.getChildren());

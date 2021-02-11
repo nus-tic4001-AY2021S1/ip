@@ -2,10 +2,6 @@ package duke.ui;
 
 import duke.Duke;
 
-
-import duke.commands.Command;
-import duke.exceptions.DukeException;
-import duke.parser.Parser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -13,14 +9,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.application.Platform;
 
 import java.util.TimerTask;
 import java.util.Timer;
 
+// Reference https://se-education.org/guides/tutorials/javaFxPart4.html
+// Edit: JavaFX tutorial part 4 Using FXML
 /** .
- * Controller for MainWindow. Provides the layout for the other controls.
+ * Controller for MainWindow.
+ * Provides the layout for the other controls.
  */
 public class MainWindow extends AnchorPane {
 
@@ -41,7 +39,7 @@ public class MainWindow extends AnchorPane {
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     /**
-     * Set height of Pane: reminder and the chat.
+     * Set the main window to show Greeting Message from Duke.
      */
     @FXML
     public void initialize() {
@@ -56,18 +54,13 @@ public class MainWindow extends AnchorPane {
         duke = d;
     }
 
-
+    /** .
+     * Set two dialog boxes:user input and Duke's reply
+     */
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
         String response = duke.getResponse(input);
-
-        boolean isError;
-
-
-
-
-
 
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),

@@ -2,25 +2,21 @@ package duke;
 
 import duke.commands.Command;
 import duke.exceptions.DukeException;
-import duke.programexit.ProgramExit;
 import duke.ui.Ui;
 import duke.parser.Parser;
 import duke.util.Storage;
 import duke.util.TaskList;
 
-import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
+/**
+ * Represents the main class for the Duke application.
+ */
 public class Duke {
 
     // A string to hold the data file name which contains all tasks and their details
@@ -30,7 +26,6 @@ public class Duke {
     private Ui ui;
     private TaskList taskList;
     private Parser parser;
-    private ProgramExit programExit;
 
 
     private ScrollPane scrollPane;
@@ -41,9 +36,6 @@ public class Duke {
     private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
-    public static void run(){
-
-    }
 
     /**
      * Constructs an instance of Duke.
@@ -56,9 +48,7 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
 
-
         ui = new Ui();
-        programExit = new ProgramExit();
         parser = new Parser();
         taskList = new TaskList();
         storage = new Storage();
@@ -74,8 +64,13 @@ public class Duke {
 
 
 
-
-
+    /**
+     * Returns Duke's response to a command after executing it.
+     *
+     * @param input User command.
+     * @return Duke's response.
+     * @throws DukeException if there is any exception.
+     */
     public String getResponse(String input) {
         try {
             Command command = Parser.parse(input);

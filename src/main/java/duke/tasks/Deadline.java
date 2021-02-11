@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
+
 public class Deadline extends Task {
 
 
@@ -27,7 +28,6 @@ public class Deadline extends Task {
      * @param dueDate     A LocalDate that holds the deadline date.The due date of the task as yyyy-mm-dd format
      *
      */
-
     public Deadline(String description, LocalDate dueDate) {
         super(description);
         this.setDueDate(dueDate);

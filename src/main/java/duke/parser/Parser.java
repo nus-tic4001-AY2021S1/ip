@@ -15,7 +15,6 @@ import duke.commands.SortCommand;
 import duke.exceptions.DukeException;
 import duke.ui.Ui;
 
-import java.util.Arrays;
 
 /** .
  * Parser: deals with making sense of the user command
@@ -73,7 +72,12 @@ public class Parser {
         return null;
     }
 
-
+    /**
+     * Get a String input into a list.
+     *
+     * @param input The input to parse.
+     * @return Command associated with the input.
+     */
     public static String[] getInputArray(String input) {
         return input.trim().replaceAll(KEYWORD_MULTIPLE_SPACE, KEYWORD_ONE_SPACE).split(KEYWORD_ONE_SPACE, 2);
     }

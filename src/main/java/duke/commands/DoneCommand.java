@@ -46,7 +46,7 @@ public class DoneCommand extends Command {
         }
 
         int taskIndex = Integer.parseInt(selectedTask) - 1;
-        if (taskIndex < 0 || taskIndex > taskList.size()) {
+        if (taskIndex < 0 || (taskIndex >= taskList.size())) {
             throw new DukeException(
                     "TASK NUM cannot be found in the task list: Returning to Main Menu");
         }

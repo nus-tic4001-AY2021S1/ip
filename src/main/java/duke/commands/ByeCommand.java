@@ -4,7 +4,9 @@ import duke.ui.Ui;
 import duke.util.Storage;
 import duke.util.TaskList;
 
-
+/** .
+ * Executes a Bye command.
+ */
 public class ByeCommand extends Command {
     /**
      * Constructs a ByeCommand.
@@ -17,19 +19,15 @@ public class ByeCommand extends Command {
     /**
      * Executes a bye command and returns a response.
      *
-     * @param tasks Contains the current tasks.
+     * @param taskList Contains the current tasks.
      * @param ui Responsible for displaying information to the user.
      * @param storage Reads and stores data into memory.
      */
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         return "Bye. Hope to see you again soon!";
     }
 
-    @Override
-    public String toString() {
-        return "bye";
-    }
 
 
 }
