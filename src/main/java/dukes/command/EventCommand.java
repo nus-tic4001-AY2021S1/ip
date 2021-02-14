@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class EventCommand extends Command {
     SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HHmm");
-    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
+    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
 
     /**
      * Adds a Event task to the task list and save the list to disk and display to user.
@@ -26,7 +26,7 @@ public class EventCommand extends Command {
     public String execute(String input, TaskList tasks, Ui ui, Storage storage) throws DukeException {
         Task taskWord;
         if (input.length() < 7 || input.isEmpty()) {
-            throw new DukeException("OOPS!!! The description of a event cannot be empty.\n");
+            throw new DukeException("OOPS!!! The description of an event cannot be empty.\n");
         }
         String[] splitEvent = input.split("/at");
         if (splitEvent.length < 2) {

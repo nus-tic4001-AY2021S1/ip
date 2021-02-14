@@ -10,7 +10,7 @@ import dukes.exception.DukeException;
  * Create a DeleteCommand. It removes user's task from the list.
  */
 public class DeleteCommand extends Command {
-    public DeleteCommand(String input) {
+    public DeleteCommand(String input ) {
         super.input = input;
     }
 

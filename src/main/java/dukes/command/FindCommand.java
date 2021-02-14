@@ -29,7 +29,7 @@ public class FindCommand extends Command {
         TaskList filteredTasks = new TaskList();
         int count = 0;
         try {
-            if (input.length() < 6 || input.isEmpty()) {
+            if (input.length() <6 || input.isEmpty()) {
                 throw new DukeException("OOPS!!! The description of a find cannot be empty.\n");
             }
             for (Task task : tasks.list) {

@@ -10,10 +10,15 @@ import dukes.tasks.Task;
 import dukes.tasks.TaskList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -94,11 +99,11 @@ public class Duke {
             }
         }
     }
+
     /**
      * You should have your own function to generate a response to user input.
      * Replace this stub with your completed method.
      */
-
     String getResponse(String input) {
         try {
             Command c = Parser.parse(input);
