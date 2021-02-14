@@ -170,11 +170,20 @@ public class TaskList {
 
     public static boolean isDuplicates(ArrayList<Task> tasks, String input) {
         int index = input.indexOf(" ");
-        String newInputTask = input.substring(index + 2);
-        String newInputRecurr = input.substring(index + 4);
+        String taskName;
+        String newInputTaskName;
+
+        if (input.contains("/by")) {
+            newInputTaskName = input.substring(index + 2, input.indexOf("/by"));
+        } else if (input.contains("/at")) {
+            newInputTaskName = input.substring(index + 2, input.indexOf("/at"));
+        } else {
+            newInputTaskName = input.substring(index + 2);
+        }
+
         for (int i = 0; i < tasks.size(); i++) {
-            String taskName = tasks.get(i).toString();
-            if (taskName.contains(newInputTask) || taskName.contains(newInputRecurr)) {
+            taskName = tasks.get(i).getTask();
+            if (taskName.contains(newInputTaskName)) {
                 return true;
             }
         }
