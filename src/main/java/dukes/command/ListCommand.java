@@ -24,7 +24,7 @@ public class ListCommand extends Command {
      * @throws IndexOutOfBoundsException if there is empty list.
      */
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(String input, TaskList tasks, Ui ui, Storage storage) {
         try {
             int count = tasks.list.size();
             if (count == 0) {

@@ -17,17 +17,21 @@ public class FindCommand extends Command {
 
     /**
      * Finds the tasks with the given keyword.
-     *  @param tasks   TaskList to be appended.
+     * @param input The strings contains keywords and index number.
+     * @param tasks   TaskList to be appended.
      * @param ui      UI to interact with user.
      * @param storage Storage to read and write files.
      * @return a list of tasks with the specific keyword will be show.
      */
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+    public String execute(String input, TaskList tasks, Ui ui, Storage storage) throws DukeException {
         TaskList filteredTasks = new TaskList();
         int count = 0;
         try {
+            if (input.length() < 6 || input.isEmpty()) {
+                throw new DukeException("OOPS!!! The description of a find cannot be empty.\n");
+            }
             for (Task task : tasks.list) {
                 String description = task.getDescription().toLowerCase();
                 if (description.contains(keyWord)) {

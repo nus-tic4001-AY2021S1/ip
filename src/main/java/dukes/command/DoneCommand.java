@@ -14,14 +14,15 @@ import dukes.exception.DukeException;
 public class DoneCommand extends Command {
     /**
      * Constructor for <code>DoneCommand</code>.
-     * @param index Index of object that is to be marked as done in a TaskList object.
+     * @param input  The strings contains keywords and index number
      */
-    public DoneCommand(int index) {
-        super.index = index;
+    public DoneCommand(String input) {
+        super.input = input;
     }
     /**
      * Mark a task in the task list as done if specified index is valid, save the task list and display to user.
      *
+     * @param input  The strings contains keywords and index number
      * @param tasks TaskList to be appended.
      * @param ui UI to interact with user.
      * @param storage Storage to read and write files and temporary store in hard disk.
@@ -29,13 +30,17 @@ public class DoneCommand extends Command {
      */
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+    public String execute(String input,TaskList tasks, Ui ui, Storage storage) throws DukeException {
         try {
-            Task doneTask = tasks.list.get(index).markAsDone();
+            if (input.length() < 6 || input.isEmpty()) {
+                throw new DukeException("OOPS!!! Please refer to [Help] to key in Correct Format.\n");
+            }
+            int toEdit = Ui.indexDetails(input);
+            Task doneTask = tasks.list.get(toEdit).markAsDone();
             storage.saveTaskFile(tasks.list);
             return ui.printDoneMessage(doneTask);
         } catch (IndexOutOfBoundsException e) {
-            throw new DukeException("Please key in a number from the list");
+            throw new DukeException("OOPS!!! There is no specific task number in the list");
         }
     }
 }
