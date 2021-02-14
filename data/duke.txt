@@ -1,4 +1,4 @@
-E | 0 | project meeting | 2020-08-06
+E | 1 | project meeting | 2020-08-06
 T | 1 | join sports club
 E | 1 | birthday party | 2020-10-20
 D | 0 | return book | 2020-09-20
