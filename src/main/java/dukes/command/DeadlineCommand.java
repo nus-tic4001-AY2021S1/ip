@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class DeadlineCommand extends Command {
     SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HHmm");
-    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
+    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
 
     /**
      * Adds a Deadline task to the task list and save the list to disk and display to user.
@@ -43,6 +43,5 @@ public class DeadlineCommand extends Command {
         tasks.list.add(taskWord);
         storage.saveTaskFile(tasks.list);
         return ui.printAddedMessage(taskWord, tasks.list.size());
-
     }
 }

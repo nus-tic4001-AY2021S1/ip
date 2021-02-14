@@ -32,7 +32,7 @@ public class Parser {
         case "list":
             return new ListCommand();
         case "todo":
-            return  new AddCommand(new ToDo(input));
+            return  new AddCommand(new ToDo(input.substring(5)));
         case "delete":
             return new DeleteCommand(input);
         case "done":
