@@ -11,18 +11,6 @@ public class Ui {
         this.scanner = new Scanner(System.in);
     }
 
-    public String getCommand() {
-        return scanner.nextLine();
-    }
-
-    public void show(String s) {
-        System.out.println(s);
-    }
-
-    public void showLine() {
-        show("________________________________________________________");
-    }
-
     /**
      * @param t A normal task
      * @param tasks the stored task list

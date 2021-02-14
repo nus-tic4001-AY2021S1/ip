@@ -3,17 +3,30 @@ package duke.tasks;
 import java.util.ArrayList;
 
 public abstract class Tag {
+
+    private static String tagDiv = "/div/";
+
     protected ArrayList<String> tags = new ArrayList<>();
 
     public ArrayList<String> getTags() {
         return tags;
     }
 
-    protected boolean existTags() {
-        if (!tags.isEmpty()) {
-            return true;
+    /**
+     * @return return the tag divider
+     */
+    public static String getTagDiv() {
+        return tagDiv;
+    }
+
+    /**
+     * @return return true if tag exists
+     */
+    public boolean existTags() {
+        if (tags.isEmpty()) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     /**
@@ -58,6 +71,17 @@ public abstract class Tag {
         StringBuffer s = new StringBuffer();
         for (String tag : this.tags) {
             s.append(tag + System.lineSeparator());
+        }
+        return s.toString();
+    }
+
+    /**
+     * @return return a string that contains all tags info and could be stored in file
+     */
+    public String toTagsString() {
+        StringBuffer s = new StringBuffer();
+        for (String tag : this.tags) {
+            s.append(tag + tagDiv);
         }
         return s.toString();
     }

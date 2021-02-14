@@ -9,6 +9,7 @@ import java.util.Scanner;
 import duke.exceptions.DukeException;
 import duke.tasks.Deadlines;
 import duke.tasks.Events;
+import duke.tasks.Tag;
 import duke.tasks.Task;
 import duke.tasks.ToDos;
 
@@ -40,22 +41,42 @@ public class Storage {
 
                 String taskDate = "unknown date";
                 String taskType = contents[0];
+                String[] tags = null;
                 boolean taskDoneStatus = checkDoneStatus(contents[1]);
                 String taskDescription = contents[2];
                 if (contents.length == 4) {
+                    if (contents[3].contains(Tag.getTagDiv())) {
+                        tags = contents[3].split(Tag.getTagDiv());
+                    } else {
+                        taskDate = contents[3];
+                    }
+                } else if (contents.length == 5) {
                     taskDate = contents[3];
+                    tags = contents[4].split(Tag.getTagDiv());
                 }
 
                 try {
                     switch (taskType) {
                     case "T":
-                        tasks.add(createToDos(taskDescription, taskDoneStatus));
+                        Task t = createToDos(taskDescription, taskDoneStatus);
+                        if (tags != null) {
+                            addTags(t, tags);
+                        }
+                        tasks.add(t);
                         break;
                     case "D":
-                        tasks.add(createDeadlines(taskDescription, taskDate, taskDoneStatus));
+                        Task d = createDeadlines(taskDescription, taskDate, taskDoneStatus);
+                        if (tags != null) {
+                            addTags(d, tags);
+                        }
+                        tasks.add(d);
                         break;
                     case "E":
-                        tasks.add(createEvents(taskDescription, taskDate, taskDoneStatus));
+                        Task e = createEvents(taskDescription, taskDate, taskDoneStatus);
+                        if (tags != null) {
+                            addTags(e, tags);
+                        }
+                        tasks.add(e);
                         break;
                     default:
                         throw new DukeException("☹ OOPS!!!There's unknown tasks type in the file.");
@@ -69,6 +90,12 @@ public class Storage {
         }
     }
 
+    private void addTags(Task t, String[] tags) {
+        for (String tag : tags) {
+            t.addTag(tag);
+        }
+    }
+
     /**
      * @param tasks the current task list
      * @throws IOException any exception related to IO
@@ -78,7 +105,13 @@ public class Storage {
 
         Iterator<Task> i = tasks.iterator();
         while (i.hasNext()) {
-            fw.write(i.next().toSavingString());
+            Task t = i.next();
+            if (t.existTags()) {
+                fw.write(t.toSavingStringWithTag());
+            } else {
+                fw.write(t.toSavingString());
+            }
+
             fw.write("\n");
         }
 
