@@ -12,11 +12,6 @@ public class Ui {
         return " " + toPrint + "" + "\n";
     }
 
-    public String greetUser() {
-        return indentPrint("Hello! I'm Duke")
-            + indentPrint("What can I do for you?");
-    }
-
     public String byeToUser() {
         return indentPrint("Bye. Hope to see you again soon!");
     }
