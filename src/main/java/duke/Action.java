@@ -8,5 +8,6 @@ public enum Action {
     AddTodo,
     AddDeadlines,
     AddEvents,
+    AddRecurringTasks,
     Bye,
 }

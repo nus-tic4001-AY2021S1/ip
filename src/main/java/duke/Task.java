@@ -28,4 +28,8 @@ public abstract class Task {
         //Workable - System.out.println(this.toString());
         return this.toString();
     }
+
+    public String getTask() {
+        return this.description;
+    }
 }

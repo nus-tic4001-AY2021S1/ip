@@ -60,7 +60,7 @@ public class Ui {
         for (int i = 1; i <= tasks.size(); i++) {
             //System.out.print(i + ". ");
             //tasks.get(i - 1).printTask();
-            output = output + (i + ". ");
+            output = output + i + ". ";
             output += tasks.get(i - 1).printTask() + "\n";
         }
         //System.out.println(Global.PATTERNLINE);
@@ -110,7 +110,7 @@ public class Ui {
         output += Global.PATTERNLINE + "\nGot it. I've added this task: \n\t";
         output += tasks.get(count).printTask();
         count += 1;
-        output += "Now you have " + count + " tasks in the list.\n" + Global.PATTERNLINE;
+        output += "\nNow you have " + count + " tasks in the list.\n" + Global.PATTERNLINE;
         return output;
         //System.out.println("Now you have " + count + " tasks in the list.\n" + Global.PATTERNLINE);
     }
@@ -168,9 +168,26 @@ public class Ui {
         return errorMissing;
     }
 
+    public static String eventErrEmpty() {
+        String errorEmpty = "\n☹ OOPS!!! The description of a Events cannot be empty.\n "
+                + "Please re-input or enter bye to terminate the program\n";
+        return Global.PATTERNLINE + errorEmpty;
+    }
+
+    public static String eventNoAt() {
+        String errorMissing = "\nYou have not input your Schedule or Wrong format. \nPlease include -> /at when\n";
+        return Global.PATTERNLINE + errorMissing;
+    }
+
     private static String noKeywords() {
         String err = "No Tasks with Similar Keyword was found from the List\n";
         //System.out.println(err);
+        return err;
+    }
+
+    public static String duplicatedMsg() {
+        String err = Global.PATTERNLINE + "\nSame or Similar tasks were detected in data\n"
+                + Global.PATTERNLINE;
         return err;
     }
 

@@ -1,10 +1,11 @@
 package ui;
 
+import duke.Deadlines;
 import duke.DukeException;
+import duke.Events;
+import duke.RecurrTask;
 import duke.Task;
 import duke.ToDos;
-import duke.Deadlines;
-import duke.Events;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -90,8 +91,10 @@ public class Storage {
                 addTodosToArray(tasks, item, count);
             } else if (item.startsWith("[D")) {
                 addDeadlinesToArray(tasks, item, count);
-            } else {
+            } else if (item.startsWith("[E")) {
                 addEventsToArray(tasks, item, count);
+            } else {
+                addRecurrTaskToArray(tasks, item, count);
             }
             count++;
         }
@@ -112,23 +115,45 @@ public class Storage {
     @SuppressWarnings("checkstyle:ParameterName")
     private static void addDeadlinesToArray(ArrayList<Task> tasks, String line, int arrIndex) {
         int index = line.indexOf("(by");
-        String taskName = line.substring(7, index - 1);
+        int indexCB = line.indexOf(")", index);
+        int timeStamp = indexCB - index;
+
+        //String schedule = line.substring(index + 5, line.length() - 7);
+        //String tschedule = line.substring(line.length() - 6, line.length() - 1);
+        //String tschedule = line.substring(indexCB );
+
         String status = line.substring(4,5);
-        String tschedule = line.substring(line.length() - 6, line.length() - 1);
+        String taskName = line.substring(7, index - 1);
+        //String schedule = line.substring(index + 5, index + 16);
+        //String schedule = line.substring(index + 5, line.indexOf(" ", index + 15));
+        //LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
 
-        if (tschedule.contains(":")) {
-
-            String schedule = line.substring(index + 5, line.length() - 7);
+        if (line.contains("(Memos :") && (timeStamp > 16)) { //with time and memos
+            int indexM = line.indexOf("(Memos");
+            int indexS = line.indexOf(" ", index + 15);
+            String memo = line.substring(indexM + 9, line.length() - 1);
+            String tschedule = line.substring(indexS + 1, indexM - 2);
+            LocalTime timeline = LocalTime.parse(tschedule);
+            String schedule = line.substring(index + 5, indexS);
             LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
+            tasks.add(new Deadlines(taskName, dateline,timeline, memo));
+        }  else if (timeStamp > 16) {   //with time
+            int indexS = line.indexOf(" ", index + 15);
+            String schedule = line.substring(index + 5, line.indexOf(" ", index + 15));
+            LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
+            String tschedule = line.substring(indexS + 1, line.length() - 1);
             LocalTime timeline = LocalTime.parse(tschedule);
             tasks.add(new Deadlines(taskName, dateline,timeline));
-
-        } else {
-
-            String schedule = line.substring(index + 5, line.length() - 1);
+        } else if (line.contains("(Memos :")) { //with only memos
+            int indexM = line.indexOf("(Memos");
+            String memo = line.substring(indexM + 9, line.length() - 1);
+            String schedule = line.substring(index + 5, line.indexOf(")", index + 15));
+            LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
+            tasks.add(new Deadlines(taskName, dateline, memo));
+        } else { //with nothing
+            String schedule = line.substring(index + 5, line.indexOf(")", index + 15));
             LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
             tasks.add(new Deadlines(taskName, dateline));
-
         }
 
         if (status.equals("✓")) {
@@ -139,12 +164,19 @@ public class Storage {
     private static void addEventsToArray(ArrayList<Task> tasks, String line, int arrIndex) {
         int index = line.indexOf("(at");
         String status = line.substring(4,5);
-        String schedule = line.substring(index + 4, line.length() - 1);
-        String taskName = line.substring(line.indexOf(" ") + 1, index);
+        String schedule = line.substring(index + 5, line.length() - 1);
+        String taskName = line.substring(line.indexOf(" ") + 1, index - 1);
         tasks.add(new Events(taskName, schedule));
         if (status.equals("✓")) {
             tasks.get(arrIndex).markAsDone();
         }
 
+    }
+
+    private static void addRecurrTaskToArray(ArrayList<Task> tasks, String line, int arrIndex) {
+        int index = line.indexOf(" ");
+        String taskType = line.substring(0, index);
+        String taskName = line.substring(index + 3);
+        tasks.add(new RecurrTask(taskName, taskType));
     }
 }

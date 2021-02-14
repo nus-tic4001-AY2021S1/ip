@@ -48,16 +48,36 @@ public class Parser {
                 //break;
 
             case AddTodo:
-                return TaskList.addTodo(tasks, input, count);
+                if (TaskList.isDuplicates(tasks, input) == false) {
+                    return TaskList.addTodo(tasks, input, count);
+                } else {
+                    return Ui.duplicatedMsg();
+                }
                 //Storage.addToFile(tasks);
 
             case AddDeadlines:
-                return TaskList.addDeadlines(tasks, input, count);
+                if (TaskList.isDuplicates(tasks, input) == false) {
+                    return TaskList.addDeadlines(tasks, input, count);
+                } else {
+                    return Ui.duplicatedMsg();
+                }
                 //Storage.addToFile(tasks);
 
             case AddEvents:
-                return TaskList.addEvents(tasks, input, count);
+                if (TaskList.isDuplicates(tasks, input) == false) {
+                    return TaskList.addEvents(tasks, input, count);
+                } else {
+                    return Ui.duplicatedMsg();
+                }
+
                 //Storage.addToFile(tasks);
+            case AddRecurringTasks:
+                if (TaskList.isDuplicates(tasks, input) == false) {
+                    return TaskList.addRecurringTasks(tasks, input, count);
+                } else {
+                    return Ui.duplicatedMsg();
+                }
+
 
             case Delete:
                 TaskList.deleteTask(tasks, command);
@@ -66,6 +86,7 @@ public class Parser {
 
             case Find:
                 return Ui.findTask(command, tasks);
+
 
             case Bye:
                 Storage.writeToFile(tasks);
@@ -89,19 +110,21 @@ public class Parser {
     private static Action validateCommand(String command) throws DukeException {
         if (command.startsWith("list")) {
             return  Action.List;
+        } else if (command.startsWith("weekly") || command.startsWith("monthly")) {
+            return Action.AddRecurringTasks;
         } else if (command.startsWith("find")) {
             return Action.Find;
         } else if (command.startsWith("delete")) {
             return Action.Delete;
         } else if (command.startsWith("bye")) {
             return Action.Bye;
-        } else if (command.length() > 4 && command.substring(0, 4).equals("done")) {
+        } else if (command.length() > 4 && command.startsWith("done")) {
             return Action.Done;
-        } else if (command.length() > 3 && command.substring(0, 4).equals("todo")) {
+        } else if (command.length() > 3 && command.startsWith("todo")) {
             return Action.AddTodo;
-        } else if (command.length() > 7 && command.substring(0, 8).equals("deadline")) {
+        } else if (command.length() > 7 && command.startsWith("deadline")) {
             return Action.AddDeadlines;
-        } else if (command.length() > 4 && command.substring(0, 5).equals("event")) {
+        } else if (command.length() > 4 && command.startsWith("event")) {
             return Action.AddEvents;
         } else {
             throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(\n"
