@@ -168,6 +168,17 @@ public class Ui {
         return errorMissing;
     }
 
+    public static String eventErrEmpty() {
+        String errorEmpty = "\n☹ OOPS!!! The description of a Events cannot be empty.\n "
+                + "Please re-input or enter bye to terminate the program\n";
+        return Global.PATTERNLINE + errorEmpty;
+    }
+
+    public static String eventNoAt() {
+        String errorMissing = "\nYou have not input your Schedule or Wrong format. \nPlease include -> /at when\n";
+        return Global.PATTERNLINE + errorMissing;
+    }
+
     private static String noKeywords() {
         String err = "No Tasks with Similar Keyword was found from the List\n";
         //System.out.println(err);
