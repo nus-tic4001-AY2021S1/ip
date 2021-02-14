@@ -15,9 +15,9 @@ public class TaskList {
     }
 
     public TaskList(ArrayList<Task> load) {
-        for (int i = 0; i < load.size(); i++) {
-            tasks.add(load.get(i));
-            list.add(load.get(i));
+        for (Task task : load) {
+            tasks.add(task);
+            list.add(task);
         }
     }
 

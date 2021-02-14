@@ -10,13 +10,14 @@ import dukes.Ui;
 public class ExitCommand extends Command {
     /**
      * Saves the tasks into storage and display bye message to the user.
+     * @param input The strings contains keywords and index number.
      * @param tasks TaskList to be appended.
      * @param ui UI to interact with user.
      * @param storage Storage to read and write files and temporary store in hard disk.
      * @return a goodbye message will be show.
      */
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage)  {
+    public String execute(String input,TaskList tasks, Ui ui, Storage storage)  {
         return ui.showExitMessage(tasks.list);
     }
 

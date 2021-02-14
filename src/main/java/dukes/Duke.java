@@ -3,6 +3,7 @@ package dukes;
 
 import dukes.command.Command;
 import dukes.exception.DukeException;
+import dukes.exception.FileNotFoundException;
 import dukes.parser.Parser;
 import dukes.storage.Storage;
 import dukes.tasks.Task;
@@ -36,6 +37,7 @@ public class Duke {
     private Scene scene;
     private final Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private final Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private String input;
 
     /** Path program will store the task in this path.
      * @param path the path of which data is saved and loaded from
@@ -45,9 +47,8 @@ public class Duke {
         storage = new Storage();
         try {
             tasks = new TaskList(storage.load());
-        } catch (DukeException e) {
-            ui.printLoadingError("Problem reading file. Starting with an empty task list.");
-            tasks = new TaskList();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -68,7 +69,6 @@ public class Duke {
             ui.printLoadingError("Problem reading file. Starting with an empty task list.");
             tasks = new TaskList();
         }
-        //storage.saveTaskFile(tasks.list);
 
     }
 
@@ -76,21 +76,16 @@ public class Duke {
      * run program implements an application that simply shows the tasks and print on the screen
      * DukeException if the command word not in the case.
      */
-    public void run() {
+    public void run() throws DukeException {
         ui.printWelcome();
-        try {
-            tasks = new TaskList(storage.load());
-        } catch (DukeException e) {
-            ui.printLoadingError("Problem reading file. Starting with an empty task list.");
-            tasks = new TaskList();
-        }
+        tasks = new TaskList(storage.load());
         boolean isExit = false;
         while (!isExit) {
             try {
                 String fullCommand = ui.readCommand();
                 ui.showLine();
                 Command c = Parser.parse(fullCommand);
-                c.execute(tasks, ui, storage);
+                c.execute(input, tasks, ui, storage);
                 isExit = c.isExit();
             } catch (DukeException e) {
                 ui.showError(e.getMessage());
@@ -107,7 +102,7 @@ public class Duke {
     String getResponse(String input) {
         try {
             Command c = Parser.parse(input);
-            return c.execute(tasks, ui, storage);
+            return c.execute(input, tasks, ui, storage);
         } catch (DukeException e) {
             return e.getMessage();
         }
@@ -117,7 +112,7 @@ public class Duke {
      * This is main method which made use of Dukes.Duke and run methods.
      * @param args a value passed to a function.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DukeException {
         assert (args.length) > 0;
         new Duke("data/duke.txt").run();
     }

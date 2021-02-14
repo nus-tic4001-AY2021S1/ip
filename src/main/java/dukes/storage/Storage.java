@@ -24,7 +24,6 @@ public class Storage {
     public ArrayList<Task> load() throws dukes.exception.FileNotFoundException {
         try {
             File file = new File(filePath);
-            //file.createNewFile();
             Scanner in = new Scanner(file);
             while (in.hasNext()) {
                 String input = in.nextLine();

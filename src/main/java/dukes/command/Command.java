@@ -12,10 +12,10 @@ import dukes.exception.DukeException;
 
 public abstract class Command {
     protected Task task;
-    protected int index;
     protected String keyWord;
+    protected String input;
 
-    public abstract String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException;
+    public abstract String execute(String input, TaskList tasks, Ui ui, Storage storage) throws DukeException;
 
     /**
      * Checks if this object is an <code>ExitCommand</code>.
