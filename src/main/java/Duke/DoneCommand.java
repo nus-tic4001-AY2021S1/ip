@@ -11,7 +11,7 @@ class DoneCommand extends Command {
                 taskList.getTask(i-1).markAsDone();
                 ui.printDoneMsg();
                 String msgPrint = ui.indentPrintString(taskList.getTask(i-1).toString());
-                storage.saveToFile(taskList);
+              //  storage.saveToFile(taskList);
                 return msgPrint;
             }
         } catch(DukeException ex) {

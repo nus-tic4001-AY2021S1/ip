@@ -22,7 +22,7 @@ class FindCommand extends Command {
                 else{
                     String msgPrint = ui.printMatchesMsg();
                     for(int i=0; i<resultList.getSize(); i++){
-                        msgPrint = ui.indentPrintString((i+1) + ". " + resultList.getTask(i).toString());
+                        msgPrint += ui.indentPrintString((i+1) + ". " + resultList.getTask(i).toString());
                     }
                     return msgPrint;
                 }

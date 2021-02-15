@@ -34,7 +34,7 @@ class Parser {
                 return new DeleteCommand().executeCommand(details, ui, storage, taskList);
                 //break;
 
-            //command: [todo] [description]
+            //command: [tod] [Description]
             case "todo":
                 return new TodoCommand().executeCommand(details, ui, storage, taskList);
                 //break;

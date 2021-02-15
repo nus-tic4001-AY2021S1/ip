@@ -27,7 +27,7 @@ class EventCommand extends Command {
                             ui.printAddMsg();
                             ui.indentPrintString(taskList.getTask(taskList.getSize()-1).toString());
                             String msgPrint = ui.printTotalListSize(taskList.getSize());
-                            storage.saveToFile(taskList);
+                           // storage.saveToFile(taskList);
                             return  msgPrint;
                         }
                         catch(Exception ex){

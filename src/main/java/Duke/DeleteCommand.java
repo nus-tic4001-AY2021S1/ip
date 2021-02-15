@@ -8,10 +8,10 @@ class DeleteCommand extends Command {
             }
             else{
                 int j = Integer.parseInt(details);
-                ui.printDeleteMsg();
+                String msgPrint = ui.printDeleteMsg();
                 ui.indentPrintString(taskList.deleteTask(j-1).toString());
-                String msgPrint = ui.printTotalListSize(taskList.getSize());
-                storage.saveToFile(taskList);
+                ui.printTotalListSize(taskList.getSize());
+                //storage.saveToFile(taskList);
                 return msgPrint;
             }
         } catch(DukeException ex) {
