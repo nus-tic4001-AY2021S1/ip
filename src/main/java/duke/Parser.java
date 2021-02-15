@@ -61,7 +61,8 @@ public class Parser {
             } catch (ArrayIndexOutOfBoundsException e) {
                 throw new DukeException("\u2639 OOPS!!! The keyword /by is missing.");
             } catch (java.time.format.DateTimeParseException e) {
-                throw new DukeException("\u2639 OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\" ");
+                throw new DukeException("\u2639 OOPS!!! The time format is "
+                        + "illegal.Format should be in \"yyyy-MM-dd\" ");
             }
         case "event":
             try {
