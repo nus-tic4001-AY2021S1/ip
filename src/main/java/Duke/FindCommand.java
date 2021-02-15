@@ -1,7 +1,7 @@
 package Duke;
 
 class FindCommand extends Command {
-    public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList){
+    public String executeCommand(String details, Ui ui, Storage storage, TaskList taskList){
         try {
             if(details.isEmpty()){
                 throw new DukeException("The keyword of a find command cannot be empty.");
@@ -16,17 +16,20 @@ class FindCommand extends Command {
                 }
                 //print the list of tasks
                 if(resultList.getSize() == 0){
-                    ui.printNoMatchesMsg();
+                    String msgPrint = ui.printNoMatchesMsg();
+                    return msgPrint;
                 }
                 else{
-                    ui.printMatchesMsg();
+                    String msgPrint = ui.printMatchesMsg();
                     for(int i=0; i<resultList.getSize(); i++){
-                        ui.indentPrintString((i+1) + ". " + resultList.getTask(i).toString());
+                        msgPrint += ui.indentPrintString((i+1) + ". " + resultList.getTask(i).toString());
                     }
+                    return msgPrint;
                 }
             }
         } catch(DukeException ex) {
-            ui.showError(ex.getMessage());
+            String msgPrint = ui.showError(ex.getMessage());
+            return  msgPrint;
         }
     }
 }
