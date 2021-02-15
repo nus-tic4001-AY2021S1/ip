@@ -2,68 +2,55 @@
 
 ## Design & implementation
 
-Project Tracker is a desktop app for managing and tracking projects,  optimized for use via a Command Line Interface (CLI). It will help the project manager to track the status of each project such as how many projects have been done per year or within a period.
-and you can refer to [online website](https://ay2021s1-tic4001-1.github.io/tp/DeveloperGuide.html) .
+This product is an educational software project that helps user to keep track of various things.You can refer to [online website](https://linqing42.github.io/ip/DeveloperGuide.html).
 ## Design
 
 ### UML diagram 
-![UML Diagram V2](images/UML%20V2.png) 
-
-### Object diagram 
-![Object Diagram](images/object_diagram.png) 
+![UML Diagram](images/UML.png) 
 
 ### Storage method: Storage.saveTaskFile()
-![Sequence Diagram](images/sequenceDiagram.png)
+![Sequence Diagram](https://github.com/linqing42/ip/blob/master/docs/sequenceDiagram.png)
 
 
 
 ## Product scope
 ### Target user profile
 
-The target user is a project manager who can keep tracking various projects, know the progress of each project with  principal members to participate in each project. However, he cannot remember the progress of various projects, who is the member that involve to each specific project and cannot close monitor the progress of each project.
+The target user is a forgetful person who can keep tracking various things, know the deadline of each task and complete the task within the deadline.
 
 ### Value proposition
 
-Project Tracker will help to solve to tracking and managing projects. It will involve person-in-charge, members who involved in each project and the description of each project. Furthermore, the duration of the project will be included in this Project Tracker that helps the project manager to know the timeframe of each project.
+Project Duke will help to solve to tracking and managing tasks. It will involve description of each task. 
 
 ## User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v1.0|project manager|create a project|put in the project information|
-|v1.0|project manager|add a start and end date to my project| know the timeframe|
-|v1.0|project manager|add employees to the project|know who are involved|
-|v1.0|project manager|add person_on-charge|know who is leading the project|
-|v1.0|project manager|add the description to the project|know what is the project about|
-|v1.0|project manager|save my project|keep a record for reference|
-|v1.0|project manager|delete my project| reduce the clutter|
-|v1.0|project manager|include extra project information |add new member or add extra content in my project information|
-|v1.0|project manager|update a project information|change or update the project without re-key in whole project information|
-|v1.0|project manager|close the program|exit|
-|v2.0|project manager|receive an email notification|remind myself|
-|v2.0|project manager|have duration of project|know the how many employees need to assign to this project and save manpower|
-|v2.0|project manager|add a status of project|know how many project still in progress or completed|
-|v2.0|project manager|add a count down day for project|remind myself|
-|v2.0|project manager|know the client|find client's information|
-|v2.0|project manager|receive an email notification when the deadline is only left few days|focus on the project first|
-|v3.0|project manager|Check date format in Find,Edit| so that only valid date allows|
-|v3.0|project manager|Ensure duration is not negative and days left to Not Applicable| so that no negative number appear|
-|v3.0|project manager|Catch all input exceptions for Send command| ensure is valid input in send|
-|v3.0|project manager|validate email format| ensure correct email address|
-|v3.0|project manager|create complete command to set a project to complete| Ensure project can update to be done|
-|v3.0|project manager|add not allowed to start date, due date and email| limite the add, only meaningful data allow|
-|v3.0|project manager|Fix all checkstyle errors| inorder to pass the CI test|
+|v3.0|new user|see usage instructions|refer to them when I forget how to use the application|
+|v3.0|forgetful person|create a task|put in the task information|
+|v3.0|forgetful person|add date and time for deadline tasks| remind myself and complete the task within the deadline|
+|v3.0|forgetful person|add date and time for event tasks| remind myself and attend the task with specific date and time|
+|v3.0|forgetful person|add the description to the task|know what is the task about|
+|v3.0|forgetful person|save my project in a txt file|keep a record for reference|
+|v3.0|forgetful person|delete my project| reduce the clutter|
+|v3.0|forgetful person|have a abbreviation and status of different types of task|have a quick look for each types of tasks| |
+|v3.0|forgetful person|show a total number of tasks|remind myself and have a timeframe for tasks|
+|v3.0|forgetful person|know the same description of different tasks|find a relevant task with relevant description|
+|v3.0|forgetful person|catch all input exceptions | ensure is valid input in send|
+|v3.0|forgetful person|create done command to set a task to complete| ensure task can update to be done|
+|v3.0|forgetful person|have a summary of the tasks| summarize the tasks|
+|v3.0|forgetful person|exit the program|end the program|
+|v3.0|forgetful person|fix all checkstyle errors| inorder to pass the CI test|
 
 ## Non-Functional Requirements
 
-* Operation Environment: Project tracker works on any Mainstream OS as long as it has Java **11** or above installed. 
+* Operation Environment: Project Duke works on any Mainstream OS as long as it has Java **11** or above installed. 
 * Usability: A command line interface application, user will use specified command to interact with the system.
-* Capacity: Project tracker should be able to record at least 1,000 project records. 
-* Reliability / Availability: Once the project tracker has been successfully deployed on user's computer, availability is 24/7.   
-* Scalability: The current version of project tracker only support local data file storage, users are unable to share a centralised project data.
+* Capacity: Project Duke should be able to record at least 1,000 project records. 
+* Reliability / Availability: Once the project Duke has been successfully deployed on user's computer, availability is 24/7.   
+* Scalability: The current version of project Duke only support local data file storage, users are unable to share a centralised project data.
                If the need of having a centralised data storage raised in the future, it can be added as system enhancement. 
-* Security: User login is not required. The project tracker use user's computer login as authentication.
+* Security: User login is being not required by user. The project Duke use user's computer login as authentication.
 * Maintainability: A updated JAR file will be released to user if there is any update to the current version of the project tracker.                 
                
 ## Glossary

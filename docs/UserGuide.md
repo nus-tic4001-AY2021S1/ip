@@ -1,6 +1,6 @@
 # User Guide
 This product is an educational software project that helps user to keep track of various things.
-<br/> The link is [website for product user guide ](https://linqing42.github.io/ip/)
+<br/> The link is [website for user guide ](https://linqing42.github.io/ip/UserGuide.html)
 
 ## Quick start 
 Using IntelliJ
