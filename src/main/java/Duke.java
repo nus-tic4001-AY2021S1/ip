@@ -150,25 +150,25 @@ public class Duke {
         } catch (DukeException e) {
             return e.getMessage();
         } catch (Exception e) {
-            return "☹ OOPS!!! Unknown internal error occurs.";
+            return "\u2639 OOPS!!! Unknown internal error occurs.";
         }
 
         if (cmd instanceof OtherCommand && cmd.getCmdType().equalsIgnoreCase("bye")) {
             return BYE;
         } else if (cmd instanceof OtherCommand) {
-            return new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(").getMessage();
+            return new DukeException("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(").getMessage();
         }
 
         try {
             result = processCommand(cmd, tasks, ui);
         } catch (Exception e) {
-            result = new DukeException("☹ OOPS!!! Unknown error occurs when process command.").getMessage();
+            result = new DukeException("\u2639 OOPS!!! Unknown error occurs when process command.").getMessage();
         }
 
         try {
             storage.save(tasks);
         } catch (IOException e) {
-            return "☹ OOPS!!!Updating file is fail.";
+            return "\u2639 OOPS!!!Updating file is fail.";
         }
 
         return result;

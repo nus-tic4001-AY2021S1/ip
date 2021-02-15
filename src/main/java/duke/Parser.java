@@ -30,23 +30,23 @@ public class Parser {
             try {
                 return new DoneCommand(userInput.split(" ")[1]);
             } catch (IndexOutOfBoundsException e) {
-                throw new DukeException("☹ OOPS!!! The task does not exist.");
+                throw new DukeException("\u2639 OOPS!!! The task does not exist.");
             } catch (NumberFormatException e) {
-                throw new DukeException("☹ OOPS!!! Please specify the task need to be done.");
+                throw new DukeException("\u2639 OOPS!!! Please specify the task need to be done.");
             }
         case "delete":
             try {
                 return new DeleteCommand(userInput.split(" ")[1]);
             } catch (IndexOutOfBoundsException e) {
-                throw new DukeException("☹ OOPS!!! The task does not exist.");
+                throw new DukeException("\u2639 OOPS!!! The task does not exist.");
             } catch (NumberFormatException e) {
-                throw new DukeException("☹ OOPS!!! Please specify the number of the task need to be delete.");
+                throw new DukeException("\u2639 OOPS!!! Please specify the number of the task need to be delete.");
             }
         case "todo":
             try {
                 return new TodoCommand(userInput.substring(5));
             } catch (StringIndexOutOfBoundsException e) {
-                throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
+                throw new DukeException("\u2639 OOPS!!! The description of a todo cannot be empty.");
             }
         case "deadline":
             try {
@@ -57,11 +57,11 @@ public class Parser {
                         deadlineContent[0].substring(9, deadlineContent[0].length() - 1),
                         deadlineContent[1].trim());
             } catch (StringIndexOutOfBoundsException e) {
-                throw new DukeException("☹ OOPS!!! The description of a deadline cannot be empty.");
+                throw new DukeException("\u2639 OOPS!!! The description of a deadline cannot be empty.");
             } catch (ArrayIndexOutOfBoundsException e) {
-                throw new DukeException("☹ OOPS!!! The keyword /by is missing.");
+                throw new DukeException("\u2639 OOPS!!! The keyword /by is missing.");
             } catch (java.time.format.DateTimeParseException e) {
-                throw new DukeException("☹ OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\" ");
+                throw new DukeException("\u2639 OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\" ");
             }
         case "event":
             try {
@@ -72,11 +72,11 @@ public class Parser {
                         eventContent[0].substring(6, eventContent[0].length() - 1),
                         eventContent[1].trim());
             } catch (StringIndexOutOfBoundsException e) {
-                throw new DukeException("☹ OOPS!!! The description of a event cannot be empty.");
+                throw new DukeException("\u2639 OOPS!!! The description of a event cannot be empty.");
             } catch (ArrayIndexOutOfBoundsException e) {
-                throw new DukeException("☹ OOPS!!! The keyword /at is missing.");
+                throw new DukeException("\u2639 OOPS!!! The keyword /at is missing.");
             } catch (java.time.format.DateTimeParseException e) {
-                throw new DukeException("☹ OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\"");
+                throw new DukeException("\u2639 OOPS!!! The time format is illegal.Format should be in \"yyyy-MM-dd\"");
             }
         case "find":
             return new FindCommand(userInput.substring(5));
@@ -88,11 +88,11 @@ public class Parser {
                 int index = Integer.parseInt(tagCommandContent[0].split(" ")[1]);
                 return new TagCommand(index, tagCommandContent[1]);
             } catch (StringIndexOutOfBoundsException e) {
-                throw new DukeException("☹ OOPS!!! The description of the tag cannot be empty.");
+                throw new DukeException("\u2639 OOPS!!! The description of the tag cannot be empty.");
             } catch (ArrayIndexOutOfBoundsException e) {
-                throw new DukeException("☹ OOPS!!! The keyword /t is missing.");
+                throw new DukeException("\u2639 OOPS!!! The keyword /t is missing.");
             } catch (NumberFormatException e) {
-                throw new DukeException("☹ OOPS!!! Please specify the number of the task need to be tagged.");
+                throw new DukeException("\u2639 OOPS!!! Please specify the number of the task need to be tagged.");
             }
         default:
             return new OtherCommand(cmd[0]);

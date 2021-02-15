@@ -79,10 +79,10 @@ public class Storage {
                         tasks.add(e);
                         break;
                     default:
-                        throw new DukeException("☹ OOPS!!!There's unknown tasks type in the file.");
+                        throw new DukeException("\u2639 OOPS!!!There's unknown tasks type in the file.");
                     }
                 } catch (Exception e) {
-                    throw new DukeException("☹ OOPS!!!There is error in the file,please check the format.");
+                    throw new DukeException("\u2639 OOPS!!!There is error in the file,please check the format.");
                 }
             }
         } else {

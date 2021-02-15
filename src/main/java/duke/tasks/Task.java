@@ -4,7 +4,7 @@ public abstract class Task extends Tag {
     protected String taskType;
     protected boolean isDone = false;
     protected String taskDescription;
-    protected String taskSymbol = "[✗]";
+    protected String taskSymbol = "[" + "\u2718" + "]";
 
     /**
      * @param taskDescription Description on the task detail.
@@ -31,9 +31,9 @@ public abstract class Task extends Tag {
 
     private void setSymbol() {
         if (isDone) {
-            this.taskSymbol = "[✓]";
+            this.taskSymbol = "[" + "\u2714" + "]";
         } else {
-            this.taskSymbol = "[✗]";
+            this.taskSymbol = "[" + "\u2718" + "]";
         }
     }
 
