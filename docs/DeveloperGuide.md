@@ -6,13 +6,13 @@ This product is an educational software project that helps user to keep track of
 ## Design
 
 ### UML diagram 
-![UML Diagram](docs/UML diagram.png) 
+![UML Diagram](UML diagram.png) 
 
 ### Storage method: Storage.saveTaskFile()
-![Sequence Diagram](docs/sequenceDiagram.png)
+![Sequence Diagram](sequenceDiagram.png)
 
 ### Ui picture
-![Ui png](docs/Ui.png)
+![Ui png](Ui.png)
 
 
 
