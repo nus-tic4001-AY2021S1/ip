@@ -19,14 +19,11 @@ public class MainWindow extends AnchorPane {
     private TextField userInput;
     @FXML
     private Button sendButton;
-    @FXML
-    private ImageView displayBackgroundPicture;
 
     private Duke duke;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
-    private Image dialogContainerBackground = new Image(this.getClass().getResourceAsStream("/images/background.jpg"));
 
     /**
      * Initialize the required parameters by MainWindow
@@ -34,15 +31,20 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
-        /*
-        displayBackgroundPicture.setImage(dialogContainerBackground);
-        displayBackgroundPicture.autosize();
-        dialogContainer.getChildren().add(displayBackgroundPicture);
-         */
+        introMessage();
     }
 
     public void setDuke(Duke d) {
         duke = d;
+    }
+
+    /**
+     * Prints the intro message.
+     */
+    private void introMessage() {
+        dialogContainer.getChildren().addAll(
+                DialogBox.getDukeDialog("Welcome!", dukeImage)
+        );
     }
 
     /**

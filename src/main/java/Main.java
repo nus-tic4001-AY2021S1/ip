@@ -22,6 +22,7 @@ public class Main extends Application {
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setDuke(duke);
             duke.loadFile();
+            stage.setTitle("Duke_Zheng Shijie");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
