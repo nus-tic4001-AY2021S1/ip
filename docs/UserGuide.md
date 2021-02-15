@@ -104,12 +104,12 @@ Adding a deadline task helps to know the deadline for the specific task in the t
 **Format**: `deadline` Description /by dd/mm/yyyy HHmm
 
 **Example of usage**:
-<br/>deadline return book /by 12/12/2019 1800
+<br/>deadline return book /by 12/12/2021 1800
 
 **Expected outcome**:
 ```
 Got it. I've added this task: 
-[D][X] return book (by:12-12月-2019 06:00 下午)
+[D][X] return book (by:12-Dec-2021 06:00 PM)
 Now you have 2 tasks in the list.
 ```
 
@@ -133,7 +133,7 @@ Adding an event task helps to remind the user to attend the event with specific 
 **Expected outcome**:
 ```
 Got it. I've added this task: 
-[E][X] join club (at:12-11月-2021, 09:00 上午)
+[E][X] join club (at:12-Nov-2021, 09:00 AM)
 Now you have 3 tasks in the list.
 ```
 
@@ -200,8 +200,8 @@ It shows a list of tasks with a number. It helps to summarize the task list.
 **Expected outcome**:
 ```
 Here are the Tasks in your list:
-1.[D][X] return book (by:12-12月-2019 06:00 下午)
-2.[E][X] join club (at:12-11月-2021, 09:00 上午)
+1.[D][X] return book (by:12-Dec-2021 06:00 PM)
+2.[E][X] join club (at:12-Nov-2021, 09:00 AM)
 ```
 
 ### Locating Tasks by description_keyword: `find`
@@ -224,7 +224,7 @@ It helps to search a task that contain any of the given description_keyword, and
 ```
 Here are the matching Tasks in your list:
 1.[T][X] Read BOOK
-2.[D][X] return book (by:12-12月-2019 06:00 下午)
+2.[D][X] return book (by:12-Dec-2021 06:00 PM)
 ```
 ### Exiting the program: `exit`/`bye`
 
