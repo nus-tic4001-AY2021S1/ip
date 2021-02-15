@@ -1,15 +1,18 @@
 package Duke;
 
 class ListCommand extends Command {
-    public void executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
+    public String executeCommand(String details, Ui ui, Storage storage, TaskList taskList) {
         if(taskList.getSize() == 0){
-            ui.printNoRecords();
+            String msgPrint = ui.printNoRecords();
+            return msgPrint;
         }
         else{
-            ui.printList();
+            String msgPrint = ui.printList();
             for(int i=0; i<taskList.getSize(); i++){
-                ui.indentPrintString((i+1) + ". " + taskList.getTask(i).toString());
+                msgPrint +=  ui.indentPrintString((i+1) + ". " + taskList.getTask(i).toString());
+
             }
+            return msgPrint;
         }
     }
 }
