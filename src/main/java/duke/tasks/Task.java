@@ -42,8 +42,6 @@ public abstract class Task extends Tag {
      */
     public String toSavingString() {
         String doneStatus = isDone ? "1" : "0";
-        //check whether got tag info
-        //using different return
         return taskType.charAt(1) + "|" + doneStatus + "|" + taskDescription;
     }
 
@@ -52,8 +50,6 @@ public abstract class Task extends Tag {
      */
     public String toSavingStringWithTag() {
         String doneStatus = isDone ? "1" : "0";
-        //check whether got tag info
-        //using different return
         return taskType.charAt(1) + "|" + doneStatus + "|" + taskDescription + "|" + this.toTagsString();
     }
 
