@@ -1,11 +1,8 @@
-package duke;
+package duke.task;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-
-import duke.task.TaskList;
-import duke.task.Todo;
 
 /**
  * JUnit tests for TaskList class.
