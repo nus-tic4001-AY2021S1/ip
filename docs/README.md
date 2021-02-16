@@ -1,6 +1,6 @@
 # Duke
 
-![Ui](images/Ui.png)
+![Ui](Ui.png)
 
 Duke is a Java-based desktop app that helps the users keep track of the tasks they need to do.
 It comes with a Command Line Interface (CLI) that allows users to enter their commands while retaining the benefits of a Graphical User Interface (GUI).
