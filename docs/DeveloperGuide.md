@@ -33,7 +33,7 @@ The following activity diagram shows what happens when a user executes a `todo` 
 |v0.1|user|find tasks|view specific tasks of interest|
 |v0.1|user|mark a task as done|know which of the tasks are completed|
 |v0.1|user|delete a task|remove a task that is no longer needed|
-|v0.4|user|sort all tasks|order my tasks based on their deadline|
+|v0.5|user|sort all tasks|order my tasks based on their deadline|
 
 ## Non-Functional Requirements
 
