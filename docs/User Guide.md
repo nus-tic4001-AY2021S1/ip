@@ -31,7 +31,7 @@ _**Auto saving** and **Auto loading** existing task file._
 ### Feature 9 
 _**Add multiple tags** to a single task._
 
-### Feature 9 
+### Feature 10 
 _Supporting friendly **GUI**._
 
 
