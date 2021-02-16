@@ -169,7 +169,7 @@ Expected outcome:
 ```
 Adding tag testing tag to task 1
 ```
-if list:
+If `list`:
 ```
 Here are the matching tasks in your list:
 1.[T][✗] read a book
@@ -178,4 +178,8 @@ Here are the matching tasks in your list:
 2.[E][✗] read a book (at: Sep 20 2019)
 ```
 
+
+## Acknowledgements
+### 3rd party Libraries
+* JavaFx: For graphics used for GUI
 
