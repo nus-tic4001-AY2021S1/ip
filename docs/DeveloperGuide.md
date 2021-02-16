@@ -20,7 +20,7 @@ Finally, the `execute` method will execute the following steps:
 
 The following sequence diagram shows the object interactions when the `Duke` object calls the `execute` method
 of the `TodoCommand` object:
-<br><img src="images/TodoSequenceDiagram.png" alt="AddExpenseSequenceDiagram" width="800"/><br>
+<br><img src="images/TodoSequenceDiagram.png" alt="TodoSequenceDiagram" width="800"/><br>
 
 The following activity diagram shows what happens when a user executes a `todo` command:
 <br><img src="images/TodoActivityDiagram.png" alt="TodoActivityDiagram" width="500"/><br>
