@@ -14,23 +14,23 @@ import duke.exception.DukeException;
 public class DeadlineTest {
     @Test
     public void testGetDescription() throws DukeException {
-        Task testDeadline = new Deadline("Have lunch with John", "2020-12-25 1800");
-        assertEquals("Have lunch with John", testDeadline.getDescription());
+        Task deadline = new Deadline("Have lunch with John", "2020-12-25 1800");
+        assertEquals("Have lunch with John", deadline.getDescription());
     }
 
     @Test
     public void testGetIsDone() throws DukeException {
-        Task testDeadline = new Deadline("Have lunch with John", "2020-12-25 1800");
-        Task testDeadline2 = new Deadline("Have lunch with John", "2020-12-25T18:00", true);
-        assertFalse(testDeadline.getIsDone());
-        assertTrue(testDeadline2.getIsDone());
+        Task deadline = new Deadline("Have lunch with John", "2020-12-25 1800");
+        Task deadlineWithDoneStatus = new Deadline("Have lunch with John", "2020-12-25T18:00", true);
+        assertFalse(deadline.getIsDone());
+        assertTrue(deadlineWithDoneStatus.getIsDone());
     }
 
     @Test
     public void testToString() throws DukeException {
-        Task testDeadline = new Deadline("Have lunch with John", "2020-12-25 1800");
-        Task testDeadline3 = new Deadline("Have lunch with John", "2020-12-25T18:00", true);
-        assertEquals("[D][\u2718] Have lunch with John (by: 25 Dec 2020 6:00PM)", testDeadline.toString());
-        assertEquals("[D][\u2713] Have lunch with John (by: 25 Dec 2020 6:00PM)", testDeadline3.toString());
+        Task deadline = new Deadline("Have lunch with John", "2020-12-25 1800");
+        Task deadlineWithDoneStatus = new Deadline("Have lunch with John", "2020-12-25T18:00", true);
+        assertEquals("[D][\u2718] Have lunch with John (by: 25 Dec 2020 6:00PM)", deadline.toString());
+        assertEquals("[D][\u2713] Have lunch with John (by: 25 Dec 2020 6:00PM)", deadlineWithDoneStatus.toString());
     }
 }
