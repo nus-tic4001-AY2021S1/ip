@@ -26,7 +26,13 @@ _**Delete a task** from the list._
 _**Find specific tasks** with **keyword** entered._
 
 ### Feature 8 
-_**Auto saving** and **loading** existing task file._
+_**Auto saving** and **Auto loading** existing task file._
+
+### Feature 9 
+_**Add multiple tags** to a single task._
+
+### Feature 9 
+_Supporting friendly **GUI**._
 
 
 ## Usage
@@ -146,6 +152,29 @@ Expected outcome:
 ```
 Here are the matching tasks in your list:
 1.[T][✗] read a book
+2.[E][✗] read a book (at: Sep 20 2019)
+```
+
+
+### `tag <index> /t <tag content>` - add a tag to the task at the index. 
+
+This command will allow user to add a tag to a single task in the list.
+
+Example of usage: 
+```
+tag 1 /t testing tag
+```
+
+Expected outcome:
+```
+Adding tag testing tag to task 1
+```
+if list:
+```
+Here are the matching tasks in your list:
+1.[T][✗] read a book
+# testing tag
+
 2.[E][✗] read a book (at: Sep 20 2019)
 ```
 
