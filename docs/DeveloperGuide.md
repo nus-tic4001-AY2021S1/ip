@@ -1,8 +1,5 @@
 # Developer Guide
 
-## Implementation of Features
-This section describes how certain features are implemented.
-
 ## Implementation of Todo Feature
 The `todo` feature is implemented using `TodoCommand`, which extends `Command`.
 Upon receiving an input string that has `todo` as the first word, the `Duke` object will instantiate a
