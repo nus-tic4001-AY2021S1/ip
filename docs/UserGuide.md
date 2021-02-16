@@ -2,8 +2,9 @@
 
 ## Introduction
 
-Duke is a Java-based Command Line Interface (CLI) Task Manager application
-that helps the users keep track of the tasks they need to do.
+Duke is a Java-based desktop app that helps the users keep track of the tasks they need to do.
+It comes with a Command Line Interface (CLI) that allows users to enter their commands while retaining the benefits of a Graphical User Interface (GUI).
+This allows users who type fast to complete their desired actions quicker than using traditional GUI apps.
 
 ## Quick Start
 1. Ensure you have Java `11` or above installed in your Computer.
@@ -11,19 +12,20 @@ that helps the users keep track of the tasks they need to do.
 3. Copy `duke.jar` to the folder you want to use as the home folder for Duke.
 4. Navigate to the home folder for Duke on your CLI program.
 5. Launch Duke by running the command `java -jar duke.jar`.
-6. Type the command in the CLI program and press `Enter` to execute it.
+6. Type the command in the text box and press `Enter` to execute it.
    <br>Some example commands you can try:
     - `todo Go to the gym`: Adds a todo to Duke.
-    - `deadline Finish homework 2020-09-30 1800`: Adds a deadline to Duke.
+    - `deadline Finish homework /by 2020-09-15 1800`: Adds a deadline to Duke.
+    - `event Watch movie /at 2020-09-16 1800 180`: Adds an event to Duke.
     - `list`: Lists all tasks in Duke.
     - `done 1`: Marks the first task shown in the list as done.
 7. Refer to **Features** below for details of each command.
 
 ## Features
 Notes about the command format:
-- Words in UPPER_CASE are the parameters to be supplied by the user.
+- Words in UPPER_CASE are the parameters to be supplied by the user.<br>
   E.g. `DESCRIPTION` in the command `todo DESCRIPTION`.
-- Parameters with `...` after them can be used multiple times.
+- Parameters with `...` after them can be used multiple times.<br>
   E.g. `KEYWORD` in the command `find KEYWORD...`.
 
 ### Adding a todo: `todo`
@@ -33,15 +35,14 @@ Format: `todo DESCRIPTION`
 
 Example of usage: `todo Read book`
 
-Expected outcome:
 ```
-Duke: Got it! I have added this task:
-      [T][N] Read book
-      Now you have 1 tasks in the list.
+Got it! I have added this task:
+[T][✘] Read book
+Now you have 1 tasks in the list.
 ```
 
 ### Adding a deadline: `deadline`
-Adds a deadline to Duke. `deadline` is a task that has a description,
+Adds a `deadline` to Duke. `deadline` is a task that has a description,
 and it must be done by a specified date and time.
 
 Format: `deadline DESCRIPTION /by DATE_TIME`
@@ -49,15 +50,14 @@ Format: `deadline DESCRIPTION /by DATE_TIME`
 
 Example of usage: `deadline Finish TIC4001 quiz /by 2020-09-20 1800`
 
-Expected outcome:
 ```
-Duke: Got it! I have added this task:
-      [D][N] Finish TIC4001 quiz (by: 20 Sep 2020 6:00PM)
-      Now you have 2 tasks in the list.
+Got it! I have added this task:
+[D][✘] Finish TIC4001 quiz (by: 20 Sep 2020 6:00PM)
+Now you have 2 tasks in the list.
 ```
 
 ### Adding an event: `event`
-Adds an event to Duke. `event` is a task that has a description,
+Adds an `event` to Duke. `event` is a task that has a description,
 and it will happen at a specified time period.
 
 Format: `event DESCRIPTION /at DATE_TIME DURATION_IN_MINUTES`
@@ -66,11 +66,10 @@ Format: `event DESCRIPTION /at DATE_TIME DURATION_IN_MINUTES`
 
 Example of usage: `event Attend party /at 2020-09-21 1900 90`
 
-Expected outcome:
 ```
 Duke: Got it! I have added this task:
-      [E][N] Attend party (at: 21 Sep 2020 7:00PM to 21 Sep 2020 8:30PM)
-      Now you have 3 tasks in the list.
+[E][✘] Attend party (at: 21 Sep 2020 7:00PM to 21 Sep 2020 8:30PM)
+Now you have 3 tasks in the list.
 ```
 
 ### Listing all tasks: `list`
@@ -78,59 +77,79 @@ Lists all tasks in Duke.
 
 Format: `list`
 
-Expected outcome:
+Example of usage: `list`
+
 ```
-Duke: Here are the tasks in your list:
-      1. [T][N] Read book
-      2. [D][N] Finish TIC4001 quiz (by: 20 Sep 2020 6:00PM)
-      3. [E][N] Attend party (at: 21 Sep 2020 7:00PM to 21 Sep 2020 8:30PM)
+Here are the tasks in your list:
+1. [T][✘] Read book
+2. [D][✘] Finish TIC4001 quiz (by: 20 Sep 2020 6:00PM)
+3. [E][✘] Attend party (at: 21 Sep 2020 7:00PM to 21 Sep 2020 8:30PM)
 ```
 
 ### Finding tasks: `find`
-Finds tasks in Duke that match any of the specified keywords.
+Finds all tasks in Duke that match any of the specified keywords.
 
 Format: `find KEYWORD...`
 
 Example of usage: `find read finish`
 
-Expected outcome:
 ```
-Duke: Here are the matching tasks in your list:
-      1. [T][N] Read book
-      2. [D][N] Finish TIC4001 quiz (by: 20 Sep 2020 6:00PM)
+Here are the matching tasks in your list:
+1. [T][✘] Read book
+2. [D][✘] Finish TIC4001 quiz (by: 20 Sep 2020 6:00PM)
 ```
 
 ### Marking task as done: `done`
 Marks the specified task in Duke as done.
 
 Format: `done TASK_INDEX`
-
-Example of usage: `done 1`
 - `list` or `find` command must be executed first before using the `done` command.
 - `TASK_INDEX` refers to the index number shown in the list generated by the `list` or `find` command.
 - `TASK_INDEX` must be a positive integer.
 
-Expected outcome:
+Example of usage: `done 1`
+
 ```
-Duke: I have marked this task as done:
-      [T][Y] Read book
+I have marked this task as done:
+[T][✓] Read book
 ```
 
 ### Deleting a task: `delete`
 Deletes the specified task in Duke.
 
 Format: `delete TASK_INDEX`
-
-Example of usage: `delete 1`
 - `list` or `find` command must be executed first before using the `delete` command.
 - `TASK_INDEX` refers to the index number shown in the list generated by the `list` or `find` command.
 - `TASK_INDEX` must be a positive integer.
 
-Expected outcome:
+Example of usage: `delete 1`
+
 ```
-Duke: Noted! I've removed this task: 
-      [T][Y] Read book
-      Now you have 2 tasks in the list.
+Noted! I've removed this task: 
+[T][✓] Read book
+Now you have 2 tasks in the list.
+```
+
+### Sorting all tasks: `sort`
+Sorts all tasks in Duke.
+
+Format: `sort`
+- `deadline` tasks will be sorted based on their `by` datetime.
+- `event` tasks will be sorted based on their `at` datetime.
+- `deadline` tasks will appear at the top of the list.
+- `event` tasks will appear after the `deadline` tasks.
+- `todo` tasks will appear after the `event` tasks. 
+
+Example of usage: `sort`
+
+```
+Tasks sorted! Here are the tasks in your list:
+1. [D][✘] Finish TIC4001 quiz (by: 20 Sep 2020 6:00PM)
+2. [D][✘] Finish TIC4002 user guide (by: 25 Sep 2020 7:00PM)
+3. [E][✘] Attend party (at: 21 Sep 2020 7:00PM to 21 Sep 2020 8:30PM)
+4. [E][✘] Attend conference (at: 10 Oct 2020 6:00PM to 10 Oct 2020 9:00PM)
+5. [T][✘] Learn Python
+6. [T][✘] Bring family out for lunch
 ```
 
 ### Exiting Duke: `bye`
@@ -138,10 +157,21 @@ Exits from Duke.
 
 Format: `bye`
 
-Expected outcome:
-```
-Duke: Bye! Hope to see you again soon.
-```
+Example of usage: `bye`
+
+The program window will close as soon as the `bye` command is entered.
 
 ### Saving data
 There is no save command because any change to the data in Duke will be automatically saved.
+
+## Command Summary
+
+* Add todo `todo DESCRIPTION`
+* Add deadline `deadline DESCRIPTION /by DATE_TIME`
+* Add event `event DESCRIPTION /at DATE_TIME DURATION_IN_MINUTES`
+* List tasks `list`
+* Find tasks `find KEYWORD...`
+* Mark task as done `done TASK_INDEX`
+* Delete task `delete TASK_INDEX`
+* Sort tasks `sort`
+* Exit Duke `bye`

@@ -35,11 +35,11 @@ public class Duke {
     /**
      * Generates the response for the user's input.
      *
-     * @param input Input provided by user.
+     * @param fullCommand Input provided by user.
      */
-    public String getResponse(String input) {
+    public String getResponse(String fullCommand) {
         ui.clearOutput();
-        Command c = Parser.parse(input);
+        Command c = Parser.parse(fullCommand);
         try {
             c.execute(tasks, ui, storage);
             if (c.isBye()) {

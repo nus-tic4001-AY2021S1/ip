@@ -1,0 +1,12 @@
+@startuml
+start
+:User enters todo command;
+if () then ([Valid todo command format])
+    :Add todo to tasks;
+    :Save all tasks to data file;
+    :Display information of newly-added todo;
+    stop
+else ([Invalid format])
+    :Display error message;
+stop
+@enduml
