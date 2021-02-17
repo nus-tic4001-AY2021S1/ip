@@ -4,7 +4,7 @@ It is an application for managing tasks. Also it has a Graphical User Interface 
 
 
 ![Ui](https://github.com/dgc5213/ip/blob/master/docs/Ui.PNG)
-
+<img src="./images/Ui.png" width="450" />
 
 
 Useful links:
