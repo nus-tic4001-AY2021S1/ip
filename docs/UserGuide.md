@@ -9,7 +9,7 @@ Using IntelliJ
 1.	Find the project in the Project Explorer (usually located at the left side)
 <br /> * If the Project Explorer is not visible, press `ALT`+`1` for Windows/Linux, `CMD`+`1` for macOS to open the Project Explorer tab
 2.	Go to the `src` folder and locate the duke file
-3.	Right click the file and select Run `duke.main()`
+3.	Right click the file and select Run `duke.Launcher()`
 4.	The program now should run on the `Console` (usually located at the bottom side)
 5.	Now you can interact with the program through the `Console`
 
@@ -17,8 +17,8 @@ Using IntelliJ
 Using Command Line
 1.	'Build' the project using IntelliJ
 2.	Open the Terminal/Command Prompt
-3.	cd into the project’s `out\artifacts\ip_jar`
-4.	Type `java -jar ip.jar`  then Enter to execute 
+3.	cd into the project’s `build\libs\Duke.jar`
+4.	Type `java -jar Duke.jar`  then Enter to execute 
 5.	Now you can interact with the program through the CLI
 
 
@@ -35,6 +35,7 @@ Using Command Line
 - Exiting the program : bye
 - Loading the data
 - Saving the data
+- Sorting all tasks : sort
 
 Notes about the command format:
 - Words in **UPPER_CASE** are the parameters to be supplied by the user.
@@ -282,4 +283,28 @@ The file name and location `e.g., [project_root]/data/duke.txt`
 
 ### Feature 12: Saving the data
 Save the tasks in the hard disk automatically whenever the task list changes. There is no need to save manually. If there is no existing txt file, or data folder. The program can auto create a txt file and save the data in the hard disk.
+<br />
+
+<br />
+
+### Feature 13: Sorting all tasks : sort
+Compares tasks in the list to sort tasks by task status (isDone), by task description.
+
+## Usage
+
+Format: `sort`
+
+Example of usage:
+
+`sort`<br />
+
+Expected outcome:
+
+`Hi, your tasks have been sorted based on Task Status and Description. Thanks`<br />
+`1.[D][✓] eat (by: Saturday, September 19,2020)`<br />
+`2.[T][✓] go to school,buy book`<br />
+`3.[T][x] birthday`<br />
+`4.[D][x] to do homework (by: Saturday, September 19,2020)`<br />
+
+
 <br />

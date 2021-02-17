@@ -40,7 +40,10 @@ public class TaskList {
     }
 
 
-
+    /**
+     * Sorts tasks in the task lists.
+     *
+     */
     public void sort() {
         Collections.sort(taskList);
     }
