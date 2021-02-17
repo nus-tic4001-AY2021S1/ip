@@ -6,7 +6,7 @@ if () then ([Valid todo command format])
     :Save all tasks to data file;
     :Display information of newly-added todo;
     stop
-else ([Invalid format])
+else ([Else])
     :Display error message;
 stop
 @enduml
