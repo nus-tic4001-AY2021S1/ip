@@ -29,7 +29,6 @@ public abstract class Task  implements Comparable<Task> {
      */
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
-        //(isDone ? "\u2713" : "\u2718", return tick or X symbols . (isDone ? "Tick" : "X");
     }
 
     /** .
