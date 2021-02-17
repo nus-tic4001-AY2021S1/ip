@@ -11,25 +11,26 @@ public class Duke {
     private Storage storage;
     private TaskList tasks;
 
-    public Duke (String filePath) {
-        ui=new Ui();
-        storage=new Storage(filePath);
+    public Duke(String filePath) {
+        ui = new Ui();
+        storage = new Storage(filePath);
         try {
-            tasks= new TaskList(storage.load());
+            tasks = new TaskList(storage.load());
         } catch (DukeException e) {
-           ui.showLoadingError();
-           tasks=new TaskList();
+            ui.showLoadingError();
+            tasks = new TaskList();
         }
 
     }
-    public void run (){
+
+    public void run() {
         ui.printWelcome();
-        boolean isExit=false;
-        while(!isExit) {
+        boolean isExit = false;
+        while (!isExit) {
             String fullCommand = ui.readCommand();
             Command c = Parser.parse(fullCommand);
-            c.execute(tasks,ui,storage);
-            isExit=c.isExit();
+            c.execute(tasks, ui, storage);
+            isExit = c.isExit();
         }
     }
 

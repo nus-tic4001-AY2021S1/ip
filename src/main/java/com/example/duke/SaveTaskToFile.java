@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class SaveTaskToFile {
     public static void saveFile(TaskList myTasks) {
-        int currentCount=0;
+        int currentCount = 0;
         String myFile = "/Users/januariusjang/Downloads/iP/data/tasks.txt";
         try {
             File f = new File(myFile);
@@ -35,6 +35,7 @@ public class SaveTaskToFile {
             System.out.println("Something went wrong: " + e.getMessage());
         }
     }
+
     private static void writeToFile(String filePath, String textToAdd) throws IOException {
         FileWriter fw = new FileWriter(filePath, true);
         fw.write(textToAdd);

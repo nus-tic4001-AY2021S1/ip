@@ -1,7 +1,7 @@
 package com.example.duke;
 
 public class Parser {
-    public static Command parse (String userInput) {
+    public static Command parse(String userInput) {
 
         String[] arrayOfStr = userInput.split(" ", 2);
 
@@ -10,11 +10,11 @@ public class Parser {
             case "todo":
                 return new AddTodoCommand(arrayOfStr[1]);
             case "deadline":
-                String[]arrayOfDeadlineDetails=arrayOfStr[1].split("by ",2);
-                return new AddDeadlineCommand(arrayOfDeadlineDetails[0],arrayOfDeadlineDetails[1]);
+                String[] arrayOfDeadlineDetails = arrayOfStr[1].split("by ", 2);
+                return new AddDeadlineCommand(arrayOfDeadlineDetails[0], arrayOfDeadlineDetails[1]);
             case "event":
-                String[]arrayOfEventDetails=arrayOfStr[1].split("at ",2);
-                return new AddEventCommand(arrayOfEventDetails[0],arrayOfEventDetails[1]);
+                String[] arrayOfEventDetails = arrayOfStr[1].split("at ", 2);
+                return new AddEventCommand(arrayOfEventDetails[0], arrayOfEventDetails[1]);
             case "delete":
                 return new DeleteCommand(arrayOfStr[1]);
             case "list":
@@ -32,8 +32,6 @@ public class Parser {
                 return new Command();
         }
     }
-
-
 
 
 }

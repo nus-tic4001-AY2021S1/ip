@@ -7,13 +7,14 @@ public class Storage {
     private String filePath;
 
     public Storage(String filePath) {
-        this.filePath=filePath;
+        this.filePath = filePath;
     }
 
     public ArrayList<Task> load() throws DukeException {
         return CreateTaskFromFile.getTasksFromFile(filePath);
     }
-    public void saveFile(TaskList myTask){
+
+    public void saveFile(TaskList myTask) {
         SaveTaskToFile.saveFile(myTask);
     }
 }
