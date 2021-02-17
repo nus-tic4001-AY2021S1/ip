@@ -19,7 +19,7 @@ The following sequence diagram shows the object interactions when the `Duke` obj
 of the `TodoCommand` object:
 <br><img src="images/TodoSequenceDiagram.png" alt="TodoSequenceDiagram" width="800"/><br>
 
-The following activity diagram shows what happens when a user executes a `todo` command:
+The following activity diagram shows what happens when a user enters a `todo` command:
 <br><img src="images/TodoActivityDiagram.png" alt="TodoActivityDiagram" width="500"/><br>
 
 ## User Stories
