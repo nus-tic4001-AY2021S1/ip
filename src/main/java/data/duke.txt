@@ -1,4 +1,5 @@
 D | 1 | eat | 2020-09-19
+D | 1 | eat | 2020-09-19
 E | 1 | go to school, buy book | 2020-12-12T12:00
 E | 1 | have dinner at Tom's home | 2020-10-11T23:00
 D | 1 | read book | 2020-10-11
@@ -10,4 +11,3 @@ E | 0 | Birthday | 2021-09-12T08:11
 E | 0 | Friend | 2020-05-12T10:21
 T | 0 | Homework
 E | 0 | Java | 2021-03-12T09:51
-D | 0 | eat | 2020-09-19

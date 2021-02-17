@@ -85,9 +85,6 @@ public class EventCommand extends Command {
                 "Got it. I've added this task:\n%s\nNow you have %s tasks in the list.",
                 task, taskList.size()
         );
-
-
-
     }
 
 
