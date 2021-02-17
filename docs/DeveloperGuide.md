@@ -2,15 +2,13 @@
 
 ## Overall Look
 
-!-[Image of UpdateSequenceDiagram](https://github.com/AY2021S1-TIC4001-3/tp/blob/master/docs/Images/architecture.png?raw=true)
+![Image of OverallLookDiagram](https://github.com/ZhengShijieNUS/ip/blob/master/docs/Ui.png?raw=true)
 
 ## Design
 
 ### Architechture
 
-!-[Image of UpdateSequenceDiagram](https://github.com/AY2021S1-TIC4001-3/tp/blob/master/docs/Images/architecture.png?raw=true)
-
-The Architecture Diagram given above explains the high-level design of the App. Given below is a quick overview of each component.
+The Architecture Diagram given below is a quick overview of each component.
 
 The rest of the App consists of few components.
 
