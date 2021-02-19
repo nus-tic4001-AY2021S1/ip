@@ -1,51 +1,60 @@
 package duke.parser;
 
-import duke.commands.Command;
-import duke.commands.DeadlineCommand;
-import duke.commands.DeleteCommand;
-import duke.commands.DoneCommand;
-import duke.commands.EventCommand;
-import duke.commands.ExitCommand;
-import duke.commands.FindCommand;
-import duke.commands.InvalidCommand;
-import duke.commands.ListCommand;
-import duke.commands.NoteCommand;
-import duke.commands.TodoCommand;
-import duke.database.Database;
-import duke.task.TaskList;
+import duke.command.Command;
+import duke.command.DeadlineCommand;
+import duke.command.DoneCommand;
+import duke.command.EventCommand;
+import duke.command.FindCommand;
+import duke.command.HelpCommand;
+import duke.command.InvalidCommand;
+import duke.command.ListCommand;
+import duke.command.SaveCommand;
+import duke.command.SendCommand;
+import duke.command.TodoCommand;
+import duke.command.DeleteCommand;
+import duke.storage.Storage;
 import duke.ui.Ui;
 
-public class Parser {
-    /**
-     * Parses the user input into meaningful details and returns the appropriate command.
-     */
-    public Command parseInput(String line, Ui ui, TaskList tasks, Database database) {
+import java.util.ArrayList;
 
-        String commandWord = line.trim().split(" ")[0];
+/**
+ * A command handler, redirect all the commandline.
+ */
+
+public class Parser {
+
+    public Command parserInput(String line, Ui ui, Storage storage, ArrayList commandName) {
+
+
+        String commandWord = line.trim().split(" ", 2)[0];
         String lineWithoutCommand = line.substring(line.indexOf(" ") + 1).trim();
 
+        System.out.println(commandWord);
         switch (commandWord) {
-        case ListCommand.word:
-            return new ListCommand(tasks, ui);
-        case FindCommand.word:
-            return new FindCommand(lineWithoutCommand, tasks, ui);
-        case DoneCommand.word:
-            return new DoneCommand(lineWithoutCommand, tasks, ui, database);
-        case DeleteCommand.word:
-            return new DeleteCommand(lineWithoutCommand, tasks, ui, database);
+        case HelpCommand.word:
+            return new HelpCommand(ui);
         case TodoCommand.word:
-            return new TodoCommand(lineWithoutCommand, tasks, ui, database);
+            return new TodoCommand(line, ui, storage, commandName);
         case DeadlineCommand.word:
-            return new DeadlineCommand(lineWithoutCommand, tasks, ui, database);
+            return new DeadlineCommand(line, ui, storage, commandName);
         case EventCommand.word:
-            return new EventCommand(lineWithoutCommand, tasks, ui, database);
-        case NoteCommand.word:
-            return new NoteCommand(lineWithoutCommand, tasks, ui, database);
-        case "bye":
-        case "exit":
-            return new ExitCommand(ui);
+            return new EventCommand(line, ui, storage, commandName);
+        case FindCommand.word:
+            return new FindCommand(line, ui, storage, commandName);
+        case SendCommand.word:
+            return new SendCommand(line, ui, storage, commandName);
+        case DoneCommand.word:
+            return new DoneCommand(line, ui, storage, commandName);
+        case DeleteCommand.word:
+            return new DeleteCommand(line, ui, storage, commandName);
+        case ListCommand.word:
+            return new ListCommand(line, ui, storage, commandName);
+        case SaveCommand.word:
+            return new SaveCommand(line, ui, storage, commandName);
         default:
-            return new InvalidCommand(ui);
+            return new InvalidCommand();
         }
+
+
     }
 }

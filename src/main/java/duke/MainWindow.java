@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
  */
 
 public class MainWindow extends AnchorPane {
-    private final Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaPeasant.png"));
+    private final Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private final Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
     @FXML
     private ScrollPane scrollPane;
@@ -45,8 +45,8 @@ public class MainWindow extends AnchorPane {
         String input = userInput.getText();
         String response = duke.getResponse(input);
         dialogContainer.getChildren().addAll(
-            DialogBox.getUserDialog(input, userImage),
-            DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getUserDialog(input, userImage),
+                DialogBox.getDukeDialog(response, dukeImage)
 
         );
         userInput.clear();
@@ -54,9 +54,9 @@ public class MainWindow extends AnchorPane {
 
     @FXML
     public void initializeDuke() {
-        String greetings = duke.getGreetingsAndTasks();
+        String greetings = duke.getWelcome();
         dialogContainer.getChildren().addAll(
-            DialogBox.getDukeDialog(greetings, dukeImage)
+                DialogBox.getDukeDialog(greetings, dukeImage)
         );
     }
 }
