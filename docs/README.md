@@ -7,4 +7,4 @@ Useful links:
 * [User Guide (Website version)](https://impala36.github.io/ip/)
 * [Developer Guide](https://github.com/Impala36/ip/blob/master/DeveloperGuide.md)
 
-![GUI](images/Ui.png)
+![GUI](Ui.png)

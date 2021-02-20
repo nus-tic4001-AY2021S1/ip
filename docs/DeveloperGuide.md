@@ -5,7 +5,7 @@ A Personal Assistant Chatbot that helps a person to keep track of various things
 
 ### Note Sequence Diagram
 Given below is a Sequence Diagram that shows how a note is added to a task, through the different components that processes the user input `"note 1 Note."` from the `GUI`.
-![NoteSequenceDiagram](images/NoteSequenceDiagram.png)
+![NoteSequenceDiagram](NoteSequenceDiagram.png)
 
 ## Product scope
 ### Target user profile
