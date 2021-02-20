@@ -9,7 +9,7 @@ This product is an personal use project that helps user to keep track of his dai
 ![UML Diagram](images/IP.png) 
 
 ### Storage method: Storage.saveTaskFile()
-![Sequence Diagram](images/storage.png)
+![Sequence Diagram](images/Ip2.png)
 
 ### Ui picture
 ![Ui png](images/GUI.png)
