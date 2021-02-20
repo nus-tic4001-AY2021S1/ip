@@ -8,7 +8,7 @@ This product is an personal use project that helps user to keep track of his dai
 ### UML diagram 
 ![UML Diagram](images/IP.png) 
 
-### Todo method
+### Sequence diagram
 ![Sequence Diagram](images/Ip2.png)
 
 ### Ui picture
