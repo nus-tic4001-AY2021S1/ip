@@ -19,14 +19,15 @@ public class Duke {
     private final Storage storage = new Storage("/Users/linbinhui/biomindrepo/impala/data/duke.txt", commandName);
 
     Ui ui = new Ui();
-
+    boolean isLoad = false;
 
     String getResponse(String input) {
-
         final Parser parser = new Parser();
-
         // load the current file
-        storage.readFromFile();
+        if (isLoad == false) {
+            storage.readFromFile();
+            isLoad = true;
+        }
         Command command = parser.parserInput(input, ui, storage, commandName);
         return command.execute();
     }

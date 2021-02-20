@@ -24,7 +24,7 @@ public class SendEmail {
 
         this.receiver = receiver;
         this.messages = message;
-        // sendEmail();
+        sendEmail();
 
     }
 
@@ -33,7 +33,7 @@ public class SendEmail {
         String to = receiver;
 
         // Sender's email ID needs to be mentioned
-        String from = "ProjectTracker@roject.com";
+        String from = "TaskTracker@roject.com";
 
         // Assuming you are sending email from through gmail smtp
         String host = "smtp.gmail.com";
@@ -52,7 +52,7 @@ public class SendEmail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("takeaways2017@gmail.com", "1QazxsW");
+                return new PasswordAuthentication("takeaways2017@gmail.com", "1QazxsW23Edc");
 
             }
 
@@ -75,8 +75,8 @@ public class SendEmail {
             message.setSubject("The New Project");
 
             // Now set the actual message
-            message.setText("Hi Project Leader \n" + "This project has been send you as a notification.\n\n" + messages
-                    + "\n Best regards \n Project Tracker");
+            message.setText("Hi \n" + "This Task has been send you as a notification.\n\n" + messages
+                    + "\n\n Best regards \n Task Tracker");
 
             System.out.println("sending...");
             // Send message

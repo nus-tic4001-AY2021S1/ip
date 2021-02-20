@@ -29,19 +29,6 @@ public class Storage {
         this.filePath = filePath;
     }
 
-    public void setCommandName(Tasks obj) {
-        commandName.add(obj);
-    }
-
-    public void setCommandName(String obj) {
-        commandName.add(obj);
-    }
-
-
-    public ArrayList getCommandName() {
-        return commandName;
-    }
-
     // fild checker, check whether the file is create or not
     private void fileChecker() {
         try {

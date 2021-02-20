@@ -29,11 +29,11 @@ public class SendCommand extends Command {
             } else {
                 String clean = obj[1].replaceAll("\\D+", "");
                 int num = Integer.parseInt(clean);
-
-                String[] data = commandName.get(num).toString().split("\\|");
-                String email = data[3].trim();
-                new SendEmail(email, ui.dataConverter(commandName.get(num).toString()));
-                return "Email has been send";
+                String[] data = commandName.get(num - 1).toString().split("\\|");
+                String email = data[2].trim();
+                System.out.println(email);
+                new SendEmail(email, ui.dataConverter(commandName.get(num - 1).toString()));
+                return "Email has been send to " + email;
             }
 
         } catch (NumberFormatException ex) {

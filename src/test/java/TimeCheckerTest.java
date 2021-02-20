@@ -16,7 +16,7 @@ public class TimeCheckerTest {
         Ui ui = new Ui();
         ArrayList commandName = new ArrayList();
         Storage storage = new Storage("data/duke.txt", commandName);
-        String input = "--deadline --description haha --date 12/12/2001 --email xxx@hotmail.com";
+        String input = "--deadline --description haha --date 12/25/2001 --email xxx@hotmail.com";
         //new DoneCommand(input,ui, storage, commandName);
         DeadlineCommand deadlineCommand = new DeadlineCommand(input, ui, storage, commandName);
         assertEquals(deadlineCommand.execute(), "<<Invalid Date Format>>");

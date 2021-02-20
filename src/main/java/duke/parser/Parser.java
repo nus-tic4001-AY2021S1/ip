@@ -27,7 +27,6 @@ public class Parser {
 
 
         String commandWord = line.trim().split(" ", 2)[0];
-        String lineWithoutCommand = line.substring(line.indexOf(" ") + 1).trim();
 
         System.out.println(commandWord);
         switch (commandWord) {

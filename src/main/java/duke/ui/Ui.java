@@ -21,10 +21,6 @@ public class Ui {
 
     }
 
-    // divider for each line
-    public void divider() {
-        System.out.println("-----------------------------------------------------------------");
-    }
 
     // options to choose the feature
     public String tasks() {
@@ -52,11 +48,6 @@ public class Ui {
     public String saveMsg() {
 
         return "Your recent changed has been save!";
-    }
-
-    public void showLoadingError() {
-        System.out.println("file not exist");
-
     }
 
     public String description(String input) {
