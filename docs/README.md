@@ -6,6 +6,8 @@ It is an application for managing tasks. Also it has a Graphical User Interface 
 ![Ui](./Ui.PNG)
 ![Ui](https://github.com/dgc5213/ip/blob/master/docs/Ui.png)
 ![Ui](https://github.com/dgc5213/ip/blob/master/docs/Ui.PNG)
+![Ui](./Ui_2.png)
+![Ui](./Ui_3.png)
 
 Useful links:
 * [User Guide](UserGuide.md)
