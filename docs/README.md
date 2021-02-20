@@ -1,20 +1,10 @@
-# User Guide
+![Image of Todolist](https://github.com/binbinhui/ip/blob/master/docs/94735-istock-863607936.jpg)
 
-## Features 
+# Tasks Tracker
 
-### Feature 1 
-Description of feature.
+Tasks Tracker is a desktop app for managing and tracking projects,  optimized for use via GUI. It will help the user to track all his tasks and remind user if the task's deadline is less than 7 days.
 
-## Usage
-
-### `Keyword` - Describe action
-
-Describe action and its outcome.
-
-Example of usage: 
-
-`keyword (optional arguments)`
-
-Expected outcome:
-
-`outcome`
+Useful links:
+* [User Guide](UserGuide.md)
+* [Developer Guide](DeveloperGuide.md)
+* [About Me](AboutMe.md)
