@@ -9,7 +9,7 @@ class ListCommand extends Command {
         else{
             String msgPrint = ui.printList();
             for(int i=0; i<taskList.getSize(); i++){
-                msgPrint +=  ui.indentPrintString((i+1) + ". " + taskList.getTask(i).toString());
+                msgPrint += "\n" + ui.indentPrintString((i+1) + ". " + taskList.getTask(i).toString());
 
             }
             return msgPrint;

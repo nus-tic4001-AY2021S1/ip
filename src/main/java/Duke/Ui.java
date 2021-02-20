@@ -43,7 +43,7 @@ class Ui {
     }
     public String printList(){
         indent();
-        return ("Here are the tasks in your list:");
+        return ("Here are the tasks in your list:\n");
 
     }
     public String indentPrintString(String toPrint){
@@ -52,19 +52,19 @@ class Ui {
     }
     public String printDoneMsg(){
         indent();
-        return ("Nice! I've marked this task as done:");
+        return ("Nice! I've marked this task as done:\n");
     }
     public String printDeleteMsg(){
         indent();
-        return ("Noted. I've removed this task:");
+        return ("Noted. I've removed the task\n");
     }
     public String printTotalListSize(int size){
         indent();
-        return ("Now you have " + size + " tasks in the list.");
+        return ("\nNow you have " + size + " tasks in the list.");
     }
     public String printAddMsg(){
         indent();
-        return ("Got it. I've added this task:");
+        return ("Got it. I've added this task:\n");
     }
     public String printNoMatchesMsg(){
         indent();
@@ -72,7 +72,7 @@ class Ui {
     }
     public String printMatchesMsg(){
         indent();
-        return ("Here are the matching tasks in your list:");
+        return ("Here are the matching tasks in your list:\n");
     }
     public String readCommand(){
         return sc.nextLine();
