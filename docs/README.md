@@ -7,4 +7,4 @@ Project Tracker is a desktop app for managing and tracking projects,  optimized 
 Useful links:
 * [User Guide](UserGuide.md)
 * [Developer Guide](DeveloperGuide.md)
-* [About Us](AboutUs.md)
+* [About Me](AboutMe.md)
