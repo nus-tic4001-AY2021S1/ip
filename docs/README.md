@@ -1,6 +1,6 @@
 # The Duke Who Manages Tasks
 
-A Personal Assistant Chatbot that helps a person to keep track of various things. It's named after the Java mascot _Duke_.
+A Personal Assistant Chatbot that helps a person to keep track of various things. It's named after the Java mascot _Duke_, with a medieval setting added to it.
 
 Useful links:
 * [User Guide](https://github.com/Impala36/ip/blob/master/docs/UserGuide.md)
