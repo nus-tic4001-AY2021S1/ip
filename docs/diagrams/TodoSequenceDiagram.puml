@@ -1,0 +1,45 @@
+@startuml
+participant ":TodoCommand" as TodoCommand
+participant "<color:red><<Class>></color>\n:Parser" as Parser
+participant "todo:Todo" as Todo
+participant "tasks:TaskList" as TaskList
+participant ":Storage" as Storage
+participant ":Ui" as Ui
+
+activate TodoCommand
+[-> TodoCommand : execute(tasks, storage, ui)
+
+TodoCommand -> Parser : createTodo(fullCommand)
+activate Parser
+
+create Todo
+Parser -> Todo : Todo(description)
+activate Todo
+Todo --> Parser
+deactivate Todo
+
+Parser --> TodoCommand : todo
+deactivate Parser
+
+TodoCommand -> TaskList : addTask(todo)
+activate TaskList
+|||
+TaskList --> TodoCommand
+deactivate TaskList
+
+TodoCommand -> Storage : saveTasks(tasks)
+activate Storage
+|||
+Storage --> TodoCommand
+deactivate Storage
+
+TodoCommand -> Ui : printAddedTask(tasks)
+activate Ui
+|||
+Ui --> TodoCommand
+deactivate Ui
+
+[<-- TodoCommand
+deactivate TodoCommand
+
+@enduml
