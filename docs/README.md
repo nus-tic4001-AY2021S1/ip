@@ -2,7 +2,7 @@
 
 # Tasks Tracker
 
-Project Tracker is a desktop app for managing and tracking projects,  optimized for use via GUI. It will help the user to track all his tasks and remind user if the task's deadline is less than 7 days.
+Tasks Tracker is a desktop app for managing and tracking projects,  optimized for use via GUI. It will help the user to track all his tasks and remind user if the task's deadline is less than 7 days.
 
 Useful links:
 * [User Guide](UserGuide.md)
