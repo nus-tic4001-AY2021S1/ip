@@ -1,1 +1,1 @@
-1. [X] [Todo]     Create a note for this task       [Note]     haha
+1. [X] [Todo]     Create a note for this task       [Note]     This note should work fine
