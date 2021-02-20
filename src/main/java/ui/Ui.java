@@ -1,11 +1,9 @@
 package ui;
 
-import duke.Duke;
 import duke.DukeException;
 import duke.Global;
 import duke.Task;
 import java.util.ArrayList;
-
 
 /**
  * This class is to output the appropriate display to user based on user input.
@@ -39,10 +37,8 @@ public class Ui {
                 + Global.PATTERNLINE;
 
         if (hiBye.equals("welcome")) {
-            //System.out.println(welcome);
             return welcome;
         } else {
-            //System.out.println(farewell);
             return farewell;
         }
     }
@@ -51,27 +47,24 @@ public class Ui {
      * This method is a print out a list of existing task whenever user requested from Array List.
      */
     static String printList(ArrayList<Task> tasks) throws DukeException {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         if (tasks.size() == 0) {
             throw new DukeException("Your List is Empty\n");
         }
-        //System.out.println(Global.PATTERNLINE);
-        output += Global.PATTERNLINE + "\n";
+
+        output.append(Global.PATTERNLINE + "\n");
         for (int i = 1; i <= tasks.size(); i++) {
-            //System.out.print(i + ". ");
-            //tasks.get(i - 1).printTask();
-            output = output + i + ". ";
-            output += tasks.get(i - 1).printTask() + "\n";
+            output.append(i).append(". ");
+            output.append(tasks.get(i - 1).printTask()).append("\n");
         }
-        //System.out.println(Global.PATTERNLINE);
-        output += Global.PATTERNLINE + "\n";
-        return output;
+        output.append(Global.PATTERNLINE + "\n");
+        return output.toString();
     }
 
     static String findTask(String input, ArrayList<Task> tasks) throws DukeException {
 
         String keyword = input.substring(5);
-        String output = "";
+        StringBuilder output = new StringBuilder();
         int count = 1;
 
         for (int i = 0; i < tasks.size(); i++) {
@@ -79,11 +72,9 @@ public class Ui {
 
             if (temp.contains(keyword)) {
                 if (count == 1) {
-                    //System.out.println(Global.PATTERNLINE + "\nHere are the matching tasks in your list:");
-                    output += Global.PATTERNLINE + "\nHere are the matching tasks in your list:\n";
+                    output.append(Global.PATTERNLINE + "\nHere are the matching tasks in your list:\n");
                 }
-                //System.out.println(count + ". " + temp);
-                output += count + ". " + temp + "\n";
+                output.append(count).append(". ").append(temp).append("\n");
                 count++;
             }
         }
@@ -91,11 +82,10 @@ public class Ui {
         if (count == 1) {
             throw new DukeException(noKeywords());
         } else {
-            //System.out.println(Global.PATTERNLINE);
-            output += Global.PATTERNLINE;
+            output.append(Global.PATTERNLINE);
         }
 
-        return output;
+        return output.toString();
     }
 
     /**
@@ -105,27 +95,32 @@ public class Ui {
 
     static String replyLine(ArrayList<Task> tasks, String input, int count) {
         String output = "";
-        //System.out.print(Global.PATTERNLINE + "\nGot it. I've added this task: \n\t");
-        //tasks.get(count).printTask();
+
         output += Global.PATTERNLINE + "\nGot it. I've added this task: \n\t";
         output += tasks.get(count).printTask();
         count += 1;
         output += "\nNow you have " + count + " tasks in the list.\n" + Global.PATTERNLINE;
         return output;
-        //System.out.println("Now you have " + count + " tasks in the list.\n" + Global.PATTERNLINE);
     }
 
-    public static void replyMarkedDone(ArrayList<Task> tasks, int index) {
-        System.out.println(Global.PATTERNLINE + "\nNice! I've marked this task as done:");
-        tasks.get(index - 1).printTask();
-        System.out.println(Global.PATTERNLINE);
+    public static String replyMarkedDone(ArrayList<Task> tasks, int index) {
+
+        String taskName = tasks.get(index - 1).printTask();
+        String xmarkedDoneErrMsg = Global.PATTERNLINE + "\nYou cannot marked a Recurring Task as Done\n"
+                + Global.PATTERNLINE;
+        String outputMsg = Global.PATTERNLINE + "\nNice! I've marked this task as done:\n"
+                + taskName + "\n" + Global.PATTERNLINE;
+
+        if (!taskName.startsWith("[")) {
+            return xmarkedDoneErrMsg;
+        } else {
+            return outputMsg;
+        }
     }
 
     public static String replyDeleteTask(ArrayList<Task> tasks, int index) {
         String output = "";
-        //System.out.println(Global.PATTERNLINE + "\nNoted. I've removed this task: ");
-        //tasks.get(index - 1).printTask();
-        //System.out.println("Now you have " + (tasks.size() - 1) + " tasks in the list.\n" + Global.PATTERNLINE);
+
         output += Global.PATTERNLINE + "\nNoted. I've removed this task: \n";
         output += tasks.get(index - 1).printTask();
         output += "\nNow you have " + (tasks.size() - 1) + " tasks in the list.\n" + Global.PATTERNLINE;
@@ -136,14 +131,6 @@ public class Ui {
     /**
      * The following methods is to show Error Exception Throw at different scenarios.
      */
-
-    public static String errIndexOutOfBoundsException() {
-        //System.out.println(Global.PATTERNLINE + "\nFriend, You do not have so much task in the list\n"
-        //       + Global.PATTERNLINE);
-
-        return Global.PATTERNLINE + "\nFriend, You do not have so much task in the list\n"
-                + Global.PATTERNLINE;
-    }
 
     public static String errInvalidInput(Exception e) {
         //System.out.println(e + "\n" + Global.PATTERNLINE);

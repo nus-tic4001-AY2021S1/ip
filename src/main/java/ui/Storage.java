@@ -26,7 +26,7 @@ public class Storage {
     private static String FILEPATH;
 
     public Storage(String filePath) {
-        this.FILEPATH = filePath;
+        FILEPATH = filePath;
     }
 
     public static void createFile() throws IOException, DukeException {
@@ -44,7 +44,7 @@ public class Storage {
 
         FileWriter fw = new FileWriter(FILEPATH, true);
         int index = tasks.size();
-        fw.write(String.valueOf(tasks.get(index - 1)) + "\n");
+        fw.write(tasks.get(index - 1) + "\n");
         fw.close();
     }
 
@@ -53,8 +53,8 @@ public class Storage {
      */
     public static void writeToFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(FILEPATH, false);
-        for (int i = 0; i < tasks.size(); i++) {
-            fw.write(String.valueOf(tasks.get(i) + "\n"));
+        for (Task task : tasks) {
+            fw.write(task + "\n");
         }
         fw.close();
     }
@@ -65,15 +65,14 @@ public class Storage {
      */
     public static void updateStatusToFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(FILEPATH);
-        for (int i = 0; i < tasks.size(); i++) {
-            fw.write(String.valueOf(tasks.get(i)) + "\n");
+        for (Task task : tasks) {
+            //fw.write(String.valueOf(tasks.get(i)) + "\n");
+            fw.write(task + "\n");
         }
         fw.close();
     }
 
-    //public static void load (ArrayList<Task> tasks) throws IOException {
     public static ArrayList<Task> load() throws IOException, DukeException  {
-
 
         File fw = new File(FILEPATH);
         if (! fw.exists()) {
@@ -102,7 +101,6 @@ public class Storage {
         return tasks;
     }
 
-    @SuppressWarnings("checkstyle:ParameterName")
     private static void addTodosToArray(ArrayList<Task> tasks, String line, int arrIndex) {
         String status = line.substring(4,5);
         String taskName = line.substring(7);
@@ -112,21 +110,13 @@ public class Storage {
         }
     }
 
-    @SuppressWarnings("checkstyle:ParameterName")
     private static void addDeadlinesToArray(ArrayList<Task> tasks, String line, int arrIndex) {
         int index = line.indexOf("(by");
         int indexCB = line.indexOf(")", index);
         int timeStamp = indexCB - index;
 
-        //String schedule = line.substring(index + 5, line.length() - 7);
-        //String tschedule = line.substring(line.length() - 6, line.length() - 1);
-        //String tschedule = line.substring(indexCB );
-
         String status = line.substring(4,5);
         String taskName = line.substring(7, index - 1);
-        //String schedule = line.substring(index + 5, index + 16);
-        //String schedule = line.substring(index + 5, line.indexOf(" ", index + 15));
-        //LocalDate dateline = LocalDate.parse(schedule, DateTimeFormatter.ofPattern("MMM d yyyy"));
 
         if (line.contains("(Memos :") && (timeStamp > 16)) { //with time and memos
             int indexM = line.indexOf("(Memos");
@@ -170,7 +160,6 @@ public class Storage {
         if (status.equals("✓")) {
             tasks.get(arrIndex).markAsDone();
         }
-
     }
 
     private static void addRecurrTaskToArray(ArrayList<Task> tasks, String line, int arrIndex) {

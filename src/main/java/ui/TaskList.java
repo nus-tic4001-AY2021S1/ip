@@ -1,17 +1,17 @@
 package ui;
 
+import duke.Deadlines;
+import duke.DukeException;
+import duke.Events;
+import duke.Global;
+import duke.RecurrTask;
 import duke.Task;
 import duke.ToDos;
-import duke.Deadlines;
-import duke.Events;
-import duke.RecurrTask;
-import duke.DukeException;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-
-import java.text.ParseException;
-import java.time.LocalDateTime;
 
 /**
  * This class in charge of performing action related to TaskList (only RAM, not related to Memory)
@@ -33,8 +33,8 @@ public class TaskList {
         return tasks;
     }
 
-    public static void deleteTask(ArrayList<Task> tasks, String command) {
-        int index = 0;
+    public static void deleteTask(ArrayList<Task> tasks, String command) throws DukeException {
+        int index;
         if (command.contains(" ")) {
             index = Integer.parseInt(command.substring(7));
         } else {
@@ -45,34 +45,39 @@ public class TaskList {
             Ui.replyDeleteTask(tasks, index);
             tasks.remove(index - 1);
         } catch (IndexOutOfBoundsException e) {
-            Ui.errIndexOutOfBoundsException();
+            String indexOutErrMsg = Global.PATTERNLINE + "\nFriend, You do not have so much task in the list\n";
+            throw new DukeException(indexOutErrMsg);
         }
     }
 
-    public static String addTodo(ArrayList<Task> tasks, String input, int count) throws DukeException {
-        if (input.length() < 6) {
-            throw new DukeException("☹ OOPS!!! The description of a Todo cannot be empty.\n"
-                    + "Please re-input or enter bye to terminate the program\n");
+    public static String addTodo(ArrayList<Task> tasks, String input, int count) throws
+            DukeException, IOException {
+
+        String emptyErrMsg = "☹ OOPS!!! The description of a Todo cannot be empty.\n"
+                + "Please re-input or enter bye to terminate the program\n";
+        int index;
+        String taskName;
+        String remarks;
+
+        if (input.length() < 6) {   //Check if the input is a valid
+            throw new DukeException(emptyErrMsg);
+        } else if (input.contains("/memo")) {
+            index = input.indexOf("/memo");
+            taskName = input.substring(5, index - 1);
+            remarks = input.substring(index + 6);
+            tasks.add(new ToDos(taskName, remarks));
         } else {
-            int index;
-            String taskName;
-            String remarks;
-            if (input.contains("/memo")) {
-                index = input.indexOf("/memo");
-                taskName = input.substring(5, index - 1);
-                remarks = input.substring(index + 6);
-                tasks.add(new ToDos(taskName, remarks));
-                return Ui.replyLine(tasks, input, count);
-            } else {
-                tasks.add(new ToDos(input.substring(5)));
-                return Ui.replyLine(tasks, input, count);
-            }
+            tasks.add(new ToDos(input.substring(5)));
         }
+
+        Storage.addToFile(tasks);
+        return Ui.replyLine(tasks, input, count);
     }
 
-    public static String addDeadlines(ArrayList<Task> tasks, String input, int count) throws DukeException {
+    public static String addDeadlines(ArrayList<Task> tasks, String input, int count) throws
+            DukeException, IOException {
 
-        if (!input.contains(" ")) {
+        if (!input.contains(" ")) {     //Check if the input is a valid
             throw new DukeException(Ui.deadlineErrEmpty());
         } else if (input.length() - 1 == input.indexOf(" ")) {
             throw new DukeException(Ui.deadlineErrEmpty());
@@ -87,10 +92,8 @@ public class TaskList {
             String memo = input.substring(indexM + 7);
             String schedule;
 
-            //if (input.indexOf(" ", indexD + 7) != -1) {
             if ((indexM - indexD) > 16) {
                 int timeIndex = input.indexOf(" ",indexD + 7);
-                //String temp = input.substring(timeIndex + 1, indexM - timeIndex);
                 LocalTime timeline = LocalTime.parse(input.substring(timeIndex + 1, indexM - 1));
                 schedule = input.substring(indexD + 4, timeIndex);
                 LocalDate dateline = LocalDate.parse(schedule);
@@ -100,8 +103,9 @@ public class TaskList {
                 LocalDate dateline = LocalDate.parse(schedule);
                 tasks.add(new Deadlines(taskName, dateline, memo));
             }
-            //return "temp";
-            return Ui.replyLine(tasks, input, count);
+
+            //return Ui.replyLine(tasks, input, count);
+
         } else {
             int index = input.indexOf("/by");
             String taskName = input.substring(input.indexOf(" ") + 1, index - 1);
@@ -117,11 +121,14 @@ public class TaskList {
                 LocalDate dateline = LocalDate.parse(schedule);
                 tasks.add(new Deadlines(taskName, dateline));
             }
-            return Ui.replyLine(tasks, input, count);
+            //return Ui.replyLine(tasks, input, count);
         }
+
+        Storage.addToFile(tasks);
+        return Ui.replyLine(tasks, input, count);
     }
 
-    public static String addEvents(ArrayList<Task> tasks, String input, int count) throws DukeException {
+    public static String addEvents(ArrayList<Task> tasks, String input, int count) throws DukeException, IOException {
         String schedule;
         String taskName;
 
@@ -138,21 +145,26 @@ public class TaskList {
             taskName = input.substring(input.indexOf(" ") + 1, indexA - 1);
             String memo = input.substring(indexM + 6);
             tasks.add(new Events(taskName, schedule, memo));
-            return Ui.replyLine(tasks, input, count);
+            //return Ui.replyLine(tasks, input, count);
         } else {
             int index = input.indexOf("/at");
             schedule = input.substring(index + 4);
             taskName = input.substring(input.indexOf(" ") + 1, index);
             tasks.add(new Events(taskName, schedule));
-            return Ui.replyLine(tasks, input, count);
+            //return Ui.replyLine(tasks, input, count);
         }
+
+        Storage.addToFile(tasks);
+        return Ui.replyLine(tasks, input, count);
     }
 
     public static String addRecurringTasks(ArrayList<Task> tasks, String input, int count) throws DukeException {
 
+        String errReply = "☹ OOPS!!! The description of a Todo cannot be empty.\n"
+                + "Please re-input or enter bye to terminate the program\n";
+
         if (input.length() < 7) {
-            throw new DukeException("☹ OOPS!!! The description of a Todo cannot be empty.\n"
-                    + "Please re-input or enter bye to terminate the program\n");
+            throw new DukeException(errReply);
         } else if (input.contains("/memo")) {
             int indexS = input.indexOf(" ");
             int indexM = input.indexOf("/memo");
@@ -174,9 +186,14 @@ public class TaskList {
         String newInputTaskName;
 
         if (input.contains("/by")) {
-            newInputTaskName = input.substring(index + 2, input.indexOf("/by"));
+            int indexBy =  input.indexOf("/by");
+            newInputTaskName = input.substring(index + 2, indexBy - 2);
         } else if (input.contains("/at")) {
-            newInputTaskName = input.substring(index + 2, input.indexOf("/at"));
+            int indexAt = input.indexOf("/at");
+            newInputTaskName = input.substring(index + 2, indexAt - 2);
+        } else if (input.contains("/memo")) {
+            int indexM = input.indexOf("/memo");
+            newInputTaskName = input.substring(index + 2, indexM - 2);
         } else {
             newInputTaskName = input.substring(index + 2);
         }

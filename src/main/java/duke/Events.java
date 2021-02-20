@@ -15,14 +15,15 @@ public class Events extends Task {
         this.memo = memo;
     }
 
-    //@Override
+    @Override
     public String toString() {
-        //return "[E]" + super.toString() + " (at: " + on + ")";
+
+        String outputMsg = "[E]" + "[" + this.getStatusIcon() + "] " +  this.description + " (at: " + on + ")";
+
         if (memo != null) {
-            return "[E]" + "[" + this.getStatusIcon() + "] " +  this.description + " (at: " + on + ")"
-                    + " (Memos : " + this.memo + ")";
+            return outputMsg + " (Memos : " + this.memo + ")";
         } else {
-            return "[E]" + "[" + this.getStatusIcon() + "] " +  this.description + " (at: " + on + ")";
+            return outputMsg;
         }
 
     }

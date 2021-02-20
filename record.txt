@@ -1,4 +1,4 @@
-[D][✘] submit ip (by: Sep 20 2020 09:00)
+[D][✓] submit ip (by: Sep 20 2020 09:00)
 [E][✘] submit ip (at: 28 Sept 2020 09:00-10:00)
 [E][✘] meeting (at: 1600-1700 )
 [E][✓] texts (at: Yishun)
@@ -7,7 +7,7 @@
 [E][✓] text Masuda (at: company phone)
 [E][✘] update calender (at: home)
 [E][✘] update calender (at: home ) (Memos : flight scheudle)
-[E][✘] update calender (at: home) (Memos : flight scheudle)
+[E][✓] update calender (at: home) (Memos : flight scheudle)
 [E][✘] send msg (at: Sunday) (Memos : before noon)
 [D][✘] send msg (by: Mar 23 2021)
 [D][✘] Tasks (by: Mar 23 2020 18:00) (Memos : msg)
@@ -17,3 +17,10 @@
 [D][✘] dummy 1 (by: Jan 9 2021 19:00)
 [D][✘] dummy 1 (by: Jan 9 2021 18:00) (Memos : for recording)
 [D][✘] dummy 1 (by: Jan 9 2021) (Memos : for recording)
+[T][✘] something
+[T][✓] something(Memos : kl)
+[D][✓] something (by: Oct 23 2019)
+[E][✓] submit ipssss  (at: 9am)
+weekly - submit iip
+[T][✘] adding
+[T][✘] looping(Memos : jump)

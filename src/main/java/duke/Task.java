@@ -17,15 +17,9 @@ public abstract class Task {
         this.isDone = true;
     }
 
-    //public String toString() {
-    public abstract String toString(); /*{
-        //return this.toString() ;
-        return ("[" + this.getStatusIcon() + "] " +  this.description );
-    }*/
+    public abstract String toString();
 
     public String printTask() {
-        //System.out.println("[" + this.getStatusIcon() + "] " +  this.description ) ;
-        //Workable - System.out.println(this.toString());
         return this.toString();
     }
 

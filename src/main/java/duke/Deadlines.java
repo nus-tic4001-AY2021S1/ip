@@ -5,8 +5,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Deadlines extends Task {
-    protected String by;
-    protected String time;
     protected LocalDate deadline;
     protected LocalTime timeline;
     protected String memo;
@@ -35,9 +33,9 @@ public class Deadlines extends Task {
         this.memo = memo;
     }
 
-    //@Override
+    @Override
     public String toString() {
-        //return "[D]" + super.toString() + " (by: " + by + ")";
+
         String outputMsg = "[D][" + this.getStatusIcon() + "] " + this.description + " (by: "
             + deadline.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
 
@@ -47,16 +45,6 @@ public class Deadlines extends Task {
         if (memo != null) {
             outputMsg = outputMsg + ") (Memos : " + memo;
         }
-        /*
-        if (timeline != null) {
-            outputMsg = outputMsg + " " + timeline.format(DateTimeFormatter.ofPattern("kk:mm"));
-            //return "[D]" + "[" + this.getStatusIcon() + "] " +  this.description + " (by: "
-            //        + deadline.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + " "
-            //        + timeline.format(DateTimeFormatter.ofPattern("kk:mm")) + ")";
-        } else {
-            return "[D]" + "[" + this.getStatusIcon() + "] " +  this.description + " (by: "
-                    + deadline.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
-        }*/
 
         outputMsg += ")";
         return outputMsg;
