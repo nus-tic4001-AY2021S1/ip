@@ -2,13 +2,13 @@
 
 ## Design & implementation
 
-This product is an personal use project that helps user to keep track of his daily tasks.You can refer to [online website](https://linqing42.github.io/ip/DeveloperGuide.html).
+This product is an personal use project that helps user to keep track of his daily tasks.
 ## Design
 
 ### UML diagram 
 ![UML Diagram](images/IP.png) 
 
-### Storage method: Storage.saveTaskFile()
+### Todo method
 ![Sequence Diagram](images/Ip2.png)
 
 ### Ui picture
