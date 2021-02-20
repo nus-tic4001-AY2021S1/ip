@@ -6,13 +6,13 @@ This product is an personal use project that helps user to keep track of his dai
 ## Design
 
 ### UML diagram 
-![UML Diagram](imagesUML.png) 
+![UML Diagram](images/IP.png) 
 
 ### Storage method: Storage.saveTaskFile()
-![Sequence Diagram](https://github.com/linqing42/ip/blob/master/docs/sequenceDiagram.png)
+![Sequence Diagram](images/storage.png)
 
 ### Ui picture
-![Ui png](Ui.png)
+![Ui png](images/GUI.png)
 
 
 
