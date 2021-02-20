@@ -1,6 +1,8 @@
-import Task.Tasks;
-
 import java.util.Scanner;
+
+import task.Tasks;
+
+
 
 public class Ui {
     private Scanner scanner;
@@ -11,35 +13,40 @@ public class Ui {
             + "| |_| | |_| |   <  __/\n"
             + "|____/ \\__,_|_|\\_\\___|\n";
 
-    private final String greetMsg = " Hello! I'm Duke\n" + logo +"\n"+
-            " What can I do for you?";
+    private final String greetMsg = " Hello! I'm Duke\n" + logo + "\n"
+            + " What can I do for you?";
 
     private final String exitMsg = " Bye. Hope to see you again soon!";
-
 
     public Ui() {
         this.scanner = new Scanner(System.in);
     }
 
-    public String getCommand(){
-
+    public String getCommand() {
         return scanner.nextLine();
     }
 
-    public void print(String s){
+    public void print(String s) {
         System.out.println(s);
     }
 
-    public void printLine(){
+    public void printLine() {
         print("________________________________________________________");
     }
 
+    /**
+     * @param t new task
+     * @param tasks list of all the tasks
+     */
     public void printTask(Tasks t, TaskList tasks) {
         print("Got it. I've added this task:");
         print(t.toString());
         print("Now you have " + tasks.size() + " tasks in the list.");
     }
 
+    /**
+     * @param tasks list of all the tasks
+     */
     public void printTaskList(TaskList tasks) {
         int index = 1;
         for (Tasks task : tasks.getAllTaskList()) {
@@ -48,12 +55,11 @@ public class Ui {
         }
     }
 
-    public void printGreetMsg(){
+    public void printGreetMsg() {
         print(greetMsg);
     }
 
-    public void printExitMsg(){
+    public void printExitMsg() {
         print(exitMsg);
     }
-
 }

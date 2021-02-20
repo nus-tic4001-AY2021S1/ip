@@ -1,6 +1,6 @@
 # DUKE User Guide
 
-The DUKE is a Chatbot with Java-based Command Line Interface (CLI) to keep track user's daily tasks.  It has the following features:
+The DUKE is a Chatbot with Java-based command Line Interface (CLI) to keep track user's daily tasks.  It has the following features:
 
 
 # Feature 1

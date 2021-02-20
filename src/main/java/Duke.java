@@ -1,15 +1,25 @@
-import Task.Deadlines;
-import Task.Events;
-import Task.Tasks;
-import Task.ToDos;
-import Exceptions.DukeException;
-import Command.*;
-
 import java.io.IOException;
+
+import command.Command;
+import command.DeadlineCommand;
+import command.DeleteCommand;
+import command.DoneCommand;
+import command.EventCommand;
+import command.InvalidCommand;
+import exceptions.DukeException;
+import task.Deadlines;
+import task.Events;
+import task.Tasks;
+import task.ToDos;
+
+
+
+
 
 
 /**
- * This class implements the Duke chatbot that can interact with user, it can read from user inputs, give user outputs and save user inputs.
+ * This class implements the Duke chatbot that can interact with user,
+ * it can read from user inputs, give user outputs and save user inputs.
  */
 public class Duke {
 
@@ -17,12 +27,19 @@ public class Duke {
     private Storage storage;
     private TaskList tasks;
 
+
+    /**
+     * @param filepath the path of duke.txt file
+     */
     public Duke(String filepath) {
         this.ui = new Ui();
         this.storage = new Storage(filepath);
         this.tasks = new TaskList();
     }
 
+    /**
+     * @param args main method to run the program
+     */
     public static void main(String[] args) {
         new Duke("./data/duke.txt").run();
 
@@ -64,7 +81,8 @@ public class Duke {
             if (cmd instanceof InvalidCommand && cmd.getCommandType().equalsIgnoreCase("bye")) {
                 break;
             } else if (cmd instanceof InvalidCommand) {
-                ui.print(new DukeException("☹ OOPS!!! I'm sorry, I don't understand what are you trying to say").getMessage());
+                ui.print(new DukeException("☹ OOPS!!! I'm sorry, "
+                        + "I don't understand what are you trying to say").getMessage());
                 continue;
             }
 
@@ -83,39 +101,40 @@ public class Duke {
      */
     private void executeCommand(Command cmd, TaskList tasks) {
         switch (cmd.getCommandType()) {
-            case "list": {
-                ui.printTaskList(tasks);
-                break;
-            }
-            case "done":
-                changeTaskStatus(tasks, true, cmd);
-                updateDataFile(tasks);
-                break;
-            case "todo":
-                ToDos todo = new ToDos(cmd.getCommandContent());
-                tasks.add(todo);
-                ui.printTask(todo, tasks);
-                updateDataFile(tasks);
-                break;
-            case "deadline":
-                Deadlines ddl = new Deadlines(cmd.getCommandContent(), ((DeadlineCommand) cmd).getTime());
-                tasks.add(ddl);
-                ui.printTask(ddl, tasks);
-                updateDataFile(tasks);
-                break;
-            case "event":
-                Events event = new Events(cmd.getCommandContent(), ((EventCommand) cmd).getTime());
-                tasks.add(event);
-                ui.printTask(event, tasks);
-                updateDataFile(tasks);
-                break;
-            case "delete":
-                deleteTask(tasks, cmd);
-                updateDataFile(tasks);
-                break;
-            case "find":
-                findTask(tasks, cmd);
-                break;
+        case "list" :
+            ui.printTaskList(tasks);
+            break;
+        case "done":
+            changeTaskStatus(tasks, true, cmd);
+            updateDataFile(tasks);
+            break;
+        case "todo":
+            ToDos todo = new ToDos(cmd.getCommandContent());
+            tasks.add(todo);
+            ui.printTask(todo, tasks);
+            updateDataFile(tasks);
+            break;
+        case "deadline":
+            Deadlines ddl = new Deadlines(cmd.getCommandContent(), ((DeadlineCommand) cmd).getTime());
+            tasks.add(ddl);
+            ui.printTask(ddl, tasks);
+            updateDataFile(tasks);
+            break;
+        case "event":
+            Events event = new Events(cmd.getCommandContent(), ((EventCommand) cmd).getTime());
+            tasks.add(event);
+            ui.printTask(event, tasks);
+            updateDataFile(tasks);
+            break;
+        case "delete":
+            deleteTask(tasks, cmd);
+            updateDataFile(tasks);
+            break;
+        case "find":
+            findTask(tasks, cmd);
+            break;
+        default:
+            break;
         }
     }
 

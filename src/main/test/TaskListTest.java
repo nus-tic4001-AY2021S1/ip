@@ -1,9 +1,9 @@
 import org.junit.jupiter.api.Test;
 
-import Task.Tasks;
-import Task.ToDos;
-import Task.Deadlines;
-import Task.Events;
+import task.Tasks;
+import task.ToDos;
+import task.Deadlines;
+import task.Events;
 
 
 import java.util.ArrayList;

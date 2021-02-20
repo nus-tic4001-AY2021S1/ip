@@ -1,4 +1,4 @@
-package Command;
+package command;
 
 public abstract class Command {
     protected String type;
@@ -8,7 +8,7 @@ public abstract class Command {
         return content;
     }
 
-    public String getCommandType(){
+    public String getCommandType() {
         return type;
     }
 }

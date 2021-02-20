@@ -1,8 +1,12 @@
-package Task;
+package task;
 
-public class Deadlines extends Tasks{
+public class Deadlines extends Tasks {
     private String deadline;
 
+    /**
+     * @param description Deadline description
+     * @param deadline deadline timee
+     */
     public Deadlines(String description, String deadline) {
         super(description);
         super.type = "[D]";
