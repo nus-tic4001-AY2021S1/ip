@@ -1,10 +1,7 @@
 package duke;
 
-import java.time.LocalDate;
-
 public class ToDos extends Task {
 
-    //protected String by;
     protected String memo;
 
     public ToDos(String description) {
@@ -18,12 +15,13 @@ public class ToDos extends Task {
 
     @Override
     public String toString() {
-        //return "[T]" + super.toString() ;
+
+        String toDo = "[T]" + "[" + this.getStatusIcon() + "] " +  this.description;
+
         if (memo != null) {
-            return "[T]" + "[" + this.getStatusIcon() + "] " +  this.description
-                    + "(Memos : " + this.memo + ")";
+            return toDo + "(Memos : " + this.memo + ")";
         } else {
-            return "[T]" + "[" + this.getStatusIcon() + "] " +  this.description;
+            return toDo;
         }
 
     }

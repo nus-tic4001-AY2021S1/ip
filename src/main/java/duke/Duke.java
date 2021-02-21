@@ -18,7 +18,7 @@ public class Duke {
 
     public Duke() throws IOException, DukeException {
         ui = new Ui();
-        String filePath = "record.txt";
+        String filePath = "data/record.txt";
         storage = new Storage(filePath);
         try {
             tasks = new TaskList(storage.load());
@@ -54,11 +54,7 @@ public class Duke {
      * Replace this stub with your completed method.
      */
     String getResponse(String input) {
-
-        //String defaultReply = "Duke heard :\n";
-        //return "Duke heard: ";
         return  Parser.processInput(input, tasks.getTasksArr());
-
     }
 
 }

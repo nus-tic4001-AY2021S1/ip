@@ -13,14 +13,14 @@ import java.util.ArrayList;
  */
 public class Parser {
 
-    private static String input;
+    protected static String input;
 
     public Parser(String input) {
         this.input = input;
     }
 
     /**
-     * This method is to take action from validateCommand and then proecss the action accordingly.
+     * This method is to take action from validateCommand and then process the action accordingly.
      */
     public static String processInput(String input, ArrayList<Task> tasks) {
 
@@ -39,54 +39,47 @@ public class Parser {
             switch (action) {
             case List:
                 return Ui.printList(tasks);
-                //break;
 
             case Done:
                 markDone(command, tasks);
                 Storage.updateStatusToFile(tasks);
-                return "Marked as Done";
-                //break;
+                int index = Integer.parseInt(input.substring(input.indexOf(" ") + 1));
+                return Ui.replyMarkedDone(tasks, index);
 
             case AddTodo:
-                if (TaskList.isDuplicates(tasks, input) == false) {
+                if (!(TaskList.isDuplicates(tasks, input))) {
                     return TaskList.addTodo(tasks, input, count);
                 } else {
                     return Ui.duplicatedMsg();
                 }
-                //Storage.addToFile(tasks);
 
             case AddDeadlines:
-                if (TaskList.isDuplicates(tasks, input) == false) {
+                if (!(TaskList.isDuplicates(tasks, input))) {
                     return TaskList.addDeadlines(tasks, input, count);
                 } else {
                     return Ui.duplicatedMsg();
                 }
-                //Storage.addToFile(tasks);
 
             case AddEvents:
-                if (TaskList.isDuplicates(tasks, input) == false) {
+                if (!(TaskList.isDuplicates(tasks, input))) {
                     return TaskList.addEvents(tasks, input, count);
                 } else {
                     return Ui.duplicatedMsg();
                 }
 
-                //Storage.addToFile(tasks);
             case AddRecurringTasks:
-                if (TaskList.isDuplicates(tasks, input) == false) {
+                if (!(TaskList.isDuplicates(tasks, input))) {
                     return TaskList.addRecurringTasks(tasks, input, count);
                 } else {
                     return Ui.duplicatedMsg();
                 }
 
-
             case Delete:
                 TaskList.deleteTask(tasks, command);
-                return "Task Deleted";
-                //break;
+                return Global.PATTERNLINE + "\nTask Deleted\n" + Global.PATTERNLINE;
 
             case Find:
                 return Ui.findTask(command, tasks);
-
 
             case Bye:
                 Storage.writeToFile(tasks);
@@ -98,13 +91,12 @@ public class Parser {
 
             }
         } catch (Exception m) {
-            //System.out.println(m + Global.PATTERNLINE);
             return m + Global.PATTERNLINE;
         }
     }
 
     /**
-     * This method analysed and clasified the user input to Process input accordingly.
+     * This method analysed and classified the user input to Process input accordingly.
      * Any unknown command will be throw.
      */
     private static Action validateCommand(String command) throws DukeException {
@@ -132,8 +124,8 @@ public class Parser {
         }
     }
 
-    private static void markDone(String command, ArrayList<Task> tasks) {
-        int index = 0;
+    private static void markDone(String command, ArrayList<Task> tasks) throws DukeException {
+        int index;
 
         // If user input done1 instead of done 1
         if (command.contains(" ")) {
@@ -144,9 +136,10 @@ public class Parser {
 
         try {
             tasks.get(index - 1).markAsDone();
-            Ui.replyMarkedDone(tasks, index);
+            //Ui.replyMarkedDone(tasks, index);
         } catch (IndexOutOfBoundsException e) {
-            Ui.errIndexOutOfBoundsException();
+            String indexOutErrMsg = Global.PATTERNLINE + "\nFriend, You do not have so much task in the list\n";
+            throw new DukeException(indexOutErrMsg);
         }
 
     }
