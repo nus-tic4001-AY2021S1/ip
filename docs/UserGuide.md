@@ -266,8 +266,8 @@ It helps to handle error message that will guide the user.
 |--------|----------|---------------|
 |Help|help|help|
 |Todo|todo Description|todo read book|
-|Deadline|deadline Description /by dd/mm/yyyy HHmm |deadline return book /by 12/12/2021 1800| 
-|Event|event Description /at dd/mm/yyyy HHmm |event join club /at 11/12/2021 1300| 
+|Deadline|deadline Description /by dd/mm/yyyy HHmm|deadline return book /by 12/12/2021 1800| 
+|Event|event Description /at dd/mm/yyyy HHmm|event join club /at 11/12/2021 1300| 
 |List|list|list|
 |Find|find description_keyword[more_keywords]|find book|
 |Done|done INDEX|done 1|
