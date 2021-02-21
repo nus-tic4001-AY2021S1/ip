@@ -6,5 +6,5 @@ Jojo is a Java-based desktop chat-bot application that helps the users keep trac
 It comes with a Command Line Interface (CLI) and Graphical User Interface (GUI) that allows users to enter their commands.
 
 Useful links:
-* [User Guide](./UserGuide)
-* [Developer Guide](./DeveloperGuide)
+* [User Guide](UserGuide)
+* [Developer Guide](DeveloperGuide)
