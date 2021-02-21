@@ -17,8 +17,10 @@ import java.util.Scanner;
 import data.Deadline;
 import data.Event;
 import data.Task;
+import data.TaskList;
 import data.Todo;
 import exception.DukeException;
+import ui.Ui;
 
 public class Storage {
 
@@ -32,24 +34,25 @@ public class Storage {
         return filePath;
     }
 
+
     /**
      * load() extracts values from each line and creates tasks to be loaded for Duke.
+     *
      * @return loadedTasks
      * @throws FileNotFoundException
      * @throws DukeException
      * @throws NoSuchFileException
      */
-    public List<Task> load() throws FileNotFoundException, DukeException, NoSuchFileException {
-        List<Task> loadedTasks = new ArrayList<>();
+    public String load(TaskList list) {
 
         List<String> lines = getLines(this.filePath);
         for (String line : lines) {
             if (line.trim().isEmpty()) { //ignore empty lines
                 continue;
             }
-            loadedTasks.add(createTask(line)); //convert the line to a task and add to the list
+            list.addTask(createTask(line)); //convert the line to a task and add to the list
         }
-        return loadedTasks;
+        return String.format("Successfully loaded tasks from " + filePath);
     }
 
     /**
@@ -61,7 +64,7 @@ public class Storage {
      * @param line
      * @return Task
      */
-    private Task createTask(String line) throws DukeException {
+    private Task createTask(String line) {
         Task task = null;
         String[] s = line.split("\\|");
         if (s[0].trim().equals("T")) {
@@ -80,7 +83,7 @@ public class Storage {
                 task.setDone(true);
             }
         } else {
-            throw new DukeException("Error in creating a task from save file");
+            Ui.printError("Error in creating a task from save file");
         }
         return task;
     }
@@ -92,19 +95,20 @@ public class Storage {
      * @return ListString lines
      * @throws IOException
      */
-    private List<String> getLines(String filePath) throws DukeException {
+    private List<String> getLines(String filePath) {
         List<String> lines = new ArrayList<String>();
 
         try {
             lines = Files.readAllLines(Paths.get(filePath));
-        } catch (Exception e) {
-            throw new DukeException("Error in creating a task from save file");
+        } catch (IOException e) {
+            Ui.printError(e.getMessage());
         }
         return lines;
     }
 
     /**
      * Save the current list of tasks.
+     *
      * @param tasks
      * @throws DukeException
      */
@@ -124,36 +128,32 @@ public class Storage {
                 Files.writeString(path, task.save(), StandardCharsets.ISO_8859_1, StandardOpenOption.APPEND);
             }
         } catch (IOException e) {
-            throw new DukeException("Error when attempting save");
+            Ui.printError(e.getMessage());
         }
     }
 
     /**
-     *
+     * Saves the tasks to a file.
      * @param tasks
      * @throws DukeException
      */
-    public void saveBackup(List<Task> tasks) throws DukeException {
-
-        try {
-
-            FileWriter fw = new FileWriter(this.filePath);
-
-            // create a File for the given file path
-            File f = new File(this.filePath);
-
-            // create a Scanner using the File as the source
-            Scanner s = new Scanner(f);
-
-            for (Task task : tasks) {
-                if (s.hasNext()) {
-                    fw.write("\r\n");
-                }
-                fw.write(task.save());
-            }
-            fw.close();
-        } catch (IOException e) {
-            throw new DukeException("Error when attempting saveBackup");
-        }
-    }
+//    public void saveBackup(List<Task> tasks) throws DukeException {
+//
+//        try {
+//
+//            FileWriter fw = new FileWriter(this.filePath);
+//            File f = new File(this.filePath);
+//            Scanner s = new Scanner(f);
+//
+//            for (Task task : tasks) {
+//                if (s.hasNext()) {
+//                    fw.write("\r\n");
+//                }
+//                fw.write(task.save());
+//            }
+//            fw.close();
+//        } catch (IOException e) {
+//            Ui.printError(e.getMessage());
+//        }
+//    }
 }

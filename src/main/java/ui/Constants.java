@@ -14,7 +14,7 @@ public class Constants {
 
     //System.out.println("Hello from\n" + logo);
 
-    public static final String H_LINE = "____________________________________________________________";
+    public static final String H_LINE = "______________________________";
 
     public static final String GREETING = LOGO + "\n" + H_LINE + "\n" + "Hello I'm Duke :) What can I do for you ?"
             + "\n" + H_LINE + "\n";
@@ -79,4 +79,11 @@ public class Constants {
 
     public static final String EXIT_HELP_STATEMENT = "Type \"exit\" and press 'Enter' in order"
             + " to exit the Duke chatbot.";
+    public static final String HELP_MESSAGE = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n",
+            Constants.TODO, Constants.TODO_HELP_STATEMENT,
+            Constants.DEADLINE, Constants.DEADLINE_HELP_STATEMENT,
+            Constants.PRINT, Constants.PRINT_HELP_STATEMENT,
+            Constants.DONE, Constants.DONE_HELP_STATEMENT,
+            Constants.REMOVE, Constants.REMOVE_HELP_STATEMENT,
+            Constants.EXIT, Constants.EXIT_HELP_STATEMENT);
 }

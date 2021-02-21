@@ -36,6 +36,12 @@ public class MainWindow {
 
     public void setDuke(Duke d) {
         duke = d;
+        runDuke();
+    }
+
+    private void runDuke(){
+        showToUser(duke.displayWelcomeMsg());
+        showToUser(duke.loadTasksFromFile());
     }
 
     /**
@@ -46,11 +52,21 @@ public class MainWindow {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = getResponse(input);
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
-        );
+
+//        dialogContainer.getChildren().addAll(
+//                DialogBox.getUserDialog(input, userImage),
+//                DialogBox.getDukeDialog(response, dukeImage)
+//        );
+
+        showToUser(duke.run(input));
         userInput.clear();
+    }
+
+
+    public void showToUser(String msg){
+        dialogContainer.getChildren().addAll(
+                DialogBox.getDukeDialog(msg, dukeImage)
+        );
     }
 
     private String getResponse(String input) {
