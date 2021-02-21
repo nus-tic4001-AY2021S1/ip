@@ -1,3 +1,2 @@
-E|0|attend meeting 11111111|unknown date
 D|0|finish assign 1|2020-02-21
 E|0|attend meeting|2020-03-01
