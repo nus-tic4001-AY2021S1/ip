@@ -135,6 +135,14 @@ No action is needed from user.
 User need to enter 'list' to list all tasks loaded from data file
 ```  
 
+# Feature 10
+_To **View list of commands** 
+
+Example of usage:  
+```  
+help
+```  
+
 
 
 # Summary of features and commands
@@ -152,3 +160,4 @@ Below is the table to summarise the features and its relevant commands
 |7.              |Delete a task                  |`'delete'` +(task id)        |
 |8.              |Exit the program               |`'bye'`                      |
 |9.              |Auto load task or auto save task|no action is needed         |
+|10.             |Helps                          |`'help'`                     |
