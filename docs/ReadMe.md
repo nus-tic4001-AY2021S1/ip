@@ -9,4 +9,4 @@ Useful links:
 
 
 
-![Ui](docs/Ui.png)
+![Ui](Ui.png)
