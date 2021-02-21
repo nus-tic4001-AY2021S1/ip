@@ -1,0 +1,6 @@
+todo add book
+deadline return book /by tuesday
+event project meeting /at 2pm-5pm
+todo clear task
+list
+bye
