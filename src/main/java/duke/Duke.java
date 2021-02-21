@@ -10,10 +10,12 @@ import ui.Constants;
 import logic.Logic;
 import ui.Ui;
 
+import java.util.ArrayList;
+
 public class Duke {
     private Logic logic = new Logic();
     private Storage storage = new Storage("data/tasks.txt");
-    private TaskList tasks;
+    private TaskList tasks = new TaskList(new ArrayList<>());
     private Ui ui;
 
 
@@ -28,11 +30,13 @@ public class Duke {
         String commandWord = Parser.getCommandWord(fullCommand);
 
         logicResponse = logic.ProcessUserInput(fullCommand, commandWord, tasks);
+
         try {
             storage.save(tasks.getTasks());
         }catch(DukeException e){
             System.out.println(e.getMessage());
         }
+
         return logicResponse;
     }
 
