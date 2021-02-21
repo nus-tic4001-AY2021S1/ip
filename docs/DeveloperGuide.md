@@ -32,7 +32,7 @@ Project Duke will help to solve to tracking and managing tasks. It will involve 
 |v3.0|forgetful person|add the description to the task|know what is the task about|
 |v3.0|forgetful person|save my project in a txt file|keep a record for reference|
 |v3.0|forgetful person|delete my project| reduce the clutter|
-|v3.0|forgetful person|have a abbreviation and status of different types of task|have a quick look for each types of tasks| |
+|v3.0|forgetful person|have a abbreviation and status of different types of task|have a quick look for each types of tasks|
 |v3.0|forgetful person|show a total number of tasks|remind myself and have a timeframe for tasks|
 |v3.0|forgetful person|know the same description of different tasks|find a relevant task with relevant description|
 |v3.0|forgetful person|catch all input exceptions | ensure is valid input in send|
