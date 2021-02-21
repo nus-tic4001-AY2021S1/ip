@@ -34,7 +34,6 @@ Using Command Line
 - Finding all tasks containing any keyword: find
 - Deleting a task : delete
 - Mark as Done of a task: done
-- View details of a task : view
 - Exiting the program : bye
 - Loading the data
 - Saving the data
@@ -263,5 +262,16 @@ It helps to handle error message that will guide the user.
 
 ## Command Summary
 
-![image of Command Summary](Command Summary.PNG)
+|Action| Format | Examples |
+|--------|----------|---------------|
+|Help|help|help|
+|Todo|todo Description|todo read book|
+|Deadline|deadline Description /by dd/mm/yyyy HHmm|deadline return book /by 12/12/2021 1800| 
+|Event|event Description /at dd/mm/yyyy HHmm|event join club /at 11/12/2021 1300| 
+|List|list|list|
+|Find|find description_keyword[more_keywords]|find book|
+|Done|done INDEX|done 1|
+|Delete|delete INDEX|delete 1|
+|Exit|exit|exit|
+|Bye|bye|bye|
 
