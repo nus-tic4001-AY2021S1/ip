@@ -118,13 +118,13 @@ public class TaskList {
     public String markAsDone(String fullCommand) {
         try {
             int index = Integer.parseInt(fullCommand.substring("done".length()).trim());
-            assert index <= tasks.size() : "\nOOPS!!!Command number is invalid\n";
+            //assert index <= tasks.size() : "\nOOPS!!!Command number is invalid\n";
             //assert error when index bigger than tasks size.
             if (index <= tasks.size() && index > 0) {
                 tasks.get(index - 1).setDone(true);
                 return "\nTasks: " + index + " has marked as DONE.";
             } else {
-                return "\nOOPS!!!Marking as done range should be 1 to " + tasks.size();
+                return "\nOOPS!!!Marking as done range should be smaller than tasks size: " + tasks.size();
             }
         } catch (NumberFormatException e) {
             return "\nOOPS!!!markAsDone command not Integer!\n";
@@ -142,14 +142,14 @@ public class TaskList {
             StringBuilder output = new StringBuilder();
             if (index <= tasks.size() && index > 0) {
                 output.append("\nNoted. I've removed this task: \n" + "  ").append(tasks.get(index - 1));
-                output.append(tasks.remove(index - 1));
+                tasks.remove(index - 1);
                 output.append("\nNow you have ").append(tasks.size()).append(" tasks in the list.\n");
                 return String.valueOf(output);
             } else {
-                return "\nOOPS!!!:Deleting range should be 1 to " + tasks.size();
+                return "\nOOPS!!! Deleting range should be smaller than tasks size: " + tasks.size();
             }
         } catch (NumberFormatException e) {
-            return "\nOOPS!!!:Deleted command not Integer!\n";
+            return "\nOOPS!!! Deleted command not Integer!\n";
         }
     }
 
