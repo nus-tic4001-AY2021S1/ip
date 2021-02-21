@@ -44,6 +44,7 @@ dependencies {
     implementation 'org.testng:testng:6.14.3'
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     String jUnitVersion = '5.4.0'
+    String Shadow = '11'
     String javaFxVersion = '11'
 
     implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'win'

@@ -38,21 +38,10 @@ public class Ui {
      * @param t new task
      * @param tasks list of all the tasks
      */
-    public void printTask(Tasks t, TaskList tasks) {
-        print("Got it. I've added this task:");
-        print(t.toString());
-        print("Now you have " + tasks.size() + " tasks in the list.");
-    }
-
-    /**
-     * @param tasks list of all the tasks
-     */
-    public void printTaskList(TaskList tasks) {
-        int index = 1;
-        for (Tasks task : tasks.getAllTaskList()) {
-            print(index + "." + task.toString());
-            index++;
-        }
+    public String printTask(Tasks t, TaskList tasks) {
+        return "Got it. I've added this task:" + System.lineSeparator()
+                + t.toString() + System.lineSeparator()
+                + "Now you have " + tasks.size() + " tasks in the list.";
     }
 
     public void printGreetMsg() {

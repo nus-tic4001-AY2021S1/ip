@@ -1,4 +1,3 @@
-T|0|read books
-D|0|read some more book
-E|0|return all book
-T|0|go to supermarket
+E|0|attend meeting 11111111|unknown date
+D|0|finish assign 1|2020-02-21
+E|0|attend meeting|2020-03-01

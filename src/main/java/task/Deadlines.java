@@ -17,4 +17,13 @@ public class Deadlines extends Tasks {
     public String toString() {
         return super.toString() + "(by: " + deadline + ")";
     }
+
+    /**
+     * @return a string of task with index, description and status
+     */
+    @Override
+    public String saveToString() {
+        String doneStatus = isDone ? "1" : "0";
+        return type.charAt(1) + "|" + doneStatus + "|" + description + "|" + deadline;
+    }
 }

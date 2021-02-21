@@ -24,15 +24,15 @@ public class Storage {
      */
     public Storage(String path) {
         this.path = CURRENTWORKINGDIR + path;
-        this.f = new File(path);
+        this.f = new File(this.path);
     }
 
     /**
      * @param tasks List of tasks read from the file
-     * @throws IOException
-     * @throws DukeException
+     * @throws IOException any exception related to IO
+     * @throws DukeException defined exception
      */
-    public void loadFromFile(TaskList tasks) throws IOException, DukeException {
+    public void load(TaskList tasks) throws IOException, DukeException {
         if (f.exists()) {
             Scanner s = new Scanner(f);
             while (s.hasNext()) {
@@ -95,11 +95,10 @@ public class Storage {
 
     /**
      * @param tasks list of tasks that are going to be saved to the data file
-     * @throws IOException
+     * @throws IOException defined exception
      */
-    public void saveToFile(TaskList tasks) throws IOException {
+    public void save(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(path);
-
         Iterator<Tasks> i = tasks.iterator();
         while (i.hasNext()) {
             fw.write(i.next().saveToString());

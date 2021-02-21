@@ -18,4 +18,13 @@ public class Events extends Tasks {
         return super.toString() + "(at: " + eventDateTime + ")";
     }
 
+    /**
+     * @return a string of task with index, description and status
+     */
+    @Override
+    public String saveToString() {
+        String doneStatus = isDone ? "1" : "0";
+        return type.charAt(1) + "|" + doneStatus + "|" + description + "|" + eventDateTime;
+    }
+
 }

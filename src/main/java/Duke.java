@@ -13,182 +13,129 @@ import task.Tasks;
 import task.ToDos;
 
 
-
-
-
-
 /**
  * This class implements the Duke chatbot that can interact with user,
  * it can read from user inputs, give user outputs and save user inputs.
  */
 public class Duke {
 
+    static final String PATH = "/data/duke.txt";
+    static final String HELLO = " Hello! I'm Duke\n" + " What can I do for you?";
+    static final String BYE = " Bye. Hope to see you again soon!";
+
+
     private Ui ui;
     private Storage storage;
     private TaskList tasks;
 
-
     /**
-     * @param filepath the path of duke.txt file
+     * constructor
      */
-    public Duke(String filepath) {
+    public Duke() {
         this.ui = new Ui();
-        this.storage = new Storage(filepath);
+        this.storage = new Storage(PATH);
         this.tasks = new TaskList();
     }
 
-    /**
-     * @param args main method to run the program
-     */
-    public static void main(String[] args) {
-        new Duke("./data/duke.txt").run();
-
-    }
-
-    /**
-     * This method firstly print the greeting message to the user
-     * Then it will check if a data file is existed, if existed load the data file otherwise create a new data file
-     * Then it will parse user command to readable format and check if the commands are in the correct format
-     * Finally it will execute the user command and save changes to the data file
-     */
-    public void run() {
-
-        ui.printLine();
-        ui.printGreetMsg();
-        ui.printLine();
-
-        //Check if a data file is existed. If Existed, load the task from the data file, otherwise create a data file.
+    String loadFile() {
         try {
-            storage.loadFromFile(tasks);
+            storage.load(tasks);
+            return "Load data successfully.";
         } catch (DukeException | IOException e) {
-            System.out.println(e.getMessage());
+            return "Load data fails. Reason: " + e.getMessage();
         }
-
-        //Parse user command to readable format
-        while (true) {
-            String userInput = ui.getCommand();
-            Command cmd = null;
-            try {
-                cmd = Parser.getCommand(userInput);
-            } catch (DukeException e) {
-                ui.print(e.getMessage());
-                continue;
-            } catch (Exception e) {
-                ui.print("☹ OOPS!!! Please try again.");
-                continue;
-            }
-            //Check if user commands are in correct format
-            if (cmd instanceof InvalidCommand && cmd.getCommandType().equalsIgnoreCase("bye")) {
-                break;
-            } else if (cmd instanceof InvalidCommand) {
-                ui.print(new DukeException("☹ OOPS!!! I'm sorry, "
-                        + "I don't understand what are you trying to say").getMessage());
-                continue;
-            }
-
-            //Execute the user command and update teh data file whenever user makes any changes
-            executeCommand(cmd, tasks);
-        }
-
-        ui.printExitMsg();
-        ui.printLine();
-
     }
 
-    /**
-     * @param cmd   User inputs
-     * @param tasks A TaskList
-     */
-    private void executeCommand(Command cmd, TaskList tasks) {
+    private static String executeCommand(Command cmd, TaskList tasks, Ui ui) {
+        StringBuffer s = new StringBuffer();
         switch (cmd.getCommandType()) {
         case "list" :
-            ui.printTaskList(tasks);
-            break;
+            s.append("Here are the tasks in your list:" + System.lineSeparator());
+            listTasks(tasks, s);
+            return s.toString();
         case "done":
-            changeTaskStatus(tasks, true, cmd);
-            updateDataFile(tasks);
-            break;
+            changeTaskStatus(tasks, cmd, s);
+            return s.toString();
         case "todo":
             ToDos todo = new ToDos(cmd.getCommandContent());
             tasks.add(todo);
-            ui.printTask(todo, tasks);
-            updateDataFile(tasks);
-            break;
+            return ui.printTask(todo, tasks);
         case "deadline":
             Deadlines ddl = new Deadlines(cmd.getCommandContent(), ((DeadlineCommand) cmd).getTime());
             tasks.add(ddl);
-            ui.printTask(ddl, tasks);
-            updateDataFile(tasks);
-            break;
+            return ui.printTask(ddl, tasks);
         case "event":
             Events event = new Events(cmd.getCommandContent(), ((EventCommand) cmd).getTime());
             tasks.add(event);
-            ui.printTask(event, tasks);
-            updateDataFile(tasks);
-            break;
+            return ui.printTask(event, tasks);
         case "delete":
-            deleteTask(tasks, cmd);
-            updateDataFile(tasks);
-            break;
+            deleteTask(tasks, cmd, s);
+            return s.toString();
         case "find":
-            findTask(tasks, cmd);
-            break;
+            s.append("Here are the matching tasks in your list:" + System.lineSeparator());
+            findTask(tasks, cmd, s);
+            return s.toString();
         default:
-            break;
+            return "Nothing has been done, please try again.";
         }
     }
 
-    /**
-     * This method will mark task status to "Done"
-     *
-     * @param tasks  The task that need to be updated as "Done"
-     * @param status true is done, false is not done
-     * @param cmd    User Input
-     */
-    public void changeTaskStatus(TaskList tasks, boolean status, Command cmd) {
+    private static void changeTaskStatus(TaskList tasks, Command cmd, StringBuffer s) {
         int index = ((DoneCommand) cmd).getIndex();
-        tasks.get(index - 1).setTaskStatus(status);
-        ui.print("Nice! I've marked this task as done: ");
-        ui.print(tasks.get(index - 1).toString());
+        tasks.get(index - 1).setTaskStatus(true);
+        s.append("Cool! I've marked this task as done: " + System.lineSeparator());
+        s.append(tasks.get(index - 1).toString() + System.lineSeparator());
     }
 
-
-    /**
-     * @param tasks the task that need to be deleted
-     * @param cmd   user inputs
-     */
-    public void deleteTask(TaskList tasks, Command cmd) {
+    private static void deleteTask(TaskList tasks, Command cmd, StringBuffer s) {
         int index = ((DeleteCommand) cmd).getIndex();
-        ui.print(" Noted. I've removed this task:  ");
-        ui.print(tasks.get(index - 1).toString());
+        s.append("Noted. I've removed this task: " + System.lineSeparator());
+        s.append(tasks.get(index - 1).toString() + System.lineSeparator());
         tasks.remove(index - 1);
-        ui.print("Now you have " + tasks.size() + " task(s) in the list.");
-
+        s.append("Now you have " + tasks.size() + " task(s) in the list.");
     }
 
-    /**
-     * @param tasks the updated list of tasks that will be saved to the data file
-     */
-    public void updateDataFile(TaskList tasks) {
-        Storage storage = new Storage("/data/duke.txt");
-        try {
-            storage.saveToFile(tasks);
-        } catch (IOException e) {
-            ui.print("☹ OOPS!!!Update failed. Something went wrong when save data to the data file, please try again.");
-        }
-    }
-
-    /**
-     * @param tasks the list of all the tasks
-     * @param cmd   keywords used to search for the tasks
-     */
-    public void findTask(TaskList tasks, Command cmd) {
+    private static void findTask(TaskList tasks, Command cmd, StringBuffer s) {
         int i = 1;
-        ui.print("Here are the matching tasks in your list:");
         for (Tasks t : tasks.findTask(cmd.getCommandContent())) {
-            ui.print(i + "." + t.toString());
+            s.append(i + "." + t.toString() + System.lineSeparator());
             i++;
         }
     }
 
+    private static void listTasks(TaskList tasks, StringBuffer s) {
+        int i = 1;
+        for (Tasks t : tasks.getAllTaskList()) {
+            s.append(i + "." + t.toString() + System.lineSeparator());
+            i++;
+        }
+    }
+
+    String getResponse(String input) {
+        Command cmd = null;
+        String result = null;
+        try {
+            cmd = Parser.getCommand(input);
+        } catch (DukeException e) {
+            return e.getMessage();
+        } catch (Exception e) {
+            return "\u2639 OOPS!!! Unknown internal error occurs.";
+        }
+        if (cmd instanceof InvalidCommand && cmd.getCommandType().equalsIgnoreCase("bye")) {
+            return BYE;
+        } else if (cmd instanceof InvalidCommand) {
+            return new DukeException("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(").getMessage();
+        }
+        try {
+            result = executeCommand(cmd, tasks, ui);
+        } catch (Exception e) {
+            result = new DukeException("\u2639 OOPS!!! Unknown error occurs when process command.").getMessage();
+        }
+        try {
+            storage.save(tasks);
+        } catch (IOException e) {
+            return "\u2639 OOPS!!!Updating file is fail.";
+        }
+        return result;
+    }
 }
