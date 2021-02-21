@@ -1,20 +1,13 @@
-# User Guide
+# Duke
 
-## Features 
+It is an application for managing tasks. Also it has a Graphical User Interface (GUI) for user to enter command.
 
-### Feature 1 
-Description of feature.
+![Ui](Ui.png)
+![Ui2](./images/Ui_2.png)
+![Ui3](./images/Ui_3.png)
 
-## Usage
 
-### `Keyword` - Describe action
-
-Describe action and its outcome.
-
-Example of usage: 
-
-`keyword (optional arguments)`
-
-Expected outcome:
-
-`outcome`
+Useful links:
+* [User Guide](UserGuide.md)
+* [Developer Guide](DeveloperGuide.md)
+* [Screenshots](images)
