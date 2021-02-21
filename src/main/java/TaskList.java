@@ -26,7 +26,7 @@ public class TaskList {
         return taskList.iterator();
     }
 
-    public ArrayList<Tasks> getAllTaskList() {
+    public ArrayList<Tasks> getTaskList() {
         return this.taskList;
     }
 

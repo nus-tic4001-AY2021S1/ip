@@ -40,7 +40,7 @@ public class Storage {
                 String[] taskDetail = line.split("\\|");
                 String taskDate = "unknown date";
                 String taskType = taskDetail[0];
-                boolean taskStatus = checkStatus(taskDetail[1]);
+                boolean taskStatus = checkTaskStatus(taskDetail[1]);
                 String taskDescription = taskDetail[2];
                 if (taskDetail.length == 4) {
                     taskDate = taskDetail[3];
@@ -65,7 +65,7 @@ public class Storage {
                 }
             }
         } else {
-            createDataFile(path);
+            createFile(path);
         }
     }
 
@@ -88,7 +88,7 @@ public class Storage {
     }
 
 
-    private static boolean checkStatus(String content) {
+    private static boolean checkTaskStatus(String content) {
         return content.equalsIgnoreCase("1");
     }
 
@@ -107,7 +107,7 @@ public class Storage {
         fw.close();
     }
 
-    private static void createDataFile(String path) throws IOException {
+    private static void createFile(String path) throws IOException {
         String folderPath = CURRENTWORKINGDIR + "/data";
         File folder = new File(folderPath);
         if (!folder.exists() && !folder.isDirectory()) {

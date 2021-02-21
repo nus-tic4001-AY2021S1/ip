@@ -107,7 +107,7 @@ public class Duke {
 
     private static void listTasks(TaskList tasks, StringBuffer s) {
         int i = 1;
-        for (Tasks t : tasks.getAllTaskList()) {
+        for (Tasks t : tasks.getTaskList()) {
             s.append(i + "." + t.toString() + System.lineSeparator());
             i++;
         }
