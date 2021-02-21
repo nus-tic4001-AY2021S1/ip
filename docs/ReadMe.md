@@ -5,9 +5,9 @@ Duke is a Java-based desktop app that helps the users keep track of the tasks th
 Useful links:
 * [User Guide](https://github.com/linqing42/ip/blob/master/docs/UserGuide.md)
 * [Developer Guide](https://github.com/linqing42/ip/blob/master/docs/DeveloperGuide.md)
-* [User Guide](website version)(https://linqing42.github.io/ip/UserGuide.html)
-* [Developer Guide](website version)(https://linqing42.github.io/ip/DeveloperGuide.html)
-* [Ui.png](website version)(https://linqing42.github.io/ip/Ui.png)
+* [User Guide-website](https://linqing42.github.io/ip/UserGuide.html)
+* [Developer Guide-website](https://linqing42.github.io/ip/DeveloperGuide.html)
+* [Ui.png-website](https://linqing42.github.io/ip/Ui.png)
 
 
 
