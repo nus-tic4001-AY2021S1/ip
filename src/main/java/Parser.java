@@ -7,6 +7,7 @@ import command.DeleteCommand;
 import command.DoneCommand;
 import command.EventCommand;
 import command.FindCommand;
+import command.HelpCommand;
 import command.InvalidCommand;
 import command.ListCommand;
 import command.TodoCommand;
@@ -90,6 +91,8 @@ public class Parser {
             }
         case "find":
             return new FindCommand(userInput.substring(5));
+        case "help":
+            return new HelpCommand();
         default:
             return new InvalidCommand(cmd[0]);
         }

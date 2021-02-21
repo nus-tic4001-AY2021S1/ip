@@ -73,7 +73,9 @@ public class Duke {
             return s.toString();
         case "find":
             s.append("Here are the matching tasks in your list:" + System.lineSeparator());
-            findTask(tasks, cmd, s);
+            return s.toString();
+        case "help":
+            printHelpInfor(s);
             return s.toString();
         default:
             return "Nothing has been done, please try again.";
@@ -111,6 +113,21 @@ public class Duke {
         }
     }
 
+    private static void printHelpInfor(StringBuffer s) {
+        String help = "Below is the table to summarise the features and its relevant commands:\n"
+                + " - 1. Add a todo task: todo + task name \n"
+                + " - 2. Add a deadline task: deadline + (task name)+  /by + (date) \n"
+                + " - 3. Add an event task: event + (task name) +  /at + (date)  \n"
+                + " - 4. List all tasks: list \n"
+                + " - 5. Set task status as completed: done + (task id) \n"
+                + " - 6.  Find (search) tasks: find + (key word) \n"
+                + " - 7. Delete a task: delete + (task id) \n"
+                + " - 8. Exit the program: bye \n"
+                + " - 9. Help: Help \n"
+                + "*More help information, please visit https://yiheng0410.github.io/ip/)\n";
+        s.append(help);
+    }
+
     String getResponse(String input) {
         Command cmd = null;
         String result = null;
@@ -119,22 +136,22 @@ public class Duke {
         } catch (DukeException e) {
             return e.getMessage();
         } catch (Exception e) {
-            return "\u2639 OOPS!!! Unknown internal error occurs.";
+            return "OOPS!!! Unknown internal error occurs.";
         }
         if (cmd instanceof InvalidCommand && cmd.getCommandType().equalsIgnoreCase("bye")) {
             return BYE;
         } else if (cmd instanceof InvalidCommand) {
-            return new DukeException("\u2639 OOPS!!! I'm sorry, but I don't know what that means :-(").getMessage();
+            return new DukeException("OOPS!!! I'm sorry, please enter a valid command:-(").getMessage();
         }
         try {
             result = executeCommand(cmd, tasks, ui);
         } catch (Exception e) {
-            result = new DukeException("\u2639 OOPS!!! Unknown error occurs when process command.").getMessage();
+            result = new DukeException("OOPS!!! Unknown error occurs when process command.").getMessage();
         }
         try {
             storage.save(tasks);
         } catch (IOException e) {
-            return "\u2639 OOPS!!!Updating file is fail.";
+            return "OOPS!!!Updating file is fail.";
         }
         return result;
     }

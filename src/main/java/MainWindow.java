@@ -22,8 +22,8 @@ public class MainWindow extends AnchorPane {
 
     private Duke duke;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/User1.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/User2.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/user.png"));
+    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/duke.jpg"));
 
     /**
      * Initialize the required parameters by MainWindow
@@ -43,7 +43,7 @@ public class MainWindow extends AnchorPane {
      */
     private void introMessage() {
         dialogContainer.getChildren().addAll(
-                DialogBox.getDukeDialog("Welcome!", dukeImage)
+                DialogBox.getDukeDialog("Welcome, I'm Duke!", dukeImage)
         );
     }
 
