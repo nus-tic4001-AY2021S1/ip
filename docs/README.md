@@ -1,20 +1,10 @@
-# User Guide
+# The Duke Who Manages Tasks
 
-## Features 
+A Personal Assistant Chatbot that helps a person to keep track of various things. It's named after the Java mascot _Duke_, with a medieval theme added to it.
 
-### Feature 1 
-Description of feature.
+Useful links:
+* [User Guide](https://github.com/Impala36/ip/blob/master/docs/UserGuide.md)
+* [User Guide (Website version)](https://impala36.github.io/ip/)
+* [Developer Guide](https://github.com/Impala36/ip/blob/master/docs/DeveloperGuide.md)
 
-## Usage
-
-### `Keyword` - Describe action
-
-Describe action and its outcome.
-
-Example of usage: 
-
-`keyword (optional arguments)`
-
-Expected outcome:
-
-`outcome`
+![GUI](Ui.png)
