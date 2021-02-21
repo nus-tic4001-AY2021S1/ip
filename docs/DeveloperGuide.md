@@ -6,10 +6,10 @@ This product is an educational software project that helps user to keep track of
 ## Design
 
 ### UML diagram 
-[UML Diagram](https://github.com/linqing42/ip/blob/master/docs/UML.png) 
+![UML Diagram](UML.png) 
 
 ### Storage method: Storage.saveTaskFile()
-[Sequence Diagram](https://github.com/linqing42/ip/blob/master/docs/sequenceDiagram.png)
+![Sequence Diagram](sequenceDiagram.png)
 
 
 ## Product scope
