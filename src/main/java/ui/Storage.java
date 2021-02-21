@@ -30,7 +30,7 @@ public class Storage {
     }
 
     public static void createFile() throws IOException, DukeException {
-        File f = new File("ip/record.txt");
+        File f = new File("ip/data/record.txt");
         boolean result = f.createNewFile();
         if (!result) {
             throw new DukeException("File Not Found");

@@ -1,6 +1,6 @@
 [D][✓] submit ip (by: Sep 20 2020 09:00)
 [E][✘] submit ip (at: 28 Sept 2020 09:00-10:00)
-[E][✘] meeting (at: 1600-1700 )
+[E][✓] meeting (at: 1600-1700 )
 [E][✓] texts (at: Yishun)
 [E][✘] textss (at: Tan's House /memo bring hampers)
 [E][✘] text Tan (at: office ) (Memos : about CNY)
@@ -24,3 +24,11 @@
 weekly - submit iip
 [T][✘] adding
 [T][✘] looping(Memos : jump)
+[T][✘] thinking
+[D][✘] submit ppt (by: Feb 21 2021 14:00)
+[E][✘] submit hardcopy (at: NUS Com-2) (Memos : TIC4003 )
+weekly - submit form /memo 3 Forms
+weekly - need to complete
+weekly - goal 
+weekly - soccer (Memos :  hint)
+[T][✘] submit Assignment 

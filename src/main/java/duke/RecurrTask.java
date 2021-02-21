@@ -20,7 +20,11 @@ public class RecurrTask extends Task {
 
     @Override
     public String toString() {
-        //return "[E]" + "[" + this.getStatusIcon() + "] " +  this.description + " (at: " + on + ")";
-        return type + " - " + this.description;
+        if(memo != null) {
+            return type + " - " + this.description + " (Memos :" + this.memo + ")";
+        } else {
+            return type + " - " + this.description;
+        }
+
     }
 }

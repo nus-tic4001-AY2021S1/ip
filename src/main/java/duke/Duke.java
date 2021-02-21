@@ -18,7 +18,7 @@ public class Duke {
 
     public Duke() throws IOException, DukeException {
         ui = new Ui();
-        String filePath = "record.txt";
+        String filePath = "data/record.txt";
         storage = new Storage(filePath);
         try {
             tasks = new TaskList(storage.load());

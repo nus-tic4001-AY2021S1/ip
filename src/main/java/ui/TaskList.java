@@ -169,7 +169,7 @@ public class TaskList {
             int indexS = input.indexOf(" ");
             int indexM = input.indexOf("/memo");
             String taskType = input.substring(0, indexS);
-            String taskName = input.substring(indexS + 1);
+            String taskName = input.substring(indexS + 1, indexM - 1);
             String memo = input.substring(indexM + 5);
             tasks.add(new RecurrTask(taskName, taskType, memo));
             return Ui.replyLine(tasks, input, count);
