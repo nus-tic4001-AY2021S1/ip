@@ -20,7 +20,7 @@ public class RecurrTask extends Task {
 
     @Override
     public String toString() {
-        if(memo != null) {
+        if (memo != null) {
             return type + " - " + this.description + " (Memos :" + this.memo + ")";
         } else {
             return type + " - " + this.description;
