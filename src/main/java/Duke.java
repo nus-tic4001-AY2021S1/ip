@@ -20,7 +20,6 @@ import task.ToDos;
 public class Duke {
 
     static final String PATH = "/data/duke.txt";
-    static final String HELLO = " Hello! I'm Duke\n" + " What can I do for you?";
     static final String BYE = " Bye. Hope to see you again soon!";
 
 
