@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import data.Task;
-import ui.Constants;
+
 
 public class Ui {
 
@@ -40,16 +40,17 @@ public class Ui {
                 tasksList = tasksList + " " + i + "." + "[T] " + t + "\n";
 
             } else if (t.getClass().toString().contains("Deadline")) {
-                tasksList = tasksList + " " +i + "." + "[D] " + t+ "\n";
+                tasksList = tasksList + " " + i + "." + "[D] " + t + "\n";
 
 
             } else {
-                tasksList = tasksList + " " +i + "." + "[E] " + t+ "\n";
+                tasksList = tasksList + " " + i + "." + "[E] " + t + "\n";
 
             }
             i++;
         }
-        return String.format(Constants.DISPLAY_TASK_LIST + "\n" + Constants.H_LINE + "\n" + tasksList +"\n" + Constants.H_LINE);
+        return String.format(Constants.DISPLAY_TASK_LIST + "\n" + Constants.H_LINE + "\n" + tasksList + "\n"
+                + Constants.H_LINE);
     }
 
     /**
@@ -93,7 +94,8 @@ public class Ui {
      * @param type
      */
     public static String printTask(Task task, Constants.TaskDisplayType type) {
-        String output = "", dukeResponse = "";
+        String output = "";
+        String dukeResponse = "";
 
         if (type.equals(Constants.TaskDisplayType.DONE)) {
             dukeResponse = Constants.ACKNOWLEDGEMENT_AS_DONE;

@@ -6,6 +6,7 @@ public class Constants {
         DONE,
         UNDONE
     }
+
     public static final String LOGO = " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"
             + "| | | | | | | |/ / _ \\\n"
@@ -79,7 +80,8 @@ public class Constants {
 
     public static final String EXIT_HELP_STATEMENT = "Type \"exit\" and press 'Enter' in order"
             + " to exit the Duke chatbot.";
-    public static final String HELP_MESSAGE = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n",
+    public static final String HELP_MESSAGE = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n"
+                    + "\n%-15s%s\n",
             Constants.TODO, Constants.TODO_HELP_STATEMENT,
             Constants.DEADLINE, Constants.DEADLINE_HELP_STATEMENT,
             Constants.PRINT, Constants.PRINT_HELP_STATEMENT,
