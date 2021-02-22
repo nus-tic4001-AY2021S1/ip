@@ -1,14 +1,13 @@
 package controllers;
 
+import duke.Duke;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-import duke.Duke;
 /**
  * Controller for MainWindow. Provides the layout for the other controls.
  */
@@ -39,7 +38,7 @@ public class MainWindow {
         runDuke();
     }
 
-    private void runDuke(){
+    private void runDuke() {
         showToUser(duke.displayWelcomeMsg());
         showToUser(duke.loadTasksFromFile());
     }
@@ -53,17 +52,20 @@ public class MainWindow {
         String input = userInput.getText();
         String response = getResponse(input);
 
-//        dialogContainer.getChildren().addAll(
-//                DialogBox.getUserDialog(input, userImage),
-//                DialogBox.getDukeDialog(response, dukeImage)
-//        );
+        //   dialogContainer.getChildren().addAll(
+        //       DialogBox.getUserDialog(input, userImage),
+        //       DialogBox.getDukeDialog(response, dukeImage)
+        //        );
 
         showToUser(duke.run(input));
         userInput.clear();
     }
 
-
-    public void showToUser(String msg){
+    /**
+     * Takes in a string and outputs it to the dialogbox to display to the user.
+     * @param msg
+     */
+    public void showToUser(String msg) {
         dialogContainer.getChildren().addAll(
                 DialogBox.getDukeDialog(msg, dukeImage)
         );

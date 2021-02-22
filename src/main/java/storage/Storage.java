@@ -1,6 +1,5 @@
 package storage;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -11,7 +10,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
-
 
 import data.Deadline;
 import data.Event;
@@ -130,29 +128,4 @@ public class Storage {
             Ui.printError(e.getMessage());
         }
     }
-
-    /**
-     * Saves the tasks to a file.
-     * @param tasks
-     * @throws DukeException
-     */
-    //    public void saveBackup(List<Task> tasks) throws DukeException {
-    //
-    //        try {
-    //
-    //            FileWriter fw = new FileWriter(this.filePath);
-    //            File f = new File(this.filePath);
-    //            Scanner s = new Scanner(f);
-    //
-    //            for (Task task : tasks) {
-    //                if (s.hasNext()) {
-    //                    fw.write("\r\n");
-    //                }
-    //                fw.write(task.save());
-    //            }
-    //            fw.close();
-    //        } catch (IOException e) {
-    //            Ui.printError(e.getMessage());
-    //        }
-    //    }
 }

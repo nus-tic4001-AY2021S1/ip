@@ -1,16 +1,14 @@
 package duke;
 
+import java.util.ArrayList;
+
 import data.TaskList;
 import exception.DukeException;
-
+import logic.Logic;
 import parser.Parser;
 import storage.Storage;
-
 import ui.Constants;
-import logic.Logic;
 import ui.Ui;
-
-import java.util.ArrayList;
 
 public class Duke {
     private Logic logic = new Logic();
@@ -29,21 +27,15 @@ public class Duke {
         String fullCommand = userInput;
         String commandWord = Parser.getCommandWord(fullCommand);
 
-        logicResponse = logic.ProcessUserInput(fullCommand, commandWord, tasks);
+        logicResponse = logic.processUserInput(fullCommand, commandWord, tasks);
 
         try {
             storage.save(tasks.getTasks());
-        }catch(DukeException e){
+        } catch (DukeException e) {
             System.out.println(e.getMessage());
         }
-
         return logicResponse;
     }
-
-
-//    public static void main(String[] args) {
-//        new Duke("data/tasks.txt").run();
-//    }
 
     public String displayWelcomeMsg() {
         return String.format(Constants.GREETING);
