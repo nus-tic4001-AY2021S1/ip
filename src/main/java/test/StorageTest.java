@@ -24,7 +24,8 @@ public class StorageTest {
         tasks.add(new Deadline("Task 2", "Tuesday 4PM"));
         storage.save(tasks);
 
-        TaskList tasksList = new TaskList(storage.load());
+        TaskList tasksList = new TaskList(new ArrayList<Task>());
+        storage.load(tasksList);
 
         String[] tasksFromFile = tasksList.getDescription().split("\\|");
         System.out.println(tasksList.getDescription());

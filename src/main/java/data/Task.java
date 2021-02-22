@@ -7,11 +7,22 @@ public abstract class Task {
     public Task() {
     }
 
+    /**
+     * Task Constructor.
+     * @param description
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
     }
 
+    /**
+     * Return a check mark or cross.
+     * @return
+     */
+    public String getTaskStatus() {
+        return (isDone ? "\u2713" : "\u2718");
+    }
 
     public String getDescription() {
         return description;
@@ -34,7 +45,7 @@ public abstract class Task {
     }
 
     public String toString() {
-        return String.format("%s", this.getDescription());
+        return String.format("["+ this.getTaskStatus() +"] %s", this.getDescription());
     }
 
     public String save() {

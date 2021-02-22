@@ -1,10 +1,5 @@
 package data;
 
-import data.Task;
-import duke.Duke;
-import exception.DukeException;
-import ui.Constants;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +32,9 @@ public class TaskList {
         this.tasks.add(task);
     }
 
+    /**
+     * Prints the list of tasks.
+     */
     public void printTasks() {
         System.out.println("Tasks:");
         int i = 1;
@@ -68,11 +66,16 @@ public class TaskList {
      *
      * @param fullCommand
      */
-    public void removeTask(String fullCommand){
-            int index = Integer.parseInt(fullCommand.substring("remove".length()).trim());
-            tasks.remove(index - 1);
+    public void removeTask(String fullCommand) {
+        int index = Integer.parseInt(fullCommand.substring("remove".length()).trim());
+        tasks.remove(index - 1);
     }
 
+    /**
+     *
+     * @param keyword
+     * @return
+     */
     public List<Task> findTasks(String keyword) {
         List<Task> foundTasks = new ArrayList<>();
         for (Task task : this.tasks) {

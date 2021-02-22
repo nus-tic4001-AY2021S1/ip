@@ -1,8 +1,10 @@
 package ui;
+
 import java.util.List;
 import java.util.Scanner;
 
 import data.Task;
+import ui.Constants;
 
 public class Ui {
 
@@ -25,56 +27,39 @@ public class Ui {
         return in.nextLine().trim();
     }
 
-    public void endInputFeed() {
-        in.close();
-    }
-
-    /**
-     * Prints "Welcome to Duke".
-     */
-    public static void printWelcome() {
-        System.out.print(Constants.GREETING);
-    }
-
-    /**
-     * Prints Farewell message
-     */
-    public static void printGoodBye() {
-        System.out.println(Constants.FAREWELL);
-    }
-
     /**
      * Prints each task with formatting.
+     *
      * @param tasks
      */
-    public void printTasks(List<Task> tasks) {
-        System.out.println(Constants.H_LINE);
-        System.out.println(Constants.DISPLAY_TASK_LIST);
+    public static String printTasks(List<Task> tasks) {
+        String tasksList = "";
         int i = 1;
         for (Task t : tasks) {
             if (t.getClass().toString().contains("Todo")) {
-                System.out.println(i + "." + "[T] " + t);
-
+                tasksList = tasksList + " " + i + "." + "[T] " + t + "\n";
 
             } else if (t.getClass().toString().contains("Deadline")) {
-                System.out.println(i + "." + "[D] " + t);
+                tasksList = tasksList + " " +i + "." + "[D] " + t+ "\n";
 
 
             } else {
-                System.out.println(i + "." + "[E] " + t);
+                tasksList = tasksList + " " +i + "." + "[E] " + t+ "\n";
 
             }
             i++;
         }
+        return String.format(Constants.DISPLAY_TASK_LIST + "\n" + Constants.H_LINE + "\n" + tasksList +"\n" + Constants.H_LINE);
     }
 
     /**
      * Print the tasks with formatting for searched tasks.
+     *
      * @param tasks
      */
     public void printFoundTasks(List<Task> tasks) {
         System.out.println(Constants.H_LINE);
-        System.out.println(Constants.FOUND_MATCHING_TASKS);
+
         int i = 1;
         for (Task t : tasks) {
             if (t.getClass().toString().contains("Todo")) {
@@ -95,42 +80,42 @@ public class Ui {
 
     /**
      * Prints the number of tasks.
+     *
      * @param taskListSize
      */
-    public static void printNumberOfTasks(int taskListSize) {
+    public static String printNumberOfTasks(int taskListSize) {
         //return "Tasks in the list: " + tasks.size();
-        System.out.println(String.format(Constants.NUMBER_OF_TASKS, taskListSize));
+        return String.format(Constants.NUMBER_OF_TASKS, taskListSize);
     }
 
     /**
-     *
      * @param task
      * @param type
      */
-    public void printTask(Task task, Constants.TaskDisplayType type) {
-        System.out.println(Constants.H_LINE);
+    public static String printTask(Task task, Constants.TaskDisplayType type) {
+        String output = "", dukeResponse = "";
 
         if (type.equals(Constants.TaskDisplayType.DONE)) {
-            System.out.println(Constants.ACKNOWLEDGEMENT_AS_DONE);
+            dukeResponse = Constants.ACKNOWLEDGEMENT_AS_DONE;
 
         } else if (type.equals(Constants.TaskDisplayType.ADD)) {
-            System.out.println(Constants.ACKNOWLEDGEMENT);
+            dukeResponse = Constants.ACKNOWLEDGEMENT;
 
         } else {
-            System.out.println(Constants.ACKNOWLEDGEMENT_AS_UNDONE);
+            dukeResponse = Constants.ACKNOWLEDGEMENT_AS_UNDONE;
         }
 
         if (task.getClass().toString().contains("Todo")) {
-            System.out.println("[T] " + task);
+            output = String.format(dukeResponse + "\n" + "[T] " + task);
 
         } else if (task.getClass().toString().contains("Deadline")) {
-            System.out.println("[D] " + task);
+            output = String.format(dukeResponse + "\n" + "[D] " + task);
 
         } else {
-            System.out.println("[E] " + task);
+            output = String.format(dukeResponse + "\n" + "[E] " + task);
         }
+        return output;
     }
-
 
     /**
      * Displays to user the message passed in.(Line by line)
@@ -156,22 +141,7 @@ public class Ui {
      *
      * @param message
      */
-    public static void printError(String message) {
-        System.out.println(message);
-    }
-
-    /**
-     * Prints the help message.
-     */
-    public static void helpMessage() {
-        String helpMessage = String.format("\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n\n%-15s%s\n",
-                Constants.TODO, Constants.TODO_HELP_STATEMENT,
-                Constants.DEADLINE, Constants.DEADLINE_HELP_STATEMENT,
-                Constants.PRINT, Constants.PRINT_HELP_STATEMENT,
-                Constants.DONE, Constants.DONE_HELP_STATEMENT,
-                Constants.REMOVE, Constants.REMOVE_HELP_STATEMENT,
-                Constants.EXIT, Constants.EXIT_HELP_STATEMENT);
-
-        System.out.println(helpMessage);
+    public static String printError(String message) {
+        return message;
     }
 }
