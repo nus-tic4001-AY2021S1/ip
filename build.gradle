@@ -44,7 +44,7 @@ test {
 }
 
 application {
-    mainClassName = "Duke.Duke"
+    mainClassName = "Duke.Launcher"
 }
 
 shadowJar {
@@ -58,7 +58,7 @@ checkstyle {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'duke.Launcher'
+        attributes 'Main-Class': 'Duke.Launcher'
     }
 }
 
