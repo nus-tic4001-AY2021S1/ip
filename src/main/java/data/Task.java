@@ -45,7 +45,7 @@ public abstract class Task {
     }
 
     public String toString() {
-        return String.format("["+ this.getTaskStatus() +"] %s", this.getDescription());
+        return String.format("[" + this.getTaskStatus() + "] %s", this.getDescription());
     }
 
     public String save() {
