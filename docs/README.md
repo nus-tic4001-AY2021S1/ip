@@ -1,20 +1,9 @@
-# User Guide
+Duke is an education project.
+This application has a GUI that can allow user to manage task.
 
-## Features 
+NUS TIC4002 iP submission
 
-### Feature 1 
-Description of feature.
+Useful links:
+* [User Guide](UserGuide.md)
+* [Developer Guide](DeveloperGuide.md)
 
-## Usage
-
-### `Keyword` - Describe action
-
-Describe action and its outcome.
-
-Example of usage: 
-
-`keyword (optional arguments)`
-
-Expected outcome:
-
-`outcome`
