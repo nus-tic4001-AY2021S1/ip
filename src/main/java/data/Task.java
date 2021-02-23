@@ -3,6 +3,7 @@ package data;
 public abstract class Task {
     protected String description;
     protected boolean isDone;
+    protected String tag;
 
     public Task() {
     }
@@ -14,6 +15,7 @@ public abstract class Task {
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        this.tag = "";
     }
 
     /**
@@ -36,6 +38,18 @@ public abstract class Task {
         this.description = description;
     }
 
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public void unTag() {
+        this.tag = "";
+    }
+
+    public String getTag() {
+        return this.tag;
+    }
+
     public boolean completionStatus() {
         return isDone;
     }
@@ -44,11 +58,18 @@ public abstract class Task {
         this.isDone = done;
     }
 
+
+    /**
+     * toString provides the implementation to print the object Task.
+     * @return
+     */
     public String toString() {
-        return String.format("[" + this.getTaskStatus() + "] %s", this.getDescription());
+        String s;
+        s = this.tag.isBlank() ? "" : "#" + this.tag;
+        return String.format("[" + this.getTaskStatus() + "] %s " + s, this.getDescription());
     }
 
     public String save() {
-        return this.getDescription();
+        return this.getDescription().trim();
     }
 }

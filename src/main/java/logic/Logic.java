@@ -102,6 +102,40 @@ public class Logic {
             }
             break;
 
+        case "TAG":
+
+            try {
+                int index = fullCommand.indexOf("#");
+                boolean moreThanOnce = index != -1 && index != fullCommand.lastIndexOf("#");
+
+                if (!moreThanOnce) {
+
+                    list.setTaskTag(Parser.parseTagTaskDescription(fullCommand), Parser.parseTagTaskNum(fullCommand));
+
+                    response = Ui.printTask(list.getTasks().get(Parser.parseTagTaskNum(fullCommand) - 1),
+                            Constants.TaskDisplayType.TAGGED);
+                } else {
+
+                    response = Constants.INVALID_TAG_COMMAND_FORMAT;
+                }
+            } catch (IndexOutOfBoundsException idxE) {
+                response = Constants.INVALIDIDXINPUT + "\n";
+            }
+            break;
+
+        case "UNTAG":
+            try {
+                list.removeTaskTag(Parser.parseTagTaskNum(fullCommand));
+
+                response = Ui.printTask(list.getTasks().get(Parser.parseTagTaskNum(fullCommand) - 1),
+                        Constants.TaskDisplayType.UNTAGGED);
+
+            } catch (IndexOutOfBoundsException idxE) {
+
+                response = Constants.INVALIDIDXINPUT + "\n";
+            }
+            break;
+
         case "SAVE":
             response = Ui.printNumberOfTasks(TaskList.getNumberOfTasks());
             break;

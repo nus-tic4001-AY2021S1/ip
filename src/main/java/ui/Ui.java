@@ -97,14 +97,30 @@ public class Ui {
         String output = "";
         String dukeResponse = "";
 
-        if (type.equals(Constants.TaskDisplayType.DONE)) {
+        switch(type) {
+
+        case DONE:
             dukeResponse = Constants.ACKNOWLEDGEMENT_AS_DONE;
+            break;
 
-        } else if (type.equals(Constants.TaskDisplayType.ADD)) {
-            dukeResponse = Constants.ACKNOWLEDGEMENT;
-
-        } else {
+        case UNDONE:
             dukeResponse = Constants.ACKNOWLEDGEMENT_AS_UNDONE;
+            break;
+
+        case ADD:
+            dukeResponse = Constants.ACKNOWLEDGEMENT;
+            break;
+
+        case TAGGED:
+            dukeResponse = Constants.ACKNOWLEDGEMENT_AS_TAG_SET;
+            break;
+
+        case UNTAGGED:
+            dukeResponse = Constants.ACKNOWLEDGEMENT_AS_TAG_UNSET;
+            break;
+
+        default:
+            break;
         }
 
         if (task.getClass().toString().contains("Todo")) {

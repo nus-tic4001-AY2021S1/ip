@@ -105,4 +105,35 @@ public class Parser {
         return index;
     }
 
+    /**
+     * Returns the index of the task to be modified.
+     * @param fullCommand
+     * @return
+     */
+    public static int parseTagTaskNum(String fullCommand) {
+        String idxCommand = fullCommand;
+
+        if (fullCommand.contains("tag") && !fullCommand.contains("untag")) {
+            idxCommand = fullCommand.substring(0, fullCommand.indexOf("#") - 1);
+        }
+
+        int index = idxCommand.contains("untag")
+                ? Integer.parseInt(fullCommand.substring("untag".length()).trim())
+                : Integer.parseInt(idxCommand.substring("tag".length()).trim());
+        return index;
+    }
+
+    /**
+     * Returns the description of the tag.
+     * @param fullCommand
+     * @return
+     */
+    public static String parseTagTaskDescription(String fullCommand) {
+        String description = "";
+
+        description = fullCommand.substring(fullCommand.lastIndexOf("#") + 1);
+
+        return description;
+    }
+
 }
