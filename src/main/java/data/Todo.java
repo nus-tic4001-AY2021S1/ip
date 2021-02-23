@@ -18,7 +18,8 @@ public class Todo extends Task {
 
     @Override
     public String save() {
-        return "T" + " | " + (this.isDone() ? 1 : 0) + " | " + super.save() + System.lineSeparator();
+        return "T" + " | " + (this.isDone() ? 1 : 0) + " | " + super.save() + " | "
+                + this.tag + System.lineSeparator();
     }
 
 }

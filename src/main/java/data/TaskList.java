@@ -85,4 +85,12 @@ public class TaskList {
         }
         return foundTasks;
     }
+
+    public void setTaskTag(String tag, int idx) {
+        tasks.get(idx - 1).setTag(tag);
+    }
+
+    public void removeTaskTag(int idx) {
+        tasks.get(idx - 1).unTag();
+    }
 }

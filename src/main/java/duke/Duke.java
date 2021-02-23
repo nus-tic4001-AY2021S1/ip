@@ -30,6 +30,7 @@ public class Duke {
         logicResponse = logic.processUserInput(fullCommand, commandWord, tasks);
 
         try {
+            //Save tasks to file.
             storage.save(tasks.getTasks());
         } catch (DukeException e) {
             System.out.println(e.getMessage());

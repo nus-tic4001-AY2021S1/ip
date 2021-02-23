@@ -33,7 +33,7 @@ public class Event extends Todo {
 
     @Override
     public String save() {
-        return "E" + " | " + (this.isDone() ? 1 : 0) + " | " + this.getDescription().trim()
+        return "E" + " | " + (this.isDone() ? 1 : 0) + " | " + this.getDescription().trim() + " | " + this.tag
                 + " | " + this.getSchedule().trim() + System.lineSeparator();
     }
 }

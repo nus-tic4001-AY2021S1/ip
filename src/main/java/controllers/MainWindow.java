@@ -69,7 +69,11 @@ public class MainWindow {
         );
     }
 
-    public void showUserInput(String msg){
+    /**
+     * Returns the user's input as a dialogbox for viewing.
+     * @param msg
+     */
+    public void showUserInput(String msg) {
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(msg, userImage)
         );

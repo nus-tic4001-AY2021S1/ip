@@ -73,16 +73,24 @@ public class Storage {
             if ((1 == Integer.parseInt(s[1].trim()))) {
                 task.setDone(true);
             }
+            //Set Task Tag
+            task.setTag(s[3].trim());
+
         } else if (s[0].trim().equals("D")) {
-            task = new Deadline(s[2], s[3]);
+            task = new Deadline(s[2], s[4]);
             if ((1 == Integer.parseInt(s[1].trim()))) {
                 task.setDone(true);
             }
+            //Set Deadline Task Tag
+            task.setTag(s[3].trim());
+
         } else if (s[0].trim().equals("E")) {
-            task = new Event(s[2], s[3]);
+            task = new Event(s[2], s[4]);
             if ((1 == Integer.parseInt(s[1].trim()))) {
                 task.setDone(true);
             }
+            task.setTag(s[3].trim());
+
         } else {
             Ui.printError("Error in creating a task from save file");
         }
