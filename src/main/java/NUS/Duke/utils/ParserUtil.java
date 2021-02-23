@@ -212,13 +212,13 @@ public class ParserUtil {
 
                 }
             }
-
+            result.append(UI.printWelcomeMessage());
             result.append("Successfully load record from the file.\n");
 
-            result.append(UI.printWelcomeMessage());
             scanner.close();
         } catch (FileNotFoundException e) {
             result = new StringBuilder();
+            result.append(UI.printWelcomeMessage());
             result.append("DukeFile is not found, skip reading task from file.");
 
         } catch (ProcessingException e) {
