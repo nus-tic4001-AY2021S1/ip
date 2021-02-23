@@ -41,13 +41,17 @@ public class Storage {
      * @throws NoSuchFileException
      */
     public String load(TaskList list) {
-
         List<String> lines = getLines(this.filePath);
-        for (String line : lines) {
-            if (line.trim().isEmpty()) { //ignore empty lines
-                continue;
+
+        if (lines.size() < 1) {
+            return String.format("No tasks found in " + filePath + "\n" + "Add some Tasks~");
+        } else {
+            for (String line : lines) {
+                if (line.trim().isEmpty()) { //ignore empty lines
+                    continue;
+                }
+                list.addTask(createTask(line)); //convert the line to a task and add to the list
             }
-            list.addTask(createTask(line)); //convert the line to a task and add to the list
         }
         return String.format("Successfully loaded tasks from " + filePath);
     }

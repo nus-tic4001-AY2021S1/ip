@@ -25,8 +25,8 @@ public class MainWindow {
 
     private Duke duke;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/Alan-Turing.jpg"));
+    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/java-duke.png"));
 
     @FXML
     public void initialize() {
@@ -50,13 +50,11 @@ public class MainWindow {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        String response = getResponse(input);
-
+        showUserInput(input);
         //   dialogContainer.getChildren().addAll(
         //       DialogBox.getUserDialog(input, userImage),
         //       DialogBox.getDukeDialog(response, dukeImage)
         //        );
-
         showToUser(duke.run(input));
         userInput.clear();
     }
@@ -71,7 +69,9 @@ public class MainWindow {
         );
     }
 
-    private String getResponse(String input) {
-        return "Duke heard: " + input;
+    public void showUserInput(String msg){
+        dialogContainer.getChildren().addAll(
+                DialogBox.getUserDialog(msg, userImage)
+        );
     }
 }

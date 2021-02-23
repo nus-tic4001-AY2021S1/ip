@@ -7,7 +7,7 @@ public class Constants {
         UNDONE
     }
 
-    public static final String LOGO = " ____        _        \n"
+    public static final String LOGO = " ____         _        \n"
             + "|  _ \\ _   _| | _____ \n"
             + "| | | | | | | |/ / _ \\\n"
             + "| |_| | |_| |   <  __/\n"
@@ -17,8 +17,7 @@ public class Constants {
 
     public static final String H_LINE = "______________________________";
 
-    public static final String GREETING = LOGO + "\n" + H_LINE + "\n" + "Hello I'm Duke :) What can I do for you ?"
-            + "\n" + H_LINE + "\n";
+    public static final String GREETING = "\n" + "Hello I'm Duke! What can I do for you ?" + "\n";
 
     public static final String FAREWELL = "\nBye. Hope to see you again soon!\n";
 
