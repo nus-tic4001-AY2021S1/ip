@@ -2,7 +2,7 @@ Duke is a Personal Assistant Chatbot / Schedule Tracker application. As part of 
 
 This implementation of Duke has a GUI for interaction.
 
-![Duke](Ui.PNG)
+![Duke](Ui.png)
 
 ## Related Useful Links:
 
