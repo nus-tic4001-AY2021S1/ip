@@ -61,6 +61,9 @@ The application then consists of four other components:
 
 One example would be the `Storage` component which defines its API in `ParseUtil.java, writeToFile() Function` as well as exposes its functionality using the same class.
 
+##### UI Example
+![UIComponent](images/Ui.png)
+
 
 ##### Storage Component
 ###### Storage(Load)
