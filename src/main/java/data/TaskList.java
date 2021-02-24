@@ -46,7 +46,6 @@ public class TaskList {
 
     /**
      * Returns the current number of tasks in the list
-     *
      * @return 0 if list is empty or the number of tasks
      */
     public static int getNumberOfTasks() {
@@ -72,7 +71,7 @@ public class TaskList {
     }
 
     /**
-     *
+     * Find Tasks with description containing the keyword.
      * @param keyword
      * @return
      */
@@ -86,10 +85,19 @@ public class TaskList {
         return foundTasks;
     }
 
+    /**
+     * Set the tag for the Task in at Task idx in the list.
+     * @param tag
+     * @param idx
+     */
     public void setTaskTag(String tag, int idx) {
         tasks.get(idx - 1).setTag(tag);
     }
-
+    /**
+     * Remove the tag for the task at Task idx in the list.
+     * Set the tag for the Task.
+     * @param idx
+     */
     public void removeTaskTag(int idx) {
         tasks.get(idx - 1).unTag();
     }

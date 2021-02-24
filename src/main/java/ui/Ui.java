@@ -18,16 +18,6 @@ public class Ui {
     }
 
     /**
-     * Prints "Your task?"
-     *
-     * @return the line read in after trimming trailing and leading spaces
-     */
-    public String readUserCommand() {
-
-        return in.nextLine().trim();
-    }
-
-    /**
      * Prints each task with formatting.
      *
      * @param tasks
@@ -89,7 +79,7 @@ public class Ui {
         return String.format(Constants.NUMBER_OF_TASKS, taskListSize);
     }
 
-    /**
+    /** Prints the tasks.
      * @param task
      * @param type
      */
@@ -133,24 +123,6 @@ public class Ui {
             output = String.format(dukeResponse + "\n" + "[E] " + task);
         }
         return output;
-    }
-
-    /**
-     * Displays to user the message passed in.(Line by line)
-     *
-     * @param message
-     */
-    public static void showToUser(String message) {
-        System.out.println(message);
-    }
-
-    /**
-     * Display to user the message passed in.(No new line)
-     *
-     * @param message
-     */
-    public static void showToUserNoNewLine(String message) {
-        System.out.print(message);
     }
 
     /**

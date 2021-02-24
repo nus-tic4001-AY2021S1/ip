@@ -54,7 +54,6 @@ public class Parser {
         }
 
         String description = fullCommand.substring(0, idxOfBy).substring("deadline".length()).trim();
-        //Use isBlank() rather than isEmpty(). isBlank() checks for whitespace
         if (description.isEmpty() || description.equals("")) {
             Ui.printError("Empty description for DEADLINE");
         }
@@ -62,7 +61,6 @@ public class Parser {
         if (deadline.isEmpty() || deadline.equals("")) {
             Ui.printError("Empty deadline for DEADLINE");
         }
-        //return new Deadline(description, deadline);
         return new Deadline(description, deadline);
     }
 
@@ -80,8 +78,6 @@ public class Parser {
         }
 
         String description = fullCommand.substring(0, idxOfBy).substring("event".length()).trim();
-        //assert (fullCommand.contains(description)) :
-        // "Something went wrong during the substring for event description";
         if (description.isEmpty() || description.equals("")) {
             Ui.printError("Empty description for EVENT");
         }
