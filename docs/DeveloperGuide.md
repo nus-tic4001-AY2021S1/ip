@@ -1,10 +1,11 @@
-#Developer Guide
-* [Setting up, getting started](#Setting Up and Getting Started)
+# Developer Guide
+
+* [Setting up, getting started](#Setting-Up-and-Getting Started)
 * [Design](#Design)
     * [Architecture](#Architecture)
-    * [UI component](#UI)
-    * [Storage component](#Storage)
-    * [Common classes](#Commons)
+    * UI component
+    * Storage component
+    * Common classes
 * [Implementation](#Implementation)
     * [Appendix: Requirements](#Appendix:-Requirements)
         * [Product Scope](#Product-Scope)
@@ -13,9 +14,9 @@
         * [Non-Functional Requirements](#Non-Functional-Requirements)
         * [Glossary](#Glossary)
     * [Appendix: Instructions for manual testing](#Appendix:-Instructions-for-manual-testing)
-        * [Launch and shutdown](#Launch)
-        * [Add a task](#Add-a-Task)
-        * [Tag a task](#Tag a task)
+        * Launch and shutdown
+        * Add a task
+        * Tag a task
 ---
 ## Setting Up and Getting Started
 **Caution** Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
