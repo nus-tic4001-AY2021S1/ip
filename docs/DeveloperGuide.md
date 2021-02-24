@@ -4,7 +4,7 @@
 
 ### Architecture
 
-![Image of UpdateSequenceDiagram](https://github.com/AY2021S1-TIC4001-3/tp/blob/master/docs/Images/architecture.png?raw=true)
+![Image of ArchitectureDiagram](https://github.com/HongJiancheng/ip/blob/master/docs/images/architecture.png?raw=true)
 The Architecture Diagram given above explains the high-level design of the App. Given below is a quick overview of each component.
 
 The rest of the App consists of seven components.
@@ -21,11 +21,11 @@ TaskList: Define the structure of each Task to track.
 ### How the architecture components interact with each other
 
 The Sequence Diagram below shows how the components interact with each other for the scenario where the user uses the Event command.
-![Image of UpdateSequenceDiagram](https://github.com/AY2021S1-TIC4001-3/tp/blob/master/docs/Images/updateSequenceDiagram.png?raw=true)
+![Image of SequenceDiagram](https://github.com/AY2021S1-TIC4001-3/tp/blob/master/docs/Images/updateSequenceDiagram.png?raw=true)
 
 ### Storage component
 
-![Image of UI Class Diagram](https://github.com/AY2021S1-TIC4001-3/tp/blob/master/docs/Images/interface.png?raw=true)
+![Image of Storage Class Diagram](https://github.com/HongJiancheng/ip/blob/master/docs/images/class%20diagram.png?raw=true)
 
 The Storage component is the handler of the temporary storage to storage file. It interacts TaskList Class which contains Task Class, and Task Class have many Subclasses for different scenarios.
 
