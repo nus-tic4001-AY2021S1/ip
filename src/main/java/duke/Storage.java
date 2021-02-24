@@ -32,10 +32,12 @@ public class Storage {
             loadFromFile(taskList);
         } catch (IOException e) {
             System.out.println(e);
+        } catch (DukeException a) {
+            System.out.println(a);
         }
     }
 
-    public void loadFromFile(TaskList tempStorage) throws IOException {
+    public void loadFromFile(TaskList tempStorage) throws IOException, DukeException {
         File directory = new File(home);
         if (!directoryExists) {
             directory.mkdir();

@@ -28,9 +28,11 @@ public class Todo extends Task {
         return "[T]" + super.toString();
     }
 
-    public boolean isEquals(Todo toCompare) {
-        if (this.isDone == toCompare.getIsDone()) {
-            return super.isEquals(toCompare);
+    public boolean isEquals(Object toCompare) {
+        if (toCompare != null && toCompare.getClass() == getClass()) {
+            if (this.isDone == ((Todo) toCompare).isDone) {
+                return super.isEquals(toCompare);
+            }
         }
         return false;
     }

@@ -1,5 +1,5 @@
 # User Guide
-Duke is a command line interface task manager.
+Duke is a graphic user interface task manager with command.
 It can help you keep track of the list of tasks.
 ## Features 
 Duke supports three different types of Task: Todo, Deadline, and Event.
@@ -28,6 +28,12 @@ List all the lists from Task List.
 
 ### Find
 Find the Tasks with keywords and list them out.
+
+### Duplicate
+Show the Tasks which are duplicated.
+
+### Help
+Show the helping guide.
 
 ### Auto Save and Load
 Task List changes will be auto stored as a file, and loaded in next run.

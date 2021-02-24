@@ -7,7 +7,7 @@ import duke.tasks.TaskList;
 
 import java.io.IOException;
 
-public class DoneCommand {
+public class DoneCommand extends Command {
     public String execute(String others, Ui ui, Storage storage, TaskList taskList) throws DukeException, IOException {
         if (others.isEmpty()) {
             throw new DukeException("The index of a done command cannot be empty.");
