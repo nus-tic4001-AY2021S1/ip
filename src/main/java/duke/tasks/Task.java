@@ -11,8 +11,6 @@ public abstract class Task {
 
     public abstract void setDone();
 
-    public abstract void setNotDone();
-
     public abstract boolean getIsDone();
 
     public boolean isEquals(Object toCompare) {

@@ -19,7 +19,6 @@ import java.util.ArrayList;
  */
 
 public class Storage {
-    //private String storageFilePath = System.getProperty("user.dir") + File.separator + "data" + File.separator;
     private static final String home = "data";
     private static java.nio.file.Path storageFilePath = java.nio.file.Paths.get(home, "duke.txt");
     private static boolean directoryExists = java.nio.file.Files.exists(storageFilePath);

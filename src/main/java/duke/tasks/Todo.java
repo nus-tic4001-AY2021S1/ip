@@ -20,10 +20,6 @@ public class Todo extends Task {
         this.isDone = true;
     }
 
-    public void setNotDone() {
-        this.isDone = false;
-    }
-
     public String toString() {
         return "[T]" + super.toString();
     }
