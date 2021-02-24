@@ -15,9 +15,11 @@ public abstract class Task {
 
     public abstract boolean getIsDone();
 
-    public boolean isEquals(Task toCompare) {
-        if (this.description.equals(toCompare.getDescription())) {
-            return true;
+    public boolean isEquals(Object toCompare) {
+        if (toCompare != null && toCompare.getClass() == getClass()) {
+            if (this.description.equals(((Task) toCompare).description)) {
+                return true;
+            }
         }
         return false;
     }

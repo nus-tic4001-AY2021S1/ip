@@ -22,5 +22,6 @@ public abstract class Command {
 
     }
 
-    public abstract String execute(Ui ui, Storage storage, TaskList taskList) throws DukeException, IOException;
+    public abstract String execute(String others, Ui ui, Storage storage,
+                                   TaskList taskList) throws DukeException, IOException;
 }

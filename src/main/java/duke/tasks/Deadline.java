@@ -1,7 +1,10 @@
 package duke.tasks;
 
+import duke.DukeException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * To test Deadline, please run DeadlineTest.
@@ -9,9 +12,13 @@ import java.time.format.DateTimeFormatter;
 public class Deadline extends Todo {
     protected LocalDate by;
 
-    public Deadline(String description, String by) {
+    public Deadline(String description, String by) throws DukeException {
         super(description);
-        this.by = LocalDate.parse(by);
+        try {
+            this.by = LocalDate.parse(by);
+        } catch (DateTimeParseException e) {
+            throw new DukeException("Date format is wrong, please use yyyy-mm-dd format.");
+        }
     }
 
     public String toString() {
@@ -26,9 +33,11 @@ public class Deadline extends Todo {
         return by.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
-    public boolean isEquals(Deadline toCompare) {
-        if (this.by.equals(toCompare.getBy())) {
-            return super.isEquals(toCompare);
+    public boolean isEquals(Object toCompare) {
+        if (toCompare != null && toCompare.getClass() == getClass()) {
+            if (this.by.equals(((Deadline) toCompare).by)) {
+                return super.isEquals(toCompare);
+            }
         }
         return false;
     }

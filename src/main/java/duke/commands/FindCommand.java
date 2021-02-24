@@ -7,7 +7,7 @@ import duke.tasks.TaskList;
 
 import java.io.IOException;
 
-public class FindCommand {
+public class FindCommand extends Command {
     protected TaskList findResult;
 
     public FindCommand() {
