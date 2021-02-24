@@ -6,10 +6,8 @@ import duke.Ui;
 import duke.tasks.TaskList;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 
-public class DuplicateCommand {
+public class DuplicateCommand extends Command {
     public String execute(String others, Ui ui, Storage storage, TaskList taskList) throws DukeException, IOException {
         int[][] duplicate = new int[taskList.getSize()][taskList.getSize()];
         int index;
@@ -41,6 +39,7 @@ public class DuplicateCommand {
                         toPrint += ui.indentPrint((duplicate[i][j] + 1)
                                 + ". " + taskList.getTask(duplicate[i][j]).toString());
                     }
+                    toPrint += ui.indentPrint("----------------------------------");
                 }
             }
         }

@@ -7,7 +7,7 @@ import duke.tasks.TaskList;
 
 import java.io.IOException;
 
-public class EventCommand {
+public class EventCommand extends Command {
     public String execute(String others, Ui ui, Storage storage, TaskList taskList) throws DukeException, IOException {
         if (others.isEmpty()) {
             throw new DukeException("The description of a event cannot be empty.");

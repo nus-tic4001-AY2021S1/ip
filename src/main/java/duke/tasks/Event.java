@@ -23,9 +23,11 @@ public class Event extends Todo {
         return at.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
-    public boolean isEquals(Event toCompare) {
-        if (this.at.equals(toCompare.getAt())) {
-            return super.isEquals(toCompare);
+    public boolean isEquals(Object toCompare) {
+        if (toCompare != null && toCompare.getClass() == getClass()) {
+            if (this.at.equals(((Event) toCompare).at)) {
+                return super.isEquals(toCompare);
+            }
         }
         return false;
     }

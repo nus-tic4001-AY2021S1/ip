@@ -7,6 +7,7 @@ import duke.commands.DoneCommand;
 import duke.commands.DuplicateCommand;
 import duke.commands.EventCommand;
 import duke.commands.FindCommand;
+import duke.commands.HelpCommand;
 import duke.commands.ListCommand;
 import duke.commands.TodoCommand;
 import duke.tasks.TaskList;
@@ -28,9 +29,9 @@ public class Parser {
         }
         switch (command) {
         case "bye":
-            return new ByeCommand().execute(ui,store,taskList);
+            return new ByeCommand().execute(others,ui,store,taskList);
         case "list":
-            return new ListCommand().execute(ui,store,taskList);
+            return new ListCommand().execute(others,ui,store,taskList);
         case "done":
             return new DoneCommand().execute(others,ui,store,taskList);
         case "delete":
@@ -45,6 +46,8 @@ public class Parser {
             return new FindCommand().execute(others,ui,store,taskList);
         case "duplicate":
             return new DuplicateCommand().execute(others,ui,store,taskList);
+        case "help":
+            return new HelpCommand().execute(others,ui,store,taskList);
         default:
             throw new DukeException("I'm sorry, but I don't know what that means :-(");
         }
