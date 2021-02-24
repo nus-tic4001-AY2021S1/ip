@@ -21,7 +21,7 @@ TaskList: Define the structure of each Task to track.
 ### How the architecture components interact with each other
 
 The Sequence Diagram below shows how the components interact with each other for the scenario where the user uses the Event command.
-![Image of SequenceDiagram](https://github.com/AY2021S1-TIC4001-3/tp/blob/master/docs/Images/updateSequenceDiagram.png?raw=true)
+![Image of SequenceDiagram](https://github.com/HongJiancheng/ip/blob/master/docs/images/sequenceDiagram.png?raw=true)
 
 ### Storage component
 
