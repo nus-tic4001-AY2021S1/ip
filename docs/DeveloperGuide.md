@@ -1,6 +1,6 @@
 # Developer Guide
 
-* [Setting up, getting started](#Setting-Up-and-Getting Started)
+* Setting up, getting started
 * [Design](#Design)
     * [Architecture](#Architecture)
     * UI component
