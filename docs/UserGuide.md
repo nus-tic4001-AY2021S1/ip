@@ -41,6 +41,12 @@ The 'Undone' feature allows the user to mark a task as incomplete or undone.
 ### Find
 The 'find' feature allows the user to find task(s) where the descriptions contain a certain keyword.
 
+### Tag
+The 'tag' feature allows the user to tag a task. E.g. `tag 1 #fun`  
+
+### Untag
+The 'untag' feature allows the user to untag a task. E.g. `untag 1`
+
 ---
 
 ## Usage
