@@ -1,0 +1,56 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>120</x><y>0</y><w>210</w><h>190</h></coordinates><panel_attributes>Storage
+--
+_-home: String_
+_-storageFilePath: java.nio.file.Path_
+_-directoryExists: boolean_
+-isExit: boolean
+--
++loadFromFile(tempStorage): void
++saveToFile(tempStorage): void
++outputTaskForSave(toSave): String
++toExit(): void
++getExit(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>240</y><w>210</w><h>190</h></coordinates><panel_attributes>TaskList
+--
+-tempStorage: ArrayList&lt;Task&gt;
+--
++addTask(toAdd): void
++deleteTaskAt(index): Task
++getTask(index): Task
++getSize(): int
++setDoneAt(index): void
++addTodoToTemp(toAdd): void
++addDeadlineToTemp(toAdd): void
++addEventToTemp(toAdd): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>181</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>151</y><w>130</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;180;40;180;40;10;110;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>70</y><w>210</w><h>140</h></coordinates><panel_attributes>/Task/
+--
+-description: String
+--
+/+getStatusIcon(): String/
+/+setDone(): void/
+/+getIsDone(): boolean/
++isEquals(toCompare): boolean
++getDescription(): String
++toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>250</y><w>210</w><h>150</h></coordinates><panel_attributes>Todo
+--
+-isDone: boolean
+--
++getStatusIcon(): String
++setDone(): void
++getIsDone(): boolean
++isEquals(toCompare): boolean
++toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>199</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>390</y><w>180</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>160;10;160;40;10;40;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>460</y><w>210</w><h>150</h></coordinates><panel_attributes>Deadline
+--
+-by: LocalDate
+--
++getStatusIcon(): String
++getBy(): String
++getByForFile(): String
++isEquals(toCompare): boolean
++toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>460</y><w>210</w><h>150</h></coordinates><panel_attributes>Event
+--
+-at: LocalDate
+--
++getStatusIcon(): String
++getAt(): String
++getAtForFile(): String
++isEquals(toCompare): boolean
++toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>390</y><w>130</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40;110;40;110;70</additional_attributes></element></diagram>
