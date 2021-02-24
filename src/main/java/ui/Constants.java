@@ -9,14 +9,6 @@ public class Constants {
         UNTAGGED
     }
 
-    public static final String LOGO = " ____         _        \n"
-            + "|  _ \\ _   _| | _____ \n"
-            + "| | | | | | | |/ / _ \\\n"
-            + "| |_| | |_| |   <  __/\n"
-            + "|____/ \\__,_|_|\\_\\___|\n";
-
-    //System.out.println("Hello from\n" + logo);
-
     public static final String H_LINE = "______________________________";
 
     public static final String GREETING = "\n" + "Hello I'm Duke! What can I do for you ?" + "\n";
@@ -29,8 +21,6 @@ public class Constants {
 
     public static final String NO_TASKS = "There are currently no tasks in your list. Please add some :)";
 
-    public static final String SAVE_TASKS_ACKNOWLEGEMENT = "Your tasks have been saved to data/tasks.txt ";
-
     public static final String ACKNOWLEDGEMENT = "Got it. I've added this task:";
 
     public static final String ACKNOWLEDGEMENT_AS_DONE = "Nice! I've marked this task as done:";
@@ -40,11 +30,6 @@ public class Constants {
     public static final String ACKNOWLEDGEMENT_AS_TAG_SET = "Done! I've tagged this task.";
 
     public static final String ACKNOWLEDGEMENT_AS_TAG_UNSET = "Completed! I've untagged this task.";
-
-
-
-    public static final String FILE_NOT_READABLE_EXCEPTION = "There was an issue with reading from the save file."
-            + " Loading Duke with an empty task list";
 
     public static final String INVALIDIDXINPUT = "Invalid input. Please specify the "
             + "correct index of the task you wish to modify";
