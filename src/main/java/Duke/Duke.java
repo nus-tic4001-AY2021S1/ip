@@ -16,7 +16,7 @@ import javafx.scene.image.ImageView;
 
 import java.util.Scanner;
 
-public class Duke extends Application {
+public class Duke {
 
     private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
@@ -41,7 +41,20 @@ public class Duke extends Application {
         }
     }
 
-    public void run(){
+    public Duke() {
+        ui = new Ui();
+
+        storage = new Storage("/Users/chenduo/Desktop/ip/Duke.txt");
+        try {
+            tasks = new TaskList(storage.loadTasks());
+        } catch (DukeException e) {
+            ui.printError(e);
+            tasks = new TaskList();
+        }
+        paser=new Parser(ui,tasks);
+    }
+
+   /* public void run(){
         paser = new Parser(ui,tasks);
         ui.printLogo();
         ui.greetMessage();
@@ -132,7 +145,7 @@ public class Duke extends Application {
             handleUserInput();
         });
 
-        }
+        }*/
 
     /**
     * Iteration 1:
@@ -140,7 +153,7 @@ public class Duke extends Application {
     * @param text String containing text to add
     * @return a label with the specified text that has word wrap enabled.
     */
-        private Label getDialogLabel(String text) {
+        /*private Label getDialogLabel(String text) {
             // You will need to import `javafx.scene.control.Label`.
             Label textToAdd = new Label(text);
             textToAdd.setWrapText(true);
@@ -153,7 +166,7 @@ public class Duke extends Application {
      * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      */
-        private void handleUserInput() {
+       /* private void handleUserInput() {
             Label userText = new Label(userInput.getText());
             Label dukeText = new Label(getResponse(userInput.getText()));
             dialogContainer.getChildren().addAll(
@@ -161,17 +174,26 @@ public class Duke extends Application {
                 new DialogBox(dukeText, new ImageView(duke))
         );
         userInput.clear();
-    }
+    }*/
 
     /**
      * You should have your own function to generate a response to user input.
      * Replace this stub with your completed method.
      */
-    private String getResponse(String input) {
+   /* public String getResponse(String input) {
         return "Duke heard: " + input;
+    }*/
+    public String getResponse(String input) {
+        String response="";
+        try {
+            response= paser.handleCommands(input);
+            storage.saveToFile(tasks);
+        }catch (DukeException e){
+            response=e.getMessage();
+        }
+        return response;
     }
-
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         new Duke("/Users/chenduo/Desktop/ip/Duke.txt").run();
         /*
         LocalDate d1 = LocalDate.parse("2019-12-01");
@@ -193,8 +215,8 @@ public class Duke extends Application {
         System.out.println(d4); // -> 2019-10-15
         System.out.println(d4.format(DateTimeFormatter.ofPattern("MMM d yyyy"))); // -> Oct 15 2019
       */
-    }
-
 }
+
+
 
 
