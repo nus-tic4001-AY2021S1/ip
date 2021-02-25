@@ -10,6 +10,8 @@
 
 The Architecture Diagram given below is a quick overview of each component.
 
+![Image of ArchitectureDiagram](https://github.com/ZhengShijieNUS/ip/blob/master/docs/architectureDiagram.png?raw=true)
+
 The rest of the App consists of few components.
 
 GUI: The UI of the App.
