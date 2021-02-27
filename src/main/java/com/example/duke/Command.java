@@ -11,7 +11,8 @@ public class Command {
         taskDescription = description;
     }
 
-    public void execute(TaskList myTask, Ui ui, Storage storage) {
+    public String execute(TaskList myTask, Ui ui, Storage storage) {
+        return "nothing";
 
     }
 

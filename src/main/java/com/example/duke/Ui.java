@@ -32,8 +32,12 @@ public class Ui {
         System.out.println("There seems to be a file loading error. No tasks are preloaded\nStarting a new list...");
     }
 
-    public void showMessageToUser(String message) {
+    /*public void showMessageToUser(String message) {
         System.out.println(message);
+    }*/
+
+    public String showMessageToUser(String message) {
+        return message;
     }
 
 }

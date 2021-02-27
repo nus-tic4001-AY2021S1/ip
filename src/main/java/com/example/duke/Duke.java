@@ -53,10 +53,11 @@ public class Duke {
     }
 
     public String getResponse(String input) {
-        if (input.equals("Start"))
-            return "hello im duke";
-        return "Is there anything else>";
+        //if (input.equals("Start"))
+            //return "hello, Im duke how can I help";
 
+            Command c = Parser.parse(input);
+            return c.execute(tasks, ui, storage);
     }
 
     /*public static void main(String[] args) {
