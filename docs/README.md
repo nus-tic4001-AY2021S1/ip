@@ -1,20 +1,10 @@
-# User Guide
+# Jojo
 
-## Features 
+![Ui](./Ui.png)
 
-### Feature 1 
-Description of feature.
+Jojo is a Java-based desktop chat-bot application that helps the users keep track of their tasks list.
+It comes with a Command Line Interface (CLI) and Graphical User Interface (GUI) that allows users to enter their commands.
 
-## Usage
-
-### `Keyword` - Describe action
-
-Describe action and its outcome.
-
-Example of usage: 
-
-`keyword (optional arguments)`
-
-Expected outcome:
-
-`outcome`
+Useful links:
+* [User Guide](UserGuide.md)
+* [Developer Guide](DeveloperGuide.md)
