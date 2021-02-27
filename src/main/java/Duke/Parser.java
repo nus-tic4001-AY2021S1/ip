@@ -69,6 +69,15 @@ public class Parser {
                     }
                     response=ui.printFind(temp);
 
+                }else if(str.equals("help")){
+                    response="`list` - List all Tasks from Task List\n" +
+                            "`event <description> /at <date>` - Add event to Task List. \nExample: event team meeting /at 2021-01-30\n\n" +
+                            "`deadline <description> /by <date>` - Add deadline to Task List. \nExample: deadline return book /by 2021-01-30\n\n"+
+                            "`todo <description>` - Add todo to Task List. \nExample: todo read book\n\n"+
+                            "`delete <index of task>` - Delete a Task from Task List. \nExample: delete 1\n\n" +
+                            "`done <index of task>` - Set a Task's status to done. \nExample: done 1\n\n" +
+                            "`find <keyword>` - Find Tasks contains search term stated. \nExample: find book\n\n" +
+                            "`help` - Show Help Menu\n\n";
                 }
             }
         }
