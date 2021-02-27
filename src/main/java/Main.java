@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    private Duke duke = new Duke();
+    private Duke duke = new Duke("/Users/januariusjang/Downloads/iP/data/tasks.txt");
+
 
     @Override
     public void start(Stage stage) {
@@ -19,6 +20,7 @@ public class Main extends Application {
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setDuke(duke);
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

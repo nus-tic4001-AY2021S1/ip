@@ -13,8 +13,10 @@ public class Ui {
         System.out.println(myMessage);
     }
 
-    public void printWelcome() {
-        System.out.println("Hello, I'm Duke\nWhat can I do for you?\n");
+    public String printWelcome() {
+
+        //System.out.println("Hello, I'm Duke\nWhat can I do for you?\n");
+        return ("Hello, I'm Duke\nWhat can I do for you?\n");
     }
 
     public void printError(String errorMessage) {
