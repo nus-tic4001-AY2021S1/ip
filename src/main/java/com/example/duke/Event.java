@@ -8,6 +8,11 @@ public class Event extends Task {
         this.by = by;
     }
 
+    public Event(String description, String by, boolean isDone) {
+        super(description, isDone);
+        this.by = by;
+    }
+
     /**
      * Format to be displayed on screen.
      * @return for onscreen display

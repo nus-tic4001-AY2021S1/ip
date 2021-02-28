@@ -2,10 +2,7 @@ package com.example.duke;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -78,7 +75,7 @@ public class CreateTaskFromFile {
             if (Integer.parseInt(doneOrNot) == 1) {
                 done = true;
             }
-            return new Deadline(taskDescription, Duration, done);
+            return new Event(taskDescription, Duration, done);
 
         } else {
             return null;
