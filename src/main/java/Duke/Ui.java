@@ -17,8 +17,10 @@ public class Ui {
         System.out.println("Hello! I'm Duke.Duke");
         System.out.println("What can I do for you?");
     }
-    public void exitMessage(){
-        System.out.println("----------------\n"+"Bye. Hope to see you again soon!");
+    public String exitMessage(){
+        String exitMsg="";
+        exitMsg=("Bye. Hope to see you again soon!");
+        return exitMsg;
     }
     public String getInput(Scanner in) throws DukeException{
         String s=in.nextLine().trim();
@@ -52,37 +54,44 @@ public class Ui {
             throw new DukeException("OOPS!!! The index of task cannot be empty");
         return s;
     }
-    public void printList(ArrayList<Task> tasks){
-        System.out.println("-----------");
+    public String printList(ArrayList<Task> tasks){
+        String listStr="";
         int i=1;
         for (Task t:tasks){
-            System.out.println((i)+"."+t.toString());
+            listStr+=((i)+"."+t.toString())+"\n";
             i++;
         }
-        System.out.println("-----------");
+     return listStr;
     }
-    public void printTask(String str,int count){
-        System.out.println("--------------\nGot it. I've added this task: " + "\n"+str);
-        System.out.println("Now you have "+count+" in the list.\n-------------------");
+    public String printTask(String str,int count){
+        String resultStr="";
+        resultStr+=("Got it. I've added this task: " + "\n"+str);
+        resultStr+=("Now you have "+count+" in the list.");
+        return resultStr;
     }
-    public void printMarkAsDone(Task t){
-        System.out.println( "-----------------\n"+"Nice! I've marked this task as done:\n"+"["+t.getStatusIcon()+"] "+
+    public String printMarkAsDone(Task t){
+        String resultStr="";
+        resultStr=( "-----------------\n"+"Nice! I've marked this task as done:\n"+"["+t.getStatusIcon()+"] "+
                 t.description);
+        return resultStr;
     }
     public void printError(Exception e){
         System.out.println("--------------\n"+e+"\n-------------------");
     }
-    public void printDeleteMsg(Task t,int count){
-        System.out.println( "-----------------\n Noted. I've removed this task: \n"+"["+t.getStatusIcon()+"]"+
-                t.description+"\n Now you have "+count+" tasks in the list.\n-----------------");
+    public String printDeleteMsg(Task t,int count){
+        String resultStr="";
+        resultStr=( "Noted. I've removed this task: \n"+"["+t.getStatusIcon()+"]"+
+                t.description+"\n Now you have "+count+" tasks in the list.");
+        return resultStr;
     }
-    public void printFind(ArrayList<Task> tasks){
-        System.out.println("--------------\nHere are the matching tasks in your list: " + "\n");
+    public String printFind(ArrayList<Task> tasks){
+        String resultStr="";
+        resultStr+=("Here are the matching tasks in your list: " + "\n");
         int i=1;
         for (Task t:tasks){
-            System.out.println((i)+"."+t.toString());
+            resultStr+=((i)+"."+t.toString()+"\n");
             i++;
         }
-        System.out.println("-----------");
+      return resultStr;
     }
 }

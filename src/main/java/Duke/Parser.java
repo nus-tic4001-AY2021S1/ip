@@ -1,14 +1,10 @@
 package Duke;
 
-import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Parser {
     private Ui ui;
@@ -19,29 +15,30 @@ public class Parser {
         this.tasks = tasks;
     }
 
-    public void handleCommands(String str) throws DukeException{
+    public String handleCommands(String str) throws DukeException{
+        String response="";
         Task singleTask;
         int selectedIn;
         String keyword;
         if (!str.equals("") & !str.equals("bye")) {
             if (str.equals("list")) {
-                ui.printList(tasks.getTasks());
+                response=ui.printList(tasks.getTasks());
             } else if (str.contains("done")) {
                 selectedIn = Integer.parseInt(str.split(" ")[1]) - 1;
                 tasks.getTasks().get(selectedIn).markAsDone();
-                ui.printMarkAsDone(tasks.getTasks().get(selectedIn));
+                response=ui.printMarkAsDone(tasks.getTasks().get(selectedIn));
             } else {
                 if (str.split(" ")[0].equals("todo")) {
                     singleTask = new Todo(str.substring(5), 'T');
                     tasks.storeInArray(singleTask);
-                    ui.printTask(singleTask.toString(), tasks.getSize());
+                    response=ui.printTask(singleTask.toString(), tasks.getSize());
                 } else if (str.split(" ")[0].equals("deadline")) {
                     String[] deadline = str.substring(9).split(" /by ");
                     if (deadline.length == 2) {
                         if(checkDateFormat(deadline[1])) {
                             singleTask = new Deadline(deadline[0], 'D', LocalDate.parse(deadline[1]));
                             tasks.storeInArray(singleTask);
-                            ui.printTask(singleTask.toString(), tasks.getSize());
+                            response=ui.printTask(singleTask.toString(), tasks.getSize());
                         }else {
                             throw new DukeException("OOPS!!! The format of date is not valid");
                         }
@@ -52,7 +49,7 @@ public class Parser {
                         if(checkDateFormat(event[1])) {
                             singleTask = new Event(event[0], 'E', LocalDate.parse(event[1]));
                             tasks.storeInArray(singleTask);
-                            ui.printTask(singleTask.toString(), tasks.getSize());
+                            response=ui.printTask(singleTask.toString(), tasks.getSize());
                         }else
                             throw new DukeException("OOPS!!! The format of date is not valid");
                     }
@@ -61,7 +58,7 @@ public class Parser {
                     System.out.println("selectedIn:" + selectedIn);
                     singleTask = tasks.getTasks().get(selectedIn);
                     tasks.deleteFromList(selectedIn);
-                    ui.printDeleteMsg(singleTask, tasks.getSize());
+                    response=ui.printDeleteMsg(singleTask, tasks.getSize());
                 } else if(str.contains("find")){
                     ArrayList<Task> temp = new  ArrayList<Task>();
                     keyword=str.split(" ")[1];
@@ -70,14 +67,24 @@ public class Parser {
                             temp.add(t);
                         }
                     }
-                    ui.printFind(temp);
+                    response=ui.printFind(temp);
 
+                }else if(str.equals("help")){
+                    response="`list` - List all Tasks from Task List\n" +
+                            "`event <description> /at <date>` - Add event to Task List. \nExample: event team meeting /at 2021-01-30\n\n" +
+                            "`deadline <description> /by <date>` - Add deadline to Task List. \nExample: deadline return book /by 2021-01-30\n\n"+
+                            "`todo <description>` - Add todo to Task List. \nExample: todo read book\n\n"+
+                            "`delete <index of task>` - Delete a Task from Task List. \nExample: delete 1\n\n" +
+                            "`done <index of task>` - Set a Task's status to done. \nExample: done 1\n\n" +
+                            "`find <keyword>` - Find Tasks contains search term stated. \nExample: find book\n\n" +
+                            "`help` - Show Help Menu\n\n";
                 }
             }
         }
         if(str.equals("bye")) {
-            ui.exitMessage();
+            response =ui.exitMessage();
         }
+        return response;
     }
     private boolean checkDateFormat(String dateStr){
         /*
