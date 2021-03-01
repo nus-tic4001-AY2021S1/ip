@@ -48,7 +48,7 @@ test {
 
 application {
     //mainClassName = "com.example.duke.Duke"
-    mainClassName = "com.example.duke.Launcher"
+    mainClassName = "Launcher"
 }
 
 shadowJar {
