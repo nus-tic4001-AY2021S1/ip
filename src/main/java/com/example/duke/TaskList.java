@@ -1,7 +1,6 @@
 package com.example.duke;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class TaskList {
@@ -38,5 +37,11 @@ public class TaskList {
 
     public Task get(int index) {
         return myTasks.get(index);
+    }
+
+    public void editItem (int index, String newDescription) {
+        Task tempTask = myTasks.get(index);
+        tempTask.description = newDescription;
+        myTasks.set(index, tempTask);
     }
 }

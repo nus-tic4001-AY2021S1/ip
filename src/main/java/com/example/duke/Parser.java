@@ -26,6 +26,12 @@ public class Parser {
                 return new ExitCommand();
             case "find":
                 return new FindCommand(arrayOfStr[1]);
+            case "update":
+                String[] arrayOfUpdateDetails = arrayOfStr[1].split(" ", 2);
+                return new UpdateCommand(arrayOfUpdateDetails[0],arrayOfUpdateDetails[1]);
+
+
+
 
             default:
                 System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
