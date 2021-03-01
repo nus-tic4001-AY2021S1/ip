@@ -1,7 +1,8 @@
-D|1|Finish Assignment|Monday
-D|0|seminar|Monday 2-4pm
-T|0|return library books
+D|1|seminar|Monday 2-4pm
+T|1|return money
 T|0|return library books
 D|1|finish assignment 2|Monday
 T|0|read book
-D|0|return book |June 6th
+D|1|return book|June 6th
+D|0|finish assignment 1|Monday
+E|1|Attend Apple conference|Jan 10th to Jan 11th
