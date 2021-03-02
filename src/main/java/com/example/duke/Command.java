@@ -19,8 +19,9 @@ public class Command {
                 "event: E.g: event Attend Apple Conference at Jan 10th to Jan 11th\n"+
                 "delete: E.g: delete 2\n"+
                 "list: E.g: list  \n"+
-                "done: \n"+
-                "find: \n";
+                "done: E.g: done 2 \n"+
+                "find: E.g: find Return Library books \n"+
+                "update: E.g: update 2 Return money \n";
     }
 
     public boolean isExit() {
