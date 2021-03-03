@@ -1,11 +1,4 @@
----
-layout: page
-title: User Guide
----
-* Table of Contents
-{:toc}
 
---------------------------------------------------------------------------------------------------------------------
 
 # User Guide
 Duke is a graphic user interface task manager with command using Chat Bot Interface.
