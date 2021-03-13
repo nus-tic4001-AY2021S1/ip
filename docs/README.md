@@ -1,20 +1,7 @@
-# User Guide
+# Duke Task Management System
 
-## Features 
+Duke Task Manament System is a task management system with friendly GUI that allows user to perform a tasks management work by applying few certain commands.
 
-### Feature 1 
-Description of feature.
-
-## Usage
-
-### `Keyword` - Describe action
-
-Describe action and its outcome.
-
-Example of usage: 
-
-`keyword (optional arguments)`
-
-Expected outcome:
-
-`outcome`
+Useful links:
+* [User Guide](UserGuide.md)
+* [Developer Guide](DeveloperGuide.md)
