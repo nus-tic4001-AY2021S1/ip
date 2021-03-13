@@ -18,6 +18,15 @@ The rest of the App consists of four components.
 * [**`Exceptions`**]: The exception executor.
 * [**`Parser`**]: The parser executor.
 
+### UML: Sequence Diagram
+The image below shows the example of the interaction of todo command.
+<img src="images/SequenceDiagram.png" width="450" />
+
+
+### UML: Class Diagram
+The image below shows the example of the interaction of command (e.g list, sort, bye, clear).
+<img src="images/ClassDiagram.png" width="450" />
+
 
 --------------------------------------------------------------------------------------------------------------------
 

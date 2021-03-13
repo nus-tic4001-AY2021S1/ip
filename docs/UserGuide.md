@@ -46,10 +46,10 @@ Order of parameters are fixed.
 
 
 
-### Feature 1: Adding a Todo task: todo
+### Adding a Todo task: todo
 Adds a Todo task. ToDos: tasks without any date/time attached to it `e.g., visit new theme park`
 
-## Usage
+### Usage
 
 Format: `todo` **TASK DESCRIPTIONS**
 
@@ -65,10 +65,10 @@ Expected outcome:
 
  <br />
  
- ### Feature 2: Adding a Deadline task: deadline
+ ### Adding a Deadline task: deadline
  Adds a Deadline task. Deadlines: tasks that need to be done before a specific date `e.g., submit report by 2020-10-23`
- 
- ## Usage
+
+### Usage
  
  Format: `deadline` **TASK DESCRIPTIONS** `/by` **SPECIFIC DATE** (FORMAT:yyyy-MM-dd)
  
@@ -79,15 +79,15 @@ Expected outcome:
  Expected outcome:
  
  `Got it. I've added this task:`<br />
-  &nbsp;   `[D][✘] return book (by: 2020年12月12日星期六)`<br />
+  &nbsp;   `[D][✘] return book (by: Sunday, October 11, 2020)`<br />
  `Now you have 15 tasks in the list.`<br />
  
 <br />
  
- ### Feature 3: Adding an Event task: event
+ ### Adding an Event task: event
  Adds an Event task. Events: tasks that start at a specific time and ends at a specific time `e.g., team project meeting at 2020-10-23 10:00`
- 
- ## Usage
+
+### Usage
  
  Format: `event` **TASK DESCRIPTIONS** `/at` **SPECIFIC DATE AND TIME** (FORMAT:yyyy-MM-dd'T'HH:mm)
  
@@ -98,15 +98,15 @@ Example of usage:
 Expected outcome:
  
 `Got it. I've added this task:`<br />
-  &nbsp;   `[E][✘] project meeting (at: 星期六, 12月12日, 2020 10:00:00 上午)`<br />
+  &nbsp;   `[E][✘] project meeting (at: Sunday, Jan 12 2020 07:21:00 AM)`<br />
 `Now you have 17 tasks in the list.`<br />
 
 <br />
 
- ### Feature 4: Listing task information: list
+ ### Listing task information: list
  Display the text entered by the user back to the user when requested. The list contains the task details.
- 
- ## Usage
+
+### Usage
  
  Format: `list` 
  
@@ -118,30 +118,30 @@ Expected outcome:
  
 `Here are the tasks in your list:`<br />
 `1.[T][✓] write a program`<br />
-`2.[E][✓] visit zoo (at: 星期二, 11月10日, 2020 10:30:00 上午)`<br />
-`3.[D][✓] read book (by: 2020年11月23日星期一)`<br />
+`2.[E][✓] visit zoo (at: Sunday, Jan 12 2020 07:21:00 AM)`<br />
+`3.[D][✓] read book (by: Sunday, October 11, 2020)`<br />
 `4.[T][✓] meet friends`<br />
-`5.[E][✓] be happy (at: 星期六, 10月10日, 2020 11:11:00 上午)`<br />
-`6.[D][✘] to submit assignment (by: 2020年10月11日星期日)`<br />
-`7.[D][✓] check coding (by: 2020年9月10日星期四)`<br />
+`5.[E][✓] be happy (at: Sunday, Jan 12 2020 07:21:00 AM)`<br />
+`6.[D][✘] to submit assignment (by: Sunday, October 11, 2020)`<br />
+`7.[D][✓] check coding (by: Sunday, October 11, 2020)`<br />
 `8.[T][✘] add book to list`<br />
 `9.[T][✓] checking`<br />
-`10.[E][✘] class (at: 星期六, 12月12日, 2020 11:00:00 上午)`<br />
-`11.[D][✓] submit assignment (by: 2020年10月12日星期一)`<br />
+`10.[E][✘] class (at: Sunday, Jan 12 2020 07:21:00 AM)`<br />
+`11.[D][✓] submit assignment (by: Sunday, October 11, 2020)`<br />
 `12.[T][✘] add more function`<br />
 `13.[T][✘] borrow book`<br />
 `14.[T][✘] return book`<br />
-`15.[D][✘] return book (by: 2020年12月12日星期六)`<br />
-`16.[D][✘] read book (by: 2020年12月23日星期三)`<br />
-`17.[E][✘] project meeting (at: 星期六, 12月12日, 2020 10:00:00 上午)`<br />
-`18.[E][✘] class meeting (at: 星期三, 12月23日, 2020 09:00:00 上午)`<br />
+`15.[D][✘] return book (by: Sunday, October 11, 2020)`<br />
+`16.[D][✘] read book (by: Sunday, October 11, 2020)`<br />
+`17.[E][✘] project meeting (at: Sunday, Jan 12 2020 07:21:00 AM)`<br />
+`18.[E][✘] class meeting (at: Sunday, Jan 12 2020 07:21:00 AM)`<br />
 
 <br />
  
- ### Feature 5: Finding all tasks containing any keyword: find
+ ### Finding all tasks containing any keyword: find
 Finds tasks which contain any of the given keywords.
 
- ## Usage
+### Usage
  
  Format: `find` **KEYWORD** [MORE_KEYWORDS]
  
@@ -152,19 +152,19 @@ Finds tasks which contain any of the given keywords.
  Expected outcome:
  
  `Here are the matching tasks in your list:`<br />
- `1.[D][✓] read book (by: 2020年11月23日星期一)`<br />
+ `1.[D][✓] read book (by: Sunday, October 11, 2020)`<br />
  `2.[T][✘] add book to list`<br />
  `3.[T][✘] borrow book`<br />
  `4.[T][✘] return book`<br />
- `5.[D][✘] return book (by: 2020年12月12日星期六)`<br />
- `6.[D][✘] read book (by: 2020年12月23日星期三)`<br />
+ `5.[D][✘] return book (by: Sunday, October 11, 2020)`<br />
+ `6.[D][✘] read book (by: Sunday, October 11, 2020)`<br />
 
  <br />
  
- ### Feature 6: Deleting a task : delete
+ ### Deleting a task: delete
 Deletes the specified task from the task list. Irreversible.
- 
- ## Usage
+
+### Usage
  
  Format: `delete` **INDEX**
  
@@ -187,10 +187,10 @@ Deletes the specified task from the task list. Irreversible.
  
 <br />
 
- ### Feature 7: Mark as Done of a task: done
+ ### Mark as Done of a task: done
  Mark specified task as done.
- 
- ## Usage
+
+### Usage
  
  Format: `done` **INDEX**
  
@@ -211,10 +211,10 @@ Deletes the specified task from the task list. Irreversible.
 <br />
 
 
- ### Feature 8: View details of a task : view
+ ### View details of a task: view
  Displays the details of the specified task.
- 
- ## Usage
+
+### Usage
  
  Format: `view` **INDEX**
  
@@ -236,10 +236,10 @@ Deletes the specified task from the task list. Irreversible.
 <br />
 
 
- ### Feature 9: Clearing all entries : clear
+ ### Clearing all entries: clear
 Clears all entries from the address book.
- 
- ## Usage
+
+### Usage
  
  Format: `clear` 
  
@@ -257,10 +257,10 @@ Clears all entries from the address book.
 <br />
 
 
- ### Feature 10: Exiting the program : bye
+ ### Exiting the program: bye
  Exits the program.
- 
- ## Usage
+
+### Usage
  
  Format: `bye` 
  
@@ -275,22 +275,22 @@ Example of usage:
  
 <br />
 
-### Feature 11: Loading the data
+### Loading the data
 Auto-load the data from the hard disk when duke starts up. <br />
 The file name and location `e.g., [project_root]/data/duke.txt`
  
 <br />
 
-### Feature 12: Saving the data
+### Saving the data
 Save the tasks in the hard disk automatically whenever the task list changes. There is no need to save manually. If there is no existing txt file, or data folder. The program can auto create a txt file and save the data in the hard disk.
 <br />
 
 <br />
 
-### Feature 13: Sorting all tasks : sort
+### Sorting all tasks: sort
 Compares tasks in the list to sort tasks by task status (isDone), by task description.
 
-## Usage
+### Usage
 
 Format: `sort`
 
