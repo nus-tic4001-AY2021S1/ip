@@ -20,7 +20,8 @@ import javafx.scene.image.Image;
 public class Duke {
 
     // A string to hold the data file name which contains all tasks and their details
-    public static String filename = "src/main/java/data/duke.txt";
+    public static String filename = "data/duke.txt";
+
 
     private Storage storage;
     private Ui ui;
@@ -40,7 +41,7 @@ public class Duke {
     /**
      * Constructs an instance of Duke.
      */
-    public Duke() {
+    public Duke() throws DukeException {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -87,10 +88,6 @@ public class Duke {
 
 
 }
-
-
-
-
 
 
 

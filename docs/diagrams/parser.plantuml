@@ -7,10 +7,13 @@ title __PARSER's Class Diagram__\n
       class duke.parser.Parser {
           {static} + KEYWORD_MULTIPLE_SPACE : String
           {static} + KEYWORD_ONE_SPACE : String
+          {static} + createDeadline()
           {static} + createEvent()
+          {static} + createTodo()
+          {static} + findTaskDetail()
           {static} + getInputArray()
           {static} + parse()
-          {static} - getCommandParameter()
+          {static} - getElement()
       }
     }
   }
@@ -21,7 +24,7 @@ title __PARSER's Class Diagram__\n
 right footer
 
 
-PlantUML diagram
+UML diagram
 endfooter
 
 @enduml

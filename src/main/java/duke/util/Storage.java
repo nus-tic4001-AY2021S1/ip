@@ -3,6 +3,7 @@ package duke.util;
 
 
 
+import duke.exceptions.DukeException;
 import duke.tasks.Deadline;
 import duke.tasks.Event;
 import duke.tasks.Task;
@@ -17,6 +18,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -54,61 +61,47 @@ public class Storage {
      * @param filename A String that contains the file path
      *
      * */
-    public void readFromFile(String filename) {
+    public void readFromFile(String filename) throws DukeException {
+
         try {
-            if (!Files.isReadable(Paths.get(filename))) {
-                Ui.showMessage("The data file i.e.: " + filename + " does not exists!");
-
-                String folderPath = System.getProperty("user.dir")
-                        + File.separator + "src" + File.separator
-                        + "main" + File.separator + "java" + File.separator + "data";
-
-                File folder = new File(folderPath);
-                File myObj = new File(filename);
-
-                if (!folder.exists() && !folder.isDirectory()) {
-                    folder.mkdirs();
-                    Ui.showMessage("Folder created:" + folder);
-                } else {
-                    Ui.showMessage("Folder exist");
-                }
-                Ui.showMessage("Now, New file created: " + myObj.getName());
-                return;
+            Path path = Paths.get("data/");
+            if (!(Files.exists(path))) {
+                Files.createDirectory(path);
+                Ui.showMessage("Now, New file created:" + filename);
             }
-
-
-            BufferedReader reader = null;
-            String tempString = null;
-            int line = 1; //// the line number is started from 1st
-
-            try {
-                Ui.showMessage("Read tasks from txt file, line by line:" + filename);
-                reader = new BufferedReader(new FileReader(filename));
-                while ((tempString = reader.readLine()) != null) {
-                    Ui.showMessage("Line" + line + ":" + tempString);
-                    createTaskFromFile(tempString);
-                    line++;
-                }
-                reader.close();
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } finally {
-                if (reader != null) {
-                    try {
-                        reader.close();
-                    } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-
-                }
-
-            }
-
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new DukeException("There is an issue with creating the directory!");
         }
+
+        BufferedReader reader = null;
+        String tempString = null;
+        int line = 1; //// the line number is started from 1st
+
+        try {
+            Ui.showMessage("Read tasks from txt file, line by line:" + filename);
+            reader = new BufferedReader(new FileReader(filename));
+            while ((tempString = reader.readLine()) != null) {
+                Ui.showMessage("Line" + line + ":" + tempString);
+                createTaskFromFile(tempString);
+                line++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+
     }
 
 

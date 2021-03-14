@@ -25,7 +25,7 @@ The image below shows the example of the interaction of todo command.
 
 ### UML: Class Diagram
 The image below shows the example of the interaction of command (e.g list, sort, bye, clear).
-<img src="images/ClassDiagram.png" width="450" />
+<img src="images/CommandClassDiagram.png" width="450" />
 
 
 --------------------------------------------------------------------------------------------------------------------
