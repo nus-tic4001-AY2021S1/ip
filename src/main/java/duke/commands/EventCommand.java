@@ -35,9 +35,10 @@ public class EventCommand extends Command {
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
+
+        int previousTaskSize = taskList.size();
         taskList.add(Parser.createEvent(input));
         int subsequentTaskSize = taskList.size();
-        int previousTaskSize = taskList.size();
         assert (previousTaskSize + 1 == subsequentTaskSize);
 
         return String.format(
