@@ -46,7 +46,8 @@ Order of parameters are fixed.
 
 
 
-### Adding a Todo task: todo
+### Adding a Todo task: `todo`
+<br />
 Adds a Todo task. ToDos: tasks without any date/time attached to it `e.g., visit new theme park`
 
 ### Usage
@@ -65,7 +66,8 @@ Expected outcome:
 
  <br />
  
- ### Adding a Deadline task: deadline
+### Adding a Deadline task: `deadline`
+<br />
  Adds a Deadline task. Deadlines: tasks that need to be done before a specific date `e.g., submit report by 2020-10-23`
 
 ### Usage
@@ -84,7 +86,8 @@ Expected outcome:
  
 <br />
  
- ### Adding an Event task: event
+### Adding an Event task: `event`
+<br />
  Adds an Event task. Events: tasks that start at a specific time and ends at a specific time `e.g., team project meeting at 2020-10-23 10:00`
 
 ### Usage
@@ -103,7 +106,8 @@ Expected outcome:
 
 <br />
 
- ### Listing task information: list
+### Listing task information: `list`
+<br />
  Display the text entered by the user back to the user when requested. The list contains the task details.
 
 ### Usage
@@ -138,7 +142,8 @@ Expected outcome:
 
 <br />
  
- ### Finding all tasks containing any keyword: find
+### Finding all tasks containing any keyword: `find`
+<br />
 Finds tasks which contain any of the given keywords.
 
 ### Usage
@@ -161,7 +166,8 @@ Finds tasks which contain any of the given keywords.
 
  <br />
  
- ### Deleting a task: delete
+### Deleting a task: `delete`
+<br />
 Deletes the specified task from the task list. Irreversible.
 
 ### Usage
@@ -187,7 +193,8 @@ Deletes the specified task from the task list. Irreversible.
  
 <br />
 
- ### Mark as Done of a task: done
+### Mark as Done of a task: `done`
+<br />
  Mark specified task as done.
 
 ### Usage
@@ -211,7 +218,8 @@ Deletes the specified task from the task list. Irreversible.
 <br />
 
 
- ### View details of a task: view
+### View details of a task: `view`
+<br />
  Displays the details of the specified task.
 
 ### Usage
@@ -236,7 +244,8 @@ Deletes the specified task from the task list. Irreversible.
 <br />
 
 
- ### Clearing all entries: clear
+### Clearing all entries: `clear`
+<br />
 Clears all entries from the address book.
 
 ### Usage
@@ -257,7 +266,8 @@ Clears all entries from the address book.
 <br />
 
 
- ### Exiting the program: bye
+### Exiting the program: `bye` 
+<br />
  Exits the program.
 
 ### Usage
@@ -276,18 +286,21 @@ Example of usage:
 <br />
 
 ### Loading the data
+<br />
 Auto-load the data from the hard disk when duke starts up. <br />
 The file name and location `e.g., [project_root]/data/duke.txt`
  
 <br />
 
 ### Saving the data
+<br />
 Save the tasks in the hard disk automatically whenever the task list changes. There is no need to save manually. If there is no existing txt file, or data folder. The program can auto create a txt file and save the data in the hard disk.
 <br />
 
 <br />
 
-### Sorting all tasks: sort
+### Sorting all tasks: `sort`
+<br />
 Compares tasks in the list to sort tasks by task status (isDone), by task description.
 
 ### Usage
