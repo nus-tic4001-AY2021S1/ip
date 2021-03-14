@@ -21,18 +21,18 @@ The rest of the App consists of four components.
 ### UML: Sequence Diagram
 The image below shows the example of the interaction of todo command.
 <br />
-<img src="images/SequenceDiagram.png" width="450" />
+<img src="images/SequenceDiagram.png"  />
 
 
 ### UML: Class Diagram
 The image below shows the example of the interaction of command (e.g list, sort, bye, clear).
 <br />
-<img src="images/CommandClassDiagram.png" width="450" />
+<img src="images/CommandClassDiagram.png" />
 
 
 The image below shows the example of the interaction of task (e.g todo, event, deadline).
 <br />
-<img src="images/TaskClassDiagram.png" width="450" />
+<img src="images/TaskClassDiagram.png" />
 
 --------------------------------------------------------------------------------------------------------------------
 
