@@ -5,9 +5,14 @@ E | 1 | have dinner at Tom's home | 2020-10-11T23:00
 D | 1 | read book | 2020-10-11
 T | 1 | return book
 E | 1 | school | 2020-01-12T07:21
+E | 1 | sdf | 2020-12-12T12:12
 T | 1 | testing on PC
 T | 0 | ADD Food
 E | 0 | Birthday | 2021-09-12T08:11
 E | 0 | Friend | 2020-05-12T10:21
+E | 0 | Friend | 2020-05-12T10:21
+E | 0 | Friend | 2020-05-12T10:00
+E | 0 | Friend | 2020-05-12T11:00
 T | 0 | Homework
 E | 0 | Java | 2021-03-12T09:51
+E | 0 | sf | 2019-12-31T11:11

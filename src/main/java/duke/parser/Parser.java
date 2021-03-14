@@ -13,8 +13,15 @@ import duke.commands.UnknownCommand;
 import duke.commands.Command;
 import duke.commands.SortCommand;
 import duke.exceptions.DukeException;
+import duke.tasks.Task;
 import duke.ui.Ui;
 import duke.tasks.Event;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+import static duke.util.TaskList.isValidDateTimeFormat;
 
 /** .
  * Parser: deals with making sense of the user command
@@ -82,6 +89,65 @@ public class Parser {
         return input.trim().replaceAll(KEYWORD_MULTIPLE_SPACE, KEYWORD_ONE_SPACE).split(KEYWORD_ONE_SPACE, 2);
     }
 
+    /**
+     * Get a String input into command parameter.
+     *
+     * @param input The input to parse.
+     * @return Command associated with the input.
+     */
+    private static String getCommandParameter(String input) {
+        return input.replaceFirst("(?i)todo", "")
+                .replaceFirst("(?i)deadline", "")
+                .replaceFirst("(?i)event", "")
+                .replaceFirst("(?i)done", "")
+                .replaceFirst("(?i)delete", "")
+                .replaceFirst("(?i)list", "")
+                .replaceFirst("(?i)sort", "")
+                .trim();
+    }
+
+    /**
+     * Creates an <code>Event</code> object.
+     *
+     * @param input User's full input string.
+     * @return <code>Event</code> object.
+     * @throws DukeException If description or at field for <code>Event</code> is missing.
+     */
+    public static Event createEvent(String input) throws DukeException {
+        String commandParameter = getCommandParameter(input);
+        if (commandParameter.isEmpty()) {
+            throw new DukeException("OOPS!!! The description of a event task cannot be empty.");
+        }
+
+        String description;
+        String taskEventDate;
+        try {
+            description = commandParameter.split("/at")[0].trim();
+            taskEventDate = commandParameter.split("/at")[1].trim();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new DukeException("Please enter valid task details. e.g Event task description /at yyyy-MM-dd HH:mm");
+        }
+        if (description.isEmpty()) {
+            throw new DukeException("Please enter valid task details.");
+        }
+        if (taskEventDate.isEmpty()) {
+            throw new DukeException("Please enter valid task details.");
+        }
+
+
+        boolean dateTimeFormatChecker = isValidDateTimeFormat("yyyy-MM-dd HH:mm", taskEventDate, Locale.ENGLISH);
+        // to check if the user enter the correct date format
+        if (!dateTimeFormatChecker) {
+            throw new DukeException("Please enter correct event Date yyyy-MM-dd HH:mm, example: 2019-12-31 11:10");
+        }
+
+        LocalDateTime formatDateTime;
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        formatDateTime = LocalDateTime.parse(taskEventDate, formatter);
+
+        return new Event(description, formatDateTime);
+    }
 
 
 
