@@ -1,0 +1,64 @@
+@startuml
+
+title __UI's Class Diagram__\n
+
+  namespace duke {
+    namespace ui {
+      class duke.ui.DialogBox {
+          {static} - Duke_MessageBox : String
+          {static} - User_MessageBox : String
+          - dialog : Label
+          - displayPicture : ImageView
+          {static} + getDukeDialog()
+          {static} + getUserDialog()
+          - DialogBox()
+          - flip()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace ui {
+      class duke.ui.MainWindow {
+          - dialogContainer : VBox
+          - dukeImage : Image
+          - scrollPane : ScrollPane
+          - sendButton : Button
+          - userImage : Image
+          - userInput : TextField
+          + initialize()
+          + setDuke()
+          - handleUserInput()
+          - startExit()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace ui {
+      class duke.ui.Ui {
+          + greetMessage()
+          {static} + printLine()
+          {static} + readUserCommand()
+          + sayBye()
+          {static} + sayWelcome()
+          {static} + showMessage()
+      }
+    }
+  }
+  
+
+  duke.ui.DialogBox -up-|> javafx.scene.layout.HBox
+  duke.ui.MainWindow -up-|> javafx.scene.layout.AnchorPane
+  duke.ui.MainWindow o-- duke.Duke : duke
+
+
+right footer
+
+
+UML diagram
+endfooter
+
+@enduml

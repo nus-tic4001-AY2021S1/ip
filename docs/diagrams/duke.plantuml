@@ -1,0 +1,49 @@
+@startuml
+
+title __DUKE's Class Diagram__\n
+
+  namespace duke {
+    class duke.Duke {
+        {static} + filename : String
+        - dialogContainer : VBox
+        - duke : Image
+        - scene : Scene
+        - scrollPane : ScrollPane
+        - sendButton : Button
+        - user : Image
+        - userInput : TextField
+        + Duke()
+        + getResponse()
+    }
+  }
+  
+
+  namespace duke {
+    class duke.Launcher {
+        {static} + main()
+    }
+  }
+  
+
+  namespace duke {
+    class duke.Main {
+        + start()
+    }
+  }
+  
+
+  duke.Duke o-- duke.parser.Parser : parser
+  duke.Duke o-- duke.util.Storage : storage
+  duke.Duke o-- duke.util.TaskList : taskList
+  duke.Duke o-- duke.ui.Ui : ui
+  duke.Main -up-|> javafx.application.Application
+  duke.Main o-- duke.Duke : duke
+
+
+right footer
+
+
+UML diagram
+endfooter
+
+@enduml

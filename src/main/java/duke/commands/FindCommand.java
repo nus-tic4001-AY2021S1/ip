@@ -1,6 +1,7 @@
 package duke.commands;
 
 import duke.exceptions.DukeException;
+import duke.parser.Parser;
 import duke.util.Storage;
 import duke.util.TaskList;
 import duke.tasks.Task;
@@ -33,16 +34,7 @@ public class FindCommand extends Command {
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
 
-        String taskDetail;
-        int len = input.split(" ").length; // to check who many words
-        String[] lineArr = input.split(" ", 2);
-        String commandFirstWord = input.split(" ")[0].toLowerCase();
-
-        if (len > 1) {
-            taskDetail = lineArr[1].trim();  // filter out the first words
-        } else {
-            throw new DukeException("OOPS!!! The description of a " + commandFirstWord + " cannot be empty.");
-        }
+        String taskDetail = Parser.findTaskDetail(input);
 
 
         String taskDescription;

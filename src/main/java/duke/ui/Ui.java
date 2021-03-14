@@ -52,6 +52,8 @@ public class Ui {
         System.out.println(message);
     }
 
+
+
     /** .
      * This method will say goodbye to user on standard output (terminal)
      */

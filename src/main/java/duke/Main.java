@@ -2,6 +2,7 @@ package duke;
 
 import java.io.IOException;
 
+import duke.exceptions.DukeException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +18,15 @@ import javafx.scene.image.Image;
 public class Main extends Application {
 
     /** Duke Object created for the GUI. */
-    private Duke duke = new Duke();
+    private Duke duke;
+
+    {
+        try {
+            duke = new Duke();
+        } catch (DukeException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Sets a scene on the stage argument to initialise the GUI.

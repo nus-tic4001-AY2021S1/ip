@@ -1,0 +1,150 @@
+@startuml
+
+title __COMMANDS's Class Diagram__\n
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.ByeCommand {
+          + ByeCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.ClearCommand {
+          + ClearCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      abstract class duke.commands.Command {
+          + taskList : ArrayList<Task>
+          # input : String
+          {abstract} + execute()
+          ~ Command()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.DeadLineCommand {
+          - dueDate : LocalDate
+          - taskDescription : String
+          + DeadLineCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.DeleteCommand {
+          + DeleteCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.DoneCommand {
+          + DoneCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.EventCommand {
+          - formatDateTime : LocalDateTime
+          - taskDescription : String
+          + EventCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.FindCommand {
+          + FindCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.ListCommand {
+          + ListCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.SortCommand {
+          + SortCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.TodoCommand {
+          + TodoCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace commands {
+      class duke.commands.UnknownCommand {
+          + UnknownCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  duke.commands.ByeCommand -up-|> duke.commands.Command
+  duke.commands.ClearCommand -up-|> duke.commands.Command
+  duke.commands.DeadLineCommand -up-|> duke.commands.Command
+  duke.commands.DeleteCommand -up-|> duke.commands.Command
+  duke.commands.DoneCommand -up-|> duke.commands.Command
+  duke.commands.EventCommand -up-|> duke.commands.Command
+  duke.commands.FindCommand -up-|> duke.commands.Command
+  duke.commands.ListCommand -up-|> duke.commands.Command
+  duke.commands.SortCommand -up-|> duke.commands.Command
+  duke.commands.TodoCommand -up-|> duke.commands.Command
+  duke.commands.UnknownCommand -up-|> duke.commands.Command
+
+
+right footer
+
+
+PlantUML diagram
+endfooter
+
+@enduml

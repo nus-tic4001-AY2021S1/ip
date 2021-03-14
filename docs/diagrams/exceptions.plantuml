@@ -1,0 +1,22 @@
+@startuml
+
+title __EXCEPTIONS's Class Diagram__\n
+
+  namespace duke {
+    namespace exceptions {
+      class duke.exceptions.DukeException {
+          + DukeException()
+      }
+    }
+  }
+  
+
+
+
+right footer
+
+
+UML diagram
+endfooter
+
+@enduml
