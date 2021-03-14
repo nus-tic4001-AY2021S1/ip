@@ -14,7 +14,7 @@ import duke.commands.Command;
 import duke.commands.SortCommand;
 import duke.exceptions.DukeException;
 import duke.ui.Ui;
-
+import duke.tasks.Event;
 
 /** .
  * Parser: deals with making sense of the user command
@@ -81,7 +81,6 @@ public class Parser {
     public static String[] getInputArray(String input) {
         return input.trim().replaceAll(KEYWORD_MULTIPLE_SPACE, KEYWORD_ONE_SPACE).split(KEYWORD_ONE_SPACE, 2);
     }
-
 
 
 

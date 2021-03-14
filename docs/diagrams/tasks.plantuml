@@ -1,0 +1,76 @@
+@startuml
+
+title __TASKS's Class Diagram__\n
+
+  namespace duke {
+    namespace tasks {
+      class duke.tasks.Deadline {
+          # by : String
+          # dueDate : LocalDate
+          # dueDateTime : LocalDateTime
+          + Deadline()
+          + Deadline()
+          + getBy()
+          + getDueDate()
+          + setBy()
+          + toString()
+          # setDueDate()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace tasks {
+      class duke.tasks.Event {
+          # at : String
+          # dueDateTime : LocalDateTime
+          + Event()
+          + getDueDateTime()
+          + toString()
+          # setDueDateTime()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace tasks {
+      abstract class duke.tasks.Task {
+          # description : String
+          # isDone : boolean
+          + Task()
+          + compareTo()
+          + getDescription()
+          + getStatusIcon()
+          + isDone()
+          + setDone()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace tasks {
+      class duke.tasks.Todo {
+          + Todo()
+          + toString()
+      }
+    }
+  }
+  
+
+  duke.tasks.Deadline -up-|> duke.tasks.Task
+  duke.tasks.Event -up-|> duke.tasks.Task
+  duke.tasks.Task .up.|> java.lang.Comparable
+  duke.tasks.Todo -up-|> duke.tasks.Task
+
+
+right footer
+
+
+PlantUML diagram
+endfooter
+
+@enduml

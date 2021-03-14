@@ -1,0 +1,47 @@
+@startuml
+
+title __UTIL's Class Diagram__\n
+
+  namespace duke {
+    namespace util {
+      class duke.util.Storage {
+          - taskList : ArrayList<Task>
+          + Storage()
+          + readFromFile()
+          + saveToFile()
+          - createTaskFromFile()
+      }
+    }
+  }
+  
+
+  namespace duke {
+    namespace util {
+      class duke.util.TaskList {
+          {static} - taskList : ArrayList<Task>
+          + TaskList()
+          + add()
+          + clear()
+          {static} + clearAllTasks()
+          + get()
+          {static} + getList()
+          {static} + isValidDateTimeFormat()
+          + remove()
+          + size()
+          + sort()
+          + viewSelectedTask()
+      }
+    }
+  }
+  
+
+  duke.util.Storage o-- duke.tasks.Task : task
+
+
+right footer
+
+
+PlantUML diagram
+endfooter
+
+@enduml

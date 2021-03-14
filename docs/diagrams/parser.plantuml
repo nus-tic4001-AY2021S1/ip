@@ -1,0 +1,27 @@
+@startuml
+
+title __PARSER's Class Diagram__\n
+
+  namespace duke {
+    namespace parser {
+      class duke.parser.Parser {
+          {static} + KEYWORD_MULTIPLE_SPACE : String
+          {static} + KEYWORD_ONE_SPACE : String
+          {static} + createEvent()
+          {static} + getInputArray()
+          {static} + parse()
+          {static} - getCommandParameter()
+      }
+    }
+  }
+  
+
+
+
+right footer
+
+
+PlantUML diagram
+endfooter
+
+@enduml
