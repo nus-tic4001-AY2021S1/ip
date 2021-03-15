@@ -30,7 +30,6 @@ Using Command Line
 - Finding all tasks containing any keyword: find
 - Deleting a task : delete
 - Mark as Done of a task: done
-- View details of a task : view
 - Clearing all entries : clear
 - Exiting the program : bye
 - Loading the data
@@ -218,30 +217,6 @@ Deletes the specified task from the task list. Irreversible.
 <br />
 
 
-### View details of a task: `view`
-<br />
- Displays the details of the specified task.
-
-### Usage
- 
- Format: `view` **INDEX**
- 
- Views the task at the specified INDEX. The index refers to the index number shown in the most recent listing.
- 
- Example of usage: 
- 
-  `list `<br />
-  `view 4 `<br />
-  Views the 4th task in the task list.
- 
- Expected outcome:
- 
- `Nice! Here is the task ready to view:`<br />
- `[T][✓] set a meeting`
- 
- 
- 
-<br />
 
 
 ### Clearing all entries: `clear`
