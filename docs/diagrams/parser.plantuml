@@ -12,6 +12,7 @@ title __PARSER's Class Diagram__\n
           {static} + createTodo()
           {static} + findTaskDetail()
           {static} + getInputArray()
+          {static} + getTaskIndex()
           {static} + parse()
           {static} - getElement()
       }
@@ -24,7 +25,7 @@ title __PARSER's Class Diagram__\n
 right footer
 
 
-UML diagram
+PlantUML
 endfooter
 
 @enduml
