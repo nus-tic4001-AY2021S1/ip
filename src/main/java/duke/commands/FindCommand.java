@@ -36,7 +36,6 @@ public class FindCommand extends Command {
 
         String taskDetail = Parser.findTaskDetail(input);
 
-
         String taskDescription;
         ArrayList<Task> taskListKeywordFound = new ArrayList<>();
         StringJoiner response = new StringJoiner("\n");

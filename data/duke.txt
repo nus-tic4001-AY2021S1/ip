@@ -1,5 +1,4 @@
 D | 1 | eat | 2020-09-19
-D | 1 | eat | 2020-09-19
 T | 1 | fix issue
 E | 1 | go to school, buy book | 2020-12-12T12:00
 E | 1 | have dinner at Tom's home | 2020-10-11T23:00
@@ -20,6 +19,5 @@ T | 0 | adsf
 T | 0 | sfsfs
 T | 0 | sdfs
 T | 0 | sdf
-T | 0 | sdfs
-T | 0 | dsf
-T | 0 | sdfs
+T | 1 | sdfs
+T | 1 | dsf
