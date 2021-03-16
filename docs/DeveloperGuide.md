@@ -35,9 +35,9 @@ The image below shows the example of the interaction of task (e.g todo, event, d
 These operations are exposed in the `TodoCommand()` class.
 * Step 1: The user executes the todo command.
 * Step 2: The TodoCommand() class will parser the todo keywords to see if it is a valid command.
-* Step 3: Then create a todo task.
+* Step 3: If it is valid, then create a todo task. Otherwise, show an error message.
 * Step 4: Add this newly created todo task to the task list.
-* Step 4: Then save the updated task list to storge.
+* Step 5: Then save the updated task list to storge.
 
 #### UML: Sequence Diagram
 The image below shows the example of the interaction of todo command.
