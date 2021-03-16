@@ -1,18 +1,11 @@
 package duke.ui;
 
-import java.util.Scanner;
 
 /** .
  * Ui: deals with interactions with the user
  */
 public class Ui {
-    /** .
-     * This method will scan the user input
-     */
-    public static String readUserCommand() {
-        Scanner in = new Scanner(System.in);
-        return in.nextLine().trim();
-    }
+
 
     /** .
      * This method will display line on standard output (terminal)
@@ -52,17 +45,6 @@ public class Ui {
         System.out.println(message);
     }
 
-
-
-    /** .
-     * This method will say goodbye to user on standard output (terminal)
-     */
-
-    public void sayBye() {
-        printLine();
-        System.out.println("Bye. Hope to see you again soon!");
-        printLine();
-    }
 
 
 }

@@ -4,21 +4,14 @@ import duke.parser.Parser;
 import duke.util.Storage;
 import duke.util.TaskList;
 import duke.exceptions.DukeException;
-import duke.tasks.Deadline;
 import duke.ui.Ui;
-import duke.tasks.Task;
 
-import java.time.LocalDate;
-import java.util.Locale;
-
-import static duke.util.TaskList.isValidDateTimeFormat;
 
 /** .
  * Executes a DeadLine command.
  */
 public class DeadLineCommand extends Command {
-    private String taskDescription;
-    private LocalDate dueDate;
+
 
     /** .
      * Constructs a DeadLineCommand.

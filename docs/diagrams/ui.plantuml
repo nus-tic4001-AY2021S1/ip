@@ -41,8 +41,6 @@ title __UI's Class Diagram__\n
       class duke.ui.Ui {
           + greetMessage()
           {static} + printLine()
-          {static} + readUserCommand()
-          + sayBye()
           {static} + sayWelcome()
           {static} + showMessage()
       }

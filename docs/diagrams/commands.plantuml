@@ -37,8 +37,6 @@ title __COMMANDS's Class Diagram__\n
   namespace duke {
     namespace commands {
       class duke.commands.DeadLineCommand {
-          - dueDate : LocalDate
-          - taskDescription : String
           + DeadLineCommand()
           + execute()
       }
@@ -69,8 +67,6 @@ title __COMMANDS's Class Diagram__\n
   namespace duke {
     namespace commands {
       class duke.commands.EventCommand {
-          - formatDateTime : LocalDateTime
-          - taskDescription : String
           + EventCommand()
           + execute()
       }

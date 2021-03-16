@@ -1,11 +1,6 @@
 package duke.util;
 
-import duke.exceptions.DukeException;
-import duke.tasks.Deadline;
-import duke.tasks.Event;
 import duke.tasks.Task;
-import duke.tasks.Todo;
-import duke.ui.Ui;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -103,11 +98,14 @@ public class TaskList {
         return taskList.size();
     }
 
+    /**
+     * Removes a task from the list of tasks.
+     *
+     * @param index The index of task to remove.
+     */
     public Task remove(int index) {
         return taskList.remove(index);
     }
-
-
 
 
     /**
@@ -122,63 +120,10 @@ public class TaskList {
 
 
     /**
-     * A method to clear all entries.
-     * Show the message to user and notify the user that "All entries have been cleared."
-     */
-    public static void clearAllTasks() {
-
-        // list initially
-        Ui.showMessage("The Task list initially:\n" + taskList);
-
-        // clear function used
-        taskList.clear();
-
-        // list after clearing all elements
-        Ui.showMessage("The Task list after using clear() method:" + taskList);
-
-    }
-
-
-    /** .
-     * A method to view the selected task details
+     * Clears all tasks from the list of tasks.
      *
-     * @param selectedTask A String that holds the ID (number) of a task
-     * @throws NullPointerException If TASK NUM is Empty/Null: Returning to Main Menu
-     * @throws ArrayIndexOutOfBoundsException If TASK NUM is invalid,
-     *          TASK NUM cannot be found in the task list: Returning to Main Menu
      */
-    public void viewSelectedTask(String selectedTask) {
-
-        try {
-            // checking if the task number is given and empty string or null
-            if (selectedTask.trim().equals("")) {
-                throw new NullPointerException("TASK NUM is Empty/Null: Returning to Main Menu");
-            }
-
-            int taskIndex = Integer.parseInt(selectedTask) - 1;
-            if (taskIndex < 0 || taskIndex > taskList.size()) {
-                throw new ArrayIndexOutOfBoundsException(
-                        "TASK NUM cannot be found in the task list: Returning to Main Menu");
-            }
-
-
-            for (int i = 0; i < taskList.size(); i++) {
-                if (i == taskIndex) {
-                    Ui.showMessage("Nice! Here is the task ready to view:");
-                    Ui.showMessage(taskList.get(i).toString());
-                }
-
-            }
-
-
-        } catch (Exception e) {
-            Ui.showMessage(e.getMessage());
-        }
-    }
-
-
     public void clear() {
-        // clear function used
         taskList.clear();
     }
 

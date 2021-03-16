@@ -1,25 +1,15 @@
 package duke.tasks;
 
-
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 
 public class Deadline extends Task {
 
-
-    // A String that holds the deadline date
-    protected String by;
-
-
     // The due date of the task as yyyy-mm-dd format
     protected LocalDate dueDate;
-
-    protected LocalDateTime dueDateTime;
-
 
     /** .
      * Creating an object of Event class
@@ -32,35 +22,6 @@ public class Deadline extends Task {
         super(description);
         this.setDueDate(dueDate);
 
-    }
-
-
-    /** .
-     * Creating an object of Task class
-     *
-     * @param description A String that holds the description of a task
-     */
-    public Deadline(String description) {
-        super(description);
-    }
-
-    /** .
-     * Gets the deadline description of the task.
-     *
-     * @return by This deadline description (BY)
-     */
-    public String getBy() {
-        return by;
-    }
-
-    /** .
-     * Changes the deadline description of the task.
-     * This may involve a lengthy legal process.
-     *
-     * @param by This deadline description (BY)
-     */
-    public void setBy(String by) {
-        this.by = by;
     }
 
     /** .

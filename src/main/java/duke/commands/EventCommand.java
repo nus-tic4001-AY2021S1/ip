@@ -6,15 +6,12 @@ import duke.util.TaskList;
 import duke.exceptions.DukeException;
 import duke.ui.Ui;
 
-import java.time.LocalDateTime;
-
 
 /** .
  * Executes a event command.
  */
 public class EventCommand extends Command {
-    private String taskDescription;
-    private  LocalDateTime formatDateTime;
+
 
     /** .
      * Constructs a EventCommand.
