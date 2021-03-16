@@ -4,7 +4,7 @@ This product is not meant for end-users and therefore there is no user-friendly 
 
 
 
-#Starting the program
+# Starting the program
 Using IntelliJ
 1.	Find the project in the Project Explorer (usually located at the left side)
 <br /> * If the Project Explorer is not visible, press `ALT`+`1` for Windows/Linux, `CMD`+`1` for macOS to open the Project Explorer tab
