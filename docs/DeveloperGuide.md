@@ -18,14 +18,9 @@ The rest of the App consists of four components.
 * [**`Exceptions`**]: The exception executor.
 * [**`Parser`**]: The parser executor.
 
-### UML: Sequence Diagram
-The image below shows the example of the interaction of todo command.
-<br />
-<img src="images/SequenceDiagram.png"  />
-
 
 ### UML: Class Diagram
-The image below shows the example of the interaction of command (e.g list, sort, bye, clear).
+The image below shows the example of the interaction of command (e.g list, sort, bye, clear, etc).
 <br />
 <img src="images/CommandClassDiagram.png" />
 
@@ -33,6 +28,30 @@ The image below shows the example of the interaction of command (e.g list, sort,
 The image below shows the example of the interaction of task (e.g todo, event, deadline).
 <br />
 <img src="images/TaskClassDiagram.png" />
+
+
+### Todo feature
+#### Implementation of todo feature
+These operations are exposed in the `TodoCommand()` class.
+* Step 1: The user executes the todo command.
+* Step 2: The TodoCommand() class will parser the todo keywords to see if it is a valid command.
+* Step 3: Then create a todo task.
+* Step 4: Add this newly created todo task to the task list.
+* Step 4: Then save the updated task list to storge.
+
+#### UML: Sequence Diagram
+The image below shows the example of the interaction of todo command.
+<br />
+<img src="images/SequenceDiagram.png"  />
+
+#### UML: Activity Diagram
+The image below shows the example of the interaction of todo command.
+<br />
+<img src="images/ActivityDiagram.png"  />
+
+
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 

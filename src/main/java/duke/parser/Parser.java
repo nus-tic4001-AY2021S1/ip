@@ -232,6 +232,30 @@ public class Parser {
     }
 
 
+    /**
+     * Gets task index from user's full input string.
+     *
+     * @param input User's full input string.
+     * @return Task index.
+     * @throws DukeException If task index is missing or non-number format
+     */
+    public static int getTaskIndex(String input) throws DukeException {
+        int taskIndex;
+        String commandElement = getElement(input);
+        if (commandElement.isEmpty()) {
+            throw new DukeException("OOPS!!! The task index is missing. Returning to Main Menu");
+        }
+
+
+        try {
+            taskIndex = Integer.parseInt(commandElement) - 1;
+        } catch (NumberFormatException e) {
+            throw new DukeException("The task index is invalid.");
+        }
+        return taskIndex;
+
+    }
+
 
 }
 

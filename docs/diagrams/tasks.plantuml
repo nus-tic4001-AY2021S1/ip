@@ -5,14 +5,9 @@ title __TASKS's Class Diagram__\n
   namespace duke {
     namespace tasks {
       class duke.tasks.Deadline {
-          # by : String
           # dueDate : LocalDate
-          # dueDateTime : LocalDateTime
           + Deadline()
-          + Deadline()
-          + getBy()
           + getDueDate()
-          + setBy()
           + toString()
           # setDueDate()
       }
@@ -23,12 +18,10 @@ title __TASKS's Class Diagram__\n
   namespace duke {
     namespace tasks {
       class duke.tasks.Event {
-          # at : String
           # dueDateTime : LocalDateTime
           + Event()
           + getDueDateTime()
           + toString()
-          # setDueDateTime()
       }
     }
   }
@@ -70,7 +63,7 @@ title __TASKS's Class Diagram__\n
 right footer
 
 
-UML diagram
+PlantUML
 endfooter
 
 @enduml

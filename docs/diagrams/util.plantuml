@@ -22,14 +22,12 @@ title __UTIL's Class Diagram__\n
           + TaskList()
           + add()
           + clear()
-          {static} + clearAllTasks()
           + get()
           {static} + getList()
           {static} + isValidDateTimeFormat()
           + remove()
           + size()
           + sort()
-          + viewSelectedTask()
       }
     }
   }
@@ -41,7 +39,7 @@ title __UTIL's Class Diagram__\n
 right footer
 
 
-UML diagram
+PlantUML
 endfooter
 
 @enduml

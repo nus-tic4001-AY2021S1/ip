@@ -4,8 +4,6 @@ import duke.exceptions.DukeException;
 import duke.parser.Parser;
 import duke.util.Storage;
 import duke.util.TaskList;
-import duke.tasks.Task;
-import duke.tasks.Todo;
 import duke.ui.Ui;
 
 /** .

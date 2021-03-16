@@ -4,12 +4,7 @@ import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-
-
 public class Event extends Task {
-    // A String that holds the event date or time
-    protected String at;
-
 
     protected LocalDateTime dueDateTime;
 
@@ -26,19 +21,6 @@ public class Event extends Task {
 
     }
 
-
-    /** .
-     * A method to set the due date of a task
-     * @param dueDateTime The due date of the task as yyyy-MM-dd HH:mm
-     * @throws DateTimeException if given date is a past date
-     */
-    protected void setDueDateTime(LocalDateTime dueDateTime) throws DateTimeException {
-
-        //Ensure dueDate is saved as yyyy-MM-dd
-        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        this.dueDateTime = LocalDateTime.parse(dueDateTime.format(formattedDate));
-
-    }
 
     /** .
      * Gets the Event duration.
