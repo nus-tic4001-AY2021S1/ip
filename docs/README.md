@@ -1,20 +1,8 @@
-# User Guide
+Duke is a personal assistant chatbot that helps us keep track of various things.
+It also has a Graphical User Interface (GUI) for users to enter command.
 
-## Features 
+![Sample - CSV](Ui.png) 
 
-### Feature 1 
-Description of feature.
-
-## Usage
-
-### `Keyword` - Describe action
-
-Describe action and its outcome.
-
-Example of usage: 
-
-`keyword (optional arguments)`
-
-Expected outcome:
-
-`outcome`
+Useful links:
+* [User Guide](UserGuide.md)
+* [Developer Guide](DeveloperGuide.md)

@@ -1,0 +1,10 @@
+T | 0 | read
+D | 0 | return book | May 13 2019
+T | 0 | return book
+D | 0 | return book | Sep 16 2019
+T | 0 | watch movie
+E | 0 | project meetinf | Aug 23 2020
+T | 0 | watch movie
+D | 0 | do homework | Sep 28 2020
+T | 0 | read
+T | 0 | hahahaha
